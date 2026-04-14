@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platypus Automations — Smart Systems for Local Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1f3d;
+    --navy-light: #1a2f4e;
+    --navy-mid: #16305a;
+    --teal: #00c2a8;
+    --teal-light: #00dfc2;
+    --orange: #f97316;
+    --orange-light: #fb923c;
+    --white: #f8fafc;
+    --muted: #94a3b8;
+    --border: rgba(255,255,255,0.1);
+    --border-light: rgba(255,255,255,0.06);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--navy);
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(15,31,61,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-left { display: flex; align-items: center; gap: 1.25rem; }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .vet-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(0,194,168,0.12);
+    border: 1px solid rgba(0,194,168,0.3);
+    color: var(--teal);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+  }
+
+  .vet-badge::before { content: '★'; font-size: 0.6rem; }
+
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--orange) !important;
+    color: white !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--orange-light) !important; }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(0,194,168,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(249,115,22,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--teal); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+
+  .btn-primary {
+    background: var(--orange);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--white); }
+  .btn-secondary::after { content: '→'; transition: transform 0.2s; }
+  .btn-secondary:hover::after { transform: translateX(4px); }
+
+  .hero-right {
+    background: var(--navy-light);
+    border-left: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,194,168,0.08) 0%, transparent 70%);
+  }
+
+  .phone-mockup {
+    width: 260px;
+    background: #0a1628;
+    border-radius: 36px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,194,168,0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .phone-notch {
+    width: 80px;
+    height: 6px;
+    background: #1a2f4e;
+    border-radius: 3px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .phone-msg {
+    background: #1a2f4e;
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .phone-msg-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .phone-msg-text {
+    font-size: 0.8rem;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .phone-msg.incoming { background: linear-gradient(135deg, #007a6a, #00c2a8); }
+  .phone-msg.incoming .phone-msg-label { color: rgba(255,255,255,0.6); }
+  .phone-msg.incoming .phone-msg-text { color: white; }
+
+  .phone-time {
+    font-size: 0.65rem;
+    color: #4a6080;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .stat-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .stat-pill {
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+
+  .stat-pill-num {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--teal);
+    display: block;
+  }
+
+  .stat-pill-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .problem {
+    background: var(--navy-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    color: var(--white);
+    padding: 7rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .problem h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .problem h2 em { font-style: italic; color: var(--teal); }
+
+  .problem-points { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .problem-point {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .problem-point:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .problem-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--teal);
+    line-height: 1;
+    min-width: 2rem;
+  }
+
+  .problem-point-text h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: var(--white);
+  }
+
+  .problem-point-text p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .services {
+    padding: 7rem 4rem;
+    background: var(--navy);
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--white);
+  }
+
+  .section-header p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    max-width: 280px;
+    text-align: right;
+    font-weight: 300;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    background: var(--navy-light);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .service-card:hover { transform: translateY(-3px); border-color: rgba(0,194,168,0.3); }
+
+  .service-card.featured {
+    background: linear-gradient(135deg, #0d2744, #0f3050);
+    border-color: rgba(0,194,168,0.25);
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,194,168,0.05) 0%, transparent 70%);
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(0,194,168,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+  }
+
+  .service-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-features li {
+    font-size: 0.825rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .service-features li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
+  .service-price {
+    font-family: var(--serif);
+    font-size: 0.875rem;
+    color: var(--orange);
+    letter-spacing: 0.02em;
+  }
+
+  .who {
+    background: var(--navy-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 7rem 4rem;
+  }
+
+  .who-inner { max-width: 900px; margin: 0 auto; }
+
+  .who h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    color: var(--white);
+  }
+
+  .who-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+  }
+
+  .trades-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .trade-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    background: var(--navy);
+    text-align: center;
+    font-size: 0.825rem;
+    color: var(--muted);
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+
+  .trade-item:hover {
+    border-color: rgba(0,194,168,0.4);
+    color: var(--white);
+    background: rgba(0,194,168,0.05);
+  }
+
+  .trade-item-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+
+  .contact {
+    padding: 7rem 4rem;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--white);
+  }
+
+  .contact-left p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .contact-detail strong { color: var(--white); font-weight: 500; }
+
+  .contact-form {
+    background: var(--navy-light);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+  }
+
+  .form-group { margin-bottom: 1.25rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--white);
+    background: var(--navy);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: #3a5070; }
+
+  .form-group select option { background: var(--navy); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--teal); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--orange-light); }
+
+  footer {
+    background: #08142a;
+    color: var(--white);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-left { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--teal); }
+
+  .footer-vet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--teal);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .footer-vet::before { content: '★'; }
+
+  footer p { font-size: 0.8rem; color: rgba(148,163,184,0.5); }
+
+  .fade-up {
+    opacity: 1;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    .problem { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .services { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .section-header p { text-align: left; }
+    .who { padding: 4rem 1.5rem; }
+    .trades-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .vet-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="#" class="nav-logo">Platypus<span>.</span></a>
+    <span class="vet-badge">Veteran Owned Business</span>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#who">Who we help</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Get started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Chesapeake, VA · Local Business Automation</div>
+    <h1>Stop losing jobs to <em>missed calls.</em></h1>
+    <p class="hero-sub">Platypus Automations builds smart, hands-free systems that respond to every missed call, follow up with every lead, and keep your business running — even when you're on the job.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a free consultation</a>
+      <a href="#services" class="btn-secondary">See what we do</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="phone-mockup">
+      <div class="phone-notch"></div>
+      <div class="phone-msg">
+        <div class="phone-msg-label">Missed call · 2:14 PM</div>
+        <div class="phone-msg-text">Incoming call from (757) 555-0182 — no answer</div>
+      </div>
+      <div class="phone-msg incoming">
+        <div class="phone-msg-label">Auto-reply sent · 2:14 PM</div>
+        <div class="phone-msg-text">Hi! Sorry we missed your call. We'd love to help — reply with your name and what you need. We'll get right back to you.</div>
+      </div>
+      <div class="phone-msg">
+        <div class="phone-msg-label">Customer reply · 2:16 PM</div>
+        <div class="phone-msg-text">Hi, it's Mike. Need my sprinkler system checked before summer. Can you come Thursday?</div>
+      </div>
+      <div class="phone-time">Automated · powered by Platypus</div>
+    </div>
+    <div class="stat-pills">
+      <div class="stat-pill">
+        <span class="stat-pill-num">2s</span>
+        <span class="stat-pill-label">Response time</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill-num">0</span>
+        <span class="stat-pill-label">Missed leads</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill-num">24/7</span>
+        <span class="stat-pill-label">Always on</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div>
+    <h2>Every missed call is a job going to <em>your competitor.</em></h2>
+  </div>
+  <div class="problem-points">
+    <div class="problem-point fade-up">
+      <div class="problem-num">01</div>
+      <div class="problem-point-text">
+        <h4>You're busy doing the work</h4>
+        <p>You can't answer every call when you're under a sink or running a crew. But customers won't wait — they call the next number on the list.</p>
+      </div>
+    </div>
+    <div class="problem-point fade-up">
+      <div class="problem-num">02</div>
+      <div class="problem-point-text">
+        <h4>First to respond wins the job</h4>
+        <p>Studies show 78% of customers hire the first business that responds. A two-second auto-reply puts you first — every time.</p>
+      </div>
+    </div>
+    <div class="problem-point fade-up">
+      <div class="problem-num">03</div>
+      <div class="problem-point-text">
+        <h4>You never know what you're losing</h4>
+        <p>Every unlogged missed call is invisible lost revenue. Our systems track every contact so nothing ever falls through the cracks again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">What we offer</div>
+      <h2>Simple services.<br>Real results.</h2>
+    </div>
+    <p>No long-term contracts required. No tech knowledge needed. We handle everything.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card featured fade-up">
+      <div class="service-icon">📱</div>
+      <h3>Missed Call Text-Back</h3>
+      <p>Every missed call gets an instant, personalized text response within seconds — automatically. You get notified, the lead gets captured, nothing slips through.</p>
+      <ul class="service-features">
+        <li>Instant AI-powered text response</li>
+        <li>Owner notification with caller info</li>
+        <li>Full lead log in Google Sheets</li>
+        <li>Works 24/7 with zero effort from you</li>
+        <li>Local 757 number included</li>
+      </ul>
+      <div class="service-price">Contact us for pricing →</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🎙️</div>
+      <h3>After-Hours AI Voice Filter</h3>
+      <p>An AI answers your after-hours calls, qualifies the emergency, and alerts you only when it's worth picking up. Sleep through the tire kickers, never miss a real job.</p>
+      <ul class="service-features">
+        <li>Professional AI voice greeting</li>
+        <li>Emergency vs. non-emergency screening</li>
+        <li>Instant owner alert for real emergencies</li>
+        <li>Non-urgent messages logged for morning</li>
+        <li>Ideal for HVAC and garage door repair</li>
+      </ul>
+      <div class="service-price">Contact us for pricing →</div>
+    </div>
+  </div>
+</section>
+
+<section class="who" id="who">
+  <div class="who-inner">
+    <div class="section-tag">Who we work with</div>
+    <h2>Built for the trades.</h2>
+    <p class="who-sub">We work exclusively with local home service businesses in the Hampton Roads area. If you're a small operator who's tired of losing jobs to voicemail, we built this for you.</p>
+    <div class="trades-grid">
+      <div class="trade-item fade-up"><span class="trade-item-icon">💧</span>Plumbing</div>
+      <div class="trade-item fade-up"><span class="trade-item-icon">🌿</span>Landscaping</div>
+      <div class="trade-item fade-up"><span class="trade-item-icon">🚪</span>Garage Door Repair</div>
+      <div class="trade-item fade-up"><span class="trade-item-icon">❄️</span>HVAC</div>
+      <div class="trade-item fade-up"><span class="trade-item-icon">🌱</span>Irrigation &amp; Sprinkler</div>
+      <div class="trade-item fade-up"><span class="trade-item-icon">🚛</span>Junk Removal</div>
+      <div class="trade-item fade-up"><span class="trade-item-icon">🏗️</span>Fence Installation</div>
+      <div class="trade-item fade-up"><span class="trade-item-icon">🔧</span>Handyman Services</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="section-tag">Get in touch</div>
+    <h2>Let's talk about your business.</h2>
+    <p>We offer a free two-week trial so you can see exactly what you've been missing. No setup fees, no obligation. If you don't see value, you don't pay.</p>
+    <div class="contact-detail" style="display:block;">
+      <div style="margin-bottom: 1rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1635536.8846539042!2d-77.64908994679067!3d36.808742500935615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ba8f2a00d05d3d%3A0xe464a500902c3b0f!2sHampton%20Roads!5e0!3m2!1sen!2sus!4v1775175863189!5m2!1sen!2sus" width="100%" height="250" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <strong>Service area:</strong> Chesapeake, Virginia Beach, Norfolk, Suffolk, Portsmouth, Newport News &amp; Hampton
+    </div>
+    <div class="contact-detail">
+      <strong>Email:</strong> tim@platypusautomations.com
+    </div>
+    <div class="contact-detail">
+      <strong>Phone:</strong> (757) 765-1210
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your name</label>
+        <input type="text" placeholder="Mike Johnson" />
+      </div>
+      <div class="form-group">
+        <label>Business name</label>
+        <input type="text" placeholder="Johnson Plumbing" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Phone number</label>
+        <input type="tel" placeholder="(757) 555-0100" />
+      </div>
+      <div class="form-group">
+        <label>Trade / service type</label>
+        <select>
+          <option value="">Select your trade</option>
+          <option>Plumbing</option>
+          <option>HVAC</option>
+          <option>Landscaping</option>
+          <option>Garage Door Repair</option>
+          <option>Irrigation / Sprinkler</option>
+          <option>Junk Removal</option>
+          <option>Fence Installation</option>
+          <option>Handyman</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>What's your biggest challenge right now?</label>
+      <textarea placeholder="Tell us a bit about your business and what's not working..."></textarea>
+    </div>
+    <button class="form-submit">Send message →</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo">Platypus<span>.</span> Automations</div>
+    <div class="footer-vet">Veteran Owned Business</div>
+  </div>
+  <p>© 2026 Platypus Automations · Chesapeake, VA · All rights reserved</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+document.querySelector('.form-submit').addEventListener('click', async function() {
+  const name = document.querySelector('input[placeholder="Mike Johnson"]').value.trim();
+  const businessName = document.querySelector('input[placeholder="Johnson Plumbing"]').value.trim();
+  const phone = document.querySelector('input[placeholder="(757) 555-0100"]').value.trim();
+  const tradeType = document.querySelector('select').value;
+  const message = document.querySelector('textarea').value.trim();
+
+  if (!name) { alert('Please fill in your name to get started.'); return; }
+
+  this.textContent = 'Sending...';
+  this.disabled = true;
+
+  try {
+    await fetch('https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/contact-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors',
+      body: JSON.stringify({ name, businessName, phone, tradeType, message })
+    });
+    this.textContent = "Message sent! We'll be in touch soon.";
+    this.style.background = '#00c2a8';
+  } catch(e) {
+    this.textContent = 'Send message →';
+    this.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+});
+</script>
+</body>
+</html>
