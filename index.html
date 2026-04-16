@@ -1066,13 +1066,22 @@ footer {
 .footer-left { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .footer-logo {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
-  color: var(--white);
+  line-height: 0;
 }
 
-.footer-logo span { color: var(--teal); }
+.footer-logo-wordmark {
+  width: 120px;
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.footer-logo-monogram {
+  width: 32px;
+  height: auto;
+  display: none;
+  filter: brightness(0) invert(1);
+}
 
 .footer-vet {
   display: inline-flex;
@@ -1173,6 +1182,8 @@ footer {
   .contact { grid-template-columns: 1fr; padding: 6rem 1.5rem; gap: 3rem; }
   .contact-left h2 { font-size: clamp(2rem, 7vw, 3rem); }
   footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-logo-wordmark { display: none; }
+  .footer-logo-monogram { display: block; }
   .form-row { grid-template-columns: 1fr; }
 }
 
@@ -1664,7 +1675,10 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
-    <div class="footer-logo">Platypus<span>.</span> Automations</div>
+    <div class="footer-logo">
+      <img src="pa_wordmark.png" alt="Platypus Automations" class="footer-logo-wordmark">
+      <img src="pa_monogram.png" alt="Platypus Automations" class="footer-logo-monogram">
+    </div>
     <div class="footer-vet">Veteran Owned Business</div>
   </div>
   <div class="footer-center">
