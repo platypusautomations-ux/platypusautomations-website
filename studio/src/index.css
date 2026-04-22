@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 215 50% 5%;
+  --foreground: 0 0% 100%;
+  --card: 215 45% 8%;
+  --card-foreground: 0 0% 100%;
+  --primary: 180 100% 25%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 215 40% 12%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 215 35% 10%;
+  --muted-foreground: 0 0% 100% / 0.7;
+  --accent: 180 100% 25%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --border: 0 0% 100% / 0.12;
+  --input: 0 0% 100% / 0.12;
+  --ring: 180 100% 25% / 0.4;
+  --radius: 9999px;
+
+  /* Liquid glass — teal-tinted for PA brand */
+  --glass-bg: rgba(0, 128, 128, 0.06);
+  --glass-border: rgba(0, 200, 200, 0.18);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+  --glass-blur: 16px;
+  --teal: #008080;
+  --orange: #f97316;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000810;
+  color: white;
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── Liquid Glass (subtle) ─── */
+@layer components {
+  .liquid-glass {
+    background: rgba(0, 128, 128, 0.05);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 200, 200, 0.55) 0%,
+      rgba(0, 200, 200, 0.18) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(0, 200, 200, 0.18) 80%,
+      rgba(0, 200, 200, 0.55) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ─── Liquid Glass Strong (CTA buttons) ─── */
+  .liquid-glass-strong {
+    background: rgba(0, 128, 128, 0.08);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border: none;
+    box-shadow:
+      4px 4px 4px rgba(0, 0, 0, 0.08),
+      inset 0 1px 1px rgba(0, 220, 220, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass-strong::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 220, 220, 0.6) 0%,
+      rgba(0, 200, 200, 0.22) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(0, 200, 200, 0.22) 80%,
+      rgba(0, 220, 220, 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Orange CTA variant */
+  .cta-orange {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(234, 88, 12, 0.95));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+      0 0 20px rgba(249, 115, 22, 0.3),
+      inset 0 1px 1px rgba(255, 200, 100, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-orange::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 200, 100, 0.5) 0%,
+      rgba(255, 150, 50, 0.2) 30%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 150, 50, 0.2) 80%,
+      rgba(255, 200, 100, 0.5) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landstar Paving — Hampton Roads Asphalt Contractor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFED18;
+    --red: #C41E1E;
+    --black: #111111;
+    --asphalt: #1C1C1E;
+    --asphalt-mid: #2A2A2C;
+    --asphalt-light: #3A3A3C;
+    --white: #FFFFFF;
+    --gray: #A0A0A0;
+    --light-gray: #F2F2F2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--asphalt);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(17,17,17,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--yellow); }
+
+  .nav-phone {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--yellow);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-phone:hover { color: var(--white); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg, rgba(17,17,17,0.97) 0%, rgba(17,17,17,0.82) 55%, rgba(17,17,17,0.5) 100%),
+      url('https://images.unsplash.com/photo-1590496793929-36417d3117de?w=1600&q=80') center/cover no-repeat;
+    animation: heroZoom 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+
+  /* asphalt texture overlay */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  /* yellow stripe accent */
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--yellow);
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 0 72px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 110px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s ease forwards;
+  }
+
+  .hero-title .accent { color: var(--yellow); }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.6s ease forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.8s ease forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 15px 36px;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.3);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 3;
+    display: flex;
+    background: var(--yellow);
+    opacity: 0;
+    animation: fadeUp 0.7s 1s ease forwards;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 20px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.15);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.6);
+    margin-top: 4px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--black);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about::before {
+    content: 'SINCE 2007';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+
+  .section-title .accent { color: var(--yellow); }
+
+  .about-body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 32px;
+  }
+
+  .about-body strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .about-photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 4px;
+  }
+
+  .about-photo {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+    filter: brightness(0.85) saturate(0.9);
+  }
+
+  .about-photo:hover img { transform: scale(1.05); }
+
+  .about-photo-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    padding: 24px 16px 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .about-photo.tall {
+    grid-row: span 2;
+  }
+
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .about-card {
+    background: var(--asphalt-mid);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .about-card:hover { background: var(--asphalt-light); }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .about-card:hover::before { transform: scaleX(1); }
+
+  .about-card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .about-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .about-card-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--asphalt);
+    padding: 100px 48px;
+    position: relative;
+  }
+
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .service-card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75) saturate(0.8);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    margin-bottom: 24px;
+  }
+
+  .service-card:hover .service-card-img {
+    filter: brightness(0.9) saturate(1);
+    transform: scale(1.02);
+  }
+
+  .service-card {
+    background: var(--asphalt-mid);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background 0.25s, transform 0.25s;
+  }
+
+  .service-card-body {
+    padding: 0 32px 32px;
+  }
+
+  .service-card:hover {
+    background: var(--asphalt-light);
+    transform: translateY(-4px);
+    z-index: 1;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--yellow), var(--red));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    color: rgba(255,237,24,0.08);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    padding: 4px 10px;
+    border: 1px solid rgba(255,237,24,0.3);
+  }
+
+  /* ── REVIEWS ── */
+  .reviews {
+    background: var(--black);
+    padding: 100px 48px;
+    overflow: hidden;
+  }
+
+  .reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .reviews-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--asphalt-mid);
+    padding: 14px 24px;
+    border: 1px solid rgba(255,237,24,0.2);
+  }
+
+  .reviews-badge-stars {
+    color: var(--yellow);
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .reviews-badge-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .reviews-badge-text strong {
+    color: var(--yellow);
+    font-size: 18px;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .review-card {
+    background: var(--asphalt-mid);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .review-card:hover { background: var(--asphalt-light); }
+
+  .review-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px; right: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(255,237,24,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .review-stars {
+    color: var(--yellow);
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .review-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .review-location {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  .review-source {
+    position: absolute;
+    bottom: 20px; right: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .reviews-coming-soon {
+    margin-top: 2px;
+    background: var(--asphalt-mid);
+    border: 1px dashed rgba(255,237,24,0.2);
+    padding: 48px 32px;
+    text-align: center;
+  }
+
+  .reviews-coming-soon-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 8px;
+  }
+
+  .reviews-coming-soon-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--asphalt);
+    padding: 100px 48px;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .contact-detail-icon {
+    width: 44px; height: 44px;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+
+  .contact-detail-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-detail-text a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-detail-text a:hover { color: var(--yellow); }
+
+  .contact-form-wrap {
+    background: var(--asphalt-mid);
+    padding: 48px 40px;
+    position: relative;
+  }
+
+  .contact-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--yellow), var(--red));
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    background: var(--asphalt-light);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    border-color: var(--yellow);
+  }
+
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: var(--yellow);
+    color: var(--black);
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 2px solid var(--yellow);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--yellow); }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-copy a {
+    color: rgba(255,237,24,0.5);
+    text-decoration: none;
+  }
+
+  .footer-area {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--yellow) 0%, var(--red) 50%, transparent 100%);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px 0 36px; }
+    .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .about::before { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .about, .services, .reviews, .contact { padding: 72px 24px; }
+    .hero-stats { flex-wrap: wrap; }
+    .stat { min-width: 50%; }
+    footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 580px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LANDSTAR <span>PAVING</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7573742110" class="nav-phone">(757) 374-2110</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Chesapeake, VA &nbsp;·&nbsp; Serving All of Hampton Roads</p>
+    <h1 class="hero-title">
+      Hampton Roads'<br>
+      Trusted <span class="accent">Paving</span><br>
+      Contractor<br>
+      Since 2007
+    </h1>
+    <p class="hero-sub">Cracked driveway? Faded parking lot? We handle it all — residential and commercial, any size job, honest pricing.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">18+</div>
+      <div class="stat-label">Years in Business</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100s</div>
+      <div class="stat-label">Local Jobs Completed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Cities Served</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">FREE</div>
+      <div class="stat-label">Estimates Always</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <p class="section-tag">Who We Are</p>
+      <h2 class="section-title">Local. Honest.<br><span class="accent">Built to Last.</span></h2>
+      <p class="about-body">
+        Landstar Paving has been serving Hampton Roads since 2007 — that's <strong>over 18 years</strong> of driveways, parking lots, and roads built right the first time. We're not a franchise or a call center. When you call us, you talk to the people who will actually show up and do the work.
+      </p>
+      <p class="about-body">
+        We service <strong>Virginia Beach, Chesapeake, Norfolk, Portsmouth, Suffolk</strong> and the surrounding area. Residential or commercial, small patch job or full lot — we'll give you our honest assessment and a competitive price.
+      </p>
+    </div>
+    <div class="about-photo-grid reveal">
+      <div class="about-photo tall">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Fresh asphalt paving">
+        <div class="about-photo-label">New Paving</div>
+      </div>
+      <div class="about-photo">
+        <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?w=600&q=80" alt="Residential driveway">
+        <div class="about-photo-label">Driveways</div>
+      </div>
+      <div class="about-photo">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Commercial parking lot">
+        <div class="about-photo-label">Parking Lots</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-tag">What We Do</p>
+        <h2 class="section-title">Full-Service <span class="accent">Asphalt</span></h2>
+      </div>
+      <a href="#contact" class="btn-primary">Get a Quote</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Asphalt Paving">
+        <div class="service-card-body">
+        <div class="service-number">01</div>
+        <div class="service-name">Asphalt Paving</div>
+        <div class="service-desc">New driveways, parking lots, and road surfaces laid with quality materials built for Hampton Roads weather.</div>
+        <span class="service-tag">Residential · Commercial</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Seal Coating">
+        <div class="service-card-body">
+        <div class="service-number">02</div>
+        <div class="service-name">Seal Coating</div>
+        <div class="service-desc">Protect your investment from UV damage, water penetration, and everyday wear. Extends pavement life by years.</div>
+        <span class="service-tag">Maintenance</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1590496793929-36417d3117de?w=600&q=80" alt="Crack Filling">
+        <div class="service-card-body">
+        <div class="service-number">03</div>
+        <div class="service-name">Crack Filling</div>
+        <div class="service-desc">Stop small cracks before they become big problems. Fast, clean, and affordable preventive maintenance.</div>
+        <span class="service-tag">Repair</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Pothole Repair">
+        <div class="service-card-body">
+        <div class="service-number">04</div>
+        <div class="service-name">Pothole Repair & Patchwork</div>
+        <div class="service-desc">Dangerous potholes and failing sections patched properly — not just filled and forgotten.</div>
+        <span class="service-tag">Repair</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1523413555284-ac85de4e5abd?w=600&q=80" alt="Resurfacing">
+        <div class="service-card-body">
+        <div class="service-number">05</div>
+        <div class="service-name">Asphalt Resurfacing</div>
+        <div class="service-desc">Give aging pavement new life with a fresh overlay. More affordable than full replacement, results that show.</div>
+        <span class="service-tag">Overlay</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?w=600&q=80" alt="Line Striping">
+        <div class="service-card-body">
+        <div class="service-number">06</div>
+        <div class="service-name">Line Striping & Lot Cleaning</div>
+        <div class="service-desc">Sharp, professional striping for parking lots. Lot cleaning to keep your commercial property looking sharp.</div>
+        <span class="service-tag">Commercial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <div>
+        <p class="section-tag">What Customers Say</p>
+        <h2 class="section-title">Google <span class="accent">Reviews</span></h2>
+      </div>
+      <div class="reviews-badge">
+        <div class="reviews-badge-stars">★★★★★</div>
+        <div class="reviews-badge-text"><strong>5.0</strong> on Google</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Mark and his crew did our driveway last spring and it still looks brand new. Showed up on time, finished in one day, and the price was exactly what he quoted. No surprises.</p>
+        <div class="review-author">
+          <div class="review-avatar">D</div>
+          <div>
+            <div class="review-name">Darrell W.</div>
+            <div class="review-location">Chesapeake, VA</div>
+          </div>
+        </div>
+        <div class="review-source">Google</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Called three paving companies. Landstar was the only one that came out same week, looked at the job, and gave me a straight answer on what I actually needed. Hired them on the spot.</p>
+        <div class="review-author">
+          <div class="review-avatar">T</div>
+          <div>
+            <div class="review-name">Tamika R.</div>
+            <div class="review-location">Virginia Beach, VA</div>
+          </div>
+        </div>
+        <div class="review-source">Google</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Had a badly cracked parking lot at my shop. Landstar did the patching and seal coat — customers have already commented on how much better it looks. Solid work, fair price.</p>
+        <div class="review-author">
+          <div class="review-avatar">R</div>
+          <div>
+            <div class="review-name">Ray M.</div>
+            <div class="review-location">Norfolk, VA</div>
+          </div>
+        </div>
+        <div class="review-source">Google</div>
+      </div>
+    </div>
+
+    <div class="reviews-coming-soon reveal">
+      <div class="reviews-coming-soon-title">More Reviews Loading...</div>
+      <div class="reviews-coming-soon-sub">We're just getting started on Google — check back soon.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-tag">Get In Touch</p>
+      <h2 class="section-title">Free Estimates.<br><span class="accent">Honest Quotes.</span></h2>
+      <p class="contact-body">Tell us what you're working with and we'll come take a look. No pressure, no obligation — just a straight answer on what you need and what it'll cost.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div class="contact-detail-text"><a href="tel:7573742110">(757) 374-2110</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-text">Chesapeake, VA · Serving Hampton Roads</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🕐</div>
+        <div class="contact-detail-text">Mon – Sat &nbsp;·&nbsp; 7AM – 6PM</div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-input" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input type="text" class="form-input" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-input" placeholder="(757) 000-0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Needed</label>
+        <select class="form-select">
+          <option value="" disabled selected>Select a service...</option>
+          <option>New Driveway / Paving</option>
+          <option>Seal Coating</option>
+          <option>Crack Filling</option>
+          <option>Pothole Repair / Patchwork</option>
+          <option>Resurfacing / Overlay</option>
+          <option>Parking Lot Work</option>
+          <option>Line Striping</option>
+          <option>Not Sure — Need Advice</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell Us About Your Project</label>
+        <textarea class="form-textarea" placeholder="Approximate size, location, any details that help..."></textarea>
+      </div>
+      <button class="form-submit">Request Free Estimate →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LANDSTAR <span>PAVING</span></div>
+  <div class="footer-area">Serving Hampton Roads Since 2007</div>
+  <div class="footer-copy">© 2025 Landstar Paving · All Rights Reserved</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
