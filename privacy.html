@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Platypus Automations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── CUSTOM PROPERTIES ─────────────────────────────── */
+:root {
+  --teal:           #007A7A;
+  --teal-bright:    #00a0a0;
+  --orange:         #E8651A;
+  --orange-bright:  #ff7a2e;
+  --navy:           #0A1628;
+  --navy-dark:      #050d18;
+  --navy-mid:       #07111f;
+
+  --trans-fast:     0.18s;
+  --trans-med:      0.35s;
+  --trans-slow:     0.65s;
+}
+
+/* ── RESET ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Barlow', system-ui, sans-serif;
+  background: var(--navy);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-weight: 300;
+  cursor: none;
+}
+@media (hover: none) { body { cursor: auto; } }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ── CURSOR GLOW ───────────────────────────────────── */
+#cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,122,122,0.09) 0%, transparent 70%);
+  transform: translate(-50%,-50%);
+  z-index: 9998;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+#cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--teal-bright);
+  transform: translate(-50%,-50%);
+  z-index: 9999;
+  transition: width var(--trans-fast), height var(--trans-fast), background var(--trans-fast), opacity 0.3s;
+  box-shadow: 0 0 12px rgba(0,160,160,0.7);
+}
+body.hovering-cta #cursor-dot {
+  width: 18px; height: 18px;
+  background: var(--orange);
+  box-shadow: 0 0 20px rgba(232,101,26,0.8);
+}
+@media (hover: none) { #cursor-glow, #cursor-dot { display: none; } }
+
+/* ── LIQUID GLASS ──────────────────────────────────── */
+.liquid-glass {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── BLUR-IN ───────────────────────────────────────── */
+.blur-in .word {
+  display: inline;
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity var(--trans-slow) ease, filter var(--trans-slow) ease;
+  will-change: opacity, filter;
+}
+
+/* ── FADE-UP ───────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--trans-slow) ease, transform var(--trans-slow) ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── NAV ───────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 48px;
+  background: transparent;
+  transition: background var(--trans-med) ease, backdrop-filter var(--trans-med) ease, border-color var(--trans-med) ease;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(10,22,40,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: rgba(0,122,122,0.3);
+}
+.nav-logo img { height: 36px; object-fit: contain; }
+.nav-pill {
+  display: flex;
+  gap: 2px;
+  padding: 5px;
+  border-radius: 999px;
+}
+.nav-pill a {
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-size: 0.83rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  transition: color var(--trans-fast), background var(--trans-fast);
+}
+.nav-pill a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-cta {
+  background: var(--orange);
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: 999px;
+  font-size: 0.83rem;
+  font-weight: 500;
+  transition: background var(--trans-fast), transform var(--trans-fast), box-shadow var(--trans-fast);
+  cursor: none;
+  border: none;
+  display: inline-block;
+}
+.nav-cta:hover {
+  background: var(--orange-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232,101,26,0.45);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: #fff; border-radius: 2px; transition: all 0.3s;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5,13,24,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-size: 1.6rem; font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  transition: color var(--trans-fast);
+}
+.mobile-nav a:hover { color: var(--orange); }
+.mobile-nav .m-cta {
+  margin-top: 8px;
+  background: var(--orange);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-size: 1rem; font-weight: 500;
+}
+.mobile-close {
+  position: absolute;
+  top: 20px; right: 44px;
+  background: none; border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 2.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ── HERO (mini) ───────────────────────────────────── */
+#hero {
+  position: relative;
+  min-height: 52vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-video-wrap {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-video-wrap video {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(5,13,24,0.92) 0%, rgba(10,22,40,0.5) 100%);
+  pointer-events: none;
+}
+.hero-fade-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 260px;
+  background: linear-gradient(to top,
+    #050d18 0%,
+    rgba(5,13,24,0.97) 20%,
+    rgba(5,13,24,0.6) 55%,
+    transparent 100%);
+  pointer-events: none; z-index: 2;
+}
+.hero-content {
+  position: relative; z-index: 3;
+  padding: 120px 10vw 80px;
+  max-width: 860px;
+}
+.hero-h1 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -2px;
+  color: #fff;
+  text-shadow:
+    0 0 80px rgba(0,160,160,0.45),
+    0 0 30px rgba(0,160,160,0.25),
+    0 2px 4px rgba(0,0,0,0.5);
+}
+.hero-h1::before {
+  content: '';
+  position: absolute;
+  inset: -40px -60px;
+  background: radial-gradient(ellipse 80% 60% at 40% 50%,
+    rgba(0,122,122,0.18) 0%, rgba(0,122,122,0.06) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(20px);
+}
+
+/* ── CONTENT SECTION ───────────────────────────────── */
+#privacy-content {
+  padding: 80px 10vw 100px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.policy-section {
+  margin-bottom: 52px;
+}
+.policy-section h2 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.policy-section p {
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+}
+.policy-section p + p {
+  margin-top: 12px;
+}
+.policy-section a {
+  color: var(--teal-bright);
+  text-decoration: underline;
+  text-decoration-color: rgba(0,160,160,0.4);
+  transition: color var(--trans-fast);
+}
+.policy-section a:hover {
+  color: #fff;
+}
+.policy-intro {
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(0,122,122,0.2);
+  line-height: 1.75;
+}
+.policy-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 52px;
+}
+
+/* ── FOOTER ────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(0,122,122,0.2);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-left { display: flex; flex-direction: column; gap: 7px; }
+.footer-left img { height: 28px; object-fit: contain; }
+.footer-loc { font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.32); }
+.footer-links { display: flex; gap: 24px; align-items: center; }
+.footer-links a { font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.38); transition: color var(--trans-fast); }
+.footer-links a:hover { color: var(--orange); }
+.footer-copy { font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.32); }
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 12px 24px; }
+  .nav-pill, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  footer { flex-direction: column; align-items: center; text-align: center; }
+  .footer-left { align-items: center; }
+}
+@media (max-width: 640px) {
+  nav { padding: 12px 20px; }
+  .hero-content { padding: 100px 24px 60px; }
+  #privacy-content { padding: 60px 20px 80px; }
+  footer { padding: 28px 20px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-glow"></div>
+<div id="cursor-dot"></div>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Close">×</button>
+  <a href="/#hero" onclick="closeMobileNav()">Home</a>
+  <a href="/#services" onclick="closeMobileNav()">Services</a>
+  <a href="/#how" onclick="closeMobileNav()">How It Works</a>
+  <a href="/#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="/#contact" class="m-cta" onclick="closeMobileNav()">Get a Free Demo</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="/">
+      <img src="pa_wordmark_white.png" alt="Platypus Automations" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block">
+      <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:#fff;letter-spacing:-0.5px">Platypus Automations</span>
+    </a>
+  </div>
+  <div class="nav-pill liquid-glass">
+    <a href="/">Home</a>
+    <a href="/#services">Services</a>
+    <a href="/#how">How It Works</a>
+    <a href="/#contact">Contact</a>
+  </div>
+  <a href="/#contact" class="nav-cta">Get a Free Demo</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO (mini) -->
+<section id="hero">
+  <div class="hero-video-wrap">
+    <video autoplay loop muted playsinline poster="hero.png">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-fade-bottom"></div>
+  <div class="hero-content">
+    <h1 class="hero-h1 blur-in">Privacy Policy</h1>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section id="privacy-content">
+
+  <p class="policy-intro fade-up">
+    Platypus Automations LLC builds AI-powered lead response and reputation automation systems for local service businesses. This policy explains how we handle contact information collected through our services and through websites we build and manage on behalf of our clients.
+  </p>
+
+  <div class="policy-section fade-up">
+    <h2>SMS Communications</h2>
+    <p>When a customer calls a business that uses our missed-call text-back service and does not reach anyone, they may receive a single automated SMS from that business. This message is sent once per missed call — it is not a marketing sequence.</p>
+    <p>Recipients can reply <strong>STOP</strong> at any time to opt out of future messages. No further texts will be sent to anyone who has opted out. We do not use this system to send unsolicited promotional messages.</p>
+  </div>
+
+  <div class="policy-divider"></div>
+
+  <div class="policy-section fade-up">
+    <h2>Web Form Submissions</h2>
+    <p>Contact forms on websites built and managed by Platypus Automations may collect your name, phone number, email address, and message content. This information is passed directly to the business whose website you are contacting and is used solely to respond to your inquiry.</p>
+    <p>We do not sell, rent, or share form submission data with any third parties outside of the client business that owns the form.</p>
+  </div>
+
+  <div class="policy-divider"></div>
+
+  <div class="policy-section fade-up">
+    <h2>Data Handling</h2>
+    <p>We do not sell contact information — ever. Data collected through our client automation workflows exists only to facilitate direct communication between a client business and their customers. We do not build marketing profiles, cross-sell data between clients, or retain customer data after a client's engagement with us ends.</p>
+  </div>
+
+  <div class="policy-divider"></div>
+
+  <div class="policy-section fade-up">
+    <h2>Contact</h2>
+    <p>Questions about this privacy policy can be directed to <a href="mailto:tim@platypusautomations.com">tim@platypusautomations.com</a>. We will respond within a reasonable timeframe.</p>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <img src="pa_wordmark_white.png" alt="Platypus Automations" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block">
+    <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,0.7);letter-spacing:-0.3px">Platypus Automations</span>
+    <span class="footer-loc">Chesapeake, VA · Serving Hampton Roads</span>
+  </div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/#services">Services</a>
+    <a href="/#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Platypus Automations LLC · All rights reserved. &middot; <a href="/privacy" style="color:rgba(255,255,255,0.32);transition:color 0.18s" onmouseover="this.style.color='#E8651A'" onmouseout="this.style.color='rgba(255,255,255,0.32)'">Privacy Policy</a></div>
+</footer>
+
+<script>
+/* ── CURSOR ────────────────────────────────────────── */
+const cursorGlow = document.getElementById('cursor-glow');
+const cursorDot  = document.getElementById('cursor-dot');
+let mx = -999, my = -999, gx = -999, gy = -999;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursorDot.style.left = mx + 'px';
+  cursorDot.style.top  = my + 'px';
+});
+(function glowLoop() {
+  gx += (mx - gx) * 0.08;
+  gy += (my - gy) * 0.08;
+  cursorGlow.style.left = gx + 'px';
+  cursorGlow.style.top  = gy + 'px';
+  requestAnimationFrame(glowLoop);
+})();
+
+document.querySelectorAll('.nav-cta, .mobile-nav .m-cta').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hovering-cta'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering-cta'));
+});
+
+/* ── NAV SCROLL ────────────────────────────────────── */
+const mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* ── MOBILE NAV ────────────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+document.getElementById('mobileClose').addEventListener('click', closeMobileNav);
+hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+/* ── BLUR-IN ───────────────────────────────────────── */
+document.querySelectorAll('.blur-in').forEach(el => {
+  const words = el.textContent.trim().split(/\s+/);
+  el.innerHTML = words.map(w => `<span class="word">${w}</span>`).join(' ');
+});
+const blurObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('.word').forEach((w, i) => {
+      setTimeout(() => { w.style.opacity = '1'; w.style.filter = 'blur(0)'; }, i * 70);
+    });
+    blurObs.unobserve(entry.target);
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.blur-in').forEach(el => blurObs.observe(el));
+
+/* ── FADE-UP ───────────────────────────────────────── */
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+</script>
+</body>
+</html>
