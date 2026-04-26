@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conner Plumbing Heating &amp; Air Conditioning — Chesapeake, VA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:        #0A1628;
+    --navy-mid:    #0E1F3B;
+    --teal:        #007A7A;
+    --teal-dark:   #005C5C;
+    --teal-deep:   #004848;
+    --teal-light:  #009A9A;
+    --orange:      #FF6B35;
+    --orange-light:#FF8655;
+    --white:       #FFFFFF;
+    --off-white:   #F4F8F8;
+    --text-dark:   #1A2B3C;
+    --text-mid:    #4A6272;
+    --text-light:  #7A90A4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: transparent;
+    transition: background 0.35s, backdrop-filter 0.35s, border-bottom-color 0.35s;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav.scrolled {
+    background: rgba(10, 22, 40, 0.97);
+    backdrop-filter: blur(14px);
+    border-bottom-color: rgba(0, 122, 122, 0.4);
+  }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+    gap: 1px;
+  }
+
+  .nav-logo-main {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-logo-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal-light); }
+
+  .nav-phone {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-phone:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, transparent 65%, var(--navy) 100%),
+      linear-gradient(108deg, rgba(10,22,40,0.93) 0%, rgba(10,22,40,0.70) 52%, rgba(10,22,40,0.32) 100%),
+      url('img/van.png') center / cover no-repeat;
+    animation: heroZoom 22s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(to bottom, var(--teal), var(--orange));
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 110px 72px;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.15s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 108px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s ease forwards;
+  }
+
+  .hero-title .accent        { color: var(--teal-light); }
+  .hero-title .accent-orange { color: var(--orange); }
+
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 520px;
+    line-height: 1.65;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.55s ease forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.75s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--orange-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 15px 36px;
+    text-decoration: none;
+    border: 2px solid rgba(0, 154, 154, 0.5);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--teal-light);
+    color: var(--teal-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── WAVE DIVIDERS ── */
+  .wave-sep {
+    display: block;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  .wave-sep svg { display: block; width: 100%; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--teal);
+    display: flex;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 30px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 0.04em;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 7px;
+  }
+
+  /* ── SECTION LABELS (light sections) ── */
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+  }
+
+  .section-title .accent        { color: var(--teal); }
+  .section-title .accent-orange { color: var(--orange); }
+
+  /* overrides when section-tag/title sit on the teal wrapper */
+  .on-teal .section-tag {
+    color: rgba(255, 255, 255, 0.7);
+    justify-content: center;
+  }
+
+  .on-teal .section-tag::after {
+    background: linear-gradient(90deg, rgba(255,255,255,0.35), transparent);
+  }
+
+  .on-teal .section-title {
+    color: var(--white);
+  }
+
+  .on-teal .section-title .accent        { color: var(--white); }
+  .on-teal .section-title .accent-orange { color: var(--orange); }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--white);
+    padding: 100px 48px;
+  }
+
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid rgba(0, 122, 122, 0.13);
+    padding: 40px 28px 32px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    box-shadow: 0 2px 20px rgba(0, 122, 122, 0.07);
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 122, 122, 0.14);
+    border-color: rgba(0, 122, 122, 0.28);
+    z-index: 1;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--orange));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.32s ease;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+    display: block;
+    line-height: 1;
+  }
+
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 22px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    padding: 4px 10px;
+    border: 1px solid rgba(0, 122, 122, 0.28);
+  }
+
+  /* ── WHY CONNER — LANDED ALTERNATING PANELS ── */
+  .why {
+    background: var(--teal);
+  }
+
+  .why-intro {
+    text-align: center;
+    padding: 80px 48px 56px;
+  }
+
+  .why-intro .section-tag::after { display: none; }
+
+  /* Each full-width alternating panel */
+  .why-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+
+  /* Teal fill side */
+  .why-panel-fill {
+    background: linear-gradient(145deg, var(--teal-deep) 0%, var(--teal-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* wave texture layered on the fill side */
+  .why-panel-fill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='50'%3E%3Cpath d='M0%2C25 C150%2C50 450%2C0 600%2C25' stroke='rgba(255%2C255%2C255%2C0.07)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-size: 600px 50px;
+    background-repeat: repeat;
+    pointer-events: none;
+  }
+
+  /* large watermark number behind the icon */
+  .why-fill-num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+  }
+
+  .why-fill-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 48px 40px;
+  }
+
+  .why-fill-icon {
+    font-size: 72px;
+    display: block;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
+  }
+
+  .why-fill-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* White text side */
+  .why-panel-text {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+  }
+
+  .why-panel-text-inner {
+    padding: 64px 60px;
+  }
+
+  .why-panel-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 4vw, 50px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--text-dark);
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .why-panel-body {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 440px;
+  }
+
+  .why-panel-body strong { color: var(--text-dark); font-weight: 600; }
+
+  /* Reverse: fill on right, text on left */
+  .why-panel--reverse .why-panel-fill { order: 2; }
+  .why-panel--reverse .why-panel-text { order: 1; }
+
+  /* section-tag within white panel */
+  .why-panel-text .section-tag { color: var(--teal); }
+
+  /* hairline between stacked panels */
+  .why-panel + .why-panel {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--off-white);
+    padding: 100px 48px;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-mid);
+    margin-bottom: 36px;
+  }
+
+  .contact-body strong { color: var(--text-dark); font-weight: 600; }
+
+  .contact-phone-big {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 68px);
+    color: var(--teal);
+    letter-spacing: 0.03em;
+    line-height: 1;
+    text-decoration: none;
+    margin-bottom: 36px;
+    transition: color 0.2s;
+  }
+
+  .contact-phone-big:hover { color: var(--teal-light); }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .contact-detail-icon {
+    width: 44px; height: 44px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-dark);
+  }
+
+  .contact-detail-text a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-detail-text a:hover { color: var(--teal); }
+
+  /* ── FORM ── */
+  .contact-form-wrap {
+    background: var(--white);
+    padding: 48px 40px;
+    position: relative;
+    box-shadow: 0 4px 40px rgba(0, 122, 122, 0.09);
+  }
+
+  .contact-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--teal), var(--orange));
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    background: var(--off-white);
+    border: 1px solid rgba(0, 122, 122, 0.15);
+    color: var(--text-dark);
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    border-color: var(--teal);
+    background: var(--white);
+  }
+
+  .form-select option { background: var(--white); color: var(--text-dark); }
+
+  .form-textarea { resize: vertical; min-height: 108px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    background: var(--orange-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 3px solid var(--teal);
+    padding: 36px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .footer-name span { color: var(--teal-light); }
+
+  .footer-est {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.28);
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.28);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1050px) {
+    .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px 100px 36px; }
+    .services,
+    .contact { padding: 72px 24px; }
+    .why-intro { padding: 60px 24px 40px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    /* stack panels vertically on mobile, fill always first */
+    .why-panel {
+      grid-template-columns: 1fr;
+    }
+    .why-panel-fill {
+      min-height: 260px;
+    }
+    .why-panel--reverse .why-panel-fill { order: unset !important; }
+    .why-panel--reverse .why-panel-text { order: unset !important; }
+    .why-panel-text-inner { padding: 48px 32px; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat { min-width: 50%; }
+    footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+    .why-fill-num { font-size: 120px; }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-title { font-size: clamp(48px, 13vw, 80px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main">Conner</span>
+    <span class="nav-logo-sub">Plumbing · Heating &amp; Air Conditioning</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Conner</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7574280559" class="nav-phone">(757) 428-0559</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Chesapeake, VA &nbsp;·&nbsp; Serving Hampton Roads Since 1979</p>
+    <h1 class="hero-title">
+      47 Years of<br>
+      Family <span class="accent">Service.</span><br>
+      Still Answering<br>
+      When You <span class="accent-orange">Call.</span>
+    </h1>
+    <p class="hero-sub">Plumbing &nbsp;·&nbsp; Heating &nbsp;·&nbsp; Air Conditioning &nbsp;·&nbsp; Gas<br>Residential &amp; Commercial</p>
+    <div class="hero-ctas">
+      <a href="tel:7574280559" class="btn-primary">📞&nbsp; Call Now</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- wave: dark navy → teal -->
+<div class="wave-sep" style="background:#0A1628;">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,10 C200,70 500,5 800,52 C1050,85 1280,18 1440,45 L1440,80 L0,80 Z" fill="#007A7A"/>
+  </svg>
+</div>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar">
+  <div class="stat reveal">
+    <div class="stat-number">1979</div>
+    <div class="stat-label">Established</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-number">47 Years</div>
+    <div class="stat-label">Serving Hampton Roads</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-number">Res. &amp; Com.</div>
+    <div class="stat-label">Residential &amp; Commercial</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-number">24/7</div>
+    <div class="stat-label">Emergency Service</div>
+  </div>
+</div>
+
+<!-- wave: teal → white -->
+<div class="wave-sep" style="background:#007A7A;">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,65 C180,15 480,78 780,32 C1020,0 1280,68 1440,38 L1440,80 L0,80 Z" fill="#FFFFFF"/>
+  </svg>
+</div>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-tag">What We Do</p>
+        <h2 class="section-title">Full-Service <span class="accent">HVAC</span> &amp; <span class="accent-orange">Plumbing</span></h2>
+      </div>
+      <a href="tel:7574280559" class="btn-primary">Call (757) 428-0559</a>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">❄️</span>
+        <div class="service-name">Air Conditioning</div>
+        <div class="service-desc">Installation, repair, and seasonal maintenance for central AC, mini-splits, and heat pumps. Stay cool when Hampton Roads summers hit hardest.</div>
+        <span class="service-tag">Residential · Commercial</span>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🔥</span>
+        <div class="service-name">Heating</div>
+        <div class="service-desc">Gas furnaces, heat pumps, boilers, and radiant systems — installed right and serviced fast so you're never left in the cold.</div>
+        <span class="service-tag">Residential · Commercial</span>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Plumbing</div>
+        <div class="service-desc">Repairs, remodels, water heaters, drain cleaning, and full repiping. From a leaky faucet to a complete plumbing overhaul — no job is too small or too big.</div>
+        <span class="service-tag">Residential · Commercial</span>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">⚡</span>
+        <div class="service-name">Gas</div>
+        <div class="service-desc">Gas line installation and repair for appliances, fireplaces, outdoor kitchens, and standby generators. Licensed, pressure-tested, and inspected every time.</div>
+        <span class="service-tag">Residential · Commercial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave: white → teal -->
+<div class="wave-sep" style="background:#FFFFFF;">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C220,85 520,5 840,55 C1060,88 1280,15 1440,48 L1440,80 L0,80 Z" fill="#007A7A"/>
+  </svg>
+</div>
+
+<!-- ── WHY CONNER — ALTERNATING PANELS ── -->
+<section class="why" id="why">
+
+  <!-- section header on teal -->
+  <div class="why-intro reveal on-teal">
+    <p class="section-tag">Why Choose Us</p>
+    <h2 class="section-title">Our Family, <span class="accent-orange">Always There</span><br>for Yours.</h2>
+  </div>
+
+  <!-- Panel 1: teal fill left · text right -->
+  <div class="why-panel reveal">
+    <div class="why-panel-fill">
+      <div class="why-fill-num" aria-hidden="true">01</div>
+      <div class="why-fill-inner">
+        <span class="why-fill-icon">🏠</span>
+        <p class="why-fill-tag">Est. 1979 · Family Business</p>
+      </div>
+    </div>
+    <div class="why-panel-text">
+      <div class="why-panel-text-inner">
+        <p class="section-tag">Who We Are</p>
+        <h3 class="why-panel-title">Family-Owned Since 1979</h3>
+        <p class="why-panel-body">
+          Conner Plumbing Heating &amp; Air has been <strong>family-owned and operated for 47 years</strong>. Four decades of showing up, doing the work right, and standing behind every job. We're not a franchise or a call center — we're your neighbors.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 2: text left · teal fill right -->
+  <div class="why-panel why-panel--reverse reveal">
+    <div class="why-panel-fill">
+      <div class="why-fill-num" aria-hidden="true">02</div>
+      <div class="why-fill-inner">
+        <span class="why-fill-icon">📞</span>
+        <p class="why-fill-tag">24/7 · Emergency Line</p>
+      </div>
+    </div>
+    <div class="why-panel-text">
+      <div class="why-panel-text-inner">
+        <p class="section-tag">Our Promise</p>
+        <h3 class="why-panel-title">We Actually Answer</h3>
+        <p class="why-panel-body">
+          When your heat goes out at midnight or a pipe bursts on Sunday, you need someone who picks up. <strong>We answer when you call</strong> — because a broken furnace and a flooding bathroom don't keep business hours, and neither do we.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 3: teal fill left · text right -->
+  <div class="why-panel reveal">
+    <div class="why-panel-fill">
+      <div class="why-fill-num" aria-hidden="true">03</div>
+      <div class="why-fill-inner">
+        <span class="why-fill-icon">📍</span>
+        <p class="why-fill-tag">Chesapeake, VA · Hampton Roads</p>
+      </div>
+    </div>
+    <div class="why-panel-text">
+      <div class="why-panel-text-inner">
+        <p class="section-tag">Our Community</p>
+        <h3 class="why-panel-title">Rooted in Chesapeake</h3>
+        <p class="why-panel-body">
+          We've served Chesapeake and Hampton Roads for <strong>nearly half a century</strong>. Our reputation is built on local trust — every technician carries our family name on their shirt and our family's word behind every visit.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- wave: teal → off-white -->
+<div class="wave-sep" style="background:#007A7A;">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,25 C300,80 620,5 940,58 C1120,88 1320,18 1440,48 L1440,80 L0,80 Z" fill="#F4F8F8"/>
+  </svg>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-tag">Get In Touch</p>
+      <h2 class="section-title">Ready to Help<br><span class="accent-orange">Right Now.</span></h2>
+      <p class="contact-body">
+        Whether it's an emergency call or a planned upgrade, we'll give you a straight answer and a fair price. <strong>No runaround. No surprises.</strong> Just the same honest service Chesapeake families have trusted since 1979.
+      </p>
+      <a class="contact-phone-big" href="tel:7574280559">(757) 428-0559</a>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-text">Chesapeake, VA &nbsp;·&nbsp; Serving All of Hampton Roads</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🕐</div>
+        <div class="contact-detail-text">Open Daily &nbsp;·&nbsp; 24/7 Emergency Line</div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="First &amp; Last">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-input" placeholder="(757) 000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Needed</label>
+        <select class="form-select">
+          <option value="" disabled selected>Select a service...</option>
+          <option>Air Conditioning — Repair</option>
+          <option>Air Conditioning — New Install</option>
+          <option>Heating — Repair</option>
+          <option>Heating — New Install</option>
+          <option>Plumbing — Repair</option>
+          <option>Plumbing — New Install / Remodel</option>
+          <option>Gas Line Work</option>
+          <option>Emergency Service</option>
+          <option>Not Sure — Need Advice</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell Us What's Going On</label>
+        <textarea class="form-textarea" placeholder="Describe the issue or project — as much or as little as you know..."></textarea>
+      </div>
+      <button class="form-submit">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- wave: off-white → navy -->
+<div class="wave-sep" style="background:#F4F8F8;">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,48 C280,8 640,78 960,28 C1140,2 1320,62 1440,35 L1440,80 L0,80 Z" fill="#0A1628"/>
+  </svg>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-name">
+    CONNER <span>PLUMBING HEATING &amp; AIR CONDITIONING</span>
+  </div>
+  <div class="footer-est">Chesapeake, VA &nbsp;·&nbsp; Est. 1979</div>
+  <div class="footer-copy">© 2026 Conner Plumbing Heating &amp; Air Conditioning · Chesapeake, VA</div>
+</footer>
+
+<script>
+  // Nav scroll behavior — transparent → navy
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const revealList = Array.from(reveals);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = revealList.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 55);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0 });
+  reveals.forEach(el => observer.observe(el));
+
+  revealList.forEach((el, idx) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      setTimeout(() => el.classList.add('visible'), idx * 55);
+    }
+  });
+</script>
+
+</body>
+</html>
