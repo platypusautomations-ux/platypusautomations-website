@@ -563,6 +563,159 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  /* ── REVIEWS ── */
+  .reviews {
+    background: var(--white);
+    padding: 100px 48px;
+    overflow: hidden;
+  }
+
+  .reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .reviews-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--off-white);
+    padding: 14px 24px;
+    border: 1px solid rgba(0, 122, 122, 0.2);
+  }
+
+  .reviews-badge-stars {
+    color: var(--orange);
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .reviews-badge-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+  }
+
+  .reviews-badge-text strong {
+    color: var(--teal);
+    font-size: 18px;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    background: var(--white);
+    border: 1px solid rgba(0, 122, 122, 0.1);
+    padding: 36px 32px 52px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+    box-shadow: 0 2px 16px rgba(0, 122, 122, 0.06);
+  }
+
+  .review-card:hover {
+    box-shadow: 0 12px 32px rgba(0, 122, 122, 0.13);
+    border-color: rgba(0, 122, 122, 0.25);
+    transform: translateY(-4px);
+  }
+
+  /* large opening-quote watermark */
+  .review-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px; right: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(0, 122, 122, 0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .review-stars {
+    color: var(--orange);
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .review-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+  }
+
+  .review-meta {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  .review-source {
+    position: absolute;
+    bottom: 20px; right: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0, 122, 122, 0.28);
+  }
+
+  .reviews-footer-note {
+    margin-top: 36px;
+    text-align: center;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-light);
+    letter-spacing: 0.02em;
+  }
+
   /* ── CONTACT ── */
   .contact {
     background: var(--off-white);
@@ -772,6 +925,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 1050px) {
     .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .reviews-grid  { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 900px) {
@@ -779,7 +933,9 @@
     .nav-links { display: none; }
     .hero-content { padding: 0 24px 100px 36px; }
     .services,
+    .reviews,
     .contact { padding: 72px 24px; }
+    .reviews-grid { grid-template-columns: 1fr; }
     .why-intro { padding: 60px 24px 40px; }
     .contact-inner { grid-template-columns: 1fr; gap: 48px; }
     /* stack panels vertically on mobile, fill always first */
@@ -1016,10 +1172,78 @@
 
 </section>
 
-<!-- wave: teal → off-white -->
+<!-- wave: teal → white (into reviews) -->
 <div class="wave-sep" style="background:#007A7A;">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,25 C300,80 620,5 940,58 C1120,88 1320,18 1440,48 L1440,80 L0,80 Z" fill="#F4F8F8"/>
+    <path d="M0,25 C300,80 620,5 940,58 C1120,88 1320,18 1440,48 L1440,80 L0,80 Z" fill="#FFFFFF"/>
+  </svg>
+</div>
+
+<!-- ── REVIEWS ── -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <div>
+        <p class="section-tag">What Customers Say</p>
+        <h2 class="section-title">Google <span class="accent">Reviews</span></h2>
+      </div>
+      <div class="reviews-badge">
+        <div class="reviews-badge-stars">★★★★★</div>
+        <div class="reviews-badge-text"><strong>5.0</strong> on Google</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We have been having, what seemed to be, a whole house plumbing issue. They came today. We could not have gotten 2 better people. James and Scott were so kind and reassuring. They found the problem and fixed it. I can 100% recommend this company for any of your plumbing needs."</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sherry Baggett</div>
+            <div class="review-meta">6 months ago</div>
+          </div>
+        </div>
+        <div class="review-source">Google</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I cannot recommend Conner Plumbing, Heating &amp; Air Conditioning enough! James came out to evaluate the situation and walked me through my options. We had a thoughtful discussion about my goals and budget. No corners were cut — I happened to come home on my lunch break the day it was being installed, and I saw one of the technicians carefully wiping down the plastic housing on the outside unit. That level of care and pride in their work is exactly what I want from a contractor. Don't hesitate — choose a family-owned business that truly cares."</p>
+        <div class="review-author">
+          <div class="review-avatar">H</div>
+          <div>
+            <div class="review-name">Hunter P</div>
+            <div class="review-meta">9 months ago</div>
+          </div>
+        </div>
+        <div class="review-source">Google</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Conner Plumbing and Heating do an extraordinary job. They are conscientious and professional. They offer fabulous customer service."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Jason Bove</div>
+            <div class="review-meta">2 months ago</div>
+          </div>
+        </div>
+        <div class="review-source">Google</div>
+      </div>
+
+    </div>
+
+    <p class="reviews-footer-note">More 5-star reviews on the way — we're just getting started.</p>
+  </div>
+</section>
+
+<!-- wave: white → off-white (into contact) -->
+<div class="wave-sep" style="background:#FFFFFF;">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,48 C280,8 640,78 960,28 C1140,2 1320,62 1440,35 L1440,80 L0,80 Z" fill="#F4F8F8"/>
   </svg>
 </div>
 
