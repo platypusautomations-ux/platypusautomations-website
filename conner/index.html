@@ -800,25 +800,25 @@
 
   /* ── MOBILE HERO FIXES (768px and below) ── */
   @media (max-width: 768px) {
-    /* explicit min-height so image has room without forcing full scroll */
     .hero { min-height: 85vh; }
 
-    /* prevent iOS Safari background-attachment:fixed rendering bug;
-       re-state position/size so they aren't lost if inherited or overridden */
+    /* Override the full background shorthand so gradient layers keep their
+       own sizing and only the image layer gets the new position/zoom.
+       right center + cover: on a portrait mobile viewport the landscape van
+       image scales to fill the container height, then crops from the right
+       edge inward — showing the Conner logo side rather than the plain white
+       panel that appears when the whole van is centered.
+       background-attachment: scroll prevents the iOS Safari blank-image bug. */
     .hero-bg {
+      background:
+        linear-gradient(to bottom, transparent 65%, var(--navy) 100%),
+        linear-gradient(108deg, rgba(10,22,40,0.93) 0%, rgba(10,22,40,0.70) 52%, rgba(10,22,40,0.32) 100%),
+        url('img/van.png') right center / cover no-repeat;
       background-attachment: scroll;
-      background-position: center center;
-      background-size: cover;
     }
 
-    /* tighten content padding — left leaves room for the teal stripe */
     .hero-content { padding: 32px 24px 80px 28px; }
-
-    /* scale headline so the longest line (~15 chars Bebas Neue) fits the
-       ~340px content width at 390px viewport without wrapping or overflow */
     .hero-title { font-size: clamp(34px, 9.5vw, 50px); }
-
-    /* sub text wraps naturally at full width on mobile */
     .hero-sub { font-size: 15px; max-width: 100%; }
   }
 
