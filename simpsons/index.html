@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simpson's Tree Service — Chesapeake, VA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:       #1B4332;
+    --forest-mid:   #2D6A4F;
+    --forest-light: #40916C;
+    --forest-dark:  #081C12;
+    --forest-deep:  #0D2B1B;
+    --amber:        #E76F00;
+    --amber-light:  #FF8C1A;
+    --amber-dark:   #C45F00;
+    --cream:        #F8F5F0;
+    --cream-dark:   #EEE8DF;
+    --bark:         #5C3D2E;
+    --white:        #FFFFFF;
+    --text-dark:    #1C1009;
+    --text-mid:     #4A3728;
+    --text-light:   #7A6555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: transparent;
+    transition: background 0.35s, backdrop-filter 0.35s, border-bottom-color 0.35s;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav.scrolled {
+    background: rgba(8, 28, 18, 0.97);
+    backdrop-filter: blur(14px);
+    border-bottom-color: rgba(64, 145, 108, 0.4);
+  }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+    gap: 2px;
+  }
+
+  .nav-logo-main {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-logo-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--forest-light);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--amber-light); }
+
+  .nav-phone {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--amber);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-phone:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  /* CSS-only forest background — layered gradients + SVG tree silhouettes */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(64,145,108,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 100%, rgba(27,67,50,0.9) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 80% at 80% 100%, rgba(27,67,50,0.9) 0%, transparent 55%),
+      linear-gradient(180deg, #081C12 0%, #0D2B1B 30%, #1B4332 65%, #2D6A4F 100%);
+    animation: heroBreath 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroBreath {
+    from { transform: scale(1); }
+    to   { transform: scale(1.04); }
+  }
+
+  /* Tree silhouette layer using inline SVG as background */
+  .hero-trees {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 400' preserveAspectRatio='xMidYMax meet'%3E%3C!-- far trees (lighter) --%3E%3Cpolygon points='60,400 90,260 120,400' fill='%230D2B1B'/%3E%3Cpolygon points='75,400 110,220 145,400' fill='%230D2B1B'/%3E%3Cpolygon points='160,400 200,200 240,400' fill='%230D2B1B'/%3E%3Cpolygon points='220,400 265,170 310,400' fill='%230D2B1B'/%3E%3Cpolygon points='350,400 395,210 440,400' fill='%230D2B1B'/%3E%3Cpolygon points='420,400 460,240 500,400' fill='%230D2B1B'/%3E%3Cpolygon points='580,400 630,195 680,400' fill='%230D2B1B'/%3E%3Cpolygon points='680,400 720,230 760,400' fill='%230D2B1B'/%3E%3Cpolygon points='780,400 830,185 880,400' fill='%230D2B1B'/%3E%3Cpolygon points='880,400 920,220 960,400' fill='%230D2B1B'/%3E%3Cpolygon points='1000,400 1050,200 1100,400' fill='%230D2B1B'/%3E%3Cpolygon points='1080,400 1125,245 1170,400' fill='%230D2B1B'/%3E%3Cpolygon points='1200,400 1250,195 1300,400' fill='%230D2B1B'/%3E%3Cpolygon points='1280,400 1320,230 1360,400' fill='%230D2B1B'/%3E%3Cpolygon points='1360,400 1395,260 1430,400' fill='%230D2B1B'/%3E%3C!-- mid trees (darker) --%3E%3Cpolygon points='0,400 50,300 100,400' fill='%23081C12'/%3E%3Cpolygon points='100,400 160,270 220,400' fill='%23081C12'/%3E%3Cpolygon points='280,400 350,250 420,400' fill='%23081C12'/%3E%3Cpolygon points='480,400 550,280 620,400' fill='%23081C12'/%3E%3Cpolygon points='620,400 680,255 740,400' fill='%23081C12'/%3E%3Cpolygon points='760,400 830,240 900,400' fill='%23081C12'/%3E%3Cpolygon points='920,400 990,260 1060,400' fill='%23081C12'/%3E%3Cpolygon points='1100,400 1160,270 1220,400' fill='%23081C12'/%3E%3Cpolygon points='1240,400 1300,285 1360,400' fill='%23081C12'/%3E%3Cpolygon points='1380,400 1415,300 1450,400' fill='%23081C12'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* bottom fade into section below */
+  .hero-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--forest-dark));
+    z-index: 2;
+  }
+
+  /* left accent stripe */
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(to bottom, var(--amber), var(--forest-light));
+    z-index: 10;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 48px 80px 72px;
+    width: 100%;
+  }
+
+  .hero-text { max-width: 680px; }
+
+  .hero-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--forest-light);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(52px, 8.5vw, 116px);
+    line-height: 0.93;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.3s ease forwards;
+  }
+
+  .hero-title .amber { color: var(--amber); }
+  .hero-title .green { color: var(--forest-light); }
+
+  .hero-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(16px, 2.2vw, 22px);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s ease forwards;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.65s ease forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.8s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--amber);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: background 0.2s, transform 0.15s;
+    min-height: 52px;
+  }
+
+  .btn-primary:hover {
+    background: var(--amber-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 15px 36px;
+    text-decoration: none;
+    border: 2px solid rgba(64, 145, 108, 0.5);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    min-height: 52px;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--forest-light);
+    color: var(--forest-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    position: relative;
+    z-index: 6;
+    background: var(--amber);
+    display: flex;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 28px 16px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(22px, 3vw, 34px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 0.04em;
+  }
+
+  .stat-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 6px;
+  }
+
+  /* ── WAVE DIVIDERS ── */
+  .wave-sep {
+    display: block;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  .wave-sep svg { display: block; width: 100%; }
+
+  /* ── SECTION LABELS ── */
+  .section-tag {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 0.98;
+    letter-spacing: 0.01em;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+  }
+
+  .section-title .amber { color: var(--amber); }
+  .section-title .green { color: var(--forest); }
+
+  /* ── PROBLEM SECTION ── */
+  .problem {
+    background: var(--forest-dark);
+    padding: 0;
+  }
+
+  .problem-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 48px;
+  }
+
+  .problem-headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 5.5vw, 72px);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    margin-bottom: 60px;
+    max-width: 780px;
+  }
+
+  .problem-headline .amber { color: var(--amber); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 56px;
+  }
+
+  .problem-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(64, 145, 108, 0.15);
+    padding: 40px 32px;
+    position: relative;
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  .problem-card:hover {
+    background: rgba(64, 145, 108, 0.08);
+    border-color: rgba(64, 145, 108, 0.3);
+  }
+
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .problem-card:hover::before { transform: scaleX(1); }
+
+  .problem-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 18px;
+    line-height: 1;
+  }
+
+  .problem-card-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .problem-card-body {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+  }
+
+  .problem-closer {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .problem-closer-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    line-height: 1.55;
+  }
+
+  .problem-closer-text strong { color: var(--white); }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--cream);
+    padding: 100px 48px;
+  }
+
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid rgba(27, 67, 50, 0.12);
+    padding: 40px 28px 32px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    box-shadow: 0 2px 20px rgba(27, 67, 50, 0.07);
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(27, 67, 50, 0.14);
+    border-color: rgba(27, 67, 50, 0.26);
+    z-index: 1;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--forest), var(--amber));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.32s ease;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  /* large watermark number */
+  .service-card::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -10px; right: 12px;
+    font-family: 'Anton', sans-serif;
+    font-size: 80px;
+    color: rgba(27, 67, 50, 0.05);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .service-icon {
+    font-size: 40px;
+    margin-bottom: 18px;
+    display: block;
+    line-height: 1;
+  }
+
+  .service-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    padding: 4px 10px;
+    border: 1px solid rgba(231, 111, 0, 0.3);
+  }
+
+  /* ── REVIEWS ── */
+  .reviews {
+    background: var(--forest-dark);
+    padding: 100px 48px;
+    overflow: hidden;
+  }
+
+  .reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .reviews-header .section-tag { color: var(--forest-light); }
+  .reviews-header .section-tag::after {
+    background: linear-gradient(90deg, var(--forest-light), transparent);
+  }
+
+  .reviews-header .section-title { color: var(--white); }
+  .reviews-header .section-title .amber { color: var(--amber); }
+
+  .reviews-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    padding: 14px 24px;
+    border: 1px solid rgba(64,145,108,0.25);
+  }
+
+  .reviews-badge-stars { color: var(--amber); font-size: 20px; letter-spacing: 2px; }
+
+  .reviews-badge-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .reviews-badge-text strong { color: var(--amber); font-size: 18px; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(64, 145, 108, 0.15);
+    padding: 36px 32px 52px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  }
+
+  .review-card:hover {
+    background: rgba(64, 145, 108, 0.09);
+    border-color: rgba(64, 145, 108, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .review-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -14px; right: 16px;
+    font-family: 'Anton', sans-serif;
+    font-size: 120px;
+    color: rgba(64, 145, 108, 0.1);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .review-stars {
+    color: var(--amber);
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--forest);
+    border: 2px solid var(--forest-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .review-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .review-meta {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.38);
+    margin-top: 2px;
+  }
+
+  .review-source {
+    position: absolute;
+    bottom: 20px; right: 24px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(64, 145, 108, 0.35);
+  }
+
+  .reviews-footer-note {
+    margin-top: 36px;
+    text-align: center;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--cream);
+    padding: 100px 48px;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-body {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-mid);
+    margin-bottom: 36px;
+  }
+
+  .contact-body strong { color: var(--text-dark); font-weight: 600; }
+
+  .contact-phone-big {
+    display: block;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(38px, 5vw, 68px);
+    color: var(--forest);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    text-decoration: none;
+    margin-bottom: 36px;
+    transition: color 0.2s;
+  }
+
+  .contact-phone-big:hover { color: var(--amber); }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .contact-detail-icon {
+    width: 44px; height: 44px;
+    background: var(--forest);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-dark);
+  }
+
+  /* ── FORM ── */
+  .contact-form-wrap {
+    background: var(--white);
+    padding: 48px 40px;
+    position: relative;
+    box-shadow: 0 4px 40px rgba(27, 67, 50, 0.1);
+  }
+
+  .contact-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--forest), var(--amber));
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid rgba(27, 67, 50, 0.15);
+    color: var(--text-dark);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    min-height: 50px;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: var(--forest);
+    background: var(--white);
+  }
+
+  .form-textarea { resize: vertical; min-height: 112px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: var(--amber);
+    color: var(--white);
+    border: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+    min-height: 56px;
+  }
+
+  .form-submit:hover {
+    background: var(--amber-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--forest-dark);
+    border-top: 3px solid var(--forest);
+    padding: 36px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .footer-name span { color: var(--forest-light); }
+
+  .footer-badges {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.28);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1050px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid  { grid-template-columns: 1fr 1fr; }
+    .problem-grid  { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-logo-main { font-size: 18px; }
+    .nav-logo-sub  { font-size: 9px; }
+    .nav-phone { font-size: 16px; }
+    .hero-content { padding: 100px 24px 70px 28px; }
+    .problem-inner,
+    .services,
+    .reviews,
+    .contact { padding: 72px 24px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .reviews-grid  { grid-template-columns: 1fr; }
+    footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat { min-width: 50%; }
+  }
+
+  @media (max-width: 768px) {
+    .hero { min-height: 90vh; }
+    .hero-bg { background-attachment: scroll; }
+    .hero-title { font-size: clamp(42px, 11vw, 60px); }
+    .hero-tagline { font-size: 14px; }
+    .hero-sub { font-size: 15px; }
+    .problem-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid  { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main">Simpson's Tree Service</span>
+    <span class="nav-logo-sub">Chesapeake, VA · Est. 1999</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7573042019" class="nav-phone">(757) 304-2019</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-trees" aria-hidden="true"></div>
+  <div class="hero-fade"></div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Chesapeake, VA &nbsp;·&nbsp; Serving All of Hampton Roads</p>
+      <h1 class="hero-title">
+        25 Years.<br>
+        Every <span class="amber">Job.</span><br>
+        Done <span class="green">Right.</span>
+      </h1>
+      <p class="hero-tagline">Family-Owned · Fully Licensed &amp; Insured · Since 1999</p>
+      <p class="hero-sub">Professional tree removal, trimming, stump grinding, and emergency storm response. When your trees need attention — day or night — we're the crew that shows up.</p>
+      <div class="hero-ctas">
+        <a href="tel:7573042019" class="btn-primary">📞&nbsp; Call Now</a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar sits at the bottom of hero -->
+  <div class="stats-bar">
+    <div class="stat reveal">
+      <div class="stat-number">25 Years</div>
+      <div class="stat-label">In Business</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Emergency Response</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-number">Licensed &amp; Insured</div>
+      <div class="stat-label">Fully Covered</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-number">Family Owned</div>
+      <div class="stat-label">Since 1999</div>
+    </div>
+  </div>
+</section>
+
+<!-- wave: forest-dark → cream -->
+<div class="wave-sep" style="background:#081C12;">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,20 C240,65 560,5 880,48 C1080,75 1300,15 1440,42 L1440,72 L0,72 Z" fill="#F8F5F0"/>
+  </svg>
+</div>
+
+<!-- ── THE PROBLEM ── -->
+<section class="problem" style="background:#F8F5F0; padding: 90px 48px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="reveal" style="margin-bottom:56px;">
+      <p class="section-tag">The Problem</p>
+      <h2 class="section-title" style="max-width:700px;">Your Trees Don't Wait.<br><span class="amber">Neither Should You.</span></h2>
+      <p style="font-size:18px; color:var(--text-mid); max-width:600px; line-height:1.75; margin-top:16px;">Storm damage doesn't check your schedule. A dangerous limb over the roof, a tree on the fence line — every hour you wait is another risk. Most tree companies let calls go to voicemail. Simpson's doesn't.</p>
+    </div>
+
+    <div class="problem-grid reveal" style="--bg-card:#fff;">
+
+      <div class="problem-card" style="background:var(--white); border-color:rgba(27,67,50,0.12);">
+        <span class="problem-icon">⛈️</span>
+        <div class="problem-card-title" style="color:var(--forest);">Storm Damage Is Urgent</div>
+        <div class="problem-card-body" style="color:var(--text-mid);">A downed tree or hanging limb is a liability sitting on your property. Insurance companies want it documented fast. Waiting costs you — in safety, in money, in sleep.</div>
+      </div>
+
+      <div class="problem-card" style="background:var(--white); border-color:rgba(27,67,50,0.12);">
+        <span class="problem-icon">📵</span>
+        <div class="problem-card-title" style="color:var(--forest);">Missed Calls = Lost Jobs</div>
+        <div class="problem-card-body" style="color:var(--text-mid);">Most tree services don't answer after hours. If you called and got a voicemail, you probably called someone else. We know — because those customers end up calling us.</div>
+      </div>
+
+      <div class="problem-card" style="background:var(--white); border-color:rgba(27,67,50,0.12);">
+        <span class="problem-icon">🏆</span>
+        <div class="problem-card-title" style="color:var(--forest);">Experience Matters</div>
+        <div class="problem-card-body" style="color:var(--text-mid);">Tree work goes wrong when crews cut corners — near power lines, driveways, houses. Twenty-five years means we've seen every tight spot and handled every one without incident.</div>
+      </div>
+
+    </div>
+
+    <div class="problem-closer reveal">
+      <a href="tel:7573042019" class="btn-primary" style="white-space:nowrap;">Call (757) 304-2019</a>
+      <p class="problem-closer-text" style="color:var(--text-mid);">We answer the phone. We show up on time. <strong style="color:var(--text-dark);">We don't leave a job site until the cleanup is done.</strong> That's been our standard since 1999.</p>
+    </div>
+  </div>
+</section>
+
+<!-- wave: cream → forest-dark -->
+<div class="wave-sep" style="background:#F8F5F0;">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,48 C200,5 560,72 900,28 C1100,2 1320,58 1440,30 L1440,72 L0,72 Z" fill="#081C12"/>
+  </svg>
+</div>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="services" style="background:#081C12;">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-tag">What We Do</p>
+        <h2 class="section-title" style="color:var(--white);">Full-Service <span class="amber">Tree Care</span></h2>
+      </div>
+      <a href="tel:7573042019" class="btn-primary">Call (757) 304-2019</a>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal" data-num="01" style="background:rgba(255,255,255,0.05); border-color:rgba(64,145,108,0.18);">
+        <span class="service-icon">🌲</span>
+        <div class="service-name" style="color:var(--forest-light);">Tree Removal</div>
+        <div class="service-desc" style="color:rgba(255,255,255,0.6);">Full removal from the cut to the cleanup — stump included or excluded, your choice. Tight spaces, big trees, awkward angles. We've done it all.</div>
+        <span class="service-tag">Residential · Commercial</span>
+      </div>
+
+      <div class="service-card reveal" data-num="02" style="background:rgba(255,255,255,0.05); border-color:rgba(64,145,108,0.18);">
+        <span class="service-icon">✂️</span>
+        <div class="service-name" style="color:var(--forest-light);">Tree Trimming &amp; Pruning</div>
+        <div class="service-desc" style="color:rgba(255,255,255,0.6);">Shape your trees for health, clearance, and curb appeal. We prune with intent — not just a hack job — to promote strong growth and reduce hazard limbs.</div>
+        <span class="service-tag">Residential · Commercial</span>
+      </div>
+
+      <div class="service-card reveal" data-num="03" style="background:rgba(255,255,255,0.05); border-color:rgba(64,145,108,0.18);">
+        <span class="service-icon">⚙️</span>
+        <div class="service-name" style="color:var(--forest-light);">Stump Grinding</div>
+        <div class="service-desc" style="color:rgba(255,255,255,0.6);">Ground to grade or below — clean, fast, no eyesore left behind. Ready for grass seed, mulch, or whatever comes next in your yard.</div>
+        <span class="service-tag">Residential · Commercial</span>
+      </div>
+
+      <div class="service-card reveal" data-num="04" style="background:rgba(255,255,255,0.05); border-color:rgba(64,145,108,0.18);">
+        <span class="service-icon">⛈️</span>
+        <div class="service-name" style="color:var(--forest-light);">Emergency Storm Response</div>
+        <div class="service-desc" style="color:rgba(255,255,255,0.6);">24/7. If a tree comes down on your home, car, or fence after a storm — call us first. We mobilize fast and work with your insurance documentation needs.</div>
+        <span class="service-tag">24/7 · Emergency</span>
+      </div>
+
+      <div class="service-card reveal" data-num="05" style="background:rgba(255,255,255,0.05); border-color:rgba(64,145,108,0.18);">
+        <span class="service-icon">🔍</span>
+        <div class="service-name" style="color:var(--forest-light);">Hazard Assessment</div>
+        <div class="service-desc" style="color:rgba(255,255,255,0.6);">Not sure if that tree is a risk? We'll come out and give you a straight answer — dead limbs, root damage, lean, or disease. No pressure, no upsell.</div>
+        <span class="service-tag">Consultation</span>
+      </div>
+
+      <div class="service-card reveal" data-num="06" style="background:rgba(255,255,255,0.05); border-color:rgba(64,145,108,0.18);">
+        <span class="service-icon">🏗️</span>
+        <div class="service-name" style="color:var(--forest-light);">Commercial Services</div>
+        <div class="service-desc" style="color:rgba(255,255,255,0.6);">HOAs, apartment complexes, commercial lots, and municipal contracts. Bonded, insured, and experienced with large-scale projects across Hampton Roads.</div>
+        <span class="service-tag">Commercial · HOA</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- wave: forest-dark → forest-dark (into reviews, same bg) -->
+<div class="wave-sep" style="background:#081C12;">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,35 C300,72 700,5 1000,52 C1150,78 1320,18 1440,44 L1440,72 L0,72 Z" fill="#0D2B1B"/>
+  </svg>
+</div>
+
+<!-- ── REVIEWS ── -->
+<section class="reviews" id="reviews" style="background:#0D2B1B;">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <div>
+        <p class="section-tag">What Customers Say</p>
+        <h2 class="section-title">Real <span class="amber">Reviews.</span><br>Real Jobs Done Right.</h2>
+      </div>
+      <div class="reviews-badge">
+        <div class="reviews-badge-stars">★★★★★</div>
+        <div class="reviews-badge-text"><strong>5-Star</strong> Rated</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Willy was the team leader and he and his crew were super — on time, courteous, efficient, and got down to business in 90F heat. Just had a 60-foot riverbirch taken down and removed. Outstanding work."</p>
+        <div class="review-author">
+          <div class="review-avatar">N</div>
+          <div>
+            <div class="review-name">Nextdoor Neighbor</div>
+            <div class="review-meta">Verified Customer</div>
+          </div>
+        </div>
+        <div class="review-source">Nextdoor</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"One especially difficult removal — bracketed by power lines, house, and driveway. They were extremely efficient and careful. Very safe operation, great cleanup after. They obviously take pride in their work and ensure the job is done correctly the first time."</p>
+        <div class="review-author">
+          <div class="review-avatar">H</div>
+          <div>
+            <div class="review-name">HomeAdvisor Customer</div>
+            <div class="review-meta">Verified Customer</div>
+          </div>
+        </div>
+        <div class="review-source">HomeAdvisor</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"2 days to completely take out 16 trees in a tight suburban neighborhood. Very impressive. They took great measures to ensure they didn't damage the grass and surrounding areas. Fast, safe, and efficient."</p>
+        <div class="review-author">
+          <div class="review-avatar">Y</div>
+          <div>
+            <div class="review-name">Yellow Pages Customer</div>
+            <div class="review-meta">Verified Customer</div>
+          </div>
+        </div>
+        <div class="review-source">Yellow Pages</div>
+      </div>
+
+    </div>
+
+    <p class="reviews-footer-note">More 5-star reviews on the way — we're just getting started.</p>
+  </div>
+</section>
+
+<!-- wave: forest-dark → cream -->
+<div class="wave-sep" style="background:#0D2B1B;">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,28 C320,72 700,5 1020,50 C1180,74 1340,18 1440,40 L1440,72 L0,72 Z" fill="#F8F5F0"/>
+  </svg>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-tag">Get a Free Estimate</p>
+      <h2 class="section-title">Let's Talk<br><span class="amber">About Your Trees.</span></h2>
+      <p class="contact-body">
+        Tell us what you're dealing with and we'll get back to you fast. For storm emergencies, <strong>call us directly — we answer 24/7.</strong> No voicemail. No runaround. Just straight answers from people who've been doing this work for 25 years.
+      </p>
+      <a class="contact-phone-big" href="tel:7573042019">(757) 304-2019</a>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-text">Chesapeake, VA &nbsp;·&nbsp; Serving All of Hampton Roads</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">⛈️</div>
+        <div class="contact-detail-text">24/7 Emergency Storm Response</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🏷️</div>
+        <div class="contact-detail-text">Free Estimates &nbsp;·&nbsp; Licensed &amp; Insured</div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="First &amp; Last">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-input" placeholder="(757) 000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell Us What's Going On</label>
+        <textarea class="form-textarea" placeholder="Describe the job — tree removal, trimming, storm damage, or not sure yet. Any details help us give you an accurate quote..."></textarea>
+      </div>
+      <button class="form-submit">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- wave: cream → forest-dark -->
+<div class="wave-sep" style="background:#F8F5F0;">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,44 C260,8 620,70 940,24 C1120,0 1320,58 1440,32 L1440,72 L0,72 Z" fill="#081C12"/>
+  </svg>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-name">
+    Simpson's <span>Tree Service</span>
+  </div>
+  <div class="footer-badges">
+    <span class="footer-badge">✓ Licensed &amp; Insured</span>
+    <span class="footer-badge">✓ Family Owned</span>
+    <span class="footer-badge">✓ Est. 1999</span>
+  </div>
+  <div class="footer-copy">© 2026 Simpson's Tree Service · Chesapeake, VA · All rights reserved</div>
+</footer>
+
+<script>
+  // Nav scroll behavior — transparent → forest dark
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const revealList = Array.from(reveals);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = revealList.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 55);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px 99999px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // fire for elements already in viewport on load
+  revealList.forEach((el, idx) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      setTimeout(() => el.classList.add('visible'), idx * 55);
+    }
+  });
+</script>
+
+</body>
+</html>
