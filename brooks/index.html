@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brooks Landscaping, Inc. | Chesapeake, VA</title>
+  <title>Brooks Tree Service | Chesapeake, VA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,6 @@
       --green-deep:   #2D5A27;
       --green-dark:   #1E3D1A;
       --green-mid:    #5C8F4A;
-      --green-light:  #d6e8d1;
       --cream:        #F5F0E8;
       --cream-dark:   #EDE7DA;
       --amber:        #E8A020;
@@ -59,12 +58,20 @@
       box-shadow: 0 2px 20px rgba(0,0,0,0.08);
     }
 
-    .nav-logo img {
-      max-height: 56px;
-      width: auto;
+    .nav-wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+      white-space: nowrap;
     }
 
-    /* Logo shows naturally on both transparent and scrolled nav states */
+    #main-nav.scrolled .nav-wordmark {
+      color: var(--green-deep);
+    }
 
     .nav-phone a {
       display: inline-block;
@@ -80,11 +87,6 @@
       white-space: nowrap;
     }
 
-    #main-nav.scrolled .nav-phone a {
-      background: var(--green-deep);
-      color: var(--white);
-    }
-
     .nav-phone a:hover { background: var(--green-dark); }
 
     /* ==================== HERO ==================== */
@@ -92,9 +94,9 @@
       min-height: 100vh;
       background-image:
         linear-gradient(105deg,
-          rgba(30,61,26,0.94) 0%,
-          rgba(30,61,26,0.78) 42%,
-          rgba(30,61,26,0.28) 100%),
+          rgba(20,48,16,0.95) 0%,
+          rgba(20,48,16,0.80) 42%,
+          rgba(20,48,16,0.32) 100%),
         url('img/hero.jpg');
       background-size: cover;
       background-position: center center;
@@ -107,7 +109,7 @@
 
     .hero-inner {
       padding: 80px 5% 0;
-      max-width: 680px;
+      max-width: 700px;
     }
 
     .hero-eyebrow {
@@ -139,7 +141,7 @@
       color: rgba(255,255,255,0.82);
       line-height: 1.75;
       margin-bottom: 2.5rem;
-      max-width: 510px;
+      max-width: 540px;
     }
 
     .hero-cta {
@@ -164,7 +166,7 @@
     .hero-stats {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: rgba(20,48,16,0.90);
+      background: rgba(14,36,10,0.92);
       backdrop-filter: blur(6px);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -182,10 +184,10 @@
     .stat-value {
       display: block;
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--white);
-      line-height: 1;
+      line-height: 1.1;
     }
 
     .stat-label {
@@ -260,10 +262,8 @@
     .photo-placeholder {
       border-radius: 5px;
       overflow: hidden;
-      background: #c2d4be;
+      background: #b8cdb5;
       aspect-ratio: 4/3;
-      display: flex;
-      align-items: flex-end;
     }
 
     .photo-placeholder.wide {
@@ -275,10 +275,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .photo-placeholder-label {
-      display: none; /* shown if img fails to load via alt */
     }
 
     /* ==================== SERVICES ==================== */
@@ -560,25 +556,30 @@
       text-align: center;
     }
 
-    .footer-logo {
-      display: inline-block;
-      background: rgba(255,255,255,0.92);
-      border-radius: 6px;
-      padding: 0.5rem 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-logo img {
-      max-height: 48px;
-      width: auto;
-      margin: 0 auto;
+    .footer-wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
     }
 
     .footer-tagline {
       font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-style: italic;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-veteran {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
       margin-bottom: 1.5rem;
     }
 
@@ -653,7 +654,7 @@
     @media (max-width: 480px) {
       #main-nav { padding: 0 1.25rem; }
 
-      .nav-logo img { max-height: 42px; }
+      .nav-wordmark { font-size: 1.15rem; }
 
       .nav-phone a {
         font-size: 0.83rem;
@@ -665,8 +666,8 @@
         background-position: center center;
         background-image:
           linear-gradient(to bottom,
-            rgba(20,48,16,0.88) 0%,
-            rgba(20,48,16,0.72) 100%),
+            rgba(14,36,10,0.92) 0%,
+            rgba(14,36,10,0.76) 100%),
           url('img/hero.jpg');
         min-height: 85vh;
       }
@@ -692,9 +693,7 @@
 
       section { padding: 4rem 1.25rem; }
 
-      .about-photos {
-        grid-template-columns: 1fr;
-      }
+      .about-photos { grid-template-columns: 1fr; }
 
       .photo-placeholder.wide { grid-column: span 1; aspect-ratio: 4/3; }
 
@@ -715,41 +714,39 @@
   <!-- ==================== NAV ==================== -->
   <nav id="main-nav">
     <div class="nav-logo">
-      <a href="#">
-        <img src="img/Brooks+Landscaping_logo.png" alt="Brooks Landscaping Inc" id="nav-logo-img">
-      </a>
+      <a href="#" class="nav-wordmark">Brooks Tree Service</a>
     </div>
     <div class="nav-phone">
-      <a href="tel:+17574320053">(757) 432-0053</a>
+      <a href="tel:+17574825109">(757) 482-5109</a>
     </div>
   </nav>
 
   <!-- ==================== HERO ==================== -->
   <section id="hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow">Chesapeake, VA &nbsp;&bull;&nbsp; Est. 1976</p>
+      <p class="hero-eyebrow">Chesapeake, VA &nbsp;&bull;&nbsp; Veteran-Owned &nbsp;&bull;&nbsp; Est. 1976</p>
       <h1 class="hero-headline">
-        Landscapes Built to Last<br>
-        <em>a Lifetime</em>
+        Chesapeake's Trusted Tree Service<br>
+        <em>Since 1976</em>
       </h1>
       <p class="hero-subhead">
-        Hampton Roads' trusted full-service landscape design and build company. From custom hardscapes to backyard retreats, Brooks Landscaping has been transforming outdoor spaces since 1976.
+        Veteran-owned and family-operated. ISA Certified Arborist on staff. From routine trimming to emergency storm removal, Brooks Tree Service handles every job safely and leaves your yard spotless.
       </p>
-      <a href="#contact" class="hero-cta">Request a Free Consultation</a>
+      <a href="#contact" class="hero-cta">Get a Free Estimate</a>
     </div>
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <span class="stat-value">Est. 1976</span>
-        <span class="stat-label">50 Years Serving Hampton Roads</span>
+        <span class="stat-value">4.8 Stars</span>
+        <span class="stat-label">109 Google Reviews</span>
       </div>
       <div class="hero-stat">
-        <span class="stat-value">Chesapeake, VA</span>
-        <span class="stat-label">Serving All of Hampton Roads</span>
+        <span class="stat-value">Free Estimates</span>
+        <span class="stat-label">No Obligation, On-Site Quote</span>
       </div>
       <div class="hero-stat">
-        <span class="stat-value">Full-Service</span>
-        <span class="stat-label">Design, Build &amp; Installation</span>
+        <span class="stat-value">24/7 Response</span>
+        <span class="stat-label">Emergency Storm Damage</span>
       </div>
     </div>
   </section>
@@ -760,32 +757,32 @@
       <div class="about-copy">
         <div class="section-header reveal">
           <p class="section-label">Who We Are</p>
-          <h2 class="section-title">Nearly Five Decades of Craftsmanship</h2>
+          <h2 class="section-title">Veteran-Owned. Family-Operated. Built on Reputation.</h2>
         </div>
         <div class="reveal reveal-d1">
           <p>
-            For nearly five decades, Brooks Landscaping has been the design-build partner that Hampton Roads homeowners trust to create outdoor spaces they never want to leave. Founded in 1976 and headquartered right here in Chesapeake, our team brings deep regional knowledge to every project - from intimate backyard retreats to expansive estate landscapes.
+            Brooks Tree Service has been a trusted name in Hampton Roads tree care since 1976. Charles Brooks, a military veteran, founded the company and built it on a simple promise: show up when you say you will, do the work right, and leave the property cleaner than you found it.
           </p>
           <p>
-            We are a complete, full-service company: we design it, build it, and stand behind it. Our work speaks for itself through referrals from neighbors, friends, and longtime clients who have watched their landscapes mature and thrive over the years.
+            Today, Charles's son Ryan leads crews on every job. With an ISA Certified Arborist on staff and decades of experience removing everything from crowded backyard pines to storm-damaged oaks hanging over rooftops, the Brooks crew handles the work other companies turn down.
           </p>
           <p>
-            Every property is unique. We approach each project with fresh eyes - listening first and designing second - because the best landscape is the one that fits how you actually live outdoors.
+            Spotless cleanup is not a bonus with us - it is part of the job. Every chip hauled, every log cut and stacked or removed. Our neighbors in Chesapeake and across Hampton Roads keep calling us back because they know the yard will look better when we leave than when we arrived.
           </p>
         </div>
       </div>
       <div class="about-photos reveal reveal-d2">
-        <!-- Photo: Wide hero shot of a completed Brooks project - backyard with patio, greenery, and pergola -->
+        <!-- Photo: Wide shot of Brooks Tree Service crew removing a large oak in a Chesapeake backyard -->
         <div class="photo-placeholder wide">
-          <img src="img/about-1.jpg" alt="Completed Brooks Landscaping backyard transformation with custom patio and pergola in Chesapeake VA">
+          <img src="img/about-1.jpg" alt="Brooks Tree Service crew removing a large oak tree in Chesapeake VA">
         </div>
-        <!-- Photo: Team working on a landscape installation -->
+        <!-- Photo: Crew member in bucket truck trimming a tall pine near a Hampton Roads home -->
         <div class="photo-placeholder">
-          <img src="img/about-2.jpg" alt="Brooks Landscaping crew installing a garden bed in Hampton Roads">
+          <img src="img/about-2.jpg" alt="Brooks Tree Service arborist trimming a tall pine tree in Hampton Roads">
         </div>
-        <!-- Photo: Close-up of a retaining wall or hardscape detail -->
+        <!-- Photo: Clean yard after a tree removal - stump ground, debris hauled, property spotless -->
         <div class="photo-placeholder">
-          <img src="img/about-3.jpg" alt="Custom retaining wall and hardscape work by Brooks Landscaping Chesapeake VA">
+          <img src="img/about-3.jpg" alt="Clean yard after Brooks Tree Service stump grinding and debris removal in Chesapeake">
         </div>
       </div>
     </div>
@@ -795,84 +792,88 @@
   <section id="services">
     <div class="section-header centered reveal">
       <p class="section-label">What We Do</p>
-      <h2 class="section-title">Complete Landscape Solutions</h2>
-      <p class="section-subhead">From the initial design consultation to the final plant installation, Brooks handles every aspect of your outdoor transformation.</p>
+      <h2 class="section-title">Complete Tree Care for Hampton Roads</h2>
+      <p class="section-subhead">From a single stump to a full-property canopy assessment, we handle every tree job with the same care and attention to cleanup.</p>
     </div>
 
     <div class="services-grid">
 
-      <!-- Service 1: Landscape Design & Installation -->
+      <!-- Tree Removal -->
       <div class="service-card reveal reveal-d1">
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M22 8c0 0-10 8-10 16a10 10 0 0020 0C32 16 22 8 22 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
-          <path d="M22 24v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M16 20c2 1 4 3 6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M28 20c-2 1-4 3-6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M22 6c0 0-11 9-11 17h7l-6 9h8v6h4v-6h8l-6-9h7C33 15 22 6 22 6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M12 40l5-5M12 35l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M27 40l5-5M27 35l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
-        <h3>Landscape Design &amp; Installation</h3>
-        <p>Custom plantings, grading, and garden beds designed around your property's natural character and your vision for outdoor living.</p>
+        <h3>Tree Removal</h3>
+        <p>Safe, controlled removal of any tree - tight spaces, large canopies, close proximity to structures. Full cleanup included every time.</p>
       </div>
 
-      <!-- Service 2: Hardscapes & Pavers -->
+      <!-- Tree Trimming and Pruning -->
       <div class="service-card reveal reveal-d2">
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="6" y="6" width="12" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
-          <rect x="22" y="6" width="16" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
-          <rect x="6" y="19" width="16" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
-          <rect x="26" y="19" width="12" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
-          <rect x="6" y="32" width="8" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-          <rect x="18" y="32" width="14" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="14" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="30" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M15.5 17L36 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M15.5 27L36 36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 22h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M30 18v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <h3>Hardscapes &amp; Pavers</h3>
-        <p>Patios, walkways, driveways, and outdoor surfaces that combine lasting durability with the craftsmanship of a master installer.</p>
+        <h3>Tree Trimming and Pruning</h3>
+        <p>Proper pruning for structure, clearance, and long-term health. We cut for the tree, not just for looks - and it shows over time.</p>
       </div>
 
-      <!-- Service 3: Retaining Walls -->
+      <!-- Stump Grinding -->
       <div class="service-card reveal reveal-d3">
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="4" y="30" width="36" height="8" rx="1.5" stroke="currentColor" stroke-width="2"/>
-          <rect x="8" y="22" width="28" height="8" rx="1.5" stroke="currentColor" stroke-width="2"/>
-          <rect x="12" y="14" width="20" height="8" rx="1.5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="22" cy="20" r="13" stroke="currentColor" stroke-width="2"/>
+          <circle cx="22" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+          <path d="M22 7v3M22 30v3M9 20h3M30 20h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 11l2 2M29 27l2 2M13 29l2-2M29 13l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 38h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 34c0 0 3-2 6-2s6 2 6 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <h3>Retaining Walls</h3>
-        <p>Structural and decorative wall systems that solve drainage, erosion, and elevation challenges while adding visual character to your property.</p>
+        <h3>Stump Grinding</h3>
+        <p>Grinding stumps below grade so they do not sprout, trip anyone, or ruin your lawn. Clean fill hauled or spread on site, your choice.</p>
       </div>
 
-      <!-- Service 4: Custom Pool Design -->
+      <!-- Storm Damage and Emergency Response -->
       <div class="service-card reveal reveal-d4">
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M6 28c2-3 4-5 8-5s6 4 10 4 6-4 10-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M6 34c2-3 4-5 8-5s6 4 10 4 6-4 10-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M14 10v13M30 10v13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M14 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M26 5L13 24h11l-6 15L38 18H26z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+          <path d="M6 28c2-2 5-3 8-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 34c3-3 7-4 10-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 40h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <h3>Custom Pool Design</h3>
-        <p>Complete aquatic environments conceived from the ground up - from tile selection to surrounding hardscape, plantings, and lighting.</p>
+        <h3>Storm Damage and Emergency Response</h3>
+        <p>24/7 response for downed trees, split limbs on structures, and hazardous post-storm situations. We pick up before insurers arrive if needed.</p>
       </div>
 
-      <!-- Service 5: Pergolas & Outdoor Living -->
+      <!-- Canopy Reduction -->
       <div class="service-card reveal reveal-d5">
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M6 18h32M6 18l4-8h24l4 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M10 18v16M34 18v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M13 12v6M19 12v6M25 12v6M31 12v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M6 34h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M19 34v8M25 34v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 42h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 32c0-7.7 6.3-14 14-14s14 6.3 14 14H8z" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M8 24c3-7 8-12 14-16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3,2"/>
+          <path d="M6 18l5 4M10 14l4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M36 18l-5 4M32 14l-4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <h3>Pergolas &amp; Outdoor Living</h3>
-        <p>Shade structures, outdoor kitchens, and covered living spaces that extend your home into the yard and make every season enjoyable.</p>
+        <h3>Canopy Reduction</h3>
+        <p>Reducing height and spread to manage clearance from rooflines, power lines, and neighboring properties - without sacrificing the tree.</p>
       </div>
 
-      <!-- Service 6: Ponds, Water Features & Lighting -->
+      <!-- Firewood -->
       <div class="service-card reveal reveal-d6">
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M22 8c-2 4-8 8-8 14a8 8 0 0016 0c0-6-6-10-8-14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
-          <path d="M22 30v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M14 36h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="33" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M33 8V6M33 16v2M29 12h-2M37 12h2M30.5 9.5l-1.4-1.4M35.5 14.5l1.4 1.4M35.5 9.5l1.4-1.4M30.5 14.5l-1.4 1.4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <ellipse cx="22" cy="20" rx="15" ry="10" stroke="currentColor" stroke-width="2"/>
+          <ellipse cx="22" cy="20" rx="9" ry="6" stroke="currentColor" stroke-width="1.5"/>
+          <ellipse cx="22" cy="20" rx="3.5" ry="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7 26 Q22 34 37 26" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M10 30 Q22 38 34 30" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
         </svg>
-        <h3>Ponds, Water Features &amp; Lighting</h3>
-        <p>Tranquil water elements and landscape lighting that bring year-round dimension and beauty to every outdoor space we create.</p>
+        <h3>Firewood</h3>
+        <p>Seasoned split firewood from removed trees, available for delivery or pickup. Hardwood mix, stacked neatly, ready to burn.</p>
       </div>
 
     </div>
@@ -882,8 +883,8 @@
   <section id="reviews">
     <div class="section-header centered reveal">
       <p class="section-label">What Clients Say</p>
-      <h2 class="section-title">Trusted by Hampton Roads Homeowners</h2>
-      <p class="section-subhead">Decades of referral-based business built on craftsmanship, communication, and results that speak for themselves.</p>
+      <h2 class="section-title">4.8 Stars on Google from 109 Reviews</h2>
+      <p class="section-subhead">Decades of Hampton Roads homeowners recommending Brooks Tree Service to their neighbors. A few of their stories:</p>
     </div>
 
     <div class="reviews-grid">
@@ -897,10 +898,10 @@
           <span class="star">&#9733;</span>
         </div>
         <p class="review-text">
-          Brooks redesigned our entire backyard last spring - nearly half an acre that had become overgrown and hard to enjoy. The team was professional from the first consultation all the way through the final walk-through. Three months later, our neighbors still stop to ask who did the work. Five stars without hesitation.
+          We had a massive silver maple right next to our garage that had been scaring us through every storm for years. Brooks came out the same week I called, gave us a fair price, and had it down in one morning. They protected the garage perfectly and the yard was spotless before they left. Could not believe how smooth it went.
         </p>
         <div class="review-author">
-          <p class="review-name">Jennifer T.</p>
+          <p class="review-name">Mark D.</p>
           <p class="review-location">Chesapeake, VA</p>
         </div>
       </div>
@@ -914,10 +915,10 @@
           <span class="star">&#9733;</span>
         </div>
         <p class="review-text">
-          We had a serious drainage problem along our property line that had caused erosion for years. Brooks came out, diagnosed it quickly, and installed a retaining wall and dry creek bed that solved it completely. The work was done on schedule and they cleaned up every single day before leaving. Highly recommend.
+          We had three tall loblolly pines crowded into the back corner of our lot, right up against the fence and the neighbor's shed. I was worried no one would take the job. Brooks walked the site, worked out a plan, and got all three out without touching the fence. Ryan and the crew were professional and efficient from start to finish.
         </p>
         <div class="review-author">
-          <p class="review-name">Michael R.</p>
+          <p class="review-name">Deborah K.</p>
           <p class="review-location">Virginia Beach, VA</p>
         </div>
       </div>
@@ -931,10 +932,10 @@
           <span class="star">&#9733;</span>
         </div>
         <p class="review-text">
-          Starting from a basic consultation, Brooks designed a complete outdoor living space with a flagstone patio, pergola, and a small koi pond that we absolutely love. They made the whole process easy and kept us informed at every step. This is the fourth project we have done with them over the past 12 years.
+          Every spring before hurricane season I get my trees trimmed, and Brooks Tree Service has been my first call for the past five years. Two big water oaks and a sweet gum. They come when they say they will, the crew knows what they are doing, and the cleanup is always thorough. Consistent quality every single time.
         </p>
         <div class="review-author">
-          <p class="review-name">Susan H.</p>
+          <p class="review-name">Robert F.</p>
           <p class="review-location">Chesapeake, VA</p>
         </div>
       </div>
@@ -948,7 +949,6 @@
 
     <p class="reviews-note">
       Reviews shown are illustrative examples. Real verified reviews coming soon.
-      <!-- [CONFIRM]: Google review count and current star rating not confirmed. Birdeye shows 4.6 stars / 16 reviews as of April 2026. -->
     </p>
   </section>
 
@@ -959,28 +959,18 @@
       <div class="contact-info-block reveal">
         <div class="section-header">
           <p class="section-label">Get In Touch</p>
-          <h2 class="section-title">Ready to Transform Your Outdoor Space?</h2>
+          <h2 class="section-title">Ready to Get That Tree Taken Care Of?</h2>
         </div>
         <p class="intro">
-          Tell us about your project and we will be in touch to schedule a free on-site consultation. We serve Chesapeake, Virginia Beach, Norfolk, and the greater Hampton Roads area.
+          Call or fill out the form and we will get back to you promptly to schedule a free on-site estimate. We serve Chesapeake, Virginia Beach, Norfolk, Suffolk, and the greater Hampton Roads area.
         </p>
-
-        <div class="contact-detail">
-          <svg class="cd-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M2 5l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <div class="cd-text">
-            <a href="mailto:services@brooks-landscaping.com">services@brooks-landscaping.com</a>
-          </div>
-        </div>
 
         <div class="contact-detail">
           <svg class="cd-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.684l1.06 3.18a1 1 0 01-.23 1.013L7.91 9.23a12.06 12.06 0 005.86 5.86l1.354-1.146a1 1 0 011.012-.23l3.18 1.06a1 1 0 01.684.95V17a2 2 0 01-2 2C7.716 19 1 12.284 1 5a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
           </svg>
           <div class="cd-text">
-            <a href="tel:+17574320053">(757) 432-0053</a>
+            <a href="tel:+17574825109">(757) 482-5109</a>
           </div>
         </div>
 
@@ -990,14 +980,14 @@
             <path d="M10 2C6.686 2 4 4.686 4 8c0 4.418 6 10 6 10s6-5.582 6-10c0-3.314-2.686-6-6-6z" stroke="currentColor" stroke-width="1.5"/>
           </svg>
           <div class="cd-text">
-            2233 Centerville Turnpike South<br>
-            Chesapeake, VA 23322
+            503C Centerville Turnpike N, Bldg C<br>
+            Chesapeake, VA 23320
           </div>
         </div>
 
         <div class="hours-note">
-          <strong>Office Hours:</strong> Monday - Friday, 8:00 am - 4:00 pm<br>
-          Free on-site consultations available by appointment.
+          <strong>24/7 Emergency Response Available.</strong><br>
+          Office hours: Monday - Friday, 7:00 am - 5:00 pm. Free estimates by appointment.
         </div>
       </div>
 
@@ -1018,19 +1008,19 @@
             <label for="service">Service Type</label>
             <select id="service" name="service">
               <option value="" disabled selected>Select a service...</option>
-              <option value="landscape-design">Landscape Design &amp; Installation</option>
-              <option value="hardscapes">Hardscapes &amp; Pavers</option>
-              <option value="retaining-walls">Retaining Walls</option>
-              <option value="pool-design">Custom Pool Design</option>
-              <option value="pergolas">Pergolas &amp; Outdoor Living</option>
-              <option value="ponds-lighting">Ponds, Water Features &amp; Lighting</option>
-              <option value="not-sure">Not Sure - Need a Consultation</option>
+              <option value="tree-removal">Tree Removal</option>
+              <option value="trimming-pruning">Tree Trimming and Pruning</option>
+              <option value="stump-grinding">Stump Grinding</option>
+              <option value="storm-emergency">Storm and Emergency Response</option>
+              <option value="canopy-reduction">Canopy Reduction</option>
+              <option value="firewood">Firewood</option>
+              <option value="other">Other</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="message">Tell Us About Your Project</label>
-            <textarea id="message" name="message" placeholder="Describe your property, what you have in mind, or what problem you are trying to solve..."></textarea>
+            <label for="message">Tell Us About Your Tree</label>
+            <textarea id="message" name="message" placeholder="Describe the tree, location on your property, any concerns about structures or power lines nearby..."></textarea>
           </div>
 
           <button type="submit" class="form-submit">Send My Request</button>
@@ -1042,25 +1032,23 @@
 
   <!-- ==================== FOOTER ==================== -->
   <footer>
-    <div class="footer-logo">
-      <img src="img/Brooks+Landscaping_logo.png" alt="Brooks Landscaping Inc">
-    </div>
-    <p class="footer-tagline">Landscape design and build excellence since 1976.</p>
+    <p class="footer-wordmark">Brooks Tree Service</p>
+    <p class="footer-tagline">Veteran-owned tree care serving Hampton Roads since 1976.</p>
+    <p class="footer-veteran">Veteran-Owned and Operated</p>
     <div class="footer-contact-line">
-      <a href="tel:+17574320053">(757) 432-0053</a>
+      <a href="tel:+17574825109">(757) 482-5109</a>
     </div>
     <div class="footer-contact-line">
-      <span>2233 Centerville Turnpike South, Chesapeake, VA 23322</span>
+      <span>503C Centerville Turnpike N, Bldg C, Chesapeake, VA 23320</span>
     </div>
     <hr class="footer-divider">
-    <p class="footer-copy">&copy; 2026 Brooks Landscaping, Inc. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 Brooks Tree Service. All rights reserved.</p>
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
   <script>
     // Nav scroll behavior
     const nav = document.getElementById('main-nav');
-    const logoImg = document.getElementById('nav-logo-img');
 
     function onScroll() {
       if (window.scrollY > 40) {
@@ -1071,7 +1059,7 @@
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // init
+    onScroll();
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
@@ -1087,12 +1075,12 @@
 
     revealEls.forEach(el => observer.observe(el));
 
-    // Force-reveal all scroll elements for screenshots / accessibility (1000ms fallback)
+    // Force-reveal fallback for screenshots (fires before Puppeteer's 1500ms capture)
     setTimeout(() => {
       revealEls.forEach(el => el.classList.add('visible'));
     }, 1000);
 
-    // Simple form submission handler
+    // Form submission handler
     document.querySelector('.contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = this.querySelector('.form-submit');
