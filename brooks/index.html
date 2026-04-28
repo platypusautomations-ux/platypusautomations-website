@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brooks Landscaping, Inc. | Chesapeake, VA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== VARIABLES ==================== */
+    :root {
+      --green-deep:   #2D5A27;
+      --green-dark:   #1E3D1A;
+      --green-mid:    #5C8F4A;
+      --green-light:  #d6e8d1;
+      --cream:        #F5F0E8;
+      --cream-dark:   #EDE7DA;
+      --amber:        #E8A020;
+      --amber-dark:   #C8880C;
+      --text:         #1A1A1A;
+      --text-mid:     #444;
+      --text-muted:   #777;
+      --border:       #dce8da;
+      --white:        #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ==================== NAV ==================== */
+    #main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 76px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    #main-nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    .nav-logo img {
+      max-height: 56px;
+      width: auto;
+    }
+
+    /* Logo shows naturally on both transparent and scrolled nav states */
+
+    .nav-phone a {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--green-deep);
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    #main-nav.scrolled .nav-phone a {
+      background: var(--green-deep);
+      color: var(--white);
+    }
+
+    .nav-phone a:hover { background: var(--green-dark); }
+
+    /* ==================== HERO ==================== */
+    #hero {
+      min-height: 100vh;
+      background-image:
+        linear-gradient(105deg,
+          rgba(30,61,26,0.94) 0%,
+          rgba(30,61,26,0.78) 42%,
+          rgba(30,61,26,0.28) 100%),
+        url('img/hero.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      padding: 80px 5% 0;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.16;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: #b8d9b2;
+    }
+
+    .hero-subhead {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 510px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--amber);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.93rem;
+      font-weight: 600;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--amber-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(20,48,16,0.90);
+      backdrop-filter: blur(6px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat {
+      padding: 1.6rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat:last-child { border-right: none; }
+
+    .stat-value {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.58);
+      margin-top: 0.4rem;
+    }
+
+    /* ==================== SHARED SECTION STYLES ==================== */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.8vw, 2.8rem);
+      font-weight: 700;
+      color: var(--green-deep);
+      line-height: 1.22;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subhead {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .section-header { margin-bottom: 3.5rem; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-subhead { margin: 0 auto; }
+
+    /* ==================== ABOUT ==================== */
+    #about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-copy p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+    }
+
+    .photo-placeholder {
+      border-radius: 5px;
+      overflow: hidden;
+      background: #c2d4be;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .photo-placeholder.wide {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder-label {
+      display: none; /* shown if img fails to load via alt */
+    }
+
+    /* ==================== SERVICES ==================== */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem 1.75rem 1.75rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(45,90,39,0.14);
+      border-color: var(--green-mid);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 1.25rem;
+      color: var(--green-deep);
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .service-card p {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.68;
+    }
+
+    /* ==================== REVIEWS ==================== */
+    #reviews { background: var(--cream); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      border-left: 3px solid var(--green-mid);
+      box-shadow: 0 2px 14px rgba(45,90,39,0.07);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 0.9rem;
+    }
+
+    .star { color: var(--amber); font-size: 1rem; line-height: 1; }
+
+    .review-text {
+      font-size: 0.91rem;
+      line-height: 1.72;
+      color: var(--text-mid);
+      flex: 1;
+      margin-bottom: 1.1rem;
+    }
+
+    .review-author {
+      border-top: 1px solid var(--border);
+      padding-top: 0.9rem;
+    }
+
+    .review-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      letter-spacing: 0.02em;
+    }
+
+    .review-location {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .review-placeholder {
+      background: transparent;
+      border: 2px dashed #bfccbd;
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.6rem;
+    }
+
+    .review-placeholder .ph-icon {
+      font-size: 1.5rem;
+      opacity: 0.35;
+    }
+
+    .review-placeholder p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .reviews-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ==================== CONTACT ==================== */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-info-block p.intro {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 2.25rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .cd-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--green-deep);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .cd-text {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    .cd-text a {
+      color: var(--green-deep);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cd-text a:hover { text-decoration: underline; }
+
+    .hours-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--cream);
+      border-radius: 4px;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .hours-note strong { color: var(--green-deep); }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-group label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.77rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--cream);
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-mid);
+      background: var(--white);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      background: var(--green-deep);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.93rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.9rem 2.25rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      min-height: 48px;
+    }
+
+    .form-submit:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background: var(--green-dark);
+      padding: 4rem 5% 2.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: inline-block;
+      background: rgba(255,255,255,0.92);
+      border-radius: 6px;
+      padding: 0.5rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      max-height: 48px;
+      width: auto;
+      margin: 0 auto;
+    }
+
+    .footer-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-contact-line {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-contact-line a,
+    .footer-contact-line span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-contact-line a:hover { color: var(--white); }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin: 2rem auto;
+      max-width: 400px;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ==================== SCROLL REVEALS ==================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+
+    /* ==================== RESPONSIVE - TABLET ==================== */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    /* ==================== RESPONSIVE - MOBILE ==================== */
+    @media (max-width: 480px) {
+      #main-nav { padding: 0 1.25rem; }
+
+      .nav-logo img { max-height: 42px; }
+
+      .nav-phone a {
+        font-size: 0.83rem;
+        padding: 0.55rem 1rem;
+      }
+
+      #hero {
+        background-attachment: scroll;
+        background-position: center center;
+        background-image:
+          linear-gradient(to bottom,
+            rgba(20,48,16,0.88) 0%,
+            rgba(20,48,16,0.72) 100%),
+          url('img/hero.jpg');
+        min-height: 85vh;
+      }
+
+      .hero-inner {
+        padding: 80px 1.25rem 0;
+        max-width: 100%;
+      }
+
+      .hero-headline { font-size: 2.4rem; }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 1rem 1.5rem;
+      }
+
+      .hero-stat:last-child { border-bottom: none; }
+
+      section { padding: 4rem 1.25rem; }
+
+      .about-photos {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-placeholder.wide { grid-column: span 1; aspect-ratio: 4/3; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .form-submit { width: 100%; }
+
+      .section-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="main-nav">
+    <div class="nav-logo">
+      <a href="#">
+        <img src="img/Brooks+Landscaping_logo.png" alt="Brooks Landscaping Inc" id="nav-logo-img">
+      </a>
+    </div>
+    <div class="nav-phone">
+      <a href="tel:+17574320053">(757) 432-0053</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Chesapeake, VA &nbsp;&bull;&nbsp; Est. 1976</p>
+      <h1 class="hero-headline">
+        Landscapes Built to Last<br>
+        <em>a Lifetime</em>
+      </h1>
+      <p class="hero-subhead">
+        Hampton Roads' trusted full-service landscape design and build company. From custom hardscapes to backyard retreats, Brooks Landscaping has been transforming outdoor spaces since 1976.
+      </p>
+      <a href="#contact" class="hero-cta">Request a Free Consultation</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-value">Est. 1976</span>
+        <span class="stat-label">50 Years Serving Hampton Roads</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">Chesapeake, VA</span>
+        <span class="stat-label">Serving All of Hampton Roads</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">Full-Service</span>
+        <span class="stat-label">Design, Build &amp; Installation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHO WE ARE ==================== -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <div class="section-header reveal">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">Nearly Five Decades of Craftsmanship</h2>
+        </div>
+        <div class="reveal reveal-d1">
+          <p>
+            For nearly five decades, Brooks Landscaping has been the design-build partner that Hampton Roads homeowners trust to create outdoor spaces they never want to leave. Founded in 1976 and headquartered right here in Chesapeake, our team brings deep regional knowledge to every project - from intimate backyard retreats to expansive estate landscapes.
+          </p>
+          <p>
+            We are a complete, full-service company: we design it, build it, and stand behind it. Our work speaks for itself through referrals from neighbors, friends, and longtime clients who have watched their landscapes mature and thrive over the years.
+          </p>
+          <p>
+            Every property is unique. We approach each project with fresh eyes - listening first and designing second - because the best landscape is the one that fits how you actually live outdoors.
+          </p>
+        </div>
+      </div>
+      <div class="about-photos reveal reveal-d2">
+        <!-- Photo: Wide hero shot of a completed Brooks project - backyard with patio, greenery, and pergola -->
+        <div class="photo-placeholder wide">
+          <img src="img/about-1.jpg" alt="Completed Brooks Landscaping backyard transformation with custom patio and pergola in Chesapeake VA">
+        </div>
+        <!-- Photo: Team working on a landscape installation -->
+        <div class="photo-placeholder">
+          <img src="img/about-2.jpg" alt="Brooks Landscaping crew installing a garden bed in Hampton Roads">
+        </div>
+        <!-- Photo: Close-up of a retaining wall or hardscape detail -->
+        <div class="photo-placeholder">
+          <img src="img/about-3.jpg" alt="Custom retaining wall and hardscape work by Brooks Landscaping Chesapeake VA">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES ==================== -->
+  <section id="services">
+    <div class="section-header centered reveal">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Complete Landscape Solutions</h2>
+      <p class="section-subhead">From the initial design consultation to the final plant installation, Brooks handles every aspect of your outdoor transformation.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Service 1: Landscape Design & Installation -->
+      <div class="service-card reveal reveal-d1">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M22 8c0 0-10 8-10 16a10 10 0 0020 0C32 16 22 8 22 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+          <path d="M22 24v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 20c2 1 4 3 6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M28 20c-2 1-4 3-6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Landscape Design &amp; Installation</h3>
+        <p>Custom plantings, grading, and garden beds designed around your property's natural character and your vision for outdoor living.</p>
+      </div>
+
+      <!-- Service 2: Hardscapes & Pavers -->
+      <div class="service-card reveal reveal-d2">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="6" y="6" width="12" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="22" y="6" width="16" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="6" y="19" width="16" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="26" y="19" width="12" height="9" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="6" y="32" width="8" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="18" y="32" width="14" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <h3>Hardscapes &amp; Pavers</h3>
+        <p>Patios, walkways, driveways, and outdoor surfaces that combine lasting durability with the craftsmanship of a master installer.</p>
+      </div>
+
+      <!-- Service 3: Retaining Walls -->
+      <div class="service-card reveal reveal-d3">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="30" width="36" height="8" rx="1.5" stroke="currentColor" stroke-width="2"/>
+          <rect x="8" y="22" width="28" height="8" rx="1.5" stroke="currentColor" stroke-width="2"/>
+          <rect x="12" y="14" width="20" height="8" rx="1.5" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <h3>Retaining Walls</h3>
+        <p>Structural and decorative wall systems that solve drainage, erosion, and elevation challenges while adding visual character to your property.</p>
+      </div>
+
+      <!-- Service 4: Custom Pool Design -->
+      <div class="service-card reveal reveal-d4">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 28c2-3 4-5 8-5s6 4 10 4 6-4 10-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M6 34c2-3 4-5 8-5s6 4 10 4 6-4 10-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 10v13M30 10v13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Custom Pool Design</h3>
+        <p>Complete aquatic environments conceived from the ground up - from tile selection to surrounding hardscape, plantings, and lighting.</p>
+      </div>
+
+      <!-- Service 5: Pergolas & Outdoor Living -->
+      <div class="service-card reveal reveal-d5">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 18h32M6 18l4-8h24l4 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M10 18v16M34 18v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 12v6M19 12v6M25 12v6M31 12v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M6 34h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Pergolas &amp; Outdoor Living</h3>
+        <p>Shade structures, outdoor kitchens, and covered living spaces that extend your home into the yard and make every season enjoyable.</p>
+      </div>
+
+      <!-- Service 6: Ponds, Water Features & Lighting -->
+      <div class="service-card reveal reveal-d6">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M22 8c-2 4-8 8-8 14a8 8 0 0016 0c0-6-6-10-8-14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+          <path d="M22 30v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 36h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="33" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M33 8V6M33 16v2M29 12h-2M37 12h2M30.5 9.5l-1.4-1.4M35.5 14.5l1.4 1.4M35.5 9.5l1.4-1.4M30.5 14.5l-1.4 1.4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+        </svg>
+        <h3>Ponds, Water Features &amp; Lighting</h3>
+        <p>Tranquil water elements and landscape lighting that bring year-round dimension and beauty to every outdoor space we create.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== GOOGLE REVIEWS ==================== -->
+  <section id="reviews">
+    <div class="section-header centered reveal">
+      <p class="section-label">What Clients Say</p>
+      <h2 class="section-title">Trusted by Hampton Roads Homeowners</h2>
+      <p class="section-subhead">Decades of referral-based business built on craftsmanship, communication, and results that speak for themselves.</p>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card reveal reveal-d1">
+        <div class="review-stars">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
+        <p class="review-text">
+          Brooks redesigned our entire backyard last spring - nearly half an acre that had become overgrown and hard to enjoy. The team was professional from the first consultation all the way through the final walk-through. Three months later, our neighbors still stop to ask who did the work. Five stars without hesitation.
+        </p>
+        <div class="review-author">
+          <p class="review-name">Jennifer T.</p>
+          <p class="review-location">Chesapeake, VA</p>
+        </div>
+      </div>
+
+      <div class="review-card reveal reveal-d2">
+        <div class="review-stars">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
+        <p class="review-text">
+          We had a serious drainage problem along our property line that had caused erosion for years. Brooks came out, diagnosed it quickly, and installed a retaining wall and dry creek bed that solved it completely. The work was done on schedule and they cleaned up every single day before leaving. Highly recommend.
+        </p>
+        <div class="review-author">
+          <p class="review-name">Michael R.</p>
+          <p class="review-location">Virginia Beach, VA</p>
+        </div>
+      </div>
+
+      <div class="review-card reveal reveal-d3">
+        <div class="review-stars">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
+        <p class="review-text">
+          Starting from a basic consultation, Brooks designed a complete outdoor living space with a flagstone patio, pergola, and a small koi pond that we absolutely love. They made the whole process easy and kept us informed at every step. This is the fourth project we have done with them over the past 12 years.
+        </p>
+        <div class="review-author">
+          <p class="review-name">Susan H.</p>
+          <p class="review-location">Chesapeake, VA</p>
+        </div>
+      </div>
+
+      <div class="review-placeholder reveal reveal-d4">
+        <p class="ph-icon">&#9733;</p>
+        <p>More reviews loading&nbsp;...</p>
+      </div>
+
+    </div>
+
+    <p class="reviews-note">
+      Reviews shown are illustrative examples. Real verified reviews coming soon.
+      <!-- [CONFIRM]: Google review count and current star rating not confirmed. Birdeye shows 4.6 stars / 16 reviews as of April 2026. -->
+    </p>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact">
+    <div class="contact-grid">
+
+      <div class="contact-info-block reveal">
+        <div class="section-header">
+          <p class="section-label">Get In Touch</p>
+          <h2 class="section-title">Ready to Transform Your Outdoor Space?</h2>
+        </div>
+        <p class="intro">
+          Tell us about your project and we will be in touch to schedule a free on-site consultation. We serve Chesapeake, Virginia Beach, Norfolk, and the greater Hampton Roads area.
+        </p>
+
+        <div class="contact-detail">
+          <svg class="cd-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M2 5l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="cd-text">
+            <a href="mailto:services@brooks-landscaping.com">services@brooks-landscaping.com</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <svg class="cd-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.684l1.06 3.18a1 1 0 01-.23 1.013L7.91 9.23a12.06 12.06 0 005.86 5.86l1.354-1.146a1 1 0 011.012-.23l3.18 1.06a1 1 0 01.684.95V17a2 2 0 01-2 2C7.716 19 1 12.284 1 5a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <div class="cd-text">
+            <a href="tel:+17574320053">(757) 432-0053</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <svg class="cd-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M10 11a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 2C6.686 2 4 4.686 4 8c0 4.418 6 10 6 10s6-5.582 6-10c0-3.314-2.686-6-6-6z" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <div class="cd-text">
+            2233 Centerville Turnpike South<br>
+            Chesapeake, VA 23322
+          </div>
+        </div>
+
+        <div class="hours-note">
+          <strong>Office Hours:</strong> Monday - Friday, 8:00 am - 4:00 pm<br>
+          Free on-site consultations available by appointment.
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <form class="contact-form" action="#" method="post">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(757) 555-0100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Type</label>
+            <select id="service" name="service">
+              <option value="" disabled selected>Select a service...</option>
+              <option value="landscape-design">Landscape Design &amp; Installation</option>
+              <option value="hardscapes">Hardscapes &amp; Pavers</option>
+              <option value="retaining-walls">Retaining Walls</option>
+              <option value="pool-design">Custom Pool Design</option>
+              <option value="pergolas">Pergolas &amp; Outdoor Living</option>
+              <option value="ponds-lighting">Ponds, Water Features &amp; Lighting</option>
+              <option value="not-sure">Not Sure - Need a Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell Us About Your Project</label>
+            <textarea id="message" name="message" placeholder="Describe your property, what you have in mind, or what problem you are trying to solve..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send My Request</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="footer-logo">
+      <img src="img/Brooks+Landscaping_logo.png" alt="Brooks Landscaping Inc">
+    </div>
+    <p class="footer-tagline">Landscape design and build excellence since 1976.</p>
+    <div class="footer-contact-line">
+      <a href="tel:+17574320053">(757) 432-0053</a>
+    </div>
+    <div class="footer-contact-line">
+      <span>2233 Centerville Turnpike South, Chesapeake, VA 23322</span>
+    </div>
+    <hr class="footer-divider">
+    <p class="footer-copy">&copy; 2026 Brooks Landscaping, Inc. All rights reserved.</p>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('main-nav');
+    const logoImg = document.getElementById('nav-logo-img');
+
+    function onScroll() {
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // init
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Force-reveal all scroll elements for screenshots / accessibility (1000ms fallback)
+    setTimeout(() => {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }, 1000);
+
+    // Simple form submission handler
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.form-submit');
+      btn.textContent = 'Message Sent!';
+      btn.style.background = 'var(--green-mid)';
+      btn.disabled = true;
+    });
+  </script>
+
+</body>
+</html>
