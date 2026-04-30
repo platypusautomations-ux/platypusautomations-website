@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tidewater Mobile Welding — On-Site Welding, Hampton Roads VA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:       #2E9BFF;
+    --blue-dim:   #1A6BBF;
+    --blue-glow:  rgba(46,155,255,0.25);
+    --navy:       #080D18;
+    --charcoal:   #0F1520;
+    --mid:        #172030;
+    --light:      #1F2C40;
+    --lighter:    #263550;
+    --white:      #FFFFFF;
+    --gray:       #7A91B2;
+    --light-gray: #A8BAD4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--charcoal);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(8,13,24,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--blue);
+    box-shadow: 0 2px 24px rgba(46,155,255,0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo-shield {
+    width: 34px; height: 34px;
+    background: var(--blue);
+    clip-path: polygon(50% 0%, 100% 15%, 100% 65%, 50% 100%, 0% 65%, 0% 15%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px var(--blue-glow);
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-phone {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s, text-shadow 0.2s;
+  }
+
+  .nav-phone:hover {
+    color: var(--white);
+    text-shadow: 0 0 12px var(--blue-glow);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg, rgba(8,13,24,0.92) 0%, rgba(8,13,24,0.72) 55%, rgba(8,13,24,0.38) 100%),
+      url('img/adPage.jpg') center/cover no-repeat;
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.07); }
+  }
+
+  /* spark overlay */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(46,155,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* blue left stripe */
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--blue) 0%, rgba(46,155,255,0.3) 100%);
+    z-index: 2;
+    box-shadow: 2px 0 20px var(--blue-glow);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 0 72px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(54px, 8.5vw, 114px);
+    line-height: 0.93;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s ease forwards;
+  }
+
+  .hero-title .accent {
+    color: var(--blue);
+    text-shadow: 0 0 40px rgba(46,155,255,0.45);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 500;
+    color: rgba(255,255,255,0.78);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.6s ease forwards;
+  }
+
+  .hero-tagline-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.7s ease forwards;
+  }
+
+  .hero-tag-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    border: 1px solid rgba(46,155,255,0.35);
+    padding: 5px 14px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.85s ease forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    color: var(--navy);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 17px 38px;
+    text-decoration: none;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(46,155,255,0.35);
+  }
+
+  .btn-primary:hover {
+    background: #5BB3FF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(46,155,255,0.5);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 38px;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.25);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    transform: translateY(-2px);
+  }
+
+  .hero-phone-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    background: var(--blue);
+    padding: 18px 48px 18px 72px;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s 1s ease forwards;
+  }
+
+  .hero-phone-bar-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(8,13,24,0.65);
+  }
+
+  .hero-phone-bar-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--navy);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+
+  .hero-phone-bar-number:hover { color: var(--charcoal); }
+
+  .hero-phone-bar-sep {
+    flex: 1;
+    height: 1px;
+    background: rgba(8,13,24,0.2);
+  }
+
+  .hero-phone-bar-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.7;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue) 0%, rgba(46,155,255,0.4) 50%, transparent 100%);
+  }
+
+  /* ── WHY TMW ── */
+  .why {
+    background: var(--navy);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why::before {
+    content: 'MOBILE';
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 130px;
+    color: rgba(46,155,255,0.04);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .why-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 66px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+
+  .section-title .accent {
+    color: var(--blue);
+    text-shadow: 0 0 30px rgba(46,155,255,0.3);
+  }
+
+  .why-body {
+    font-size: 17px;
+    line-height: 1.78;
+    color: rgba(255,255,255,0.68);
+    margin-bottom: 20px;
+  }
+
+  .why-body strong { color: var(--white); font-weight: 600; }
+
+  .why-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .why-card {
+    background: var(--mid);
+    padding: 30px 26px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .why-card:hover { background: var(--light); }
+
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .why-card:hover::before { transform: scaleX(1); }
+
+  .why-card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 6px var(--blue-glow));
+  }
+
+  .why-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .why-card-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--charcoal);
+    padding: 100px 48px;
+  }
+
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--mid);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background 0.25s, transform 0.25s;
+  }
+
+  .service-card:hover {
+    background: var(--light);
+    transform: translateY(-5px);
+    z-index: 1;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), rgba(46,155,255,0.3));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .service-card:hover::after {
+    transform: scaleX(1);
+    box-shadow: 0 0 12px var(--blue-glow);
+  }
+
+  .service-card-top {
+    height: 140px;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+
+  .service-card:hover .service-card-top {
+    background: var(--lighter);
+  }
+
+  .service-card-top-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(46,155,255,0.12) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover .service-card-top-glow { opacity: 1; }
+
+  .service-card-body {
+    padding: 28px 28px 32px;
+  }
+
+  .service-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    color: rgba(46,155,255,0.07);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.6;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    padding: 4px 10px;
+    border: 1px solid rgba(46,155,255,0.3);
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after {
+    background: var(--navy);
+    padding: 100px 48px;
+  }
+
+  .before-after-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .before-after-header {
+    margin-bottom: 60px;
+  }
+
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .ba-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    position: relative;
+  }
+
+  .ba-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .ba-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+    filter: brightness(0.88);
+  }
+
+  .ba-img-wrap:hover img { transform: scale(1.04); }
+
+  .ba-label {
+    position: absolute;
+    top: 12px; left: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    z-index: 2;
+  }
+
+  .ba-label.before {
+    background: rgba(0,0,0,0.7);
+    color: var(--gray);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .ba-label.after {
+    background: var(--blue);
+    color: var(--navy);
+  }
+
+  .ba-pair-divider {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: var(--blue);
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 0 12px var(--blue-glow);
+  }
+
+  .ba-pair-divider::before {
+    content: '→';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--blue);
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 0 16px var(--blue-glow);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--charcoal);
+    padding: 100px 48px;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-body {
+    font-size: 17px;
+    line-height: 1.78;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 44px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .contact-detail-icon {
+    width: 46px; height: 46px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    box-shadow: 0 4px 16px rgba(46,155,255,0.3);
+  }
+
+  .contact-detail-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-detail-text a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-detail-text a:hover { color: var(--blue); }
+
+  .contact-cta-box {
+    background: var(--mid);
+    padding: 52px 44px;
+    position: relative;
+    text-align: center;
+  }
+
+  .contact-cta-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), rgba(46,155,255,0.3));
+    box-shadow: 0 2px 12px var(--blue-glow);
+  }
+
+  .contact-cta-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(46,155,255,0.3), var(--blue));
+  }
+
+  .cta-spark {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(46,155,255,0.5));
+  }
+
+  .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .cta-headline .accent { color: var(--blue); }
+
+  .cta-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 36px;
+    line-height: 1.5;
+  }
+
+  .cta-phone-big {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    text-shadow: 0 0 30px rgba(46,155,255,0.4);
+    transition: text-shadow 0.2s;
+  }
+
+  .cta-phone-big:hover { text-shadow: 0 0 50px rgba(46,155,255,0.7); }
+
+  .cta-phone-note {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 36px;
+    display: block;
+  }
+
+  .cta-email-link {
+    display: inline-block;
+    font-size: 15px;
+    color: var(--gray);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(46,155,255,0.25);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .cta-email-link:hover {
+    color: var(--blue);
+    border-color: var(--blue);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 2px solid rgba(46,155,255,0.3);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-copy a {
+    color: rgba(46,155,255,0.5);
+    text-decoration: none;
+  }
+
+  .footer-copy a:hover { color: var(--blue); }
+
+  .footer-area {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px 0 36px; }
+    .hero-phone-bar { padding: 16px 24px; }
+    .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .why::before { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .ba-grid { grid-template-columns: 1fr; }
+    .why, .services, .before-after, .contact { padding: 72px 24px; }
+    footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 580px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .hero-phone-bar-sep { display: none; }
+    .why-cards { grid-template-columns: 1fr; }
+    .ba-pair { grid-template-columns: 1fr; }
+    .ba-pair-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-shield">⚡</div>
+    TIDEWATER <span>&nbsp;WELDING</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#why">Why TMW</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7578139220" class="nav-phone">(757) 813-9220</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Hampton Roads, VA &nbsp;·&nbsp; Mobile Welding Service</p>
+    <h1 class="hero-title">
+      Welding<br>
+      <span class="accent">Solutions</span><br>
+      That Come<br>
+      To You
+    </h1>
+    <p class="hero-sub">On-site welding, repairs, and fabrication across Hampton Roads. We come to your equipment — no hauling, no downtime.</p>
+    <div class="hero-tagline-row">
+      <span class="hero-tag-pill">On-Site</span>
+      <span class="hero-tag-pill">Reliable</span>
+      <span class="hero-tag-pill">Built To Last</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="tel:7578139220" class="btn-primary">📞 Call / Text For Fast Service</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-phone-bar">
+    <span class="hero-phone-bar-label">Call or Text</span>
+    <a href="tel:7578139220" class="hero-phone-bar-number">(757) 813-9220</a>
+    <div class="hero-phone-bar-sep"></div>
+    <span class="hero-phone-bar-cta">Professional · Dependable · Mobile</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY TMW -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="reveal">
+      <p class="section-tag">Why Choose TMW</p>
+      <h2 class="section-title">We Weld So You<br>Can Keep <span class="accent">Moving.</span></h2>
+      <p class="why-body">
+        Hauling broken equipment across town costs you time and money. Tidewater Mobile Welding <strong>comes to you</strong> — your yard, your job site, wherever the work is. Fast response, professional results.
+      </p>
+      <p class="why-body">
+        From heavy equipment repairs to custom fabrication, we handle it all with the skill and materials to do it right. <strong>Steel, aluminum, stainless</strong> — if it needs welding, we weld it.
+      </p>
+    </div>
+    <div class="why-cards reveal">
+      <div class="why-card">
+        <div class="why-card-icon">🚛</div>
+        <div class="why-card-title">We Come To You</div>
+        <div class="why-card-text">No hauling, no towing. We bring the equipment and expertise directly to your location.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">⚡</div>
+        <div class="why-card-title">Fast Response</div>
+        <div class="why-card-text">Call or text and get a fast response. We know downtime is money.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🏗️</div>
+        <div class="why-card-title">All Materials</div>
+        <div class="why-card-text">Mild steel, aluminum, stainless steel — structural and precision welds handled right.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🛡️</div>
+        <div class="why-card-title">Built To Last</div>
+        <div class="why-card-text">Every weld is done with craftsmanship. We don't patch it — we fix it for good.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-tag">What We Do</p>
+        <h2 class="section-title">On-Site <span class="accent">Welding</span> Services</h2>
+      </div>
+      <a href="tel:7578139220" class="btn-primary">📞 Call For Fast Service</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span>⚙️</span>
+          <div class="service-card-top-glow"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-number">01</div>
+          <div class="service-name">Heavy Equipment</div>
+          <div class="service-desc">Excavators, loaders, forklifts, and more — we repair structural and operational weld failures on heavy machinery at your site.</div>
+          <span class="service-tag">On-Site · Heavy Duty</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span>🚛</span>
+          <div class="service-card-top-glow"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-number">02</div>
+          <div class="service-name">Trailers</div>
+          <div class="service-desc">Cracked frames, broken goosenecks, damaged ramps and rails — trailer repairs done right so you can get back on the road.</div>
+          <span class="service-tag">Utility · Commercial · Flatbed</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span>🔧</span>
+          <div class="service-card-top-glow"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-number">03</div>
+          <div class="service-name">Fabrication</div>
+          <div class="service-desc">Custom metal fabrication built to your specs. Brackets, frames, guards, supports — designed and welded to fit your application.</div>
+          <span class="service-tag">Custom · Steel · Aluminum</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span>🔩</span>
+          <div class="service-card-top-glow"></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-number">04</div>
+          <div class="service-name">Repairs & Specialty</div>
+          <div class="service-desc">Aluminum, stainless steel, structural repairs — if it's broken and needs a welder, we handle it. Call us with your situation.</div>
+          <span class="service-tag">Aluminum · Stainless · Structural</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after" id="work">
+  <div class="before-after-inner">
+    <div class="before-after-header reveal">
+      <p class="section-tag">Our Work</p>
+      <h2 class="section-title">Before <span class="accent">&amp;</span> After</h2>
+    </div>
+
+    <div class="ba-grid">
+      <!-- Pair 1 -->
+      <div class="ba-pair reveal">
+        <div class="ba-img-wrap">
+          <span class="ba-label before">Before</span>
+          <img src="img/before.jpg" alt="Before welding repair">
+        </div>
+        <div class="ba-pair-divider"></div>
+        <div class="ba-img-wrap">
+          <span class="ba-label after">After</span>
+          <img src="img/after.jpg" alt="After welding repair">
+        </div>
+      </div>
+
+      <!-- Pair 2 -->
+      <div class="ba-pair reveal">
+        <div class="ba-img-wrap">
+          <span class="ba-label before">Before</span>
+          <img src="img/before2.jpg" alt="Before welding repair">
+        </div>
+        <div class="ba-pair-divider"></div>
+        <div class="ba-img-wrap">
+          <span class="ba-label after">After</span>
+          <img src="img/after2.jpg" alt="After welding repair">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-tag">Get In Touch</p>
+      <h2 class="section-title">Call Or Text.<br><span class="accent">Fast Response.</span></h2>
+      <p class="contact-body">
+        Describe your job and we'll get back to you fast. No complicated quotes, no runaround — just a straight answer on whether we can help and when we can be there.
+      </p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div class="contact-detail-text"><a href="tel:7578139220">(757) 813-9220</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉️</div>
+        <div class="contact-detail-text"><a href="mailto:TidewaterMobileWelding@gmail.com">TidewaterMobileWelding@gmail.com</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-text">Serving All of Hampton Roads, VA</div>
+      </div>
+    </div>
+
+    <div class="contact-cta-box reveal">
+      <span class="cta-spark">⚡</span>
+      <div class="cta-headline">Ready To <span class="accent">Weld?</span></div>
+      <p class="cta-sub">Call or text for fast service. We come to your equipment — no hauling needed.</p>
+      <a href="tel:7578139220" class="cta-phone-big">(757) 813-9220</a>
+      <span class="cta-phone-note">Call or Text · Fast Response</span>
+      <a href="mailto:TidewaterMobileWelding@gmail.com" class="cta-email-link">TidewaterMobileWelding@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TIDEWATER <span>MOBILE WELDING</span></div>
+  <div class="footer-area">Hampton Roads, VA · (757) 813-9220</div>
+  <div class="footer-copy">
+    © 2026 Tidewater Mobile Welding &nbsp;·&nbsp;
+    Site by <a href="https://platypusautomations.com" target="_blank">Platypus Automations</a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const revealList = Array.from(reveals);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = revealList.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 55);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0 });
+  reveals.forEach(el => observer.observe(el));
+  revealList.forEach((el, idx) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      setTimeout(() => el.classList.add('visible'), idx * 55);
+    }
+  });
+</script>
+
+</body>
+</html>
