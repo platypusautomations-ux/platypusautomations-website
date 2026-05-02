@@ -1002,8 +1002,41 @@ nav.scrolled {
   font-size: 1rem; font-weight: 300;
   color: rgba(255,255,255,0.48);
   max-width: 490px;
-  margin: 0 auto 56px;
+  margin: 0 auto 36px;
   line-height: 1.65;
+}
+.contact-phones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin: 0 auto 44px;
+}
+.contact-phone-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+.contact-phone-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+}
+.contact-phone-num {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  transition: color var(--trans-fast);
+}
+.contact-phone-item:hover .contact-phone-num { color: var(--orange); }
+.contact-phone-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.12);
 }
 .contact-card {
   max-width: 560px;
@@ -1614,6 +1647,18 @@ footer {
     <p class="contact-sub fade-up">
       Tell us about your business and we'll show you exactly what's possible. Free consultation. No commitment.
     </p>
+
+    <div class="contact-phones fade-up">
+      <a href="tel:7577651210" class="contact-phone-item">
+        <span class="contact-phone-label">Local</span>
+        <span class="contact-phone-num">(757) 765-1210</span>
+      </a>
+      <div class="contact-phone-divider"></div>
+      <a href="tel:8664797462" class="contact-phone-item">
+        <span class="contact-phone-label">Toll-Free</span>
+        <span class="contact-phone-num">(866) 479-7462</span>
+      </a>
+    </div>
 
     <div class="contact-card liquid-glass fade-up">
       <form id="contactForm">
