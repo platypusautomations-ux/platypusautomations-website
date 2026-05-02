@@ -201,7 +201,7 @@ nav.scrolled {
   -webkit-backdrop-filter: blur(20px);
   border-bottom-color: rgba(0,122,122,0.3);
 }
-.nav-logo img { height: 36px; object-fit: contain; }
+.nav-logo img { height: 63px; object-fit: contain; mix-blend-mode: screen; }
 
 .nav-pill {
   display: flex;
@@ -343,7 +343,7 @@ nav.scrolled {
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(3.8rem, calc(7.2vw * var(--font-scale)), calc(8rem * var(--font-scale)));
+  font-size: clamp(2.4rem, calc(5vw * var(--font-scale)), calc(5rem * var(--font-scale)));
   line-height: 0.86;
   letter-spacing: 0;
   color: #fff;
@@ -463,7 +463,7 @@ nav.scrolled {
 }
 .problem-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
   max-width: 1100px;
   margin: 0 auto;
@@ -515,16 +515,19 @@ nav.scrolled {
 #services {
   background: var(--navy);
   padding: 100px 48px 120px;
+  text-align: center;
 }
+#services .section-badge { margin: 0 auto 24px; }
 #services .section-heading {
   font-size: clamp(2.2rem, calc(3.6vw * var(--font-scale)), calc(3.8rem * var(--font-scale)));
   max-width: 700px;
-  margin-bottom: 96px;
+  margin: 0 auto 96px;
 }
 .services-stages {
   position: relative;
   max-width: 1100px;
   margin: 0 auto;
+  text-align: left;
 }
 .services-stages::before {
   content: '';
@@ -935,11 +938,13 @@ nav.scrolled {
 #how {
   background: var(--navy);
   padding: 120px 48px;
+  text-align: center;
 }
+#how .section-badge { margin: 0 auto 24px; }
 #how .section-heading {
   font-size: clamp(2rem, calc(3.6vw * var(--font-scale)), calc(3.8rem * var(--font-scale)));
   max-width: 600px;
-  margin-bottom: 72px;
+  margin: 0 auto 72px;
 }
 .steps-row {
   display: grid;
@@ -948,6 +953,7 @@ nav.scrolled {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  text-align: left;
 }
 .steps-row::before {
   content: '';
@@ -1091,8 +1097,8 @@ footer {
   gap: 24px;
   flex-wrap: wrap;
 }
-.footer-left { display: flex; flex-direction: column; gap: 7px; }
-.footer-left img { height: 28px; object-fit: contain; }
+.footer-left { display: flex; align-items: center; gap: 48px; }
+.footer-left img { height: 86px; object-fit: contain; mix-blend-mode: screen; }
 .footer-loc { font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.32); }
 .footer-links { display: flex; gap: 24px; align-items: center; }
 .footer-links a { font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.38); transition: color var(--trans-fast); }
@@ -1305,24 +1311,29 @@ footer {
   <div class="section-inner">
     <div class="section-badge liquid-glass fade-up">The Problem</div>
     <h2 class="section-heading blur-in fade-up" style="margin-bottom:64px">
-      Every missed call is a customer choosing your competitor.
+      Most businesses lose the customer before the phone ever rings.
     </h2>
 
     <div class="problem-grid">
       <div class="problem-card liquid-glass fade-up">
         <span class="p-num">01</span>
-        <h3>"62% of callers hang up if they reach voicemail."</h3>
-        <p>They don't leave a message. They call the next name on the list.</p>
+        <h3>"If you're not in the top 3 on Google, you don't exist."</h3>
+        <p>We claim, optimize, and build your Google presence so customers find you first.</p>
       </div>
       <div class="problem-card liquid-glass fade-up" style="transition-delay:.1s">
         <span class="p-num">02</span>
-        <h3>"78% of customers choose whoever responds first."</h3>
-        <p>Speed isn't a nice-to-have. It's the entire game.</p>
+        <h3>"4.2 stars is the minimum rating customers trust."</h3>
+        <p>Below that, they keep scrolling. We automate the review ask and the response so your rating climbs while you work.</p>
       </div>
       <div class="problem-card liquid-glass fade-up" style="transition-delay:.2s">
         <span class="p-num">03</span>
-        <h3>"4.2★ is the minimum rating customers trust."</h3>
-        <p>Below that, you're invisible. Above it, you dominate local search.</p>
+        <h3>"Your website is the first impression most customers never tell you about."</h3>
+        <p>We build sites that convert, not just exist. Backed by reviews and a live Google profile.</p>
+      </div>
+      <div class="problem-card liquid-glass fade-up" style="transition-delay:.3s">
+        <span class="p-num">04</span>
+        <h3>"62% of callers hang up if they reach voicemail."</h3>
+        <p>They don't leave a message. They call the next name on the list. We fire a text response in under 60 seconds.</p>
       </div>
     </div>
   </div>
@@ -1333,8 +1344,10 @@ footer {
   <div class="section-inner">
     <div class="section-badge liquid-glass fade-up">The Platypus System</div>
     <h2 class="section-heading blur-in" style="margin-bottom:96px">
-      Four stages. One system. Zero missed opportunities.
+      Four stages. One system. Your reputation grows while you're on the job.
     </h2>
+
+    <p class="fade-up" style="text-align:center;max-width:680px;margin:0 auto 80px;opacity:0.75;font-size:1.05rem;line-height:1.7;">We build your presence from the ground up. Get found, get trusted, get chosen, and never lose a lead when they reach out.</p>
 
     <div class="services-stages">
 
@@ -1343,7 +1356,7 @@ footer {
         <div class="stage-content">
           <span class="stage-badge teal">Stage 01</span>
           <h2>Answer in 2 seconds. Every time.</h2>
-          <p>The moment a call goes unanswered, our system fires an automated text response — personally worded, sent within 60 seconds. The lead stays warm. You stay in the running.</p>
+          <p>The moment a call goes unanswered, our system fires an automated text response. Personally worded, sent within 60 seconds. The lead stays warm. You stay in the running.</p>
           <ul class="feat-list">
             <li>Automated missed call text-back</li>
             <li>Lead logged to your dashboard</li>
@@ -1456,7 +1469,7 @@ footer {
         <div class="stage-content">
           <span class="stage-badge orange">Stage 04</span>
           <h2>Turn 5-star reviews into social proof. Automatically.</h2>
-          <p>Every 5-star review gets converted into a branded Facebook and Instagram post — no camera, no copywriter, no time. Your social presence grows on autopilot.</p>
+          <p>Every 5-star review gets converted into a branded Facebook and Instagram post. No camera, no copywriter, no time. Your social presence grows on autopilot.</p>
           <ul class="feat-list">
             <li>Auto-posts to Facebook &amp; Instagram</li>
             <li>Branded template per client</li>
@@ -1544,7 +1557,7 @@ footer {
   <div class="section-inner">
     <div class="section-badge liquid-glass fade-up">Who We Help</div>
     <h2 class="section-heading blur-in">Built for Hampton Roads trade businesses.</h2>
-    <p class="who-sub fade-up">If you built your business on word-of-mouth and your online presence doesn't show it, this is for you.</p>
+    <p class="who-sub fade-up">If your community knows your name but Google doesn't, this is for you.</p>
 
     <div class="trades-grid">
       <div class="trade-tile liquid-glass fade-up"><span class="trade-icon">🌿</span>Landscaping &amp; Lawn Care</div>
@@ -1587,7 +1600,7 @@ footer {
       <div class="step fade-up" style="transition-delay:.24s">
         <span class="step-num">03</span>
         <h3>We handle the rest</h3>
-        <p>Sit back. Your leads get answered. Your reviews grow. You work.</p>
+        <p>Sit back. Your leads get answered, your reviews grow, and your Google ranking climbs. You just do the work.</p>
       </div>
     </div>
   </div>
@@ -1597,7 +1610,7 @@ footer {
 <section id="contact">
   <div class="section-inner">
     <div class="section-badge liquid-glass fade-up">Get Started</div>
-    <h2 class="section-heading blur-in">Your next customer is calling right now.</h2>
+    <h2 class="section-heading blur-in">Every job you finish makes the next one easier to win.</h2>
     <p class="contact-sub fade-up">
       Tell us about your business and we'll show you exactly what's possible. Free consultation. No commitment.
     </p>
@@ -1638,14 +1651,14 @@ footer {
         </div>
         <div class="f-group">
           <label class="f-label" for="fmsg">Tell Us About Your Business</label>
-          <textarea class="f-area" id="fmsg" name="message" placeholder="How many calls do you get per week? What's your biggest challenge right now?"></textarea>
+          <textarea class="f-area" id="fmsg" name="message" placeholder="What does your online presence look like today? What's your biggest challenge right now?"></textarea>
         </div>
         <button type="submit" class="f-submit" id="fsubmit">Send Message →</button>
       </form>
       <div class="form-success" id="formSuccess">
         <span class="success-check">✓</span>
         <div class="success-head">Got it. We'll be in touch within 24 hours.</div>
-        <div class="success-sub">In the meantime, every call your business receives is a lead waiting to be captured.</div>
+        <div class="success-sub">Your digital presence is already working. We'll make sure it shows.</div>
       </div>
     </div>
   </div>
@@ -1654,7 +1667,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
-    <img src="pa_wordmark_transparent.png" alt="Platypus Automations" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block">
+    <img src="pa_wordmark_transparent.png" alt="Platypus Automations" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block;mix-blend-mode:screen">
     <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,0.7);letter-spacing:-0.3px">Platypus Automations</span>
     <span class="footer-loc">Chesapeake, VA · Serving Hampton Roads</span>
   </div>
