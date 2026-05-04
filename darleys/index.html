@@ -18,6 +18,8 @@
             --bg-white: #FFFFFF;
             --bg-alt: #F0EDE8;
             --bg-footer: #E8E4DE;
+            --blue: #2E7BB5;
+            --blue-light: #EBF4FB;
             --orange: #E05800;
             --orange-hot: #F06520;
             --orange-dim: rgba(224, 88, 0, 0.12);
@@ -84,6 +86,12 @@
             color: var(--text-dark);
             margin-bottom: 3rem;
         }
+
+        /* Blue section labels for services and reviews */
+        .services-section .section-label,
+        .reviews-section .section-label { color: var(--blue); }
+        .services-section .section-label::before,
+        .reviews-section .section-label::before { background: var(--blue); }
 
         /* =========================================
            Scroll Reveal
@@ -367,7 +375,7 @@
            Trust Bar
         ========================================= */
         .trust-bar {
-            background: var(--orange);
+            background: var(--blue);
             padding: 0.9rem 2rem;
         }
         .trust-bar-inner {
@@ -456,7 +464,7 @@
         ========================================= */
         .services-section {
             padding: 6rem 0;
-            background: var(--bg-alt);
+            background: var(--blue-light);
         }
 
         .services-intro { padding: 0 2rem; }
@@ -470,7 +478,7 @@
         }
 
         .service-card {
-            background: var(--bg-alt);
+            background: var(--blue-light);
             padding: 2.5rem 2rem;
             position: relative;
             overflow: hidden;
@@ -582,7 +590,7 @@
         .byline-initial {
             width: 38px;
             height: 38px;
-            background: var(--orange);
+            background: var(--blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
