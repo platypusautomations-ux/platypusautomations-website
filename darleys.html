@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darley's HVAC and Refrigeration | Portsmouth, VA | South Hampton Roads</title>
+    <meta name="description" content="Owner-operated HVAC and commercial refrigeration serving South Hampton Roads since 2010. Honest prices, real experience, available when it matters. Call Chris: 757-465-1911.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           Variables
+        ========================================= */
+        :root {
+            --navy-0: #050C1A;
+            --navy-1: #080F1E;
+            --navy-2: #0D1B36;
+            --navy-3: #142444;
+            --navy-4: #1C3060;
+            --orange: #E05800;
+            --orange-hot: #F06520;
+            --orange-dim: rgba(224, 88, 0, 0.12);
+            --white: #FFFFFF;
+            --off-white: #EEF2F7;
+            --muted: #7D92B0;
+            --border: rgba(255, 255, 255, 0.07);
+            --separator: rgba(255, 255, 255, 0.05);
+        }
+
+        /* =========================================
+           Reset
+        ========================================= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--navy-1);
+            color: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* =========================================
+           Utility
+        ========================================= */
+        .inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .section-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.4rem, 4.5vw, 4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            line-height: 1.0;
+            color: var(--white);
+            margin-bottom: 3rem;
+        }
+
+        /* =========================================
+           Scroll Reveal
+        ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.08s; }
+        .d2 { transition-delay: 0.16s; }
+        .d3 { transition-delay: 0.24s; }
+        .d4 { transition-delay: 0.32s; }
+        .d5 { transition-delay: 0.40s; }
+
+        /* =========================================
+           Top Brand Stripe
+        ========================================= */
+        .brand-stripe {
+            height: 3px;
+            background: var(--orange);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+        }
+
+        /* =========================================
+           Navigation
+        ========================================= */
+        nav {
+            position: fixed;
+            top: 3px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(5, 12, 26, 0.96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 1px 0 var(--border);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            gap: 2px;
+        }
+        .nav-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+        .nav-sub {
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .nav-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: var(--orange);
+            color: var(--white);
+            padding: 0.55rem 1.2rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            min-height: 44px;
+            transition: background 0.2s ease;
+        }
+        .nav-phone:hover { background: var(--orange-hot); }
+        .nav-phone svg { flex-shrink: 0; }
+
+        /* =========================================
+           Hero
+        ========================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--navy-1);
+            overflow: hidden;
+        }
+
+        /* Grid texture */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 56px 56px;
+            pointer-events: none;
+        }
+
+        /* Orange diagonal accent */
+        .hero-accent {
+            position: absolute;
+            top: -15%;
+            right: -8%;
+            width: 42%;
+            height: 130%;
+            background: linear-gradient(160deg, transparent 38%, rgba(224, 88, 0, 0.06) 55%, transparent 72%);
+            transform: skewX(-6deg);
+            pointer-events: none;
+        }
+
+        /* Ghost year */
+        .hero-ghost {
+            position: absolute;
+            bottom: -0.05em;
+            right: -0.02em;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(10rem, 22vw, 26rem);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.025);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 9rem 2rem 6rem;
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.75rem;
+            opacity: 0;
+            animation: heroFadeUp 0.6s ease 0.15s forwards;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .hero-headline {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.8rem, 7vw, 6.8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.97;
+            letter-spacing: -0.01em;
+            color: var(--white);
+            max-width: 860px;
+            margin-bottom: 1.75rem;
+            opacity: 0;
+            animation: heroFadeUp 0.7s ease 0.3s forwards;
+        }
+        .hero-headline .hl-orange { color: var(--orange); }
+        .hero-headline .hl-thin {
+            font-weight: 400;
+            font-style: italic;
+            color: var(--off-white);
+            opacity: 0.75;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 1.7vw, 1.2rem);
+            color: #9FB3CC;
+            max-width: 510px;
+            line-height: 1.7;
+            font-weight: 400;
+            margin-bottom: 2.75rem;
+            opacity: 0;
+            animation: heroFadeUp 0.7s ease 0.45s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: heroFadeUp 0.7s ease 0.6s forwards;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--orange);
+            color: var(--white);
+            padding: 1rem 2.25rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            min-height: 54px;
+            transition: background 0.2s ease, transform 0.18s ease;
+        }
+        .btn-primary:hover { background: var(--orange-hot); transform: translateY(-2px); }
+
+        .hero-number {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+        }
+        .hero-number a { color: var(--white); transition: color 0.2s; }
+        .hero-number a:hover { color: var(--orange); }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: heroFadeIn 1s ease 1.4s forwards;
+        }
+        .scroll-hint span {
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .scroll-bar {
+            width: 1px;
+            height: 44px;
+            background: linear-gradient(to bottom, var(--muted), transparent);
+            animation: scrollPulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(18px); }
+        }
+        @keyframes heroFadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.85; }
+        }
+
+        /* =========================================
+           Trust Bar
+        ========================================= */
+        .trust-bar {
+            background: var(--orange);
+            padding: 0.9rem 2rem;
+        }
+        .trust-bar-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            white-space: nowrap;
+        }
+        .trust-dot {
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.45);
+            border-radius: 50%;
+        }
+
+        /* =========================================
+           Proof Points
+        ========================================= */
+        .proof-section {
+            padding: 6rem 0;
+            background: var(--navy-2);
+        }
+
+        .proof-intro {
+            padding: 0 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--separator);
+        }
+
+        .proof-item {
+            background: var(--navy-2);
+            padding: 2.25rem 2.25rem 2.25rem 2.5rem;
+            border-left: 3px solid var(--orange);
+            position: relative;
+            transition: background 0.22s ease;
+        }
+        .proof-item:hover { background: var(--navy-3); }
+
+        .proof-num {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.75rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(224, 88, 0, 0.13);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .proof-text {
+            font-size: 1.05rem;
+            color: #C0D0E2;
+            line-height: 1.6;
+            max-width: 340px;
+        }
+        .proof-text strong { color: var(--white); font-weight: 600; }
+
+        /* last two items span half each in bottom row */
+        .proof-item:nth-child(4) { grid-column: 1 / 2; }
+        .proof-item:nth-child(5) { grid-column: 2 / 3; }
+
+        /* =========================================
+           Services
+        ========================================= */
+        .services-section {
+            padding: 6rem 0;
+            background: var(--navy-1);
+        }
+
+        .services-intro { padding: 0 2rem; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--separator);
+            margin-top: 3.5rem;
+        }
+
+        .service-card {
+            background: var(--navy-1);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.22s ease;
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover { background: var(--navy-2); }
+        .service-card:hover::after { transform: scaleX(1); }
+
+        .service-icon {
+            width: 38px;
+            height: 38px;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-desc {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* =========================================
+           Reviews
+        ========================================= */
+        .reviews-section {
+            padding: 6rem 0;
+            background: var(--navy-3);
+        }
+
+        .reviews-intro { padding: 0 2rem; }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+            padding: 0 2rem;
+        }
+
+        .review-card {
+            background: var(--navy-2);
+            padding: 2.5rem 2.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-card::before {
+            content: '\201C';
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 8rem;
+            line-height: 0.8;
+            color: var(--orange);
+            opacity: 0.18;
+            position: absolute;
+            top: 1.25rem;
+            left: 1.75rem;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 1.25rem;
+        }
+        .star { color: var(--orange); font-size: 0.95rem; }
+
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: #C0D0E2;
+            margin-bottom: 1.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-byline {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .byline-initial {
+            width: 38px;
+            height: 38px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .byline-text { display: flex; flex-direction: column; gap: 1px; }
+        .byline-name { font-weight: 600; font-size: 0.95rem; color: var(--white); }
+        .byline-source { font-size: 0.78rem; color: var(--muted); }
+
+        /* =========================================
+           Contact
+        ========================================= */
+        .contact-section {
+            padding: 6rem 0;
+            background: var(--navy-1);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--orange) 40%, var(--orange) 60%, transparent);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-headline {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.0;
+            color: var(--white);
+            margin-bottom: 1.25rem;
+        }
+        .contact-headline .hl-orange { color: var(--orange); }
+
+        .contact-subtext {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 400px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .contact-field { display: flex; flex-direction: column; gap: 0.3rem; }
+
+        .contact-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+            line-height: 1.1;
+        }
+        .contact-value:hover { color: var(--orange); }
+        .contact-value.email { font-size: 1.5rem; }
+
+        /* =========================================
+           Footer
+        ========================================= */
+        footer {
+            background: var(--navy-0);
+            border-top: 1px solid var(--border);
+            padding: 1.75rem 2rem;
+        }
+        .footer-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-brand {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+        .footer-info {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+        .footer-spec {
+            font-size: 0.7rem;
+            color: rgba(125, 146, 176, 0.4);
+        }
+
+        /* =========================================
+           Responsive
+        ========================================= */
+        @media (max-width: 900px) {
+            .proof-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .proof-item:nth-child(4),
+            .proof-item:nth-child(5) {
+                grid-column: auto;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav { padding: 0.9rem 1.25rem; }
+            nav.scrolled { padding: 0.7rem 1.25rem; }
+
+            .nav-phone {
+                padding: 0.5rem 0.9rem;
+                font-size: 0.88rem;
+            }
+
+            .hero-content { padding: 7.5rem 1.25rem 5rem; }
+
+            .hero-ghost { font-size: clamp(6rem, 28vw, 10rem); }
+
+            .scroll-hint { display: none; }
+
+            .trust-bar-inner {
+                gap: 0.5rem;
+                flex-direction: column;
+                text-align: center;
+            }
+            .trust-dot { display: none; }
+            .trust-item { font-size: 0.85rem; white-space: normal; justify-content: center; }
+
+            .proof-grid { grid-template-columns: 1fr; }
+            .proof-item:nth-child(4),
+            .proof-item:nth-child(5) { grid-column: auto; }
+
+            .services-grid { grid-template-columns: 1fr; }
+
+            .inner { padding: 0 1.25rem; }
+
+            .proof-intro,
+            .services-intro,
+            .reviews-intro { padding: 0 1.25rem; }
+
+            .reviews-grid { padding: 0 1.25rem; }
+
+            .section-heading { margin-bottom: 2rem; }
+
+            .proof-section,
+            .services-section,
+            .reviews-section,
+            .contact-section { padding: 4rem 0; }
+
+            .contact-value { font-size: 1.9rem; }
+            .contact-value.email { font-size: 1.2rem; }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .btn-primary { width: 100%; justify-content: center; }
+
+            .footer-inner { flex-direction: column; gap: 0.4rem; }
+            .footer-spec { text-align: left; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-headline { font-size: 2.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="brand-stripe"></div>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <div class="nav-brand">
+            <span class="nav-name">Darley's HVAC</span>
+            <span class="nav-sub">and Refrigeration</span>
+        </div>
+        <a href="tel:7574651911" class="nav-phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+            757-465-1911
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-accent" aria-hidden="true"></div>
+        <div class="hero-ghost" aria-hidden="true">2010</div>
+
+        <div class="hero-content">
+            <div class="hero-eyebrow">Portsmouth, VA &nbsp;&middot;&nbsp; South Hampton Roads</div>
+
+            <h1 class="hero-headline">
+                Stop Paying<br>
+                <span class="hl-orange">the Big Company</span><br>
+                <span class="hl-thin">Premium.</span>
+            </h1>
+
+            <p class="hero-sub">
+                Darley's HVAC and Refrigeration has been serving South Hampton Roads since 2010. Owner-operated, always available, and consistently thousands less than the competition.
+            </p>
+
+            <div class="hero-actions">
+                <a href="tel:7574651911" class="btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                    Call Chris Now
+                </a>
+                <div class="hero-number">
+                    <a href="tel:7574651911">757-465-1911</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-hint" aria-hidden="true">
+            <span>Scroll</span>
+            <div class="scroll-bar"></div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                Serving South Hampton Roads Since 2010
+            </div>
+            <div class="trust-dot"></div>
+            <div class="trust-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                Family Owned
+            </div>
+            <div class="trust-dot"></div>
+            <div class="trust-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                Emergency Service Available
+            </div>
+        </div>
+    </div>
+
+    <!-- Proof Points -->
+    <section class="proof-section">
+        <div class="proof-intro inner">
+            <div class="section-label reveal">Why People Choose Darley's</div>
+            <h2 class="section-heading reveal d1">The Numbers<br>Speak for Themselves.</h2>
+        </div>
+        <div class="inner" style="max-width:1160px;margin:0 auto;padding:0;">
+            <div class="proof-grid">
+                <div class="proof-item reveal">
+                    <div class="proof-num">01</div>
+                    <p class="proof-text"><strong>$9,000 saved</strong> for one customer after a large competitor quoted nearly triple the price for the same work.</p>
+                </div>
+                <div class="proof-item reveal d1">
+                    <div class="proof-num">02</div>
+                    <p class="proof-text"><strong>On-site within 30 minutes</strong> for a restaurant refrigeration emergency. No scheduling, no waiting, no runaround.</p>
+                </div>
+                <div class="proof-item reveal d2">
+                    <div class="proof-num">03</div>
+                    <p class="proof-text"><strong>Same-day diagnosis and repair</strong> as the standard, not a premium. Your time is not a bargaining chip.</p>
+                </div>
+                <div class="proof-item reveal d3">
+                    <div class="proof-num">04</div>
+                    <p class="proof-text"><strong>Available late nights and weekends.</strong> When your AC dies in July, you need someone who actually answers the phone.</p>
+                </div>
+                <div class="proof-item reveal d4">
+                    <div class="proof-num">05</div>
+                    <p class="proof-text"><strong>Fixes equipment, not sales quotas.</strong> Chris repairs what works instead of pushing replacements to pad the bill.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section" id="services">
+        <div class="services-intro inner">
+            <div class="section-label reveal">What We Do</div>
+            <h2 class="section-heading reveal d1">HVAC, Refrigeration,<br>and Everything Between.</h2>
+        </div>
+        <div class="inner" style="max-width:1160px;margin:0 auto;padding:0;">
+            <div class="services-grid">
+
+                <div class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9.75 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21M6.375 7.5h11.25a1.125 1.125 0 010 2.25H6.375a1.125 1.125 0 010-2.25z"/>
+                    </svg>
+                    <div class="service-title">HVAC Repair and Maintenance</div>
+                    <p class="service-desc">Full-service repair and preventive maintenance for residential and light commercial systems. Done right the first time.</p>
+                </div>
+
+                <div class="service-card reveal d1">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    </svg>
+                    <div class="service-title">Air Conditioning Repair</div>
+                    <p class="service-desc">Fast diagnosis and repair for central AC, mini-splits, and all residential systems across South Hampton Roads.</p>
+                </div>
+
+                <div class="service-card reveal d2">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.481z"/>
+                        <path d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/>
+                    </svg>
+                    <div class="service-title">Furnace Repair</div>
+                    <p class="service-desc">Heat exchangers, ignitors, blower motors. Diagnosed accurately and repaired without the upsell pressure.</p>
+                </div>
+
+                <div class="service-card reveal d1">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/>
+                    </svg>
+                    <div class="service-title">Commercial Refrigeration</div>
+                    <p class="service-desc">Walk-ins, reach-ins, freezers, and display cases. Keeping your inventory cold and your operation running.</p>
+                </div>
+
+                <div class="service-card reveal d2">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div class="service-title">Kegarator and Restaurant Equipment</div>
+                    <p class="service-desc">Bars, restaurants, and food service operations. Fast turnaround when your draft system or kitchen equipment goes down.</p>
+                </div>
+
+                <div class="service-card reveal d3">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
+                    </svg>
+                    <div class="service-title">Emergency Service</div>
+                    <p class="service-desc">Nights, weekends, holidays. When it's a real emergency, Chris picks up and shows up. No voicemail, no call center.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews-section" id="reviews">
+        <div class="reviews-intro inner">
+            <div class="section-label reveal">What Customers Say</div>
+            <h2 class="section-heading reveal d1">Real Results.<br>Real People.</h2>
+        </div>
+        <div class="reviews-grid">
+
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <p class="review-text">
+                    "A large company quoted me $4,500 just to repair my AC, or $13,000 to replace it. Chris replaced the whole unit for under $5,000. Done in four days, right in the middle of the hottest week of the year. I saved close to $9,000."
+                </p>
+                <div class="review-byline">
+                    <div class="byline-initial">M</div>
+                    <div class="byline-text">
+                        <span class="byline-name">Maureen</span>
+                        <span class="byline-source">Google Review</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card reveal d1">
+                <div class="review-stars">
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <p class="review-text">
+                    "Called about a kegarator issue at our restaurant. Their technician was on-site in 30 minutes, extremely professional. We will be using Darley's exclusively from here on out."
+                </p>
+                <div class="review-byline">
+                    <div class="byline-initial">B</div>
+                    <div class="byline-text">
+                        <span class="byline-name">Brian</span>
+                        <span class="byline-source">Google Review</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card reveal d2">
+                <div class="review-stars">
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <p class="review-text">
+                    "Got same-day service. The AC issue was diagnosed and fixed quickly, no drawn-out process. Darley's will be my go-to from here on out."
+                </p>
+                <div class="review-byline">
+                    <div class="byline-initial">D</div>
+                    <div class="byline-text">
+                        <span class="byline-name">Donna</span>
+                        <span class="byline-source">Google Review</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+        <div class="inner">
+            <div class="contact-grid">
+                <div>
+                    <div class="section-label reveal">Get in Touch</div>
+                    <h2 class="contact-headline reveal d1">
+                        Ready to<br>
+                        <span class="hl-orange">Stop</span> Overpaying?
+                    </h2>
+                    <p class="contact-subtext reveal d2">
+                        No hold music. No call centers. No scheduling two weeks out. When you call Darley's, you're talking to someone who can actually help.
+                    </p>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-field reveal">
+                        <span class="contact-label">Phone</span>
+                        <a href="tel:7574651911" class="contact-value">757-465-1911</a>
+                    </div>
+                    <div class="contact-field reveal d1">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:darleys413@gmail.com" class="contact-value email">darleys413@gmail.com</a>
+                    </div>
+                    <div class="reveal d2">
+                        <a href="tel:7574651911" class="btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                            Call Chris Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">Darley's HVAC and Refrigeration</div>
+            <div class="footer-info">Portsmouth, VA &nbsp;&middot;&nbsp; Serving South Hampton Roads Since 2010</div>
+            <div class="footer-spec">Spec site by Platypus Automations</div>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll state
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Fallback: if user hasn't scrolled after 1.2s (e.g. screenshot tools),
+        // reveal everything so content is always visible.
+        let scrolled = false;
+        window.addEventListener('scroll', () => { scrolled = true; }, { once: true, passive: true });
+        setTimeout(() => {
+            if (!scrolled) {
+                document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+            }
+        }, 1200);
+    </script>
+</body>
+</html>
