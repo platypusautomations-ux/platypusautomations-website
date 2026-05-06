@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grizzard Repair Services | Mobile Marine Mechanic | Hampton Roads, VA</title>
+    <meta name="description" content="Mobile marine mechanic serving all of Hampton Roads. Carlton Grizzard — 30 years experience, ABYC certified, 90-day warranty. He comes to your dock. Call or text (757) 814-5958.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Big+Shoulders+Display:wght@900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =============================================
+           Variables
+        ============================================= */
+        :root {
+            --bg:          #ffffff;
+            --bg-alt:      #f3f7fd;
+            --bg-dark:     #0d1e36;
+            --blue:        #1B5FAA;
+            --blue-light:  #2a74c9;
+            --blue-dim:    rgba(27, 95, 170, 0.08);
+            --blue-border: rgba(27, 95, 170, 0.18);
+            --text:        #0d1e36;
+            --muted:       rgba(13, 30, 54, 0.52);
+            --muted-hi:    rgba(13, 30, 54, 0.80);
+        }
+
+        /* =============================================
+           Reset
+        ============================================= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* =============================================
+           Scroll Reveal
+        ============================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.10s; }
+        .d2 { transition-delay: 0.20s; }
+        .d3 { transition-delay: 0.30s; }
+        .d4 { transition-delay: 0.40s; }
+
+        /* =============================================
+           Utility
+        ============================================= */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 0.9rem;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--blue);
+            flex-shrink: 0;
+        }
+
+        /* =============================================
+           Buttons
+        ============================================= */
+        .btn-blue {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: var(--blue);
+            color: #fff;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 1rem 2.4rem;
+            border-radius: 2px;
+            min-height: 52px;
+            transition: background 0.2s ease, transform 0.18s ease;
+        }
+        .btn-blue:hover { background: var(--blue-light); transform: translateY(-2px); }
+        .btn-blue svg { flex-shrink: 0; }
+
+        .btn-white-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.65);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 0.9rem 2.2rem;
+            border-radius: 2px;
+            min-height: 52px;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.18s ease;
+        }
+        .btn-white-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+        .btn-white-outline svg { flex-shrink: 0; }
+
+        .btn-blue-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: transparent;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 0.9rem 2.2rem;
+            border-radius: 2px;
+            min-height: 52px;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.18s ease;
+        }
+        .btn-blue-outline:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .btn-blue-outline svg { flex-shrink: 0; }
+
+        /* =============================================
+           Navigation
+        ============================================= */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--blue-border);
+            transition: box-shadow 0.35s ease, padding 0.3s ease;
+        }
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(13, 30, 54, 0.10);
+            padding: 0.6rem 2rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .nav-logo img {
+            height: 52px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--text);
+            transition: color 0.2s ease;
+        }
+        .nav-phone svg { color: var(--blue); flex-shrink: 0; }
+        .nav-phone:hover { color: var(--blue); }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--blue);
+            color: #fff;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.1rem;
+            border-radius: 2px;
+            min-height: 40px;
+            transition: background 0.2s ease;
+        }
+        .nav-cta:hover { background: var(--blue-light); }
+
+        /* =============================================
+           Hero
+        ============================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('img/twin-diesel.jpg') center 40% / cover no-repeat;
+            animation: heroZoom 14s ease-out forwards;
+            will-change: transform;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1.06); }
+            to   { transform: scale(1.0); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, rgba(8, 18, 40, 0.85) 0%, rgba(27, 95, 170, 0.30) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 5rem;
+            max-width: 800px;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.80);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.15s forwards;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.55);
+            flex-shrink: 0;
+        }
+
+        h1.hero-headline {
+            font-family: 'Big Shoulders Display', 'Barlow Condensed', sans-serif;
+            font-size: clamp(3.2rem, 9vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.92;
+            letter-spacing: 0.01em;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.3s forwards;
+        }
+        h1.hero-headline em {
+            font-style: normal;
+            color: #8bbfed;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 1.9vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.80);
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 560px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.45s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.6s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =============================================
+           Stat Strip
+        ============================================= */
+        .stat-strip {
+            background: var(--blue);
+        }
+        .stat-strip-inner {
+            display: flex;
+            flex-wrap: wrap;
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .stat-item {
+            flex: 1;
+            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.6rem 1.25rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            text-align: center;
+        }
+        .stat-value {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+        .stat-label {
+            font-size: 0.63rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.65);
+            margin-top: 0.35rem;
+        }
+
+        /* =============================================
+           Services
+        ============================================= */
+        .services {
+            background: var(--bg);
+            padding: 6rem 0;
+        }
+
+        .services-header {
+            margin-bottom: 3rem;
+        }
+
+        .services-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.6rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            line-height: 1.0;
+            color: var(--text);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--blue-border);
+        }
+
+        .service-card {
+            background: var(--bg);
+            padding: 2.75rem 2rem;
+            border-top: 3px solid var(--blue);
+            transition: background 0.25s ease;
+        }
+        .service-card:hover { background: var(--bg-alt); }
+
+        .service-icon {
+            width: 34px;
+            height: 34px;
+            color: var(--blue);
+            margin-bottom: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .service-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 0.9rem;
+        }
+
+        .service-desc {
+            font-size: 0.93rem;
+            color: var(--muted);
+            line-height: 1.72;
+        }
+
+        /* =============================================
+           About
+        ============================================= */
+        .about {
+            background: var(--bg-alt);
+            padding: 6rem 0;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            color: var(--text);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-body {
+            font-size: clamp(0.98rem, 1.8vw, 1.08rem);
+            line-height: 1.85;
+            color: var(--muted-hi);
+            font-weight: 400;
+            margin-bottom: 1.1rem;
+        }
+        .about-body:last-of-type { margin-bottom: 0; }
+
+        .about-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 2rem;
+        }
+
+        .about-pill {
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            border: 1px solid var(--blue-border);
+            padding: 0.38rem 0.85rem;
+            border-radius: 1px;
+        }
+
+        .about-photo {
+            overflow: hidden;
+            border-radius: 2px;
+            border-top: 3px solid var(--blue);
+        }
+        .about-photo img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* =============================================
+           Gallery
+        ============================================= */
+        .gallery {
+            background: var(--bg);
+            padding: 6rem 0;
+        }
+
+        .gallery-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .gallery-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.6rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            line-height: 1.0;
+            color: var(--text);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 2px;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.04); }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(13, 30, 54, 0.88), transparent);
+            padding: 1.5rem 1rem 0.85rem;
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.80);
+        }
+
+        /* =============================================
+           Featured Review — Zeller
+        ============================================= */
+        .featured-review {
+            background: var(--blue);
+            padding: 5rem 0;
+        }
+
+        .zeller-inner {
+            max-width: 880px;
+            margin: 0 auto;
+            border-left: 4px solid rgba(255, 255, 255, 0.35);
+            padding-left: 3rem;
+        }
+
+        .zeller-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1.4rem;
+        }
+        .zeller-stars .star { color: #ffd166; font-size: 1.05rem; }
+
+        .zeller-quote {
+            font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+            line-height: 1.78;
+            color: rgba(255, 255, 255, 0.92);
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .zeller-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #fff;
+        }
+
+        .zeller-credential {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.60);
+            margin-top: 0.35rem;
+        }
+
+        .zeller-via {
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.38);
+            margin-top: 0.3rem;
+        }
+
+        /* =============================================
+           Reviews Grid
+        ============================================= */
+        .reviews {
+            background: var(--bg);
+            padding: 6rem 0;
+        }
+
+        .reviews-header {
+            margin-bottom: 3rem;
+        }
+
+        .reviews-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.6rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            line-height: 1.0;
+            color: var(--text);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .review-card {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--blue);
+            padding: 2.25rem 2rem 2rem 2.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-glyph {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 7rem;
+            line-height: 0.75;
+            color: var(--blue);
+            opacity: 0.10;
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 1.1rem;
+        }
+        .star { color: #e6a817; font-size: 0.85rem; }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.80;
+            color: var(--muted-hi);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-name {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--blue);
+        }
+
+        .review-source {
+            font-size: 0.62rem;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.2rem;
+        }
+
+        /* =============================================
+           CTA Band
+        ============================================= */
+        .cta-band {
+            background: var(--bg-dark);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+        .cta-band::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--blue);
+        }
+
+        .cta-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-sub {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.50);
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.03em;
+        }
+
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-email {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.38);
+            margin-top: 1.75rem;
+            letter-spacing: 0.04em;
+        }
+        .cta-email a {
+            color: rgba(255, 255, 255, 0.58);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .cta-email a:hover { color: #fff; }
+
+        /* =============================================
+           Footer
+        ============================================= */
+        footer {
+            background: #060e1c;
+            border-top: 1px solid rgba(27, 95, 170, 0.22);
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .footer-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .footer-phone {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.75);
+            transition: color 0.2s ease;
+        }
+        .footer-phone:hover { color: #8bbfed; }
+
+        .footer-location {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.30);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-credit {
+            font-size: 0.68rem;
+            color: rgba(255, 255, 255, 0.16);
+            letter-spacing: 0.04em;
+            margin-top: 0.5rem;
+        }
+        .footer-credit a {
+            color: rgba(255, 255, 255, 0.26);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .footer-credit a:hover { color: #8bbfed; }
+
+        /* =============================================
+           Responsive — 900px
+        ============================================= */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid  { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid  { grid-template-columns: repeat(2, 1fr); }
+            .about-layout  { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-photo   { order: -1; }
+        }
+
+        /* =============================================
+           Responsive — 768px
+        ============================================= */
+        @media (max-width: 768px) {
+            .services { padding: 4rem 0; }
+            .about    { padding: 4rem 0; }
+            .gallery  { padding: 4rem 0; }
+            .reviews  { padding: 4rem 0; }
+            .cta-band { padding: 4rem 0; }
+            .featured-review { padding: 3.5rem 0; }
+            .zeller-inner { padding-left: 1.5rem; }
+            .nav-phone { display: none; }
+        }
+
+        /* =============================================
+           Responsive — 480px
+        ============================================= */
+        @media (max-width: 480px) {
+            nav { padding: 0.7rem 1.25rem; }
+            nav.scrolled { padding: 0.55rem 1.25rem; }
+
+            .nav-logo img { height: 42px; }
+
+            .container { padding: 0 1.25rem; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .reviews-grid  { grid-template-columns: 1fr; }
+            .gallery-grid  { grid-template-columns: 1fr; }
+
+            .stat-strip-inner { flex-direction: column; }
+            .stat-item {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            }
+            .stat-item:last-child { border-bottom: none; }
+
+            .hero-actions { width: 100%; flex-direction: column; }
+            .btn-blue,
+            .btn-white-outline { width: 100%; justify-content: center; font-size: 1.1rem; }
+
+            .cta-actions { flex-direction: column; align-items: stretch; }
+            .cta-actions .btn-blue,
+            .cta-actions .btn-white-outline { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-logo">
+            <img src="img/logo.png" alt="Grizzard Repair Services">
+        </div>
+        <div class="nav-right">
+            <a href="tel:7578145958" class="nav-phone">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                (757) 814-5958
+            </a>
+            <a href="tel:7578145958" class="nav-cta">Call or Text</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-eyebrow">Hampton, VA &nbsp;&middot;&nbsp; Serving All of Hampton Roads</div>
+                <h1 class="hero-headline">
+                    Mobile<br>Marine<br>Mechanic.<br><em>He Comes<br>to You.</em>
+                </h1>
+                <p class="hero-tagline">
+                    30 years of hands-on experience. ABYC certified in diesel engines and marine electrical. Carlton comes to your dock, your marina, your trailer — you don't haul the boat anywhere.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:7578145958" class="btn-blue">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                        Call or Text Carlton &nbsp;&middot;&nbsp; (757) 814-5958
+                    </a>
+                    <a href="sms:7578145958" class="btn-white-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        Send a Text
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stat Strip -->
+    <div class="stat-strip">
+        <div class="container">
+            <div class="stat-strip-inner">
+                <div class="stat-item">
+                    <div class="stat-value">5.0 &#9733;</div>
+                    <div class="stat-label">Google Rating</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">30 Yrs</div>
+                    <div class="stat-label">Experience Since 1995</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">ABYC</div>
+                    <div class="stat-label">Certified — Diesel &amp; Electrical</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">90-Day</div>
+                    <div class="stat-label">Parts &amp; Labor Warranty</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">Mobile</div>
+                    <div class="stat-label">He Comes to Your Boat</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <div class="services-header">
+                <div class="section-label reveal">Services</div>
+                <h2 class="services-title reveal d1">What Carlton Does</h2>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
+                    </svg>
+                    <div class="service-name">Engine Diagnostics &amp; Repair</div>
+                    <p class="service-desc">Diesel and gas. Inboard, outboard, I/O. Carlton finds the real problem — not just the symptom the last shop couldn't track down.</p>
+                </div>
+
+                <div class="service-card reveal d1">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/>
+                    </svg>
+                    <div class="service-name">Full Engine Rebuilds &amp; Replacements</div>
+                    <p class="service-desc">When the engine is done, Carlton handles the whole job — teardown, rebuild, or replacement, from sourcing parts to first start.</p>
+                </div>
+
+                <div class="service-card reveal d2">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+                    </svg>
+                    <div class="service-name">Marine Electrical Systems</div>
+                    <p class="service-desc">ABYC certified in marine electrical. Wiring problems, charging systems, gauge failures — traced and fixed correctly, not patched.</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+                    </svg>
+                    <div class="service-name">Pre-Purchase Engine Surveys</div>
+                    <p class="service-desc">Thinking about buying a boat? Carlton inspects the engine before you sign anything. More than one deal has been killed — and the buyer thanked him later.</p>
+                </div>
+
+                <div class="service-card reveal d1">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/>
+                    </svg>
+                    <div class="service-name">Generator Service</div>
+                    <p class="service-desc">Engine-side generator maintenance and repair. Whether it's a liveaboard genset or a center console auxiliary — Carlton handles the mechanical side.</p>
+                </div>
+
+                <div class="service-card reveal d2">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
+                    </svg>
+                    <div class="service-name">Maintenance &amp; Winterization</div>
+                    <p class="service-desc">Oil changes, impellers, tune-ups, winterization, dewinterization. The stuff that keeps you on the water while everyone else is waiting on a shop call-back.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-inner reveal">
+                    <div class="section-label">Owner — Grizzard Repair Services</div>
+                    <h2 class="about-heading">In Business Since 2018.<br>In Engines Since 1995.</h2>
+                    <p class="about-body">
+                        Carlton Grizzard has been working on marine engines since 1995. He started Grizzard Repair Services in 2018 to do it on his own terms — mobile, direct, no shop markup games, no mystery invoices.
+                    </p>
+                    <p class="about-body">
+                        He is ABYC certified in diesel engines and marine electrical systems, and he backs every job with a 90-day warranty on parts and labor. That is not a tagline. It means if something he fixed is wrong, he comes back and makes it right.
+                    </p>
+                    <p class="about-body">
+                        Boat owners across Hampton Roads have figured out that calling Carlton is faster, easier, and usually cheaper than dropping the boat at a shop and waiting two weeks. He serves the full region — Cape Charles included — and he answers his phone.
+                    </p>
+                    <div class="about-pills">
+                        <span class="about-pill">Hampton, VA</span>
+                        <span class="about-pill">Est. 2018</span>
+                        <span class="about-pill">ABYC Certified</span>
+                        <span class="about-pill">90-Day Warranty</span>
+                        <span class="about-pill">All of Hampton Roads</span>
+                        <span class="about-pill">Cape Charles Area</span>
+                        <span class="about-pill">5.0 on Google</span>
+                    </div>
+                </div>
+                <div class="about-photo reveal d1">
+                    <img src="img/engine-rebuild.jpg" alt="Rebuilt Mercruiser engine — Grizzard Repair Services">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <div class="section-label reveal">The Work</div>
+                <h2 class="gallery-title reveal d1">Engines Carlton Has Touched</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal">
+                    <img src="img/engine-lift.jpg" alt="Marine diesel engine being hoisted from a classic trawler">
+                    <div class="gallery-caption">Engine Extraction — Classic Trawler</div>
+                </div>
+                <div class="gallery-item reveal d1">
+                    <img src="img/twin-496.jpg" alt="Twin Mercruiser 496 MAG engines freshly serviced in a center console">
+                    <div class="gallery-caption">Twin 496 MAG Service — Center Console</div>
+                </div>
+                <div class="gallery-item reveal d2">
+                    <img src="img/twin-diesel.jpg" alt="Twin marine diesel engines in a yacht engine room">
+                    <div class="gallery-caption">Twin Diesel Refit — Motoryacht</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Review — Zeller -->
+    <section class="featured-review">
+        <div class="container">
+            <div class="zeller-inner reveal">
+                <div class="zeller-stars">
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <p class="zeller-quote">
+                    "If you are looking for engine service on your boat/yacht look no further&hellip; Carlton's knowledge was impressive finding things that were unsatisfactory before we even started the engines&hellip; I am a captain in the US Merchant Marine with over 30 years of commercial offshore cargo vessel experience, and I feel completely confident taking this new to me vessel offshore&hellip; They are worth the trip."
+                </p>
+                <div>
+                    <div class="zeller-name">James Zeller</div>
+                    <div class="zeller-credential">Captain &mdash; U.S. Merchant Marine &nbsp;&middot;&nbsp; 30+ Years Commercial Offshore Experience</div>
+                    <div class="zeller-via">&#9733; via Google</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <div class="section-label reveal">Customer Reviews</div>
+                <h2 class="reviews-title reveal d1">What Hampton Roads Says</h2>
+            </div>
+            <div class="reviews-grid">
+
+                <div class="review-card reveal">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">Carlton was great. Replied immediately after I contacted him. My genset is very hard to get to&hellip; he had to crawl between the 49 gallon water heater and the genset itself&hellip; He did the work quickly and the price was very reasonable.</p>
+                    <div class="review-name">Tom Hedge</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+                <div class="review-card reveal d1">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">Came on board and replaced a starter, found a leaking exhaust elbow, picked up our heat exchanger, removed rusted and snapped off exhaust elbow studs, delivered the repaired heat exchanger back to us. Great customer service.</p>
+                    <div class="review-name">Bradley Varuska</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+                <div class="review-card reveal d2">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">Exceptional communication and technical skill. Very highly recommend.</p>
+                    <div class="review-name">Felix Gallo</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+                <div class="review-card reveal">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">Carlton did a great job repairing multiple issues on the Universal 35hp engine in my Catalina 36.</p>
+                    <div class="review-name">Larry Sherer</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+                <div class="review-card reveal d1">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">This guy knows what he's doing.</p>
+                    <div class="review-name">James McGeein</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band">
+        <div class="container">
+            <h2 class="cta-heading reveal">Boating season doesn't wait.</h2>
+            <p class="cta-sub reveal d1">Call or text Carlton directly. He answers.</p>
+            <div class="cta-actions reveal d2">
+                <a href="tel:7578145958" class="btn-blue">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                    Call Carlton
+                </a>
+                <a href="sms:7578145958" class="btn-white-outline">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    Send a Text
+                </a>
+            </div>
+            <p class="cta-email reveal d3">Or email: <a href="mailto:grizzardrepair@gmail.com">grizzardrepair@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-name">Grizzard Repair Services LLC</div>
+            <a href="tel:7578145958" class="footer-phone">(757) 814-5958</a>
+            <p class="footer-location">Hampton, VA &nbsp;&middot;&nbsp; Serving All of Hampton Roads &nbsp;&middot;&nbsp; Including Cape Charles Area</p>
+            <p class="footer-credit">Site built by <a href="https://platypusautomations.com" target="_blank" rel="noopener">Platypus Automations</a> &mdash; platypusautomations.com</p>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        let scrolled = false;
+        window.addEventListener('scroll', () => { scrolled = true; }, { once: true, passive: true });
+        setTimeout(() => {
+            if (!scrolled) {
+                document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+            }
+        }, 1200);
+    </script>
+
+</body>
+</html>
