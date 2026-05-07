@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norfolk Machine &amp; Welding Inc. | CNC Machining, Welding &amp; Fabrication | Norfolk, VA</title>
+    <meta name="description" content="Norfolk Machine &amp; Welding Inc. — precision CNC and manual machining, welding, fabrication, and marine repair since 1976. Family-owned, Navy veteran founded. In-shop and on-site service. Norfolk, VA.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Big+Shoulders+Display:wght@900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =============================================
+           Variables
+        ============================================= */
+        :root {
+            --navy:        #0c1726;
+            --blue:        #3d7fc1;
+            --blue-light:  #5396d8;
+            --blue-dim:    rgba(61, 127, 193, 0.08);
+            --blue-border: rgba(61, 127, 193, 0.18);
+            --bg:          #ffffff;
+            --bg-alt:      #f4f6fa;
+            --bg-dark:     #0c1726;
+            --text:        #0c1726;
+            --muted:       #5a6478;
+            --muted-hi:    rgba(12, 23, 38, 0.78);
+        }
+
+        /* =============================================
+           Reset
+        ============================================= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* =============================================
+           Scroll Reveal
+        ============================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.10s; }
+        .d2 { transition-delay: 0.20s; }
+        .d3 { transition-delay: 0.30s; }
+        .d4 { transition-delay: 0.40s; }
+
+        /* =============================================
+           Utility
+        ============================================= */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 0.9rem;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--blue);
+            flex-shrink: 0;
+        }
+
+        /* =============================================
+           Buttons
+        ============================================= */
+        .btn-blue {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: var(--blue);
+            color: #fff;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 1rem 2.4rem;
+            border-radius: 2px;
+            min-height: 52px;
+            transition: background 0.2s ease, transform 0.18s ease;
+        }
+        .btn-blue:hover { background: var(--blue-light); transform: translateY(-2px); }
+        .btn-blue svg { flex-shrink: 0; }
+
+        .btn-white-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.62);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 0.9rem 2.2rem;
+            border-radius: 2px;
+            min-height: 52px;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.18s ease;
+        }
+        .btn-white-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* =============================================
+           Navigation
+        ============================================= */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 0.85rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--blue-border);
+            transition: box-shadow 0.35s ease, padding 0.3s ease;
+        }
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(12, 23, 38, 0.10);
+            padding: 0.6rem 2rem;
+        }
+
+        .nav-wordmark {
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-wordmark-main {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 900;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--navy);
+            line-height: 1.1;
+        }
+        .nav-wordmark-sub {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.20em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-top: 0.12rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--text);
+            transition: color 0.2s ease;
+        }
+        .nav-phone svg { color: var(--blue); flex-shrink: 0; }
+        .nav-phone:hover { color: var(--blue); }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            background: var(--blue);
+            color: #fff;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.15rem;
+            border-radius: 2px;
+            min-height: 40px;
+            transition: background 0.2s ease;
+        }
+        .nav-cta:hover { background: var(--blue-light); }
+
+        /* =============================================
+           Hero
+        ============================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://source.unsplash.com/featured/1600x900/?cnc,machining,industrial,metal') center 50% / cover no-repeat;
+            animation: heroZoom 14s ease-out forwards;
+            will-change: transform;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1.06); }
+            to   { transform: scale(1.0); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, rgba(8, 15, 30, 0.82) 0%, rgba(20, 55, 100, 0.32) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 5rem;
+            max-width: 820px;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.72);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.15s forwards;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.45);
+            flex-shrink: 0;
+        }
+
+        h1.hero-headline {
+            font-family: 'Big Shoulders Display', 'Barlow Condensed', sans-serif;
+            font-size: clamp(3.4rem, 9.5vw, 8.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.92;
+            letter-spacing: 0.01em;
+            color: #fff;
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.3s forwards;
+        }
+        h1.hero-headline em {
+            font-style: normal;
+            color: #78b4e8;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 1.9vw, 1.18rem);
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.68;
+            font-weight: 400;
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.45s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.6s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =============================================
+           Stat Strip
+        ============================================= */
+        .stat-strip {
+            background: var(--navy);
+            border-top: 3px solid var(--blue);
+        }
+        .stat-strip-inner {
+            display: flex;
+            flex-wrap: wrap;
+            border-left: 1px solid rgba(255, 255, 255, 0.09);
+        }
+        .stat-item {
+            flex: 1;
+            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.65rem 1.25rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.09);
+            text-align: center;
+        }
+        .stat-value {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+        .stat-label {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            margin-top: 0.38rem;
+        }
+
+        /* =============================================
+           Services
+        ============================================= */
+        .services {
+            background: var(--bg);
+            padding: 6rem 0;
+        }
+
+        .services-header {
+            margin-bottom: 3rem;
+        }
+
+        .services-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.6rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            line-height: 1.0;
+            color: var(--text);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--blue-border);
+        }
+
+        .service-card {
+            background: var(--bg);
+            padding: 2.5rem 2rem;
+            border-top: 3px solid var(--blue);
+            transition: background 0.25s ease;
+        }
+        .service-card:hover { background: var(--bg-alt); }
+
+        .service-icon {
+            width: 30px;
+            height: 30px;
+            color: var(--blue);
+            margin-bottom: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .service-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-desc {
+            font-size: 0.91rem;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        /* =============================================
+           About
+        ============================================= */
+        .about {
+            background: var(--bg-alt);
+            padding: 6rem 0;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            color: var(--text);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-body {
+            font-size: clamp(0.98rem, 1.8vw, 1.06rem);
+            line-height: 1.88;
+            color: var(--muted-hi);
+            font-weight: 400;
+            margin-bottom: 1.1rem;
+        }
+        .about-body:last-of-type { margin-bottom: 0; }
+
+        .about-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 2rem;
+        }
+
+        .about-pill {
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            border: 1px solid var(--blue-border);
+            padding: 0.38rem 0.85rem;
+            border-radius: 1px;
+        }
+
+        .about-photo {
+            overflow: hidden;
+            border-radius: 2px;
+            border-top: 3px solid var(--blue);
+        }
+        .about-photo img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* =============================================
+           Featured Review
+        ============================================= */
+        .featured-review {
+            background: var(--navy);
+            padding: 5.5rem 0;
+        }
+
+        .featured-inner {
+            max-width: 880px;
+            margin: 0 auto;
+            border-left: 4px solid rgba(255, 255, 255, 0.22);
+            padding-left: 3rem;
+        }
+
+        .featured-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1.4rem;
+        }
+        .featured-stars .star { color: #ffd166; font-size: 1.05rem; }
+
+        .featured-quote {
+            font-size: clamp(1.1rem, 2.2vw, 1.38rem);
+            line-height: 1.80;
+            color: rgba(255, 255, 255, 0.88);
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .featured-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #fff;
+        }
+
+        .featured-detail {
+            font-size: 0.70rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.48);
+            margin-top: 0.35rem;
+        }
+
+        .featured-via {
+            font-size: 0.63rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.28);
+            margin-top: 0.3rem;
+        }
+
+        /* =============================================
+           Reviews Grid
+        ============================================= */
+        .reviews {
+            background: var(--bg);
+            padding: 6rem 0;
+        }
+
+        .reviews-header {
+            margin-bottom: 3rem;
+        }
+
+        .reviews-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.6rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            line-height: 1.0;
+            color: var(--text);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .review-card {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--blue);
+            padding: 2.25rem 2rem 2rem 2.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-glyph {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 7rem;
+            line-height: 0.75;
+            color: var(--blue);
+            opacity: 0.09;
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 1.1rem;
+        }
+        .star { color: #e6a817; font-size: 0.85rem; }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.80;
+            color: var(--muted-hi);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-name {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--blue);
+        }
+
+        .review-source {
+            font-size: 0.62rem;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.2rem;
+        }
+
+        /* =============================================
+           CTA Band
+        ============================================= */
+        .cta-band {
+            background: var(--bg-dark);
+            padding: 6.5rem 0;
+            text-align: center;
+            position: relative;
+        }
+        .cta-band::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--blue);
+        }
+
+        .cta-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-sub {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.46);
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.03em;
+        }
+
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-detail {
+            font-size: 0.84rem;
+            color: rgba(255, 255, 255, 0.32);
+            margin-top: 1.75rem;
+            letter-spacing: 0.04em;
+        }
+        .cta-detail a {
+            color: rgba(255, 255, 255, 0.50);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .cta-detail a:hover { color: #fff; }
+
+        /* =============================================
+           Footer
+        ============================================= */
+        footer {
+            background: #070d1a;
+            border-top: 1px solid rgba(61, 127, 193, 0.18);
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .footer-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.70);
+        }
+
+        .footer-phone {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.70);
+            transition: color 0.2s ease;
+        }
+        .footer-phone:hover { color: #78b4e8; }
+
+        .footer-location {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.28);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-credit {
+            font-size: 0.68rem;
+            color: rgba(255, 255, 255, 0.14);
+            letter-spacing: 0.04em;
+            margin-top: 0.5rem;
+        }
+        .footer-credit a {
+            color: rgba(255, 255, 255, 0.24);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .footer-credit a:hover { color: #78b4e8; }
+
+        /* =============================================
+           Responsive — 900px
+        ============================================= */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid  { grid-template-columns: repeat(2, 1fr); }
+            .about-layout  { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-photo   { order: -1; }
+        }
+
+        /* =============================================
+           Responsive — 768px
+        ============================================= */
+        @media (max-width: 768px) {
+            .services        { padding: 4rem 0; }
+            .about           { padding: 4rem 0; }
+            .reviews         { padding: 4rem 0; }
+            .cta-band        { padding: 4.5rem 0; }
+            .featured-review { padding: 4rem 0; }
+            .featured-inner  { padding-left: 1.5rem; }
+            .nav-phone       { display: none; }
+        }
+
+        /* =============================================
+           Responsive — 480px
+        ============================================= */
+        @media (max-width: 480px) {
+            nav { padding: 0.7rem 1.25rem; }
+            nav.scrolled { padding: 0.55rem 1.25rem; }
+
+            .container { padding: 0 1.25rem; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .reviews-grid  { grid-template-columns: 1fr; }
+
+            .stat-strip-inner { flex-direction: column; }
+            .stat-item {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+            }
+            .stat-item:last-child { border-bottom: none; }
+
+            .hero-actions { width: 100%; flex-direction: column; }
+            .btn-blue,
+            .btn-white-outline { width: 100%; justify-content: center; font-size: 1.1rem; }
+
+            .cta-actions { flex-direction: column; align-items: stretch; }
+            .cta-actions .btn-blue,
+            .cta-actions .btn-white-outline { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-wordmark">
+            <span class="nav-wordmark-main">Norfolk Machine &amp; Welding</span>
+            <span class="nav-wordmark-sub">Norfolk, VA &nbsp;&middot;&nbsp; Est. 1976</span>
+        </div>
+        <div class="nav-right">
+            <a href="tel:7576220000" class="nav-phone">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                (757) 622-0000
+            </a>
+            <a href="#contact" class="nav-cta">Get a Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-eyebrow">Norfolk, VA &nbsp;&middot;&nbsp; Family-Owned Since 1976</div>
+                <h1 class="hero-headline">
+                    Jobs Other<br>Shops<br><em>Won't Take.</em>
+                </h1>
+                <p class="hero-tagline">
+                    CNC and manual machining, welding, fabrication, and marine repair — in-shop and on-site. Fifty years of precision work that demands experience.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:7576220000" class="btn-blue">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                        Call (757) 622-0000
+                    </a>
+                    <a href="#contact" class="btn-white-outline">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stat Strip -->
+    <div class="stat-strip">
+        <div class="container">
+            <div class="stat-strip-inner">
+                <div class="stat-item">
+                    <div class="stat-value">50 Yrs</div>
+                    <div class="stat-label">In Business</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">1976</div>
+                    <div class="stat-label">Founded in Norfolk</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">Navy Vet</div>
+                    <div class="stat-label">Founded by Bobby Mallard</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">CNC &amp; Manual</div>
+                    <div class="stat-label">Mill &amp; Lathe</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">In-Shop</div>
+                    <div class="stat-label">&amp; On-Site Service</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <div class="services-header">
+                <div class="section-label reveal">Services</div>
+                <h2 class="services-title reveal d1">Full-Capability Machine Shop</h2>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
+                    </svg>
+                    <div class="service-name">CNC Milling</div>
+                    <p class="service-desc">Multi-axis CNC mill work for complex parts and tight tolerances. Prototype runs to production quantities — held to print every time.</p>
+                </div>
+
+                <div class="service-card reveal d1">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/>
+                    </svg>
+                    <div class="service-name">Manual Milling</div>
+                    <p class="service-desc">Bridgeport and manual mill work for one-offs, repairs, and jobs where CNC setup time isn't justified. Fast turnaround on single pieces.</p>
+                </div>
+
+                <div class="service-card reveal d2">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/>
+                    </svg>
+                    <div class="service-name">CNC Lathe Work</div>
+                    <p class="service-desc">Precision turning on CNC lathes. Round, threaded, and profiled components machined to exact specification from bar stock or customer-supplied material.</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                    </svg>
+                    <div class="service-name">Manual Lathe Work</div>
+                    <p class="service-desc">Manual turning for repairs, custom shafts, bushings, and one-of-a-kind parts. The work other shops won't touch because they don't run manual machines anymore.</p>
+                </div>
+
+                <div class="service-card reveal d1">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/>
+                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <div class="service-name">Machine Repair</div>
+                    <p class="service-desc">Industrial equipment repair — broken shafts, worn components, failed castings. We reverse-engineer what can't be sourced and make what doesn't exist anymore.</p>
+                </div>
+
+                <div class="service-card reveal d2">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/>
+                        <path d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/>
+                    </svg>
+                    <div class="service-name">Welding &amp; Fabrication</div>
+                    <p class="service-desc">Structural and precision welding. Custom fabrication from print or sample. MIG, TIG, and stick — steel, stainless, aluminum. In-shop or we come to you.</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    </svg>
+                    <div class="service-name">Marine Repair</div>
+                    <p class="service-desc">Machine work and fabrication for marine applications. Shafting, struts, rudder hardware, custom components. In-shop or on-site at the yard or dock.</p>
+                </div>
+
+                <div class="service-card reveal d1">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+                    </svg>
+                    <div class="service-name">Water Jet &amp; Flame Cut</div>
+                    <p class="service-desc">Water jet and flame cutting for plate steel and other materials. Cut to shape, ready for secondary machining or direct-to-fit. Tight tolerances, clean edges.</p>
+                </div>
+
+                <div class="service-card reveal d2">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/>
+                    </svg>
+                    <div class="service-name">Material Sales &amp; Consulting</div>
+                    <p class="service-desc">Steel, aluminum, stainless, and specialty materials available. If you need help speccing the right material for the job, we've been answering that question since 1976.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-inner reveal">
+                    <div class="section-label">Our Story</div>
+                    <h2 class="about-heading">Fifty Years.<br>Same Shop.<br>Same Standards.</h2>
+                    <p class="about-body">
+                        Norfolk Machine &amp; Welding was founded in 1976 by Bobby Mallard, a U.S. Navy veteran who came out of the service with a machinist's eye and a refusal to cut corners. Bobby built the shop on one principle: do work other shops won't touch, and do it right the first time.
+                    </p>
+                    <p class="about-body">
+                        Fifty years later, that principle still runs the floor. The shop handles CNC and manual milling and lathe work, welding, fabrication, marine repair, and water jet cutting — the full range of precision machine work, in-shop or on-site. We sell material and we consult on jobs before they come in the door.
+                    </p>
+                    <p class="about-body">
+                        The customers who come to us are usually the ones who've already been told no somewhere else. That's fine. That's what we're here for.
+                    </p>
+                    <div class="about-pills">
+                        <span class="about-pill">Norfolk, VA</span>
+                        <span class="about-pill">Est. 1976</span>
+                        <span class="about-pill">Navy Veteran Founded</span>
+                        <span class="about-pill">CNC &amp; Manual</span>
+                        <span class="about-pill">In-Shop &amp; On-Site</span>
+                        <span class="about-pill">Marine Capable</span>
+                        <span class="about-pill">50 Years in Business</span>
+                    </div>
+                </div>
+                <div class="about-photo reveal d1">
+                    <img src="https://source.unsplash.com/featured/800x920/?machinist,lathe,metalworking,precision" alt="Precision machining at Norfolk Machine &amp; Welding">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Review -->
+    <section class="featured-review">
+        <div class="container">
+            <div class="featured-inner reveal">
+                <div class="featured-stars">
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <p class="featured-quote">
+                    "Brought them a broken shaft off a piece of equipment that two other shops said couldn't be repaired. They had it back to me in three days, machined to the original specs. Fit perfectly. These guys have capability and experience that's getting hard to find."
+                </p>
+                <div>
+                    <div class="featured-name">Michael T.</div>
+                    <div class="featured-detail">Norfolk, VA &nbsp;&middot;&nbsp; Industrial Equipment</div>
+                    <div class="featured-via">&#9733; via Google</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <div class="section-label reveal">Customer Reviews</div>
+                <h2 class="reviews-title reveal d1">What Our Customers Say</h2>
+            </div>
+            <div class="reviews-grid">
+
+                <div class="review-card reveal">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">Needed a custom part machined with tolerances that most shops would pass on. Norfolk Machine had it done right, on time, no drama. Been bringing work here for years.</p>
+                    <div class="review-name">D. Harrison</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+                <div class="review-card reveal d1">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">Bobby's shop has kept equipment running that should have been retired years ago. They fabricated a replacement casting nobody could source and it's been working fine ever since. Can't say enough.</p>
+                    <div class="review-name">R. Stokes</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+                <div class="review-card reveal d2">
+                    <div class="review-glyph" aria-hidden="true">"</div>
+                    <div class="review-stars">
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="review-text">Came in needing a replacement propeller shaft — no part number, no drawing, just the broken piece. They measured it, turned one on the lathe, and it went right in. Old school capability that's hard to find.</p>
+                    <div class="review-name">J. Carmichael</div>
+                    <div class="review-source">via Google</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band" id="contact">
+        <div class="container">
+            <h2 class="cta-heading reveal">Have a job that needs doing?</h2>
+            <p class="cta-sub reveal d1">In-shop or on-site. Call us and describe the work.</p>
+            <div class="cta-actions reveal d2">
+                <a href="tel:7576220000" class="btn-blue">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/></svg>
+                    Call (757) 622-0000
+                </a>
+                <a href="mailto:info@norfolkmachine.com" class="btn-white-outline">Send an Email</a>
+            </div>
+            <p class="cta-detail reveal d3">
+                Norfolk Machine &amp; Welding Inc. &nbsp;&middot;&nbsp; Norfolk, VA &nbsp;&middot;&nbsp; <a href="mailto:info@norfolkmachine.com">info@norfolkmachine.com</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-name">Norfolk Machine &amp; Welding Inc.</div>
+            <a href="tel:7576220000" class="footer-phone">(757) 622-0000</a>
+            <p class="footer-location">Norfolk, VA &nbsp;&middot;&nbsp; In-Shop &amp; On-Site Service &nbsp;&middot;&nbsp; Est. 1976</p>
+            <p class="footer-credit">Site built by <a href="https://platypusautomations.com" target="_blank" rel="noopener">Platypus Automations</a> &mdash; platypusautomations.com</p>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        let scrolled = false;
+        window.addEventListener('scroll', () => { scrolled = true; }, { once: true, passive: true });
+        setTimeout(() => {
+            if (!scrolled) {
+                document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+            }
+        }, 1200);
+    </script>
+
+</body>
+</html>
