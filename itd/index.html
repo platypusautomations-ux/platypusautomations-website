@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovative Technologies & Design | Luxury AV Integration — Hampton Roads</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ─────────────────────────────────────────
+           RESET & VARIABLES
+        ───────────────────────────────────────── */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg:            #0a0a0a;
+            --bg-warm:       #0d0b08;
+            --bg-card:       #141210;
+            --bg-card-hover: #1a1710;
+            --gold:          #c9a96e;
+            --gold-light:    #e8d4a8;
+            --gold-dim:      rgba(201, 169, 110, 0.10);
+            --gold-border:   rgba(201, 169, 110, 0.16);
+            --text:          #f2ece0;
+            --text-2:        #948e84;
+            --text-3:        #524e49;
+            --nav-h:         76px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-h);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* ─────────────────────────────────────────
+           SHARED UTILITIES
+        ───────────────────────────────────────── */
+        .section-label {
+            display: block;
+            font-size: 0.67rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.4rem;
+        }
+
+        .gold-rule {
+            display: block;
+            width: 44px;
+            height: 1px;
+            background: var(--gold);
+            margin: 1.6rem 0;
+        }
+
+        /* ─────────────────────────────────────────
+           NAVIGATION
+        ───────────────────────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0;
+            inset-inline: 0;
+            z-index: 200;
+            height: var(--nav-h);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(1.25rem, 5vw, 4rem);
+            transition: background 0.45s ease, border-bottom 0.45s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 8, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--gold-border);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garant', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.7rem;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            color: var(--text-2);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-contact {
+            color: var(--gold) !important;
+            border: 1px solid var(--gold-border) !important;
+            padding: 0.55rem 1.3rem !important;
+            transition: background 0.3s, color 0.3s !important;
+        }
+
+        .nav-contact:hover {
+            background: var(--gold) !important;
+            color: var(--bg) !important;
+        }
+
+        .nav-burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: none;
+        }
+
+        .nav-burger span {
+            display: block;
+            width: 22px;
+            height: 1px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        .nav-burger.open span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        .nav-burger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-burger.open span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .nav-mobile-panel {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 199;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .nav-mobile-panel.open { display: flex; }
+
+        .nav-mobile-panel a {
+            font-family: 'Cormorant Garant', serif;
+            font-size: clamp(2rem, 8vw, 3rem);
+            font-weight: 300;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.3s;
+        }
+
+        .nav-mobile-panel a:hover { color: var(--gold); }
+
+        /* ─────────────────────────────────────────
+           HERO
+        ───────────────────────────────────────── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding: var(--nav-h) clamp(1.25rem, 5vw, 4rem) clamp(4rem, 9vh, 7rem);
+            overflow: hidden;
+
+            background:
+                radial-gradient(ellipse 90% 60% at 55% 20%, rgba(28, 20, 8, 0.65) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 90% at 10% 80%, rgba(18, 13, 5, 0.55) 0%, transparent 55%),
+                linear-gradient(155deg, #100d07 0%, #0a0a0a 45%, #080809 100%);
+        }
+
+        /* subtle diagonal hatch — cinematic texture */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.028;
+            background-image:
+                repeating-linear-gradient(
+                    -52deg,
+                    rgba(201, 169, 110, 1) 0px,
+                    rgba(201, 169, 110, 1) 1px,
+                    transparent 1px,
+                    transparent 22px
+                );
+        }
+
+        /* warm gold ambient glow, top-right */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 55vw;
+            height: 70vh;
+            background: radial-gradient(ellipse, rgba(201, 169, 110, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.2rem;
+            animation: fadeUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.25s both;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .hero-eyebrow span {
+            font-size: 0.67rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garant', serif;
+            font-size: clamp(2.8rem, 7.5vw, 6.8rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.04;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            margin-bottom: 1.8rem;
+            animation: fadeUp 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.45s both;
+        }
+
+        .hero h1 strong {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .hero-sub {
+            font-size: clamp(0.88rem, 1.4vw, 1rem);
+            color: var(--text-2);
+            line-height: 1.8;
+            max-width: 500px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            animation: fadeUp 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.65s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid rgba(242, 236, 224, 0.22);
+            padding: 1rem 2.2rem;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s;
+            min-height: 48px;
+            animation: fadeUp 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.85s both;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: translateX(-101%);
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-cta:hover { border-color: var(--gold); }
+        .hero-cta:hover::before { transform: translateX(0); }
+
+        .hero-cta-text,
+        .hero-cta-arrow {
+            position: relative;
+            z-index: 1;
+            transition: color 0.4s;
+        }
+
+        .hero-cta:hover .hero-cta-text,
+        .hero-cta:hover .hero-cta-arrow { color: var(--bg); }
+
+        .hero-cta:hover .hero-cta-arrow { transform: translateX(3px); }
+        .hero-cta-arrow { transition: color 0.4s, transform 0.3s; }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            right: clamp(1.25rem, 5vw, 4rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            animation: fadeUp 1.1s cubic-bezier(0.4, 0, 0.2, 1) 1.1s both;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 52px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2.4s ease-in-out infinite;
+        }
+
+        .hero-scroll span {
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            writing-mode: vertical-rl;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* ─────────────────────────────────────────
+           SERVICES
+        ───────────────────────────────────────── */
+        .services {
+            padding: clamp(5rem, 11vh, 9rem) clamp(1.25rem, 5vw, 4rem);
+            background: var(--bg);
+        }
+
+        .services-header {
+            max-width: 580px;
+            margin-bottom: clamp(3rem, 6vh, 5rem);
+        }
+
+        .services-header h2 {
+            font-family: 'Cormorant Garant', serif;
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            font-weight: 300;
+            line-height: 1.12;
+            letter-spacing: -0.01em;
+        }
+
+        .services-header h2 em {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--gold-border);
+            border: 1px solid var(--gold-border);
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: clamp(2rem, 4vw, 3.2rem);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.4s;
+        }
+
+        /* Gold sweep on hover — top border left-to-right */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover { background: var(--bg-card-hover); }
+        .service-card:hover::after { transform: scaleX(1); }
+
+        .service-num {
+            font-family: 'Cormorant Garant', serif;
+            font-size: 3.8rem;
+            font-weight: 300;
+            color: rgba(201, 169, 110, 0.11);
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            user-select: none;
+        }
+
+        .service-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 1.6rem;
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garant', serif;
+            font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 0.9rem;
+            line-height: 1.15;
+        }
+
+        .service-card p {
+            font-size: 0.855rem;
+            color: var(--text-2);
+            line-height: 1.8;
+            flex: 1;
+            margin-bottom: 2rem;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.67rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .service-link:hover { gap: 1rem; }
+
+        /* ─────────────────────────────────────────
+           TESTIMONIALS
+        ───────────────────────────────────────── */
+        .testimonials {
+            padding: clamp(5rem, 11vh, 9rem) clamp(1.25rem, 5vw, 4rem);
+            background: var(--bg-warm);
+            border-top: 1px solid var(--gold-border);
+            border-bottom: 1px solid var(--gold-border);
+        }
+
+        .testimonials-label {
+            text-align: center;
+            margin-bottom: clamp(3rem, 6vh, 5rem);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem 4rem;
+        }
+
+        .testimonial {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* vertical divider between testimonials on desktop */
+        .testimonial:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -2rem;
+            top: 10%;
+            bottom: 10%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--gold-border) 25%, var(--gold-border) 75%, transparent);
+        }
+
+        .testimonial-mark {
+            font-family: 'Cormorant Garant', serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: rgba(201, 169, 110, 0.14);
+            margin-bottom: -0.6rem;
+            font-weight: 300;
+            user-select: none;
+        }
+
+        .testimonial blockquote {
+            font-family: 'Cormorant Garant', serif;
+            font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--text);
+            flex: 1;
+            margin-bottom: 1.8rem;
+        }
+
+        .testimonial-who {
+            display: flex;
+            flex-direction: column;
+            gap: 0.22rem;
+        }
+
+        .testimonial-name {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .testimonial-detail {
+            font-size: 0.7rem;
+            color: var(--text-3);
+            letter-spacing: 0.05em;
+        }
+
+        /* ─────────────────────────────────────────
+           PROJECT SHOWCASE
+        ───────────────────────────────────────── */
+        .project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 88vh;
+        }
+
+        /* Image placeholder side */
+        .project-visual {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 70% 55% at 45% 45%, #1c140a 0%, #100c06 50%, #090807 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* subtle grid — intentional "photo placeholder" that reads as designed */
+        .project-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(201,169,110,0.025) 0px, rgba(201,169,110,0.025) 1px, transparent 1px, transparent 48px),
+                repeating-linear-gradient(0deg,  rgba(201,169,110,0.025) 0px, rgba(201,169,110,0.025) 1px, transparent 1px, transparent 48px);
+        }
+
+        .project-visual-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            pointer-events: none;
+        }
+
+        .project-visual-icon svg {
+            width: 52px;
+            height: 52px;
+            stroke: rgba(201, 169, 110, 0.22);
+            fill: none;
+            stroke-width: 0.7;
+        }
+
+        .project-visual-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(201, 169, 110, 0.25);
+        }
+
+        /* Content side */
+        .project-copy {
+            padding: clamp(3rem, 7vw, 6rem) clamp(2rem, 5vw, 5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #0e0c09;
+            border-left: 1px solid var(--gold-border);
+        }
+
+        .project-copy h2 {
+            font-family: 'Cormorant Garant', serif;
+            font-size: clamp(1.9rem, 3.2vw, 3rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-copy h2 em {
+            display: block;
+            font-style: italic;
+            font-size: 0.75em;
+            color: var(--text-2);
+            font-weight: 300;
+            margin-top: 0.35rem;
+        }
+
+        .project-desc {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.85;
+            max-width: 440px;
+            margin-bottom: 2.5rem;
+        }
+
+        .project-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--gold-border);
+            border: 1px solid var(--gold-border);
+            margin-bottom: 3rem;
+        }
+
+        .spec {
+            background: var(--bg-card);
+            padding: 1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .spec-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-3);
+        }
+
+        .spec-val {
+            font-family: 'Cormorant Garant', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.1;
+        }
+
+        .project-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.67rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .project-action:hover { gap: 1.1rem; }
+
+        /* ─────────────────────────────────────────
+           FOOTER
+        ───────────────────────────────────────── */
+        footer {
+            background: #070707;
+            border-top: 1px solid var(--gold-border);
+            padding: clamp(3.5rem, 7vh, 5.5rem) clamp(1.25rem, 5vw, 4rem) clamp(1.5rem, 3vh, 2.5rem);
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.07);
+        }
+
+        .footer-brand-name {
+            font-family: 'Cormorant Garant', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.82rem;
+            color: var(--text-3);
+            line-height: 1.75;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 400;
+            margin-bottom: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-col a {
+            font-size: 0.82rem;
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover { color: var(--text); }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .footer-bottom p {
+            font-size: 0.7rem;
+            color: var(--text-3);
+            letter-spacing: 0.06em;
+        }
+
+        /* ─────────────────────────────────────────
+           SCROLL REVEAL ANIMATIONS
+        ───────────────────────────────────────── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition:
+                opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.32s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE — TABLET (≤768px)
+        ───────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-burger { display: flex; }
+
+            .hero {
+                background-attachment: scroll;
+                min-height: 85vh;
+                padding-bottom: 4rem;
+            }
+
+            .hero-scroll { display: none; }
+
+            .services-grid { grid-template-columns: 1fr; }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 3.5rem;
+            }
+
+            .testimonial::after { display: none; }
+
+            /* horizontal rule between stacked testimonials */
+            .testimonial:not(:last-child) {
+                padding-bottom: 3.5rem;
+                border-bottom: 1px solid var(--gold-border);
+            }
+
+            .project {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .project-visual { height: 52vw; min-height: 240px; }
+
+            .project-copy { border-left: none; border-top: 1px solid var(--gold-border); }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE — MOBILE (≤480px)
+        ───────────────────────────────────────── */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: clamp(2rem, 10vw, 2.8rem); }
+
+            .hero-sub { font-size: 0.9rem; }
+
+            .project-specs { grid-template-columns: 1fr 1fr; }
+
+            .footer-bottom { align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════
+         NAV
+    ══════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo" aria-label="ITD Hampton Roads home">
+            <span class="nav-logo-dot"></span>
+            ITD Hampton Roads
+        </a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" class="nav-contact">Contact</a></li>
+        </ul>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile overlay nav -->
+    <div class="nav-mobile-panel" id="navPanel" role="dialog" aria-label="Navigation">
+        <a href="#services"  class="nav-panel-link">Services</a>
+        <a href="#projects"  class="nav-panel-link">Projects</a>
+        <a href="#about"     class="nav-panel-link">About</a>
+        <a href="#contact"   class="nav-panel-link">Contact</a>
+    </div>
+
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="hero" id="home" aria-label="Hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span>Hampton Roads Luxury AV Integration</span>
+            </div>
+
+            <h1>Where Technology<br><strong>Becomes</strong> Invisible</h1>
+
+            <p class="hero-sub">
+                We design and install precision home technology systems for Hampton Roads' most discerning residences — built to disappear into the architecture and last for decades.
+            </p>
+
+            <a href="#contact" class="hero-cta">
+                <span class="hero-cta-text">Schedule a Consultation</span>
+                <span class="hero-cta-arrow">→</span>
+            </a>
+        </div>
+
+        <div class="hero-scroll" aria-hidden="true">
+            <div class="hero-scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SERVICES
+    ══════════════════════════════════════ -->
+    <section class="services" id="services" aria-label="Services">
+        <div class="services-header reveal">
+            <span class="section-label">What We Do</span>
+            <h2>Precision systems,<br><em>flawlessly integrated</em></h2>
+            <div class="gold-rule"></div>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- Home Theater -->
+            <div class="service-card reveal">
+                <div class="service-num" aria-hidden="true">01</div>
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="3" width="20" height="14" rx="1"/>
+                        <path d="M8 21h8M12 17v4"/>
+                        <polygon points="9,8 9,14 15,11" fill="rgba(201,169,110,0.25)" stroke="none"/>
+                    </svg>
+                </div>
+                <h3>Home Theater</h3>
+                <p>4K laser projection, Dolby Atmos acoustic design, and custom millwork that transforms a room into a private cinema. From intimate 4-seat screening rooms to dedicated 30-seat estates theaters.</p>
+                <a href="#contact" class="service-link">Explore <span aria-hidden="true">→</span></a>
+            </div>
+
+            <!-- Whole-Home Automation -->
+            <div class="service-card reveal reveal-d1">
+                <div class="service-num" aria-hidden="true">02</div>
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                </div>
+                <h3>Whole-Home Automation</h3>
+                <p>Crestron and Control4 systems that unify lighting, climate, security, audio, and motorized shading into one intuitive interface — controllable from any screen, from anywhere in the world.</p>
+                <a href="#contact" class="service-link">Explore <span aria-hidden="true">→</span></a>
+            </div>
+
+            <!-- Lighting Control -->
+            <div class="service-card reveal reveal-d2">
+                <div class="service-num" aria-hidden="true">03</div>
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1"  x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22"  x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1"  y1="12" x2="3"  y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+                        <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+                    </svg>
+                </div>
+                <h3>Lighting Control</h3>
+                <p>Lutron RadioRA 3 and HomeWorks QSX across every zone — automated scenes keyed to time of day, activity, and occupancy. Circadian tuning that supports how you live, not just how the room looks.</p>
+                <a href="#contact" class="service-link">Explore <span aria-hidden="true">→</span></a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         TESTIMONIALS
+    ══════════════════════════════════════ -->
+    <section class="testimonials" id="about" aria-label="Client testimonials">
+        <div class="testimonials-label reveal">
+            <span class="section-label" style="justify-content:center;display:flex;">Client Voices</span>
+        </div>
+
+        <div class="testimonials-grid">
+
+            <div class="testimonial reveal">
+                <div class="testimonial-mark" aria-hidden="true">&ldquo;</div>
+                <blockquote>
+                    The installation was flawless. On time, every system worked from day one, and they were back within hours when we had a question six months later. That level of service is genuinely rare.
+                </blockquote>
+                <div class="testimonial-who">
+                    <span class="testimonial-name">R. Whitfield</span>
+                    <span class="testimonial-detail">Virginia Beach — Custom Build, 7,200 sq ft</span>
+                </div>
+            </div>
+
+            <div class="testimonial reveal reveal-d1">
+                <div class="testimonial-mark" aria-hidden="true">&ldquo;</div>
+                <blockquote>
+                    We've worked with integrators in three states. These are the only ones who took the time to understand how we actually live in the house before designing anything.
+                </blockquote>
+                <div class="testimonial-who">
+                    <span class="testimonial-name">M. & A. Hartwell</span>
+                    <span class="testimonial-detail">Chesapeake — Full Crestron Whole-Home Integration</span>
+                </div>
+            </div>
+
+            <div class="testimonial reveal reveal-d2">
+                <div class="testimonial-mark" aria-hidden="true">&ldquo;</div>
+                <blockquote>
+                    Our theater was featured in a regional design publication two months after completion. It's the room everyone wants to see. Worth every dollar — and then some.
+                </blockquote>
+                <div class="testimonial-who">
+                    <span class="testimonial-name">D. Calloway</span>
+                    <span class="testimonial-detail">Suffolk — Dedicated 14-Seat Home Theater</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         PROJECT SHOWCASE
+    ══════════════════════════════════════ -->
+    <section class="project" id="projects" aria-label="Featured project">
+
+        <!-- Image side (left) -->
+        <div class="project-visual">
+            <div class="project-visual-inner" aria-hidden="true">
+                <div class="project-visual-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="1"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21,15 16,10 5,21"/>
+                    </svg>
+                </div>
+                <span class="project-visual-label">Project Photography</span>
+            </div>
+        </div>
+
+        <!-- Content side (right) -->
+        <div class="project-copy reveal">
+            <span class="section-label">Featured Project</span>
+            <h2>
+                The Harbour View Residence
+                <em>Virginia Beach, VA — 2024</em>
+            </h2>
+            <div class="gold-rule"></div>
+            <p class="project-desc">
+                A complete technology integration across a newly constructed 9,100-square-foot waterfront property. The brief: every system invisible. Controls that blend into bespoke cabinetry, lighting that responds to natural light without intervention, and a home theater capable of commercial-grade performance.
+            </p>
+
+            <div class="project-specs">
+                <div class="spec">
+                    <span class="spec-label">Square Footage</span>
+                    <span class="spec-val">9,100 sf</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Control Zones</span>
+                    <span class="spec-val">18</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Platform</span>
+                    <span class="spec-val">Crestron</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Lighting</span>
+                    <span class="spec-val">Lutron QSX</span>
+                </div>
+            </div>
+
+            <a href="#contact" class="project-action">
+                Discuss Your Project <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer id="contact">
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <div class="footer-brand-name">
+                    <span class="nav-logo-dot"></span>
+                    ITD Hampton Roads
+                </div>
+                <p>
+                    Innovative Technologies &amp; Design has been designing and installing luxury home technology systems across Hampton Roads, Virginia since [YEAR]. We work exclusively with custom and semi-custom residential projects where precision matters.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Home Theater</a></li>
+                    <li><a href="#services">Whole-Home Automation</a></li>
+                    <li><a href="#services">Lighting Control</a></li>
+                    <li><a href="#services">Network &amp; Infrastructure</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:[PHONE]">[PHONE]</a></li>
+                    <li><a href="mailto:[EMAIL]">[EMAIL]</a></li>
+                    <li><a href="#">Hampton Roads, VA</a></li>
+                    <li><a href="#">CEDIA Certified Member</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; [YEAR] Innovative Technologies &amp; Design. All rights reserved.</p>
+            <p>Serving Chesapeake · Virginia Beach · Norfolk · Suffolk · Isle of Wight</p>
+        </div>
+    </footer>
+
+
+    <!-- ══════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════ -->
+    <script>
+        // Nav scroll state
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Hamburger menu
+        const burger  = document.getElementById('navBurger');
+        const panel   = document.getElementById('navPanel');
+
+        burger.addEventListener('click', () => {
+            const isOpen = panel.classList.toggle('open');
+            burger.classList.toggle('open', isOpen);
+            burger.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.nav-panel-link').forEach(link => {
+            link.addEventListener('click', () => {
+                panel.classList.remove('open');
+                burger.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+        reveals.forEach(el => revealObserver.observe(el));
+    </script>
+
+</body>
+</html>
