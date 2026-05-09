@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priority Foundation Repair | Hampton Roads, VA</title>
+  <meta name="description" content="Hampton Roads' foundation repair specialists. Foundation repair, crawl space encapsulation, structural repair, and home inspection findings. 5.0 stars across 33 verified reviews.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --olive: #4A5C36;
+      --olive-dark: #38472A;
+      --olive-mid: #526641;
+      --olive-light: #6B844F;
+      --olive-glow: rgba(74, 92, 54, 0.15);
+      --black: #0D0D0D;
+      --bg: #111111;
+      --bg-card: #161616;
+      --bg-card-border: #1F1F1F;
+      --cream: #EDE8DC;
+      --cream-dim: rgba(237, 232, 220, 0.75);
+      --cream-muted: #8A8070;
+      --gold: #C9A85C;
+      --white: #F6F2ED;
+      --nav-h: 72px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--black);
+      color: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* =========================================
+       NAV
+    ========================================= */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      transition: background 0.5s ease, border-color 0.5s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    #nav.scrolled {
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: rgba(74, 92, 54, 0.18);
+    }
+
+    .nav-logo {
+      height: 46px;
+      width: auto;
+    }
+
+    .nav-cta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid rgba(74, 92, 54, 0.5);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--olive);
+      border-color: var(--olive);
+      color: var(--white);
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 7rem;
+      background-image: url('img/PFRtrucks.webp');
+      background-size: cover;
+      background-position: center 58%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.15) 100%),
+        linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 35%, rgba(10,10,10,0.2) 70%, rgba(10,10,10,0.5) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--olive-light);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--olive-light);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.2rem, 7.5vw, 7rem);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      max-width: 820px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--olive-light);
+    }
+
+    .hero-sub {
+      font-family: 'Lora', serif;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      font-style: italic;
+      color: var(--cream-dim);
+      max-width: 400px;
+      line-height: 1.6;
+      margin-bottom: 2.8rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--olive);
+      padding: 1.05rem 2.4rem;
+      min-height: 52px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--olive-mid);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* =========================================
+       PROOF BAR
+    ========================================= */
+    .proof-bar {
+      background: #0C0C0C;
+      border-top: 1px solid rgba(74, 92, 54, 0.25);
+      border-bottom: 1px solid rgba(74, 92, 54, 0.25);
+    }
+
+    .proof-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .proof-stat {
+      flex: 1;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .proof-stat + .proof-stat::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 44px;
+      width: 1px;
+      background: var(--olive);
+    }
+
+    .proof-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+
+    .proof-num.proof-text {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      letter-spacing: 0.02em;
+    }
+
+    .proof-lbl {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    /* =========================================
+       SHARED SECTION
+    ========================================= */
+    .section {
+      padding: 7.5rem 0;
+    }
+
+    .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .section-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--olive-light);
+      margin-bottom: 1.1rem;
+      display: block;
+    }
+
+    .section-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4rem;
+    }
+
+    /* =========================================
+       SERVICES
+    ========================================= */
+    .services {
+      background: var(--bg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--bg-card-border);
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      padding: 2.8rem 2.2rem;
+      border-top: 3px solid var(--olive);
+      border-right: 1px solid var(--bg-card-border);
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .service-card:last-child {
+      border-right: none;
+    }
+
+    .service-card:hover {
+      background: #1C1C1C;
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      color: var(--olive-light);
+      margin-bottom: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .service-desc {
+      font-family: 'Lora', serif;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--cream-muted);
+    }
+
+    /* =========================================
+       CREW BAND (visual break)
+    ========================================= */
+    .crew-band {
+      position: relative;
+      height: 420px;
+      background-image: url('img/Whole-Crew-and-Truck--PFR.webp');
+      background-size: cover;
+      background-position: center 40%;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    .crew-band-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(10,10,10,0.92) 0%,
+        rgba(10,10,10,0.5) 40%,
+        rgba(10,10,10,0.65) 100%
+      );
+    }
+
+    .crew-band-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .crew-band-stat {
+      max-width: 460px;
+    }
+
+    .crew-band-stat .big-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(4rem, 8vw, 7rem);
+      line-height: 1;
+      color: var(--white);
+      display: block;
+      letter-spacing: -0.02em;
+    }
+
+    .crew-band-stat .big-num span {
+      color: var(--olive-light);
+    }
+
+    .crew-band-stat p {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--cream-dim);
+      line-height: 1.6;
+      margin-top: 1rem;
+      max-width: 380px;
+    }
+
+    /* =========================================
+       REVIEWS
+    ========================================= */
+    .reviews {
+      background: var(--black);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      padding: 2.8rem 2.4rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-mark {
+      position: absolute;
+      top: -1.2rem;
+      right: 1.8rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 9rem;
+      line-height: 1;
+      color: rgba(74, 92, 54, 0.1);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .star {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .review-quote {
+      font-family: 'Lora', serif;
+      font-size: 0.98rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--cream-dim);
+      flex: 1;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .review-reviewer {
+      border-top: 1px solid var(--bg-card-border);
+      padding-top: 1.25rem;
+    }
+
+    .reviewer-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .reviewer-source {
+      font-family: 'Lora', serif;
+      font-size: 0.78rem;
+      color: var(--cream-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* =========================================
+       WHY PFR
+    ========================================= */
+    .why {
+      background: var(--bg);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+    }
+
+    .why-point {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(74, 92, 54, 0.35);
+    }
+
+    .why-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 4.5rem;
+      line-height: 1;
+      color: rgba(74, 92, 54, 0.2);
+      margin-bottom: 1.1rem;
+      display: block;
+      letter-spacing: -0.02em;
+    }
+
+    .why-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+    }
+
+    .why-body {
+      font-family: 'Lora', serif;
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--cream-muted);
+    }
+
+    /* =========================================
+       CTA
+    ========================================= */
+    .cta-section {
+      background: var(--olive-dark);
+      padding: 7rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 3rem;
+    }
+
+    .cta-phone {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      line-height: 1;
+      margin-bottom: 1.4rem;
+      transition: opacity 0.2s;
+    }
+
+    .cta-phone:hover {
+      opacity: 0.75;
+    }
+
+    .cta-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,0.25);
+      margin-bottom: 1.4rem;
+    }
+
+    .cta-email {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(237, 232, 220, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cta-email:hover {
+      color: var(--cream);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      background: #090909;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 2.2rem 0;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(138, 128, 112, 0.55);
+    }
+
+    .footer-right {
+      font-family: 'Lora', serif;
+      font-size: 0.78rem;
+      color: rgba(138, 128, 112, 0.35);
+    }
+
+    .footer-right a {
+      color: rgba(138, 128, 112, 0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-right a:hover {
+      color: rgba(138, 128, 112, 0.75);
+    }
+
+    /* =========================================
+       FADE-UP ANIMATION
+    ========================================= */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* =========================================
+       RESPONSIVE — TABLET
+    ========================================= */
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .service-card:nth-child(2) {
+        border-right: none;
+      }
+
+      .service-card:nth-child(3) {
+        border-top: 1px solid var(--bg-card-border);
+        border-right: 1px solid var(--bg-card-border);
+      }
+
+      .service-card:nth-child(4) {
+        border-top: 1px solid var(--bg-card-border);
+        border-right: none;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    /* =========================================
+       RESPONSIVE — MOBILE
+    ========================================= */
+    @media (max-width: 768px) {
+      #nav {
+        padding: 0 1.25rem;
+      }
+
+      .nav-cta {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        letter-spacing: 0.06em;
+      }
+
+      .hero {
+        background-attachment: scroll;
+        background-position: center center;
+        min-height: 85vh;
+        padding-bottom: 4.5rem;
+        background-image:
+          url('img/PFRtrucks.webp');
+      }
+
+      .hero-content {
+        padding: 0 1.25rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.6rem, 10vw, 3.6rem);
+      }
+
+      .hero-sub {
+        font-size: 0.95rem;
+        max-width: 100%;
+      }
+
+      .btn-primary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .proof-inner {
+        flex-direction: column;
+        padding: 0;
+      }
+
+      .proof-stat {
+        padding: 1.75rem 1.5rem;
+        border-top: 1px solid rgba(74, 92, 54, 0.15);
+      }
+
+      .proof-stat:first-child {
+        border-top: none;
+      }
+
+      .proof-stat + .proof-stat::before {
+        display: none;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .section-inner {
+        padding: 0 1.25rem;
+      }
+
+      .section-heading {
+        margin-bottom: 2.5rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        border: none;
+        gap: 1px;
+        background: var(--bg-card-border);
+      }
+
+      .service-card {
+        border-right: none;
+      }
+
+      .service-card:nth-child(3),
+      .service-card:nth-child(4) {
+        border-top: none;
+        border-right: none;
+      }
+
+      .crew-band {
+        background-attachment: scroll;
+        background-position: center center;
+        height: 320px;
+      }
+
+      .crew-band-content {
+        padding: 0 1.25rem;
+      }
+
+      .crew-band-stat .big-num {
+        font-size: clamp(3.5rem, 14vw, 5rem);
+      }
+
+      .crew-band-stat p {
+        font-size: 0.93rem;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .cta-section {
+        padding: 4.5rem 0;
+      }
+
+      .cta-section .section-inner {
+        padding: 0 1.25rem;
+      }
+
+      .cta-heading {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+      }
+
+      .cta-phone {
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 0.6rem;
+        text-align: center;
+        padding: 0 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #nav {
+        padding: 0 1rem;
+      }
+
+      .section-inner {
+        padding: 0 1rem;
+      }
+
+      .crew-band-content {
+        padding: 0 1rem;
+      }
+
+      .review-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-inner {
+        padding: 0 1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .hero,
+      .crew-band {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <img src="img/white-logo.png" alt="Priority Foundation Repair" class="nav-logo">
+    <a href="tel:7577999507" class="nav-cta">757-799-9507</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Hampton Roads, Virginia</p>
+      <h1>Hampton Roads'<br><em>Foundation Repair</em><br>Specialists</h1>
+      <p class="hero-sub">33 jobs rated 5 stars. Zero exceptions.</p>
+      <a href="mailto:devon@pfrbuilt.com" class="btn-primary">
+        Request a Free Estimate
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="8" x2="13" y2="8"/>
+          <polyline points="9,4 13,8 9,12"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="proof-bar">
+    <div class="proof-inner">
+      <div class="proof-stat fade-up">
+        <span class="proof-num">5.0</span>
+        <span class="proof-lbl">Stars on Google</span>
+      </div>
+      <div class="proof-stat fade-up d1">
+        <span class="proof-num">33</span>
+        <span class="proof-lbl">Verified Reviews</span>
+      </div>
+      <div class="proof-stat fade-up d2">
+        <span class="proof-num proof-text">Hampton Roads</span>
+        <span class="proof-lbl">Virginia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section services">
+    <div class="section-inner">
+      <span class="section-eyebrow fade-up">What We Do</span>
+      <h2 class="section-heading fade-up d1">What We Fix</h2>
+      <div class="services-grid">
+
+        <div class="service-card fade-up">
+          <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3,30 18,6 33,30"/>
+            <line x1="3" y1="30" x2="33" y2="30"/>
+            <line x1="12" y1="22" x2="18" y2="14"/>
+            <line x1="18" y1="14" x2="24" y2="22"/>
+          </svg>
+          <h3 class="service-name">Foundation Repair</h3>
+          <p class="service-desc">Settling, cracking, and shifting foundations are addressed at the source. We assess the cause, not just the symptom, and stabilize your structure to last.</p>
+        </div>
+
+        <div class="service-card fade-up d1">
+          <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="18" width="32" height="14" rx="1"/>
+            <line x1="2" y1="18" x2="34" y2="18"/>
+            <line x1="11" y1="18" x2="11" y2="32"/>
+            <line x1="25" y1="18" x2="25" y2="32"/>
+            <path d="M8 12 Q18 4 28 12"/>
+          </svg>
+          <h3 class="service-name">Crawl Space Encapsulation</h3>
+          <p class="service-desc">Moisture, mold, and structural decay begin below the floor. Full encapsulation seals out what damages homes from the ground up, before it surfaces.</p>
+        </div>
+
+        <div class="service-card fade-up d2">
+          <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="3" width="6" height="30" rx="1"/>
+            <rect x="24" y="3" width="6" height="30" rx="1"/>
+            <line x1="6" y1="12" x2="30" y2="12"/>
+            <line x1="6" y1="24" x2="30" y2="24"/>
+          </svg>
+          <h3 class="service-name">Structural Repair</h3>
+          <p class="service-desc">Bowing walls, failing beams, and compromised framing require more than a patch. We restore structural integrity to the parts of your home that carry the load.</p>
+        </div>
+
+        <div class="service-card fade-up d3">
+          <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="16" r="10"/>
+            <line x1="23.5" y1="23.5" x2="34" y2="34"/>
+            <line x1="12" y1="16" x2="20" y2="16"/>
+            <line x1="16" y1="12" x2="16" y2="20"/>
+          </svg>
+          <h3 class="service-name">Home Inspection Findings</h3>
+          <p class="service-desc">Inspectors flag the problem. We fix it. Priority Foundation Repair is the contractor of choice when the report comes back with structural concerns.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CREW BAND -->
+  <div class="crew-band">
+    <div class="crew-band-overlay"></div>
+    <div class="crew-band-content">
+      <div class="crew-band-stat fade-up">
+        <span class="big-num">5.0<span>★</span></span>
+        <p>Every homeowner who left a review gave Priority Foundation Repair five stars. Not most of them. All of them.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="section reviews">
+    <div class="section-inner">
+      <span class="section-eyebrow fade-up">Google Reviews</span>
+      <h2 class="section-heading fade-up d1">What Homeowners Say</h2>
+      <div class="reviews-grid">
+
+        <div class="review-card fade-up">
+          <span class="review-mark">"</span>
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-quote">"10/10 RECOMMEND. Quick estimate, smooth communication, and the crew was professional from start to finish. I never felt pressured. They identified the problem clearly and fixed it right."</p>
+          <div class="review-reviewer">
+            <div class="reviewer-name">Jessalyn Oakley</div>
+            <div class="reviewer-source">Google Review</div>
+          </div>
+        </div>
+
+        <div class="review-card fade-up d1">
+          <span class="review-mark">"</span>
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-quote">"I have worked with Devon on multiple occasions and it is always top notch service. He takes the time to explain everything, does the work correctly, and stands behind it. Would not use anyone else."</p>
+          <div class="review-reviewer">
+            <div class="reviewer-name">Christian Kelly</div>
+            <div class="reviewer-source">Google Review</div>
+          </div>
+        </div>
+
+        <div class="review-card fade-up d2">
+          <span class="review-mark">"</span>
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-quote">"I'm very pleased with the work Priority Foundation did on my house. Lifted and stabilized my foundation back to where it should be. Great team, fair price, and I felt taken care of the whole way through."</p>
+          <div class="review-reviewer">
+            <div class="reviewer-name">Michelle Rocheleau</div>
+            <div class="reviewer-source">Google Review</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PFR -->
+  <section class="section why">
+    <div class="section-inner">
+      <span class="section-eyebrow fade-up">Why Priority</span>
+      <h2 class="section-heading fade-up d1">Built on the Work,<br>Not the Promise</h2>
+      <div class="why-grid">
+
+        <div class="why-point fade-up">
+          <span class="why-num">01</span>
+          <h3 class="why-title">Knowledgeable in Home Inspection Findings</h3>
+          <p class="why-body">We know what inspectors look for because we've spent years fixing what they find. When the report comes back with structural concerns, we know exactly what that means and what it takes to resolve it.</p>
+        </div>
+
+        <div class="why-point fade-up d1">
+          <span class="why-num">02</span>
+          <h3 class="why-title">Reasonable Pricing, Work Completed Right</h3>
+          <p class="why-body">Fair estimates, no upsells, and results that hold. Every job is completed to satisfaction. That's not a marketing line. Thirty-three verified reviews, all five stars, say the same thing.</p>
+        </div>
+
+        <div class="why-point fade-up d2">
+          <span class="why-num">03</span>
+          <h3 class="why-title">Excellent Communication, Start to Finish</h3>
+          <p class="why-body">From the first call to the final walkthrough, you know what's happening and why. No surprises. No disappearing. Clear, consistent communication on every job, every time.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner cta-inner">
+      <h2 class="cta-heading fade-up">Ready to Protect<br>Your Home?</h2>
+      <a href="tel:7577999507" class="cta-phone fade-up d1">757-799-9507</a>
+      <div class="cta-divider fade-up d2"></div>
+      <a href="mailto:devon@pfrbuilt.com" class="cta-email fade-up d2">devon@pfrbuilt.com</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-left">Priority Foundation Repair. Hampton Roads, VA.</span>
+      <span class="footer-right">Site built by <a href="https://platypusautomations.com" target="_blank" rel="noopener noreferrer">Platypus Automations</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    let ticking = false;
+    function updateNav() {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateNav);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Fade-up Intersection Observer
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    // Immediately mark elements already in viewport
+    function checkVisible() {
+      document.querySelectorAll('.fade-up:not(.visible)').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('load', checkVisible);
+    checkVisible();
+  </script>
+
+</body>
+</html>
