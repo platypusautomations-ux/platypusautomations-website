@@ -98,16 +98,15 @@
     /* ==================== HERO ==================== */
     #hero {
       min-height: 100vh;
-      background:
+      background-image:
         linear-gradient(105deg,
-          rgba(18,32,12,0.97) 0%,
-          rgba(18,32,12,0.88) 45%,
-          rgba(18,32,12,0.58) 100%),
-        radial-gradient(ellipse at 68% 40%,
-          #3B6B3A 0%,
-          #2A4A29 35%,
-          #1A2E18 65%,
-          #0D1A0B 100%);
+          rgba(14,26,10,0.95) 0%,
+          rgba(14,26,10,0.86) 45%,
+          rgba(14,26,10,0.55) 100%),
+        url('img/truck.webp');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -335,7 +334,7 @@
       border-radius: 5px;
       overflow: hidden;
       background: #b5ccb3;
-      aspect-ratio: 4/3;
+      aspect-ratio: 1/1;
     }
 
     .photo-placeholder.wide {
@@ -724,7 +723,11 @@
         padding: 0.55rem 1rem;
       }
 
-      #hero { min-height: 90vh; }
+      #hero {
+        min-height: 90vh;
+        background-attachment: scroll;
+        background-position: center center;
+      }
 
       .hero-inner { padding: 90px 1.25rem 0; }
 
@@ -868,9 +871,12 @@
         </div>
       </div>
       <div class="about-photos reveal reveal-d2">
-        <div class="photo-placeholder"></div>
-        <div class="photo-placeholder"></div>
-        <div class="photo-placeholder wide"></div>
+        <div class="photo-placeholder">
+          <img src="img/treetrimming.webp" alt="Dave's Cove crew with bucket truck trimming large trees in Hampton Roads" style="object-position: center bottom;">
+        </div>
+        <div class="photo-placeholder">
+          <img src="img/trimmedbranches.webp" alt="Freshly pruned tree showing clean cuts — Dave's Cove Complete Tree Care" style="object-position: center 30%;">
+        </div>
       </div>
     </div>
   </section>
