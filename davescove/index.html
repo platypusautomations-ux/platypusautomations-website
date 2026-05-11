@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dave's Cove Complete Tree Care | Chesapeake, VA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== VARIABLES ==================== */
+    :root {
+      --green-deep:      #3B6B3A;
+      --green-dark:      #2A4A29;
+      --red:             #8B2020;
+      --red-dark:        #6E1A1A;
+      --blue-grey:       #7A9BAD;
+      --blue-grey-light: #EBF1F5;
+      --brown:           #2C1A0E;
+      --brown-dark:      #1A0F07;
+      --cream:           #F5F0E8;
+      --cream-dark:      #EDE7DA;
+      --text:            #1A1A1A;
+      --text-mid:        #444444;
+      --text-muted:      #777777;
+      --border:          #d4e2d2;
+      --white:           #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ==================== NAV ==================== */
+    #main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 76px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    #main-nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    .nav-logo-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.92);
+      transition: background 0.35s ease;
+    }
+
+    #main-nav.scrolled .nav-logo-link {
+      background: transparent;
+    }
+
+    .nav-logo-img {
+      height: 48px;
+      width: auto;
+    }
+
+    .nav-phone a {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--red);
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-phone a:hover { background: var(--red-dark); }
+
+    /* ==================== HERO ==================== */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(105deg,
+          rgba(18,32,12,0.97) 0%,
+          rgba(18,32,12,0.88) 45%,
+          rgba(18,32,12,0.58) 100%),
+        radial-gradient(ellipse at 68% 40%,
+          #3B6B3A 0%,
+          #2A4A29 35%,
+          #1A2E18 65%,
+          #0D1A0B 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      padding: 100px 5% 0;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-grey);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.16;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: #a8c9a5;
+    }
+
+    .hero-subhead {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.93rem;
+      font-weight: 600;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .hero-cta-primary {
+      background: var(--red);
+      color: var(--white);
+      border: 2px solid var(--red);
+    }
+
+    .hero-cta-primary:hover {
+      background: var(--red-dark);
+      border-color: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-cta-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.50);
+    }
+
+    .hero-cta-secondary:hover {
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .hero-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-logo-wrap img {
+      width: 100%;
+      max-width: 300px;
+      filter: drop-shadow(0 8px 48px rgba(0,0,0,0.55));
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(12,22,8,0.92);
+      backdrop-filter: blur(6px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat {
+      padding: 1.6rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat:last-child { border-right: none; }
+
+    .stat-value {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.4rem;
+    }
+
+    /* ==================== SHARED SECTION STYLES ==================== */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.8vw, 2.8rem);
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.22;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subhead {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .section-header { margin-bottom: 3.5rem; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-subhead { margin: 0 auto; }
+
+    /* ==================== ABOUT ==================== */
+    #about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-copy p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-copy p:last-of-type { margin-bottom: 0; }
+
+    .about-trust-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      letter-spacing: 0.02em;
+    }
+
+    .trust-badge svg {
+      width: 14px;
+      height: 14px;
+      color: var(--green-deep);
+      flex-shrink: 0;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+    }
+
+    .photo-placeholder {
+      border-radius: 5px;
+      overflow: hidden;
+      background: #b5ccb3;
+      aspect-ratio: 4/3;
+    }
+
+    .photo-placeholder.wide {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ==================== SERVICES ==================== */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem 1.75rem 1.75rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(59,107,58,0.13);
+      border-color: var(--green-deep);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 1.25rem;
+      color: var(--green-deep);
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .service-card p {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.68;
+    }
+
+    /* ==================== REVIEWS ==================== */
+    #reviews { background: var(--blue-grey-light); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      border-left: 3px solid var(--green-deep);
+      box-shadow: 0 2px 14px rgba(44,26,14,0.07);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 0.9rem;
+    }
+
+    .star { color: var(--red); font-size: 1rem; line-height: 1; }
+
+    .review-text {
+      font-size: 0.91rem;
+      line-height: 1.72;
+      color: var(--text-mid);
+      flex: 1;
+      margin-bottom: 1.1rem;
+    }
+
+    .review-author {
+      border-top: 1px solid var(--border);
+      padding-top: 0.9rem;
+    }
+
+    .review-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      letter-spacing: 0.02em;
+    }
+
+    .review-location {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .review-placeholder {
+      background: transparent;
+      border: 2px dashed #afc5be;
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.6rem;
+    }
+
+    .review-placeholder .ph-icon {
+      font-size: 1.5rem;
+      opacity: 0.35;
+    }
+
+    .review-placeholder p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .reviews-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ==================== CONTACT ==================== */
+    #contact {
+      background: var(--brown);
+      padding: 7rem 5%;
+    }
+
+    .contact-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #contact .section-label {
+      color: var(--blue-grey);
+    }
+
+    #contact .section-title {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .contact-subhead {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.25rem;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1rem 2.25rem;
+      border-radius: 5px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .contact-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-btn-call {
+      background: var(--red);
+      color: var(--white);
+      border: 2px solid var(--red);
+    }
+
+    .contact-btn-call:hover {
+      background: var(--red-dark);
+      border-color: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .contact-btn-text {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.45);
+    }
+
+    .contact-btn-text:hover {
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .contact-secondary-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.75rem;
+    }
+
+    .contact-secondary-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-secondary-links a:hover { color: var(--white); }
+
+    .contact-secondary-links a svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .service-area-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .area-pill {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.68);
+      letter-spacing: 0.03em;
+    }
+
+    .contact-address {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background: var(--brown-dark);
+      padding: 4rem 5% 2.5rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.42);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--blue-grey);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-contact-line {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-contact-line a,
+    .footer-contact-line span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-contact-line a:hover { color: var(--white); }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      margin: 2rem auto;
+      max-width: 400px;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* ==================== SCROLL REVEALS ==================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+
+    /* ==================== RESPONSIVE — TABLET ==================== */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-logo-wrap { order: -1; }
+
+      .hero-logo-wrap img {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ==================== RESPONSIVE — MOBILE ==================== */
+    @media (max-width: 480px) {
+      #main-nav { padding: 0 1.25rem; }
+
+      .nav-logo-img { height: 38px; }
+
+      .nav-phone a {
+        font-size: 0.83rem;
+        padding: 0.55rem 1rem;
+      }
+
+      #hero { min-height: 90vh; }
+
+      .hero-inner { padding: 90px 1.25rem 0; }
+
+      .hero-headline { font-size: 2.4rem; }
+
+      .hero-logo-wrap img { max-width: 150px; }
+
+      .hero-actions { flex-direction: column; }
+
+      .hero-cta { text-align: center; }
+
+      .hero-stats { grid-template-columns: 1fr; }
+
+      .hero-stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 1rem 1.5rem;
+      }
+
+      .hero-stat:last-child { border-bottom: none; }
+
+      section { padding: 4rem 1.25rem; }
+
+      #contact { padding: 5rem 1.25rem; }
+
+      .about-photos { grid-template-columns: 1fr; }
+
+      .about-trust-row { gap: 0.5rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      .section-title { font-size: 2rem; }
+
+      .contact-actions { flex-direction: column; align-items: stretch; }
+
+      .contact-btn { justify-content: center; }
+
+      .contact-secondary-links { flex-direction: column; align-items: center; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="main-nav">
+    <div class="nav-logo">
+      <a href="#" class="nav-logo-link"><img src="img/logo.png" alt="Dave's Cove Complete Tree Care" class="nav-logo-img"></a>
+    </div>
+    <div class="nav-phone">
+      <a href="tel:+17575702929">(757) 570-2929</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Chesapeake, VA &nbsp;&bull;&nbsp; 35+ Years &nbsp;&bull;&nbsp; Fully Licensed &amp; Insured</p>
+        <h1 class="hero-headline">
+          Complete Tree Care<br>
+          <em>You Can Count On</em>
+        </h1>
+        <p class="hero-subhead">
+          Family-owned and operated for over 35 years. David Brannock and his crew handle every job right — safe removal, clean trim work, and your yard left better than they found it.
+        </p>
+        <div class="hero-actions">
+          <a href="tel:+17575702929" class="hero-cta hero-cta-primary">Call David Now</a>
+          <a href="sms:+17575702929" class="hero-cta hero-cta-secondary">Send a Text</a>
+        </div>
+      </div>
+      <div class="hero-logo-wrap">
+        <img src="img/logo.png" alt="Dave's Cove Complete Tree Care">
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-value">5.0 Stars</span>
+        <span class="stat-label">Perfect Google Rating</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">35+ Years</span>
+        <span class="stat-label">Serving Hampton Roads</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">Licensed &amp; Insured</span>
+        <span class="stat-label">Full Coverage, Every Job</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <div class="section-header reveal">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">Family-Owned. 35 Years of Getting It Right.</h2>
+        </div>
+        <div class="reveal reveal-d1">
+          <p>
+            Dave's Cove Complete Tree Care has been a trusted name in Hampton Roads since the late 1980s. David Brannock built the business the old-fashioned way — showing up when he says he will, doing the work correctly the first time, and leaving the yard cleaner than he found it.
+          </p>
+          <p>
+            This is not a franchise or a call center with a crew attached. When you call Dave's Cove, you reach David. He walks your property, gives you a straight quote, and the crew he brings is the crew that has worked with him for years. That kind of consistency is rare — and it is why customers in Chesapeake, Virginia Beach, Norfolk, Portsmouth, and across the state line into Currituck County keep calling back.
+          </p>
+          <p>
+            Every job is fully licensed and insured. Whether you have one troublesome tree or a full lot that needs clearing, Dave's Cove brings the same care and attention to cleanup that built their reputation over three and a half decades.
+          </p>
+          <div class="about-trust-row">
+            <span class="trust-badge">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 2L2 5v4c0 3.31 2.69 6 6 6s6-2.69 6-6V5L8 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M5.5 8l2 2 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Fully Licensed
+            </span>
+            <span class="trust-badge">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 2L2 5v4c0 3.31 2.69 6 6 6s6-2.69 6-6V5L8 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M5.5 8l2 2 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Fully Insured
+            </span>
+            <span class="trust-badge">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 1a7 7 0 100 14A7 7 0 008 1z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 4v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              35+ Years
+            </span>
+            <span class="trust-badge">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM4 13c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Family Operated
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="about-photos reveal reveal-d2">
+        <div class="photo-placeholder"></div>
+        <div class="photo-placeholder"></div>
+        <div class="photo-placeholder wide"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES ==================== -->
+  <section id="services">
+    <div class="section-header centered reveal">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Complete Tree Care for Hampton Roads</h2>
+      <p class="section-subhead">From a single problem tree to a full property clearout, Dave's Cove handles every job with the same attention to detail — and the same commitment to cleanup.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal reveal-d1">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M22 6c0 0-11 9-11 17h7l-6 9h8v6h4v-6h8l-6-9h7C33 15 22 6 22 6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M12 40l5-5M12 35l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M27 40l5-5M27 35l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Tree Removal</h3>
+        <p>Safe, controlled removal of any tree — tight yards, close to structures, large canopies. Full cleanup included on every job, no exceptions.</p>
+      </div>
+
+      <div class="service-card reveal reveal-d2">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="14" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="30" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M15.5 17L36 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M15.5 27L36 36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 22h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M30 18v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Tree Trimming &amp; Pruning</h3>
+        <p>Proper pruning for structure, clearance, and long-term health. We cut for the tree, not just for looks — and the results show over time.</p>
+      </div>
+
+      <div class="service-card reveal reveal-d3">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="22" cy="20" r="13" stroke="currentColor" stroke-width="2"/>
+          <circle cx="22" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+          <path d="M22 7v3M22 30v3M9 20h3M30 20h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 11l2 2M29 27l2 2M13 29l2-2M29 13l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 38h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 34c0 0 3-2 6-2s6 2 6 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Stump Grinding</h3>
+        <p>Grinding stumps below grade so they don't sprout, trip anyone, or ruin your lawn. Clean fill hauled or spread on site — your call.</p>
+      </div>
+
+      <div class="service-card reveal reveal-d4">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M26 5L13 24h11l-6 15L38 18H26z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+          <path d="M6 28c2-2 5-3 8-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 34c3-3 7-4 10-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 40h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Storm Damage &amp; Emergency Response</h3>
+        <p>Downed trees, split limbs on structures, hazardous post-storm situations. David answers the phone — call any time when it's urgent.</p>
+      </div>
+
+      <div class="service-card reveal reveal-d5">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 36h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 36l2-8h20l2 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M14 28l-3-10M30 28l3-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M11 18h22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 10c1-2 3-3 6-3s5 1 6 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M19 10v8M25 10v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Land &amp; Lot Clearing</h3>
+        <p>Full lot clearouts for construction prep, fence lines, or reclaiming overgrown property. Trees, brush, and debris hauled clean.</p>
+      </div>
+
+      <div class="service-card reveal reveal-d6">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M19 34v8M25 34v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 42h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 32c0-7.7 6.3-14 14-14s14 6.3 14 14H8z" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M8 24c3-7 8-12 14-16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3,2"/>
+          <path d="M6 18l5 4M10 14l4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M36 18l-5 4M32 14l-4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Canopy Reduction</h3>
+        <p>Reducing height and spread to manage clearance from rooflines, power lines, and neighboring properties — without sacrificing the tree.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== REVIEWS ==================== -->
+  <section id="reviews">
+    <div class="section-header centered reveal">
+      <p class="section-label">What Customers Say</p>
+      <h2 class="section-title">5.0 Stars on Google — Every Single One</h2>
+      <p class="section-subhead">Seventeen reviews across 35 years of work. The score is perfect; the number should be higher. If Dave's Cove has ever taken care of your property, your review matters more than you know.</p>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card reveal reveal-d1">
+        <div class="review-stars">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
+        <p class="review-text">
+          Had a massive water oak overhanging the corner of my house that had been worrying me through every storm for years. David came out within a day of calling, gave me a straight quote, and had his crew there the following week. They took it down cleanly, ground the stump, and cleaned up every last chip and branch. Called them back for two more trees the next spring.
+        </p>
+        <div class="review-author">
+          <p class="review-name">Mike R.</p>
+          <p class="review-location">Chesapeake, VA</p>
+        </div>
+      </div>
+
+      <div class="review-card reveal reveal-d2">
+        <div class="review-stars">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
+        <p class="review-text">
+          A storm knocked a pine into my back fence line on a Friday night. I called around and David was the only one who actually answered over the weekend. He was at my property Monday morning. Fast, fairly priced, and the crew was careful not to damage the fence further during removal. This is who you call in an emergency.
+        </p>
+        <div class="review-author">
+          <p class="review-name">Jennifer L.</p>
+          <p class="review-location">Virginia Beach, VA</p>
+        </div>
+      </div>
+
+      <div class="review-card reveal reveal-d3">
+        <div class="review-stars">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
+        <p class="review-text">
+          Had four loblolly pines along my property line close to the neighbor's shed that needed to come down. Found Dave's Cove through a neighbor's recommendation. David drove out to Currituck, walked the site, gave a fair price, and the crew was professional from start to finish. Worth every bit of the trip from Virginia.
+        </p>
+        <div class="review-author">
+          <p class="review-name">Tom B.</p>
+          <p class="review-location">Currituck County, NC</p>
+        </div>
+      </div>
+
+      <div class="review-placeholder reveal reveal-d4">
+        <p class="ph-icon">&#9733;</p>
+        <p>More reviews loading&nbsp;...</p>
+      </div>
+
+    </div>
+
+    <p class="reviews-note">Reviews shown are illustrative examples. Verified Google reviews coming soon.</p>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact">
+    <div class="contact-inner reveal">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Ready to Get That Tree Taken Care Of?</h2>
+      <p class="contact-subhead">
+        Call or text David directly. No forms, no hold music, no call centers.<br>
+        He picks up — and he'll give you a straight answer.
+      </p>
+
+      <div class="contact-actions">
+        <a href="tel:+17575702929" class="contact-btn contact-btn-call">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.684l1.06 3.18a1 1 0 01-.23 1.013L7.91 9.23a12.06 12.06 0 005.86 5.86l1.354-1.146a1 1 0 011.012-.23l3.18 1.06a1 1 0 01.684.95V17a2 2 0 01-2 2C7.716 19 1 12.284 1 5a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          Call (757) 570-2929
+        </a>
+        <a href="sms:+17575702929" class="contact-btn contact-btn-text">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v9a2 2 0 01-2 2H6l-4 3V4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          Text (757) 570-2929
+        </a>
+      </div>
+
+      <div class="contact-secondary-links">
+        <a href="mailto:davescove1@live.com">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 4h12v9H2V4z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+            <path d="M2 4l6 5 6-5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          davescove1@live.com
+        </a>
+        <a href="https://facebook.com/DavesCoveCompleteTreeCare" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2H10a3 3 0 00-3 3v2H5v3h2v6h3V10h2l1-3h-3V5a1 1 0 011-1h2V2z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+          </svg>
+          Facebook
+        </a>
+      </div>
+
+      <div class="service-area-row">
+        <span class="area-pill">Chesapeake, VA</span>
+        <span class="area-pill">Virginia Beach, VA</span>
+        <span class="area-pill">Norfolk, VA</span>
+        <span class="area-pill">Portsmouth, VA</span>
+        <span class="area-pill">Currituck County, NC</span>
+      </div>
+
+      <p class="contact-address">Chesapeake, VA 23322</p>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p class="footer-wordmark">Dave's Cove Complete Tree Care</p>
+    <p class="footer-tagline">35 Years Serving Hampton Roads.</p>
+    <p class="footer-badge">Family-Owned &amp; Operated &nbsp;&bull;&nbsp; Fully Licensed &amp; Insured</p>
+    <div class="footer-contact-line">
+      <a href="tel:+17575702929">(757) 570-2929</a>
+    </div>
+    <div class="footer-contact-line">
+      <a href="mailto:davescove1@live.com">davescove1@live.com</a>
+    </div>
+    <div class="footer-contact-line" style="margin-top: 0.5rem;">
+      <a href="https://facebook.com/DavesCoveCompleteTreeCare" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <hr class="footer-divider">
+    <p class="footer-copy">&copy; 2026 Dave's Cove Complete Tree Care. All rights reserved.</p>
+    <p class="footer-copy" style="margin-top: 0.4rem;">Site built by <a href="https://platypusautomations.com" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.40); text-decoration: none; transition: color 0.2s;">Platypus Automations</a></p>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    const nav = document.getElementById('main-nav');
+
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    setTimeout(() => {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }, 1000);
+  </script>
+
+</body>
+</html>
