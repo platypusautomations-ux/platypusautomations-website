@@ -57,28 +57,18 @@
 
   .nav-logo {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     text-decoration: none;
-    line-height: 1;
-    gap: 1px;
   }
 
-  .nav-logo-main {
-    font-family: 'Dancing Script', cursive;
-    font-weight: 700;
-    font-size: 30px;
-    color: var(--white);
-    line-height: 1.1;
-    letter-spacing: 0.01em;
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
   }
 
-  .nav-logo-sub {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--teal-light);
+  @media (max-width: 900px) {
+    .nav-logo img { height: 36px; }
   }
 
   .nav-links {
@@ -128,7 +118,7 @@
     background:
       linear-gradient(to bottom, transparent 65%, var(--navy) 100%),
       linear-gradient(108deg, rgba(10,22,40,0.93) 0%, rgba(10,22,40,0.70) 52%, rgba(10,22,40,0.32) 100%),
-      url('img/van.png') center / cover no-repeat;
+      url('img/van.webp') center / cover no-repeat;
     animation: heroZoom 22s ease-in-out infinite alternate;
   }
 
@@ -969,7 +959,7 @@
       background:
         linear-gradient(to bottom, transparent 65%, var(--navy) 100%),
         linear-gradient(108deg, rgba(10,22,40,0.93) 0%, rgba(10,22,40,0.70) 52%, rgba(10,22,40,0.32) 100%),
-        url('img/van.png') right center / cover no-repeat;
+        url('img/van.webp') right center / cover no-repeat;
       background-attachment: scroll;
     }
 
@@ -990,8 +980,7 @@
 <!-- ── NAV ── -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <span class="nav-logo-main">Conner</span>
-    <span class="nav-logo-sub">Plumbing · Heating &amp; Air Conditioning</span>
+    <img src="img/logo.png" alt="Conner Plumbing Heating &amp; Air Conditioning">
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
