@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platypus Automations LLC — Federal Contractor Profile</title>
+<meta name="description" content="Platypus Automations LLC — SAM.gov registered, SDVOSB certified small business based in Hampton Roads, Virginia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --navy:        #0A1628;
+  --navy-dark:   #050d18;
+  --navy-mid:    #07111f;
+  --navy-card:   #0d1e35;
+  --teal:        #007A7A;
+  --teal-bright: #00a0a0;
+  --teal-dim:    rgba(0,122,122,0.15);
+  --text:        #e8edf4;
+  --text-muted:  #8a9ab5;
+  --border:      rgba(255,255,255,0.07);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', system-ui, sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--teal-bright); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--navy-dark);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 0 48px;
+  text-align: center;
+}
+
+.company-name {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.header-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--teal);
+  margin: 20px auto 0;
+  border-radius: 2px;
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+  margin-bottom: 24px;
+}
+
+/* ── CREDENTIAL CARDS ── */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
+  .cards { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px 28px;
+}
+
+.card-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.card-value {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.card-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ── INFO ROW ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.info-item .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.info-item .value {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* ── NAICS ── */
+.naics-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.naics-table thead th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0 12px 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.naics-table thead th:last-child {
+  padding-right: 0;
+}
+
+.naics-table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.naics-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.naics-table tbody td {
+  padding: 11px 12px 11px 0;
+  font-size: 0.9rem;
+  color: var(--text);
+  vertical-align: top;
+}
+
+.naics-table tbody td:first-child {
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.naics-table tbody td:last-child {
+  padding-right: 0;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy-dark);
+  border-top: 1px solid var(--border);
+  padding: 36px 0;
+  text-align: center;
+}
+
+.footer-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.footer-contact {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-contact a {
+  color: var(--teal-bright);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="company-name">Platypus Automations LLC</div>
+    <div class="tagline">Federal contracting made simple</div>
+    <div class="header-divider"></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Registration & Certification -->
+  <section>
+    <div class="container">
+      <div class="section-label">Registration &amp; Certification</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">SAM.gov Registration</div>
+          <div class="card-value">Active</div>
+          <div class="card-sub">Unique Entity ID: TDDCTFUKYMT7</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Business Designation</div>
+          <div class="card-value">SDVOSB</div>
+          <div class="card-sub">Service-Disabled Veteran-Owned Small Business</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Info -->
+  <section>
+    <div class="container">
+      <div class="section-label">Company Information</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">Legal Name</div>
+          <div class="value">Platypus Automations LLC</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Business Type</div>
+          <div class="value">Limited Liability Company</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Ownership</div>
+          <div class="value">Veteran-owned</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Location</div>
+          <div class="value">Hampton Roads, Virginia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAICS Codes -->
+  <section>
+    <div class="container">
+      <div class="section-label">NAICS Codes</div>
+      <table class="naics-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>561730</td><td>Landscaping Services</td></tr>
+          <tr><td>561720</td><td>Janitorial Services</td></tr>
+          <tr><td>562112</td><td>Hazardous Waste Collection</td></tr>
+          <tr><td>722310</td><td>Food Service Contractors</td></tr>
+          <tr><td>236220</td><td>Commercial and Institutional Building Construction</td></tr>
+          <tr><td>238220</td><td>Plumbing, Heating, and Air-Conditioning Contractors</td></tr>
+          <tr><td>238210</td><td>Electrical Contractors and Other Wiring Installation Contractors</td></tr>
+          <tr><td>238310</td><td>Drywall and Insulation Contractors</td></tr>
+          <tr><td>238320</td><td>Painting and Wall Covering Contractors</td></tr>
+          <tr><td>238910</td><td>Site Preparation Contractors</td></tr>
+          <tr><td>237310</td><td>Highway, Street, and Bridge Construction</td></tr>
+          <tr><td>561110</td><td>Office Administrative Services</td></tr>
+          <tr><td>488490</td><td>Other Support Activities for Road Transportation</td></tr>
+          <tr><td>562910</td><td>Remediation Services</td></tr>
+          <tr><td>238990</td><td>All Other Specialty Trade Contractors</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-name">Platypus Automations LLC</div>
+    <div class="footer-contact">
+      <a href="mailto:tim@platypusautomations.com">tim@platypusautomations.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
