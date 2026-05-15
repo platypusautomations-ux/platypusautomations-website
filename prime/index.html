@@ -7,333 +7,507 @@
 <meta name="description" content="Platypus Automations LLC — SAM.gov registered, SDVOSB certified small business based in Hampton Roads, Virginia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
 :root {
-  --navy:        #0A1628;
-  --navy-dark:   #050d18;
-  --navy-mid:    #07111f;
-  --navy-card:   #0d1e35;
-  --teal:        #007A7A;
-  --teal-bright: #00a0a0;
-  --teal-dim:    rgba(0,122,122,0.15);
-  --text:        #e8edf4;
-  --text-muted:  #8a9ab5;
-  --border:      rgba(255,255,255,0.07);
+  --teal:           #007A7A;
+  --teal-bright:    #00a0a0;
+  --navy:           #0A1628;
+  --navy-dark:      #050d18;
+  --navy-mid:       #07111f;
+  --glass-opacity:  0.02;
+  --glass-blur:     8px;
+  --trans-fast:     0.18s;
+  --trans-med:      0.35s;
+  --trans-slow:     0.65s;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'Barlow', system-ui, sans-serif;
   background: var(--navy);
-  color: var(--text);
+  color: #fff;
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden;
   font-weight: 300;
-  min-height: 100vh;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ── LIQUID GLASS ── */
+.liquid-glass {
+  background: rgba(255,255,255,var(--glass-opacity));
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
-img { max-width: 100%; display: block; }
-a { color: var(--teal-bright); text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* ── FADE-UP ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity var(--trans-slow) ease, transform var(--trans-slow) ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── SECTION BADGE ── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 24px;
+}
+.badge-teal { background: rgba(0,122,122,0.18); color: var(--teal-bright); }
 
 /* ── LAYOUT ── */
 .container {
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
-/* ── HEADER ── */
-header {
-  background: var(--navy-dark);
-  border-bottom: 1px solid var(--border);
-  padding: 56px 0 48px;
+/* ── HEADER / HERO ── */
+#hero {
+  position: relative;
+  background: linear-gradient(to bottom, var(--navy-dark) 0%, var(--navy) 100%);
+  padding: 100px 32px 90px;
   text-align: center;
+  overflow: hidden;
 }
-
-.company-name {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #fff;
-  margin-bottom: 10px;
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 500px;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%,
+    rgba(0,122,122,0.16) 0%,
+    rgba(0,122,122,0.06) 50%,
+    transparent 75%);
+  pointer-events: none;
+  filter: blur(24px);
 }
-
-.tagline {
-  font-size: 1rem;
-  color: var(--text-muted);
-  font-weight: 400;
-  letter-spacing: 0.04em;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  background: rgba(0,122,122,0.18);
+  color: var(--teal-bright);
+  margin-bottom: 32px;
 }
-
-.header-divider {
+.hero-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal-bright);
+  box-shadow: 0 0 6px rgba(0,160,160,0.7);
+  flex-shrink: 0;
+}
+.hero-name {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: #fff;
+  text-shadow:
+    0 0 60px rgba(0,160,160,0.35),
+    0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 16px;
+}
+.hero-tagline {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.02em;
+  max-width: 420px;
+  margin: 0 auto 40px;
+}
+.hero-divider {
   width: 48px;
   height: 2px;
-  background: var(--teal);
-  margin: 20px auto 0;
-  border-radius: 2px;
+  background: linear-gradient(to right, transparent, var(--teal), transparent);
+  margin: 0 auto;
+  opacity: 0.6;
 }
 
-/* ── SECTIONS ── */
-section {
-  padding: 48px 0;
-  border-bottom: 1px solid var(--border);
+/* ── CREDENTIALS ── */
+#credentials {
+  padding: 80px 32px;
+  background: linear-gradient(to bottom, var(--navy) 0%, var(--navy-dark) 100%);
+  text-align: center;
 }
-
-section:last-of-type {
-  border-bottom: none;
+.cred-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
 }
+@media (max-width: 580px) { .cred-grid { grid-template-columns: 1fr; } }
 
-.section-label {
-  font-size: 0.7rem;
+.cred-card {
+  border-radius: 20px;
+  padding: 36px 32px;
+  transition: transform var(--trans-med) ease, box-shadow var(--trans-med) ease;
+  cursor: default;
+}
+.cred-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0,122,122,0.18);
+}
+.cred-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(0,122,122,0.2);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.cred-icon svg { width: 20px; height: 20px; stroke: var(--teal-bright); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.cred-label {
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--teal-bright);
-  margin-bottom: 24px;
-}
-
-/* ── CREDENTIAL CARDS ── */
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-@media (max-width: 560px) {
-  .cards { grid-template-columns: 1fr; }
-}
-
-.card {
-  background: var(--navy-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 24px 28px;
-}
-
-.card-title {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.35);
   margin-bottom: 8px;
 }
-
-.card-value {
-  font-size: 1.05rem;
-  font-weight: 500;
+.cred-value {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: #fff;
-  margin-bottom: 4px;
+  line-height: 1.2;
+  margin-bottom: 6px;
 }
-
-.card-sub {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+.cred-sub {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
   font-weight: 300;
 }
+.cred-sub code {
+  font-family: 'Barlow', monospace;
+  font-size: 0.78rem;
+  color: var(--teal-bright);
+  background: rgba(0,160,160,0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
 
-/* ── INFO ROW ── */
-.info-grid {
+/* ── COMPANY INFO ── */
+#company {
+  padding: 80px 32px;
+  background: var(--navy-dark);
+  text-align: center;
+}
+.info-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
 }
-
-.info-item .label {
-  font-size: 0.7rem;
+@media (max-width: 700px) {
+  .info-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .info-row { grid-template-columns: 1fr; }
+}
+.info-cell {
+  padding: 32px 24px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+.info-cell:last-child { border-right: none; }
+@media (max-width: 700px) {
+  .info-cell:nth-child(2) { border-right: none; }
+}
+.info-cell-label {
+  font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 4px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 8px;
 }
-
-.info-item .value {
-  font-size: 0.95rem;
+.info-cell-value {
+  font-size: 0.92rem;
   font-weight: 400;
-  color: var(--text);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.35;
 }
 
 /* ── NAICS ── */
-.naics-table {
-  width: 100%;
-  border-collapse: collapse;
+#naics {
+  padding: 80px 32px 100px;
+  background: var(--navy);
+  text-align: center;
 }
+#naics .section-badge { margin: 0 auto 24px; }
+#naics .section-heading {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin-bottom: 48px;
+}
+.naics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: left;
+}
+@media (max-width: 680px) { .naics-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px) { .naics-grid { grid-template-columns: 1fr; } }
 
-.naics-table thead th {
-  font-size: 0.7rem;
+.naics-item {
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: transform var(--trans-fast), box-shadow var(--trans-fast);
+  cursor: default;
+}
+.naics-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,122,122,0.12);
+}
+.naics-code {
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  text-align: left;
-  padding: 0 12px 12px 0;
-  border-bottom: 1px solid var(--border);
+  color: var(--teal-bright);
+  margin-bottom: 4px;
 }
-
-.naics-table thead th:last-child {
-  padding-right: 0;
-}
-
-.naics-table tbody tr {
-  border-bottom: 1px solid var(--border);
-}
-
-.naics-table tbody tr:last-child {
-  border-bottom: none;
-}
-
-.naics-table tbody td {
-  padding: 11px 12px 11px 0;
-  font-size: 0.9rem;
-  color: var(--text);
-  vertical-align: top;
-}
-
-.naics-table tbody td:first-child {
-  font-weight: 500;
-  color: #fff;
-  white-space: nowrap;
-  width: 90px;
-}
-
-.naics-table tbody td:last-child {
-  padding-right: 0;
-  color: var(--text-muted);
+.naics-desc {
+  font-size: 0.82rem;
   font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.45;
 }
 
 /* ── FOOTER ── */
 footer {
   background: var(--navy-dark);
-  border-top: 1px solid var(--border);
-  padding: 36px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 48px 32px;
   text-align: center;
 }
-
 .footer-name {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 6px;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
 }
-
 .footer-contact {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.35);
 }
-
 .footer-contact a {
   color: var(--teal-bright);
+  transition: color var(--trans-fast);
 }
+.footer-contact a:hover { color: #fff; }
 
 </style>
 </head>
 <body>
 
-<header>
+<!-- HERO -->
+<section id="hero">
   <div class="container">
-    <div class="company-name">Platypus Automations LLC</div>
-    <div class="tagline">Federal contracting made simple</div>
-    <div class="header-divider"></div>
+    <div class="hero-badge fade-up"><span class="dot"></span>SAM.gov Registered &amp; Active</div>
+    <h1 class="hero-name fade-up">Platypus Automations LLC</h1>
+    <p class="hero-tagline fade-up">Federal contracting made simple</p>
+    <div class="hero-divider fade-up"></div>
   </div>
-</header>
+</section>
 
-<main>
-
-  <!-- Registration & Certification -->
-  <section>
-    <div class="container">
-      <div class="section-label">Registration &amp; Certification</div>
-      <div class="cards">
-        <div class="card">
-          <div class="card-title">SAM.gov Registration</div>
-          <div class="card-value">Active</div>
-          <div class="card-sub">Unique Entity ID: TDDCTFUKYMT7</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Business Designation</div>
-          <div class="card-value">SDVOSB</div>
-          <div class="card-sub">Service-Disabled Veteran-Owned Small Business</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Company Info -->
-  <section>
-    <div class="container">
-      <div class="section-label">Company Information</div>
-      <div class="info-grid">
-        <div class="info-item">
-          <div class="label">Legal Name</div>
-          <div class="value">Platypus Automations LLC</div>
-        </div>
-        <div class="info-item">
-          <div class="label">Business Type</div>
-          <div class="value">Limited Liability Company</div>
-        </div>
-        <div class="info-item">
-          <div class="label">Ownership</div>
-          <div class="value">Veteran-owned</div>
-        </div>
-        <div class="info-item">
-          <div class="label">Location</div>
-          <div class="value">Hampton Roads, Virginia</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NAICS Codes -->
-  <section>
-    <div class="container">
-      <div class="section-label">NAICS Codes</div>
-      <table class="naics-table">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>561730</td><td>Landscaping Services</td></tr>
-          <tr><td>561720</td><td>Janitorial Services</td></tr>
-          <tr><td>562112</td><td>Hazardous Waste Collection</td></tr>
-          <tr><td>722310</td><td>Food Service Contractors</td></tr>
-          <tr><td>236220</td><td>Commercial and Institutional Building Construction</td></tr>
-          <tr><td>238220</td><td>Plumbing, Heating, and Air-Conditioning Contractors</td></tr>
-          <tr><td>238210</td><td>Electrical Contractors and Other Wiring Installation Contractors</td></tr>
-          <tr><td>238310</td><td>Drywall and Insulation Contractors</td></tr>
-          <tr><td>238320</td><td>Painting and Wall Covering Contractors</td></tr>
-          <tr><td>238910</td><td>Site Preparation Contractors</td></tr>
-          <tr><td>237310</td><td>Highway, Street, and Bridge Construction</td></tr>
-          <tr><td>561110</td><td>Office Administrative Services</td></tr>
-          <tr><td>488490</td><td>Other Support Activities for Road Transportation</td></tr>
-          <tr><td>562910</td><td>Remediation Services</td></tr>
-          <tr><td>238990</td><td>All Other Specialty Trade Contractors</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-</main>
-
-<footer>
+<!-- CREDENTIALS -->
+<section id="credentials">
   <div class="container">
-    <div class="footer-name">Platypus Automations LLC</div>
-    <div class="footer-contact">
-      <a href="mailto:tim@platypusautomations.com">tim@platypusautomations.com</a>
+    <div class="section-badge badge-teal fade-up">Registrations &amp; Certifications</div>
+    <div class="cred-grid">
+
+      <div class="cred-card liquid-glass fade-up">
+        <div class="cred-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><rect x="3" y="4" width="18" height="18" rx="3"/></svg>
+        </div>
+        <div class="cred-label">SAM.gov Registration</div>
+        <div class="cred-value">Active</div>
+        <div class="cred-sub">Unique Entity ID: <code>TDDCTFUKYMT7</code></div>
+      </div>
+
+      <div class="cred-card liquid-glass fade-up">
+        <div class="cred-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-4 0-7 2-7 4v1h14v-1c0-2-3-4-7-4z"/></svg>
+        </div>
+        <div class="cred-label">Business Designation</div>
+        <div class="cred-value">SDVOSB</div>
+        <div class="cred-sub">Service-Disabled Veteran-Owned Small Business</div>
+      </div>
+
     </div>
+  </div>
+</section>
+
+<!-- COMPANY INFO -->
+<section id="company">
+  <div class="container">
+    <div class="info-row liquid-glass fade-up">
+      <div class="info-cell">
+        <div class="info-cell-label">Legal Name</div>
+        <div class="info-cell-value">Platypus Automations LLC</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Business Type</div>
+        <div class="info-cell-value">Limited Liability Company</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Ownership</div>
+        <div class="info-cell-value">Veteran-Owned</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Location</div>
+        <div class="info-cell-value">Hampton Roads, Virginia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAICS CODES -->
+<section id="naics">
+  <div class="container">
+    <div class="section-badge badge-teal fade-up">NAICS Codes</div>
+    <h2 class="section-heading fade-up">Areas of performance</h2>
+    <div class="naics-grid">
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">561730</div>
+        <div class="naics-desc">Landscaping Services</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">561720</div>
+        <div class="naics-desc">Janitorial Services</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">562112</div>
+        <div class="naics-desc">Hazardous Waste Collection</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">722310</div>
+        <div class="naics-desc">Food Service Contractors</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">236220</div>
+        <div class="naics-desc">Commercial and Institutional Building Construction</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">238220</div>
+        <div class="naics-desc">Plumbing, Heating, and Air-Conditioning Contractors</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">238210</div>
+        <div class="naics-desc">Electrical Contractors and Other Wiring Installation Contractors</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">238310</div>
+        <div class="naics-desc">Drywall and Insulation Contractors</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">238320</div>
+        <div class="naics-desc">Painting and Wall Covering Contractors</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">238910</div>
+        <div class="naics-desc">Site Preparation Contractors</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">237310</div>
+        <div class="naics-desc">Highway, Street, and Bridge Construction</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">561110</div>
+        <div class="naics-desc">Office Administrative Services</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">488490</div>
+        <div class="naics-desc">Other Support Activities for Road Transportation</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">562910</div>
+        <div class="naics-desc">Remediation Services</div>
+      </div>
+      <div class="naics-item liquid-glass fade-up">
+        <div class="naics-code">238990</div>
+        <div class="naics-desc">All Other Specialty Trade Contractors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Platypus Automations LLC</div>
+  <div class="footer-contact">
+    <a href="mailto:tim@platypusautomations.com">tim@platypusautomations.com</a>
+    &nbsp;&middot;&nbsp; Hampton Roads, Virginia
   </div>
 </footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
