@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peninsula Roofing Company | Commercial &amp; Residential Roofing | Newport News, VA</title>
+  <meta name="description" content="GAF certified commercial and residential roofing serving Hampton Roads since 1984. Newport News, Virginia Beach, Norfolk, Chesapeake. Call (757) 872-9555.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* === Reset === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* === Variables === */
+    :root {
+      --charcoal: #161616;
+      --dark:     #1e1e1e;
+      --mid:      #272727;
+      --red:      #c1280f;
+      --red-hot:  #a52009;
+      --white:    #ffffff;
+      --offwhite: #f0ece8;
+      --muted:    #8a8a8a;
+      --border:   rgba(255,255,255,0.08);
+      --fh: 'Oswald', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+
+    body {
+      font-family: var(--fb);
+      background: var(--charcoal);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* === Layout === */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === Section label === */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--fh);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.9rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* === Scroll reveal === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+    .d5 { transition-delay: 0.40s; }
+    .d6 { transition-delay: 0.48s; }
+
+    /* ================================================
+       Navigation
+    ================================================ */
+    #main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    #main-nav.scrolled {
+      background: var(--charcoal);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+    }
+    .nav-logo-text {
+      font-family: var(--fh);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.2;
+      display: none;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .nav-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--fh);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      transition: color 0.2s;
+      min-height: 44px;
+    }
+    .nav-phone svg { color: var(--red); flex-shrink: 0; }
+    .nav-phone:hover { color: var(--red); }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.72rem 1.4rem;
+      min-height: 44px;
+      border-radius: 1px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.18s;
+    }
+    .btn-nav:hover { background: var(--red-hot); transform: translateY(-1px); }
+
+    /* ================================================
+       Hero
+    ================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--charcoal);
+      background-image:
+        linear-gradient(to right,
+          rgba(12,12,12,0.92) 0%,
+          rgba(12,12,12,0.78) 50%,
+          rgba(12,12,12,0.44) 100%),
+        url('img/aerial.webp');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: scroll;
+      padding: 7rem 0 5rem;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding-left: 1.75rem;
+      border-left: 4px solid var(--red);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--fh);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--fh);
+      font-size: clamp(2.8rem, 7.5vw, 6.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.94;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+    .hero-headline .accent { color: var(--red); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.7vw, 1.1rem);
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+      max-width: 520px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.55s forwards;
+    }
+
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 1rem 2.25rem;
+      min-height: 54px;
+      border-radius: 1px;
+      transition: background 0.2s, transform 0.18s;
+    }
+    .btn-hero:hover { background: var(--red-hot); transform: translateY(-2px); }
+
+    .hero-note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================================================
+       Trust Bar
+    ================================================ */
+    .trust-bar {
+      background: var(--mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.35rem 0;
+    }
+    .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--fh);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 0.5rem 2.75rem;
+    }
+    .trust-item:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+    .trust-item svg { color: var(--red); flex-shrink: 0; }
+
+    /* ================================================
+       Services
+    ================================================ */
+    .services {
+      background: var(--charcoal);
+      padding: 6.5rem 0;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-headline {
+      font-family: var(--fh);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      gap: 1px;
+      background: var(--border);
+    }
+    .service-card {
+      background: var(--dark);
+      padding: 2.25rem 2rem;
+      position: relative;
+      transition: background 0.25s ease;
+    }
+    .service-card:hover { background: var(--mid); }
+
+    .service-icon {
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+      transition: color 0.25s;
+    }
+    .service-card:hover .service-icon { color: var(--red); }
+
+    .service-name {
+      font-family: var(--fh);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-size: 0.91rem;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    /* ================================================
+       About
+    ================================================ */
+    .about {
+      background: var(--dark);
+      padding: 6.5rem 0;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-body {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.78;
+      margin-bottom: 1.25rem;
+    }
+    .about-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+    .cred-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--fh);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.9rem;
+      border-radius: 1px;
+    }
+    .cred-badge svg { color: var(--red); }
+
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-wrap img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.82) saturate(0.75);
+    }
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: -12px; right: -12px;
+      width: 56px; height: 56px;
+      border-top: 3px solid var(--red);
+      border-right: 3px solid var(--red);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .about-image-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -12px; left: -12px;
+      width: 56px; height: 56px;
+      border-bottom: 3px solid var(--red);
+      border-left: 3px solid var(--red);
+      pointer-events: none;
+    }
+
+    /* ================================================
+       Reviews
+    ================================================ */
+    .reviews {
+      background: var(--charcoal);
+      padding: 6.5rem 0;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .review-card {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 2.25rem 2rem 2rem;
+    }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.1rem;
+    }
+    .review-stars svg { color: #e8a020; }
+
+    .review-text {
+      font-size: 0.97rem;
+      font-style: italic;
+      color: var(--offwhite);
+      line-height: 1.72;
+      margin-bottom: 1.5rem;
+    }
+    .review-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .review-avatar {
+      width: 36px; height: 36px;
+      background: var(--mid);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fh);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+    .review-role {
+      font-family: var(--fh);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .review-source {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .review-card.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      border-left: 3px solid var(--border);
+    }
+    .review-card.placeholder p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ================================================
+       CTA Section
+    ================================================ */
+    .cta-section {
+      background: var(--dark);
+      padding: 6.5rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-headline {
+      font-family: var(--fh);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1.15rem 3rem;
+      min-height: 60px;
+      border-radius: 1px;
+      transition: background 0.2s, transform 0.18s;
+    }
+    .btn-cta:hover { background: var(--red-hot); transform: translateY(-2px); }
+
+    /* ================================================
+       Footer
+    ================================================ */
+    footer {
+      background: #111111;
+      padding: 3rem 0 2.5rem;
+    }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand img {
+      height: 46px;
+      width: auto;
+      margin-bottom: 0.65rem;
+    }
+    .footer-brand-name {
+      font-family: var(--fh);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-contact { text-align: right; }
+    .footer-phone {
+      display: block;
+      font-family: var(--fh);
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+      transition: color 0.2s;
+    }
+    .footer-phone:hover { color: var(--red); }
+    .footer-location {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .footer-built {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.28);
+    }
+    .footer-built a {
+      color: rgba(255,255,255,0.28);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .footer-built a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ================================================
+       Tablet (481–768px)
+    ================================================ */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ================================================
+       Mobile (max 768px)
+    ================================================ */
+    @media (max-width: 768px) {
+      .nav-phone { display: none; }
+      .btn-nav { font-size: 0.82rem; padding: 0.65rem 1rem; }
+
+      .hero {
+        min-height: 85vh;
+        padding: 6rem 0 4rem;
+        background-image:
+          linear-gradient(to bottom,
+            rgba(12,12,12,0.90) 0%,
+            rgba(12,12,12,0.78) 55%,
+            rgba(12,12,12,0.82) 100%),
+          url('img/aerial.webp');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: scroll;
+      }
+      .hero-content {
+        max-width: 100%;
+        padding-left: 1.1rem;
+      }
+      .hero-headline { line-height: 0.96; }
+
+      .trust-item { padding: 0.5rem 1.5rem; font-size: 0.75rem; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .about-image-wrap { order: -1; }
+      .about-image-wrap img { height: 300px; }
+
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      .footer-contact { text-align: left; }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ================================================
+       Mobile (max 480px)
+    ================================================ */
+    @media (max-width: 480px) {
+      .container { padding: 0 1rem; }
+
+      #main-nav { padding: 0 1rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .hero {
+        min-height: 85vh;
+        padding: 5.5rem 0 3.5rem;
+        background-image:
+          linear-gradient(to bottom,
+            rgba(10,10,10,0.93) 0%,
+            rgba(10,10,10,0.80) 55%,
+            rgba(10,10,10,0.88) 100%),
+          url('img/aerial.webp');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: scroll;
+      }
+
+      .trust-bar-inner { flex-direction: column; }
+      .trust-item {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        width: 100%;
+        justify-content: center;
+        padding: 0.9rem 1rem;
+      }
+      .trust-item:last-child { border-bottom: none; }
+
+      .services  { padding: 4rem 0; }
+      .about     { padding: 4rem 0; }
+      .reviews   { padding: 4rem 0; }
+      .cta-section { padding: 4rem 0; }
+
+      .btn-hero {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 0.95rem 1.5rem;
+      }
+      .hero-note { display: none; }
+
+      .btn-cta {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.15rem;
+        padding: 1rem 1.5rem;
+      }
+
+      .about-image-wrap img { height: 240px; }
+
+      .review-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img
+          src="img/logo.png"
+          alt="Peninsula Roofing Company"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="nav-logo-text" style="display:none;">Peninsula Roofing Co.</span>
+      </a>
+      <div class="nav-actions">
+        <a href="tel:7578729555" class="nav-phone">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/>
+          </svg>
+          (757) 872-9555
+        </a>
+        <a href="tel:7578729555" class="btn-nav">Get a Free Estimate</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Newport News, VA &nbsp;&middot;&nbsp; Serving All of Hampton Roads</div>
+        <h1 class="hero-headline">
+          40 Years<br>Roofing<br><span class="accent">Hampton Roads.</span>
+        </h1>
+        <p class="hero-sub">Commercial and residential roofing from Newport News to the Outer Banks. GAF certified. Licensed. Guaranteed.</p>
+        <div class="hero-actions">
+          <a href="tel:7578729555" class="btn-hero">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/>
+            </svg>
+            Call (757) 872-9555
+          </a>
+          <span class="hero-note">Free estimates. No obligation.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          Serving Hampton Roads Since 1984
+        </div>
+        <div class="trust-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          GAF Certified Contractor
+        </div>
+        <div class="trust-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+          </svg>
+          Licensed Virginia Class A Contractor
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-headline">Commercial and Residential<br>Roofing Services</h2>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal d1">
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/>
+            </svg>
+          </div>
+          <div class="service-name">Commercial Roofing</div>
+          <p class="service-desc">Full installation and replacement for commercial properties. Warehouses, offices, churches, and multi-unit buildings across Hampton Roads.</p>
+        </div>
+
+        <div class="service-card reveal d2">
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="service-name">Residential Roofing</div>
+          <p class="service-desc">New roofs and full replacements for homes throughout Newport News, Hampton, Virginia Beach, and the surrounding region.</p>
+        </div>
+
+        <div class="service-card reveal d3">
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="2" y="9" width="20" height="11" rx="1"/><path d="M2 9h20"/><line x1="6" y1="13" x2="18" y2="13"/>
+            </svg>
+          </div>
+          <div class="service-name">Flat Roof Systems</div>
+          <p class="service-desc">Specialist installation and repair for flat and low-slope roofing systems. Built for commercial, industrial, and institutional applications.</p>
+        </div>
+
+        <div class="service-card reveal d4">
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M2 20l10-16 10 16H2z"/><line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="13"/>
+            </svg>
+          </div>
+          <div class="service-name">Metal Roofing</div>
+          <p class="service-desc">Standing seam and exposed fastener metal roofing for commercial and residential properties. Long service life. Custom metal fabrication available.</p>
+        </div>
+
+        <div class="service-card reveal d5">
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M2 17h20M2 12h20M2 7h20"/><rect x="2" y="4" width="20" height="16" rx="1"/>
+            </svg>
+          </div>
+          <div class="service-name">TPO Single Ply</div>
+          <p class="service-desc">Thermoplastic polyolefin roofing for flat and low-slope commercial roofs. Energy efficient. Heat-welded seams for lasting waterproof performance.</p>
+        </div>
+
+        <div class="service-card reveal d6">
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <div class="service-name">Roof Repair and Maintenance</div>
+          <p class="service-desc">Leak detection, storm damage repair, flashing, and preventive maintenance. Fast response for all roof types including flat, vinyl, and metal.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text reveal">
+          <div class="section-label">About Us</div>
+          <h2 class="section-headline" style="margin-bottom:1.5rem;">40 Years of Proven Performance</h2>
+          <p class="about-body">Peninsula Roofing Company has been installing and repairing roofs across Hampton Roads since 1984. GAF certified and licensed for both commercial and residential work, the company serves property owners, facility managers, churches, and commercial clients from Newport News to Virginia Beach and beyond. Every job is backed by a satisfaction guarantee.</p>
+          <p class="about-body">BuildZoom ranks Peninsula Roofing in the top 18% of Virginia contractors. President Rickey T. West and his team bring decades of hands-on experience to every project, large or small.</p>
+          <div class="about-credentials">
+            <div class="cred-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              GAF Certified
+            </div>
+            <div class="cred-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              Class A Licensed
+            </div>
+            <div class="cred-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+              Top 18% Virginia
+            </div>
+            <div class="cred-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Est. 1984
+            </div>
+          </div>
+        </div>
+        <div class="about-image-wrap reveal d2">
+          <img src="img/office.webp" alt="Peninsula Roofing Company, Newport News VA">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">What Clients Say</div>
+        <h2 class="section-headline">Real Work. Real Results.</h2>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card reveal d1">
+          <div class="review-stars">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">"Had a stubborn leak on a 20-year-old flat vinyl roof that had gone unresolved for a while. Peninsula Roofing found multiple problem areas quickly and took care of them along with several other items while they were up there. Straightforward process and a positive experience overall."</p>
+          <div class="review-meta">
+            <div class="review-avatar">FM</div>
+            <div>
+              <div class="review-role">Facility Manager</div>
+              <div class="review-source">Hampton Roads Church</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card placeholder reveal d2">
+          <p>More reviews available on request.<br>Ask us for references.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label" style="justify-content:center;">Get Started</div>
+        <h2 class="cta-headline">Ready to Protect Your Property?</h2>
+        <p class="cta-sub">Call Peninsula Roofing for a free estimate. No obligation. Serving Newport News, Hampton, Norfolk, Virginia Beach, Chesapeake, Suffolk, Gloucester, and Williamsburg.</p>
+        <a href="tel:7578729555" class="btn-cta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/>
+          </svg>
+          (757) 872-9555
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img
+            src="img/logo.png"
+            alt="Peninsula Roofing Company"
+            onerror="this.style.display='none';">
+          <div class="footer-brand-name">Peninsula Roofing Company, Inc.</div>
+        </div>
+        <div class="footer-contact">
+          <a href="tel:7578729555" class="footer-phone">(757) 872-9555</a>
+          <div class="footer-location">Newport News, VA &nbsp;&middot;&nbsp; Serving All of Hampton Roads</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">Peninsula Roofing Company, Inc. &nbsp;&middot;&nbsp; Newport News, VA &nbsp;&middot;&nbsp; (757) 872-9555 &nbsp;&middot;&nbsp; &copy; 2025</p>
+        <div class="footer-built">SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add('in');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
