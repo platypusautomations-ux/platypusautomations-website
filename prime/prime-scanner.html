@@ -1324,8 +1324,20 @@ function openDrawer(noticeId) {
 
   document.getElementById('drawerTitle').textContent = selectedOpp.title;
 
-  const margin8 = selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * 0.08)) : '—';
-  const margin12 = selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * 0.12)) : '—';
+  let floor, target, ceiling;
+  if (selectedOpp.setAside === 'SDVOSBC') {
+    floor = 0.12; target = 0.15; ceiling = 0.20;
+  } else if (selectedOpp.setAside === 'SBA') {
+    floor = 0.10; target = 0.12; ceiling = 0.15;
+  } else {
+    floor = 0.08; target = 0.10; ceiling = 0.12;
+  }
+
+  const marginFloor   = selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * floor))   : '—';
+  const marginTarget  = selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * target))  : '—';
+  const marginCeiling = selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * ceiling)) : '—';
+
+  const pct = v => Math.round(v * 100);
 
   document.getElementById('drawerBody').innerHTML = `
     <div class="drawer-section">
@@ -1365,8 +1377,9 @@ function openDrawer(noticeId) {
     <div class="drawer-section">
       <div class="drawer-section-title">Your Margin Estimate</div>
       <div class="drawer-kv" style="margin-bottom:10px;">
-        <div class="kv-row"><span class="kv-label">8% markup</span><span class="kv-val accent">${margin8}</span></div>
-        <div class="kv-row"><span class="kv-label">12% markup</span><span class="kv-val accent">${margin12}</span></div>
+        <div class="kv-row"><span class="kv-label">Floor (${pct(floor)}%)</span><span class="kv-val accent">${marginFloor}</span></div>
+        <div class="kv-row"><span class="kv-label">Target (${pct(target)}%) <span style="color:var(--text3);font-size:11px;">aim here</span></span><span class="kv-val accent">${marginTarget}</span></div>
+        <div class="kv-row"><span class="kv-label">Ceiling (${pct(ceiling)}%)</span><span class="kv-val accent">${marginCeiling}</span></div>
         <div class="kv-row"><span class="kv-label">Sub ceiling (50% rule)</span><span class="kv-val">${selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * 0.5)) : '—'}</span></div>
       </div>
     </div>
