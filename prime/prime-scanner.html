@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Scanner — Federal Contract Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c0f;
+    --bg2: #111318;
+    --bg3: #181c23;
+    --bg4: #1e232c;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8eaf0;
+    --text2: #8b92a0;
+    --text3: #555d6e;
+    --accent: #00e5a0;
+    --accent-dim: rgba(0,229,160,0.12);
+    --accent-dim2: rgba(0,229,160,0.06);
+    --amber: #f5a623;
+    --amber-dim: rgba(245,166,35,0.12);
+    --red: #ff4d4d;
+    --red-dim: rgba(255,77,77,0.1);
+    --blue: #4d9fff;
+    --blue-dim: rgba(77,159,255,0.1);
+    --purple: #a78bfa;
+    --purple-dim: rgba(167,139,250,0.1);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* LAYOUT */
+  .shell {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .logo-area {
+    padding: 24px 20px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo-mark {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  .logo-mark span { color: var(--accent); }
+
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 3px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .sidebar-section {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-label {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 10px;
+  }
+
+  .api-input-wrap {
+    position: relative;
+  }
+
+  .api-input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .api-input:focus { border-color: var(--accent); }
+  .api-input::placeholder { color: var(--text3); }
+
+  .api-status {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    margin-top: 5px;
+    color: var(--text3);
+  }
+
+  .api-status.live { color: var(--accent); }
+  .api-status.demo { color: var(--amber); }
+
+  /* FILTER CONTROLS */
+  .filter-group { margin-bottom: 14px; }
+
+  .filter-label {
+    font-size: 11px;
+    color: var(--text2);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .filter-select, .filter-input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .filter-select:focus, .filter-input:focus { border-color: var(--accent); }
+
+  .naics-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .naics-tag {
+    background: var(--accent-dim2);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 4px;
+    padding: 3px 7px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .naics-tag:hover { background: var(--accent-dim); }
+  .naics-tag.active {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
+
+  .scan-btn {
+    width: 100%;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 11px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 4px;
+  }
+
+  .scan-btn:hover { opacity: 0.9; }
+  .scan-btn:active { transform: scale(0.98); }
+  .scan-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .sidebar-stats {
+    padding: 16px 20px;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .stat-label { font-size: 11px; color: var(--text3); }
+  .stat-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  /* MAIN */
+  .main { display: flex; flex-direction: column; }
+
+  .topbar {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .topbar-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    flex: 1;
+  }
+
+  .sort-select {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text2);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  .view-toggle {
+    display: flex;
+    gap: 4px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px;
+  }
+
+  .view-btn {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    color: var(--text3);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .view-btn.active {
+    background: var(--bg4);
+    color: var(--text);
+  }
+
+  /* METRICS ROW */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .metric-card {
+    background: var(--bg);
+    padding: 16px 20px;
+  }
+
+  .metric-label {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 6px;
+  }
+
+  .metric-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .metric-sub {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+
+  .metric-accent { color: var(--accent); }
+  .metric-amber { color: var(--amber); }
+
+  /* CONTENT AREA */
+  .content-area {
+    padding: 20px 24px;
+    flex: 1;
+  }
+
+  /* OPPORTUNITY CARDS */
+  .opp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .opp-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .opp-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .opp-card:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+  }
+
+  .opp-card:hover::before { opacity: 1; }
+  .opp-card.hot::before { opacity: 1; background: var(--amber); }
+  .opp-card.hot { border-color: rgba(245,166,35,0.2); }
+
+  .opp-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .opp-score {
+    min-width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .score-hot { background: var(--amber-dim); color: var(--amber); }
+  .score-good { background: var(--accent-dim); color: var(--accent); }
+  .score-ok { background: var(--blue-dim); color: var(--blue); }
+  .score-low { background: rgba(255,255,255,0.04); color: var(--text3); }
+
+  .opp-title-wrap { flex: 1; min-width: 0; }
+
+  .opp-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .opp-agency {
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  .opp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .badge-sdvosb { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(0,229,160,0.2); }
+  .badge-setaside { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
+  .badge-solicitation { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(77,159,255,0.2); }
+  .badge-presolicitation { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,166,35,0.2); }
+  .badge-sources-sought { background: rgba(255,255,255,0.05); color: var(--text2); border: 1px solid var(--border); }
+
+  .opp-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .meta-item svg { opacity: 0.5; }
+
+  .meta-value { color: var(--text2); }
+  .meta-value.money { color: var(--accent); font-family: 'DM Mono', monospace; }
+  .meta-value.urgent { color: var(--red); }
+  .meta-value.soon { color: var(--amber); }
+
+  .opp-actions {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  .action-btn {
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text2);
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .action-btn:hover { border-color: var(--border2); color: var(--text); }
+
+  .action-btn-primary {
+    background: var(--accent-dim);
+    border-color: rgba(0,229,160,0.3);
+    color: var(--accent);
+  }
+
+  .action-btn-primary:hover { background: var(--accent); color: #000; }
+
+  /* LOADING */
+  .loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 16px;
+  }
+
+  .scanner-animation {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .empty-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .empty-sub { color: var(--text3); font-size: 13px; }
+
+  /* SCORE EXPLANATION */
+  .score-legend {
+    display: flex;
+    gap: 12px;
+    padding: 10px 24px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .score-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .score-dot {
+    width: 8px; height: 8px;
+    border-radius: 2px;
+  }
+
+  /* NOTICE */
+  .demo-notice {
+    background: var(--amber-dim);
+    border: 1px solid rgba(245,166,35,0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: var(--amber);
+    margin-bottom: 14px;
+    font-family: 'DM Mono', monospace;
+    line-height: 1.5;
+  }
+
+  /* DETAIL DRAWER */
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+    backdrop-filter: blur(4px);
+  }
+
+  .drawer-overlay.open { display: flex; align-items: stretch; justify-content: flex-end; }
+
+  .drawer {
+    width: 520px;
+    background: var(--bg2);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .drawer-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    background: var(--bg2);
+  }
+
+  .drawer-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .drawer-close {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text2);
+    font-size: 18px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .drawer-body { padding: 20px 24px; flex: 1; }
+
+  .drawer-section { margin-bottom: 24px; }
+
+  .drawer-section-title {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .drawer-kv {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .kv-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .kv-label { font-size: 12px; color: var(--text3); flex-shrink: 0; }
+  .kv-val { font-size: 12px; color: var(--text2); text-align: right; }
+  .kv-val.mono { font-family: 'DM Mono', monospace; }
+  .kv-val.accent { color: var(--accent); }
+  .kv-val.amber { color: var(--amber); }
+
+  .sow-hint {
+    background: var(--accent-dim2);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .sow-hint strong { color: var(--accent); }
+
+  .drawer-actions {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+    background: var(--bg2);
+  }
+
+  .drawer-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }
+
+  .drawer-btn:hover { background: var(--bg3); color: var(--text); }
+
+  .drawer-btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+    font-weight: 500;
+  }
+
+  .drawer-btn-primary:hover { opacity: 0.9; color: #000; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo-area">
+      <div class="logo-mark">PRIME<span>.</span>scanner</div>
+      <div class="logo-sub">Federal Contract Intelligence</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">SAM.gov API Key</div>
+      <div class="api-input-wrap">
+        <input class="api-input" type="password" id="apiKey" placeholder="Paste your API key here" />
+      </div>
+      <div class="api-status demo" id="apiStatus">● Demo mode — showing sample data</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Your NAICS Codes</div>
+      <div class="naics-tags" id="naicsTags">
+        <span class="naics-tag active" data-code="561730">561730 — Landscaping</span>
+        <span class="naics-tag active" data-code="561720">561720 — Janitorial</span>
+        <span class="naics-tag" data-code="562112">562112 — HazMat</span>
+        <span class="naics-tag" data-code="722310">722310 — Food Svc</span>
+        <span class="naics-tag" data-code="238990">238990 — Lt. Const.</span>
+        <span class="naics-tag" data-code="562910">562910 — Remediation</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="filter-group">
+        <label class="filter-label">Max Contract Value</label>
+        <select class="filter-select" id="maxVal">
+          <option value="100000">Under $100k</option>
+          <option value="250000">Under $250k</option>
+          <option value="350000" selected>Under $350k (recommended)</option>
+          <option value="500000">Under $500k</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Set-Aside Type</label>
+        <select class="filter-select" id="setAside">
+          <option value="SDVOSBC">SDVOSB (your certification)</option>
+          <option value="SBA">Any Small Business</option>
+          <option value="">All Opportunities</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Notice Type</label>
+        <select class="filter-select" id="noticeType">
+          <option value="o">Solicitation only</option>
+          <option value="k" selected>Combined Synopsis + Solicitation</option>
+          <option value="">All Notice Types</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Posted Within</label>
+        <select class="filter-select" id="dateRange">
+          <option value="7">Last 7 days</option>
+          <option value="14" selected>Last 14 days</option>
+          <option value="30">Last 30 days</option>
+        </select>
+      </div>
+      <button class="scan-btn" id="scanBtn" onclick="runScan()">⟳ Scan for Contracts</button>
+    </div>
+
+    <div class="sidebar-stats">
+      <div class="sidebar-label">Session Stats</div>
+      <div class="stat-row">
+        <span class="stat-label">Results found</span>
+        <span class="stat-val" id="statCount">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Hot leads</span>
+        <span class="stat-val" id="statHot">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Avg value</span>
+        <span class="stat-val" id="statAvg">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">SDVOSB set-aside</span>
+        <span class="stat-val" id="statSDV">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Last scan</span>
+        <span class="stat-val" id="statTime">—</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <div class="topbar">
+      <div class="topbar-title" id="topbarTitle">Ready to scan</div>
+      <select class="sort-select" id="sortBy" onchange="renderResults()">
+        <option value="score">Sort: Prime Score</option>
+        <option value="deadline">Sort: Deadline (soonest)</option>
+        <option value="value">Sort: Value (highest)</option>
+        <option value="posted">Sort: Recently Posted</option>
+      </select>
+    </div>
+
+    <div class="score-legend">
+      <span class="score-item"><span class="score-dot" style="background:#f5a623"></span>90+ Hot lead</span>
+      <span class="score-item"><span class="score-dot" style="background:#00e5a0"></span>70–89 Good fit</span>
+      <span class="score-item"><span class="score-dot" style="background:#4d9fff"></span>50–69 Worth reviewing</span>
+      <span class="score-item"><span class="score-dot" style="background:#555d6e"></span>Below 50 Low priority</span>
+      <span class="score-item" style="margin-left:auto; font-size:10px; color: var(--text3);">Score factors: SDVOSB set-aside · under $350k · open solicitation · deadline headroom · NAICS match</span>
+    </div>
+
+    <div class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-label">Opportunities</div>
+        <div class="metric-val" id="mTotal">—</div>
+        <div class="metric-sub">matching filters</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Hot Leads</div>
+        <div class="metric-val metric-amber" id="mHot">—</div>
+        <div class="metric-sub">score 90+</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Total Pipeline Value</div>
+        <div class="metric-val metric-accent" id="mValue">—</div>
+        <div class="metric-sub">estimated ceiling</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">SDVOSB Set-Aside</div>
+        <div class="metric-val" id="mSDV">—</div>
+        <div class="metric-sub">your advantage</div>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <div id="demoNotice" class="demo-notice" style="display:none;">
+        ⚠ DEMO MODE — Data below is realistic sample data. Enter your free SAM.gov API key in the sidebar to pull live federal contracts.
+        Get your key at: sam.gov/profile/details → Public API Key
+      </div>
+
+      <div id="resultsList" class="opp-list">
+        <div class="empty-state">
+          <div class="empty-title">Set your filters and scan</div>
+          <div class="empty-sub">Your NAICS codes are pre-loaded. Hit scan to pull live contracts from SAM.gov.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- DETAIL DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <div class="drawer-title" id="drawerTitle">—</div>
+      <div class="drawer-close" onclick="closeDrawerDirect()">×</div>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+    <div class="drawer-actions">
+      <button class="drawer-btn" onclick="copyNoticeId()">Copy Notice ID</button>
+      <button class="drawer-btn" onclick="openSAM()">View on SAM.gov</button>
+      <button class="drawer-btn drawer-btn-primary" onclick="generateSOW()">Generate SOW ↗</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DEMO DATA =====
+const DEMO_CONTRACTS = [
+  {
+    noticeId: 'QSE-36C78626Q50201',
+    title: 'Grounds Maintenance Services — Fort Belvoir National Cemetery',
+    agency: 'VA National Cemetery Administration',
+    office: 'NCA — Mid-Atlantic Region',
+    naicsCode: '561730',
+    setAside: 'SDVOSBC',
+    type: 'Combined Synopsis/Solicitation',
+    typeCode: 'k',
+    postedDate: daysAgo(3),
+    responseDeadline: daysAhead(18),
+    placeOfPerformance: 'Fort Belvoir, VA 22060',
+    estimatedValue: 128000,
+    contactName: 'Susan Morales',
+    contactEmail: 'susan.morales@va.gov',
+    description: 'Grounds maintenance including mowing, edging, trimming, leaf removal, and general upkeep of 47 acres across the cemetery grounds. Weekly service during growing season, bi-weekly off-season.',
+    samLink: 'https://sam.gov/opp/QSE-36C78626Q50201',
+  },
+  {
+    noticeId: 'W15QKN26QA117',
+    title: 'Grounds Maintenance — Culpeper Minutemen Memorial USARC (VA011)',
+    agency: 'Army Reserve — ACC-PICA',
+    office: '99th Readiness Division',
+    naicsCode: '561730',
+    setAside: 'SDVOSBC',
+    type: 'Sources Sought',
+    typeCode: 'ss',
+    postedDate: daysAgo(5),
+    responseDeadline: daysAhead(4),
+    placeOfPerformance: 'Culpeper, VA 22701',
+    estimatedValue: 87000,
+    contactName: 'Nancy Zeng',
+    contactEmail: 'nancy.m.zeng.civ@army.mil',
+    description: 'Grounds maintenance for Army Reserve Center. Solicitation expected July 2026. Sources sought to identify capable SDVOSB/VOSB contractors in the area.',
+    samLink: 'https://sam.gov/opp/W15QKN26QA117',
+  },
+  {
+    noticeId: 'TPFA-2026-JAX-004',
+    title: 'Janitorial Services — Federal Building Jacksonville',
+    agency: 'GSA Public Buildings Service',
+    office: 'Southeast Sunbelt Region',
+    naicsCode: '561720',
+    setAside: 'SBA',
+    type: 'Solicitation',
+    typeCode: 'o',
+    postedDate: daysAgo(1),
+    responseDeadline: daysAhead(22),
+    placeOfPerformance: 'Jacksonville, FL 32202',
+    estimatedValue: 214000,
+    contactName: 'Derrick Owens',
+    contactEmail: 'd.owens@gsa.gov',
+    description: 'Full janitorial and custodial services for 38,000 sq ft federal office building. Five-day-a-week service including restroom sanitation, floor care, trash removal, window cleaning quarterly.',
+    samLink: 'https://sam.gov/opp/TPFA-2026-JAX-004',
+  },
+  {
+    noticeId: 'NCA-36C786-LM-0089',
+    title: 'Tree Trimming and Removal — Quantico National Cemetery',
+    agency: 'VA National Cemetery Administration',
+    office: 'NCA — Mid-Atlantic Region',
+    naicsCode: '561730',
+    setAside: 'SDVOSBC',
+    type: 'Combined Synopsis/Solicitation',
+    typeCode: 'k',
+    postedDate: daysAgo(2),
+    responseDeadline: daysAhead(9),
+    placeOfPerformance: 'Triangle, VA 22172',
+    estimatedValue: 41000,
+    contactName: 'Patricia Webb',
+    contactEmail: 'patricia.webb@va.gov',
+    description: 'Tree maintenance services: removal of 8 hazardous trees, pruning of 22 trees along main thoroughfare. ISA Certified Arborist required on site. One-time contract.',
+    samLink: 'https://sam.gov/opp/NCA-36C786-LM-0089',
+  },
+  {
+    noticeId: 'ACC-NJ-2026-HVAC-014',
+    title: 'Landscaping & Snow Removal — Fort Dix Reserve Center',
+    agency: 'Army Reserve — ACC-NJ',
+    office: 'Joint Base McGuire-Dix',
+    naicsCode: '561730',
+    setAside: 'SDVOSBC',
+    type: 'Solicitation',
+    typeCode: 'o',
+    postedDate: daysAgo(6),
+    responseDeadline: daysAhead(31),
+    placeOfPerformance: 'Fort Dix, NJ 08640',
+    estimatedValue: 189000,
+    contactName: 'Marcus T. Hill',
+    contactEmail: 'm.hill.civ@army.mil',
+    description: 'Base year plus 4 option years. Full grounds service including mowing (18 acres), fertilization, weed control, snow removal and ice treatment on 2.1 miles of road and parking.',
+    samLink: 'https://sam.gov/opp/ACC-NJ-2026-HVAC-014',
+  },
+  {
+    noticeId: 'GSA-R4-2026-JAN-JAL',
+    title: 'Janitorial Services — VA Medical Center Richmond (Annex)',
+    agency: 'Department of Veterans Affairs',
+    office: 'VISN 6 — Mid-Atlantic Health Care',
+    naicsCode: '561720',
+    setAside: 'SDVOSBC',
+    type: 'Presolicitation',
+    typeCode: 'p',
+    postedDate: daysAgo(4),
+    responseDeadline: daysAhead(45),
+    placeOfPerformance: 'Richmond, VA 23249',
+    estimatedValue: 298000,
+    contactName: 'Latoya Simmons',
+    contactEmail: 'latoya.simmons@va.gov',
+    description: 'Presolicitation notice. Janitorial services for 22,000 sq ft medical annex. Full solicitation expected June 2026. Estimated base year $298k with 4 option years.',
+    samLink: 'https://sam.gov/opp/GSA-R4-2026-JAN-JAL',
+  },
+  {
+    noticeId: 'EPA-R3-2026-HAZ-003',
+    title: 'HazMat Disposal — Superfund Site Assessment Support',
+    agency: 'EPA — Region 3',
+    office: 'Hazardous Waste Division',
+    naicsCode: '562112',
+    setAside: 'SBA',
+    type: 'Solicitation',
+    typeCode: 'o',
+    postedDate: daysAgo(7),
+    responseDeadline: daysAhead(14),
+    placeOfPerformance: 'Various, MD/VA/DE',
+    estimatedValue: 340000,
+    contactName: 'Dr. Rebecca Chu',
+    contactEmail: 'r.chu@epa.gov',
+    description: 'HazMat collection and disposal support for three Superfund assessment sites. Requires licensed hazardous waste contractor with EPA certifications. Subcontractor must hold all applicable permits.',
+    samLink: 'https://sam.gov/opp/EPA-R3-2026-HAZ-003',
+  },
+];
+
+// ===== SCORING ENGINE =====
+function scoreOpportunity(opp) {
+  let score = 0;
+  const reasons = [];
+
+  if (opp.setAside === 'SDVOSBC') { score += 30; reasons.push('SDVOSB set-aside (+30)'); }
+  else if (opp.setAside === 'SBA') { score += 10; reasons.push('SBA set-aside (+10)'); }
+
+  if (opp.estimatedValue <= 350000) { score += 20; reasons.push('Under $350k (+20)'); }
+  if (opp.estimatedValue <= 150000) { score += 5; reasons.push('Under $150k (+5)'); }
+
+  const daysLeft = Math.ceil((new Date(opp.responseDeadline) - new Date()) / 86400000);
+  if (daysLeft >= 20) { score += 15; reasons.push('20+ days to respond (+15)'); }
+  else if (daysLeft >= 10) { score += 8; reasons.push('10+ days to respond (+8)'); }
+  else if (daysLeft > 0) { score += 2; reasons.push('Tight deadline (+2)'); }
+
+  if (opp.typeCode === 'o' || opp.typeCode === 'k') { score += 20; reasons.push('Active solicitation (+20)'); }
+  else if (opp.typeCode === 'p') { score += 12; reasons.push('Presolicitation — get in early (+12)'); }
+  else if (opp.typeCode === 'ss') { score += 8; reasons.push('Sources sought — establish contact (+8)'); }
+
+  const ACTIVE_NAICS = getActiveNaics();
+  if (ACTIVE_NAICS.includes(opp.naicsCode)) { score += 10; reasons.push('Matches your NAICS (+10)'); }
+
+  return { score: Math.min(score, 99), reasons, daysLeft };
+}
+
+function getActiveNaics() {
+  return Array.from(document.querySelectorAll('.naics-tag.active')).map(t => t.dataset.code);
+}
+
+// ===== HELPERS =====
+function daysAgo(n) {
+  const d = new Date(); d.setDate(d.getDate() - n);
+  return d.toISOString().split('T')[0];
+}
+
+function daysAhead(n) {
+  const d = new Date(); d.setDate(d.getDate() + n);
+  return d.toISOString().split('T')[0];
+}
+
+function formatMoney(v) {
+  if (!v) return 'TBD';
+  if (v >= 1000000) return '$' + (v/1000000).toFixed(1) + 'M';
+  if (v >= 1000) return '$' + Math.round(v/1000) + 'k';
+  return '$' + v;
+}
+
+function formatDate(str) {
+  if (!str) return '—';
+  const d = new Date(str + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function getTypeLabel(code) {
+  const map = { o: 'Solicitation', k: 'Combined Synopsis', p: 'Presolicitation', ss: 'Sources Sought' };
+  return map[code] || code;
+}
+
+function getTypeBadgeClass(code) {
+  const map = { o: 'badge-solicitation', k: 'badge-solicitation', p: 'badge-presolicitation', ss: 'badge-sources-sought' };
+  return map[code] || 'badge-sources-sought';
+}
+
+function getScoreClass(score) {
+  if (score >= 90) return 'score-hot';
+  if (score >= 70) return 'score-good';
+  if (score >= 50) return 'score-ok';
+  return 'score-low';
+}
+
+function getDeadlineClass(days) {
+  if (days <= 7) return 'urgent';
+  if (days <= 14) return 'soon';
+  return '';
+}
+
+// ===== NAICS TAGS =====
+document.querySelectorAll('.naics-tag').forEach(tag => {
+  tag.addEventListener('click', () => tag.classList.toggle('active'));
+});
+
+// ===== API KEY HANDLING =====
+document.getElementById('apiKey').addEventListener('input', function() {
+  const status = document.getElementById('apiStatus');
+  if (this.value.length > 10) {
+    status.textContent = '● API key set — next scan will use live data';
+    status.className = 'api-status live';
+  } else {
+    status.textContent = '● Demo mode — showing sample data';
+    status.className = 'api-status demo';
+  }
+});
+
+// ===== CURRENT DATA =====
+let currentResults = [];
+let selectedOpp = null;
+
+// ===== SCAN =====
+async function runScan() {
+  const btn = document.getElementById('scanBtn');
+  const apiKey = document.getElementById('apiKey').value.trim();
+  const isLive = apiKey.length > 10;
+
+  btn.disabled = true;
+  btn.textContent = 'Scanning...';
+  document.getElementById('resultsList').innerHTML = `
+    <div class="loading-state">
+      <div class="scanner-animation"></div>
+      <div class="loading-text">${isLive ? 'Pulling live data from SAM.gov...' : 'Loading demo contracts...'}</div>
+    </div>`;
+
+  document.getElementById('demoNotice').style.display = isLive ? 'none' : 'block';
+  document.getElementById('topbarTitle').textContent = isLive ? 'Scanning SAM.gov...' : 'Loading demo data...';
+
+  await new Promise(r => setTimeout(r, isLive ? 1200 : 600));
+
+  let results;
+  if (isLive) {
+    results = await fetchLive(apiKey);
+  } else {
+    results = filterDemo();
+  }
+
+  currentResults = results.map(opp => {
+    const { score, reasons, daysLeft } = scoreOpportunity(opp);
+    return { ...opp, score, reasons, daysLeft };
+  });
+
+  renderResults();
+  updateStats();
+
+  btn.disabled = false;
+  btn.textContent = '⟳ Scan for Contracts';
+  document.getElementById('statTime').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+// ===== LIVE API FETCH =====
+async function fetchLive(apiKey) {
+  const activeNaics = getActiveNaics();
+  const dateRange = document.getElementById('dateRange').value;
+  const setAside = document.getElementById('setAside').value;
+  const noticeType = document.getElementById('noticeType').value;
+  const maxVal = document.getElementById('maxVal').value;
+
+  const fromDate = new Date();
+  fromDate.setDate(fromDate.getDate() - parseInt(dateRange));
+  const dateStr = fromDate.toISOString().split('T')[0].replace(/-/g, '/');
+
+  const results = [];
+
+  for (const naics of activeNaics.slice(0, 3)) {
+    const params = new URLSearchParams({
+      naicsCode: naics,
+      postedFrom: dateStr,
+      limit: '20',
+    });
+    if (setAside) params.set('typeOfSetAside', setAside);
+    if (noticeType) params.set('type', noticeType);
+
+    try {
+      const res = await fetch(`/sam-proxy?${params}`);
+      if (!res.ok) throw new Error('API error ' + res.status);
+      const data = await res.json();
+
+      if (data.opportunitiesData) {
+        for (const opp of data.opportunitiesData) {
+          const val = opp.award?.amount || null;
+          if (val && val > parseInt(maxVal)) continue;
+
+          results.push({
+            noticeId: opp.noticeId,
+            title: opp.title,
+            agency: opp.fullParentPathName?.split('.')[0] || opp.organizationHierarchy?.[0]?.name || 'Federal Agency',
+            office: opp.fullParentPathName?.split('.').pop() || '',
+            naicsCode: naics,
+            setAside: opp.typeOfSetAsideDescription || '',
+            type: opp.type || '',
+            typeCode: opp.type?.[0]?.toLowerCase() || 'o',
+            postedDate: opp.postedDate?.split('T')[0] || '',
+            responseDeadline: opp.responseDeadLine?.split('T')[0] || '',
+            placeOfPerformance: [opp.placeOfPerformance?.city?.name, opp.placeOfPerformance?.state?.code].filter(Boolean).join(', '),
+            estimatedValue: val,
+            contactName: opp.pointOfContact?.[0]?.fullName || '',
+            contactEmail: opp.pointOfContact?.[0]?.email || '',
+            description: opp.description || '',
+            samLink: `https://sam.gov/opp/${opp.noticeId}`,
+          });
+        }
+      }
+    } catch (e) {
+      console.error('SAM.gov fetch error:', e);
+    }
+  }
+
+  return results.length ? results : filterDemo();
+}
+
+// ===== DEMO FILTER =====
+function filterDemo() {
+  const activeNaics = getActiveNaics();
+  const setAside = document.getElementById('setAside').value;
+  const maxVal = parseInt(document.getElementById('maxVal').value);
+
+  return DEMO_CONTRACTS.filter(o => {
+    if (activeNaics.length && !activeNaics.includes(o.naicsCode)) return false;
+    if (setAside && o.setAside !== setAside) return false;
+    if (o.estimatedValue && o.estimatedValue > maxVal) return false;
+    return true;
+  });
+}
+
+// ===== RENDER =====
+function renderResults() {
+  if (!currentResults.length) {
+    document.getElementById('resultsList').innerHTML = `
+      <div class="empty-state">
+        <div class="empty-title">No results found</div>
+        <div class="empty-sub">Try adjusting your filters or expanding your NAICS selection.</div>
+      </div>`;
+    return;
+  }
+
+  const sortBy = document.getElementById('sortBy').value;
+  const sorted = [...currentResults].sort((a, b) => {
+    if (sortBy === 'score') return b.score - a.score;
+    if (sortBy === 'deadline') return new Date(a.responseDeadline) - new Date(b.responseDeadline);
+    if (sortBy === 'value') return (b.estimatedValue || 0) - (a.estimatedValue || 0);
+    if (sortBy === 'posted') return new Date(b.postedDate) - new Date(a.postedDate);
+    return 0;
+  });
+
+  document.getElementById('topbarTitle').textContent = `${sorted.length} contract${sorted.length !== 1 ? 's' : ''} found`;
+
+  document.getElementById('resultsList').innerHTML = sorted.map(opp => `
+    <div class="opp-card ${opp.score >= 90 ? 'hot' : ''}" onclick="openDrawer('${opp.noticeId}')">
+      <div class="opp-top">
+        <div class="opp-score ${getScoreClass(opp.score)}">${opp.score}</div>
+        <div class="opp-title-wrap">
+          <div class="opp-title">${opp.title}</div>
+          <div class="opp-agency">${opp.agency}${opp.office ? ' · ' + opp.office : ''}</div>
+        </div>
+        <div class="opp-badges">
+          ${opp.setAside === 'SDVOSBC' ? '<span class="badge badge-sdvosb">SDVOSB</span>' : ''}
+          ${opp.setAside === 'SBA' && opp.setAside !== 'SDVOSBC' ? '<span class="badge badge-setaside">SBA</span>' : ''}
+          <span class="badge ${getTypeBadgeClass(opp.typeCode)}">${getTypeLabel(opp.typeCode)}</span>
+        </div>
+      </div>
+      <div class="opp-meta">
+        <div class="meta-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Due:</span>
+          <span class="meta-value ${getDeadlineClass(opp.daysLeft)}">${formatDate(opp.responseDeadline)} (${opp.daysLeft}d)</span>
+        </div>
+        <div class="meta-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>Est. value:</span>
+          <span class="meta-value money">${formatMoney(opp.estimatedValue)}</span>
+        </div>
+        <div class="meta-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="meta-value">${opp.placeOfPerformance || '—'}</span>
+        </div>
+        <div class="meta-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>NAICS:</span>
+          <span class="meta-value">${opp.naicsCode}</span>
+        </div>
+        <div class="opp-actions" onclick="event.stopPropagation()">
+          <button class="action-btn" onclick="window.open('${opp.samLink}','_blank')">SAM.gov ↗</button>
+          <button class="action-btn action-btn-primary" onclick="openDrawer('${opp.noticeId}')">Full Detail →</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== STATS =====
+function updateStats() {
+  const hot = currentResults.filter(o => o.score >= 90).length;
+  const sdv = currentResults.filter(o => o.setAside === 'SDVOSBC').length;
+  const vals = currentResults.filter(o => o.estimatedValue).map(o => o.estimatedValue);
+  const avg = vals.length ? Math.round(vals.reduce((a,b) => a+b, 0) / vals.length) : 0;
+  const total = vals.reduce((a,b) => a+b, 0);
+
+  document.getElementById('statCount').textContent = currentResults.length;
+  document.getElementById('statHot').textContent = hot;
+  document.getElementById('statAvg').textContent = avg ? formatMoney(avg) : '—';
+  document.getElementById('statSDV').textContent = sdv;
+  document.getElementById('mTotal').textContent = currentResults.length;
+  document.getElementById('mHot').textContent = hot;
+  document.getElementById('mValue').textContent = total ? formatMoney(total) : '—';
+  document.getElementById('mSDV').textContent = sdv;
+}
+
+// ===== DRAWER =====
+function openDrawer(noticeId) {
+  selectedOpp = currentResults.find(o => o.noticeId === noticeId);
+  if (!selectedOpp) return;
+
+  document.getElementById('drawerTitle').textContent = selectedOpp.title;
+
+  const margin8 = selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * 0.08)) : '—';
+  const margin12 = selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * 0.12)) : '—';
+
+  document.getElementById('drawerBody').innerHTML = `
+    <div class="drawer-section">
+      <div class="drawer-section-title">Prime Score Breakdown</div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+        <div class="opp-score ${getScoreClass(selectedOpp.score)}" style="width:56px;height:56px;font-size:20px;">${selectedOpp.score}</div>
+        <div>
+          ${selectedOpp.reasons.map(r => `<div style="font-size:11px;color:var(--text2);margin-bottom:3px;">✓ ${r}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-title">Contract Details</div>
+      <div class="drawer-kv">
+        <div class="kv-row"><span class="kv-label">Notice ID</span><span class="kv-val mono">${selectedOpp.noticeId}</span></div>
+        <div class="kv-row"><span class="kv-label">Agency</span><span class="kv-val">${selectedOpp.agency}</span></div>
+        <div class="kv-row"><span class="kv-label">Office</span><span class="kv-val">${selectedOpp.office || '—'}</span></div>
+        <div class="kv-row"><span class="kv-label">Type</span><span class="kv-val">${selectedOpp.type}</span></div>
+        <div class="kv-row"><span class="kv-label">Set-Aside</span><span class="kv-val accent">${selectedOpp.setAside || 'None'}</span></div>
+        <div class="kv-row"><span class="kv-label">NAICS</span><span class="kv-val mono">${selectedOpp.naicsCode}</span></div>
+        <div class="kv-row"><span class="kv-label">Location</span><span class="kv-val">${selectedOpp.placeOfPerformance || '—'}</span></div>
+        <div class="kv-row"><span class="kv-label">Posted</span><span class="kv-val">${formatDate(selectedOpp.postedDate)}</span></div>
+        <div class="kv-row"><span class="kv-label">Response Due</span><span class="kv-val ${getDeadlineClass(selectedOpp.daysLeft)}">${formatDate(selectedOpp.responseDeadline)} — ${selectedOpp.daysLeft} days left</span></div>
+        <div class="kv-row"><span class="kv-label">Est. Value</span><span class="kv-val accent">${formatMoney(selectedOpp.estimatedValue)}</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-title">Contact</div>
+      <div class="drawer-kv">
+        <div class="kv-row"><span class="kv-label">Specialist</span><span class="kv-val">${selectedOpp.contactName || '—'}</span></div>
+        <div class="kv-row"><span class="kv-label">Email</span><span class="kv-val" style="color:var(--blue)">${selectedOpp.contactEmail || '—'}</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-title">Your Margin Estimate</div>
+      <div class="drawer-kv" style="margin-bottom:10px;">
+        <div class="kv-row"><span class="kv-label">8% markup</span><span class="kv-val accent">${margin8}</span></div>
+        <div class="kv-row"><span class="kv-label">12% markup</span><span class="kv-val accent">${margin12}</span></div>
+        <div class="kv-row"><span class="kv-label">Sub ceiling (50% rule)</span><span class="kv-val">${selectedOpp.estimatedValue ? formatMoney(Math.round(selectedOpp.estimatedValue * 0.5)) : '—'}</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-title">Scope Summary</div>
+      <p style="font-size:13px; color:var(--text2); line-height:1.7;">${selectedOpp.description || 'No description available.'}</p>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-title">Next Action</div>
+      <div class="sow-hint">
+        <strong>Ready to move?</strong> Click "Generate SOW" below and Claude will write a full Scope of Work based on this contract's details — ready to send to subcontractors.
+      </div>
+    </div>
+  `;
+
+  document.getElementById('drawerOverlay').classList.add('open');
+}
+
+function closeDrawer(e) {
+  if (e.target === document.getElementById('drawerOverlay')) {
+    document.getElementById('drawerOverlay').classList.remove('open');
+  }
+}
+
+function closeDrawerDirect() {
+  document.getElementById('drawerOverlay').classList.remove('open');
+}
+
+function copyNoticeId() {
+  if (selectedOpp) {
+    navigator.clipboard.writeText(selectedOpp.noticeId).catch(() => {});
+  }
+}
+
+function openSAM() {
+  if (selectedOpp) window.open(selectedOpp.samLink, '_blank');
+}
+
+function generateSOW() {
+  if (!selectedOpp) return;
+  const msg = `Generate a Scope of Work (SOW) for this federal contract opportunity:
+
+Title: ${selectedOpp.title}
+Agency: ${selectedOpp.agency}
+Notice ID: ${selectedOpp.noticeId}
+NAICS: ${selectedOpp.naicsCode}
+Location: ${selectedOpp.placeOfPerformance}
+Estimated Value: ${formatMoney(selectedOpp.estimatedValue)}
+Response Due: ${formatDate(selectedOpp.responseDeadline)}
+
+Description: ${selectedOpp.description}
+
+Write a professional SOW formatted for subcontractor outreach. Include: scope summary, deliverables, performance location, timeline, special requirements, and a section for the sub to provide their bid.`;
+
+  if (typeof sendPrompt === 'function') {
+    sendPrompt(msg);
+  } else {
+    navigator.clipboard.writeText(msg).catch(() => {});
+    alert('SOW prompt copied to clipboard — paste it into Claude.');
+  }
+  closeDrawerDirect();
+}
+</script>
+</body>
+</html>
