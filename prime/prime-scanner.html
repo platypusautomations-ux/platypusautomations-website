@@ -713,14 +713,6 @@
     </div>
 
     <div class="sidebar-section">
-      <div class="sidebar-label">SAM.gov API Key</div>
-      <div class="api-input-wrap">
-        <input class="api-input" type="password" id="apiKey" placeholder="Paste your API key here" />
-      </div>
-      <div class="api-status demo" id="apiStatus">● Demo mode — showing sample data</div>
-    </div>
-
-    <div class="sidebar-section">
       <div class="sidebar-label">Your NAICS Codes</div>
       <div class="naics-tags" id="naicsTags">
         <span class="naics-tag active" data-code="561730">561730 — Landscaping</span>
@@ -839,11 +831,6 @@
     </div>
 
     <div class="content-area">
-      <div id="demoNotice" class="demo-notice" style="display:none;">
-        ⚠ DEMO MODE — Data below is realistic sample data. Enter your free SAM.gov API key in the sidebar to pull live federal contracts.
-        Get your key at: sam.gov/profile/details → Public API Key
-      </div>
-
       <div id="resultsList" class="opp-list">
         <div class="empty-state">
           <div class="empty-title">Set your filters and scan</div>
@@ -1084,18 +1071,6 @@ document.querySelectorAll('.naics-tag').forEach(tag => {
   tag.addEventListener('click', () => tag.classList.toggle('active'));
 });
 
-// ===== API KEY HANDLING =====
-document.getElementById('apiKey').addEventListener('input', function() {
-  const status = document.getElementById('apiStatus');
-  if (this.value.length > 10) {
-    status.textContent = '● API key set — next scan will use live data';
-    status.className = 'api-status live';
-  } else {
-    status.textContent = '● Demo mode — showing sample data';
-    status.className = 'api-status demo';
-  }
-});
-
 // ===== CURRENT DATA =====
 let currentResults = [];
 let selectedOpp = null;
@@ -1103,28 +1078,20 @@ let selectedOpp = null;
 // ===== SCAN =====
 async function runScan() {
   const btn = document.getElementById('scanBtn');
-  const apiKey = document.getElementById('apiKey').value.trim();
-  const isLive = apiKey.length > 10;
 
   btn.disabled = true;
   btn.textContent = 'Scanning...';
   document.getElementById('resultsList').innerHTML = `
     <div class="loading-state">
       <div class="scanner-animation"></div>
-      <div class="loading-text">${isLive ? 'Pulling live data from SAM.gov...' : 'Loading demo contracts...'}</div>
+      <div class="loading-text">Pulling live data from SAM.gov...</div>
     </div>`;
 
-  document.getElementById('demoNotice').style.display = isLive ? 'none' : 'block';
-  document.getElementById('topbarTitle').textContent = isLive ? 'Scanning SAM.gov...' : 'Loading demo data...';
+  document.getElementById('topbarTitle').textContent = 'Scanning SAM.gov...';
 
-  await new Promise(r => setTimeout(r, isLive ? 1200 : 600));
+  await new Promise(r => setTimeout(r, 1200));
 
-  let results;
-  if (isLive) {
-    results = await fetchLive(apiKey);
-  } else {
-    results = filterDemo();
-  }
+  const results = await fetchLive();
 
   currentResults = results.map(opp => {
     const { score, reasons, daysLeft } = scoreOpportunity(opp);
@@ -1140,7 +1107,7 @@ async function runScan() {
 }
 
 // ===== LIVE API FETCH =====
-async function fetchLive(apiKey) {
+async function fetchLive() {
   const activeNaics = getActiveNaics();
   const dateRange = document.getElementById('dateRange').value;
   const setAside = document.getElementById('setAside').value;
