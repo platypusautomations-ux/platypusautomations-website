@@ -155,6 +155,34 @@
 
   .filter-select:focus, .filter-input:focus { border-color: var(--teal-bright); }
 
+  /* NAICS CONTROLS */
+  .naics-controls {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .naics-ctrl-btn {
+    flex: 1;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border2);
+    background: rgba(255,255,255,0.04);
+    color: var(--text2);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    text-align: center;
+  }
+
+  .naics-ctrl-btn:hover {
+    background: rgba(0,122,122,0.15);
+    border-color: rgba(0,160,160,0.3);
+    color: var(--teal-bright);
+  }
+
   /* NAICS TAGS */
   .naics-tags {
     display: flex;
@@ -726,13 +754,26 @@
 
     <div class="sidebar-section">
       <div class="sidebar-label">Your NAICS Codes</div>
+      <div class="naics-controls">
+        <button class="naics-ctrl-btn" onclick="document.querySelectorAll('.naics-tag').forEach(t=>t.classList.add('active'))">Select All</button>
+        <button class="naics-ctrl-btn" onclick="document.querySelectorAll('.naics-tag').forEach(t=>t.classList.remove('active'))">Clear All</button>
+      </div>
       <div class="naics-tags" id="naicsTags">
         <span class="naics-tag active" data-code="561730">561730 — Landscaping</span>
         <span class="naics-tag active" data-code="561720">561720 — Janitorial</span>
         <span class="naics-tag" data-code="562112">562112 — HazMat</span>
-        <span class="naics-tag" data-code="722310">722310 — Food Svc</span>
-        <span class="naics-tag" data-code="238990">238990 — Lt. Const.</span>
+        <span class="naics-tag" data-code="722310">722310 — Food Service</span>
+        <span class="naics-tag" data-code="236220">236220 — Lt. Construction</span>
+        <span class="naics-tag" data-code="238220">238220 — HVAC / Plumbing</span>
+        <span class="naics-tag" data-code="238210">238210 — Electrical</span>
+        <span class="naics-tag" data-code="238310">238310 — Drywall / Insulation</span>
+        <span class="naics-tag" data-code="238320">238320 — Painting</span>
+        <span class="naics-tag" data-code="238910">238910 — Site Preparation</span>
+        <span class="naics-tag" data-code="237310">237310 — Paving</span>
+        <span class="naics-tag" data-code="561110">561110 — Office Admin</span>
+        <span class="naics-tag" data-code="488490">488490 — Support Activities</span>
         <span class="naics-tag" data-code="562910">562910 — Remediation</span>
+        <span class="naics-tag" data-code="238990">238990 — Specialty Trade</span>
       </div>
     </div>
 
