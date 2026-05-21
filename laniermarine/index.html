@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capt. F.K. Lanier &amp; Associates | Marine Surveyor | Hampton Roads, VA</title>
+  <meta name="description" content="Captain Frank Lanier - SAMS Accredited Marine Surveyor serving Hampton Roads since 2002. 28-year USCG veteran. Pre-purchase, insurance, damage, and appraisal surveys. All reports guaranteed accepted by major lenders and insurers. Call (757) 287-3770.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       Variables
+    ============================================ */
+    :root {
+      --navy:          #1A2535;
+      --navy-mid:      #1E2D40;
+      --navy-card:     #243040;
+      --teal:          #1A6B6B;
+      --teal-mid:      #1E7B7B;
+      --amber:         #C8922A;
+      --amber-bright:  #D9A240;
+      --amber-dim:     rgba(200, 146, 42, 0.14);
+      --amber-border:  rgba(200, 146, 42, 0.30);
+      --offwhite:      #F2EDE4;
+      --muted:         #8A9BAA;
+      --muted-dim:     rgba(138, 155, 170, 0.40);
+    }
+
+    /* ============================================
+       Reset
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--navy);
+      color: var(--offwhite);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================
+       Scroll Reveal
+    ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.18s; }
+    .d3 { transition-delay: 0.28s; }
+    .d4 { transition-delay: 0.38s; }
+    .d5 { transition-delay: 0.48s; }
+    .d6 { transition-delay: 0.58s; }
+
+    /* ============================================
+       Utility
+    ============================================ */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.85rem;
+    }
+    .section-eyebrow::before,
+    .section-eyebrow::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--amber-border);
+      flex-shrink: 0;
+    }
+
+    /* ============================================
+       Buttons
+    ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.5rem;
+      border-radius: 3px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      min-height: 44px;
+    }
+    .btn-amber {
+      background: var(--amber);
+      color: #111820;
+      border-color: var(--amber);
+    }
+    .btn-amber:hover {
+      background: var(--amber-bright);
+      border-color: var(--amber-bright);
+    }
+    .btn-amber-outline {
+      background: transparent;
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+    .btn-amber-outline:hover {
+      background: var(--amber-dim);
+    }
+
+    /* ============================================
+       Navigation
+    ============================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--navy);
+      border-bottom: 1px solid var(--amber-border);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      transition: box-shadow 0.3s ease;
+    }
+    nav.scrolled {
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.75);
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-shrink: 0;
+    }
+    .nav-anchor {
+      font-size: 1.25rem;
+      color: var(--amber);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .nav-wordmark {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--offwhite);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-phone {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-phone:hover { color: var(--offwhite); }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--offwhite);
+      transition: all 0.3s ease;
+      border-radius: 1px;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--navy);
+      border-bottom: 1px solid var(--amber-border);
+      padding: 1.25rem 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--offwhite);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(138, 155, 170, 0.10);
+      display: block;
+    }
+    .nav-mobile-link:last-child { border-bottom: none; }
+    .nav-mobile-cta {
+      margin-top: 0.75rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ============================================
+       Hero
+    ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(160deg, rgba(26,37,53,0.72) 0%, rgba(26,37,53,0.55) 50%, rgba(16,24,36,0.84) 100%),
+        url('img/largeyacht.webp') center 40% / cover no-repeat;
+      background-attachment: fixed, fixed;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 6rem 0;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.25rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--amber);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--offwhite);
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+    .hero-sub {
+      font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+      color: rgba(242, 237, 228, 0.80);
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-guarantee {
+      font-size: 0.82rem;
+      color: rgba(242, 237, 228, 0.48);
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    /* ============================================
+       Guarantee Bar
+    ============================================ */
+    .guarantee-bar {
+      background: var(--teal);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+    .guarantee-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .guarantee-bar p {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1rem, 2.2vw, 1.45rem);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(242, 237, 228, 0.90);
+      line-height: 1.4;
+    }
+    .guarantee-bar strong {
+      color: #fff;
+    }
+
+    /* ============================================
+       Why Frank
+    ============================================ */
+    .why-frank {
+      padding: 6rem 1.5rem;
+      background: var(--navy);
+    }
+    .why-frank-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--navy-card);
+      border-left: 4px solid var(--amber);
+      border-radius: 4px;
+      padding: 3rem 3.5rem;
+    }
+    .why-frank h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--offwhite);
+      margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+    .why-frank h2 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+    .why-frank p {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: rgba(242, 237, 228, 0.78);
+    }
+
+    /* ============================================
+       Credentials Bar
+    ============================================ */
+    .creds-bar {
+      background: var(--navy-card);
+      border-top: 1px solid var(--amber-border);
+      border-bottom: 1px solid var(--amber-border);
+      padding: 2.25rem 1.5rem;
+    }
+    .creds-list {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .cred-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.5rem 2rem;
+    }
+    .cred-item:not(:last-child) {
+      border-right: 1px solid var(--amber-border);
+    }
+    .cred-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--amber);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .cred-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--offwhite);
+      white-space: nowrap;
+    }
+
+    /* ============================================
+       Services
+    ============================================ */
+    .services {
+      position: relative;
+      padding: 7rem 1.5rem;
+      background:
+        linear-gradient(180deg, rgba(26,37,53,0.95) 0%, rgba(26,37,53,0.92) 100%),
+        url('img/sailboataerial.webp') center center / cover no-repeat;
+      background-attachment: scroll, fixed;
+    }
+    .services-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .services-header .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--offwhite);
+      line-height: 1.1;
+    }
+    .services-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .service-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(200, 146, 42, 0.10);
+      border-top: 3px solid var(--amber);
+      border-radius: 4px;
+      padding: 2rem 1.75rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+    }
+    .service-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--offwhite);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .service-card p {
+      font-size: 0.93rem;
+      line-height: 1.78;
+      color: rgba(242, 237, 228, 0.62);
+    }
+
+    /* ============================================
+       Reviews
+    ============================================ */
+    .reviews {
+      padding: 7rem 1.5rem;
+      background: var(--navy-mid);
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .reviews-score {
+      font-family: 'Oswald', sans-serif;
+      font-size: 5.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--offwhite);
+      letter-spacing: -0.02em;
+    }
+    .stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin: 0.5rem 0;
+    }
+    .star {
+      width: 26px;
+      height: 26px;
+      background: var(--amber);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .reviews-count {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+    .reviews-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .review-card {
+      background: var(--navy-card);
+      border-radius: 4px;
+      border-top: 2px solid var(--amber);
+      padding: 1.75rem 1.75rem 1.5rem;
+    }
+    .review-stars {
+      display: flex;
+      gap: 0.3rem;
+      margin-bottom: 1rem;
+    }
+    .review-star {
+      width: 14px;
+      height: 14px;
+      background: var(--amber);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      flex-shrink: 0;
+    }
+    .review-text {
+      font-size: 0.93rem;
+      line-height: 1.78;
+      color: rgba(242, 237, 228, 0.72);
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+    .review-author {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    /* ============================================
+       Everything Boats / YouTube
+    ============================================ */
+    .youtube-section {
+      padding: 7rem 1.5rem;
+      background: var(--teal);
+      text-align: center;
+    }
+    .youtube-section .section-eyebrow {
+      color: rgba(242, 237, 228, 0.60);
+    }
+    .youtube-section .section-eyebrow::before,
+    .youtube-section .section-eyebrow::after {
+      background: rgba(242, 237, 228, 0.25);
+    }
+    .youtube-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #fff;
+      margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+    .youtube-section p {
+      font-size: 1rem;
+      line-height: 1.82;
+      color: rgba(242, 237, 228, 0.80);
+      max-width: 650px;
+      margin: 0 auto 2.25rem;
+    }
+
+    /* ============================================
+       About
+    ============================================ */
+    .about {
+      padding: 7rem 1.5rem;
+      background: var(--navy);
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .about-img img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+      display: block;
+    }
+    .about-img-border {
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--amber-border);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .about-content .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--offwhite);
+      margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+    .about-content .section-title em {
+      font-style: normal;
+      color: var(--amber);
+    }
+    .about-content p {
+      font-size: 1rem;
+      line-height: 1.88;
+      color: rgba(242, 237, 228, 0.72);
+    }
+    .about-content strong {
+      color: var(--offwhite);
+      font-weight: 700;
+    }
+
+    /* ============================================
+       Trust Bar
+    ============================================ */
+    .trust-bar {
+      padding: 1.75rem 1.5rem;
+      background: var(--navy-card);
+      border-top: 1px solid var(--amber-border);
+      border-bottom: 1px solid var(--amber-border);
+      text-align: center;
+    }
+    .trust-bar p {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(0.75rem, 1.6vw, 1rem);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      line-height: 1.6;
+    }
+    .trust-sep {
+      color: var(--amber-border);
+      margin: 0 0.75rem;
+    }
+
+    /* ============================================
+       CTA / Contact
+    ============================================ */
+    .cta-section {
+      padding: 7rem 1.5rem;
+      background: var(--navy);
+    }
+    .cta-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta-inner h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--offwhite);
+      margin-bottom: 0.9rem;
+      line-height: 1.1;
+    }
+    .cta-sub {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .form-group label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group textarea {
+      background: var(--navy-card);
+      border: 1px solid rgba(138, 155, 170, 0.22);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--offwhite);
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+      min-height: 44px;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--amber); }
+    .form-group textarea {
+      min-height: 115px;
+      resize: vertical;
+    }
+    .form-submit {
+      align-self: flex-start;
+      padding: 0.75rem 2rem;
+      font-size: 0.9rem;
+    }
+    .contact-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--amber); }
+    .contact-link-icon { font-size: 1rem; }
+
+    /* ============================================
+       Footer
+    ============================================ */
+    footer {
+      background: var(--navy-card);
+      border-top: 1px solid var(--amber-border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--offwhite);
+      margin-bottom: 0.3rem;
+    }
+    .footer-location {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .footer-copyright {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ============================================
+       Responsive — Tablet
+    ============================================ */
+    @media (max-width: 768px) {
+      .nav-phone { display: none; }
+      .nav-right .btn { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero {
+        min-height: 85vh;
+        background:
+          linear-gradient(160deg, rgba(26,37,53,0.80) 0%, rgba(26,37,53,0.65) 50%, rgba(16,24,36,0.88) 100%),
+          url('img/largeyacht.webp') center center / cover no-repeat;
+        background-attachment: scroll, scroll;
+      }
+      .hero-content { padding: 5rem 0 4rem; }
+
+      .services {
+        background:
+          linear-gradient(180deg, rgba(26,37,53,0.97) 0%, rgba(26,37,53,0.95) 100%),
+          url('img/sailboataerial.webp') center center / cover no-repeat;
+        background-attachment: scroll, scroll;
+      }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-img img { height: 300px; }
+
+      .creds-list { gap: 0.5rem 0; }
+      .cred-item {
+        padding: 0.35rem 1.25rem;
+        flex: 0 1 auto;
+      }
+
+      .form-row { grid-template-columns: 1fr; }
+      .form-submit { width: 100%; justify-content: center; }
+    }
+
+    /* ============================================
+       Responsive — Mobile
+    ============================================ */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.4rem; }
+      .hero-cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero-cta-row .btn { width: 100%; justify-content: center; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      .cred-item:not(:last-child) { border-right: none; }
+      .creds-list { flex-direction: column; align-items: flex-start; padding: 0 1rem; }
+      .cred-item { padding: 0.3rem 0; }
+
+      .why-frank-card { padding: 1.75rem 1.5rem; }
+
+      .trust-sep { display: block; visibility: hidden; height: 0.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero, .services { background-attachment: scroll, scroll; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-anchor">⚓</span>
+        <span class="nav-wordmark">Capt. F.K. Lanier</span>
+      </div>
+      <div class="nav-right">
+        <a href="tel:7572873770" class="nav-phone">(757) 287-3770</a>
+        <a href="#contact" class="btn btn-amber">Schedule a Survey</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile-menu" id="nav-mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#services" class="nav-mobile-link" onclick="closeMobileMenu()">Services</a>
+    <a href="#reviews" class="nav-mobile-link" onclick="closeMobileMenu()">Reviews</a>
+    <a href="#about" class="nav-mobile-link" onclick="closeMobileMenu()">About</a>
+    <a href="tel:7572873770" class="nav-mobile-link">(757) 287-3770</a>
+    <a href="#contact" class="btn btn-amber nav-mobile-cta" onclick="closeMobileMenu()">Schedule a Survey</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content reveal">
+        <div class="hero-tag">Hampton Roads Marine Surveyor</div>
+        <h1>Don't Buy That Boat<br>Without Calling<br><em>Captain Frank.</em></h1>
+        <p class="hero-sub">28-year Coast Guard veteran. 40 years on the water. Hampton Roads' most trusted marine surveyor. Serving Chesapeake, Norfolk, Virginia Beach, and the Chesapeake Bay.</p>
+        <div class="hero-cta-row">
+          <a href="tel:7572873770" class="btn btn-amber">Call (757) 287-3770</a>
+          <a href="#services" class="btn btn-amber-outline">View Services</a>
+        </div>
+        <p class="hero-guarantee">All survey reports guaranteed accepted by major lenders and insurers. Or your fee is refunded.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE BAR -->
+  <div class="guarantee-bar">
+    <div class="guarantee-bar-inner reveal">
+      <p><strong>Every Survey Report Guaranteed Accepted by Major Lenders and Insurers.</strong> Or Your Fee Is Refunded.</p>
+    </div>
+  </div>
+
+  <!-- WHY FRANK -->
+  <section class="why-frank">
+    <div class="why-frank-card reveal">
+      <h2>He's Not Here to <em>Crush Your Dreams.</em></h2>
+      <p>Frank gives it to you straight. If there's something wrong with the boat you're about to buy, you'll know before you sign. If it's solid, you'll know that too. After 40 years in the marine industry and thousands of surveys, he's seen what happens when buyers skip the inspection. He'd rather tell you the hard truth now than have you call him six months later wondering what went wrong.</p>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS BAR -->
+  <div class="creds-bar">
+    <div class="creds-list">
+      <div class="cred-item reveal d1">
+        <div class="cred-dot"></div>
+        <span class="cred-label">28-Year USCG Veteran</span>
+      </div>
+      <div class="cred-item reveal d2">
+        <div class="cred-dot"></div>
+        <span class="cred-label">SAMS Accredited Surveyor</span>
+      </div>
+      <div class="cred-item reveal d3">
+        <div class="cred-dot"></div>
+        <span class="cred-label">100GT Masters License</span>
+      </div>
+      <div class="cred-item reveal d4">
+        <div class="cred-dot"></div>
+        <span class="cred-label">FCC Licensed Electronics Tech</span>
+      </div>
+      <div class="cred-item reveal d5">
+        <div class="cred-dot"></div>
+        <span class="cred-label">PADI Master SCUBA Diver Trainer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header reveal">
+      <div class="section-eyebrow">What Frank Does</div>
+      <h2 class="section-title">Survey Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal d1">
+        <h3>Pre-Purchase Survey</h3>
+        <p>The most important survey you'll ever get. Frank inspects everything, hull out of the water, before you commit to anything. Know what you're buying before you sign.</p>
+      </div>
+      <div class="service-card reveal d2">
+        <h3>Insurance Survey</h3>
+        <p>Required by most underwriters every few years. Frank handles the inspection so your coverage stays current and your insurer stays happy.</p>
+      </div>
+      <div class="service-card reveal d3">
+        <h3>Damage Inspection</h3>
+        <p>Something went wrong. Frank documents exactly what, how bad, and what it will cost to fix. Objective, detailed, defensible.</p>
+      </div>
+      <div class="service-card reveal d4">
+        <h3>Appraisal</h3>
+        <p>Fair market and replacement value for financing, estate settlements, donations, or legal matters. Numbers you can take to the bank.</p>
+      </div>
+      <div class="service-card reveal d5">
+        <h3>Commercial Cargo Inspection</h3>
+        <p>Assessment and monitoring for commercial cargo and equipment. Available for long-term and continual assignments.</p>
+      </div>
+      <div class="service-card reveal d6">
+        <h3>Consulting</h3>
+        <p>Got a question that doesn't fit a standard survey? Frank has 40 years of answers. Available for legal cases, arbitration, and insurance disputes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-header reveal">
+      <div class="reviews-score">5.0</div>
+      <div class="stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+      <div class="reviews-count">64 Google Reviews</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal d1">
+        <div class="review-stars">
+          <div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div>
+        </div>
+        <p class="review-text">"Extremely diligent going through every system on the vessel. We were buying a Leopard 42 catamaran and he left nothing unchecked. Couldn't ask for more thorough work."</p>
+        <div class="review-author">Michael T.</div>
+      </div>
+      <div class="review-card reveal d2">
+        <div class="review-stars">
+          <div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div>
+        </div>
+        <p class="review-text">"We called Captain Frank for a pre-purchase survey on a 1981 Ericson 38 sailboat and were absolutely delighted with his services. Professional, thorough, and easy to work with."</p>
+        <div class="review-author">David &amp; Carol R.</div>
+      </div>
+      <div class="review-card reveal d3">
+        <div class="review-stars">
+          <div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div><div class="review-star"></div>
+        </div>
+        <p class="review-text">"Had Frank survey a 28-foot Bayliner and he made the whole process painless and straightforward. Clear report, fast turnaround, no nonsense. Will use him again."</p>
+        <div class="review-author">James K.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVERYTHING BOATS / YOUTUBE -->
+  <section class="youtube-section">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">Free Marine Education</div>
+        <h2>800 Videos. One Channel. All Boats.</h2>
+        <p>Captain Frank publishes free marine education content several times a week on YouTube. Ask Captain Frank, Sea Chest of Horrors, 60 Second Boat Survey, Shorts. Nearly 800 videos covering surveys, electrical systems, safety, seamanship, and hands-on boat ownership. If you want to know whether you can trust this guy before you call him, start there.</p>
+        <a href="https://www.youtube.com/@everythingboatswithCaptFrank" target="_blank" rel="noopener" class="btn btn-amber">Watch Everything Boats on YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-img reveal">
+        <img src="img/yachtsailslip.webp" alt="Classic sailboat alongside a modern motor yacht at the slip" loading="lazy" width="540" height="460">
+        <div class="about-img-border"></div>
+      </div>
+      <div class="about-content reveal d2">
+        <div class="section-eyebrow">The Captain</div>
+        <h2 class="section-title">40 Years on <em>the Water.</em></h2>
+        <p>Captain Frank Lanier has been in the marine industry since 1980. He spent 28 years in the US Coast Guard, captained vessels across the Atlantic, Caribbean, and South Pacific, and has lived aboard both power and sailing vessels for over 15 years. He has been surveying boats in Hampton Roads since 2002. He is SAMS accredited, Coast Guard licensed, FCC certified, and PADI trained. Based in Chesapeake, VA. <strong>Answers his own phone.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <p class="reveal">
+        Serving Hampton Roads Since 2002
+        <span class="trust-sep">|</span>
+        28-Year USCG Veteran
+        <span class="trust-sep">|</span>
+        64 Five-Star Reviews
+        <span class="trust-sep">|</span>
+        Survey Reports Guaranteed
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA / CONTACT -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner reveal">
+      <div class="section-eyebrow">Get in Touch</div>
+      <h2>Ready to Find Out What That Boat Is Really Worth?</h2>
+      <p class="cta-sub">Call or email Captain Frank directly. Pre-purchase, insurance, damage, and appraisal surveys across Hampton Roads and the Chesapeake Bay.</p>
+      <form class="contact-form" action="">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="First Last" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(757) 555-0100" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="vessel">Vessel Type</label>
+          <input type="text" id="vessel" name="vessel" placeholder="e.g. 2006 Catalina 42 Sailboat">
+        </div>
+        <div class="form-group">
+          <label for="message">What do you need?</label>
+          <textarea id="message" name="message" placeholder="Tell Frank what you're looking at and what kind of survey you need."></textarea>
+        </div>
+        <button type="submit" class="btn btn-amber form-submit">Send Message</button>
+      </form>
+      <div class="contact-links">
+        <a href="tel:7572873770" class="contact-link">
+          <span class="contact-link-icon">&#128222;</span>
+          (757) 287-3770
+        </a>
+        <a href="mailto:captfklanier@cox.net" class="contact-link">
+          <span class="contact-link-icon">&#9993;</span>
+          captfklanier@cox.net
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">⚓ Capt. F.K. Lanier &amp; Associates, LLC</div>
+      <div class="footer-location">Chesapeake, VA</div>
+      <div class="footer-copyright">&copy; 2025 Capt. F.K. Lanier &amp; Associates, LLC. All rights reserved.</div>
+      <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
+        SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav shadow
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('nav-mobile-menu');
+    toggle.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(function(el) { observer.observe(el); });
+  </script>
+
+</body>
+</html>
