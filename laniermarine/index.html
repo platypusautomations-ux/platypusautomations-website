@@ -253,10 +253,19 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background:
-        linear-gradient(160deg, rgba(26,37,53,0.72) 0%, rgba(26,37,53,0.55) 50%, rgba(16,24,36,0.84) 100%),
-        url('img/largeyacht.webp') center 40% / cover no-repeat;
-      background-attachment: fixed, fixed;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/largeyacht.webp');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(26,37,53,0.72) 0%, rgba(26,37,53,0.55) 50%, rgba(16,24,36,0.84) 100%);
     }
     .hero-content {
       position: relative;
@@ -429,10 +438,24 @@
     .services {
       position: relative;
       padding: 7rem 1.5rem;
-      background:
-        linear-gradient(180deg, rgba(26,37,53,0.95) 0%, rgba(26,37,53,0.92) 100%),
-        url('img/sailboataerial.webp') center center / cover no-repeat;
-      background-attachment: scroll, fixed;
+      overflow: hidden;
+    }
+    .services-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/sailboataerial.webp');
+      background-size: cover;
+      background-position: center;
+    }
+    .services-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(26,37,53,0.95) 0%, rgba(26,37,53,0.92) 100%);
+    }
+    .services-header,
+    .services-grid {
+      position: relative;
+      z-index: 1;
     }
     .services-header {
       text-align: center;
@@ -819,21 +842,9 @@
       .nav-right .btn { display: none; }
       .nav-toggle { display: flex; }
 
-      .hero {
-        min-height: 85vh;
-        background:
-          linear-gradient(160deg, rgba(26,37,53,0.80) 0%, rgba(26,37,53,0.65) 50%, rgba(16,24,36,0.88) 100%),
-          url('img/largeyacht.webp') center center / cover no-repeat;
-        background-attachment: scroll, scroll;
-      }
+      .hero { min-height: 85vh; }
       .hero-content { padding: 5rem 0 4rem; }
 
-      .services {
-        background:
-          linear-gradient(180deg, rgba(26,37,53,0.97) 0%, rgba(26,37,53,0.95) 100%),
-          url('img/sailboataerial.webp') center center / cover no-repeat;
-        background-attachment: scroll, scroll;
-      }
       .services-grid { grid-template-columns: 1fr 1fr; }
 
       .reviews-grid { grid-template-columns: 1fr 1fr; }
@@ -876,7 +887,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .hero, .services { background-attachment: scroll, scroll; }
     }
   </style>
 </head>
@@ -909,6 +919,8 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-content reveal">
         <div class="hero-tag">Hampton Roads Marine Surveyor</div>
@@ -966,6 +978,8 @@
 
   <!-- SERVICES -->
   <section class="services" id="services">
+    <div class="services-bg"></div>
+    <div class="services-overlay"></div>
     <div class="services-header reveal">
       <div class="section-eyebrow">What Frank Does</div>
       <h2 class="section-title">Survey Services</h2>
