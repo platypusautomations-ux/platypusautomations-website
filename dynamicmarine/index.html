@@ -407,81 +407,19 @@
        Reviews
     ============================================= */
     .reviews {
-      padding: 5.5rem 0;
+      padding: 3.5rem 0;
       background: var(--navy-mid);
     }
 
-    .reviews-header {
+    .reviews-trust {
       text-align: center;
-      margin-bottom: 3rem;
-    }
-    .reviews-header .section-eyebrow {
-      justify-content: center;
-    }
-    .reviews-header .section-eyebrow::before { display: none; }
-
-    .reviews h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
-      font-weight: 700;
-      color: var(--offwhite);
-      margin-bottom: 0.5rem;
-    }
-
-    .reviews-rating {
-      font-size: 0.85rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 500;
       color: var(--muted);
-      margin-top: 0.4rem;
+      line-height: 1.6;
     }
-    .reviews-rating strong {
+    .reviews-trust strong {
       color: var(--teal);
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .review-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 1.75rem 1.5rem;
-    }
-
-    .stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 1rem;
-    }
-    .stars svg {
-      width: 15px;
-      height: 15px;
-      fill: #f4b942;
-    }
-
-    .review-card blockquote {
-      font-size: 0.92rem;
-      line-height: 1.7;
-      color: rgba(244, 244, 240, 0.82);
-      margin-bottom: 1.1rem;
-      font-style: italic;
-    }
-
-    .review-author {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-    }
-
-    @media (max-width: 860px) {
-      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 540px) {
-      .reviews-grid { grid-template-columns: 1fr; }
     }
 
     /* =============================================
@@ -888,50 +826,7 @@
   <!-- ===================== REVIEWS ===================== -->
   <section class="reviews" id="reviews">
     <div class="container">
-      <div class="reviews-header">
-        <div class="section-eyebrow">Client Reviews</div>
-        <h2>What Owners Say</h2>
-        <p class="reviews-rating"><strong>5.0 stars on Google</strong></p>
-      </div>
-      <div class="reviews-grid">
-
-        <div class="review-card reveal d1">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <blockquote>"The inspection was thorough and handled professionally from start to finish. The final report gave me real confidence in my purchase decision."</blockquote>
-          <div class="review-author">James T.</div>
-        </div>
-
-        <div class="review-card reveal d2">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <blockquote>"Richard caught problems the previous surveyor had completely overlooked. It saved me from walking into a very expensive mistake."</blockquote>
-          <div class="review-author">Mark D.</div>
-        </div>
-
-        <div class="review-card reveal d3">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <blockquote>"Fast turnaround and a clear, easy-to-read report. No hunting through pages of jargon. Everything I needed was right there."</blockquote>
-          <div class="review-author">Carol S.</div>
-        </div>
-
-      </div>
+      <p class="reviews-trust reveal"><strong>4.5 stars on Google.</strong> Serving Hampton Roads boat owners since 2003.</p>
     </div>
   </section>
 
