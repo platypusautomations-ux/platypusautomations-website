@@ -626,14 +626,63 @@
             object-fit: cover;
             display: block;
         }
-        .about-photo-panel {
-            width: 100%;
-            height: 460px;
-            background-color: #0c1726;
+        .shop-card {
+            background: var(--bg-dark);
+            border: 1px solid rgba(61, 127, 193, 0.22);
+            border-top: 3px solid var(--blue);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .shop-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
             background-image:
-                linear-gradient(rgba(61, 127, 193, 0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(61, 127, 193, 0.07) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(rgba(61, 127, 193, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(61, 127, 193, 0.055) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+        .shop-card-label {
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+        .shop-spec-rows {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .shop-spec {
+            display: flex;
+            align-items: baseline;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .shop-spec:last-child { border-bottom: none; }
+        .spec-key {
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.38);
+            flex-shrink: 0;
+            width: 120px;
+        }
+        .spec-val {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #fff;
+            text-transform: uppercase;
+            margin-left: auto;
+            text-align: right;
         }
 
         .star { color: #e6a817; font-size: 0.85rem; }
@@ -1014,7 +1063,43 @@
                     </div>
                 </div>
                 <div class="about-photo reveal d1">
-                    <div class="about-photo-panel"></div>
+                    <div class="shop-card">
+                        <div class="shop-card-label">Shop Specs</div>
+                        <div class="shop-spec-rows">
+                            <div class="shop-spec">
+                                <span class="spec-key">Founded</span>
+                                <span class="spec-val">1976</span>
+                            </div>
+                            <div class="shop-spec">
+                                <span class="spec-key">Location</span>
+                                <span class="spec-val">Norfolk, VA</span>
+                            </div>
+                            <div class="shop-spec">
+                                <span class="spec-key">Founder</span>
+                                <span class="spec-val">Bobby Mallard</span>
+                            </div>
+                            <div class="shop-spec">
+                                <span class="spec-key">Background</span>
+                                <span class="spec-val">U.S. Navy Veteran</span>
+                            </div>
+                            <div class="shop-spec">
+                                <span class="spec-key">Machining</span>
+                                <span class="spec-val">CNC &amp; Manual</span>
+                            </div>
+                            <div class="shop-spec">
+                                <span class="spec-key">Service</span>
+                                <span class="spec-val">In-Shop &amp; On-Site</span>
+                            </div>
+                            <div class="shop-spec">
+                                <span class="spec-key">Specialties</span>
+                                <span class="spec-val">Marine Capable</span>
+                            </div>
+                            <div class="shop-spec">
+                                <span class="spec-key">Experience</span>
+                                <span class="spec-val">50+ Years</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
