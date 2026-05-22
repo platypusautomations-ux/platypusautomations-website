@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graham Crawlspace Solutions | Crawlspace Repair &amp; Encapsulation | Hampton Roads, VA</title>
+  <meta name="description" content="Spray foam insulation, encapsulation, moisture control, and structural repair for Hampton Roads crawlspaces. Free evaluation. Serving Chesapeake, Norfolk, Virginia Beach, and surrounding areas. Call (757) 477-4083.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       Variables
+    ============================================ */
+    :root {
+      --navy:        #0D1B2A;
+      --navy-card:   #1A2B3C;
+      --navy-deep:   #090f18;
+      --navy-mid:    #142130;
+      --orange:      #F5A623;
+      --orange-dim:  rgba(245, 166, 35, 0.14);
+      --orange-border: rgba(245, 166, 35, 0.30);
+      --white:       #FFFFFF;
+      --muted:       #A0AEC0;
+      --muted-dim:   rgba(160, 174, 192, 0.30);
+    }
+
+    /* ============================================
+       Reset
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================
+       Scroll Reveal
+    ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.09s; }
+    .d2 { transition-delay: 0.18s; }
+    .d3 { transition-delay: 0.28s; }
+    .d4 { transition-delay: 0.38s; }
+    .d5 { transition-delay: 0.48s; }
+
+    /* ============================================
+       Nav
+    ============================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled {
+      background: var(--navy);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.45);
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      background: var(--navy);
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    .nav-logo img {
+      height: 42px;
+      width: auto;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+    .nav-phone {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      color: var(--white);
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+    .nav-phone:hover { color: var(--orange); }
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.25rem;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      white-space: nowrap;
+      min-height: 38px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-nav:hover { background: #e0961a; transform: translateY(-1px); }
+
+    /* ============================================
+       Hero
+    ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/darkcrawl.webp');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: scroll;
+      animation: heroZoom 22s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.06); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        155deg,
+        rgba(13, 27, 42, 0.80) 0%,
+        rgba(13, 27, 42, 0.60) 48%,
+        rgba(13, 27, 42, 0.92) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 10rem 1.5rem 6rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.6rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+    .hero-headline {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.35rem;
+      max-width: 820px;
+    }
+    .hero-headline .accent { color: var(--orange); }
+    .hero-subhead {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.88);
+      max-width: 540px;
+      margin-bottom: 0.8rem;
+    }
+    .hero-location {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.8rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      min-height: 52px;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #e0961a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(245, 166, 35, 0.35);
+    }
+
+    /* ============================================
+       Problem Bar
+    ============================================ */
+    .problem-bar {
+      background: var(--orange);
+      padding: 1.35rem 1.5rem;
+      text-align: center;
+    }
+    .problem-bar p {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(0.9rem, 2.4vw, 1.2rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    /* ============================================
+       Section Shared
+    ============================================ */
+    .section-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .section-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.85rem;
+    }
+    .section-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ============================================
+       Services
+    ============================================ */
+    .services {
+      position: relative;
+      padding: 5.5rem 0;
+      overflow: hidden;
+    }
+    .services-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/cleancrawl.webp');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: scroll;
+    }
+    .services-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(9, 15, 24, 0.94);
+    }
+    .services-content {
+      position: relative;
+      z-index: 2;
+    }
+    .services-header {
+      margin-bottom: 3rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .service-card {
+      background: var(--navy-card);
+      border: 1px solid var(--orange-border);
+      border-top: 3px solid var(--orange);
+      padding: 2rem 1.5rem;
+      border-radius: 4px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      border-color: rgba(245, 166, 35, 0.55);
+    }
+    .service-mark {
+      width: 36px;
+      height: 3px;
+      background: var(--orange);
+      margin-bottom: 1.4rem;
+    }
+    .service-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.85rem;
+      line-height: 1.25;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ============================================
+       Why It Matters
+    ============================================ */
+    .why {
+      padding: 5.5rem 0;
+      background: var(--navy-card);
+      border-top: 1px solid rgba(160,174,192,0.1);
+      border-bottom: 1px solid rgba(160,174,192,0.1);
+    }
+    .why-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .why-stat {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.75rem, 3.6vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.6rem;
+    }
+    .why-stat .accent { color: var(--orange); }
+    .why-body {
+      font-size: clamp(0.92rem, 1.8vw, 1.02rem);
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ============================================
+       Trust Quote
+    ============================================ */
+    .trust {
+      padding: 5rem 0;
+      background: var(--navy);
+    }
+    .trust-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .trust-line {
+      display: block;
+      width: 44px;
+      height: 3px;
+      background: var(--orange);
+      margin: 0 auto 2.25rem;
+    }
+    .trust-quote {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.15rem, 2.8vw, 1.65rem);
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+    .trust-line-bottom {
+      display: block;
+      width: 44px;
+      height: 3px;
+      background: var(--orange);
+      margin: 2.25rem auto 0;
+    }
+
+    /* ============================================
+       About
+    ============================================ */
+    .about {
+      padding: 5.5rem 0;
+      background: var(--navy-mid);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-body {
+      font-size: 0.96rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.75);
+    }
+    .about-body p + p { margin-top: 1rem; }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+    .about-img-accent {
+      position: absolute;
+      inset: 10px -10px -10px 10px;
+      border: 2px solid var(--orange-border);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    /* ============================================
+       CTA / Contact
+    ============================================ */
+    .cta-contact {
+      padding: 5.5rem 0;
+      background: var(--navy);
+    }
+    .cta-contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .cta-subhead {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .cta-phone-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2.4rem;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      min-height: 52px;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      margin-bottom: 1.2rem;
+    }
+    .cta-phone-btn:hover {
+      background: #e0961a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(245, 166, 35, 0.35);
+    }
+    .cta-phone-link {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.06em;
+      margin-bottom: 3rem;
+      transition: color 0.2s ease;
+    }
+    .cta-phone-link:hover { color: #e0961a; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--navy-card);
+      border: 1px solid var(--muted-dim);
+      border-radius: 3px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      transition: border-color 0.2s ease;
+      min-height: 48px;
+      appearance: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      min-height: 52px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-submit:hover { background: #e0961a; transform: translateY(-1px); }
+
+    /* ============================================
+       Footer
+    ============================================ */
+    footer {
+      background: var(--navy-deep);
+      border-top: 1px solid rgba(160,174,192,0.1);
+      padding: 2.75rem 1.5rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .footer-meta {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .footer-meta a {
+      color: var(--orange);
+      transition: color 0.2s ease;
+    }
+    .footer-meta a:hover { color: #e0961a; }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(160,174,192,0.45);
+      margin-top: 1.25rem;
+    }
+
+    /* ============================================
+       Tablet (481-768px)
+    ============================================ */
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .about-img-wrap {
+        order: -1;
+      }
+      .about-img-accent {
+        display: none;
+      }
+    }
+
+    /* ============================================
+       Mobile (max 480px)
+    ============================================ */
+    @media (max-width: 480px) {
+      .hero {
+        min-height: 88vh;
+      }
+      .hero-bg {
+        background-position: center center;
+      }
+      .hero-content {
+        padding: 6rem 1.25rem 3rem;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .nav-phone {
+        display: none;
+      }
+      .btn-nav {
+        font-size: 0.78rem;
+        padding: 0.5rem 0.9rem;
+      }
+      .btn-primary,
+      .cta-phone-btn {
+        width: 100%;
+        font-size: 0.92rem;
+      }
+      .about-img-wrap img {
+        height: 260px;
+      }
+      .cta-phone-link {
+        font-size: 1.2rem;
+      }
+      .section-heading {
+        font-size: clamp(1.7rem, 7vw, 2.4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Graham Crawlspace Solutions">
+        <img src="img/logo.png" alt="Graham Crawlspace Solutions">
+      </a>
+      <div class="nav-right">
+        <a href="tel:7574774083" class="nav-phone">(757) 477-4083</a>
+        <a href="#contact" class="btn-nav">Free Evaluation</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Hampton Roads Crawlspace Specialists</p>
+      <h1 class="hero-headline">
+        Seal the Crawlspace.<br>
+        <span class="accent">Protect the Home.</span>
+      </h1>
+      <p class="hero-subhead">Stop Moisture, Mold and Energy Loss at the Source.</p>
+      <p class="hero-location">Serving Chesapeake, Norfolk, Virginia Beach, and Hampton Roads.</p>
+      <a href="tel:7574774083" class="btn-primary">Call for a Free Evaluation &nbsp;|&nbsp; (757) 477-4083</a>
+    </div>
+  </section>
+
+  <!-- ==================== PROBLEM BAR ==================== -->
+  <div class="problem-bar" role="banner">
+    <p>Moisture. Mold. Soft Floors. High Energy Bills. It's All Coming From Under Your House.</p>
+  </div>
+
+  <!-- ==================== SERVICES ==================== -->
+  <section class="services" id="services" aria-labelledby="services-heading">
+    <div class="services-bg" aria-hidden="true"></div>
+    <div class="services-overlay" aria-hidden="true"></div>
+    <div class="section-inner services-content">
+      <div class="services-header">
+        <p class="section-label reveal">What We Do</p>
+        <h2 class="section-heading reveal d1" id="services-heading">Crawlspace Services</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal d1">
+          <div class="service-mark" aria-hidden="true"></div>
+          <h3 class="service-name">Spray Foam Insulation</h3>
+          <p class="service-desc">Seals the crawlspace from the inside out. Reduces moisture, prevents mold and wood rot, and lowers energy bills.</p>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="service-mark" aria-hidden="true"></div>
+          <h3 class="service-name">Encapsulation and Vapor Barriers</h3>
+          <p class="service-desc">Full crawlspace encapsulation with heavy-duty vapor barriers. Keeps ground moisture out permanently.</p>
+        </div>
+        <div class="service-card reveal d3">
+          <div class="service-mark" aria-hidden="true"></div>
+          <h3 class="service-name">Drainage and Moisture Control</h3>
+          <p class="service-desc">French drains, sump systems, and moisture management solutions designed for Hampton Roads soil and water tables.</p>
+        </div>
+        <div class="service-card reveal d4">
+          <div class="service-mark" aria-hidden="true"></div>
+          <h3 class="service-name">Structural and Damage Repair</h3>
+          <p class="service-desc">Repair of moisture and rot damage to beams, joists, and supports. Restore what the water already got to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY IT MATTERS ==================== -->
+  <section class="why" aria-labelledby="why-heading">
+    <div class="why-inner">
+      <p class="section-label reveal">Why It Matters</p>
+      <h2 class="why-stat reveal d1" id="why-heading">
+        Up to <span class="accent">50%</span> of the Air in Your Home<br>Comes From the Crawlspace.
+      </h2>
+      <p class="why-body reveal d2">
+        If your crawlspace has moisture, mold, or damaged insulation, that air is moving through your floors and into your living space every day. It affects your energy bills, your indoor air quality, and the structural integrity of your home. A crawlspace evaluation costs nothing. Ignoring it can cost thousands.
+      </p>
+      <a href="#contact" class="btn-primary reveal d3">Schedule Your Free Evaluation</a>
+    </div>
+  </section>
+
+  <!-- ==================== TRUST QUOTE ==================== -->
+  <section class="trust" aria-label="Trust statement">
+    <div class="trust-inner reveal">
+      <span class="trust-line" aria-hidden="true"></span>
+      <p class="trust-quote">
+        "Hampton Roads homeowners, get a free crawlspace evaluation from a local contractor who shows up, does the work, and stands behind it."
+      </p>
+      <span class="trust-line-bottom" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="about" id="about" aria-labelledby="about-heading">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label reveal">About</p>
+          <h2 class="section-heading reveal d1" id="about-heading">Local. Qualified. Shows Up.</h2>
+          <div class="about-body reveal d2">
+            <p>Graham Crawlspace Solutions serves homeowners across Hampton Roads. Cameron Graham founded the company to give local homeowners a straightforward option for crawlspace moisture, insulation, and structural repair, without the upsell pressure that comes with the bigger outfits.</p>
+            <p>Based in the 757. Work guaranteed.</p>
+          </div>
+        </div>
+        <div class="about-img-wrap reveal d3">
+          <img src="img/cleancrawl.webp" alt="Clean vapor barrier installation completed by Graham Crawlspace Solutions">
+          <div class="about-img-accent" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA / CONTACT ==================== -->
+  <section class="cta-contact" id="contact" aria-labelledby="contact-heading">
+    <div class="cta-contact-inner">
+      <p class="section-label reveal">Get Started</p>
+      <h2 class="section-heading reveal d1" id="contact-heading">What's Going On Under Your House?</h2>
+      <p class="cta-subhead reveal d2">Find out with a free crawlspace evaluation. No pressure, no obligation. Just a straight answer about what you're dealing with.</p>
+      <a href="tel:7574774083" class="cta-phone-btn reveal d3">Call (757) 477-4083</a>
+      <a href="tel:7574774083" class="cta-phone-link reveal d4">(757) 477-4083</a>
+      <form class="contact-form reveal d5" action="">
+        <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" required>
+        <input type="text" name="address" placeholder="Property Address" autocomplete="street-address">
+        <textarea name="message" placeholder="What's going on? Soft floors, moisture smell, high energy bills?"></textarea>
+        <button type="submit" class="btn-submit">Submit | Get My Free Evaluation</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-name">Graham Crawlspace Solutions</p>
+      <p class="footer-meta">Hampton Roads, VA</p>
+      <p class="footer-meta"><a href="tel:7574774083">(757) 477-4083</a></p>
+      <p class="footer-copy">&copy; 2025 Graham Crawlspace Solutions. All rights reserved.</p>
+      <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
+        SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('main-nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Scroll reveal — IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
