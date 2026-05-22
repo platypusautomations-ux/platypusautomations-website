@@ -336,10 +336,20 @@
             font-family: 'Barlow Condensed', sans-serif;
             font-size: 1.85rem;
             font-weight: 900;
-            color: #fff;
             line-height: 1;
             letter-spacing: 0.02em;
+            background: linear-gradient(90deg, #6a9abd 0%, #aed0e8 22%, #e4f0f8 45%, #aed0e8 68%, #6a9abd 100%);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            animation: metalShine 5s linear infinite;
         }
+        .stat-item:nth-child(2) .stat-value { animation-delay: -1s; }
+        .stat-item:nth-child(3) .stat-value { animation-delay: -2s; }
+        .stat-item:nth-child(4) .stat-value { animation-delay: -3s; }
+        .stat-item:nth-child(5) .stat-value { animation-delay: -4s; }
         .stat-label {
             font-size: 0.62rem;
             font-weight: 600;
@@ -347,6 +357,147 @@
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.45);
             margin-top: 0.38rem;
+        }
+
+        /* =============================================
+           Marquee Band
+        ============================================= */
+        .marquee-band {
+            background: #070f1a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.9rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-track {
+            display: inline-flex;
+            animation: marqueeScroll 35s linear infinite;
+        }
+        .marquee-band:hover .marquee-track {
+            animation-play-state: paused;
+        }
+        .marquee-item {
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.20em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.40);
+            padding: 0 2.5rem;
+        }
+        .marquee-sep {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: var(--blue);
+            border-radius: 50%;
+            margin-right: 2.5rem;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+        @keyframes marqueeScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* =============================================
+           Testimonials
+        ============================================= */
+        .testimonials {
+            background: var(--navy);
+            padding: 6.5rem 0;
+        }
+        .testimonials-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.7fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .testimonials-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.20em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+        .testimonials-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            line-height: 1.05;
+            color: #fff;
+            margin-bottom: 2.5rem;
+        }
+        .testimonials-dots {
+            display: flex;
+            gap: 0.55rem;
+        }
+        .testimonials-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            transition: background 0.3s ease, transform 0.25s ease;
+        }
+        .testimonials-dot.active {
+            background: var(--blue);
+            transform: scale(1.45);
+        }
+        .testimonials-right {
+            position: relative;
+        }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 4px solid var(--blue);
+            padding: 2.75rem 2.5rem;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .testimonial-card.fading {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1.4rem;
+        }
+        .testimonial-stars .star { color: #ffd166; font-size: 1rem; }
+        .testimonial-quote {
+            font-size: clamp(0.98rem, 1.8vw, 1.15rem);
+            line-height: 1.80;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+            margin-bottom: 1.8rem;
+        }
+        .testimonial-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #fff;
+        }
+        .testimonial-detail {
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.38);
+            margin-top: 0.3rem;
+        }
+
+        @keyframes metalShine {
+            0%   { background-position: 200% center; }
+            100% { background-position: -200% center; }
         }
 
         /* =============================================
@@ -485,143 +636,7 @@
             background-size: 40px 40px;
         }
 
-        /* =============================================
-           Featured Review
-        ============================================= */
-        .featured-review {
-            background: var(--navy);
-            padding: 5.5rem 0;
-        }
-
-        .featured-inner {
-            max-width: 880px;
-            margin: 0 auto;
-            border-left: 4px solid rgba(255, 255, 255, 0.22);
-            padding-left: 3rem;
-        }
-
-        .featured-stars {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 1.4rem;
-        }
-        .featured-stars .star { color: #ffd166; font-size: 1.05rem; }
-
-        .featured-quote {
-            font-size: clamp(1.1rem, 2.2vw, 1.38rem);
-            line-height: 1.80;
-            color: rgba(255, 255, 255, 0.88);
-            font-style: italic;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-
-        .featured-name {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1.12rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #fff;
-        }
-
-        .featured-detail {
-            font-size: 0.70rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.48);
-            margin-top: 0.35rem;
-        }
-
-        .featured-via {
-            font-size: 0.63rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.28);
-            margin-top: 0.3rem;
-        }
-
-        /* =============================================
-           Reviews Grid
-        ============================================= */
-        .reviews {
-            background: var(--bg);
-            padding: 6rem 0;
-        }
-
-        .reviews-header {
-            margin-bottom: 3rem;
-        }
-
-        .reviews-title {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: clamp(2rem, 4.5vw, 3.6rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.01em;
-            line-height: 1.0;
-            color: var(--text);
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        .review-card {
-            background: var(--bg-alt);
-            border-left: 3px solid var(--blue);
-            padding: 2.25rem 2rem 2rem 2.25rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .review-glyph {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 7rem;
-            line-height: 0.75;
-            color: var(--blue);
-            opacity: 0.09;
-            position: absolute;
-            top: 0.5rem;
-            right: 1rem;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .review-stars {
-            display: flex;
-            gap: 2px;
-            margin-bottom: 1.1rem;
-        }
         .star { color: #e6a817; font-size: 0.85rem; }
-
-        .review-text {
-            font-size: 0.95rem;
-            line-height: 1.80;
-            color: var(--muted-hi);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .review-name {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--blue);
-        }
-
-        .review-source {
-            font-size: 0.62rem;
-            letter-spacing: 0.10em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-top: 0.2rem;
-        }
 
         /* =============================================
            CTA Band
@@ -740,10 +755,10 @@
            Responsive — 900px
         ============================================= */
         @media (max-width: 900px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .reviews-grid  { grid-template-columns: repeat(2, 1fr); }
-            .about-layout  { grid-template-columns: 1fr; gap: 2.5rem; }
-            .about-photo   { order: -1; }
+            .services-grid          { grid-template-columns: repeat(2, 1fr); }
+            .about-layout           { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-photo            { order: -1; }
+            .testimonials-inner     { grid-template-columns: 1fr; gap: 2.5rem; }
         }
 
         /* =============================================
@@ -752,10 +767,8 @@
         @media (max-width: 768px) {
             .services        { padding: 4rem 0; }
             .about           { padding: 4rem 0; }
-            .reviews         { padding: 4rem 0; }
+            .testimonials    { padding: 4.5rem 0; }
             .cta-band        { padding: 4.5rem 0; }
-            .featured-review { padding: 4rem 0; }
-            .featured-inner  { padding-left: 1.5rem; }
             .nav-phone       { display: none; }
         }
 
@@ -769,7 +782,6 @@
             .container { padding: 0 1.25rem; }
 
             .services-grid { grid-template-columns: 1fr; }
-            .reviews-grid  { grid-template-columns: 1fr; }
 
             .stat-strip-inner { flex-direction: column; }
             .stat-item {
@@ -778,6 +790,8 @@
                 border-bottom: 1px solid rgba(255, 255, 255, 0.09);
             }
             .stat-item:last-child { border-bottom: none; }
+
+            .testimonial-card { padding: 2rem 1.5rem; }
 
             .hero-actions { width: 100%; flex-direction: column; }
             .btn-blue,
@@ -829,6 +843,34 @@
             </div>
         </div>
     </section>
+
+    <!-- Marquee Band -->
+    <div class="marquee-band" aria-hidden="true">
+        <div class="marquee-track">
+            <span class="marquee-item">CNC Milling</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Manual Machining</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Welding &amp; Fabrication</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Marine Repair</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Machine Repair</span><span class="marquee-sep"></span>
+            <span class="marquee-item">In-Shop &amp; On-Site</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Water Jet Cutting</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Est. 1976</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Norfolk, VA</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Navy Veteran Founded</span><span class="marquee-sep"></span>
+            <span class="marquee-item">50 Years in Business</span><span class="marquee-sep"></span>
+            <span class="marquee-item">CNC Milling</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Manual Machining</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Welding &amp; Fabrication</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Marine Repair</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Machine Repair</span><span class="marquee-sep"></span>
+            <span class="marquee-item">In-Shop &amp; On-Site</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Water Jet Cutting</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Est. 1976</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Norfolk, VA</span><span class="marquee-sep"></span>
+            <span class="marquee-item">Navy Veteran Founded</span><span class="marquee-sep"></span>
+            <span class="marquee-item">50 Years in Business</span><span class="marquee-sep"></span>
+        </div>
+    </div>
 
     <!-- Stat Strip -->
     <div class="stat-strip">
@@ -978,72 +1020,32 @@
         </div>
     </section>
 
-    <!-- Featured Review -->
-    <section class="featured-review">
+    <!-- Testimonials -->
+    <section class="testimonials">
         <div class="container">
-            <div class="featured-inner reveal">
-                <div class="featured-stars">
-                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                </div>
-                <p class="featured-quote">
-                    "Brought them a broken shaft off a piece of equipment that two other shops said couldn't be repaired. They had it back to me in three days, machined to the original specs. Fit perfectly. These guys have capability and experience that's getting hard to find."
-                </p>
-                <div>
-                    <div class="featured-name">Michael T.</div>
-                    <div class="featured-detail">Norfolk, VA &nbsp;&middot;&nbsp; Industrial Equipment</div>
-                    <div class="featured-via">&#9733; via Google</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Grid -->
-    <section class="reviews">
-        <div class="container">
-            <div class="reviews-header">
-                <div class="section-label reveal">Customer Reviews</div>
-                <h2 class="reviews-title reveal d1">What Our Customers Say</h2>
-            </div>
-            <div class="reviews-grid">
-
-                <div class="review-card reveal">
-                    <div class="review-glyph" aria-hidden="true">"</div>
-                    <div class="review-stars">
-                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
+            <div class="testimonials-inner">
+                <div class="testimonials-left reveal">
+                    <div class="testimonials-label">Customer Reviews</div>
+                    <h2 class="testimonials-heading">What Our<br>Customers Say</h2>
+                    <div class="testimonials-dots" id="testimonials-dots">
+                        <button class="testimonials-dot active" aria-label="Review 1"></button>
+                        <button class="testimonials-dot" aria-label="Review 2"></button>
+                        <button class="testimonials-dot" aria-label="Review 3"></button>
+                        <button class="testimonials-dot" aria-label="Review 4"></button>
                     </div>
-                    <p class="review-text">Needed a custom part machined with tolerances that most shops would pass on. Norfolk Machine had it done right, on time, no drama. Been bringing work here for years.</p>
-                    <div class="review-name">D. Harrison</div>
-                    <div class="review-source">via Google</div>
                 </div>
-
-                <div class="review-card reveal d1">
-                    <div class="review-glyph" aria-hidden="true">"</div>
-                    <div class="review-stars">
-                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
+                <div class="testimonials-right reveal d1">
+                    <div class="testimonial-card" id="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span><span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                        </div>
+                        <p class="testimonial-quote" id="testimonial-quote">"Brought them a broken shaft off a piece of equipment that two other shops said couldn't be repaired. They had it back to me in three days, machined to the original specs. Fit perfectly. These guys have capability and experience that's getting hard to find."</p>
+                        <div class="testimonial-name" id="testimonial-name">Michael T.</div>
+                        <div class="testimonial-detail" id="testimonial-detail">Norfolk, VA &nbsp;&middot;&nbsp; Industrial Equipment</div>
                     </div>
-                    <p class="review-text">Bobby's shop has kept equipment running that should have been retired years ago. They fabricated a replacement casting nobody could source and it's been working fine ever since. Can't say enough.</p>
-                    <div class="review-name">R. Stokes</div>
-                    <div class="review-source">via Google</div>
                 </div>
-
-                <div class="review-card reveal d2">
-                    <div class="review-glyph" aria-hidden="true">"</div>
-                    <div class="review-stars">
-                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span><span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                    </div>
-                    <p class="review-text">Came in needing a replacement propeller shaft — no part number, no drawing, just the broken piece. They measured it, turned one on the lathe, and it went right in. Old school capability that's hard to find.</p>
-                    <div class="review-name">J. Carmichael</div>
-                    <div class="review-source">via Google</div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -1100,6 +1102,67 @@
                 document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
             }
         }, 1200);
+
+        // Animated testimonials
+        const testimonialData = [
+            {
+                quote: '"Brought them a broken shaft off a piece of equipment that two other shops said couldn\'t be repaired. They had it back to me in three days, machined to the original specs. Fit perfectly. These guys have capability and experience that\'s getting hard to find."',
+                name: 'Michael T.',
+                detail: 'Norfolk, VA · Industrial Equipment'
+            },
+            {
+                quote: '"Needed a custom part machined with tolerances that most shops would pass on. Norfolk Machine had it done right, on time, no drama. Been bringing work here for years."',
+                name: 'D. Harrison',
+                detail: 'via Google'
+            },
+            {
+                quote: '"Bobby\'s shop has kept equipment running that should have been retired years ago. They fabricated a replacement casting nobody could source and it\'s been working fine ever since. Can\'t say enough."',
+                name: 'R. Stokes',
+                detail: 'via Google'
+            },
+            {
+                quote: '"Came in needing a replacement propeller shaft — no part number, no drawing, just the broken piece. They measured it, turned one on the lathe, and it went right in. Old school capability that\'s hard to find."',
+                name: 'J. Carmichael',
+                detail: 'via Google'
+            }
+        ];
+
+        let tCurrent = 0;
+        let tTimer;
+        const tCard = document.getElementById('testimonial-card');
+        const tQuote = document.getElementById('testimonial-quote');
+        const tName = document.getElementById('testimonial-name');
+        const tDetail = document.getElementById('testimonial-detail');
+        const tDots = document.querySelectorAll('.testimonials-dot');
+
+        function showTestimonial(idx) {
+            tCard.classList.add('fading');
+            setTimeout(() => {
+                tQuote.textContent = testimonialData[idx].quote;
+                tName.textContent = testimonialData[idx].name;
+                tDetail.innerHTML = testimonialData[idx].detail;
+                tDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                tCard.classList.remove('fading');
+            }, 380);
+        }
+
+        function startTestimonialTimer() {
+            tTimer = setInterval(() => {
+                tCurrent = (tCurrent + 1) % testimonialData.length;
+                showTestimonial(tCurrent);
+            }, 4800);
+        }
+
+        tDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                tCurrent = i;
+                clearInterval(tTimer);
+                showTestimonial(tCurrent);
+                startTestimonialTimer();
+            });
+        });
+
+        startTestimonialTimer();
     </script>
 
 </body>
