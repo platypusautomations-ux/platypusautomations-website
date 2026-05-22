@@ -15,12 +15,13 @@ The user provides frontend requirements: a component, page, application, or inte
 Every frontend build follows this sequence without exception:
 
 1. Design Thinking — commit to aesthetic direction before writing any code
-2. Build — implement the full page or component
-3. Puppeteer Screenshot Verification — run the verify-responsive.js script, save screenshots, review all three viewports
-4. Fix — resolve any issues identified in the screenshots, re-run verification after each fix
-5. Deploy — only push after all three viewport screenshots are confirmed clean
+2. Asset Inventory — before writing any `<img>` tags or CSS `background-image` references, confirm every filename that will be referenced actually exists on disk. Never write image references from memory or assumptions. List the files; then write the code.
+3. Build — implement the full page or component
+4. Puppeteer Screenshot Verification — run the verify-responsive.js script, save screenshots, review all three viewports
+5. Fix — resolve any issues identified in the screenshots, re-run verification after each fix
+6. Deploy — only push after all three viewport screenshots are confirmed clean
 
-**Never push to git before completing steps 3 and 4. Screenshots are the source of truth — not assumptions about what the CSS will do.**
+**Never push to git before completing steps 4 and 5. Screenshots are the source of truth — not assumptions about what the CSS will do.**
 
 ---
 
@@ -39,6 +40,49 @@ Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
 - Visually striking and memorable
 - Cohesive with a clear aesthetic point-of-view
 - Meticulously refined in every detail
+
+---
+
+## Component Library
+
+A curated library of production-quality UI components lives at:
+
+```
+~/Documents/CC/component-library/
+```
+
+A `README.md` at the root of that folder describes every component — what it does and when to use it. **Read the README before building any section.** Then check the matching subfolder for a component that fits the section type.
+
+### How to use a component
+
+1. Read the README entry for the component to understand its purpose and constraints.
+2. Open the file and read the code to understand its structure and dependencies.
+3. Adapt it — replace colors, fonts, spacing, and content to match the current build's aesthetic direction. Never copy verbatim.
+4. If no component fits the section being built, build from scratch.
+
+### Folder reference
+
+| Folder | What's in it |
+|---|---|
+| `animations/` | Motion patterns — image sliders, text cycling sequences |
+| `backgrounds/` | Gradient meshes, noise overlays, standalone backdrop effects (populate as needed) |
+| `buttons/` | Standalone button styles and hover effects including liquid glass variants |
+| `cards/` | Repeating grid items — card stacks, gradient menus, orbital timelines |
+| `cta/` | Full-width CTA sections — standard band and pulse beam variant |
+| `footer/` | Bottom-of-page layouts — column, minimal, and sticky variants |
+| `forms/` | Contact forms, estimate requests, lead capture (populate as needed) |
+| `hero/` | First-section layouts — animated, beam, lamp, scroll expansion, shape, sparkles, Spline; shaders subfolder inside |
+| `nav/` | Sticky nav behaviors, hamburger menus, scroll transitions (populate as needed) |
+| `reviews/` | Social proof layouts — animated testimonials, card grid, columns, single featured |
+| `stats/` | Countup numbers, KPI displays, metric rows (populate as needed) |
+| `texts/` | Text animation patterns — cycling words, blur stagger, shine sweep, marquee ticker |
+
+### Constraints to respect
+
+- **Spline components** require an external Spline scene URL. Do not use `splinescene.html` unless a scene has been sourced. It is not a generic hero placeholder.
+- **Liquid glass effects** require a dark or blurred background. They are invisible on white or light backgrounds.
+- **Shader components** are GPU-intensive. Test on mobile before committing — if performance is poor, use `etherialBeamsHero.html` instead.
+- **The library grows over time.** If a folder listed above is empty, build from scratch. Do not error or stall.
 
 ---
 
@@ -243,6 +287,8 @@ Confirm push succeeds. Cloudflare Pages auto-deploys in approximately 30 seconds
 
 Background images — especially multi-layer backgrounds with gradients — require special attention. When the hero uses a layered `background` shorthand (image + gradient overlays), overriding only `background-size` or `background-position` in a media query affects ALL layers. Always override the full `background` shorthand in the mobile media query, specifying size and position explicitly per layer. Verify the result in the fold screenshot — do not trust CSS reasoning alone.
 
+**Cloudflare Pages + `background-attachment: fixed`:** This property fails silently not only on iOS Safari but also in Cloudflare Pages CDN-served environments. A page that renders correctly in local dev may show a blank hero background after deploy. Always set `background-attachment: scroll` for any hero background that will be deployed through Cloudflare Pages or any CDN. Do not use `fixed` on hero sections in production deploys — there is no reliable fix at the CSS level once it fails in a CDN context. Confirm the hero is visible in the fold screenshot after deploy, not just locally.
+
 ---
 
 ## Common Mobile Bugs — Fix Reference
@@ -258,10 +304,27 @@ Background images — especially multi-layer backgrounds with gradients — requ
 | Text overflowing container | Long word or URL with no `overflow-wrap` | Add `overflow-wrap: break-word` to the container |
 | Reveal animation never fires | Intersection Observer threshold too high for above-fold elements | Add an on-load viewport pass; set observer threshold to 0 |
 | Fixed nav covers content | `top` offset not accounting for nav height | Add `scroll-padding-top` equal to nav height on `html` element |
+| Hero background blank after CDN deploy | `background-attachment: fixed` fails in Cloudflare Pages and other CDN contexts — not just iOS Safari | Always use `background-attachment: scroll`; never use `fixed` on any hero that will be CDN-deployed |
+| Hero background image blank on live site despite correct path | CSS `animation` or `transform` applied directly to the `.hero-bg` element creates a GPU composite layer that Cloudflare CDN fails to render | Never put `animation` or `transform` on the element carrying `background-image`. Animate a wrapper div instead. The `.hero-bg` div must be style-only — no motion properties. |
+| Images load locally but missing on live site | Image files in `img/` subdirectories were never git-staged — only the HTML file was committed | Before every push, run `git ls-files --others --exclude-standard` to surface untracked files. Stage assets explicitly (`git add [project]/img/`) and confirm with `git status` before pushing. |
+| Custom font not loading after deploy | Font file referenced by absolute path or CDN URL that doesn't resolve in the deployed environment | Host all font files in the project directory; use only relative paths in `@font-face` declarations |
+| Images missing on deploy | `<img>` src or CSS `background-image` values written before confirming the actual filenames on disk | Inventory the asset folder first; never write image references from memory or assumptions about filenames |
+| `srcset` external URLs failing | External URLs in `srcset` that resolve locally but fail after deploy (auth, CORS, CDN config) | Avoid external URLs in `srcset` for production builds; host images locally or verify CDN accessibility explicitly |
+
+### Deploy-time checklist (run before every push)
+
+Before the git push in step 6, confirm each of the following:
+
+- All viewport screenshots pass — no overflow, no missing hero image, nav intact, buttons tappable
+- `background-attachment` is set to `scroll` on all hero sections (never `fixed` in a CDN-deployed build)
+- No `animation` or `transform` on any element that carries `background-image` — if a zoom/parallax effect is needed, animate a wrapper div, not the bg element itself
+- Every `<img>` src and CSS `background-image` path is relative and points to a file confirmed on disk
+- All image asset directories (`img/`) are git-staged — run `git ls-files --others --exclude-standard` before pushing and confirm zero untracked image files remain
+- All custom font files are hosted locally with relative paths in `@font-face` — no absolute or CDN font URLs
+- No `srcset` attributes reference external URLs that have not been explicitly verified to be accessible post-deploy
+- Cloudflare Pages deploy confirmed (auto-deploy fires on push; check Pages dashboard for build success)
 
 ---
-
-## Scroll-Driven Website Design Guidelines
 
 When this skill is invoked for a scroll-driven animated website (used alongside `video-to-website`), follow these additional rules:
 
