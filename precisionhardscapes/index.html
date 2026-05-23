@@ -339,66 +339,71 @@
     }
 
     /* ========================================
-       PORTFOLIO
+       PORTFOLIO — SLIDER
     ======================================== */
     .portfolio {
       background: var(--navy);
-      padding: 6rem 0;
+      padding: 6rem 0 5.5rem;
+      overflow: hidden;
     }
     .portfolio-header {
       margin-bottom: 2.5rem;
     }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
+    .track-wrap {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2.5%, black 97.5%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 2.5%, black 97.5%, transparent 100%);
     }
-    @media (max-width: 900px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 600px) {
+      .track-wrap { -webkit-mask-image: none; mask-image: none; }
     }
-    @media (max-width: 540px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+    .portfolio:hover .track { animation-play-state: paused; }
+    .track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      will-change: transform;
     }
-    .portfolio-item {
+    .track-1 {
+      animation: scroll-left 60s linear infinite;
+    }
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .slide {
       position: relative;
+      flex-shrink: 0;
+      width: 80vw;
+      height: 52vh;
       overflow: hidden;
-      aspect-ratio: 1 / 1;
-      cursor: pointer;
+      border-radius: 3px;
     }
-    .portfolio-item:nth-child(1) { grid-column: span 2; aspect-ratio: 2 / 1; }
-    @media (max-width: 540px) {
-      .portfolio-item:nth-child(1) { grid-column: span 1; aspect-ratio: 1 / 1; }
+    @media (max-width: 600px) {
+      .slide { width: 100vw; height: 50vh; border-radius: 0; }
     }
-    .portfolio-img {
+    .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease, filter 0.3s;
-      filter: brightness(0.85) saturate(0.85);
+      display: block;
+      filter: brightness(0.82) saturate(0.88);
+      transition: filter 0.35s ease, transform 0.45s ease;
     }
-    .portfolio-item:hover .portfolio-img {
-      transform: scale(1.06);
-      filter: brightness(1) saturate(1.1);
+    .slide:hover img {
+      filter: brightness(1) saturate(1.08);
+      transform: scale(1.05);
     }
-    .portfolio-caption {
+    .slide::after {
+      content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0.7rem 0.9rem;
-      background: linear-gradient(to top, rgba(17,29,66,0.9) 0%, transparent 100%);
-      font-family: var(--fc);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      transform: translateY(100%);
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
       transition: transform 0.3s ease;
     }
-    .portfolio-item:hover .portfolio-caption {
-      transform: translateY(0);
-    }
+    .slide:hover::after { transform: scaleX(1); }
 
     /* ========================================
        REVIEWS
@@ -802,48 +807,26 @@
         <div class="section-label reveal">Recent Work</div>
         <h2 class="section-title reveal d1">Our Portfolio</h2>
       </div>
-      <div class="portfolio-grid">
-
-        <div class="portfolio-item reveal">
-          <img src="img/pool.webp" alt="Pool hardscape and surround" class="portfolio-img">
-          <div class="portfolio-caption">pool hardscape, Northern Neck VA</div>
-        </div>
-
-        <div class="portfolio-item reveal d1">
-          <img src="img/backpatio.webp" alt="Back patio installation" class="portfolio-img">
-          <div class="portfolio-caption">back patio installation</div>
-        </div>
-
-        <div class="portfolio-item reveal d2">
-          <img src="img/brickgazebo.webp" alt="Brick gazebo build" class="portfolio-img">
-          <div class="portfolio-caption">brick gazebo structure</div>
-        </div>
-
-        <div class="portfolio-item reveal d1">
-          <img src="img/circlegreybrick.webp" alt="Circle brick paver" class="portfolio-img">
-          <div class="portfolio-caption">circle paver design</div>
-        </div>
-
-        <div class="portfolio-item reveal d2">
-          <img src="img/firepit.webp" alt="Custom fire pit" class="portfolio-img">
-          <div class="portfolio-caption">custom fire pit, Reedville VA</div>
-        </div>
-
-        <div class="portfolio-item reveal d3">
-          <img src="img/boatslippath.webp" alt="Boat slip pathway" class="portfolio-img">
-          <div class="portfolio-caption">boat slip pathway</div>
-        </div>
-
-        <div class="portfolio-item reveal d2">
-          <img src="img/backyardcircle.webp" alt="Backyard circle design" class="portfolio-img">
-          <div class="portfolio-caption">backyard circle, custom pattern</div>
-        </div>
-
-        <div class="portfolio-item reveal d3">
-          <img src="img/simplepatio.webp" alt="Paver patio" class="portfolio-img">
-          <div class="portfolio-caption">paver patio, White Stone VA</div>
-        </div>
-
+    </div>
+    <div class="track-wrap">
+      <div class="track track-1">
+        <div class="slide"><img src="img/pool.webp"            alt="Pool hardscape"></div>
+        <div class="slide"><img src="img/backpatio.webp"       alt="Back patio"></div>
+        <div class="slide"><img src="img/brickgazebo.webp"     alt="Brick gazebo"    style="object-position: center 20%;"></div>
+        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"    style="object-position: center 25%;"></div>
+        <div class="slide"><img src="img/firepit.webp"         alt="Fire pit"></div>
+        <div class="slide"><img src="img/boatslippath.webp"    alt="Boat slip path"  style="object-position: center 15%;"></div>
+        <div class="slide"><img src="img/backyardcircle.webp"  alt="Backyard circle"></div>
+        <div class="slide"><img src="img/simplepatio.webp"     alt="Paver patio"></div>
+        <!-- duplicate set for seamless loop -->
+        <div class="slide"><img src="img/pool.webp"            alt="Pool hardscape"></div>
+        <div class="slide"><img src="img/backpatio.webp"       alt="Back patio"></div>
+        <div class="slide"><img src="img/brickgazebo.webp"     alt="Brick gazebo"    style="object-position: center 20%;"></div>
+        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"    style="object-position: center 25%;"></div>
+        <div class="slide"><img src="img/firepit.webp"         alt="Fire pit"></div>
+        <div class="slide"><img src="img/boatslippath.webp"    alt="Boat slip path"  style="object-position: center 15%;"></div>
+        <div class="slide"><img src="img/backyardcircle.webp"  alt="Backyard circle"></div>
+        <div class="slide"><img src="img/simplepatio.webp"     alt="Paver patio"></div>
       </div>
     </div>
   </section>
