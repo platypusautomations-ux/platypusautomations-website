@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Auto Slider — Precision Hardscapes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #111d42;
+      --orange:  #c45e1a;
+      --white:   #ffffff;
+      --muted:   #9aa5bf;
+      --fh:      'Teko', sans-serif;
+      --fc:      'Barlow Condensed', sans-serif;
+    }
+
+    body {
+      background: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Section wrapper ───────────────────────────────────────── */
+    .slider-section {
+      padding: 5rem 0 5.5rem;
+      overflow: hidden;
+    }
+
+    .slider-header {
+      text-align: center;
+      margin-bottom: 2.8rem;
+      padding: 0 1.5rem;
+    }
+
+    .slider-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--fc);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.7rem;
+    }
+    .slider-eyebrow::before,
+    .slider-eyebrow::after {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .slider-title {
+      font-family: var(--fh);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+
+    /* ── Track container (clips the overflow) ──────────────────── */
+    .track-wrap {
+      position: relative;
+      /* fade edges */
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+      );
+    }
+
+    /* Pause both tracks on any hover within the section */
+    .slider-section:hover .track { animation-play-state: paused; }
+
+    /* ── Shared track styles ───────────────────────────────────── */
+    .track {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+      will-change: transform;
+    }
+
+    /* Row 1 — slides right to left */
+    .track-1 {
+      animation: scroll-left 38s linear infinite;
+      margin-bottom: 10px;
+    }
+
+    /* Row 2 — slides left to right */
+    .track-2 {
+      animation: scroll-right 46s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scroll-right {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ── Individual photo tiles ────────────────────────────────── */
+    .slide {
+      position: relative;
+      flex-shrink: 0;
+      width: 320px;
+      height: 220px;
+      overflow: hidden;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .slide { width: 240px; height: 168px; }
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.82) saturate(0.88);
+      transition: filter 0.35s ease, transform 0.45s ease;
+    }
+
+    .slide:hover img {
+      filter: brightness(1) saturate(1.08);
+      transform: scale(1.05);
+    }
+
+    /* Orange accent bar on hover */
+    .slide::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .slide:hover::after { transform: scaleX(1); }
+
+    /* ── Bottom label ──────────────────────────────────────────── */
+    .slider-footer {
+      text-align: center;
+      margin-top: 2.8rem;
+      padding: 0 1.5rem;
+    }
+    .slider-footer p {
+      font-family: var(--fc);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+    }
+  </style>
+</head>
+<body>
+
+  <section class="slider-section">
+
+    <div class="slider-header">
+      <div class="slider-eyebrow">Our Work</div>
+      <h2 class="slider-title">Built by Precision Hardscapes</h2>
+    </div>
+
+    <div class="track-wrap">
+
+      <!-- Row 1: left ← ← ← -->
+      <!-- Images duplicated to create seamless loop -->
+      <div class="track track-1" aria-hidden="true">
+        <div class="slide"><img src="img/pool.webp"           alt="Pool hardscape"></div>
+        <div class="slide"><img src="img/backpatio.webp"      alt="Back patio"></div>
+        <div class="slide"><img src="img/brickgazebo.webp"    alt="Brick gazebo"></div>
+        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"></div>
+        <div class="slide"><img src="img/firepit.webp"        alt="Fire pit"></div>
+        <div class="slide"><img src="img/boatslippath.webp"   alt="Boat slip path"></div>
+        <div class="slide"><img src="img/backyardcircle.webp" alt="Backyard circle"></div>
+        <div class="slide"><img src="img/simplepatio.webp"    alt="Simple patio"></div>
+        <!-- duplicate set -->
+        <div class="slide"><img src="img/pool.webp"           alt="Pool hardscape"></div>
+        <div class="slide"><img src="img/backpatio.webp"      alt="Back patio"></div>
+        <div class="slide"><img src="img/brickgazebo.webp"    alt="Brick gazebo"></div>
+        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"></div>
+        <div class="slide"><img src="img/firepit.webp"        alt="Fire pit"></div>
+        <div class="slide"><img src="img/boatslippath.webp"   alt="Boat slip path"></div>
+        <div class="slide"><img src="img/backyardcircle.webp" alt="Backyard circle"></div>
+        <div class="slide"><img src="img/simplepatio.webp"    alt="Simple patio"></div>
+      </div>
+
+      <!-- Row 2: right → → → (reversed order for visual variety) -->
+      <div class="track track-2" aria-hidden="true">
+        <div class="slide"><img src="img/simplepatio.webp"    alt="Simple patio"></div>
+        <div class="slide"><img src="img/backyardcircle.webp" alt="Backyard circle"></div>
+        <div class="slide"><img src="img/boatslippath.webp"   alt="Boat slip path"></div>
+        <div class="slide"><img src="img/firepit.webp"        alt="Fire pit"></div>
+        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"></div>
+        <div class="slide"><img src="img/brickgazebo.webp"    alt="Brick gazebo"></div>
+        <div class="slide"><img src="img/backpatio.webp"      alt="Back patio"></div>
+        <div class="slide"><img src="img/pool.webp"           alt="Pool hardscape"></div>
+        <!-- duplicate set -->
+        <div class="slide"><img src="img/simplepatio.webp"    alt="Simple patio"></div>
+        <div class="slide"><img src="img/backyardcircle.webp" alt="Backyard circle"></div>
+        <div class="slide"><img src="img/boatslippath.webp"   alt="Boat slip path"></div>
+        <div class="slide"><img src="img/firepit.webp"        alt="Fire pit"></div>
+        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"></div>
+        <div class="slide"><img src="img/brickgazebo.webp"    alt="Brick gazebo"></div>
+        <div class="slide"><img src="img/backpatio.webp"      alt="Back patio"></div>
+        <div class="slide"><img src="img/pool.webp"           alt="Pool hardscape"></div>
+      </div>
+
+    </div>
+
+    <div class="slider-footer">
+      <p>Hover to pause &nbsp;&middot;&nbsp; Northern Neck, VA</p>
+    </div>
+
+  </section>
+
+</body>
+</html>
