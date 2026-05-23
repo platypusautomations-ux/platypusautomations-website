@@ -71,21 +71,29 @@
     /* ── Track container (clips the overflow) ──────────────────── */
     .track-wrap {
       position: relative;
-      /* fade edges */
+      /* subtle fade — kept narrow since photos are nearly full-width */
       -webkit-mask-image: linear-gradient(
         to right,
         transparent 0%,
-        black 8%,
-        black 92%,
+        black 2.5%,
+        black 97.5%,
         transparent 100%
       );
       mask-image: linear-gradient(
         to right,
         transparent 0%,
-        black 8%,
-        black 92%,
+        black 2.5%,
+        black 97.5%,
         transparent 100%
       );
+    }
+
+    @media (max-width: 600px) {
+      /* no fade on mobile — images fill edge to edge */
+      .track-wrap {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
     }
 
     /* Pause both tracks on any hover within the section */
@@ -94,20 +102,20 @@
     /* ── Shared track styles ───────────────────────────────────── */
     .track {
       display: flex;
-      gap: 10px;
+      gap: 14px;
       width: max-content;
       will-change: transform;
     }
 
-    /* Row 1 — slides right to left */
+    /* Row 1 — slides right to left (slower to match larger tiles) */
     .track-1 {
-      animation: scroll-left 38s linear infinite;
-      margin-bottom: 10px;
+      animation: scroll-left 60s linear infinite;
+      margin-bottom: 14px;
     }
 
     /* Row 2 — slides left to right */
     .track-2 {
-      animation: scroll-right 46s linear infinite;
+      animation: scroll-right 72s linear infinite;
     }
 
     @keyframes scroll-left {
@@ -124,14 +132,14 @@
     .slide {
       position: relative;
       flex-shrink: 0;
-      width: 320px;
-      height: 220px;
+      width: 80vw;
+      height: 52vh;
       overflow: hidden;
       border-radius: 3px;
     }
 
     @media (max-width: 600px) {
-      .slide { width: 240px; height: 168px; }
+      .slide { width: 100vw; height: 50vh; border-radius: 0; }
     }
 
     .slide img {
