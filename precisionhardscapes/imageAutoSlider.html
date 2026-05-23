@@ -107,25 +107,14 @@
       will-change: transform;
     }
 
-    /* Row 1 — slides right to left (slower to match larger tiles) */
+    /* Single row — slides right to left */
     .track-1 {
       animation: scroll-left 60s linear infinite;
-      margin-bottom: 14px;
-    }
-
-    /* Row 2 — slides left to right */
-    .track-2 {
-      animation: scroll-right 72s linear infinite;
     }
 
     @keyframes scroll-left {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
-    }
-
-    @keyframes scroll-right {
-      0%   { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
     }
 
     /* ── Individual photo tiles ────────────────────────────────── */
@@ -218,27 +207,6 @@
         <div class="slide"><img src="img/boatslippath.webp"   alt="Boat slip path"></div>
         <div class="slide"><img src="img/backyardcircle.webp" alt="Backyard circle"></div>
         <div class="slide"><img src="img/simplepatio.webp"    alt="Simple patio"></div>
-      </div>
-
-      <!-- Row 2: right → → → (reversed order for visual variety) -->
-      <div class="track track-2" aria-hidden="true">
-        <div class="slide"><img src="img/simplepatio.webp"    alt="Simple patio"></div>
-        <div class="slide"><img src="img/backyardcircle.webp" alt="Backyard circle"></div>
-        <div class="slide"><img src="img/boatslippath.webp"   alt="Boat slip path"></div>
-        <div class="slide"><img src="img/firepit.webp"        alt="Fire pit"></div>
-        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"></div>
-        <div class="slide"><img src="img/brickgazebo.webp"    alt="Brick gazebo"></div>
-        <div class="slide"><img src="img/backpatio.webp"      alt="Back patio"></div>
-        <div class="slide"><img src="img/pool.webp"           alt="Pool hardscape"></div>
-        <!-- duplicate set -->
-        <div class="slide"><img src="img/simplepatio.webp"    alt="Simple patio"></div>
-        <div class="slide"><img src="img/backyardcircle.webp" alt="Backyard circle"></div>
-        <div class="slide"><img src="img/boatslippath.webp"   alt="Boat slip path"></div>
-        <div class="slide"><img src="img/firepit.webp"        alt="Fire pit"></div>
-        <div class="slide"><img src="img/circlegreybrick.webp" alt="Circle paver"></div>
-        <div class="slide"><img src="img/brickgazebo.webp"    alt="Brick gazebo"></div>
-        <div class="slide"><img src="img/backpatio.webp"      alt="Back patio"></div>
-        <div class="slide"><img src="img/pool.webp"           alt="Pool hardscape"></div>
       </div>
 
     </div>
