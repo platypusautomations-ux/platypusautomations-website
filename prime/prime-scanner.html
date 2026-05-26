@@ -739,6 +739,186 @@
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+  /* TAB NAVIGATION */
+  .tab-pills {
+    display: flex;
+    gap: 3px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+
+  .tab-pill {
+    padding: 5px 16px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .tab-pill.active { background: var(--teal); color: #fff; }
+  .tab-pill:not(.active):hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+  /* REGISTRY MODE — sidebar hidden, main full width */
+  .shell.registry-mode { grid-template-columns: 1fr; }
+  .shell.registry-mode .sidebar { display: none; }
+
+  /* SUB REGISTRY PANEL */
+  .sub-registry-panel { padding: 36px 40px; flex: 1; }
+
+  .sr-header { text-align: center; margin-bottom: 32px; }
+
+  .sr-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .sr-subtitle { font-size: 13px; color: var(--text2); font-weight: 400; }
+
+  .sr-search-area { max-width: 640px; margin: 0 auto 36px; }
+
+  .sr-search-row { display: flex; gap: 8px; margin-bottom: 8px; }
+
+  .sr-search-input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .sr-search-input:focus { border-color: var(--teal-bright); }
+  .sr-search-input::placeholder { color: var(--text3); }
+
+  .sr-look-btn {
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 22px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .sr-look-btn:hover { background: var(--teal-bright); box-shadow: 0 6px 20px rgba(0,160,160,0.3); }
+  .sr-look-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+  .sr-helper { font-size: 11px; color: var(--text3); text-align: center; }
+
+  .sr-inline-error { font-size: 11px; color: var(--red); text-align: center; margin-top: 6px; }
+
+  .sr-results { max-width: 760px; margin: 0 auto; }
+
+  .sr-result-card { border-radius: 16px; padding: 24px 26px; margin-bottom: 16px; }
+
+  .sr-entity-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .sr-entity-name { font-size: 18px; font-weight: 500; color: var(--text); line-height: 1.35; }
+
+  .sr-status-active {
+    background: rgba(0,160,100,0.15);
+    color: #4cdf9a;
+    border: 1px solid rgba(0,160,100,0.25);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .sr-status-inactive {
+    background: var(--red-dim);
+    color: var(--red);
+    border: 1px solid rgba(255,90,90,0.2);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .sr-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sr-certs-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .sr-no-certs { font-size: 12px; color: var(--text3); margin-bottom: 16px; }
+
+  .sr-naics-callout {
+    background: rgba(0,160,160,0.08);
+    border: 1px solid rgba(0,160,160,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--teal-bright);
+    margin-bottom: 16px;
+  }
+
+  .sr-recommendation {
+    font-size: 13px;
+    color: var(--text2);
+    font-style: italic;
+    line-height: 1.65;
+    margin-top: 12px;
+  }
+
+  .sr-error-card {
+    border-radius: 14px;
+    padding: 20px 24px;
+    border: 1px solid rgba(245,166,35,0.3);
+    background: var(--amber-dim);
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+
+  .sr-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    gap: 14px;
+  }
 </style>
 </head>
 <body>
@@ -843,6 +1023,10 @@
   <main class="main">
 
     <div class="topbar">
+      <div class="tab-pills">
+        <button class="tab-pill active" id="tabContracts" onclick="switchTab('contracts')">Contracts</button>
+        <button class="tab-pill" id="tabRegistry" onclick="switchTab('registry')">Sub Registry</button>
+      </div>
       <div class="topbar-title" id="topbarTitle">Ready to scan</div>
       <select class="sort-select" id="sortBy" onchange="renderResults()">
         <option value="score">Sort: Prime Score</option>
@@ -852,6 +1036,7 @@
       </select>
     </div>
 
+    <div id="contractsPanel">
     <div class="score-legend">
       <span class="score-item"><span class="score-dot" style="background:#f5a623"></span>90+ Hot lead</span>
       <span class="score-item"><span class="score-dot" style="background:#00a0a0"></span>70–89 Good fit</span>
@@ -890,6 +1075,26 @@
           <div class="empty-sub">Your NAICS codes are pre-loaded. Hit scan to pull live contracts from SAM.gov.</div>
         </div>
       </div>
+    </div>
+    </div><!-- /contractsPanel -->
+
+    <!-- SUB REGISTRY PANEL -->
+    <div id="subRegistryPanel" class="sub-registry-panel" style="display:none;">
+      <div class="sr-header">
+        <h2 class="sr-title">Sub Registry</h2>
+        <p class="sr-subtitle">SAM.gov vendor lookup — verify registration, certifications, and set-aside status</p>
+      </div>
+      <div class="sr-search-area">
+        <div class="sr-search-row">
+          <input type="text" class="sr-search-input" id="srInput"
+            placeholder="Enter business name, UEI, or CAGE code"
+            onkeydown="if(event.key==='Enter')lookupEntity()"
+            oninput="document.getElementById('srResults').innerHTML=''">
+          <button class="sr-look-btn" id="srLookBtn" onclick="lookupEntity()">Look Up</button>
+        </div>
+        <div class="sr-helper">Search the SAM.gov Entity Management database</div>
+      </div>
+      <div id="srResults" class="sr-results"></div>
     </div>
 
   </main>
@@ -1443,6 +1648,158 @@ Write a professional SOW formatted for subcontractor outreach. Include: scope su
     alert('SOW prompt copied to clipboard — paste it into Claude.');
   }
   closeDrawerDirect();
+}
+
+// ===== SUB REGISTRY =====
+
+function switchTab(tab) {
+  const isContracts = tab === 'contracts';
+  document.getElementById('tabContracts').classList.toggle('active', isContracts);
+  document.getElementById('tabRegistry').classList.toggle('active', !isContracts);
+  document.getElementById('contractsPanel').style.display = isContracts ? '' : 'none';
+  document.getElementById('subRegistryPanel').style.display = isContracts ? 'none' : '';
+  document.querySelector('.shell').classList.toggle('registry-mode', !isContracts);
+  document.getElementById('sortBy').style.display = isContracts ? '' : 'none';
+  document.getElementById('topbarTitle').style.display = isContracts ? '' : 'none';
+}
+
+function srDetectInputType(val) {
+  if (/^[A-Z0-9]{12}$/i.test(val)) return 'uei';
+  if (/^[A-Z0-9]{5}$/i.test(val)) return 'cage';
+  return 'name';
+}
+
+async function lookupEntity() {
+  const input = document.getElementById('srInput').value.trim();
+  const resultsEl = document.getElementById('srResults');
+  const btn = document.getElementById('srLookBtn');
+
+  if (input.length < 3) {
+    resultsEl.innerHTML = '<div class="sr-inline-error">Enter at least 3 characters to search.</div>';
+    return;
+  }
+
+  btn.disabled = true;
+  resultsEl.innerHTML = `
+    <div class="sr-loading">
+      <div class="scanner-animation"></div>
+      <div class="loading-text">Querying SAM.gov entity database...</div>
+    </div>`;
+
+  const inputType = srDetectInputType(input);
+  const params = new URLSearchParams({
+    registrationStatus: 'Active',
+    includeSections: 'entityRegistration,coreData,assertions,repsAndCerts',
+  });
+
+  if (inputType === 'uei')       params.set('ueiSAM', input.toUpperCase());
+  else if (inputType === 'cage') params.set('cageCode', input.toUpperCase());
+  else                           params.set('legalBusinessName', input);
+
+  try {
+    const res = await fetch(`/sam-entity-proxy?${params}`);
+    if (!res.ok) throw new Error('api_error');
+    const data = await res.json();
+
+    if (!data.entityData || data.entityData.length === 0) {
+      srRenderNotFound(resultsEl);
+    } else {
+      srRenderResult(resultsEl, data.entityData[0]);
+    }
+  } catch (e) {
+    if (e.message === 'api_error') {
+      resultsEl.innerHTML = `<div class="sr-error-card">SAM.gov lookup failed. Check your API key or try again.</div>`;
+    } else {
+      srRenderNotFound(resultsEl);
+    }
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function srRenderNotFound(el) {
+  el.innerHTML = `
+    <div class="sr-error-card">
+      No active entity found for that search. They may not be registered, or their registration may have lapsed.
+    </div>
+    <p class="sr-recommendation">Not found in SAM.gov. They can still sub for you — you handle the federal side. Flag for on-base or installation contracts where base access may require a registered entity.</p>
+  `;
+}
+
+function srRenderResult(el, entity) {
+  const reg  = entity.entityRegistration || {};
+  const core = entity.coreData || {};
+  const gs   = (entity.assertions || {}).goodsAndServices || {};
+
+  const name       = reg.legalBusinessName || '—';
+  const uei        = reg.ueiSAM || '—';
+  const cage       = reg.cageCode || '—';
+  const expiration = reg.registrationExpirationDate
+    ? formatDate(reg.registrationExpirationDate.split('T')[0]) : '—';
+  const bizType    = core.generalInformation?.entityStructureDesc || '—';
+  const primNaics  = core.generalInformation?.primaryNaics || '—';
+  const addr       = [
+    core.physicalAddress?.city,
+    core.physicalAddress?.stateOrProvinceCode,
+    core.physicalAddress?.zipCode,
+  ].filter(Boolean).join(', ') || '—';
+
+  const isActive = reg.registrationStatus === 'Active';
+
+  const naicsList = (core.naicsAndPSCCodes?.naicsList || []).map(n => n.naicsCode);
+  if (primNaics !== '—') naicsList.push(primNaics);
+  const naicsMatch = naicsList.includes('561730') || naicsList.includes('561720');
+
+  const certs = {
+    sdvosb:  gs.serviceDisabledVeteranOwnedSmallBusiness === 'Yes',
+    vosb:    gs.veteranOwnedSmallBusiness === 'Yes',
+    eightA:  gs.eightAProgram === 'Yes',
+    hubzone: gs.hubZoneSmallBusiness === 'Yes',
+    wosb:    gs.womenOwnedSmallBusiness === 'Yes',
+  };
+
+  let certBadges = '';
+  if (certs.sdvosb)  certBadges += '<span class="badge badge-sdvosb">SDVOSB</span>';
+  if (certs.vosb)    certBadges += '<span class="badge badge-setaside">VOSB</span>';
+  if (certs.eightA)  certBadges += '<span class="badge badge-setaside">8(a)</span>';
+  if (certs.hubzone) certBadges += '<span class="badge badge-setaside">HUBZone</span>';
+  if (certs.wosb)    certBadges += '<span class="badge badge-setaside">WOSB</span>';
+
+  let recommendation = '';
+  if (certs.sdvosb && isActive && naicsMatch) {
+    recommendation = 'Strong candidate. SDVOSB-verified, SAM-active, and registered in your target niche.';
+  } else if (isActive && naicsMatch) {
+    recommendation = 'Viable sub. SAM-active with matching NAICS. No set-aside certification — factor into margin planning.';
+  } else if (isActive && !naicsMatch) {
+    recommendation = 'SAM-active but no NAICS overlap with your target work. Vet their trade capability directly.';
+  }
+
+  el.innerHTML = `
+    <div class="liquid-glass sr-result-card">
+      <div class="sr-entity-row">
+        <div class="sr-entity-name">${name}</div>
+        <span class="${isActive ? 'sr-status-active' : 'sr-status-inactive'}">${isActive ? '✓ Active' : '✗ Inactive'}</span>
+      </div>
+
+      <div class="sr-section-label">Registration Details</div>
+      <div class="drawer-kv" style="margin-bottom:20px;">
+        <div class="kv-row"><span class="kv-label">UEI</span><span class="kv-val mono">${uei}</span></div>
+        <div class="kv-row"><span class="kv-label">CAGE Code</span><span class="kv-val mono">${cage}</span></div>
+        <div class="kv-row"><span class="kv-label">Registration Expiration</span><span class="kv-val">${expiration}</span></div>
+        <div class="kv-row"><span class="kv-label">Business Type</span><span class="kv-val">${bizType}</span></div>
+        <div class="kv-row"><span class="kv-label">Primary NAICS</span><span class="kv-val mono">${primNaics}</span></div>
+        <div class="kv-row"><span class="kv-label">Physical Address</span><span class="kv-val">${addr}</span></div>
+      </div>
+
+      <div class="sr-section-label">Set-Aside Certifications</div>
+      ${certBadges
+        ? `<div class="sr-certs-row">${certBadges}</div>`
+        : '<p class="sr-no-certs">No set-aside certifications found.</p>'
+      }
+      ${naicsMatch ? '<div class="sr-naics-callout">✓ NAICS match — registered for your target work types</div>' : ''}
+    </div>
+    ${recommendation ? `<p class="sr-recommendation">${recommendation}</p>` : ''}
+  `;
 }
 </script>
 </body>
