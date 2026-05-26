@@ -1,0 +1,17 @@
+export async function onRequest(context) {
+  const url = new URL(context.request.url);
+  const params = url.searchParams.toString();
+  const SAM_API_KEY = context.env.SAM_API_KEY;
+
+  const samUrl = `https://api.sam.gov/entity-information/v3/entities?${params}&api_key=${SAM_API_KEY}`;
+
+  const response = await fetch(samUrl);
+  const data = await response.json();
+
+  return new Response(JSON.stringify(data), {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  });
+}
