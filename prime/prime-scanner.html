@@ -1094,18 +1094,6 @@
         </div>
         <div class="sr-helper">Search the SAM.gov Entity Management database</div>
       </div>
-      <!-- DEBUG BOX -->
-      <div id="srDebugWrap" style="max-width:640px;margin:0 auto 20px;display:none;">
-        <div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
-          <button onclick="document.getElementById('srDebugWrap').style.display='none'" style="background:none;border:1px solid var(--border2);border-radius:6px;padding:3px 10px;color:var(--text3);font-family:'Barlow',sans-serif;font-size:11px;cursor:pointer;">Hide Debug</button>
-        </div>
-        <div style="background:var(--navy-dark);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;font-family:monospace;font-size:11px;color:var(--text3);line-height:1.6;">
-          <div style="margin-bottom:8px;"><span style="color:var(--text2);">URL:</span> <span id="srDebugUrl">—</span></div>
-          <div style="margin-bottom:8px;"><span style="color:var(--text2);">Status:</span> <span id="srDebugStatus">—</span></div>
-          <div style="color:var(--text2);margin-bottom:4px;">Response:</div>
-          <pre id="srDebugBody" style="overflow-y:auto;max-height:200px;white-space:pre-wrap;word-break:break-all;margin:0;">—</pre>
-        </div>
-      </div>
       <div id="srResults" class="sr-results"></div>
     </div>
 
@@ -1712,27 +1700,11 @@ async function lookupEntity() {
 
   const url = `/sam-entity-proxy?${params}`;
 
-  // Show debug panel
-  document.getElementById('srDebugUrl').textContent = url;
-  document.getElementById('srDebugStatus').textContent = '…';
-  document.getElementById('srDebugBody').textContent = '…';
-  document.getElementById('srDebugWrap').style.display = '';
-
-  let httpStatus = '—';
   try {
     const res = await fetch(url);
-    httpStatus = res.status;
-    document.getElementById('srDebugStatus').textContent = res.status + ' ' + res.statusText;
-
-    const text = await res.text();
-    document.getElementById('srDebugBody').textContent = (() => {
-      try { return JSON.stringify(JSON.parse(text), null, 2); } catch { return text; }
-    })();
-
     if (!res.ok) throw new Error('api_error');
-    const data = JSON.parse(text);
+    const data = await res.json();
 
-    // Filter active on response side
     const entities = (data.entityData || []).filter(e =>
       (e.entityRegistration?.registrationStatus || '').toLowerCase() === 'active'
     );
@@ -1740,14 +1712,10 @@ async function lookupEntity() {
     if (entities.length === 0) {
       srRenderNotFound(resultsEl);
     } else {
-      srRenderResult(resultsEl, entities[0]);
+      srRenderAll(resultsEl, entities);
     }
   } catch (e) {
-    if (e.message === 'api_error') {
-      resultsEl.innerHTML = `<div class="sr-error-card">SAM.gov lookup failed. Check your API key or try again.</div>`;
-    } else {
-      resultsEl.innerHTML = `<div class="sr-error-card">SAM.gov lookup failed. Check your API key or try again.</div>`;
-    }
+    resultsEl.innerHTML = `<div class="sr-error-card">SAM.gov lookup failed. Check your API key or try again.</div>`;
   } finally {
     btn.disabled = false;
   }
@@ -1762,7 +1730,15 @@ function srRenderNotFound(el) {
   `;
 }
 
+function srRenderAll(el, entities) {
+  el.innerHTML = entities.map(e => srEntityCard(e)).join('');
+}
+
 function srRenderResult(el, entity) {
+  el.innerHTML = srEntityCard(entity);
+}
+
+function srEntityCard(entity) {
   const reg  = entity.entityRegistration || {};
   const core = entity.coreData || {};
   const gs   = (entity.assertions || {}).goodsAndServices || {};
@@ -1810,7 +1786,7 @@ function srRenderResult(el, entity) {
     recommendation = 'SAM-active but no NAICS overlap with your target work. Vet their trade capability directly.';
   }
 
-  el.innerHTML = `
+  return `
     <div class="liquid-glass sr-result-card">
       <div class="sr-entity-row">
         <div class="sr-entity-name">${name}</div>
