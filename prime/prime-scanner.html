@@ -919,6 +919,50 @@
     padding: 48px;
     gap: 14px;
   }
+
+  /* EVA PANEL */
+  .eva-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .eva-top-area {
+    padding: 36px 40px 28px;
+  }
+
+  .eva-textarea {
+    display: block;
+    width: 100%;
+    max-width: 860px;
+    min-height: 200px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+  }
+
+  .eva-textarea:focus { border-color: var(--teal-bright); }
+  .eva-textarea::placeholder { color: var(--text3); line-height: 1.6; }
+
+  .eva-parse-btn {
+    width: auto;
+    padding: 12px 32px;
+  }
+
+  /* NIGP + STATUS BADGES */
+  .badge-nigp { background: rgba(0,122,122,0.18); color: var(--teal-bright); border: 1px solid rgba(0,160,160,0.25); }
+  .badge-status-new { background: rgba(0,122,122,0.18); color: var(--teal-bright); border: 1px solid rgba(0,160,160,0.25); }
+  .badge-status-amended { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,166,35,0.2); }
+  .badge-status-cancelled { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,90,90,0.2); }
 </style>
 </head>
 <body>
@@ -1025,6 +1069,7 @@
     <div class="topbar">
       <div class="tab-pills">
         <button class="tab-pill active" id="tabContracts" onclick="switchTab('contracts')">Contracts</button>
+        <button class="tab-pill" id="tabEva" onclick="switchTab('eva')">eVA Virginia</button>
         <button class="tab-pill" id="tabRegistry" onclick="switchTab('registry')">Sub Registry</button>
       </div>
       <div class="topbar-title" id="topbarTitle">Ready to scan</div>
@@ -1077,6 +1122,59 @@
       </div>
     </div>
     </div><!-- /contractsPanel -->
+
+    <!-- EVA VIRGINIA PANEL -->
+    <div id="evaPanel" class="eva-panel" style="display:none;">
+      <div class="eva-top-area">
+        <div class="sr-header">
+          <h2 class="sr-title">eVA Virginia</h2>
+          <p class="sr-subtitle">Virginia eProcurement digest parser</p>
+        </div>
+        <textarea id="evaTextarea" class="eva-textarea"
+          placeholder="Paste your eVA leads digest email here..."></textarea>
+        <button class="scan-btn eva-parse-btn" id="evaParseBtn" onclick="parseEvaDigest()">Parse &amp; Score</button>
+      </div>
+
+      <div class="score-legend">
+        <span class="score-item"><span class="score-dot" style="background:#f5a623"></span>90+ Hot lead</span>
+        <span class="score-item"><span class="score-dot" style="background:#00a0a0"></span>70–89 Good fit</span>
+        <span class="score-item"><span class="score-dot" style="background:#5aadff"></span>50–69 Worth reviewing</span>
+        <span class="score-item"><span class="score-dot" style="background:rgba(255,255,255,0.15)"></span>Below 50 Low priority</span>
+        <span class="score-item" style="margin-left:auto; font-size:10px; color:var(--text3);">Score factors: NIGP code match · solicitation type · New vs Amended · Virginia location</span>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-label">Opportunities Parsed</div>
+          <div class="metric-val" id="evaMTotal">—</div>
+          <div class="metric-sub">from digest</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Hot Leads</div>
+          <div class="metric-val metric-amber" id="evaMHot">—</div>
+          <div class="metric-sub">score 90+</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">NIGP Matches</div>
+          <div class="metric-val metric-accent" id="evaMNigp">—</div>
+          <div class="metric-sub">your trade codes</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Amended</div>
+          <div class="metric-val" id="evaMAmended">—</div>
+          <div class="metric-sub">watch these</div>
+        </div>
+      </div>
+
+      <div class="content-area">
+        <div id="evaResultsList" class="opp-list">
+          <div class="empty-state">
+            <div class="empty-title">Paste your eVA digest to parse opportunities</div>
+            <div class="empty-sub">Copy the text from your eVA leads email and paste it above, then click Parse &amp; Score.</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- SUB REGISTRY PANEL -->
     <div id="subRegistryPanel" class="sub-registry-panel" style="display:none;">
@@ -1654,13 +1752,203 @@ Write a professional SOW formatted for subcontractor outreach. Include: scope su
 
 function switchTab(tab) {
   const isContracts = tab === 'contracts';
+  const isRegistry  = tab === 'registry';
+  const isEva       = tab === 'eva';
+
   document.getElementById('tabContracts').classList.toggle('active', isContracts);
-  document.getElementById('tabRegistry').classList.toggle('active', !isContracts);
-  document.getElementById('contractsPanel').style.display = isContracts ? '' : 'none';
-  document.getElementById('subRegistryPanel').style.display = isContracts ? 'none' : '';
+  document.getElementById('tabRegistry').classList.toggle('active', isRegistry);
+  document.getElementById('tabEva').classList.toggle('active', isEva);
+
+  document.getElementById('contractsPanel').style.display    = isContracts ? '' : 'none';
+  document.getElementById('subRegistryPanel').style.display  = isRegistry  ? '' : 'none';
+  document.getElementById('evaPanel').style.display          = isEva       ? '' : 'none';
+
   document.querySelector('.shell').classList.toggle('registry-mode', !isContracts);
-  document.getElementById('sortBy').style.display = isContracts ? '' : 'none';
-  document.getElementById('topbarTitle').style.display = isContracts ? '' : 'none';
+  document.getElementById('sortBy').style.display       = isContracts ? '' : 'none';
+  document.getElementById('topbarTitle').style.display  = isContracts ? '' : 'none';
+}
+
+// ===== EVA VIRGINIA =====
+let evaResults = [];
+
+const EVA_NIGP_CONTEXT = `Tim's registered eVA NIGP codes (use for scoring):
+910 Building Maintenance: 91024 Fire/Water Damage Restoration, 91027 Garbage/Trash Removal, 91039 Janitorial/Custodial, 91047 Lead Abatement, 91059 Pest Control, 91070 Sludge/Grease Trap Cleaning, 91081 Window Washing
+926 Environmental/Ecological: 92630 Contaminated Soil, 92645 HazMat/Waste, 92658 Lead/Asbestos Inspection, 92665 Oil/Petroleum Spill, 92677 Recycling, 92678 Remediation/Mold, 92681 Sanitizing/Disinfecting, 92683 Site Assessment Environmental
+968 Public Works: 96844 Graffiti Removal, 96850 Leaf/Bush/Tree Limb Collection, 96871 Solid/Liquid Waste Disposal, 96872 Snow/Ice Removal, 96873 Storm Drain Cleaning/Sludge, 96888 Tree/Shrub Removal, 96897 Wrecking/Removal
+988 Roadside/Grounds/Recreation: 98802 Arborist, 98807 Cleaning Amusement/Grounds/Parks, 98814 Erosion Control, 98832 Grading Parking Lots, 98836 Grounds Maintenance Mowing/Edging/Trimming, 98852 Landscaping, 98856 Litter Removal, 98872 Pest Control Non-Building, 98875 Roadside Maintenance, 98888 Tree Trimming/Pruning, 98889 Weed/Vegetation Control`;
+
+async function parseEvaDigest() {
+  const textarea  = document.getElementById('evaTextarea');
+  const digestText = textarea.value.trim();
+  if (!digestText) { textarea.focus(); return; }
+
+  const btn       = document.getElementById('evaParseBtn');
+  const resultsEl = document.getElementById('evaResultsList');
+  btn.disabled    = true;
+  btn.textContent = 'Parsing...';
+
+  resultsEl.innerHTML = `
+    <div class="loading-state">
+      <div class="scanner-animation"></div>
+      <div class="loading-text">Claude is parsing your digest...</div>
+    </div>`;
+
+  const prompt = `You are parsing a Virginia eVA (eva.virginia.gov) procurement digest email. Extract ALL solicitations listed and score each one.
+
+${EVA_NIGP_CONTEXT}
+
+Scoring rules (0-100):
+- NIGP code match with Tim's registered codes above: +40 pts
+- Status "New": +20 pts, "Amended": +10 pts, "Cancelled": 0 pts
+- Virginia location (all eVA is VA): +15 pts
+- Solicitation type IFB (Invitation for Bid): +15 pts, RFP: +10 pts, Sources Sought/RFI: +5 pts
+- urgency: score 90+ = "hot", 70-89 = "good", 50-69 = "review", below 50 = "low"
+
+Return ONLY a JSON array. No markdown, no preamble, no explanation — raw JSON only. Each object:
+{"title":string,"ifbNumber":string,"agency":string,"status":"New"|"Amended"|"Cancelled","nigpCodes":string[],"nigpLabels":string[],"score":number,"scoreReason":string,"urgency":"hot"|"good"|"review"|"low","evaLink":string|null}
+
+Use empty string or empty array for missing fields. Do not invent data.
+
+eVA digest:
+${digestText}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1500,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!res.ok) throw new Error('Claude API error ' + res.status);
+    const data    = await res.json();
+    const rawText = data.content?.[0]?.text || '[]';
+
+    let opps;
+    try {
+      opps = JSON.parse(rawText);
+    } catch {
+      const match = rawText.match(/\[[\s\S]*\]/);
+      opps = match ? JSON.parse(match[0]) : [];
+    }
+
+    evaResults = Array.isArray(opps) ? opps.map((o, i) => ({ ...o, _id: i })) : [];
+    renderEvaResults();
+    updateEvaMetrics();
+  } catch (e) {
+    resultsEl.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-title">Parse failed</div>
+        <div class="empty-sub">${e.message || 'Claude API error — check your connection and try again.'}</div>
+      </div>`;
+  } finally {
+    btn.disabled    = false;
+    btn.textContent = 'Parse & Score';
+  }
+}
+
+function renderEvaResults() {
+  const el = document.getElementById('evaResultsList');
+  if (!evaResults.length) {
+    el.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-title">No opportunities found</div>
+        <div class="empty-sub">No solicitations were extracted — try pasting a different digest.</div>
+      </div>`;
+    return;
+  }
+  const sorted = [...evaResults].sort((a, b) => b.score - a.score);
+  el.innerHTML = sorted.map(opp => buildEvaCard(opp)).join('');
+}
+
+function buildEvaCard(opp) {
+  const scoreClass = getScoreClass(opp.score);
+  const isHot      = opp.urgency === 'hot';
+  const statusCls  = getEvaStatusClass(opp.status);
+  const evaHref    = opp.evaLink || 'https://eva.virginia.gov';
+
+  const nigpBadges = (opp.nigpCodes || []).slice(0, 3).map((code, i) => {
+    const label = (opp.nigpLabels || [])[i] || code;
+    return `<span class="badge badge-nigp" title="${label}">${code}</span>`;
+  }).join('');
+
+  return `
+    <div class="opp-card ${isHot ? 'hot' : ''}">
+      <div class="opp-top">
+        <div class="opp-score ${scoreClass}">${opp.score}</div>
+        <div class="opp-title-wrap">
+          <div class="opp-title">${opp.title}</div>
+          <div class="opp-agency">${opp.agency}</div>
+        </div>
+        <div class="opp-badges">
+          <span class="badge ${statusCls}">${opp.status || 'New'}</span>
+          ${nigpBadges}
+        </div>
+      </div>
+      <div class="opp-meta">
+        <div class="meta-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>IFB:</span>
+          <span class="meta-value">${opp.ifbNumber || '—'}</span>
+        </div>
+        <div class="meta-item" style="flex:1; min-width:0;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span class="meta-value" style="color:var(--text3);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${opp.scoreReason}</span>
+        </div>
+        <div class="opp-actions" onclick="event.stopPropagation()">
+          <button class="action-btn" onclick="window.open('${evaHref}','_blank')">View on eVA ↗</button>
+          <button class="action-btn action-btn-primary" onclick="generateEvaSow(${opp._id})">Generate SOW ↗</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function getEvaStatusClass(status) {
+  if (status === 'Amended')   return 'badge-status-amended';
+  if (status === 'Cancelled') return 'badge-status-cancelled';
+  return 'badge-status-new';
+}
+
+function updateEvaMetrics() {
+  const total   = evaResults.length;
+  const hot     = evaResults.filter(o => o.urgency === 'hot').length;
+  const nigp    = evaResults.filter(o => (o.nigpCodes || []).length > 0).length;
+  const amended = evaResults.filter(o => o.status === 'Amended').length;
+
+  document.getElementById('evaMTotal').textContent   = total   || '—';
+  document.getElementById('evaMHot').textContent     = hot     || '—';
+  document.getElementById('evaMNigp').textContent    = nigp    || '—';
+  document.getElementById('evaMAmended').textContent = amended || '—';
+}
+
+function generateEvaSow(id) {
+  const opp = evaResults.find(o => o._id === id);
+  if (!opp) return;
+
+  const msg = `Generate a Scope of Work (SOW) for this Virginia eVA procurement opportunity:
+
+Title: ${opp.title}
+Agency: ${opp.agency}
+IFB/RFP Number: ${opp.ifbNumber || 'Not specified'}
+Status: ${opp.status}
+NIGP Codes: ${(opp.nigpCodes || []).join(', ')} — ${(opp.nigpLabels || []).join(', ')}
+Location: Virginia
+
+Write a professional SOW formatted for subcontractor outreach. Include: scope summary, deliverables, performance location, timeline, special requirements, and a section for the sub to provide their bid.`;
+
+  if (typeof sendPrompt === 'function') {
+    sendPrompt(msg);
+  } else {
+    navigator.clipboard.writeText(msg).catch(() => {});
+    alert('SOW prompt copied to clipboard — paste it into Claude.');
+  }
 }
 
 function srDetectInputType(val) {
