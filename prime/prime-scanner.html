@@ -1771,79 +1771,125 @@ function switchTab(tab) {
 // ===== EVA VIRGINIA =====
 let evaResults = [];
 
-const EVA_NIGP_CONTEXT = `Tim's registered eVA NIGP codes (use for scoring):
-910 Building Maintenance: 91024 Fire/Water Damage Restoration, 91027 Garbage/Trash Removal, 91039 Janitorial/Custodial, 91047 Lead Abatement, 91059 Pest Control, 91070 Sludge/Grease Trap Cleaning, 91081 Window Washing
-926 Environmental/Ecological: 92630 Contaminated Soil, 92645 HazMat/Waste, 92658 Lead/Asbestos Inspection, 92665 Oil/Petroleum Spill, 92677 Recycling, 92678 Remediation/Mold, 92681 Sanitizing/Disinfecting, 92683 Site Assessment Environmental
-968 Public Works: 96844 Graffiti Removal, 96850 Leaf/Bush/Tree Limb Collection, 96871 Solid/Liquid Waste Disposal, 96872 Snow/Ice Removal, 96873 Storm Drain Cleaning/Sludge, 96888 Tree/Shrub Removal, 96897 Wrecking/Removal
-988 Roadside/Grounds/Recreation: 98802 Arborist, 98807 Cleaning Amusement/Grounds/Parks, 98814 Erosion Control, 98832 Grading Parking Lots, 98836 Grounds Maintenance Mowing/Edging/Trimming, 98852 Landscaping, 98856 Litter Removal, 98872 Pest Control Non-Building, 98875 Roadside Maintenance, 98888 Tree Trimming/Pruning, 98889 Weed/Vegetation Control`;
+const NIGP_KEYWORDS = [
+  { kw: ['janitorial', 'custodial'],                      code: '91039', label: 'Janitorial/Custodial' },
+  { kw: ['grease trap', 'sludge'],                        code: '91070', label: 'Grease Trap/Sludge' },
+  { kw: ['trash removal', 'garbage', 'waste disposal'],   code: '91027', label: 'Garbage/Trash Removal' },
+  { kw: ['lead abatement'],                               code: '91047', label: 'Lead Abatement' },
+  { kw: ['pest control', 'exterminating'],                code: '91059', label: 'Pest Control' },
+  { kw: ['fire damage', 'water damage', 'restoration'],   code: '91024', label: 'Fire/Water Damage Restoration' },
+  { kw: ['window washing'],                               code: '91081', label: 'Window Washing' },
+  { kw: ['hazardous', 'hazmat'],                          code: '92645', label: 'HazMat/Waste' },
+  { kw: ['mold remediation', 'remediation'],              code: '92678', label: 'Mold Remediation' },
+  { kw: ['oil spill', 'petroleum spill'],                 code: '92665', label: 'Oil/Petroleum Spill' },
+  { kw: ['contaminated soil'],                            code: '92630', label: 'Contaminated Soil' },
+  { kw: ['asbestos', 'lead inspection'],                  code: '92658', label: 'Lead/Asbestos Inspection' },
+  { kw: ['recycling'],                                    code: '92677', label: 'Recycling' },
+  { kw: ['sanitizing', 'disinfecting'],                   code: '92681', label: 'Sanitizing/Disinfecting' },
+  { kw: ['environmental assessment', 'site assessment'],  code: '92683', label: 'Site Assessment' },
+  { kw: ['graffiti'],                                     code: '96844', label: 'Graffiti Removal' },
+  { kw: ['leaf collection', 'limb collection'],           code: '96850', label: 'Leaf/Limb Collection' },
+  { kw: ['snow', 'ice removal'],                         code: '96872', label: 'Snow/Ice Removal' },
+  { kw: ['storm drain'],                                  code: '96873', label: 'Storm Drain Cleaning' },
+  { kw: ['tree removal', 'shrub removal'],                code: '96888', label: 'Tree/Shrub Removal' },
+  { kw: ['wrecking', 'demolition'],                       code: '96897', label: 'Wrecking/Removal' },
+  { kw: ['grounds maintenance', 'mowing', 'edging', 'turf'], code: '98836', label: 'Grounds Maintenance' },
+  { kw: ['landscaping'],                                  code: '98852', label: 'Landscaping' },
+  { kw: ['litter removal', 'beach cleaning'],             code: '98856', label: 'Litter Removal' },
+  { kw: ['roadside maintenance'],                         code: '98875', label: 'Roadside Maintenance' },
+  { kw: ['tree trimming', 'pruning'],                     code: '98888', label: 'Tree Trimming/Pruning' },
+  { kw: ['weed control', 'vegetation control'],           code: '98889', label: 'Weed/Vegetation Control' },
+  { kw: ['erosion control'],                              code: '98814', label: 'Erosion Control' },
+  { kw: ['grading', 'parking lot'],                       code: '98832', label: 'Grading/Parking Lots' },
+  { kw: ['arborist'],                                     code: '98802', label: 'Arborist Services' },
+  { kw: ['park cleaning', 'amusement area'],              code: '98807', label: 'Park/Grounds Cleaning' },
+];
 
-async function parseEvaDigest() {
-  const textarea  = document.getElementById('evaTextarea');
-  const digestText = textarea.value.trim();
-  if (!digestText) { textarea.focus(); return; }
+function evaScoreOpportunity(title, status, solType) {
+  const t = title.toLowerCase();
+  let score = 15; // base: Virginia
+  let nigpCode = '', nigpLabel = '';
 
-  const btn       = document.getElementById('evaParseBtn');
-  const resultsEl = document.getElementById('evaResultsList');
-  btn.disabled    = true;
-  btn.textContent = 'Parsing...';
-
-  resultsEl.innerHTML = `
-    <div class="loading-state">
-      <div class="scanner-animation"></div>
-      <div class="loading-text">Claude is parsing your digest...</div>
-    </div>`;
-
-  const prompt = `You are parsing a Virginia eVA (eva.virginia.gov) procurement digest email. Extract ALL solicitations listed and score each one.
-
-${EVA_NIGP_CONTEXT}
-
-Scoring rules (0-100):
-- NIGP code match with Tim's registered codes above: +40 pts
-- Status "New": +20 pts, "Amended": +10 pts, "Cancelled": 0 pts
-- Virginia location (all eVA is VA): +15 pts
-- Solicitation type IFB (Invitation for Bid): +15 pts, RFP: +10 pts, Sources Sought/RFI: +5 pts
-- urgency: score 90+ = "hot", 70-89 = "good", 50-69 = "review", below 50 = "low"
-
-Return ONLY a JSON array. No markdown, no preamble, no explanation — raw JSON only. Each object:
-{"title":string,"ifbNumber":string,"agency":string,"status":"New"|"Amended"|"Cancelled","nigpCodes":string[],"nigpLabels":string[],"score":number,"scoreReason":string,"urgency":"hot"|"good"|"review"|"low","evaLink":string|null}
-
-Use empty string or empty array for missing fields. Do not invent data.
-
-eVA digest:
-${digestText}`;
-
-  try {
-    const res = await fetch('/claude-proxy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-    });
-
-    if (!res.ok) throw new Error('Claude API error ' + res.status);
-    const data    = await res.json();
-    const rawText = data.text || '[]';
-
-    let opps;
-    try {
-      opps = JSON.parse(rawText);
-    } catch {
-      const match = rawText.match(/\[[\s\S]*\]/);
-      opps = match ? JSON.parse(match[0]) : [];
+  for (const entry of NIGP_KEYWORDS) {
+    if (entry.kw.some(k => t.includes(k))) {
+      score    += 40;
+      nigpCode  = entry.code;
+      nigpLabel = entry.label;
+      break;
     }
+  }
 
-    evaResults = Array.isArray(opps) ? opps.map((o, i) => ({ ...o, _id: i })) : [];
-    renderEvaResults();
-    updateEvaMetrics();
-  } catch (e) {
+  if (status === 'New')          score += 20;
+  else if (status === 'Amended') score += 10;
+
+  const st = solType.toUpperCase().trim();
+  if (st === 'IFB')                               score += 15;
+  else if (st === 'RFP')                          score += 10;
+  else if (st === 'SS' || st.startsWith('SOURCE')) score += 5;
+
+  score = Math.min(score, 99);
+  const urgency = score >= 90 ? 'hot' : score >= 70 ? 'good' : score >= 50 ? 'review' : 'low';
+
+  const reasonParts = [];
+  if (nigpLabel) reasonParts.push(`${nigpLabel} (${nigpCode})`);
+  reasonParts.push(status);
+  reasonParts.push(st === 'IFB' ? 'IFB' : st === 'RFP' ? 'RFP' : solType);
+
+  return { score, urgency, nigpCode, nigpLabel, scoreReason: reasonParts.join(' · ') };
+}
+
+function parseDigest(text) {
+  const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 5);
+  const results = [];
+
+  for (const line of lines) {
+    const m = line.match(/^(.+?)\s+(New|Amended|Cancelled)\s+(IFB|RFP|Sources\s+Sought|SS)\s+(\S+)\s*$/i);
+    if (!m) continue;
+
+    const rawPrefix = m[1].trim();
+    const status    = m[2];
+    const solType   = m[3].replace(/\s+/g, ' ');
+    const ifbNumber = m[4];
+
+    // Strip leading opportunity number (e.g. "160945", "1112-B-2526", or "IFB 26-0044")
+    const title = rawPrefix
+      .replace(/^(?:[A-Z]{1,4}\s+)?[A-Z0-9][A-Z0-9\-]*\s+/i, '')
+      .trim() || rawPrefix;
+
+    const scored = evaScoreOpportunity(title, status, solType);
+    results.push({ title, ifbNumber, status, solType, ...scored, _id: results.length });
+  }
+
+  return results;
+}
+
+function parseEvaDigest() {
+  const textarea   = document.getElementById('evaTextarea');
+  const resultsEl  = document.getElementById('evaResultsList');
+  const digestText = textarea.value.trim();
+
+  if (!digestText) {
     resultsEl.innerHTML = `
       <div class="empty-state">
-        <div class="empty-title">Parse failed</div>
-        <div class="empty-sub">${e.message || 'Claude API error — check your connection and try again.'}</div>
+        <div class="empty-title">Paste your eVA digest first</div>
+        <div class="empty-sub">Copy the text from your eVA leads email and paste it above.</div>
       </div>`;
-  } finally {
-    btn.disabled    = false;
-    btn.textContent = 'Parse & Score';
+    return;
   }
+
+  evaResults = parseDigest(digestText);
+
+  if (!evaResults.length) {
+    resultsEl.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-title">No opportunities found — check the digest format</div>
+        <div class="empty-sub">Each line should contain: [title] New IFB 123456-0</div>
+      </div>`;
+    return;
+  }
+
+  renderEvaResults();
+  updateEvaMetrics();
 }
 
 function renderEvaResults() {
@@ -1864,12 +1910,9 @@ function buildEvaCard(opp) {
   const scoreClass = getScoreClass(opp.score);
   const isHot      = opp.urgency === 'hot';
   const statusCls  = getEvaStatusClass(opp.status);
-  const evaHref    = opp.evaLink || 'https://eva.virginia.gov';
-
-  const nigpBadges = (opp.nigpCodes || []).slice(0, 3).map((code, i) => {
-    const label = (opp.nigpLabels || [])[i] || code;
-    return `<span class="badge badge-nigp" title="${label}">${code}</span>`;
-  }).join('');
+  const nigpBadge  = opp.nigpCode
+    ? `<span class="badge badge-nigp" title="${opp.nigpLabel}">${opp.nigpCode}</span>`
+    : '';
 
   return `
     <div class="opp-card ${isHot ? 'hot' : ''}">
@@ -1877,11 +1920,11 @@ function buildEvaCard(opp) {
         <div class="opp-score ${scoreClass}">${opp.score}</div>
         <div class="opp-title-wrap">
           <div class="opp-title">${opp.title}</div>
-          <div class="opp-agency">${opp.agency}</div>
+          <div class="opp-agency">Virginia eVA · ${opp.solType || 'IFB'}</div>
         </div>
         <div class="opp-badges">
-          <span class="badge ${statusCls}">${opp.status || 'New'}</span>
-          ${nigpBadges}
+          <span class="badge ${statusCls}">${opp.status}</span>
+          ${nigpBadge}
         </div>
       </div>
       <div class="opp-meta">
@@ -1895,7 +1938,7 @@ function buildEvaCard(opp) {
           <span class="meta-value" style="color:var(--text3);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${opp.scoreReason}</span>
         </div>
         <div class="opp-actions" onclick="event.stopPropagation()">
-          <button class="action-btn" onclick="window.open('${evaHref}','_blank')">View on eVA ↗</button>
+          <button class="action-btn" onclick="window.open('https://eva.virginia.gov','_blank')">View on eVA ↗</button>
           <button class="action-btn action-btn-primary" onclick="generateEvaSow(${opp._id})">Generate SOW ↗</button>
         </div>
       </div>
@@ -1911,7 +1954,7 @@ function getEvaStatusClass(status) {
 function updateEvaMetrics() {
   const total   = evaResults.length;
   const hot     = evaResults.filter(o => o.urgency === 'hot').length;
-  const nigp    = evaResults.filter(o => (o.nigpCodes || []).length > 0).length;
+  const nigp    = evaResults.filter(o => !!o.nigpCode).length;
   const amended = evaResults.filter(o => o.status === 'Amended').length;
 
   document.getElementById('evaMTotal').textContent   = total   || '—';
@@ -1924,16 +1967,7 @@ function generateEvaSow(id) {
   const opp = evaResults.find(o => o._id === id);
   if (!opp) return;
 
-  const msg = `Generate a Scope of Work (SOW) for this Virginia eVA procurement opportunity:
-
-Title: ${opp.title}
-Agency: ${opp.agency}
-IFB/RFP Number: ${opp.ifbNumber || 'Not specified'}
-Status: ${opp.status}
-NIGP Codes: ${(opp.nigpCodes || []).join(', ')} — ${(opp.nigpLabels || []).join(', ')}
-Location: Virginia
-
-Write a professional SOW formatted for subcontractor outreach. Include: scope summary, deliverables, performance location, timeline, special requirements, and a section for the sub to provide their bid.`;
+  const msg = `Generate a Scope of Work (SOW) for this eVA opportunity: ${opp.title}, IFB ${opp.ifbNumber}, Virginia state contract`;
 
   if (typeof sendPrompt === 'function') {
     sendPrompt(msg);
