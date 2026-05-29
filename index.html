@@ -73,11 +73,11 @@
   --navy-dark:      #050d18;
   --navy-mid:       #07111f;
 
-  --font-scale:     1;
+  --font-scale:     1.1;      /* matches TWEAK_DEFAULTS — avoids JS style recalc on cold load */
   --anim-speed:     1;
-  --glass-opacity:  0.02;
+  --glass-opacity:  0.03;     /* matches TWEAK_DEFAULTS */
   --glass-blur:     8px;
-  --accent-punch:   1;        /* multiplies glow alphas */
+  --accent-punch:   1.4;      /* matches TWEAK_DEFAULTS */
   --section-lift:   1;        /* how dark the alt sections are 0-1 */
 
   --trans-fast:     calc(0.18s * var(--anim-speed));
@@ -108,24 +108,26 @@ button { font-family: inherit; }
 #cursor-glow {
   pointer-events: none;
   position: fixed;
+  left: 0; top: 0;
   width: 480px; height: 480px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(0,122,122,0.09) 0%, transparent 70%);
-  transform: translate(-50%,-50%);
   z-index: 9998;
   transition: opacity 0.3s ease;
   mix-blend-mode: screen;
+  will-change: transform;
 }
 #cursor-dot {
   pointer-events: none;
   position: fixed;
+  left: 0; top: 0;
   width: 10px; height: 10px;
   border-radius: 50%;
   background: var(--teal-bright);
-  transform: translate(-50%,-50%);
   z-index: 9999;
   transition: width var(--trans-fast), height var(--trans-fast), background var(--trans-fast), opacity 0.3s;
   box-shadow: 0 0 12px rgba(0,160,160,0.7);
+  will-change: transform;
 }
 body.hovering-cta #cursor-dot {
   width: 18px; height: 18px;
@@ -402,8 +404,7 @@ nav.scrolled {
   color: #fff;
   margin-bottom: 30px;
   text-shadow:
-    0 0 80px rgba(0,160,160,0.45),
-    0 0 30px rgba(0,160,160,0.25),
+    0 0 36px rgba(0,160,160,0.3),
     0 2px 4px rgba(0,0,0,0.5);
   position: relative;
 }
@@ -413,13 +414,12 @@ nav.scrolled {
   position: absolute;
   inset: -40px -60px;
   background: radial-gradient(ellipse 80% 60% at 40% 50%,
-    rgba(0,122,122,0.18) 0%,
-    rgba(0,122,122,0.06) 50%,
-    transparent 75%);
+    rgba(0,122,122,0.15) 0%,
+    rgba(0,122,122,0.05) 55%,
+    transparent 80%);
   pointer-events: none;
   z-index: -1;
   border-radius: 50%;
-  filter: blur(20px);
 }
 /* orange word accent in headline */
 .hero-h1 .accent-word { color: var(--orange); }
@@ -1870,7 +1870,9 @@ function applyTweaks(t) {
 }
 
 let tweaks = loadTweaks();
-applyTweaks(tweaks);
+// CSS :root defaults match TWEAK_DEFAULTS, so applyTweaks is a no-op on cold load.
+// Defer to avoid any DOM reads/writes before first paint.
+requestAnimationFrame(() => applyTweaks(tweaks));
 
 // Wire sliders
 const sliderMap = [
@@ -1901,21 +1903,23 @@ window.parent.postMessage({type: '__edit_mode_available'}, '*');
 /* ── CURSOR ───────────────────────────────────────── */
 const cursorGlow = document.getElementById('cursor-glow');
 const cursorDot  = document.getElementById('cursor-dot');
-let mx = -999, my = -999, gx = -999, gy = -999;
+let mx = -999, my = -999, gx = -999, gy = -999, glowStarted = false;
 
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
-  cursorDot.style.left = mx + 'px';
-  cursorDot.style.top  = my + 'px';
+  // transform-based positioning avoids layout; left/top triggers layout
+  cursorDot.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`;
+  if (!glowStarted) {
+    glowStarted = true;
+    gx = mx; gy = my;
+    (function glowLoop() {
+      gx += (mx - gx) * 0.08;
+      gy += (my - gy) * 0.08;
+      cursorGlow.style.transform = `translate(calc(${gx}px - 50%), calc(${gy}px - 50%))`;
+      requestAnimationFrame(glowLoop);
+    })();
+  }
 });
-
-(function glowLoop() {
-  gx += (mx - gx) * 0.08;
-  gy += (my - gy) * 0.08;
-  cursorGlow.style.left = gx + 'px';
-  cursorGlow.style.top  = gy + 'px';
-  requestAnimationFrame(glowLoop);
-})();
 
 const ctaEls = document.querySelectorAll('.btn-orange, .nav-cta, .f-submit, .addon-cta, .mobile-nav .m-cta');
 const cardEls = document.querySelectorAll('.problem-card, .trade-tile, .stage-visual, .contact-card, .stats-card');
@@ -1942,23 +1946,26 @@ hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
 function closeMobileNav() { mobileNav.classList.remove('open'); }
 
 /* ── BLUR-IN HEADINGS ─────────────────────────────── */
-document.querySelectorAll('.blur-in').forEach(el => {
-  const words = el.textContent.trim().split(/\s+/);
-  el.innerHTML = words.map(w => `<span class="word">${w}</span>`).join(' ');
-});
-const blurObs = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.querySelectorAll('.word').forEach((w, i) => {
-      setTimeout(() => {
-        w.style.opacity = '1';
-        w.style.filter = 'blur(0)';
-      }, i * 70);
-    });
-    blurObs.unobserve(entry.target);
+// All .blur-in elements are below the fold — defer DOM mutation until after first paint
+requestAnimationFrame(() => {
+  document.querySelectorAll('.blur-in').forEach(el => {
+    const words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map(w => `<span class="word">${w}</span>`).join(' ');
   });
-}, { threshold: 0.15 });
-document.querySelectorAll('.blur-in').forEach(el => blurObs.observe(el));
+  const blurObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.word').forEach((w, i) => {
+        setTimeout(() => {
+          w.style.opacity = '1';
+          w.style.filter = 'blur(0)';
+        }, i * 70);
+      });
+      blurObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.blur-in').forEach(el => blurObs.observe(el));
+});
 
 /* ── FADE-UP ──────────────────────────────────────── */
 const fadeObs = new IntersectionObserver(entries => {
