@@ -5,11 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Platypus Automations — Digital Presence for Hampton Roads Trade Businesses</title>
 <meta name="description" content="We make your digital reputation match your community reputation. Website, Google profile, reviews, and automated follow-up for Hampton Roads trade businesses.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Instrument_Serif-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Instrument_Serif-400-italic.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Barlow-300-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Barlow-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Barlow-500-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Barlow-600-normal.woff2" crossorigin>
 <style>
+
+/* ── SELF-HOSTED FONTS ─────────────────────────────── */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url('/fonts/Instrument_Serif-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: optional;
+  src: url('/fonts/Instrument_Serif-400-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 300;
+  font-display: optional;
+  src: url('/fonts/Barlow-300-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url('/fonts/Barlow-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: optional;
+  src: url('/fonts/Barlow-500-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: optional;
+  src: url('/fonts/Barlow-600-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /* ── CUSTOM PROPERTIES (tweakable) ─────────────────── */
 :root {
@@ -1153,7 +1205,7 @@ footer {
   z-index: 9000;
   display: none;
   box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(232,101,26,0.15);
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Barlow', system-ui, -apple-system, sans-serif;
 }
 #tweaks-panel.visible { display: block; }
 .tweaks-title {
