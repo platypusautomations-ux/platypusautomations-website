@@ -998,6 +998,16 @@
         <span class="naics-tag" data-code="488490">488490 — Support Activities</span>
         <span class="naics-tag" data-code="562910">562910 — Remediation</span>
         <span class="naics-tag" data-code="238990">238990 — Specialty Trade</span>
+        <span class="naics-tag" data-code="518210">518210 — Cloud / IT Infrastructure</span>
+        <span class="naics-tag" data-code="541511">541511 — Custom Computer Programming</span>
+        <span class="naics-tag" data-code="541513">541513 — Computer Facilities Management</span>
+        <span class="naics-tag" data-code="541620">541620 — Environmental Consulting</span>
+        <span class="naics-tag" data-code="541690">541690 — Other Scientific/Technical Consulting</span>
+        <span class="naics-tag" data-code="561210">561210 — Facilities Support Services</span>
+        <span class="naics-tag" data-code="561710">561710 — Exterminating / Pest Control</span>
+        <span class="naics-tag" data-code="562111">562111 — Solid Waste Collection</span>
+        <span class="naics-tag" data-code="562219">562219 — Other Waste Treatment</span>
+        <span class="naics-tag" data-code="562998">562998 — All Other Waste Management</span>
       </div>
     </div>
 
@@ -2074,7 +2084,8 @@ function srEntityCard(entity) {
 
   const naicsList = (core.naicsAndPSCCodes?.naicsList || []).map(n => n.naicsCode);
   if (primNaics !== '—') naicsList.push(primNaics);
-  const naicsMatch = naicsList.includes('561730') || naicsList.includes('561720');
+  const registeredNaics = ['561730','561720','562112','722310','236220','238220','238210','238310','238320','238910','237310','561110','488490','562910','238990','518210','541511','541513','541620','541690','561210','561710','562111','562219','562998'];
+  const naicsMatch = naicsList.some(n => registeredNaics.includes(n));
 
   const certs = {
     sdvosb:  gs.serviceDisabledVeteranOwnedSmallBusiness === 'Yes',
