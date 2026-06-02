@@ -135,11 +135,24 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(242,183,5,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(242,183,5,0.035) 1px, transparent 1px);
-      background-size: 56px 56px;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 0%,   rgba(14,52,89,0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 50% at 50% 100%,  rgba(6,24,48,0.55)  0%, transparent 70%);
       pointer-events: none;
+    }
+    .hero-topo {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-topo svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
     }
     .hero::after {
       content: '';
@@ -563,6 +576,23 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
+    <div class="hero-topo" aria-hidden="true">
+      <svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet">
+        <!-- Topographic contour rings, anchored lower-left, suggesting a well-site survey -->
+        <g fill="none">
+          <ellipse cx="260" cy="700" rx="100" ry="50"  stroke="#F2B705" stroke-opacity="0.09" stroke-width="1.2"/>
+          <ellipse cx="260" cy="700" rx="195" ry="95"  stroke="#F2B705" stroke-opacity="0.07" stroke-width="1.1"/>
+          <ellipse cx="260" cy="700" rx="315" ry="150" stroke="#F2B705" stroke-opacity="0.06" stroke-width="1.0"/>
+          <ellipse cx="260" cy="700" rx="455" ry="210" stroke="#F2B705" stroke-opacity="0.05" stroke-width="0.9"/>
+          <ellipse cx="260" cy="700" rx="615" ry="275" stroke="#F2B705" stroke-opacity="0.038" stroke-width="0.8"/>
+          <ellipse cx="260" cy="700" rx="800" ry="350" stroke="#F2B705" stroke-opacity="0.025" stroke-width="0.7"/>
+          <!-- Horizontal strata lines, bottom edge, suggesting rock layers -->
+          <line x1="0" y1="590" x2="1200" y2="590" stroke="#E8EDF2" stroke-opacity="0.045" stroke-width="1"/>
+          <line x1="0" y1="618" x2="1200" y2="618" stroke="#E8EDF2" stroke-opacity="0.032" stroke-width="0.8"/>
+          <line x1="0" y1="638" x2="1200" y2="638" stroke="#E8EDF2" stroke-opacity="0.022" stroke-width="0.7"/>
+        </g>
+      </svg>
+    </div>
     <div class="hero-inner">
       <div class="hero-logo-wrap">
         <img src="img/hero.logo.png" alt="Chesapeake Well and Pump Service, Inc.">
