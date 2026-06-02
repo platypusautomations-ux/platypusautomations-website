@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perrine Winery | Award-Winning Family Wines | Olde Towne Portsmouth, VA</title>
+  <meta name="description" content="Perrine Winery — family-owned, award-winning wines since 2011. Women-owned and Disabled-owned. Now pouring in Olde Towne Portsmouth, VA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --purple:        #6B2D7A;
+      --purple-deep:   #3D1848;
+      --purple-darkest:#280D31;
+      --sage:          #8FA876;
+      --sage-dark:     #6B8456;
+      --cream:         #EDE6DD;
+      --cream-light:   #F7F1E9;
+      --cream-dark:    #D5CBBA;
+      --plum-dark:     #2D1535;
+      --muted:         #7A6C79;
+      --white:         #FFFFFF;
+      --border-light:  rgba(107,45,122,0.12);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream-light);
+      color: var(--plum-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.07s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.25s; }
+    .d4 { transition-delay: 0.34s; }
+    .d5 { transition-delay: 0.43s; }
+    .d6 { transition-delay: 0.52s; }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.75rem; }
+    .section-pad { padding: 5rem 0; }
+    .section-pad-sm { padding: 3.5rem 0; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 1rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 18px; height: 2px;
+      background: var(--sage-dark);
+      flex-shrink: 0;
+    }
+    .eyebrow.light { color: var(--sage); }
+    .eyebrow.light::before { background: var(--sage); }
+    .eyebrow.center { justify-content: center; }
+    .eyebrow.center::before { display: none; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      min-height: 50px;
+      transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+      text-transform: uppercase;
+    }
+    .btn-cream {
+      background: var(--cream);
+      color: var(--purple-deep);
+    }
+    .btn-cream:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+    .btn-purple {
+      background: var(--purple);
+      color: var(--white);
+    }
+    .btn-purple:hover {
+      background: var(--purple-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(107,45,122,0.35);
+    }
+    .btn-outline-cream {
+      background: transparent;
+      color: var(--cream);
+      border: 2px solid rgba(237,230,221,0.55);
+    }
+    .btn-outline-cream:hover {
+      background: rgba(237,230,221,0.12);
+      border-color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.2rem;
+      transition: background 0.35s, box-shadow 0.35s;
+    }
+    nav.scrolled {
+      background: var(--cream-light);
+      box-shadow: 0 2px 20px rgba(45,21,53,0.10);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+      transition: filter 0.3s;
+    }
+    nav.scrolled .nav-logo img {
+      filter: none;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.03em;
+      transition: color 0.35s;
+    }
+    nav.scrolled .nav-logo-text { color: var(--plum-dark); }
+
+    .nav-cta {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--sage);
+      color: var(--plum-dark);
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.2s, transform 0.18s;
+    }
+    .nav-cta:hover { background: var(--sage-dark); color: var(--white); transform: translateY(-1px); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.75rem 5rem;
+      background:
+        linear-gradient(160deg, rgba(40,13,49,0.87) 0%, rgba(61,24,72,0.76) 50%, rgba(40,13,49,0.90) 100%),
+        url('img/awardwinners.webp') center/cover no-repeat;
+      position: relative;
+    }
+    .hero-inner { max-width: 720px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage);
+      border: 1px solid rgba(143,168,118,0.45);
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      margin-bottom: 1.6rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      color: rgba(237,230,221,0.82);
+      line-height: 1.6;
+      margin-bottom: 2.4rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== OFFERINGS ===== */
+    .offerings { background: var(--cream-light); }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--plum-dark);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .section-header p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .offering-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 1.8rem 1.6rem;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .offering-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(107,45,122,0.12);
+    }
+    .offering-card.coming-soon { opacity: 0.72; }
+    .offering-icon {
+      width: 44px; height: 44px;
+      background: rgba(143,168,118,0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .offering-icon svg { width: 22px; height: 22px; }
+    .offering-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--plum-dark);
+      margin-bottom: 0.5rem;
+    }
+    .offering-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .tag-soon {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      background: rgba(107,45,122,0.1);
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      margin-top: 0.6rem;
+    }
+
+    /* ===== OUR WINES ===== */
+    .wines { background: var(--purple-deep); }
+    .wines .section-header h2 { color: var(--cream); }
+    .wines .section-header p { color: rgba(237,230,221,0.65); }
+
+    .wine-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1.4rem;
+    }
+    .wine-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(237,230,221,0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .wine-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+    .wine-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .wine-card-label {
+      padding: 0.9rem 1rem 1rem;
+      text-align: center;
+    }
+    .wine-card-label h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== STORY ===== */
+    .story { background: var(--cream); }
+    .story-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .story-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--plum-dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .story-inner p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .story-inner p:last-of-type { margin-bottom: 0; }
+    .story-divider {
+      width: 52px; height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--purple));
+      border-radius: 2px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: var(--purple);
+      padding: 2.2rem 1.75rem;
+    }
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(237,230,221,0.9);
+    }
+    .trust-item svg { flex-shrink: 0; }
+    .trust-dot {
+      width: 5px; height: 5px;
+      background: var(--sage);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: var(--purple-darkest);
+      text-align: center;
+    }
+    .cta-inner { max-width: 600px; margin: 0 auto; }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.18;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(237,230,221,0.65);
+      line-height: 1.65;
+      margin-bottom: 2.2rem;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .cta-insta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(237,230,221,0.7);
+      transition: color 0.2s;
+    }
+    .cta-insta:hover { color: var(--cream); }
+    .cta-insta svg { width: 18px; height: 18px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1E0929;
+      padding: 2.8rem 1.75rem 2.2rem;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(237,230,221,0.7);
+      margin-bottom: 0.4rem;
+    }
+    .footer-addr {
+      font-size: 0.82rem;
+      color: rgba(237,230,221,0.42);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(237,230,221,0.28);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 860px) {
+      .offerings-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1.2rem; }
+      .hero { padding: 5.5rem 1.2rem 4rem; }
+      .offerings-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .wine-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .trust-inner { gap: 1.2rem; }
+      .trust-dot { display: none; }
+      .section-pad { padding: 3.5rem 0; }
+      .btn { font-size: 0.82rem; padding: 0.78rem 1.6rem; min-height: 46px; }
+    }
+    @media (max-width: 420px) {
+      .offerings-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo">
+      <img src="img/logo.png" alt="Perrine Winery">
+      <span class="nav-logo-text">Perrine Winery</span>
+    </a>
+    <a href="mailto:holland@perrinewinery.com" class="nav-cta">Email Us</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge reveal">Award-Winning Family Winery</div>
+      <h1 class="reveal d1">Perrine Winery</h1>
+      <p class="hero-tagline reveal d2">Over 80 medals. A family legacy. Now pouring in the heart of Olde Towne Portsmouth.</p>
+      <div class="hero-cta-group reveal d3">
+        <a href="mailto:holland@perrinewinery.com" class="btn btn-cream">Email Us</a>
+        <a href="https://www.instagram.com/perrinewinery" target="_blank" rel="noopener" class="btn btn-outline-cream">@perrinewinery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERINGS -->
+  <section class="offerings section-pad" id="offerings">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow center">What We Offer</span>
+        <h2>Good wine. Good people. Good time.</h2>
+        <p>Perrine is more than a tasting room. It is a gathering spot for Hampton Roads, built for the community and open to everyone.</p>
+      </div>
+      <div class="offerings-grid">
+
+        <!-- Wine -->
+        <div class="offering-card reveal d1">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6B8456" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 2h8l1 8c0 3.3-2.7 6-6 6s-6-2.7-6-6L8 2z"/>
+              <line x1="12" y1="16" x2="12" y2="21"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+            </svg>
+          </div>
+          <h3>Wine</h3>
+          <p>Dry reds and whites, bubbly, frozen, dessert, fruit-infused, and mead. Available by the glass, bottle, or batch.</p>
+        </div>
+
+        <!-- Food -->
+        <div class="offering-card reveal d2">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6B8456" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+              <line x1="7" y1="2" x2="7" y2="11"/>
+              <path d="M21 15V2a5 5 0 0 0-5 5v6h3l-1 11h3l-1-11h1z"/>
+            </svg>
+          </div>
+          <h3>Food</h3>
+          <p>A small wine-pairing menu plus grab-and-go from local vendors and pop-ups. Outside food is always welcome.</p>
+        </div>
+
+        <!-- Cafe (coming soon) -->
+        <div class="offering-card coming-soon reveal d3">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6B8456" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+              <line x1="6" y1="1" x2="6" y2="4"/>
+              <line x1="10" y1="1" x2="10" y2="4"/>
+              <line x1="14" y1="1" x2="14" y2="4"/>
+            </svg>
+          </div>
+          <h3>Cafe</h3>
+          <p>A proper cafe experience is on its way, bringing even more reasons to linger.</p>
+          <span class="tag-soon">Coming Soon</span>
+        </div>
+
+        <!-- Event Space -->
+        <div class="offering-card reveal d4">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6B8456" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h3>Event Space</h3>
+          <p>The full venue is available for private rental. Birthdays, showers, corporate gatherings, whatever you are celebrating.</p>
+        </div>
+
+        <!-- Class & Meeting Space -->
+        <div class="offering-card reveal d5">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6B8456" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Classes &amp; Meetings</h3>
+          <p>Bookable space for wine classes, talks, and small private meetings. A great spot for a different kind of team gathering.</p>
+        </div>
+
+        <!-- Vendor Market -->
+        <div class="offering-card reveal d6">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6B8456" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+          <h3>Vendor Market</h3>
+          <p>Rotating space for local makers and small businesses. Vendors join on 3-month rotations, keeping the lineup fresh.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR WINES -->
+  <section class="wines section-pad" id="wines">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow light center">The Lineup</span>
+        <h2>Our Wines</h2>
+        <p style="color:rgba(237,230,221,0.6);">Made with heart since 2011. Every bottle has a story.</p>
+      </div>
+      <div class="wine-grid">
+        <div class="wine-card reveal d1">
+          <img src="img/chardonnay.webp" alt="Perrine Winery Chardonnay">
+          <div class="wine-card-label"><h4>Chardonnay</h4></div>
+        </div>
+        <div class="wine-card reveal d2">
+          <img src="img/hopstro.webp" alt="Perrine Winery Hopstro">
+          <div class="wine-card-label"><h4>Hopstro</h4></div>
+        </div>
+        <div class="wine-card reveal d3">
+          <img src="img/pinotgrigio.webp" alt="Perrine Winery Pinot Grigio">
+          <div class="wine-card-label"><h4>Pinot Grigio</h4></div>
+        </div>
+        <div class="wine-card reveal d4">
+          <img src="img/whitecranberry.webp" alt="Perrine Winery White Cranberry">
+          <div class="wine-card-label"><h4>White Cranberry</h4></div>
+        </div>
+        <div class="wine-card reveal d5">
+          <img src="img/zombiewalk.webp" alt="Perrine Winery Zombie Walk">
+          <div class="wine-card-label"><h4>Zombie Walk</h4></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story section-pad" id="story">
+    <div class="container">
+      <div class="story-inner reveal">
+        <span class="eyebrow center">Our Story</span>
+        <div class="story-divider"></div>
+        <h2>A Family Legacy in Every Bottle</h2>
+        <p>Perrine Winery started as a family dream in 2011, when Beth and Rick set out to make wines worth celebrating. More than a decade and over 80 national and international competition medals later, the wines speak for themselves.</p>
+        <p>Now their daughter Holland is carrying the legacy forward, bringing Perrine's award-winning wines to a new home in Olde Towne Portsmouth, where a historic neighborhood and a gathering community are the perfect backdrop for what this family built.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <span class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8FA876" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Making award-winning wine since 2011
+      </span>
+      <span class="trust-dot"></span>
+      <span class="trust-item">Women-owned and Disabled-owned</span>
+      <span class="trust-dot"></span>
+      <span class="trust-item">Now pouring in Olde Towne Portsmouth</span>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section section-pad">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <span class="eyebrow light center" style="margin-bottom:1.2rem; display:flex; justify-content:center;">Come Say Hello</span>
+        <h2>Stop in. Grab a glass. Stay a while.</h2>
+        <p>Perrine Winery is a place to gather, not just taste. Reach out to Holland directly or follow along on Instagram for what is pouring and what is coming next.</p>
+        <div class="cta-actions">
+          <a href="mailto:holland@perrinewinery.com" class="btn btn-cream">Email Holland</a>
+          <a href="https://www.instagram.com/perrinewinery" target="_blank" rel="noopener" class="cta-insta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            @perrinewinery
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">Perrine Winery</div>
+      <div class="footer-addr">620 High Street, Olde Towne, Portsmouth, VA 23704<br>Serving Hampton Roads</div>
+      <div class="footer-copy">&copy; 2025 Perrine Winery. All rights reserved.</div>
+      <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
+        SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
