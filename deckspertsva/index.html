@@ -102,7 +102,7 @@
       justify-content: space-between;
       width: 100%;
     }
-    .nav-logo { height: 48px; width: auto; }
+    .nav-logo { height: 56px; width: auto; }
     .nav-right { display: flex; align-items: center; gap: 1.25rem; }
     .nav-phone {
       font-family: var(--fb);
@@ -195,7 +195,14 @@
       position: absolute;
       inset: 0;
       background: url('img/pergolahero.webp') center 35% / cover no-repeat;
-      animation: heroZoom 20s ease-in-out infinite alternate;
+      background-attachment: fixed;
+    }
+    /* Disable fixed-bg on mobile/touch — iOS Safari mishandles it */
+    @media (max-width: 767px), (hover: none) {
+      .hero-bg {
+        background-attachment: scroll;
+        animation: heroZoom 20s ease-in-out infinite alternate;
+      }
     }
     @keyframes heroZoom {
       from { transform: scale(1.04); }
@@ -238,20 +245,21 @@
     }
     .hero-title {
       font-family: var(--fh);
-      font-size: clamp(3.4rem, 9vw, 7rem);
+      font-size: clamp(4rem, 13vw, 9.5rem);
       font-weight: 900;
-      line-height: 0.92;
+      line-height: 0.86;
       color: var(--white);
-      letter-spacing: -0.025em;
-      margin-bottom: 1.2rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.55rem;
     }
     .hero-tagline {
       font-family: var(--fb);
-      font-size: clamp(1rem, 2.8vw, 1.35rem);
-      font-weight: 300;
-      color: var(--tan-light);
-      letter-spacing: 0.08em;
-      margin-bottom: 2.75rem;
+      font-size: clamp(0.78rem, 1.6vw, 0.95rem);
+      font-weight: 500;
+      color: rgba(240,232,216,0.55);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
     }
     .hero-cta {
       display: inline-flex;
@@ -371,35 +379,44 @@
     }
 
     /* ==============================
-       GALLERY
+       GALLERY / CAROUSEL
     ============================== */
     .gallery-section {
       padding: 6rem 0;
       background: var(--bg);
     }
-    .gallery-masonry {
-      columns: 3;
-      column-gap: 0.8rem;
+    .carousel-wrap {
+      position: relative;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+      cursor: pointer;
     }
-    .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 0.8rem;
-      border-radius: 5px;
+    .carousel-track {
+      display: flex;
+      gap: 1rem;
+      will-change: transform;
+    }
+    .carousel-card {
+      flex-shrink: 0;
+      width: 320px;
+      border-radius: 8px;
       overflow: hidden;
       background: var(--bg-warm);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
     }
-    .gallery-item img {
+    .carousel-card:hover { transform: scale(1.04); }
+    .carousel-card img {
       width: 100%;
-      height: auto;
+      height: 320px;
+      object-fit: cover;
       display: block;
-      transition: transform 0.45s ease;
+      pointer-events: none;
     }
-    .gallery-item:hover img { transform: scale(1.04); }
-    @media (max-width: 720px) {
-      .gallery-masonry { columns: 2; }
-    }
-    @media (max-width: 440px) {
-      .gallery-masonry { columns: 1; }
+    @media (max-width: 540px) {
+      .carousel-card { width: 240px; }
+      .carousel-card img { height: 240px; }
     }
 
     /* ==============================
@@ -744,6 +761,211 @@
     .footer-built { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.24); }
     .footer-built a { color: rgba(255,255,255,0.24); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
     .footer-built a:hover { color: rgba(255,255,255,0.55); }
+
+    /* ==============================
+       HERO LOGO + HEADLINE
+    ============================== */
+    .hero-logo {
+      height: clamp(90px, 13vw, 160px);
+      width: auto;
+      max-width: 90%;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+    .hero-headline {
+      font-family: var(--fb);
+      font-size: clamp(1rem, 2.3vw, 1.4rem);
+      font-weight: 500;
+      color: var(--tan-light);
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ==============================
+       LIGHTBOX
+    ============================== */
+    .lb-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-overlay[hidden] { display: none; }
+    .lb-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(14,10,6,0.93);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .lb-img-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 88vw;
+      max-height: 84vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+    .lb-img-wrap img {
+      max-width: 88vw;
+      max-height: 84vh;
+      width: auto;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.75);
+      display: block;
+    }
+    .lb-close {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 2;
+      background: rgba(22,18,14,0.85);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-size: 1.5rem;
+      line-height: 1;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(194,125,46,0.85); }
+    .lb-prev, .lb-next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      background: rgba(22,18,14,0.72);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-size: 2.2rem;
+      line-height: 1;
+      width: 50px;
+      height: 68px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-prev { left: 1rem; }
+    .lb-next { right: 1rem; }
+    .lb-prev:hover, .lb-next:hover { background: rgba(194,125,46,0.75); }
+    @media (max-width: 540px) {
+      .lb-prev { left: 0.25rem; width: 36px; height: 52px; font-size: 1.6rem; }
+      .lb-next { right: 0.25rem; width: 36px; height: 52px; font-size: 1.6rem; }
+    }
+
+    /* ==============================
+       SERVICE MODALS
+    ============================== */
+    .service-card { cursor: pointer; }
+    .svc-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-top: 0.85rem;
+      transition: gap 0.2s;
+    }
+    .service-card:hover .svc-read-more { gap: 0.6rem; }
+    .svc-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .svc-overlay[hidden] { display: none; }
+    .svc-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(14,10,6,0.88);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .svc-panel {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2.5rem 2.25rem 2.25rem;
+      max-width: 560px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+    .svc-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 1.2rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .svc-close:hover { color: var(--cream); border-color: var(--tan); }
+    .svc-modal-title {
+      font-family: var(--fh);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      padding-right: 2.5rem;
+    }
+    .svc-modal-body {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--tan-light);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+    .svc-modal-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--amber);
+      color: var(--white);
+      font-family: var(--fb);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.78rem 1.6rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .svc-modal-cta:hover { background: var(--amber-hot); }
   </style>
 </head>
 <body>
@@ -779,7 +1001,10 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Hampton Roads &amp; Greater Richmond, VA</div>
+      <!-- TODO: swap for higher-res/vector logo from client if raster appears soft at display size -->
+      <img src="img/logo.png" alt="Decksperts" class="hero-logo" onerror="this.style.display='none'">
       <h1 class="hero-title">Decksperts</h1>
+      <p class="hero-headline">Custom Decks, Pergolas &amp; Outdoor Living, Built to Last.</p>
       <p class="hero-tagline">Team You Trust, Results You Love</p>
       <a href="tel:7577691581" class="hero-cta" aria-label="Call Decksperts at 757-769-1581">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -804,68 +1029,76 @@
       </div>
       <div class="services-grid">
 
-        <div class="service-card reveal d1">
+        <div class="service-card reveal d1" data-modal="pergolas" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path d="M2 9l10-6 10 6M4 9v11h16V9"/><path d="M9 22V14h6v8"/>
           </svg>
           <div class="svc-name">Pergolas &amp; Shade Structures</div>
           <p class="svc-desc">Custom pergolas designed to complement your home and yard. Freestanding or attached, wood or aluminum. Built to stand up to Hampton Roads weather.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
-        <div class="service-card reveal d2">
+        <div class="service-card reveal d2" data-modal="decks" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <rect x="2" y="14" width="20" height="7" rx="1"/><path d="M4 14V8a1 1 0 011-1h14a1 1 0 011 1v6"/>
           </svg>
           <div class="svc-name">Custom Decks</div>
           <p class="svc-desc">Ground-level to multi-story deck installations. Pressure-treated wood, composite, PVC, or aluminum. Designed for your space and budget.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
-        <div class="service-card reveal d3">
+        <div class="service-card reveal d3" data-modal="patios" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path d="M3 21h18M6 21V9l6-6 6 6v12"/>
           </svg>
           <div class="svc-name">Patios</div>
           <p class="svc-desc">Concrete, stamped concrete, and paver patios that extend your living space outdoors. Clean installs with lasting results.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
-        <div class="service-card reveal d4">
+        <div class="service-card reveal d4" data-modal="kitchens" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path d="M3 12h18M3 6h18M3 18h18"/><rect x="5" y="3" width="14" height="18" rx="1"/>
           </svg>
           <div class="svc-name">Outdoor Kitchens</div>
           <p class="svc-desc">Built-in grills, counters, and cabinets for year-round outdoor entertaining. Designed to handle sun, salt air, and heavy use.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
-        <div class="service-card reveal d1">
+        <div class="service-card reveal d1" data-modal="fences" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <line x1="3" y1="3" x2="3" y2="21"/><line x1="21" y1="3" x2="21" y2="21"/><line x1="3" y1="3" x2="21" y2="3"/><line x1="3" y1="21" x2="21" y2="21"/>
           </svg>
           <div class="svc-name">Fences &amp; Privacy Panels</div>
           <p class="svc-desc">Wood, composite, and aluminum privacy fencing and screening. Installed to code, built for the long haul.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
-        <div class="service-card reveal d2">
+        <div class="service-card reveal d2" data-modal="lighting" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
           </svg>
           <div class="svc-name">Accent Lighting</div>
           <p class="svc-desc">Low-voltage deck and landscape lighting that adds character, safety, and year-round usability to your outdoor space.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
-        <div class="service-card reveal d3">
+        <div class="service-card reveal d3" data-modal="pavers" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <rect x="2" y="6" width="20" height="16" rx="1"/><path d="M6 6V4a2 2 0 012-2h8a2 2 0 012 2v2"/>
           </svg>
           <div class="svc-name">Stamped Concrete &amp; Pavers</div>
           <p class="svc-desc">Decorative concrete and natural paver surfaces for driveways, walkways, and patio areas. Low maintenance and built to last.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
-        <div class="service-card reveal d4">
+        <div class="service-card reveal d4" data-modal="outdoor-living" role="button" tabindex="0">
           <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
           </svg>
           <div class="svc-name">Outdoor Living Spaces</div>
           <p class="svc-desc">Full outdoor room design and build. Combine a deck, pergola, kitchen, and lighting into a complete usable space.</p>
+          <span class="svc-read-more">Learn more <span aria-hidden="true">&#8250;</span></span>
         </div>
 
       </div>
@@ -880,30 +1113,26 @@
         <h2 class="section-title reveal d1">Completed Installations</h2>
         <p class="section-sub reveal d2">Every photo below is a real Decksperts project built in Hampton Roads.</p>
       </div>
-      <div class="gallery-masonry reveal d1">
-        <div class="gallery-item">
-          <img src="img/pergolahero.webp" alt="Custom white pergola attached to tan house, Hampton Roads VA" loading="lazy">
-        </div>
-        <div class="gallery-item">
-          <img src="img/3storydeck.webp" alt="Multi-story deck build, Hampton Roads VA" loading="lazy">
-        </div>
-        <div class="gallery-item">
-          <img src="img/nightdeck.webp" alt="Deck with accent lighting at night, Hampton Roads VA" loading="lazy">
-        </div>
-        <div class="gallery-item">
-          <img src="img/pergola.webp" alt="Custom pergola installation, Hampton Roads VA" loading="lazy">
-        </div>
-        <div class="gallery-item">
-          <img src="img/brickhousepatio.webp" alt="Patio installation alongside brick home, Hampton Roads VA" loading="lazy">
-        </div>
-        <div class="gallery-item">
-          <img src="img/pooldeck.webp" alt="Pool deck installation, Hampton Roads VA" loading="lazy">
-        </div>
-        <div class="gallery-item">
-          <img src="img/deckbench.webp" alt="Deck with built-in bench seating, Hampton Roads VA" loading="lazy">
-        </div>
-        <div class="gallery-item">
-          <img src="img/raiseddeck.webp" alt="Raised deck installation, Hampton Roads VA" loading="lazy">
+      <div class="carousel-wrap reveal d1" id="carousel-wrap">
+        <div class="carousel-track" id="carousel-track">
+          <!-- first set -->
+          <div class="carousel-card" data-idx="0"><img src="img/pergolahero.webp" alt="Custom white pergola, Hampton Roads VA" loading="lazy"></div>
+          <div class="carousel-card" data-idx="1"><img src="img/3storydeck.webp"  alt="Multi-story deck, Hampton Roads VA" loading="lazy"></div>
+          <div class="carousel-card" data-idx="2"><img src="img/nightdeck.webp"   alt="Deck with accent lighting at night, Hampton Roads VA" loading="lazy"></div>
+          <div class="carousel-card" data-idx="3"><img src="img/pergola.webp"     alt="Custom pergola installation, Hampton Roads VA" loading="lazy"></div>
+          <div class="carousel-card" data-idx="4"><img src="img/brickhousepatio.webp" alt="Patio alongside brick home, Hampton Roads VA" loading="lazy"></div>
+          <div class="carousel-card" data-idx="5"><img src="img/pooldeck.webp"    alt="Pool deck, Hampton Roads VA" loading="lazy"></div>
+          <div class="carousel-card" data-idx="6"><img src="img/deckbench.webp"   alt="Deck with built-in bench, Hampton Roads VA" loading="lazy"></div>
+          <div class="carousel-card" data-idx="7"><img src="img/raiseddeck.webp"  alt="Raised deck, Hampton Roads VA" loading="lazy"></div>
+          <!-- duplicate set for seamless loop -->
+          <div class="carousel-card" data-idx="0" aria-hidden="true"><img src="img/pergolahero.webp" alt="" loading="lazy" tabindex="-1"></div>
+          <div class="carousel-card" data-idx="1" aria-hidden="true"><img src="img/3storydeck.webp"  alt="" loading="lazy" tabindex="-1"></div>
+          <div class="carousel-card" data-idx="2" aria-hidden="true"><img src="img/nightdeck.webp"   alt="" loading="lazy" tabindex="-1"></div>
+          <div class="carousel-card" data-idx="3" aria-hidden="true"><img src="img/pergola.webp"     alt="" loading="lazy" tabindex="-1"></div>
+          <div class="carousel-card" data-idx="4" aria-hidden="true"><img src="img/brickhousepatio.webp" alt="" loading="lazy" tabindex="-1"></div>
+          <div class="carousel-card" data-idx="5" aria-hidden="true"><img src="img/pooldeck.webp"    alt="" loading="lazy" tabindex="-1"></div>
+          <div class="carousel-card" data-idx="6" aria-hidden="true"><img src="img/deckbench.webp"   alt="" loading="lazy" tabindex="-1"></div>
+          <div class="carousel-card" data-idx="7" aria-hidden="true"><img src="img/raiseddeck.webp"  alt="" loading="lazy" tabindex="-1"></div>
         </div>
       </div>
     </div>
@@ -1056,6 +1285,33 @@
     </div>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div id="lb" class="lb-overlay" role="dialog" aria-modal="true" aria-label="Project photo lightbox" hidden>
+    <div class="lb-backdrop" id="lb-backdrop"></div>
+    <button class="lb-close" id="lb-close" aria-label="Close lightbox">&times;</button>
+    <button class="lb-prev" id="lb-prev" aria-label="Previous photo">&#8249;</button>
+    <div class="lb-img-wrap" id="lb-img-wrap">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <button class="lb-next" id="lb-next" aria-label="Next photo">&#8250;</button>
+  </div>
+
+  <!-- SERVICE MODAL -->
+  <div id="svc-modal" class="svc-overlay" role="dialog" aria-modal="true" aria-label="Service details" hidden>
+    <div class="svc-backdrop" id="svc-backdrop"></div>
+    <div class="svc-panel">
+      <button class="svc-close" id="svc-close" aria-label="Close">&times;</button>
+      <h3 class="svc-modal-title" id="svc-modal-title"></h3>
+      <p class="svc-modal-body" id="svc-modal-body"></p>
+      <a href="tel:7577691581" class="svc-modal-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/>
+        </svg>
+        Call for a Free Estimate
+      </a>
+    </div>
+  </div>
+
   <script>
     // Nav scroll effect
     const mainNav = document.getElementById('main-nav');
@@ -1078,12 +1334,178 @@
     window.addEventListener('scroll', updateActive, { passive: true });
 
     // Scroll reveal
-    const io = new IntersectionObserver(entries => {
+    const revealIO = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+    // ============================================================
+    // CAROUSEL
+    // ============================================================
+    const track = document.getElementById('carousel-track');
+    const wrap  = document.getElementById('carousel-wrap');
+    const ksStyle = document.createElement('style');
+    document.head.appendChild(ksStyle);
+    let carouselAnimating = true;
+
+    function initCarousel() {
+      const halfW = track.scrollWidth / 2;
+      ksStyle.textContent = '@keyframes carouselScroll{from{transform:translateX(0)}to{transform:translateX(-' + halfW + 'px)}}';
+      track.style.animation = 'carouselScroll 28s linear infinite';
+    }
+
+    function pauseCarousel() { track.style.animationPlayState = 'paused'; carouselAnimating = false; }
+    function resumeCarousel() { track.style.animationPlayState = 'running'; carouselAnimating = true; }
+
+    // Pause on hover — only the animation; page scrolling is unaffected
+    wrap.addEventListener('mouseenter', pauseCarousel);
+    wrap.addEventListener('mouseleave', () => { if (!lbOpen) resumeCarousel(); });
+
+    window.addEventListener('load', initCarousel);
+
+    // ============================================================
+    // LIGHTBOX
+    // ============================================================
+    const lbEl      = document.getElementById('lb');
+    const lbImg     = document.getElementById('lb-img');
+    const lbImgWrap = document.getElementById('lb-img-wrap');
+    const lbClose   = document.getElementById('lb-close');
+    const lbPrevBtn = document.getElementById('lb-prev');
+    const lbNextBtn = document.getElementById('lb-next');
+    const lbBack    = document.getElementById('lb-backdrop');
+    let lbOpen = false;
+    let lbIdx  = 0;
+
+    const galleryImages = [
+      { src: 'img/pergolahero.webp', alt: 'Custom white pergola, Hampton Roads VA' },
+      { src: 'img/3storydeck.webp',  alt: 'Multi-story deck, Hampton Roads VA' },
+      { src: 'img/nightdeck.webp',   alt: 'Deck with accent lighting at night, Hampton Roads VA' },
+      { src: 'img/pergola.webp',     alt: 'Custom pergola installation, Hampton Roads VA' },
+      { src: 'img/brickhousepatio.webp', alt: 'Patio alongside brick home, Hampton Roads VA' },
+      { src: 'img/pooldeck.webp',    alt: 'Pool deck, Hampton Roads VA' },
+      { src: 'img/deckbench.webp',   alt: 'Deck with built-in bench, Hampton Roads VA' },
+      { src: 'img/raiseddeck.webp',  alt: 'Raised deck, Hampton Roads VA' }
+    ];
+
+    function lbShow(idx) {
+      lbIdx = ((idx % galleryImages.length) + galleryImages.length) % galleryImages.length;
+      lbImg.src = galleryImages[lbIdx].src;
+      lbImg.alt = galleryImages[lbIdx].alt;
+      lbEl.hidden = false;
+      lbOpen = true;
+      pauseCarousel();
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+
+    function lbHide() {
+      lbEl.hidden = true;
+      lbOpen = false;
+      resumeCarousel();
+      document.body.style.overflow = '';
+    }
+
+    lbClose.addEventListener('click', lbHide);
+    lbBack.addEventListener('click', lbHide);
+    lbPrevBtn.addEventListener('click', () => lbShow(lbIdx - 1));
+    lbNextBtn.addEventListener('click', () => lbShow(lbIdx + 1));
+
+    document.addEventListener('keydown', e => {
+      if (!lbOpen) return;
+      if (e.key === 'Escape')     lbHide();
+      if (e.key === 'ArrowLeft')  lbShow(lbIdx - 1);
+      if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+    });
+
+    // Touch swipe in lightbox
+    let lbTouchX = 0;
+    lbImgWrap.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; }, { passive: true });
+    lbImgWrap.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - lbTouchX;
+      if (Math.abs(dx) > 50) { dx < 0 ? lbShow(lbIdx + 1) : lbShow(lbIdx - 1); }
+    }, { passive: true });
+
+    // Carousel card click → open lightbox
+    wrap.addEventListener('click', e => {
+      const card = e.target.closest('.carousel-card');
+      if (!card) return;
+      lbShow(parseInt(card.dataset.idx, 10));
+    });
+
+    // ============================================================
+    // SERVICE MODALS
+    // ============================================================
+    const svcModal = document.getElementById('svc-modal');
+    const svcTitle = document.getElementById('svc-modal-title');
+    const svcBody  = document.getElementById('svc-modal-body');
+    const svcClose = document.getElementById('svc-close');
+    const svcBack  = document.getElementById('svc-backdrop');
+
+    const svcData = {
+      'decks': {
+        title: 'Custom Decks',
+        body:  'Your deck is where the season actually happens. We build custom decks in wood, composite, and aluminum, sized and shaped to your yard and how you use it. Clean lines, solid framing, and a finish that holds up to Hampton Roads summers and salt air. Built to be the part of the house everyone ends up on.'
+      },
+      'pergolas': {
+        title: 'Pergolas & Shade Structures',
+        body:  "Pergolas are where we love to show off. A well-built pergola turns a plain patio or deck into a room without walls, shade when you want it, open sky when you don't. We build them to last and to look like they were always meant to be there, with the proportions and detail that separate a real custom build from a kit. If you want one feature that changes how your whole backyard feels, this is it."
+      },
+      'patios': {
+        title: 'Patios',
+        body:  'A good patio is the foundation of the whole outdoor space. We build and finish patios that connect cleanly to your home and your yard, ready for furniture, a grill, a fire feature, or all of it. Durable materials, level work, and an eye for how the space flows.'
+      },
+      'outdoor-living': {
+        title: 'Outdoor Living Spaces',
+        body:  'Decks, pergolas, seating, lighting, the goal is one space that works as an extension of your home, not a collection of separate projects. We plan outdoor living areas so the pieces fit together and the whole thing feels intentional from the first step outside.'
+      },
+      'fences': {
+        title: 'Fences & Privacy Panels',
+        body:  'Privacy without making your yard feel closed in. We build fences and privacy panels that do their job and still look like part of the design, matched to your deck or outdoor space so nothing feels bolted on.'
+      },
+      'lighting': {
+        title: 'Accent Lighting',
+        body:  'The right lighting is what makes an outdoor space usable after dark and beautiful to look at. We integrate accent lighting into decks, steps, pergolas, and railings, warm, subtle, and built in from the start rather than added as an afterthought.'
+      },
+      'pavers': {
+        title: 'Stamped Concrete & Pavers',
+        body:  'Stamped concrete and pavers give you the look you want underfoot with the durability to handle real use. We install patios, walkways, and surrounds with clean patterns and proper base work, so it stays level and looks right for years.'
+      },
+      'kitchens': {
+        title: 'Outdoor Kitchens',
+        body:  'An outdoor kitchen turns the backyard into the place everyone gathers. We build the structure, surfaces, and surrounds to fit your grill and your space, designed to tie into the rest of your outdoor living area so it all feels like one build.'
+      }
+    };
+
+    function svcShow(key) {
+      const d = svcData[key];
+      if (!d) return;
+      svcTitle.textContent = d.title;
+      svcBody.textContent  = d.body;
+      svcModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      svcClose.focus();
+    }
+
+    function svcHide() {
+      svcModal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    svcClose.addEventListener('click', svcHide);
+    svcBack.addEventListener('click', svcHide);
+
+    document.querySelectorAll('.service-card[data-modal]').forEach(card => {
+      card.addEventListener('click', () => svcShow(card.dataset.modal));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); svcShow(card.dataset.modal); }
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !svcModal.hidden && lbEl.hidden) svcHide();
+    });
   </script>
 
 </body>
