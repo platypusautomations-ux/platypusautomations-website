@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decksperts | Custom Decks, Pergolas &amp; Outdoor Living | Hampton Roads, VA</title>
+  <meta name="description" content="Decksperts builds custom decks, pergolas, patios, and outdoor living spaces across Hampton Roads and Greater Richmond. 16 years of experience. Call (757) 769-1581.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* === Reset === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* === Brand Variables === */
+    :root {
+      --bg:          #16120e;
+      --bg-mid:      #1f1812;
+      --bg-warm:     #2a2018;
+      --tan:         #c4a87a;
+      --tan-light:   #dfc9a4;
+      --amber:       #c27d2e;
+      --amber-hot:   #d48d1f;
+      --cream:       #f0e8d8;
+      --white:       #ffffff;
+      --muted:       #8a7a68;
+      --border:      rgba(196,168,122,0.18);
+      --fh: 'Montserrat', sans-serif;
+      --fb: 'Raleway', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 114px; }
+
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 1.75rem;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--fb);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--tan);
+      flex-shrink: 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.17s; }
+    .d3 { transition-delay: 0.26s; }
+    .d4 { transition-delay: 0.35s; }
+
+    /* ==============================
+       MAIN NAV
+    ============================== */
+    #main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    #main-nav.scrolled {
+      background: rgba(22,18,14,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo { height: 48px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-phone {
+      font-family: var(--fb);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .nav-phone:hover { opacity: 1; }
+    .btn-nav {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: var(--amber);
+      color: var(--white);
+      font-family: var(--fb);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-nav:hover { background: var(--amber-hot); transform: translateY(-1px); }
+    @media (max-width: 540px) {
+      .nav-phone { display: none; }
+      .nav-logo { height: 38px; }
+    }
+
+    /* ==============================
+       SKIP-TO NAV
+    ============================== */
+    #skip-nav {
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      z-index: 90;
+      height: 44px;
+      background: rgba(22,18,14,0.93);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    #skip-nav::-webkit-scrollbar { display: none; }
+    .skip-nav-inner {
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      white-space: nowrap;
+    }
+    .skip-link {
+      font-family: var(--fb);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(240,232,216,0.55);
+      padding: 0 1rem;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .skip-link:hover, .skip-link.active {
+      color: var(--tan);
+      border-bottom-color: var(--tan);
+    }
+
+    /* ==============================
+       HERO
+    ============================== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 114px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('img/pergolahero.webp') center 35% / cover no-repeat;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.11); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        165deg,
+        rgba(22,18,14,0.38) 0%,
+        rgba(22,18,14,0.55) 50%,
+        rgba(22,18,14,0.88) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 860px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--fb);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--tan);
+    }
+    .hero-title {
+      font-family: var(--fh);
+      font-size: clamp(3.4rem, 9vw, 7rem);
+      font-weight: 900;
+      line-height: 0.92;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      margin-bottom: 1.2rem;
+    }
+    .hero-tagline {
+      font-family: var(--fb);
+      font-size: clamp(1rem, 2.8vw, 1.35rem);
+      font-weight: 300;
+      color: var(--tan-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 2.75rem;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--amber);
+      color: var(--white);
+      font-family: var(--fb);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 1rem 2.1rem;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--amber-hot); transform: translateY(-2px); }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      opacity: 0.38;
+    }
+    .hero-scroll-hint span {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+    .scroll-mouse {
+      width: 20px;
+      height: 30px;
+      border: 1.5px solid currentColor;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      padding-top: 5px;
+    }
+    .scroll-mouse::after {
+      content: '';
+      width: 3px;
+      height: 7px;
+      background: currentColor;
+      border-radius: 2px;
+      animation: scrollBob 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollBob {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(5px); opacity: 0.25; }
+    }
+
+    /* ==============================
+       SERVICES
+    ============================== */
+    .services-section {
+      padding: 6rem 0;
+      background: var(--bg-mid);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-title {
+      font-family: var(--fh);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+    .section-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 0.85rem;
+      line-height: 1.65;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .service-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .service-card:hover { border-color: rgba(196,168,122,0.55); transform: translateY(-3px); }
+    .svc-icon {
+      width: 36px;
+      height: 36px;
+      color: var(--tan);
+      margin-bottom: 1rem;
+    }
+    .svc-name {
+      font-family: var(--fh);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.45rem;
+    }
+    .svc-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ==============================
+       GALLERY
+    ============================== */
+    .gallery-section {
+      padding: 6rem 0;
+      background: var(--bg);
+    }
+    .gallery-masonry {
+      columns: 3;
+      column-gap: 0.8rem;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 0.8rem;
+      border-radius: 5px;
+      overflow: hidden;
+      background: var(--bg-warm);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    @media (max-width: 720px) {
+      .gallery-masonry { columns: 2; }
+    }
+    @media (max-width: 440px) {
+      .gallery-masonry { columns: 1; }
+    }
+
+    /* ==============================
+       ABOUT
+    ============================== */
+    .about-section {
+      padding: 6rem 0;
+      background: var(--bg-warm);
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid rgba(196,168,122,0.3);
+      border-radius: 6px;
+      pointer-events: none;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      display: block;
+    }
+    .about-text .section-label { display: flex; }
+    .about-text .section-title { text-align: left; }
+    .about-body {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--tan-light);
+      line-height: 1.78;
+      margin-top: 1.25rem;
+    }
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.25rem;
+      padding-top: 2.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .about-stat-num {
+      font-family: var(--fh);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--tan);
+      line-height: 1;
+    }
+    .about-stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+    @media (max-width: 780px) {
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-img-wrap img { height: 280px; }
+    }
+
+    /* ==============================
+       TRUST BAR
+    ============================== */
+    .trust-bar {
+      background: var(--amber);
+      padding: 1.1rem 0;
+    }
+    .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.25rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--fb);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .trust-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+    }
+    @media (max-width: 500px) {
+      .trust-dot { display: none; }
+      .trust-bar-inner { gap: 0.65rem; }
+    }
+
+    /* ==============================
+       SERVICE AREA
+    ============================== */
+    .area-section {
+      padding: 5.5rem 0;
+      background: var(--bg-mid);
+    }
+    .area-inner {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .area-statement {
+      font-family: var(--fh);
+      font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.75rem;
+    }
+    .area-cities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 0;
+      margin-bottom: 1.5rem;
+    }
+    .area-city {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--tan-light);
+      padding: 0 0.8rem;
+      border-right: 1px solid rgba(196,168,122,0.3);
+      line-height: 1.4;
+    }
+    .area-city:last-child { border-right: none; }
+    .area-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .area-note a { color: var(--tan); transition: color 0.2s; }
+    .area-note a:hover { color: var(--white); }
+
+    /* ==============================
+       FREE QUOTE
+    ============================== */
+    .quote-section {
+      padding: 6rem 0;
+      background: var(--bg-warm);
+    }
+    .quote-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+    .quote-left .section-label { display: flex; }
+    .quote-left .section-title { text-align: left; }
+    .quote-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-top: 0.85rem;
+    }
+    .contact-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--tan-light);
+    }
+    .contact-item svg { color: var(--tan); flex-shrink: 0; }
+    .contact-item a { color: inherit; transition: color 0.2s; }
+    .contact-item a:hover { color: var(--white); }
+    .hours-block {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .hours-label {
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .hours-block p {
+      font-size: 0.9rem;
+      color: var(--tan-light);
+      line-height: 1.75;
+    }
+    .quote-form {
+      background: var(--bg-mid);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.25rem 2rem;
+    }
+    .form-title {
+      font-family: var(--fh);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+      margin-bottom: 1rem;
+    }
+    .form-group:last-of-type { margin-bottom: 0; }
+    .form-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.72rem 0.95rem;
+      font-family: var(--fb);
+      font-size: 0.9rem;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(138,122,104,0.7); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--tan); }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--amber);
+      color: var(--white);
+      font-family: var(--fb);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--amber-hot); }
+    @media (max-width: 780px) {
+      .quote-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row-2 { grid-template-columns: 1fr; }
+    }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0 2rem;
+    }
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { height: 46px; width: auto; }
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.28rem;
+    }
+    .footer-phone {
+      font-family: var(--fh);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--tan);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .footer-phone:hover { color: var(--white); }
+    .footer-loc { font-size: 0.82rem; color: var(--muted); }
+    .footer-mid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.82rem; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--tan); }
+    .footer-hours { font-size: 0.82rem; color: var(--muted); }
+    .footer-bottom {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-built { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.24); }
+    .footer-built a { color: rgba(255,255,255,0.24); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .footer-built a:hover { color: rgba(255,255,255,0.55); }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN NAV -->
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" aria-label="Decksperts home">
+          <img src="img/logo.png" alt="Decksperts" class="nav-logo" onerror="this.style.display='none'">
+        </a>
+        <div class="nav-right">
+          <a href="tel:7577691581" class="nav-phone">(757) 769-1581</a>
+          <a href="#free-quote" class="btn-nav">Get a Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SKIP-TO NAV -->
+  <div id="skip-nav" role="navigation" aria-label="Jump to section">
+    <div class="skip-nav-inner">
+      <a href="#gallery" class="skip-link">Gallery</a>
+      <a href="#about" class="skip-link">About</a>
+      <a href="#service-area" class="skip-link">Service Area</a>
+      <a href="#free-quote" class="skip-link">Free Quote</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" aria-label="Decksperts hero">
+    <div class="hero-bg" role="img" aria-label="Custom white pergola over deck, Hampton Roads VA"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Hampton Roads &amp; Greater Richmond, VA</div>
+      <h1 class="hero-title">Decksperts</h1>
+      <p class="hero-tagline">Team You Trust, Results You Love</p>
+      <a href="tel:7577691581" class="hero-cta" aria-label="Call Decksperts at 757-769-1581">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/>
+        </svg>
+        Call (757) 769-1581
+      </a>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-mouse"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">What We Build</div>
+        <h2 class="section-title reveal d1">Custom Outdoor Living, Built to Last</h2>
+        <p class="section-sub reveal d2">Pergolas, decks, patios, outdoor kitchens, and more. Wood, composite, plastic, and aluminum. Professional installation across Hampton Roads.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal d1">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M2 9l10-6 10 6M4 9v11h16V9"/><path d="M9 22V14h6v8"/>
+          </svg>
+          <div class="svc-name">Pergolas &amp; Shade Structures</div>
+          <p class="svc-desc">Custom pergolas designed to complement your home and yard. Freestanding or attached, wood or aluminum. Built to stand up to Hampton Roads weather.</p>
+        </div>
+
+        <div class="service-card reveal d2">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="14" width="20" height="7" rx="1"/><path d="M4 14V8a1 1 0 011-1h14a1 1 0 011 1v6"/>
+          </svg>
+          <div class="svc-name">Custom Decks</div>
+          <p class="svc-desc">Ground-level to multi-story deck installations. Pressure-treated wood, composite, PVC, or aluminum. Designed for your space and budget.</p>
+        </div>
+
+        <div class="service-card reveal d3">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 21h18M6 21V9l6-6 6 6v12"/>
+          </svg>
+          <div class="svc-name">Patios</div>
+          <p class="svc-desc">Concrete, stamped concrete, and paver patios that extend your living space outdoors. Clean installs with lasting results.</p>
+        </div>
+
+        <div class="service-card reveal d4">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 12h18M3 6h18M3 18h18"/><rect x="5" y="3" width="14" height="18" rx="1"/>
+          </svg>
+          <div class="svc-name">Outdoor Kitchens</div>
+          <p class="svc-desc">Built-in grills, counters, and cabinets for year-round outdoor entertaining. Designed to handle sun, salt air, and heavy use.</p>
+        </div>
+
+        <div class="service-card reveal d1">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <line x1="3" y1="3" x2="3" y2="21"/><line x1="21" y1="3" x2="21" y2="21"/><line x1="3" y1="3" x2="21" y2="3"/><line x1="3" y1="21" x2="21" y2="21"/>
+          </svg>
+          <div class="svc-name">Fences &amp; Privacy Panels</div>
+          <p class="svc-desc">Wood, composite, and aluminum privacy fencing and screening. Installed to code, built for the long haul.</p>
+        </div>
+
+        <div class="service-card reveal d2">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <div class="svc-name">Accent Lighting</div>
+          <p class="svc-desc">Low-voltage deck and landscape lighting that adds character, safety, and year-round usability to your outdoor space.</p>
+        </div>
+
+        <div class="service-card reveal d3">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="6" width="20" height="16" rx="1"/><path d="M6 6V4a2 2 0 012-2h8a2 2 0 012 2v2"/>
+          </svg>
+          <div class="svc-name">Stamped Concrete &amp; Pavers</div>
+          <p class="svc-desc">Decorative concrete and natural paver surfaces for driveways, walkways, and patio areas. Low maintenance and built to last.</p>
+        </div>
+
+        <div class="service-card reveal d4">
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          </svg>
+          <div class="svc-name">Outdoor Living Spaces</div>
+          <p class="svc-desc">Full outdoor room design and build. Combine a deck, pergola, kitchen, and lighting into a complete usable space.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">Our Work</div>
+        <h2 class="section-title reveal d1">Completed Installations</h2>
+        <p class="section-sub reveal d2">Every photo below is a real Decksperts project built in Hampton Roads.</p>
+      </div>
+      <div class="gallery-masonry reveal d1">
+        <div class="gallery-item">
+          <img src="img/pergolahero.webp" alt="Custom white pergola attached to tan house, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="img/3storydeck.webp" alt="Multi-story deck build, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="img/nightdeck.webp" alt="Deck with accent lighting at night, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="img/pergola.webp" alt="Custom pergola installation, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="img/brickhousepatio.webp" alt="Patio installation alongside brick home, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="img/pooldeck.webp" alt="Pool deck installation, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="img/deckbench.webp" alt="Deck with built-in bench seating, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="img/raiseddeck.webp" alt="Raised deck installation, Hampton Roads VA" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img-wrap reveal">
+          <img src="img/pergolahero.webp" alt="Decksperts pergola build, Hampton Roads VA" loading="lazy">
+        </div>
+        <div class="about-text">
+          <div class="section-label reveal">About Decksperts</div>
+          <h2 class="section-title reveal d1">16 Years of Outdoor Craftsmanship</h2>
+          <p class="about-body reveal d2">Matthew Hargis started Decksperts to do one thing right: build outdoor living spaces that actually last. With 16 years of hands-on experience, Decksperts specializes in custom decks, pergolas, patios, and outdoor living installations throughout Hampton Roads. Every project is built with wood, composite, plastic, or aluminum and designed to fit your yard and how you use it.</p>
+          <div class="about-stats reveal d3">
+            <div>
+              <div class="about-stat-num">16</div>
+              <div class="about-stat-label">Years of Experience</div>
+            </div>
+            <div>
+              <div class="about-stat-num">2</div>
+              <div class="about-stat-label">Regions Served</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar" role="complementary" aria-label="Key facts about Decksperts">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          16 Years of Experience
+        </div>
+        <div class="trust-dot" aria-hidden="true"></div>
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Serving Hampton Roads and Greater Richmond
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE AREA -->
+  <section class="area-section" id="service-area">
+    <div class="container">
+      <div class="area-inner">
+        <div class="section-label reveal" style="justify-content:center;">Where We Work</div>
+        <p class="area-statement reveal d1">Serving Hampton Roads and Greater Richmond, VA</p>
+        <div class="area-cities reveal d2">
+          <span class="area-city">Norfolk</span>
+          <span class="area-city">Virginia Beach</span>
+          <span class="area-city">Chesapeake</span>
+          <span class="area-city">Suffolk</span>
+          <span class="area-city">Portsmouth</span>
+          <span class="area-city">Hampton</span>
+          <span class="area-city">Newport News</span>
+          <span class="area-city">Williamsburg</span>
+          <span class="area-city">Richmond</span>
+        </div>
+        <p class="area-note reveal d3">Not sure if we cover your area? Call <a href="tel:7577691581">(757) 769-1581</a> and we'll let you know.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE QUOTE -->
+  <section class="quote-section" id="free-quote">
+    <div class="container">
+      <div class="quote-inner">
+        <div class="quote-left">
+          <div class="section-label reveal">Get a Free Estimate</div>
+          <h2 class="section-title reveal d1">Ready to Build?</h2>
+          <p class="quote-sub reveal d2">Fill out the form or reach us directly. We will get back to you within one business day to schedule your free on-site estimate.</p>
+          <div class="contact-list reveal d3">
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.6.1.34.02.74-.24 1.01L6.6 10.8z"/>
+              </svg>
+              <a href="tel:7577691581">(757) 769-1581</a>
+            </div>
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <a href="mailto:deckspertsva@gmail.com">deckspertsva@gmail.com</a>
+            </div>
+          </div>
+          <div class="hours-block reveal d4">
+            <div class="hours-label">Hours</div>
+            <p>Monday to Friday: 9:00am to 5:00pm<br>Saturday: By Appointment<br>Sunday: Closed</p>
+          </div>
+        </div>
+
+        <div class="quote-form reveal d2">
+          <div class="form-title">Request a Free Estimate</div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="f-name">Name</label>
+              <input class="form-input" type="text" id="f-name" name="name" placeholder="Your name" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-phone">Phone</label>
+              <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="(757) 555-0100" autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-email">Email</label>
+            <input class="form-input" type="email" id="f-email" name="email" placeholder="you@email.com" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-message">Tell Us About Your Project</label>
+            <textarea class="form-textarea" id="f-message" name="message" placeholder="Deck, pergola, patio... what are you thinking?"></textarea>
+          </div>
+          <p class="form-note">This form is a preview. To get started today, call or text <a href="tel:7577691581" style="color:var(--tan);">(757) 769-1581</a> or email <a href="mailto:deckspertsva@gmail.com" style="color:var(--tan);">deckspertsva@gmail.com</a>.</p>
+          <button class="btn-submit" type="button">Submit Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <img src="img/logo.png" alt="Decksperts" class="footer-logo" onerror="this.style.display='none'">
+        <div class="footer-right">
+          <a href="tel:7577691581" class="footer-phone">(757) 769-1581</a>
+          <div class="footer-loc">Hampton Roads, VA</div>
+        </div>
+      </div>
+      <div class="footer-mid">
+        <div class="footer-links">
+          <a href="tel:7577691581">(757) 769-1581</a>
+          <a href="mailto:deckspertsva@gmail.com">deckspertsva@gmail.com</a>
+          <a href="https://www.instagram.com/deckspertsva" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+        <div class="footer-hours">Mon&ndash;Fri 9am&ndash;5pm &nbsp;&middot;&nbsp; Sat by Appt &nbsp;&middot;&nbsp; Sun Closed</div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">Decksperts &nbsp;&middot;&nbsp; Hampton Roads, VA &nbsp;&middot;&nbsp; &copy; 2026</p>
+        <div class="footer-built">
+          SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" rel="noopener noreferrer">PLATYPUS AUTOMATIONS</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const mainNav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      mainNav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // Skip-link active state
+    const skipLinks = document.querySelectorAll('.skip-link');
+    const trackedIds = ['gallery', 'about', 'service-area', 'free-quote'];
+    const trackedSections = trackedIds.map(id => document.getElementById(id));
+    function updateActive() {
+      const offset = 120;
+      let active = -1;
+      trackedSections.forEach((s, i) => {
+        if (s && s.getBoundingClientRect().top <= offset) active = i;
+      });
+      skipLinks.forEach((l, i) => l.classList.toggle('active', i === active));
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
