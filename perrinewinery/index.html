@@ -41,6 +41,8 @@
       --cream:       #F4EBD9;
       --coral:       #E0567A;
       --muted:       rgba(244,235,217,0.58);
+      --jazz-teal:   #2BC4C9;
+      --jazz-purple: #7B3FA0;
       --border-gold: rgba(201,162,39,0.22);
       --border-cream: rgba(244,235,217,0.12);
       --fh-mono: 'Monoton', cursive;
@@ -92,7 +94,7 @@
       font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--cream); opacity: 0.7; transition: opacity 0.2s;
     }
-    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover { opacity: 1; color: var(--jazz-teal); }
     .btn-nav {
       display: inline-block; padding: 0.5rem 1.25rem;
       background: var(--gold); color: var(--teal-deep);
@@ -164,8 +166,8 @@
       font-family: var(--fh-bung); font-size: clamp(0.9rem, 2vw, 1.3rem);
     }
     .hero-cycle {
-      display: inline-block; color: var(--coral);
-      transition: opacity 0.28s ease, transform 0.28s ease;
+      display: inline-block; color: var(--jazz-teal);
+      transition: opacity 0.28s ease, transform 0.28s ease, color 0.28s ease;
     }
     .hero-cycle.out { opacity: 0; transform: translateY(8px); }
     .hero-tagline {
@@ -200,7 +202,7 @@
       text-transform: uppercase; color: var(--teal-deep);
       padding: 0 1.6rem; display: inline-flex; align-items: center; gap: 1.6rem;
     }
-    .marquee-item::after { content: '✦'; font-size: 0.52rem; opacity: 0.5; }
+    .marquee-item::after { content: '✦'; font-size: 0.52rem; color: var(--jazz-purple); opacity: 0.8; }
 
     /* === SECTION SHARED === */
     .sec { padding: 5.5rem 0; }
@@ -230,7 +232,7 @@
     .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
     .story-body p { margin-bottom: 1rem; opacity: 0.86; font-size: 0.98rem; }
     .story-body p:last-child { margin-bottom: 0; }
-    .story-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .story-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; justify-content: center; }
     .badge {
       padding: 0.28rem 0.75rem; border: 1px solid var(--gold); border-radius: 2px;
       font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
@@ -744,12 +746,15 @@
     // Animated text cycle
     const cycleEl = document.getElementById('cycle-word');
     const words = ['Eclectic.', 'Funky.', 'Welcoming.', 'Award-Winning.'];
+    const cycleColors = ['#2BC4C9', '#E0567A', '#2BC4C9', '#E0567A'];
     let idx = 0;
+    cycleEl.style.color = cycleColors[0];
     function nextWord() {
       cycleEl.classList.add('out');
       setTimeout(() => {
         idx = (idx + 1) % words.length;
         cycleEl.textContent = words[idx];
+        cycleEl.style.color = cycleColors[idx];
         cycleEl.classList.remove('out');
       }, 290);
     }
