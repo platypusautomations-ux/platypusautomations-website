@@ -29,6 +29,11 @@
       src: url('fonts/audiowide-latin.woff2') format('woff2');
       font-weight: 400; font-style: normal; font-display: swap;
     }
+    @font-face {
+      font-family: 'Black Ops One';
+      src: url('fonts/black-ops-one-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
   </style>
 
   <style>
@@ -49,11 +54,13 @@
       --jazz-teal:    #2BC4C9;
       --jazz-purple:  #7B3FA0;
       --jazz-magenta: #D6336C;
+      --jazz-green:   #B8D43A;
       --border-gold: rgba(201,162,39,0.22);
       --border-cream: rgba(244,235,217,0.12);
       --fh-mono:  'Monoton', cursive;
       --fh-bung:  'Bungee', sans-serif;
       --fh-audio: 'Audiowide', sans-serif;
+      --fh-bell:  'Black Ops One', cursive;
       --fb:       'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
     }
 
@@ -219,13 +226,18 @@
       text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
     }
     .sec-title {
-      font-family: var(--fh-audio);
+      font-family: var(--fh-bell);
       font-size: clamp(1.85rem, 4.5vw, 3rem);
-      line-height: 1.1; margin-bottom: 1rem;
-      color: var(--jazz-magenta);
+      line-height: 1.1; margin-bottom: 1.4rem;
+      display: inline-block;
+      transform: rotate(-2deg);
+      transform-origin: center center;
     }
-    #wines .sec-title,
-    #offerings .sec-title { color: var(--jazz-purple); }
+    #story .sec-title     { color: var(--jazz-teal); }
+    #wines .sec-title     { color: var(--jazz-magenta); }
+    #space .sec-title     { color: var(--jazz-green); }
+    #offerings .sec-title { color: var(--jazz-teal); }
+    #visit .sec-title     { color: var(--jazz-magenta); }
     .sec-body { font-size: 0.98rem; line-height: 1.75; opacity: 0.86; }
     .gold-bar { width: 44px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1.2rem 0; }
     .gold-bar-c { margin-left: auto; margin-right: auto; }
