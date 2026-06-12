@@ -276,8 +276,14 @@
       background: linear-gradient(0deg, rgba(10,58,63,0.93) 0%, transparent 100%);
       font-family: var(--fh-bung); font-size: 0.95rem; color: var(--cream);
     }
-    @media (max-width: 900px) { .wines-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 560px) { .wines-grid { grid-template-columns: repeat(2, 1fr); } .wine-card-img { height: 180px; } }
+    @media (max-width: 900px) {
+      .wines-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+      .wine-card { flex: 0 1 calc(33.33% - 0.67rem); min-width: 160px; }
+    }
+    @media (max-width: 560px) {
+      .wine-card { flex: 0 1 calc(50% - 0.5rem); }
+      .wine-card-img { height: 180px; }
+    }
 
     /* === SPACE === */
     .space-intro { max-width: 600px; margin-bottom: 2.75rem; }
@@ -294,6 +300,7 @@
     @media (max-width: 768px) {
       .space-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 195px; }
       .sg-tall { grid-row: span 1; }
+      .space-gallery .sg:last-child:nth-child(odd) { grid-column: 1 / -1; }
     }
     @media (max-width: 460px) { .space-gallery { grid-template-columns: 1fr; grid-auto-rows: 210px; } }
 
