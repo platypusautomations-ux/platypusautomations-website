@@ -41,8 +41,9 @@
       --cream:       #F4EBD9;
       --coral:       #E0567A;
       --muted:       rgba(244,235,217,0.58);
-      --jazz-teal:   #2BC4C9;
-      --jazz-purple: #7B3FA0;
+      --jazz-teal:    #2BC4C9;
+      --jazz-purple:  #7B3FA0;
+      --jazz-magenta: #D6336C;
       --border-gold: rgba(201,162,39,0.22);
       --border-cream: rgba(244,235,217,0.12);
       --fh-mono: 'Monoton', cursive;
@@ -214,7 +215,12 @@
     .sec-title {
       font-family: var(--fh-bung);
       font-size: clamp(1.85rem, 4.5vw, 3rem);
-      line-height: 1.1; color: var(--cream); margin-bottom: 1rem;
+      line-height: 1.1; margin-bottom: 1rem;
+      color: var(--jazz-magenta);
+      background: linear-gradient(90deg, var(--jazz-purple) 0%, var(--jazz-magenta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .sec-body { font-size: 0.98rem; line-height: 1.75; opacity: 0.86; }
     .gold-bar { width: 44px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1.2rem 0; }
@@ -286,7 +292,7 @@
     }
 
     /* === SPACE === */
-    .space-intro { max-width: 600px; margin-bottom: 2.75rem; }
+    .space-intro { max-width: 600px; margin: 0 auto 2.75rem; text-align: center; }
     .space-gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -561,7 +567,7 @@
       <div class="space-intro reveal">
         <span class="sec-label">The Space</span>
         <h2 class="sec-title">Your Neighborhood Spot</h2>
-        <div class="gold-bar"></div>
+        <div class="gold-bar gold-bar-c"></div>
         <p class="sec-body">The kind of place where you walk in for one glass and stay for three. Warm, eclectic, a little funky, by design. Think your favorite corner bar, if your favorite corner bar also made the wine.</p>
       </div>
       <div class="space-gallery">
