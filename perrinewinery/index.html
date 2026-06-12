@@ -24,6 +24,11 @@
       src: url('fonts/nunito-sans-400-latin.woff2') format('woff2');
       font-weight: 400 700; font-style: normal; font-display: swap;
     }
+    @font-face {
+      font-family: 'Audiowide';
+      src: url('fonts/audiowide-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
   </style>
 
   <style>
@@ -46,9 +51,10 @@
       --jazz-magenta: #D6336C;
       --border-gold: rgba(201,162,39,0.22);
       --border-cream: rgba(244,235,217,0.12);
-      --fh-mono: 'Monoton', cursive;
-      --fh-bung: 'Bungee', sans-serif;
-      --fb:      'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
+      --fh-mono:  'Monoton', cursive;
+      --fh-bung:  'Bungee', sans-serif;
+      --fh-audio: 'Audiowide', sans-serif;
+      --fb:       'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 74px; }
@@ -213,15 +219,13 @@
       text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
     }
     .sec-title {
-      font-family: var(--fh-bung);
+      font-family: var(--fh-audio);
       font-size: clamp(1.85rem, 4.5vw, 3rem);
       line-height: 1.1; margin-bottom: 1rem;
       color: var(--jazz-magenta);
-      background: linear-gradient(90deg, var(--jazz-purple) 0%, var(--jazz-magenta) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
+    #wines .sec-title,
+    #offerings .sec-title { color: var(--jazz-purple); }
     .sec-body { font-size: 0.98rem; line-height: 1.75; opacity: 0.86; }
     .gold-bar { width: 44px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1.2rem 0; }
     .gold-bar-c { margin-left: auto; margin-right: auto; }
