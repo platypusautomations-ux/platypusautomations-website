@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thornton Electrical Services | Licensed Electrician Since 1997 | Portsmouth, VA</title>
     <meta name="description" content="Thornton Electrical Services — Hampton Roads' trusted electrician since 1997. Residential, commercial, marina, generator, and fire alarm systems. Portsmouth, VA. Call (757) 966-2889.">
-    <link rel="preload" href="img/storefront.webp" as="image">
     <link rel="preload" href="fonts/montserrat-600-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/opensans-300-600-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/opensans-400-italic.woff2" as="font" type="font/woff2" crossorigin>
@@ -233,26 +232,15 @@
         .hero {
             position: relative;
             min-height: 100vh;
-            background: url('img/storefront.webp') center center / cover no-repeat;
-            background-attachment: fixed;
+            background: linear-gradient(150deg, #1A1A2E 0%, #1E4D8C 48%, #3B82D0 100%);
             display: flex;
             align-items: center;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                108deg,
-                rgba(26,26,46,0.90) 0%,
-                rgba(26,26,46,0.72) 50%,
-                rgba(26,26,46,0.30) 100%
-            );
         }
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 760px;
-            padding: 8rem 2.5rem 5rem;
+            padding: 11rem 2.5rem 8rem;
         }
         .hero-eyebrow {
             display: inline-flex;
@@ -275,12 +263,12 @@
         }
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+            font-size: clamp(3rem, 6.5vw, 5.5rem);
             font-weight: 900;
-            line-height: 1.07;
+            line-height: 1.05;
             color: var(--white);
-            letter-spacing: -0.02em;
-            margin-bottom: 1.2rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.4rem;
         }
         .hero h1 em {
             font-style: normal;
@@ -713,13 +701,10 @@
             .hamburger { display: flex; }
 
             .hero {
-                background-attachment: scroll;
-                background-position: center center;
-                background-size: cover;
                 min-height: 85vh;
             }
-            .hero-content { padding: 7rem 1.5rem 4rem; }
-            .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+            .hero-content { padding: 8rem 1.5rem 5rem; }
+            .hero h1 { font-size: clamp(2.4rem, 8vw, 3.2rem); }
 
             #services { padding: 4rem 0; }
             .services-grid { grid-template-columns: 1fr; }
@@ -759,7 +744,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.3rem; }
             .hero-sub { font-size: 1rem; }
             .hero-pills { gap: 0.5rem; }
             .hero-pill { font-size: 0.63rem; padding: 0.32rem 0.65rem; }
@@ -800,7 +785,6 @@
 
     <!-- HERO -->
     <section class="hero" id="home">
-        <div class="hero-overlay"></div>
         <div class="hero-content reveal">
             <div class="hero-eyebrow">Portsmouth, VA &mdash; Serving All of Hampton Roads</div>
             <h1>Hampton Roads'<br>Trusted Electrician<br><em>Since 1997.</em></h1>
