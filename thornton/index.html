@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thornton Electrical Services | Licensed Electrician Since 1997 | Portsmouth, VA</title>
     <meta name="description" content="Thornton Electrical Services — Hampton Roads' trusted electrician since 1997. Residential, commercial, marina, generator, and fire alarm systems. Portsmouth, VA. Call (757) 966-2889.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" href="img/storefront.webp" as="image">
+    <link rel="preload" href="fonts/montserrat-600-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/opensans-300-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/opensans-400-italic.woff2" as="font" type="font/woff2" crossorigin>
     <style>
+        /* ===== SELF-HOSTED FONTS ===== */
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600 900;
+            font-display: swap;
+            src: url('fonts/montserrat-600-900.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 300 600;
+            font-display: swap;
+            src: url('fonts/opensans-300-600-normal.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: italic;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/opensans-400-italic.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
         /* ===== VARIABLES ===== */
         :root {
             --blue:       #2B6CB0;
@@ -206,7 +233,7 @@
         .hero {
             position: relative;
             min-height: 100vh;
-            background: url('img/van.jpg') center center / cover no-repeat;
+            background: url('img/storefront.webp') center center / cover no-repeat;
             background-attachment: fixed;
             display: flex;
             align-items: center;
@@ -900,8 +927,8 @@
             </div>
 
             <div class="gen-wrap reveal">
-                <img class="gen-img gen-img-1" src="img/crewwork.jpg" alt="Thornton crew installing a Generac generator">
-                <img class="gen-img gen-img-2" src="img/generac.jpg" alt="Finished Generac generator on concrete pad">
+                <img class="gen-img gen-img-1" src="img/crewwork.webp" alt="Thornton crew installing a Generac generator" loading="lazy">
+                <img class="gen-img gen-img-2" src="img/generac.webp" alt="Finished Generac generator on concrete pad" loading="lazy">
                 <div class="gen-badge">
                     <div class="gen-badge-bolt">⚡</div>
                     <div class="gen-badge-text">Certified Generac<br>Dealer &amp;<br>Service Technician</div>
@@ -995,7 +1022,7 @@
                     </div>
                 </div>
                 <div class="about-img-wrap reveal d2">
-                    <img src="img/van.jpg" alt="Thornton Electrical Services branded service van">
+                    <img src="img/van.webp" alt="Thornton Electrical Services branded service van" loading="lazy">
                 </div>
             </div>
         </div>
