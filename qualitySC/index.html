@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="img/freshstreetpaving.webp" type="image/webp">
+  <link rel="preload" as="image" href="img/web/apartmentlotaerial.webp" type="image/webp">
 
   <script type="application/ld+json">
   {
@@ -25,7 +25,7 @@
       {"@type": "State", "name": "North Carolina"}
     ],
     "description": "Professional sealcoating and paving in Virginia and North Carolina. Driveways, crack filling, patch repair, and commercial parking lots.",
-    "knowsAbout": ["Sealcoating", "Driveways", "Crack Filling", "Patch Repair", "Parking Lots"]
+    "knowsAbout": ["Sealcoating", "Driveways", "Crack Filling", "Patch Repair", "Parking Lots", "Line Striping"]
   }
   </script>
 
@@ -153,7 +153,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('img/freshstreetpaving.webp') center center / cover no-repeat;
+      background: url('img/web/apartmentlotaerial.webp') center center / cover no-repeat;
       animation: heroZoom 20s ease-in-out infinite alternate;
     }
     @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
@@ -256,12 +256,12 @@
     .gallery-header { margin-bottom: 2.5rem; }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 6px;
     }
     @media (max-width: 700px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 420px) { .gallery-grid { grid-template-columns: 1fr; } }
 
-    /* Fixed 4:3 ratio tiles — swap any img src without layout reflow */
     .gallery-tile {
       aspect-ratio: 4 / 3;
       overflow: hidden;
@@ -279,29 +279,60 @@
       filter: brightness(1) saturate(1.08);
       transform: scale(1.05);
     }
-    .gallery-placeholder {
-      aspect-ratio: 4 / 3;
-      background: var(--coal-card);
-      border: 1px dashed rgba(255,255,255,0.1);
-      border-radius: 2px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0.5rem;
-    }
-    .gallery-placeholder svg { width: 28px; height: 28px; color: rgba(255,255,255,0.13); }
-    .gallery-placeholder span {
-      font-family: var(--fc); font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.16);
-    }
 
-    /* ===== RESULT BAND ===== */
-    .result-band { position: relative; padding: 9rem 0; overflow: hidden; }
-    .result-band-bg {
+    /* ===== BEFORE / AFTER ===== */
+    .before-after { background: var(--coal-mid); padding: 6rem 0; }
+    .before-after-header { margin-bottom: 3rem; }
+    .ba-jobs { display: flex; flex-direction: column; gap: 3rem; }
+    .ba-job-label {
+      font-family: var(--fc); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    .ba-pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+    }
+    @media (max-width: 580px) {
+      .ba-pair { grid-template-columns: 1fr; gap: 4px; }
+    }
+    .ba-frame {
+      position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+      border-radius: 2px; background: var(--coal-light);
+    }
+    .ba-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center bottom;
+      display: block;
+    }
+    .ba-label {
+      position: absolute; bottom: 0; left: 0;
+      font-family: var(--fc); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      background: rgba(13,13,13,0.82); color: var(--muted);
+      padding: 0.4rem 0.85rem;
+    }
+    .ba-label.after { color: var(--gold); }
+
+    /* ===== RESULT BAND with drone video ===== */
+    .result-band { position: relative; padding: 9rem 0; overflow: hidden; background: #0a0a0a; }
+    .result-band-video {
       position: absolute; inset: 0;
-      background: url('img/cleanstreet.webp') center center / cover no-repeat;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
+    .result-band-bg-mobile {
+      display: none;
+      position: absolute; inset: 0;
+      background: url('img/web/drone-poster.webp') center center / cover no-repeat;
+    }
+    @media (max-width: 768px) {
+      .result-band-video { display: none; }
+      .result-band-bg-mobile { display: block; }
     }
     .result-band-overlay {
       position: absolute; inset: 0;
-      background: rgba(13,13,13,0.82);
+      background: rgba(13,13,13,0.78);
     }
     .result-band-content {
       position: relative; z-index: 2;
@@ -324,6 +355,43 @@
     .result-band-sub {
       font-size: 1rem; font-weight: 300;
       color: rgba(255,255,255,0.68); line-height: 1.75;
+    }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--coal); padding: 6rem 0; }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    @media (max-width: 720px) {
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    .about-stat {
+      margin-bottom: 2rem;
+    }
+    .about-num {
+      font-family: var(--fh);
+      font-size: clamp(5rem, 10vw, 8rem);
+      font-weight: 700; line-height: 1;
+      color: var(--gold); letter-spacing: -0.02em;
+    }
+    .about-num-label {
+      font-family: var(--fc); font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-top: 0.25rem;
+    }
+    .about-body {
+      font-size: 1rem; font-weight: 300;
+      color: rgba(255,255,255,0.72); line-height: 1.8;
+    }
+    .about-body p + p { margin-top: 1.1rem; }
+    .about-photo {
+      border-radius: 3px; overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+    .about-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.92) saturate(0.85);
     }
 
     /* ===== SERVICE AREA ===== */
@@ -404,9 +472,9 @@
       padding-top: 1.4rem; text-align: center;
     }
     .footer-copy { font-size: 0.8rem; color: #8a8f9e; letter-spacing: 0.06em; }
-    .footer-built { margin-top: 8px; font-size: 11px; letter-spacing: 0.12em; color: #8a8f9e; }
+    .footer-built { margin-top: 8px; font-size: 11px; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
     .footer-built a {
-      color: #8a8f9e; text-decoration: underline;
+      color: rgba(255,255,255,0.28); text-decoration: underline;
       text-underline-offset: 3px; transition: color 0.2s;
     }
     .footer-built a:hover { color: rgba(255,255,255,0.7); }
@@ -438,7 +506,7 @@
 
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-bg" role="img" aria-label="Sealcoat truck applying tack coat to a freshly paved road"></div>
+      <div class="hero-bg" role="img" aria-label="Aerial view of a freshly sealed commercial parking lot"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content container">
         <div class="hero-eyebrow">Virginia and North Carolina</div>
@@ -488,7 +556,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            Paving Services
+            29 Years in the Trade
           </div>
         </div>
       </div>
@@ -546,13 +614,19 @@
             <p class="service-desc">Sealcoating, paving, and patching for commercial parking lots. Residential and commercial customers served across VA and NC.</p>
           </div>
 
+          <div class="service-card reveal d5">
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M4 6h16M4 10h16M4 14h10M4 18h10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="service-name">Line Striping</div>
+            <p class="service-desc">Parking stalls, fire lanes, and directional markings. Sharp lines applied after sealcoating for a finished, professional result.</p>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- GALLERY -->
-    <!-- To swap in Richard's photos: replace .gallery-placeholder divs with .gallery-tile divs containing an <img> tag. -->
-    <!-- All tiles use aspect-ratio: 4/3 and object-fit: cover — any photo dimension will fit without layout shift. -->
     <section class="gallery" id="work" aria-labelledby="gallery-heading">
       <div class="container">
         <div class="gallery-header">
@@ -562,45 +636,136 @@
         <div class="gallery-grid">
 
           <div class="gallery-tile reveal d1">
-            <img src="img/freshstreetpaving.webp"
-                 alt="Sealcoat distributor truck applying tack coat to freshly graded pavement"
-                 loading="lazy" width="600" height="450">
+            <img src="img/web/sealandstripelot.webp"
+                 alt="Commercial parking lot after sealcoating and line striping"
+                 loading="lazy" width="1500" height="2000">
           </div>
 
           <div class="gallery-tile reveal d2">
-            <img src="img/sealing.webp"
-                 alt="Sealer being spread by broom on asphalt surface"
-                 loading="lazy" width="600" height="450">
+            <img src="img/web/sealcoatlot.webp"
+                 alt="Large commercial lot after sealcoat application"
+                 loading="lazy" width="1500" height="2000">
           </div>
 
-          <div class="gallery-placeholder reveal d3" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="12" cy="13" r="4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>Photo coming</span>
+          <div class="gallery-tile reveal d3">
+            <img src="img/web/sealcoatlotcup.webp"
+                 alt="Fresh sealcoat on commercial asphalt lot"
+                 loading="lazy" width="1500" height="2000">
           </div>
 
-          <div class="gallery-placeholder reveal d4" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="12" cy="13" r="4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>Photo coming</span>
+          <div class="gallery-tile reveal d4">
+            <img src="img/web/fullsealwithspeedbump.webp"
+                 alt="Sealed parking lot with yellow speed bump"
+                 loading="lazy" width="2000" height="1500">
+          </div>
+
+          <div class="gallery-tile reveal d5">
+            <img src="img/web/apartmententrance.webp"
+                 alt="Apartment complex entrance with freshly sealed pavement"
+                 loading="lazy" width="2000" height="1500">
+          </div>
+
+          <div class="gallery-tile reveal d5">
+            <img src="img/web/apartmentlotaerial.webp"
+                 alt="Aerial view of apartment complex parking lot after sealcoating"
+                 loading="lazy" width="2000" height="1500">
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- RESULT BAND -->
-    <section class="result-band" aria-label="The finished result">
-      <div class="result-band-bg" role="img" aria-label="Tree-lined road with clean, freshly sealed pavement"></div>
+    <!-- BEFORE / AFTER -->
+    <section class="before-after" id="before-after" aria-labelledby="ba-heading">
+      <div class="container">
+        <div class="before-after-header">
+          <div class="section-label reveal">Before and After</div>
+          <h2 class="section-title reveal d1" id="ba-heading">The Difference.</h2>
+        </div>
+        <div class="ba-jobs">
+
+          <!-- Job: Gravel Driveway -->
+          <div class="reveal d2">
+            <div class="ba-job-label">Gravel Driveway — Asphalt Conversion</div>
+            <div class="ba-pair">
+              <div class="ba-frame">
+                <img src="img/web/graveldrivebefore.webp"
+                     alt="Gravel driveway before paving work"
+                     loading="lazy" width="1500" height="2000">
+                <div class="ba-label">Before</div>
+              </div>
+              <div class="ba-frame">
+                <img src="img/web/graveldriveafterfull.webp"
+                     alt="Same driveway after paving and compaction"
+                     loading="lazy" width="1500" height="2000">
+                <div class="ba-label after">After</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job: Barn Driveway -->
+          <div class="reveal d3">
+            <div class="ba-job-label">Barn Property — Driveway Paving</div>
+            <div class="ba-pair">
+              <div class="ba-frame">
+                <img src="img/web/graveldrivebeforebarn.webp"
+                     alt="Gravel and dirt drive at rural property before paving"
+                     loading="lazy" width="1500" height="2000">
+                <div class="ba-label">Before</div>
+              </div>
+              <div class="ba-frame">
+                <img src="img/web/graveldriveafterroller.webp"
+                     alt="Freshly paved driveway being compacted by roller"
+                     loading="lazy" width="1500" height="2000">
+                <div class="ba-label after">After</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT BAND — drone video on desktop, poster on mobile -->
+    <section class="result-band" aria-label="Aerial view of finished work">
+      <div class="result-band-bg-mobile" aria-hidden="true"></div>
+      <video class="result-band-video" id="drone-video"
+             autoplay muted loop playsinline preload="none"
+             poster="img/web/drone-poster.webp"
+             aria-hidden="true"
+             width="1280" height="720">
+        <source src="img/web/drone.mp4" type="video/mp4">
+      </video>
       <div class="result-band-overlay" aria-hidden="true"></div>
       <div class="result-band-content">
         <div class="result-band-label reveal">The Finished Result</div>
         <h2 class="result-band-title reveal d1">Clean. Solid.<br>Done Right.</h2>
         <p class="result-band-sub reveal d2">Every job from first crack to sealed, protected surface. Built to hold up to traffic and weather across Virginia and North Carolina.</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-inner">
+          <div class="reveal">
+            <div class="section-label">About</div>
+            <h2 class="section-title" id="about-heading" style="margin-bottom:1.5rem;">Built on<br><span style="color:var(--gold);">Experience.</span></h2>
+            <div class="about-stat">
+              <div class="about-num">29</div>
+              <div class="about-num-label">Years in the Trade</div>
+            </div>
+            <div class="about-body">
+              <p>Richard has spent 29 years learning how asphalt and pavement hold up in Virginia and North Carolina weather. That experience shows on every job.</p>
+              <p>From residential driveways to commercial parking lots, he does the work himself. No guesswork. No shortcuts.</p>
+            </div>
+          </div>
+          <div class="about-photo reveal d2">
+            <img src="img/web/graveldrivegaragebefore.webp"
+                 alt="Gravel driveway before paving work"
+                 loading="lazy" width="1500" height="2000">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -692,6 +857,13 @@
       });
     }, { threshold: 0.12 });
     revealEls.forEach(el => io.observe(el));
+
+    // Drone video: desktop-only autoplay
+    const droneVideo = document.getElementById('drone-video');
+    if (droneVideo && window.innerWidth < 768) {
+      droneVideo.removeAttribute('autoplay');
+      droneVideo.pause();
+    }
   </script>
 </body>
 </html>
