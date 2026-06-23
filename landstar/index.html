@@ -6,7 +6,9 @@
 <title>Landstar Paving — Hampton Roads Asphalt Contractor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;700&display=swap"></noscript>
+<link rel="preload" as="image" href="img/hero.webp" fetchpriority="high">
 <style>
   :root {
     --yellow: #FFED18;
@@ -20,12 +22,39 @@
     --light-gray: #F2F2F2;
   }
 
+
+  /* Metric-matched fallbacks — holds line-box dimensions during font swap */
+  @font-face {
+    font-family: 'Bebas Neue Fallback';
+    src: local('Liberation Sans'), local('Arial'), local('Helvetica');
+    size-adjust: 97.7%;
+    ascent-override: 90%;
+    descent-override: 30%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: 'Barlow Fallback';
+    src: local('Liberation Sans'), local('Arial'), local('Helvetica');
+    size-adjust: 97.7%;
+    ascent-override: 100%;
+    descent-override: 20%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: 'Barlow Condensed Fallback';
+    src: local('Liberation Sans Narrow'), local('Arial Narrow'), local('Liberation Sans'), local('Arial');
+    size-adjust: 97.7%;
+    ascent-override: 100%;
+    descent-override: 20%;
+    line-gap-override: 0%;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Barlow', 'Barlow Fallback', sans-serif;
     background: var(--asphalt);
     color: var(--white);
     overflow-x: hidden;
@@ -47,7 +76,7 @@
   }
 
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 26px;
     letter-spacing: 0.08em;
     color: var(--white);
@@ -57,7 +86,7 @@
   .nav-logo span { color: var(--yellow); }
 
   .nav-phone {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 20px;
     font-weight: 700;
     color: var(--yellow);
@@ -75,7 +104,7 @@
   }
 
   .nav-links a {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.12em;
@@ -102,7 +131,7 @@
     inset: 0;
     background:
       linear-gradient(105deg, rgba(17,17,17,0.88) 0%, rgba(17,17,17,0.65) 55%, rgba(17,17,17,0.3) 100%),
-      url('img/hero.png') center/cover no-repeat;
+      url('img/hero.webp') center/cover no-repeat;
     animation: heroZoom 18s ease-in-out infinite alternate;
   }
 
@@ -139,7 +168,7 @@
   }
 
   .hero-eyebrow {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.25em;
@@ -151,7 +180,7 @@
   }
 
   .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: clamp(52px, 8vw, 110px);
     line-height: 0.95;
     letter-spacing: 0.02em;
@@ -188,7 +217,7 @@
     gap: 10px;
     background: var(--yellow);
     color: var(--black);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -210,7 +239,7 @@
     gap: 10px;
     background: transparent;
     color: var(--white);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -248,7 +277,7 @@
   .stat:last-child { border-right: none; }
 
   .stat-number {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 36px;
     color: var(--black);
     line-height: 1;
@@ -256,7 +285,7 @@
   }
 
   .stat-label {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.15em;
@@ -284,7 +313,7 @@
     right: -20px;
     top: 50%;
     transform: translateY(-50%) rotate(90deg);
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 120px;
     color: rgba(255,255,255,0.03);
     letter-spacing: 0.1em;
@@ -302,7 +331,7 @@
   }
 
   .section-tag {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.3em;
@@ -312,7 +341,7 @@
   }
 
   .section-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: clamp(40px, 5vw, 64px);
     line-height: 1;
     letter-spacing: 0.02em;
@@ -362,7 +391,7 @@
     bottom: 0; left: 0; right: 0;
     background: linear-gradient(transparent, rgba(0,0,0,0.75));
     padding: 24px 16px 12px;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.15em;
@@ -409,7 +438,7 @@
   }
 
   .about-card-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -498,7 +527,7 @@
   .service-card:hover::after { transform: scaleX(1); }
 
   .service-number {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 64px;
     line-height: 1;
     color: rgba(255,237,24,0.08);
@@ -507,7 +536,7 @@
   }
 
   .service-name {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -525,7 +554,7 @@
   .service-tag {
     display: inline-block;
     margin-top: 20px;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.2em;
@@ -572,7 +601,7 @@
   }
 
   .reviews-badge-text {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -605,7 +634,7 @@
     content: '\201C';
     position: absolute;
     top: -10px; right: 20px;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 120px;
     color: rgba(255,237,24,0.06);
     line-height: 1;
@@ -640,14 +669,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 18px;
     color: var(--black);
     flex-shrink: 0;
   }
 
   .review-name {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -663,7 +692,7 @@
   .review-source {
     position: absolute;
     bottom: 20px; right: 24px;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.15em;
@@ -680,7 +709,7 @@
   }
 
   .reviews-coming-soon-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 28px;
     letter-spacing: 0.05em;
     color: rgba(255,255,255,0.3);
@@ -733,7 +762,7 @@
   }
 
   .contact-detail-text {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 20px;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -767,7 +796,7 @@
 
   .form-label {
     display: block;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.2em;
@@ -781,7 +810,7 @@
     background: var(--asphalt-light);
     border: 1px solid rgba(255,255,255,0.08);
     color: var(--white);
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Barlow', 'Barlow Fallback', sans-serif;
     font-size: 16px;
     padding: 14px 16px;
     outline: none;
@@ -808,7 +837,7 @@
     background: var(--yellow);
     color: var(--black);
     border: none;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 17px;
     font-weight: 700;
     letter-spacing: 0.15em;
@@ -838,7 +867,7 @@
   }
 
   .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
     font-size: 22px;
     letter-spacing: 0.08em;
     color: var(--white);
@@ -858,7 +887,7 @@
   }
 
   .footer-area {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.15em;
@@ -903,6 +932,459 @@
     .services-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
   }
+
+  /* ── INSTANT ESTIMATE ── */
+  .estimator {
+    background: var(--black);
+    padding: 100px 48px;
+    position: relative;
+  }
+
+  .estimator-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .estimator-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 16px;
+    max-width: 540px;
+    line-height: 1.65;
+    margin-bottom: 44px;
+  }
+
+  .est-disclaimer {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: rgba(255,237,24,0.05);
+    border: 1px solid rgba(255,237,24,0.25);
+    border-left: 4px solid var(--yellow);
+    padding: 16px 20px;
+    margin-bottom: 48px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+  }
+
+  .est-disclaimer strong {
+    color: rgba(255,237,24,0.85);
+  }
+
+  .est-disclaimer-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    opacity: 0.75;
+  }
+
+  /* SERVICE SELECTOR */
+  .est-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 40px;
+  }
+
+  .est-service-btn {
+    background: var(--asphalt-mid);
+    border: 1px solid transparent;
+    color: var(--white);
+    padding: 28px 24px;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .est-service-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--yellow), var(--red));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .est-service-btn:hover { background: var(--asphalt-light); }
+  .est-service-btn:hover::after { transform: scaleX(1); }
+
+  .est-service-btn.active {
+    background: var(--asphalt-light);
+    border-color: rgba(255,237,24,0.35);
+  }
+
+  .est-service-btn.active::after { transform: scaleX(1); }
+
+  .est-service-btn--callback .est-service-hint { color: rgba(255,255,255,0.25); }
+
+  .est-service-btn--callback::after { background: var(--asphalt-light); }
+
+  .est-service-btn--callback.active {
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .est-service-num {
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+    color: rgba(255,237,24,0.09);
+    letter-spacing: -0.02em;
+  }
+
+  .est-service-btn--callback .est-service-num { color: rgba(255,255,255,0.05); }
+
+  .est-service-name {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .est-service-hint {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,237,24,0.45);
+    margin-top: 6px;
+  }
+
+  /* PROPERTY TYPE TOGGLE */
+  .est-prop-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .est-toggle-label {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    flex-shrink: 0;
+  }
+
+  .est-type-btns { display: flex; gap: 2px; }
+
+  .est-type-btn {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--asphalt-mid);
+    color: rgba(255,255,255,0.45);
+    border: 1px solid transparent;
+    padding: 12px 32px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .est-type-btn.active {
+    background: var(--yellow);
+    color: var(--black);
+    border-color: var(--yellow);
+  }
+
+  .est-type-btn:not(.active):hover {
+    background: var(--asphalt-light);
+    color: var(--white);
+  }
+
+  /* SQFT INPUT */
+  .est-sqft-row {
+    background: var(--asphalt-mid);
+    padding: 36px 40px;
+    margin-bottom: 32px;
+  }
+
+  .est-sqft-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .est-sqft-readout {
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+    font-size: 34px;
+    color: var(--yellow);
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+
+  .est-quickpicks {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .est-qp-btn {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--asphalt-light);
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .est-qp-btn:hover,
+  .est-qp-btn.qp-active {
+    background: rgba(255,237,24,0.1);
+    color: var(--yellow);
+    border-color: rgba(255,237,24,0.35);
+  }
+
+  .est-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--asphalt-light);
+    outline: none;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .est-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    background: var(--yellow);
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+  }
+
+  .est-slider::-moz-range-thumb {
+    width: 22px; height: 22px;
+    background: var(--yellow);
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+  }
+
+  .est-sqft-bounds {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* RESULT PANEL */
+  .est-result {
+    background: var(--asphalt);
+    border: 1px solid rgba(255,237,24,0.2);
+    border-top: 4px solid var(--yellow);
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .est-result-label {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 20px;
+  }
+
+  .est-result-range {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .est-range-num {
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+    font-size: clamp(52px, 7vw, 88px);
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .est-range-sep {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .est-result-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    max-width: 480px;
+    margin: 0 auto 32px;
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* CALLBACK PANEL */
+  .est-callback-inner {
+    background: var(--asphalt);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-top: 4px solid rgba(255,255,255,0.15);
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .est-callback-icon { font-size: 40px; margin-bottom: 16px; }
+
+  .est-callback-title {
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+    font-size: 38px;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+  }
+
+  .est-callback-body {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  /* panel show animation */
+  @keyframes estFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .est-panel-enter {
+    animation: estFadeUp 0.35s ease forwards;
+  }
+
+  /* ESTIMATOR RESPONSIVE */
+  @media (max-width: 900px) {
+    .estimator { padding: 72px 24px; }
+    .est-service-grid { grid-template-columns: 1fr 1fr; }
+    .est-sqft-row { padding: 28px 24px; }
+    .est-result { padding: 40px 24px; }
+    .est-callback-inner { padding: 40px 24px; }
+  }
+
+  @media (max-width: 580px) {
+    .est-service-grid { grid-template-columns: 1fr; }
+    .est-type-btns { width: 100%; }
+    .est-type-btn { flex: 1; text-align: center; }
+  }
+
+  /* STRIPING COUNTERS */
+  .est-counters {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .est-counter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .est-counter-row:last-child { border-bottom: none; }
+
+  .est-counter-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .est-counter-name {
+    font-family: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .est-counter-hint {
+    font-size: 13px;
+    color: rgba(255,255,255,0.38);
+    line-height: 1.4;
+  }
+
+  .est-counter-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .est-cnt-btn {
+    width: 44px; height: 44px;
+    background: var(--asphalt-light);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  .est-cnt-btn:hover {
+    background: var(--yellow);
+    color: var(--black);
+    border-color: var(--yellow);
+  }
+
+  .est-cnt-val {
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+    font-size: 30px;
+    color: var(--yellow);
+    min-width: 52px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  @media (max-width: 580px) {
+    .est-cnt-btn { width: 40px; height: 40px; }
+    .est-cnt-val  { min-width: 44px; font-size: 26px; }
+    .est-counter-name { font-size: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -913,6 +1395,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#estimate">Estimate</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -973,15 +1456,15 @@
     </div>
     <div class="about-photo-grid reveal">
       <div class="about-photo tall">
-        <img src="img/new-paving-asphalt-paving.jpg" alt="Fresh asphalt paving">
+        <img src="img/new-paving-asphalt-paving.webp" alt="Fresh asphalt paving" loading="lazy" width="1000" height="751">
         <div class="about-photo-label">New Paving</div>
       </div>
       <div class="about-photo">
-        <img src="img/driveway.jpg" alt="Residential driveway">
+        <img src="img/driveway.webp" alt="Residential driveway" loading="lazy" width="1000" height="551">
         <div class="about-photo-label">Driveways</div>
       </div>
       <div class="about-photo">
-        <img src="img/parking-lot.jpg" alt="Commercial parking lot">
+        <img src="img/parking-lot.webp" alt="Commercial parking lot" loading="lazy" width="1000" height="751">
         <div class="about-photo-label">Parking Lots</div>
       </div>
     </div>
@@ -1002,7 +1485,7 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <img class="service-card-img" src="img/new-paving-asphalt-paving.jpg" alt="Asphalt Paving">
+        <img class="service-card-img" src="img/new-paving-asphalt-paving.webp" alt="Asphalt Paving" loading="lazy" width="1000" height="751">
         <div class="service-card-body">
         <div class="service-number">01</div>
         <div class="service-name">Asphalt Paving</div>
@@ -1011,7 +1494,7 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <img class="service-card-img" src="img/seal-coating.jpg" alt="Seal Coating">
+        <img class="service-card-img" src="img/seal-coating.webp" alt="Seal Coating" loading="lazy" width="800" height="533">
         <div class="service-card-body">
         <div class="service-number">02</div>
         <div class="service-name">Seal Coating</div>
@@ -1020,7 +1503,7 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <img class="service-card-img" src="img/crack-filling.jpg" alt="Crack Filling">
+        <img class="service-card-img" src="img/crack-filling.webp" alt="Crack Filling" loading="lazy" width="800" height="601">
         <div class="service-card-body">
         <div class="service-number">03</div>
         <div class="service-name">Crack Filling</div>
@@ -1029,7 +1512,7 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <img class="service-card-img" src="img/pothole.jpg" alt="Pothole Repair">
+        <img class="service-card-img" src="img/pothole.webp" alt="Pothole Repair" loading="lazy" width="800" height="1200">
         <div class="service-card-body">
         <div class="service-number">04</div>
         <div class="service-name">Pothole Repair & Patchwork</div>
@@ -1038,7 +1521,7 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <img class="service-card-img" src="img/resurfacing.jpg" alt="Resurfacing">
+        <img class="service-card-img" src="img/resurfacing.webp" alt="Resurfacing" loading="lazy" width="800" height="600">
         <div class="service-card-body">
         <div class="service-number">05</div>
         <div class="service-name">Asphalt Resurfacing</div>
@@ -1047,7 +1530,7 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <img class="service-card-img" src="img/line-striping.jpg" alt="Line Striping">
+        <img class="service-card-img" src="img/line-striping.webp" alt="Line Striping" loading="lazy" width="800" height="1179">
         <div class="service-card-body">
         <div class="service-number">06</div>
         <div class="service-name">Line Striping & Lot Cleaning</div>
@@ -1122,6 +1605,173 @@
       <div class="reviews-coming-soon-title">More Reviews Loading...</div>
       <div class="reviews-coming-soon-sub">We're just getting started on Google — check back soon.</div>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INSTANT ESTIMATE -->
+<section class="estimator" id="estimate">
+  <div class="estimator-inner">
+
+    <div class="reveal">
+      <p class="section-tag">Try It</p>
+      <h2 class="section-title">Instant <span class="accent">Estimate</span></h2>
+      <p class="estimator-sub">Pick a service and drop in your square footage. We'll give you a ballpark range in seconds. Free on-site visit for the exact number.</p>
+    </div>
+
+    <div class="est-disclaimer reveal">
+      <span class="est-disclaimer-icon">⚠</span>
+      <span><strong>Placeholder rates only.</strong> The figures below are industry ballpark averages and are NOT Landstar's confirmed pricing. They are not confirmed by Mark or Landstar Paving. Your actual quote depends on site conditions, materials, prep work, and access. Every project gets a free on-site estimate for real pricing.</span>
+    </div>
+
+    <div class="est-service-grid reveal">
+      <button class="est-service-btn" data-service="paving" data-kind="sqft">
+        <span class="est-service-num">01</span>
+        <span class="est-service-name">Asphalt Paving</span>
+        <span class="est-service-hint">Sq ft estimate available</span>
+      </button>
+      <button class="est-service-btn" data-service="seal" data-kind="sqft">
+        <span class="est-service-num">02</span>
+        <span class="est-service-name">Seal Coating</span>
+        <span class="est-service-hint">Sq ft estimate available</span>
+      </button>
+      <button class="est-service-btn" data-service="resurf" data-kind="sqft">
+        <span class="est-service-num">05</span>
+        <span class="est-service-name">Asphalt Resurfacing</span>
+        <span class="est-service-hint">Sq ft estimate available</span>
+      </button>
+      <button class="est-service-btn est-service-btn--callback" data-service="crack" data-kind="callback">
+        <span class="est-service-num">03</span>
+        <span class="est-service-name">Crack Filling</span>
+        <span class="est-service-hint">Priced on site</span>
+      </button>
+      <button class="est-service-btn est-service-btn--callback" data-service="pothole" data-kind="callback">
+        <span class="est-service-num">04</span>
+        <span class="est-service-name">Pothole Repair</span>
+        <span class="est-service-hint">Priced on site</span>
+      </button>
+      <button class="est-service-btn" data-service="striping" data-kind="striping">
+        <span class="est-service-num">06</span>
+        <span class="est-service-name">Line Striping</span>
+        <span class="est-service-hint">Count-based estimate</span>
+      </button>
+    </div>
+
+    <!-- SQFT PANEL -->
+    <div id="estSqftPanel" style="display:none">
+
+      <div class="est-prop-toggle-row">
+        <span class="est-toggle-label">Property Type</span>
+        <div class="est-type-btns">
+          <button class="est-type-btn active" data-proptype="residential">Residential</button>
+          <button class="est-type-btn" data-proptype="commercial">Commercial</button>
+        </div>
+      </div>
+
+      <div class="est-sqft-row">
+        <div class="est-sqft-header">
+          <span class="est-toggle-label">Square Footage</span>
+          <span class="est-sqft-readout" id="estSqftReadout">1,000 sq ft</span>
+        </div>
+        <div class="est-quickpicks">
+          <button class="est-qp-btn" data-sqft="600">1-Car Drive (~600)</button>
+          <button class="est-qp-btn" data-sqft="1000">2-Car Drive (~1,000)</button>
+          <button class="est-qp-btn" data-sqft="2500">Long Drive (~2,500)</button>
+          <button class="est-qp-btn" data-sqft="8000">Small Lot (~8,000)</button>
+        </div>
+        <input type="range" class="est-slider" id="estSlider" min="200" max="20000" step="100" value="1000" aria-label="Square footage">
+        <div class="est-sqft-bounds">
+          <span>200 sq ft</span>
+          <span>20,000 sq ft</span>
+        </div>
+      </div>
+
+      <div class="est-result">
+        <div class="est-result-label">Ballpark Range</div>
+        <div class="est-result-range">
+          <span class="est-range-num" id="estLow">-</span>
+          <span class="est-range-sep">to</span>
+          <span class="est-range-num" id="estHigh">-</span>
+        </div>
+        <p class="est-result-note">Ballpark only. Rates are industry averages, not Landstar's confirmed pricing. Final quote from a free on-site visit only.</p>
+        <a href="#contact" class="btn-primary">Get My Exact Price &rarr;</a>
+      </div>
+
+    </div>
+
+    <!-- STRIPING PANEL -->
+    <div id="estStripingPanel" style="display:none">
+
+      <div class="est-prop-toggle-row">
+        <span class="est-toggle-label">Job Type</span>
+        <div class="est-type-btns">
+          <button class="est-type-btn est-jt-btn active" data-jobtype="restripe">Restripe Existing</button>
+          <button class="est-type-btn est-jt-btn" data-jobtype="new">New Layout</button>
+        </div>
+      </div>
+
+      <div class="est-sqft-row">
+        <div class="est-counters">
+          <div class="est-counter-row">
+            <div class="est-counter-info">
+              <span class="est-counter-name">Standard Stalls</span>
+              <span class="est-counter-hint">Standard painted stall</span>
+            </div>
+            <div class="est-counter-ctrl">
+              <button class="est-cnt-btn" data-counter="std" data-dir="-1" aria-label="Decrease standard stalls">&#8722;</button>
+              <span class="est-cnt-val" id="estCntStd">0</span>
+              <button class="est-cnt-btn" data-counter="std" data-dir="1" aria-label="Increase standard stalls">+</button>
+            </div>
+          </div>
+          <div class="est-counter-row">
+            <div class="est-counter-info">
+              <span class="est-counter-name">ADA / Handicap Stalls</span>
+              <span class="est-counter-hint">Stencil + access aisle included</span>
+            </div>
+            <div class="est-counter-ctrl">
+              <button class="est-cnt-btn" data-counter="ada" data-dir="-1" aria-label="Decrease ADA stalls">&#8722;</button>
+              <span class="est-cnt-val" id="estCntAda">0</span>
+              <button class="est-cnt-btn" data-counter="ada" data-dir="1" aria-label="Increase ADA stalls">+</button>
+            </div>
+          </div>
+          <div class="est-counter-row">
+            <div class="est-counter-info">
+              <span class="est-counter-name">Arrows / Stop Bars</span>
+              <span class="est-counter-hint">Directional markings, per item</span>
+            </div>
+            <div class="est-counter-ctrl">
+              <button class="est-cnt-btn" data-counter="mark" data-dir="-1" aria-label="Decrease arrows or stop bars">&#8722;</button>
+              <span class="est-cnt-val" id="estCntMark">0</span>
+              <button class="est-cnt-btn" data-counter="mark" data-dir="1" aria-label="Increase arrows or stop bars">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="est-result">
+        <div class="est-result-label">Ballpark Range</div>
+        <div class="est-result-range">
+          <span class="est-range-num" id="estStripeLow">-</span>
+          <span class="est-range-sep">to</span>
+          <span class="est-range-num" id="estStripeHigh">-</span>
+        </div>
+        <p class="est-result-note" id="estStripeNote">Add at least one item above to see a ballpark range.</p>
+        <a href="#contact" class="btn-primary">Get My Exact Price &rarr;</a>
+      </div>
+
+    </div>
+
+    <!-- CALLBACK PANEL -->
+    <div id="estCallbackPanel" style="display:none">
+      <div class="est-callback-inner">
+        <div class="est-callback-icon">📐</div>
+        <div class="est-callback-title">This Service is Priced On Site</div>
+        <p class="est-callback-body">Crack filling and pothole repair depend on conditions specific to your property. There's no meaningful way to estimate without seeing it. We'll come out, take a look, and give you a straight number on the spot.</p>
+        <a href="#contact" class="btn-primary">Request a Callback &rarr;</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1215,6 +1865,175 @@
       setTimeout(() => el.classList.add('visible'), idx * 60);
     }
   });
+
+  // ── INSTANT ESTIMATE CALCULATOR ──
+  // PLACEHOLDER RATES — REPLACE WITH MARK'S CONFIRMED NUMBERS
+  // Sq ft services: $/sq ft as [low, high] industry ballpark ranges.
+  // Striping: $/unit. base = std*rate + ada*rate + mark*rate.
+  //   range low = base*0.9, high = base*1.15. Floored at min / min*1.4. Rounded to $50.
+  const EST_CONFIG = {
+    rates: {
+      paving: { residential: [7,    9.5 ], commercial: [5.5,  8   ] },
+      seal:   { residential: [0.18, 0.30], commercial: [0.15, 0.25] },
+      resurf: { residential: [3.5,  5   ], commercial: [2.8,  4.5 ] }
+    },
+    minimums: {
+      paving: 1200,
+      seal:   250,
+      resurf: 600
+    },
+    striping: {
+      restripe: { std: 7,  ada: 30, mark: 18, min: 350 },
+      new:      { std: 12, ada: 45, mark: 22, min: 500 }
+    }
+  };
+
+  (function() {
+    var selectedService = null;
+    var selectedKind    = null;
+    var propType        = 'residential';
+    var sqft            = 1000;
+    var jobType         = 'restripe';
+    var stpCounts       = { std: 0, ada: 0, mark: 0 };
+
+    var sqftPanel     = document.getElementById('estSqftPanel');
+    var stripingPanel = document.getElementById('estStripingPanel');
+    var callbackPanel = document.getElementById('estCallbackPanel');
+    var slider        = document.getElementById('estSlider');
+    var sqftReadout   = document.getElementById('estSqftReadout');
+    var lowEl         = document.getElementById('estLow');
+    var highEl        = document.getElementById('estHigh');
+    var stripeLowEl   = document.getElementById('estStripeLow');
+    var stripeHighEl  = document.getElementById('estStripeHigh');
+    var stripeNoteEl  = document.getElementById('estStripeNote');
+
+    function fmtDollars(n) { return '$' + n.toLocaleString('en-US'); }
+    function round100(n)   { return Math.round(n / 100) * 100; }
+    function round50(n)    { return Math.round(n / 50)  * 50;  }
+
+    function calcSqft() {
+      if (!selectedService || selectedKind !== 'sqft') return;
+      var rates = EST_CONFIG.rates[selectedService][propType];
+      var min   = EST_CONFIG.minimums[selectedService];
+      var low   = round100(Math.max(sqft * rates[0], min));
+      var high  = round100(Math.max(sqft * rates[1], min));
+      if (high <= low) high = low + 100;
+      lowEl.textContent  = fmtDollars(low);
+      highEl.textContent = fmtDollars(high);
+    }
+
+    function calcStriping() {
+      var r    = EST_CONFIG.striping[jobType];
+      var base = stpCounts.std * r.std + stpCounts.ada * r.ada + stpCounts.mark * r.mark;
+      if (base === 0) {
+        stripeLowEl.textContent  = '-';
+        stripeHighEl.textContent = '-';
+        stripeNoteEl.textContent = 'Add at least one item above to see a ballpark range.';
+        return;
+      }
+      var low  = round50(Math.max(base * 0.9,  r.min));
+      var high = round50(Math.max(base * 1.15, r.min * 1.4));
+      if (high <= low) high = low + 50;
+      stripeLowEl.textContent  = fmtDollars(low);
+      stripeHighEl.textContent = fmtDollars(high);
+      stripeNoteEl.textContent = 'Ballpark only. Rates are industry averages, not Landstar\'s confirmed pricing. Final quote from a free on-site visit only.';
+    }
+
+    function showPanel(panel) {
+      panel.style.display = 'block';
+      panel.classList.remove('est-panel-enter');
+      void panel.offsetWidth;
+      panel.classList.add('est-panel-enter');
+    }
+
+    function updatePanels() {
+      if (!selectedService) {
+        sqftPanel.style.display     = 'none';
+        stripingPanel.style.display = 'none';
+        callbackPanel.style.display = 'none';
+        return;
+      }
+      if (selectedKind === 'sqft') {
+        stripingPanel.style.display = 'none';
+        callbackPanel.style.display = 'none';
+        showPanel(sqftPanel);
+        calcSqft();
+      } else if (selectedKind === 'striping') {
+        sqftPanel.style.display     = 'none';
+        callbackPanel.style.display = 'none';
+        showPanel(stripingPanel);
+        calcStriping();
+      } else {
+        sqftPanel.style.display     = 'none';
+        stripingPanel.style.display = 'none';
+        showPanel(callbackPanel);
+      }
+    }
+
+    // Service selector
+    document.querySelectorAll('.est-service-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.est-service-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        selectedService = btn.dataset.service;
+        selectedKind    = btn.dataset.kind;
+        updatePanels();
+      });
+    });
+
+    // Property type toggle (sqft panel only — scoped to avoid firing on job-type btns)
+    document.querySelectorAll('#estSqftPanel .est-type-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#estSqftPanel .est-type-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        propType = btn.dataset.proptype;
+        calcSqft();
+      });
+    });
+
+    // Job type toggle (striping panel)
+    document.querySelectorAll('.est-jt-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.est-jt-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        jobType = btn.dataset.jobtype;
+        calcStriping();
+      });
+    });
+
+    // Sq ft slider
+    slider.addEventListener('input', function() {
+      sqft = parseInt(slider.value, 10);
+      sqftReadout.textContent = sqft.toLocaleString('en-US') + ' sq ft';
+      document.querySelectorAll('.est-qp-btn').forEach(function(b) {
+        b.classList.toggle('qp-active', parseInt(b.dataset.sqft, 10) === sqft);
+      });
+      calcSqft();
+    });
+
+    // Quick picks
+    document.querySelectorAll('.est-qp-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        sqft = parseInt(btn.dataset.sqft, 10);
+        slider.value = sqft;
+        sqftReadout.textContent = sqft.toLocaleString('en-US') + ' sq ft';
+        document.querySelectorAll('.est-qp-btn').forEach(function(b) { b.classList.toggle('qp-active', b === btn); });
+        calcSqft();
+      });
+    });
+
+    // Counters (striping)
+    document.querySelectorAll('.est-cnt-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var counter = btn.dataset.counter;
+        var dir     = parseInt(btn.dataset.dir, 10);
+        stpCounts[counter] = Math.max(0, stpCounts[counter] + dir);
+        var id = 'estCnt' + counter.charAt(0).toUpperCase() + counter.slice(1);
+        document.getElementById(id).textContent = stpCounts[counter];
+        calcStriping();
+      });
+    });
+  })();
 </script>
 
 </body>

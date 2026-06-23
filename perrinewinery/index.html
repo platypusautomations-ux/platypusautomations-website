@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winery in Portsmouth, VA | Perrine Winery</title>
+  <meta name="description" content="Award-winning family winery opening in Portsmouth, VA. Wine by the glass, bottle, and batch. Events, food, and a gathering space on High Street.">
+  <link rel="canonical" href="https://platypusautomations.com/perrinewinery/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Winery",
+    "name": "Perrine Winery",
+    "email": "holland@perrinewinery.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "620 High Street",
+      "addressLocality": "Portsmouth",
+      "addressRegion": "VA",
+      "postalCode": "23704",
+      "addressCountry": "US"
+    },
+    "url": "https://platypusautomations.com/perrinewinery/",
+    "description": "Award-winning family winery opening in Olde Towne Portsmouth, VA. Wine by the glass, bottle, and batch.",
+    "areaServed": "Hampton Roads, VA"
+  }
+  </script>
+
+  <meta property="og:title" content="Perrine Winery — Coming to Portsmouth, VA">
+  <meta property="og:description" content="Award-winning family winery opening in Olde Towne Portsmouth. Wine by the glass, bottle, and batch. 620 High Street.">
+  <meta property="og:image" content="https://platypusautomations.com/perrinewinery/img/loungefriends.webp">
+  <meta property="og:url" content="https://platypusautomations.com/perrinewinery/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230E4D52'/><text x='16' y='22' text-anchor='middle' font-size='18' fill='%23C9A227'>P</text></svg>">
+
+  <style>
+    @font-face {
+      font-family: 'Monoton';
+      src: url('fonts/monoton-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Bungee';
+      src: url('fonts/bungee-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Nunito Sans';
+      src: url('fonts/nunito-sans-400-latin.woff2') format('woff2');
+      font-weight: 400 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Audiowide';
+      src: url('fonts/audiowide-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Black Ops One';
+      src: url('fonts/black-ops-one-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+  </style>
+
+  <style>
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* === VARIABLES === */
+    :root {
+      --teal-deep:   #0A3A3F;
+      --teal-mid:    #0E4D52;
+      --gold:        #C9A227;
+      --gold-light:  #DDB83A;
+      --cream:       #F4EBD9;
+      --coral:       #E0567A;
+      --muted:       rgba(244,235,217,0.58);
+      --jazz-teal:    #2BC4C9;
+      --jazz-purple:  #7B3FA0;
+      --jazz-magenta: #D6336C;
+      --jazz-green:   #B8D43A;
+      --border-gold: rgba(201,162,39,0.22);
+      --border-cream: rgba(244,235,217,0.12);
+      --fh-mono:  'Monoton', cursive;
+      --fh-bung:  'Bungee', sans-serif;
+      --fh-audio: 'Audiowide', sans-serif;
+      --fh-bell:  'Black Ops One', cursive;
+      --fb:       'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 74px; }
+    body {
+      font-family: var(--fb);
+      background: var(--teal-deep);
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* === GRAIN OVERLAY === */
+    .grain-layer {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 8000; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 300px 300px;
+    }
+
+    /* === REVEAL === */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.10s; } .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; } .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; } .d6 { transition-delay: 0.60s; }
+
+    /* === NAV === */
+    #main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: 72px; display: flex; align-items: center;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    #main-nav.scrolled {
+      background: rgba(10,58,63,0.97);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--border-gold);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-logo { height: 50px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--cream); opacity: 0.7; transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--jazz-teal); }
+    .btn-nav {
+      display: inline-block; padding: 0.5rem 1.25rem;
+      background: var(--gold); color: var(--teal-deep);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s, transform 0.15s; white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .nav-burger span { display: block; width: 22px; height: 2px; background: var(--cream); transition: all 0.28s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 899;
+      background: rgba(10,58,63,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      padding: 1.5rem 1.5rem 2rem; border-top: 1px solid var(--border-gold);
+    }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+    .nav-mobile a { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.85; }
+    .nav-mobile .btn-nav { display: block; text-align: center; margin-top: 0.75rem; }
+
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .nav-right .btn-nav { display: none; }
+    }
+    @media (min-width: 821px) { .nav-mobile { display: none !important; } }
+
+    /* === HERO === */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('img/loungefriends.webp') center/cover no-repeat;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,58,63,0.52) 0%, rgba(10,58,63,0.76) 55%, rgba(10,58,63,0.96) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 8rem 1.5rem 4rem; max-width: 800px; margin: 0 auto; }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .hero-perrine {
+      font-family: var(--fh-bung);
+      font-size: clamp(3.5rem, 13vw, 9rem);
+      line-height: 1; color: var(--cream); letter-spacing: 0.02em; display: block;
+    }
+    .hero-winery {
+      font-family: var(--fh-mono);
+      font-size: clamp(1.3rem, 4.5vw, 3rem);
+      line-height: 1.4; color: var(--gold); display: block;
+      margin-top: 0.3rem; letter-spacing: 0.1em;
+    }
+    .hero-cycle-wrap {
+      margin-top: 1.6rem; min-height: 2.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fh-bung); font-size: clamp(0.9rem, 2vw, 1.3rem);
+    }
+    .hero-cycle {
+      display: inline-block; color: var(--jazz-teal);
+      transition: opacity 0.28s ease, transform 0.28s ease, color 0.28s ease;
+    }
+    .hero-cycle.out { opacity: 0; transform: translateY(8px); }
+    .hero-tagline {
+      margin-top: 1.4rem; font-size: clamp(0.92rem, 1.8vw, 1.08rem); font-weight: 400;
+      opacity: 0.84; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6;
+    }
+    .btn-hero {
+      display: inline-block; margin-top: 2rem; padding: 0.9rem 2.5rem;
+      background: var(--gold); color: var(--teal-deep);
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201,162,39,0.35);
+    }
+    .btn-hero:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,162,39,0.5); }
+    .hero-crest-ghost {
+      position: absolute; bottom: 2.5rem; right: 2.5rem;
+      width: 80px; opacity: 0.1; pointer-events: none; z-index: 2; filter: saturate(0) brightness(2);
+    }
+
+    /* === MARQUEE === */
+    .marquee-strip { background: var(--gold); overflow: hidden; padding: 0.78rem 0; }
+    .marquee-inner { display: flex; overflow: hidden; }
+    .marquee-track {
+      display: flex; flex-shrink: 0; flex-wrap: nowrap;
+      animation: mscroll 32s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      flex-shrink: 0; white-space: nowrap;
+      font-family: var(--fh-bung); font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--teal-deep);
+      padding: 0 1.6rem; display: inline-flex; align-items: center; gap: 1.6rem;
+    }
+    .marquee-item::after { content: '✦'; font-size: 0.52rem; color: var(--jazz-purple); opacity: 0.8; }
+
+    /* === SECTION SHARED === */
+    .sec { padding: 5.5rem 0; }
+    .sec-alt { background: var(--teal-mid); }
+    .sec-label {
+      display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
+    }
+    .sec-title {
+      font-family: var(--fh-bell);
+      font-size: clamp(1.85rem, 4.5vw, 3rem);
+      line-height: 1.1; margin-bottom: 1.4rem;
+      display: inline-block;
+      transform: rotate(-2deg);
+      transform-origin: center center;
+    }
+    #story .sec-title     { color: var(--jazz-teal); }
+    #wines .sec-title     { color: var(--jazz-magenta); }
+    #space .sec-title     { color: var(--jazz-green); }
+    #offerings .sec-title { color: var(--jazz-teal); }
+    #visit .sec-title     { color: var(--jazz-magenta); }
+    .sec-body { font-size: 0.98rem; line-height: 1.75; opacity: 0.86; }
+    .gold-bar { width: 44px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1.2rem 0; }
+    .gold-bar-c { margin-left: auto; margin-right: auto; }
+    .btn-primary {
+      display: inline-block; padding: 0.85rem 2.2rem;
+      background: var(--gold); color: var(--teal-deep);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 16px rgba(201,162,39,0.3);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* === STORY === */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .story-body p { margin-bottom: 1rem; opacity: 0.86; font-size: 0.98rem; }
+    .story-body p:last-child { margin-bottom: 0; }
+    .story-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; justify-content: center; }
+    .badge {
+      padding: 0.28rem 0.75rem; border: 1px solid var(--gold); border-radius: 2px;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+    }
+    .crest-note { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.65rem; margin-top: 1.75rem; }
+    .crest-note img { width: clamp(160px, 22vw, 220px); height: auto; display: block; }
+    .crest-note p { font-size: 0.8rem; line-height: 1.5; opacity: 0.62; font-style: italic; }
+    .story-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .story-img { border-radius: 4px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+    .story-img img, .story-img source { width: 100%; }
+    .story-img img { height: 210px; object-fit: cover; transition: transform 0.5s; width: 100%; }
+    .story-img:hover img { transform: scale(1.05); }
+    .story-img.span2 { grid-column: 1 / -1; }
+    .story-img.span2 img { height: 265px; }
+    @media (max-width: 820px) { .story-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* === WINES === */
+    .wines-center { text-align: center; margin-bottom: 2.5rem; }
+    .wines-center .sec-body { max-width: 520px; margin: 0 auto; }
+    .wines-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+    .wine-card {
+      background: var(--teal-mid); border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--border-gold); box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .wine-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,0.5); }
+    .wine-card-img { height: 220px; overflow: hidden; }
+    .wine-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+    .wine-card:hover .wine-card-img img { transform: scale(1.06); }
+    .wine-card-info { padding: 0.85rem 0.9rem; }
+    .wine-name { font-family: var(--fh-bung); font-size: 0.9rem; color: var(--cream); margin-bottom: 0.2rem; }
+    .wine-note { font-size: 0.76rem; opacity: 0.6; }
+    .wines-feature {
+      margin-top: 1.5rem; border-radius: 6px; overflow: hidden;
+      position: relative; box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+    }
+    .wines-feature img { width: 100%; height: 320px; object-fit: cover; display: block; }
+    .wines-feature-cap {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1.5rem 1.25rem;
+      background: linear-gradient(0deg, rgba(10,58,63,0.93) 0%, transparent 100%);
+      font-family: var(--fh-bung); font-size: 0.95rem; color: var(--cream);
+    }
+    @media (max-width: 900px) {
+      .wines-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+      .wine-card { flex: 0 1 calc(33.33% - 0.67rem); min-width: 160px; }
+    }
+    @media (max-width: 560px) {
+      .wine-card { flex: 0 1 calc(50% - 0.5rem); }
+      .wine-card-img { height: 180px; }
+    }
+
+    /* === SPACE === */
+    .space-intro { max-width: 600px; margin: 0 auto 2.75rem; text-align: center; }
+    .space-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px 240px;
+      gap: 0.7rem;
+    }
+    .sg { border-radius: 4px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.35); }
+    .sg img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+    .sg:hover img { transform: scale(1.05); }
+    .sg-tall { grid-row: span 2; }
+    @media (max-width: 768px) {
+      .space-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 195px; }
+      .sg-tall { grid-row: span 1; }
+      .space-gallery .sg:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    }
+    @media (max-width: 460px) { .space-gallery { grid-template-columns: 1fr; grid-auto-rows: 210px; } }
+
+    /* === OFFERINGS === */
+    .off-center { text-align: center; margin-bottom: 2.5rem; }
+    .off-center .sec-body { max-width: 520px; margin: 0 auto; }
+    .off-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .off-card {
+      background: var(--teal-mid); border: 1px solid var(--border-gold);
+      border-radius: 6px; padding: 1.75rem 1.5rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .off-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201,162,39,0.14); }
+    .off-icon { font-size: 1.75rem; margin-bottom: 0.65rem; }
+    .off-title { font-family: var(--fh-bung); font-size: 0.95rem; color: var(--cream); margin-bottom: 0.4rem; }
+    .off-desc { font-size: 0.84rem; line-height: 1.6; opacity: 0.68; }
+    .soon-tag {
+      display: inline-block; margin-top: 0.6rem; padding: 0.15rem 0.55rem;
+      background: var(--coral); border-radius: 2px;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #fff;
+    }
+    @media (max-width: 820px) { .off-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .off-grid { grid-template-columns: 1fr; } }
+
+    /* === VISIT === */
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .visit-details { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .visit-row { display: flex; gap: 0.7rem; align-items: flex-start; }
+    .visit-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.15rem; }
+    .visit-text { font-size: 0.93rem; line-height: 1.5; }
+    .visit-text a { color: var(--gold); transition: opacity 0.2s; }
+    .visit-text a:hover { opacity: 0.75; }
+    .visit-text .muted { opacity: 0.58; font-style: italic; }
+    .visit-cta { margin-top: 1.75rem; }
+    .map-wrap {
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--border-gold); box-shadow: 0 6px 28px rgba(0,0,0,0.4);
+    }
+    .map-wrap iframe { width: 100%; height: 380px; display: block; border: 0; }
+    @media (max-width: 820px) { .visit-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* === FOOTER === */
+    footer { background: #071B1F; padding: 3rem 0 2rem; border-top: 1px solid var(--border-gold); }
+    .foot-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .foot-logo { height: 60px; width: auto; }
+    .foot-right { display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-end; }
+    .foot-loc { font-size: 0.83rem; opacity: 0.65; }
+    .foot-email { font-size: 0.83rem; color: var(--gold); }
+    .foot-email:hover { opacity: 0.75; }
+    .foot-hours { font-size: 0.77rem; opacity: 0.65; font-style: italic; }
+    .foot-bottom { border-top: 1px solid var(--border-cream); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+    .foot-copy { font-size: 0.78rem; opacity: 0.5; }
+    .foot-built { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.24); }
+    .foot-built a { color: rgba(255,255,255,0.24); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .foot-built a:hover { color: rgba(255,255,255,0.55); }
+    @media (max-width: 480px) {
+      .foot-top { flex-direction: column; align-items: flex-start; }
+      .foot-right { align-items: flex-start; }
+      .foot-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 768px) {
+      .sec { padding: 3.75rem 0; }
+      .hero-crest-ghost { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain-layer" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" aria-label="Perrine Winery home">
+          <img src="img/logo.png" alt="Perrine Winery" class="nav-logo" onerror="this.style.display='none'">
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#wines">The Wines</a></li>
+          <li><a href="#space">The Space</a></li>
+          <li><a href="#offerings">What's Here</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="mailto:holland@perrinewinery.com" class="btn-nav">Email Us</a>
+          <button class="nav-burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="#story" class="mob-link">Our Story</a></li>
+      <li><a href="#wines" class="mob-link">The Wines</a></li>
+      <li><a href="#space" class="mob-link">The Space</a></li>
+      <li><a href="#offerings" class="mob-link">What's Here</a></li>
+      <li><a href="#visit" class="mob-link">Visit</a></li>
+      <li><a href="mailto:holland@perrinewinery.com" class="btn-nav">Email Us</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Welcome to Perrine Winery">
+    <div class="hero-bg" role="presentation"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">Award-Winning Family Winery</p>
+      <h1>
+        <span class="hero-perrine reveal d1">PERRINE</span>
+        <span class="hero-winery reveal d2">WINERY</span>
+        <span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Winery in Portsmouth, VA</span>
+      </h1>
+      <div class="hero-cycle-wrap reveal d3" aria-live="polite" aria-atomic="true">
+        <span id="cycle-word" class="hero-cycle">Eclectic.</span>
+      </div>
+      <p class="hero-tagline reveal d4">Award-winning family wines, now in Olde Towne Portsmouth. From College Station to High Street, the crest travels with us.</p>
+      <a href="mailto:holland@perrinewinery.com" class="btn-hero reveal d5">Email Us</a>
+    </div>
+    <img src="img/crest.jpeg" alt="" class="hero-crest-ghost" aria-hidden="true" loading="lazy">
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <div class="marquee-track">
+        <span class="marquee-item">Award-Winning Wines</span>
+        <span class="marquee-item">From Texas to Portsmouth</span>
+        <span class="marquee-item">Wine. Food. Good Company.</span>
+        <span class="marquee-item">Family-Owned</span>
+        <span class="marquee-item">Coming to Olde Towne</span>
+        <span class="marquee-item">620 High Street</span>
+        <span class="marquee-item">Women-Owned</span>
+        <span class="marquee-item">Award-Winning Wines</span>
+        <span class="marquee-item">From Texas to Portsmouth</span>
+        <span class="marquee-item">Wine. Food. Good Company.</span>
+        <span class="marquee-item">Family-Owned</span>
+        <span class="marquee-item">Coming to Olde Towne</span>
+        <span class="marquee-item">620 High Street</span>
+        <span class="marquee-item">Women-Owned</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section id="story" class="sec sec-alt">
+    <div class="container">
+      <div class="story-grid">
+        <div class="reveal">
+          <span class="sec-label">Our Story</span>
+          <h2 class="sec-title">From Texas to Olde Towne</h2>
+          <div class="gold-bar"></div>
+          <div class="story-body">
+            <p>Perrine Winery started as a family dream in College Station, Texas. Decades of hard work, more than a few award-winning bottles, and a peacock crest that became the family mark.</p>
+            <p>Holland Leopold, daughter of the founders, is bringing the name, the crest, and the wines to a new tasting room on High Street in Olde Towne Portsmouth, Virginia. Women-owned and disabled-owned. A family story that keeps going.</p>
+            <p>The peacock crest traveled with them. It means the same thing it always has.</p>
+          </div>
+          <div class="crest-note">
+            <img src="img/crest-transparent.png" alt="The Perrine family peacock crest" loading="lazy" width="220" height="277">
+            <p>The Perrine peacock crest. A family symbol, now in Virginia.</p>
+          </div>
+          <div class="story-badges">
+            <span class="badge">Women-Owned</span>
+            <span class="badge">Disabled-Owned</span>
+            <span class="badge">Family Winery</span>
+            <span class="badge">Award-Winning</span>
+          </div>
+        </div>
+        <div class="story-imgs reveal d2">
+          <div class="story-img span2">
+            <picture>
+              <source srcset="img/founders.avif" type="image/avif">
+              <img src="img/founders.webp" alt="The Perrine family, founders of Perrine Winery" loading="lazy">
+            </picture>
+          </div>
+          <div class="story-img">
+            <picture>
+              <source srcset="img/oldfrontentrance.avif" type="image/avif">
+              <img src="img/oldfrontentrance.webp" alt="Perrine Winery's original Texas tasting room" loading="lazy">
+            </picture>
+          </div>
+          <div class="story-img">
+            <img src="img/awardwinners.webp" alt="Perrine Winery award-winning bottles" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WINES -->
+  <section id="wines" class="sec">
+    <div class="container">
+      <div class="wines-center reveal">
+        <span class="sec-label">The Wines</span>
+        <h2 class="sec-title">Poured with Purpose</h2>
+        <div class="gold-bar gold-bar-c"></div>
+        <p class="sec-body">Every bottle is a Perrine. By the glass, the bottle, or the batch. These are the wines that made the trip worth taking.</p>
+      </div>
+      <div class="wines-grid">
+        <div class="wine-card reveal d1">
+          <div class="wine-card-img">
+            <img src="img/chardonnay.webp" alt="Perrine Winery Chardonnay" loading="lazy">
+          </div>
+          <div class="wine-card-info">
+            <p class="wine-name">Chardonnay</p>
+            <p class="wine-note">A Perrine classic.</p>
+          </div>
+        </div>
+        <div class="wine-card reveal d2">
+          <div class="wine-card-img">
+            <img src="img/hopstro.webp" alt="Perrine Winery Hopstro" loading="lazy">
+          </div>
+          <div class="wine-card-info">
+            <p class="wine-name">Hopstro</p>
+            <p class="wine-note">Not your average pour.</p>
+          </div>
+        </div>
+        <div class="wine-card reveal d3">
+          <div class="wine-card-img">
+            <img src="img/pinotgrigio.webp" alt="Perrine Winery Pinot Grigio" loading="lazy">
+          </div>
+          <div class="wine-card-info">
+            <p class="wine-name">Pinot Grigio</p>
+            <p class="wine-note">Light, crisp, easy.</p>
+          </div>
+        </div>
+        <div class="wine-card reveal d4">
+          <div class="wine-card-img">
+            <img src="img/whitecranberry.webp" alt="Perrine Winery White Cranberry" loading="lazy">
+          </div>
+          <div class="wine-card-info">
+            <p class="wine-name">White Cranberry</p>
+            <p class="wine-note">Fruity and fun.</p>
+          </div>
+        </div>
+        <div class="wine-card reveal d5">
+          <div class="wine-card-img">
+            <img src="img/zombiewalk.webp" alt="Perrine Winery Zombie Walk" loading="lazy">
+          </div>
+          <div class="wine-card-info">
+            <p class="wine-name">Zombie Walk</p>
+            <p class="wine-note">A bottle with personality.</p>
+          </div>
+        </div>
+      </div>
+      <div class="wines-feature reveal">
+        <img src="img/awardwinners.webp" alt="Perrine Winery award-winning bottle lineup" loading="lazy">
+        <div class="wines-feature-cap">Award-winning. Every bottle tells the story.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SPACE -->
+  <section id="space" class="sec sec-alt">
+    <div class="container">
+      <div class="space-intro reveal">
+        <span class="sec-label">The Space</span>
+        <h2 class="sec-title">Your Neighborhood Wine Bar</h2>
+        <div class="gold-bar gold-bar-c"></div>
+        <p class="sec-body">The kind of place where you walk in for one glass and stay for three. Warm, eclectic, a little funky, by design. Think your favorite corner bar, if your favorite corner bar also made the wine.</p>
+      </div>
+      <div class="space-gallery">
+        <div class="sg sg-tall reveal d1">
+          <picture>
+            <source srcset="img/tastingroom.avif" type="image/avif">
+            <img src="img/tastingroom.webp" alt="Perrine Winery tasting room interior" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d2">
+          <picture>
+            <source srcset="img/barfriends.avif" type="image/avif">
+            <img src="img/barfriends.webp" alt="Friends gathered at Perrine Winery wine bar in Portsmouth VA" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d3">
+          <picture>
+            <source srcset="img/loungefriends.avif" type="image/avif">
+            <img src="img/loungefriends.webp" alt="Friends relaxing at Perrine Winery in Olde Towne Portsmouth VA" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d4">
+          <picture>
+            <source srcset="img/deck.avif" type="image/avif">
+            <img src="img/deck.webp" alt="Perrine Winery outdoor deck" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d1">
+          <picture>
+            <source srcset="img/ladies.avif" type="image/avif">
+            <img src="img/ladies.webp" alt="Guests enjoying Perrine wines in Portsmouth VA" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d2">
+          <picture>
+            <source srcset="img/bottleshelves.avif" type="image/avif">
+            <img src="img/bottleshelves.webp" alt="Perrine Winery bottle display" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d3">
+          <picture>
+            <source srcset="img/wineglassstorage.avif" type="image/avif">
+            <img src="img/wineglassstorage.webp" alt="Wine glasses ready at Perrine Winery" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d4">
+          <picture>
+            <source srcset="img/youngladies.avif" type="image/avif">
+            <img src="img/youngladies.webp" alt="Guests at Perrine Winery in Portsmouth VA" loading="lazy">
+          </picture>
+        </div>
+        <div class="sg reveal d5">
+          <picture>
+            <source srcset="img/dog.avif" type="image/avif">
+            <img src="img/dog.webp" alt="A welcome guest at Perrine Winery" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERINGS -->
+  <section id="offerings" class="sec">
+    <div class="container">
+      <div class="off-center reveal">
+        <span class="sec-label">What You'll Find</span>
+        <h2 class="sec-title">More Than Just Wine in Portsmouth, VA</h2>
+        <div class="gold-bar gold-bar-c"></div>
+        <p class="sec-body">Perrine Portsmouth is built to be a gathering place. Come for the wine, stay for everything else.</p>
+      </div>
+      <div class="off-grid">
+        <div class="off-card reveal d1">
+          <div class="off-icon" aria-hidden="true">🍷</div>
+          <h3 class="off-title">Wine Bar</h3>
+          <p class="off-desc">Perrine wines by the glass, bottle, or batch. The full lineup, poured the way they were meant to be.</p>
+        </div>
+        <div class="off-card reveal d2">
+          <div class="off-icon" aria-hidden="true">🥗</div>
+          <h3 class="off-title">Food &amp; Grab-N-Go</h3>
+          <p class="off-desc">Good food to go with good wine. Light bites and grab-and-go options, because a pour is better with something to eat.</p>
+        </div>
+        <div class="off-card reveal d3">
+          <div class="off-icon" aria-hidden="true">☕</div>
+          <h3 class="off-title">Cafe</h3>
+          <p class="off-desc">A cafe experience is on the way.</p>
+          <span class="soon-tag">Coming Soon</span>
+        </div>
+        <div class="off-card reveal d4">
+          <div class="off-icon" aria-hidden="true">🎉</div>
+          <h3 class="off-title">Event Space</h3>
+          <p class="off-desc">Host your gathering somewhere worth gathering. Private and semi-private event space available.</p>
+        </div>
+        <div class="off-card reveal d5">
+          <div class="off-icon" aria-hidden="true">📚</div>
+          <h3 class="off-title">Classes &amp; Meetings</h3>
+          <p class="off-desc">Tasting classes, workshops, and meeting space. A great room for learning, connecting, and having a glass while you're at it.</p>
+        </div>
+        <div class="off-card reveal d6">
+          <div class="off-icon" aria-hidden="true">🛍️</div>
+          <h3 class="off-title">Vendor Market</h3>
+          <p class="off-desc">Local makers and vendors in the mix. More color, more community, more reason to come back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit" class="sec sec-alt">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="reveal">
+          <span class="sec-label">Visit Us</span>
+          <h2 class="sec-title">Find Us in Olde Towne</h2>
+          <div class="gold-bar"></div>
+          <p class="sec-body">Coming to High Street in Portsmouth, VA. We'd love to hear from you before the doors open.</p>
+          <div class="visit-details">
+            <div class="visit-row">
+              <span class="visit-icon" aria-hidden="true">📍</span>
+              <div class="visit-text">620 High Street<br>Olde Towne, Portsmouth, VA 23704</div>
+            </div>
+            <div class="visit-row">
+              <span class="visit-icon" aria-hidden="true">🕐</span>
+              <div class="visit-text"><span class="muted">Hours coming soon</span></div>
+            </div>
+            <div class="visit-row">
+              <span class="visit-icon" aria-hidden="true">✉️</span>
+              <div class="visit-text"><a href="mailto:holland@perrinewinery.com">holland@perrinewinery.com</a></div>
+            </div>
+          </div>
+          <div class="visit-cta">
+            <a href="mailto:holland@perrinewinery.com" class="btn-primary">Email Us</a>
+          </div>
+        </div>
+        <div class="map-wrap reveal d2">
+          <iframe
+            title="Perrine Winery location: 620 High Street, Portsmouth VA"
+            src="https://maps.google.com/maps?q=620+High+St,+Portsmouth,+VA+23704&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="foot-top">
+        <img src="img/logo.png" alt="Perrine Winery" class="foot-logo" onerror="this.style.display='none'" loading="lazy">
+        <div class="foot-right">
+          <span class="foot-loc">620 High Street, Olde Towne Portsmouth, VA 23704</span>
+          <a href="mailto:holland@perrinewinery.com" class="foot-email">holland@perrinewinery.com</a>
+          <span class="foot-hours">Hours coming soon</span>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p class="foot-copy">Perrine Winery &nbsp;&middot;&nbsp; Portsmouth, VA &nbsp;&middot;&nbsp; &copy; 2026</p>
+        <div class="foot-built">
+          SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" rel="noopener noreferrer">PLATYPUS AUTOMATIONS</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 28);
+    }, { passive: true });
+
+    // Hamburger / mobile menu
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('nav-mobile');
+    burger.addEventListener('click', () => {
+      const open = burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(open));
+      mobileNav.classList.toggle('open', open);
+    });
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+      });
+    });
+
+    // Animated text cycle
+    const cycleEl = document.getElementById('cycle-word');
+    const words = ['Eclectic.', 'Funky.', 'Welcoming.', 'Award-Winning.'];
+    const cycleColors = ['#2BC4C9', '#E0567A', '#2BC4C9', '#E0567A'];
+    let idx = 0;
+    cycleEl.style.color = cycleColors[0];
+    function nextWord() {
+      cycleEl.classList.add('out');
+      setTimeout(() => {
+        idx = (idx + 1) % words.length;
+        cycleEl.textContent = words[idx];
+        cycleEl.style.color = cycleColors[idx];
+        cycleEl.classList.remove('out');
+      }, 290);
+    }
+    setInterval(nextWord, 2800);
+
+    // Scroll reveal
+    const revEls = document.querySelectorAll('.reveal');
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    revEls.forEach(el => ro.observe(el));
+
+    // Reveal hero elements on load without waiting for scroll
+    document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 150 + i * 130);
+    });
+  </script>
+</body>
+</html>

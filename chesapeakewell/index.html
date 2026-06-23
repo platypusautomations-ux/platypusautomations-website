@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chesapeake Well and Pump Service | Water Wells, Pumps and Geothermal | Hampton Roads</title>
+  <meta name="description" content="Virginia and North Carolina Certified Master Well Driller serving Hampton Roads since 1977. Water well drilling, pump service, geothermal systems. Call (757) 436-2665.">
+  <style>
+    @font-face { font-family: 'Barlow'; font-weight: 300; font-style: normal; font-display: swap;
+      src: url('../fonts/Barlow-300-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Barlow'; font-weight: 400; font-style: normal; font-display: swap;
+      src: url('../fonts/Barlow-400-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Barlow'; font-weight: 500; font-style: normal; font-display: swap;
+      src: url('../fonts/Barlow-500-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Barlow'; font-weight: 600; font-style: normal; font-display: swap;
+      src: url('../fonts/Barlow-600-normal.woff2') format('woff2'); }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0A2A4A;
+      --navy-dark:  #061830;
+      --navy-mid:   #0E3459;
+      --navy-card:  #0F2E4E;
+      --gold:       #F2B705;
+      --gold-hover: #FFC72C;
+      --gold-dim:   rgba(242,183,5,0.18);
+      --white:      #FFFFFF;
+      --text:       #E8EDF2;
+      --muted:      rgba(232,237,242,0.62);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', system-ui, -apple-system, sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: var(--navy-dark);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.45);
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 44px;
+      width: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-text span {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-phone {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-phone:hover { color: var(--gold); }
+    .btn-nav {
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-nav:hover { background: var(--gold-hover); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(155deg, #050f1e 0%, #081f38 35%, #0A2A4A 65%, #0c2f52 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 0%,   rgba(14,52,89,0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 50% at 50% 100%,  rgba(6,24,48,0.55)  0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-topo {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-topo svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+    .hero-logo-wrap {
+      margin-bottom: 36px;
+    }
+    .hero-logo-wrap img {
+      width: 156px;
+      height: 156px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(242,183,5,0.22), 0 12px 48px rgba(0,0,0,0.55);
+    }
+    .hero h1 {
+      font-size: clamp(30px, 5.5vw, 54px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 20px);
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 17px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 22px rgba(242,183,5,0.32);
+    }
+    .btn-primary:hover {
+      background: var(--gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(242,183,5,0.5);
+    }
+    .hero-cred {
+      margin-top: 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero-cred strong { color: var(--gold); font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1120px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(242,183,5,0.1);
+      border: 1px solid rgba(242,183,5,0.22);
+      padding: 4px 13px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-intro {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+    .gold-rule {
+      width: 44px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 14px 0 36px;
+    }
+
+    /* SERVICES */
+    .services { background: var(--navy-dark); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+    }
+    .service-card {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      padding: 30px 26px;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .service-card:hover {
+      border-color: rgba(242,183,5,0.42);
+      transform: translateY(-2px);
+    }
+    .icon-wrap {
+      width: 52px;
+      height: 52px;
+      background: rgba(242,183,5,0.09);
+      border: 1px solid rgba(242,183,5,0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .service-icon {
+      width: 26px;
+      height: 26px;
+      color: var(--gold);
+    }
+    .service-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .service-card p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* REVIEWS */
+    .reviews { background: var(--navy); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+    }
+    .review-card {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      padding: 30px 26px;
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 17px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .review-card blockquote {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: normal;
+      margin-bottom: 18px;
+    }
+    .review-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* ABOUT */
+    .about { background: var(--navy-mid); }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .stat-box {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-desc {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--navy-dark);
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid rgba(242,183,5,0.18);
+      padding: 30px 24px;
+    }
+    .trust-bar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 44px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .trust-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--navy-dark);
+      text-align: center;
+      padding: 96px 24px;
+    }
+    .cta-section h2 {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 720px;
+      margin: 0 auto 18px;
+    }
+    .cta-section h2 .gold { color: var(--gold); }
+    .cta-section p {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 38px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .cta-note a { color: var(--gold); text-decoration: none; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 48px 24px;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .footer-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .footer-meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .footer-meta a { color: var(--muted); text-decoration: none; }
+    .footer-meta a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    .footer-built {
+      margin-top: 8px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* Review quote mark */
+    .review-quote {
+      font-size: 72px;
+      line-height: 0.75;
+      color: rgba(242,183,5,0.18);
+      font-family: Georgia, 'Times New Roman', serif;
+      display: block;
+      margin-bottom: 6px;
+      user-select: none;
+    }
+
+    /* Hero load animations */
+    @keyframes blur-in {
+      from { filter: blur(8px); opacity: 0; transform: translateY(14px); }
+      to   { filter: blur(0px); opacity: 1; transform: translateY(0); }
+    }
+    .hero-logo-wrap    { animation: blur-in 0.7s ease 0.1s both; }
+    .hero h1           { animation: blur-in 0.8s ease 0.4s both; }
+    .hero-sub          { animation: blur-in 0.7s ease 0.75s both; }
+    .hero .btn-primary { animation: blur-in 0.6s ease 1.05s both; }
+    .hero-cred         { animation: blur-in 0.6s ease 1.25s both; }
+
+    /* Italic stat numbers */
+    .stat-num { font-style: italic; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.05s; }
+    .d2 { transition-delay: 0.15s; }
+    .d3 { transition-delay: 0.25s; }
+    .d4 { transition-delay: 0.35s; }
+    .d5 { transition-delay: 0.45s; }
+    .d6 { transition-delay: 0.55s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-logo-text { display: none; }
+      .nav-phone { font-size: 14px; }
+      .btn-nav { font-size: 12px; padding: 9px 13px; }
+
+      .hero { padding: 100px 20px 64px; }
+      .hero-logo-wrap img { width: 118px; height: 118px; }
+
+      section { padding: 60px 20px; }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .trust-bar-inner {
+        gap: 18px;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .btn-primary { padding: 15px 26px; font-size: 15px; width: 100%; max-width: 320px; }
+      .cta-section h2 br { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Chesapeake Well and Pump Service">
+        <img src="img/hero.logo.png" alt="Chesapeake Well and Pump Service logo">
+        <div class="nav-logo-text">
+          Chesapeake Well and Pump
+          <span>Chesapeake, VA</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <a href="tel:7574362665" class="nav-phone">(757) 436-2665</a>
+        <a href="tel:7574362665" class="btn-nav">Call for Service</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-topo" aria-hidden="true">
+      <svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet">
+        <!-- Topographic contour rings, anchored lower-left, suggesting a well-site survey -->
+        <g fill="none">
+          <ellipse cx="260" cy="700" rx="100" ry="50"  stroke="#F2B705" stroke-opacity="0.09" stroke-width="1.2"/>
+          <ellipse cx="260" cy="700" rx="195" ry="95"  stroke="#F2B705" stroke-opacity="0.07" stroke-width="1.1"/>
+          <ellipse cx="260" cy="700" rx="315" ry="150" stroke="#F2B705" stroke-opacity="0.06" stroke-width="1.0"/>
+          <ellipse cx="260" cy="700" rx="455" ry="210" stroke="#F2B705" stroke-opacity="0.05" stroke-width="0.9"/>
+          <ellipse cx="260" cy="700" rx="615" ry="275" stroke="#F2B705" stroke-opacity="0.038" stroke-width="0.8"/>
+          <ellipse cx="260" cy="700" rx="800" ry="350" stroke="#F2B705" stroke-opacity="0.025" stroke-width="0.7"/>
+          <!-- Horizontal strata lines, bottom edge, suggesting rock layers -->
+          <line x1="0" y1="590" x2="1200" y2="590" stroke="#E8EDF2" stroke-opacity="0.045" stroke-width="1"/>
+          <line x1="0" y1="618" x2="1200" y2="618" stroke="#E8EDF2" stroke-opacity="0.032" stroke-width="0.8"/>
+          <line x1="0" y1="638" x2="1200" y2="638" stroke="#E8EDF2" stroke-opacity="0.022" stroke-width="0.7"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-logo-wrap">
+        <img src="img/hero.logo.png" alt="Chesapeake Well and Pump Service, Inc.">
+      </div>
+      <h1>Hampton Roads' Water Well Experts<br><span class="gold">Since 1977</span></h1>
+      <p class="hero-sub">Wells. Pumps. Geothermal. Serving Greater Chesapeake and Hampton Roads for nearly five decades.</p>
+      <a href="tel:7574362665" class="btn-primary">Call (757) 436-2665</a>
+      <p class="hero-cred">Virginia and North Carolina <strong>Certified Master Well Driller</strong></p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal d1">Full-Service Well and Pump Work</h2>
+      <div class="gold-rule reveal d2"></div>
+      <p class="section-intro reveal d3">Residential to industrial. New wells to geothermal. If it involves getting water out of the ground in Hampton Roads, this is who you call.</p>
+      <div class="services-grid">
+
+        <div class="service-card reveal d1">
+          <div class="icon-wrap"><svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="21" y="4" width="6" height="40" rx="1"/>
+            <path d="M21 10H10a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h11"/>
+            <path d="M27 10h11a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H27"/>
+            <line x1="24" y1="4" x2="24" y2="2"/>
+            <circle cx="24" cy="6" r="2"/>
+          </svg></div>
+          <h3>Water Well Drilling</h3>
+          <p>Residential, commercial, public, and industrial wells. Drilled right the first time by a team with nearly 50 years of experience in this ground.</p>
+        </div>
+
+        <div class="service-card reveal d2">
+          <div class="icon-wrap"><svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="24" r="11"/>
+            <circle cx="24" cy="24" r="4"/>
+            <line x1="24" y1="8" x2="24" y2="13"/>
+            <line x1="24" y1="35" x2="24" y2="40"/>
+            <line x1="8" y1="24" x2="13" y2="24"/>
+            <line x1="35" y1="24" x2="40" y2="24"/>
+            <line x1="13.1" y1="13.1" x2="16.6" y2="16.6"/>
+            <line x1="31.4" y1="31.4" x2="34.9" y2="34.9"/>
+          </svg></div>
+          <h3>Pump Service and Repair</h3>
+          <p>Jet pumps and submersible pumps. No pressure, no water, strange noises. We diagnose it and fix it. Fast.</p>
+        </div>
+
+        <div class="service-card reveal d3">
+          <div class="icon-wrap"><svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 40 C7 40 13 20 24 20 C35 20 41 40 41 40"/>
+            <line x1="24" y1="20" x2="24" y2="8"/>
+            <polyline points="19 13 24 8 29 13"/>
+            <path d="M11 38 Q24 27 37 38"/>
+            <line x1="24" y1="40" x2="24" y2="45"/>
+          </svg></div>
+          <h3>Geothermal Systems</h3>
+          <p>Closed loop, open loop, purging and pressurizing. We have installed and maintained geothermal systems in Hampton Roads for years.</p>
+        </div>
+
+        <div class="service-card reveal d4">
+          <div class="icon-wrap"><svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 34 Q16 24 24 28 Q32 32 40 22"/>
+            <path d="M8 26 Q16 16 24 20 Q32 24 40 14"/>
+            <line x1="16" y1="34" x2="16" y2="42"/>
+            <line x1="24" y1="36" x2="24" y2="42"/>
+            <line x1="32" y1="34" x2="32" y2="42"/>
+          </svg></div>
+          <h3>Well Irrigation</h3>
+          <p>Irrigation systems connected to your well, sized correctly for your property. We handle the connection from the source to the system.</p>
+        </div>
+
+        <div class="service-card reveal d5">
+          <div class="icon-wrap"><svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 42 L14 18 Q14 8 24 8 Q34 8 34 18 L34 42"/>
+            <line x1="10" y1="42" x2="38" y2="42"/>
+            <line x1="19" y1="24" x2="29" y2="24"/>
+            <line x1="19" y1="30" x2="29" y2="30"/>
+            <circle cx="24" cy="17" r="3"/>
+          </svg></div>
+          <h3>Water Sampling and Well Evaluations</h3>
+          <p>Know what is in your water. We test and evaluate so you have the information you need before making decisions about treatment or use.</p>
+        </div>
+
+        <div class="service-card reveal d6">
+          <div class="icon-wrap"><svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="28" r="10"/>
+            <line x1="24" y1="18" x2="24" y2="8"/>
+            <line x1="18" y1="8" x2="30" y2="8"/>
+            <line x1="20" y1="28" x2="28" y2="28"/>
+            <line x1="24" y1="24" x2="24" y2="33"/>
+            <path d="M16 38 Q24 43 32 38"/>
+          </svg></div>
+          <h3>Abandoned Well Services</h3>
+          <p>Old wells no longer in use need to be properly sealed. We handle plugging and abandonment to code, protecting your property and water table.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="section-inner">
+      <p class="section-label reveal">What People Say</p>
+      <h2 class="section-title reveal d1">Decades of Satisfied Customers</h2>
+      <div class="gold-rule reveal d2"></div>
+      <div class="reviews-grid">
+
+        <div class="review-card reveal d1">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <span class="review-quote">&ldquo;</span>
+          <blockquote>Been calling the same company for 13 years. Every visit: fair price, shows up on time, and the work holds. Routine calls get returned by the next day. When something is urgent, they are there in hours. They stand behind what they do.</blockquote>
+          <p class="review-author">Gary S., Chesapeake VA</p>
+        </div>
+
+        <div class="review-card reveal d2">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <span class="review-quote">&ldquo;</span>
+          <blockquote>Called seven other companies before I found the right one. Nobody else came close in experience or knowledge. Honest from the start, stuck to the schedule, and left the site clean. This is who you call in Hampton Roads.</blockquote>
+          <p class="review-author">Michael B., Hampton Roads</p>
+        </div>
+
+        <div class="review-card reveal d3">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <span class="review-quote">&ldquo;</span>
+          <blockquote>I have used Steve for geothermal work over many years. The work ethic is real, the knowledge is deep, and the results speak for themselves. Trustworthy. Exactly what you want in a contractor you rely on long term.</blockquote>
+          <p class="review-author">James K., Virginia Beach</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="section-label reveal">About</p>
+          <h2 class="section-title reveal d1">Family Owned and Operated Since 1977</h2>
+          <div class="gold-rule reveal d2"></div>
+          <p class="reveal d3">Chesapeake Well and Pump Service, Inc. has been drilling wells and servicing pumps in Greater Chesapeake and Hampton Roads since 1977. One of the oldest and most experienced drilling operations in Southeast Virginia.</p>
+          <p class="reveal d4">Holding Virginia and North Carolina Certified Master Well Driller credentials, the work here is done to a standard that has earned repeat customers for over four decades. Fully licensed and insured. Family run. One name on the door.</p>
+        </div>
+        <div class="stat-grid reveal d3">
+          <div class="stat-box">
+            <div class="stat-num">49</div>
+            <div class="stat-desc">Years in business</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">2</div>
+            <div class="stat-desc">State master driller certifications</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">6</div>
+            <div class="stat-desc">Core well and pump services</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">1</div>
+            <div class="stat-desc">Family. One standard of work.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+        Serving Hampton Roads Since 1977
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="7" r="4"/>
+          <path d="M20 21a8 8 0 1 0-16 0"/>
+          <polyline points="16 11 17.5 12.5 21 9"/>
+        </svg>
+        Virginia and North Carolina Certified Master Well Driller
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Fully Licensed and Insured
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Family Owned and Operated
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section" id="contact">
+    <div class="section-inner">
+      <h2 class="reveal">No water? Call the people who have been<br><span class="gold">solving it here since 1977.</span></h2>
+      <p class="reveal d2">One call. Decades of experience. We have seen every well and pump problem in Hampton Roads. Let us fix yours.</p>
+      <a href="tel:7574362665" class="btn-primary reveal d3">Call (757) 436-2665</a>
+      <p class="cta-note reveal d4">Routine service and emergencies. <a href="tel:7574362665">(757) 436-2665</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-name">Chesapeake Well and Pump Service, Inc.</p>
+      <p class="footer-meta">Chesapeake, VA | Serving Greater Hampton Roads</p>
+      <p class="footer-meta"><a href="tel:7574362665">(757) 436-2665</a></p>
+      <p class="footer-copy">&copy; 2026 Chesapeake Well and Pump Service, Inc. All rights reserved.</p>
+      <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
+        SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

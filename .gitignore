@@ -7,3 +7,10 @@
 !5a92e733cbb46942db47d1bff89495fe.html
 !prime/prime-scanner.html
 !*/imageAutoSlider.html
+
+# qualitySC — full-res source assets (commit only img/web/)
+qualitySC/img/fromRichard/
+qualitySC/img/dronevideonoaudio.mp4
+qualitySC/img/stock/
+qualitySC/img/*.webp
+qualitySC/img/generator*.webp
