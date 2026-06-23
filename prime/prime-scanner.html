@@ -1243,7 +1243,7 @@ const DEMO_CONTRACTS = [
     contactName: 'Susan Morales',
     contactEmail: 'susan.morales@va.gov',
     description: 'Grounds maintenance including mowing, edging, trimming, leaf removal, and general upkeep of 47 acres across the cemetery grounds. Weekly service during growing season, bi-weekly off-season.',
-    samLink: 'https://sam.gov/opp/QSE-36C78626Q50201',
+    samLink: 'https://sam.gov/opp/QSE-36C78626Q50201/view',
   },
   {
     noticeId: 'W15QKN26QA117',
@@ -1261,7 +1261,7 @@ const DEMO_CONTRACTS = [
     contactName: 'Nancy Zeng',
     contactEmail: 'nancy.m.zeng.civ@army.mil',
     description: 'Grounds maintenance for Army Reserve Center. Solicitation expected July 2026. Sources sought to identify capable SDVOSB/VOSB contractors in the area.',
-    samLink: 'https://sam.gov/opp/W15QKN26QA117',
+    samLink: 'https://sam.gov/opp/W15QKN26QA117/view',
   },
   {
     noticeId: 'TPFA-2026-JAX-004',
@@ -1279,7 +1279,7 @@ const DEMO_CONTRACTS = [
     contactName: 'Derrick Owens',
     contactEmail: 'd.owens@gsa.gov',
     description: 'Full janitorial and custodial services for 38,000 sq ft federal office building. Five-day-a-week service including restroom sanitation, floor care, trash removal, window cleaning quarterly.',
-    samLink: 'https://sam.gov/opp/TPFA-2026-JAX-004',
+    samLink: 'https://sam.gov/opp/TPFA-2026-JAX-004/view',
   },
   {
     noticeId: 'NCA-36C786-LM-0089',
@@ -1297,7 +1297,7 @@ const DEMO_CONTRACTS = [
     contactName: 'Patricia Webb',
     contactEmail: 'patricia.webb@va.gov',
     description: 'Tree maintenance services: removal of 8 hazardous trees, pruning of 22 trees along main thoroughfare. ISA Certified Arborist required on site. One-time contract.',
-    samLink: 'https://sam.gov/opp/NCA-36C786-LM-0089',
+    samLink: 'https://sam.gov/opp/NCA-36C786-LM-0089/view',
   },
   {
     noticeId: 'ACC-NJ-2026-HVAC-014',
@@ -1315,7 +1315,7 @@ const DEMO_CONTRACTS = [
     contactName: 'Marcus T. Hill',
     contactEmail: 'm.hill.civ@army.mil',
     description: 'Base year plus 4 option years. Full grounds service including mowing (18 acres), fertilization, weed control, snow removal and ice treatment on 2.1 miles of road and parking.',
-    samLink: 'https://sam.gov/opp/ACC-NJ-2026-HVAC-014',
+    samLink: 'https://sam.gov/opp/ACC-NJ-2026-HVAC-014/view',
   },
   {
     noticeId: 'GSA-R4-2026-JAN-JAL',
@@ -1333,7 +1333,7 @@ const DEMO_CONTRACTS = [
     contactName: 'Latoya Simmons',
     contactEmail: 'latoya.simmons@va.gov',
     description: 'Presolicitation notice. Janitorial services for 22,000 sq ft medical annex. Full solicitation expected June 2026. Estimated base year $298k with 4 option years.',
-    samLink: 'https://sam.gov/opp/GSA-R4-2026-JAN-JAL',
+    samLink: 'https://sam.gov/opp/GSA-R4-2026-JAN-JAL/view',
   },
   {
     noticeId: 'EPA-R3-2026-HAZ-003',
@@ -1351,7 +1351,7 @@ const DEMO_CONTRACTS = [
     contactName: 'Dr. Rebecca Chu',
     contactEmail: 'r.chu@epa.gov',
     description: 'HazMat collection and disposal support for three Superfund assessment sites. Requires licensed hazardous waste contractor with EPA certifications. Subcontractor must hold all applicable permits.',
-    samLink: 'https://sam.gov/opp/EPA-R3-2026-HAZ-003',
+    samLink: 'https://sam.gov/opp/EPA-R3-2026-HAZ-003/view',
   },
 ];
 
@@ -1521,7 +1521,7 @@ async function fetchLive() {
             contactName: opp.pointOfContact?.[0]?.fullName || '',
             contactEmail: opp.pointOfContact?.[0]?.email || '',
             description: opp.description || '',
-            samLink: `https://sam.gov/opp/${opp.noticeId}`,
+            samLink: `https://sam.gov/opp/${opp.noticeId}/view`,
           });
         }
       }
