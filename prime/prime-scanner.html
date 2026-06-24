@@ -1515,6 +1515,7 @@ async function fetchLive() {
     const data = await res.json();
 
     console.log(`[SAM] totalRecords=${data.totalRecords}, returned=${data.opportunitiesData?.length ?? 0}`);
+    if (data.opportunitiesData?.length) console.log('[SAM] type values in response:', [...new Set(data.opportunitiesData.map(o => o.type))]);
     if (!data.opportunitiesData) console.log('[SAM] Raw response:', JSON.stringify(data).slice(0, 500));
 
     if (data.opportunitiesData) {
@@ -1522,7 +1523,9 @@ async function fetchLive() {
         const oppNaics = opp.naicsCode || opp.naicsList?.[0]?.naicsCode || '';
 
         // Skip Award Notices and Justifications — already awarded, nothing to bid
-        if (opp.type === 'a' || opp.type === 'u') continue;
+        const oppTypeLower = (opp.type || '').toLowerCase();
+        if (oppTypeLower === 'a' || oppTypeLower === 'u' ||
+            oppTypeLower.includes('award') || oppTypeLower.includes('justification')) continue;
 
         // Skip if user has NAICS selected and this contract doesn't match any of them
         if (activeNaics.length && !activeNaics.includes(oppNaics)) continue;
