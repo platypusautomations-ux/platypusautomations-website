@@ -1225,6 +1225,8 @@
 </div>
 
 <script>
+let isDemo = false;
+
 // ===== DEMO DATA =====
 const DEMO_CONTRACTS = [
   {
@@ -1503,8 +1505,7 @@ async function fetchLive() {
       if (!res.ok) throw new Error('API error ' + res.status);
       const data = await res.json();
 
-      // Log raw first opportunity to confirm correct field names.
-      // Remove once mapping is verified.
+      console.log(`[SAM] NAICS ${naics}: totalRecords=${data.totalRecords}, opportunitiesData count=${data.opportunitiesData?.length ?? 0}`);
       if (data._debugFirstOpp) {
         console.log('[SAM DEBUG] First raw opportunity fields:', data._debugFirstOpp);
       }
@@ -1514,8 +1515,13 @@ async function fetchLive() {
           const val = opp.award?.amount || null;
           if (val && val > parseInt(maxVal)) continue;
 
+          // solicitationNumber is the human-readable ID shown on SAM.gov (e.g. W15QKN26QA117)
+          // noticeId is the internal UUID used in the /opp/ URL
+          const displayId = opp.solicitationNumber || opp.noticeId || '';
+          const linkId = opp.noticeId || opp.solicitationNumber || '';
+
           results.push({
-            noticeId: opp.noticeId || '',
+            noticeId: displayId,
             title: opp.title,
             agency: opp.fullParentPathName?.split('.')[0] || opp.organizationHierarchy?.[0]?.name || 'Federal Agency',
             office: opp.fullParentPathName?.split('.').pop() || '',
@@ -1530,16 +1536,22 @@ async function fetchLive() {
             contactName: opp.pointOfContact?.[0]?.fullName || '',
             contactEmail: opp.pointOfContact?.[0]?.email || '',
             description: opp.description || '',
-            samLink: `https://sam.gov/opp/${opp.noticeId}/view`,
+            samLink: `https://sam.gov/opp/${linkId}/view`,
           });
         }
       }
     } catch (e) {
-      console.error('SAM.gov fetch error:', e);
+      console.error('[SAM] fetch error for NAICS', naics, ':', e);
     }
   }
 
-  return results.length ? results : filterDemo();
+  if (!results.length) {
+    console.warn('[SAM] No live results returned — falling back to DEMO DATA. Check console logs above for API errors.');
+    isDemo = true;
+    return filterDemo();
+  }
+  isDemo = false;
+  return results;
 }
 
 // ===== DEMO FILTER =====
@@ -1567,6 +1579,11 @@ function renderResults() {
     return;
   }
 
+  const demoBanner = isDemo ? `
+    <div style="background:#7c3400;border:1px solid #b84d00;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#ffb380;">
+      DEMO MODE — SAM.gov API returned no results. Showing sample data. Open browser DevTools → Console for API error details.
+    </div>` : '';
+
   const sortBy = document.getElementById('sortBy').value;
   const sorted = [...currentResults].sort((a, b) => {
     if (sortBy === 'score') return b.score - a.score;
@@ -1578,7 +1595,7 @@ function renderResults() {
 
   document.getElementById('topbarTitle').textContent = `${sorted.length} contract${sorted.length !== 1 ? 's' : ''} found`;
 
-  document.getElementById('resultsList').innerHTML = sorted.map(opp => `
+  document.getElementById('resultsList').innerHTML = demoBanner + sorted.map(opp => `
     <div class="opp-card ${opp.score >= 90 ? 'hot' : ''}" onclick="openDrawer('${opp.noticeId}')">
       <div class="opp-top">
         <div class="opp-score ${getScoreClass(opp.score)}">${opp.score}</div>
