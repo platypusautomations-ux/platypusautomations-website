@@ -1490,69 +1490,71 @@ async function fetchLive() {
   const dateStr = `${mm}/${dd}/${yyyy}`;
 
   const results = [];
+  const seen = new Set();
 
-  for (const naics of activeNaics.slice(0, 3)) {
-    const today = new Date();
-    const tm = String(today.getMonth() + 1).padStart(2, '0');
-    const td = String(today.getDate()).padStart(2, '0');
-    const ty = today.getFullYear();
-    const todayStr = `${tm}/${td}/${ty}`;
+  const today = new Date();
+  const tm = String(today.getMonth() + 1).padStart(2, '0');
+  const td = String(today.getDate()).padStart(2, '0');
+  const ty = today.getFullYear();
+  const todayStr = `${tm}/${td}/${ty}`;
 
-    const params = new URLSearchParams({
-      naicsCode: naics,
-      postedFrom: dateStr,
-      postedTo: todayStr,
-      limit: '20',
-    });
-    if (setAside) params.set('typeOfSetAside', setAside);
-    if (noticeType) params.set('type', noticeType);
+  // SAM.gov API ignores naicsCode filter — fetch broadly, filter client-side by actual NAICS
+  const params = new URLSearchParams({
+    postedFrom: dateStr,
+    postedTo: todayStr,
+    limit: '100',
+  });
+  if (setAside) params.set('typeOfSetAside', setAside);
+  if (noticeType) params.set('type', noticeType);
 
-    try {
-      const res = await fetch(`/sam-proxy?${params}`);
-      if (!res.ok) throw new Error('API error ' + res.status);
-      const data = await res.json();
+  try {
+    const res = await fetch(`/sam-proxy?${params}`);
+    if (!res.ok) throw new Error('API error ' + res.status);
+    const data = await res.json();
 
-      console.log(`[SAM] NAICS ${naics}: totalRecords=${data.totalRecords}, opportunitiesData count=${data.opportunitiesData?.length ?? 0}`);
-      if (!data.opportunitiesData) console.log('[SAM] Raw response:', JSON.stringify(data).slice(0, 500));
-      if (data._debugFirstOpp) {
-        console.log('[SAM DEBUG] First raw opportunity fields:', data._debugFirstOpp);
+    console.log(`[SAM] totalRecords=${data.totalRecords}, returned=${data.opportunitiesData?.length ?? 0}`);
+    if (!data.opportunitiesData) console.log('[SAM] Raw response:', JSON.stringify(data).slice(0, 500));
+
+    if (data.opportunitiesData) {
+      for (const opp of data.opportunitiesData) {
+        const oppNaics = opp.naicsCode || opp.naicsList?.[0]?.naicsCode || '';
+
+        // Skip if user has NAICS selected and this contract doesn't match any of them
+        if (activeNaics.length && !activeNaics.includes(oppNaics)) continue;
+
+        const rawVal = opp.baseAndAllOptionsValue || opp.award?.amount || null;
+        const val = rawVal ? Number(rawVal) : null;
+        if (val && val > parseInt(maxVal)) continue;
+
+        const displayId = opp.solicitationNumber || opp.noticeId || '';
+        const linkId = opp.noticeId || opp.solicitationNumber || '';
+
+        // Deduplicate by notice ID
+        if (seen.has(linkId)) continue;
+        seen.add(linkId);
+
+        results.push({
+          noticeId: displayId,
+          title: opp.title,
+          agency: opp.fullParentPathName?.split('.')[0] || opp.organizationHierarchy?.[0]?.name || 'Federal Agency',
+          office: opp.fullParentPathName?.split('.').pop() || '',
+          naicsCode: oppNaics,
+          setAside: opp.typeOfSetAside || '',
+          type: opp.type || '',
+          typeCode: opp.type?.[0]?.toLowerCase() || 'o',
+          postedDate: opp.postedDate?.split('T')[0] || '',
+          responseDeadline: opp.responseDeadLine ? new Date(opp.responseDeadLine).toISOString().split('T')[0] : '',
+          placeOfPerformance: [opp.placeOfPerformance?.city?.name, opp.placeOfPerformance?.state?.code].filter(Boolean).join(', '),
+          estimatedValue: val,
+          contactName: opp.pointOfContact?.[0]?.fullName || '',
+          contactEmail: opp.pointOfContact?.[0]?.email || '',
+          description: opp.description || '',
+          samLink: `https://sam.gov/opp/${linkId}/view`,
+        });
       }
-
-      if (data.opportunitiesData) {
-        for (const opp of data.opportunitiesData) {
-          // Use baseAndAllOptionsValue for solicitations; award.amount only exists on awarded contracts
-          const rawVal = opp.baseAndAllOptionsValue || opp.award?.amount || null;
-          const val = rawVal ? Number(rawVal) : null;
-          if (val && val > parseInt(maxVal)) continue;
-
-          // solicitationNumber is the human-readable ID shown on SAM.gov (e.g. W15QKN26QA117)
-          // noticeId is the internal UUID used in the /opp/ URL
-          const displayId = opp.solicitationNumber || opp.noticeId || '';
-          const linkId = opp.noticeId || opp.solicitationNumber || '';
-
-          results.push({
-            noticeId: displayId,
-            title: opp.title,
-            agency: opp.fullParentPathName?.split('.')[0] || opp.organizationHierarchy?.[0]?.name || 'Federal Agency',
-            office: opp.fullParentPathName?.split('.').pop() || '',
-            naicsCode: opp.naicsCode || opp.naicsList?.[0]?.naicsCode || naics,
-            setAside: opp.typeOfSetAside || '',
-            type: opp.type || '',
-            typeCode: opp.type?.[0]?.toLowerCase() || 'o',
-            postedDate: opp.postedDate?.split('T')[0] || '',
-            responseDeadline: opp.responseDeadLine ? new Date(opp.responseDeadLine).toISOString().split('T')[0] : '',
-            placeOfPerformance: [opp.placeOfPerformance?.city?.name, opp.placeOfPerformance?.state?.code].filter(Boolean).join(', '),
-            estimatedValue: val,
-            contactName: opp.pointOfContact?.[0]?.fullName || '',
-            contactEmail: opp.pointOfContact?.[0]?.email || '',
-            description: opp.description || '',
-            samLink: `https://sam.gov/opp/${linkId}/view`,
-          });
-        }
-      }
-    } catch (e) {
-      console.error('[SAM] fetch error for NAICS', naics, ':', e);
     }
+  } catch (e) {
+    console.error('[SAM] fetch error:', e);
   }
 
   if (!results.length) {
