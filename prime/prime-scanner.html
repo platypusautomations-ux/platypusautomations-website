@@ -1492,9 +1492,16 @@ async function fetchLive() {
   const results = [];
 
   for (const naics of activeNaics.slice(0, 3)) {
+    const today = new Date();
+    const tm = String(today.getMonth() + 1).padStart(2, '0');
+    const td = String(today.getDate()).padStart(2, '0');
+    const ty = today.getFullYear();
+    const todayStr = `${tm}/${td}/${ty}`;
+
     const params = new URLSearchParams({
       naicsCode: naics,
       postedFrom: dateStr,
+      postedTo: todayStr,
       limit: '20',
     });
     if (setAside) params.set('typeOfSetAside', setAside);
