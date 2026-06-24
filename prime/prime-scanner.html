@@ -1365,8 +1365,8 @@ function scoreOpportunity(opp) {
   if (opp.setAside === 'SDVOSBC') { score += 30; reasons.push('SDVOSB set-aside (+30)'); }
   else if (opp.setAside === 'SBA') { score += 10; reasons.push('SBA set-aside (+10)'); }
 
-  if (opp.estimatedValue <= 350000) { score += 20; reasons.push('Under $350k (+20)'); }
-  if (opp.estimatedValue <= 150000) { score += 5; reasons.push('Under $150k (+5)'); }
+  if (opp.estimatedValue && opp.estimatedValue <= 350000) { score += 20; reasons.push('Under $350k (+20)'); }
+  if (opp.estimatedValue && opp.estimatedValue <= 150000) { score += 5; reasons.push('Under $150k (+5)'); }
 
   const daysLeft = Math.ceil((new Date(opp.responseDeadline) - new Date()) / 86400000);
   if (daysLeft >= 20) { score += 15; reasons.push('20+ days to respond (+15)'); }
@@ -1520,7 +1520,9 @@ async function fetchLive() {
 
       if (data.opportunitiesData) {
         for (const opp of data.opportunitiesData) {
-          const val = opp.award?.amount || null;
+          // Use baseAndAllOptionsValue for solicitations; award.amount only exists on awarded contracts
+          const rawVal = opp.baseAndAllOptionsValue || opp.award?.amount || null;
+          const val = rawVal ? Number(rawVal) : null;
           if (val && val > parseInt(maxVal)) continue;
 
           // solicitationNumber is the human-readable ID shown on SAM.gov (e.g. W15QKN26QA117)
@@ -1534,7 +1536,7 @@ async function fetchLive() {
             agency: opp.fullParentPathName?.split('.')[0] || opp.organizationHierarchy?.[0]?.name || 'Federal Agency',
             office: opp.fullParentPathName?.split('.').pop() || '',
             naicsCode: naics,
-            setAside: opp.typeOfSetAsideDescription || '',
+            setAside: opp.typeOfSetAside || '',
             type: opp.type || '',
             typeCode: opp.type?.[0]?.toLowerCase() || 'o',
             postedDate: opp.postedDate?.split('T')[0] || '',
