@@ -3,8 +3,6 @@ export async function onRequest(context) {
   const params = url.searchParams;
 
   params.set('api_key', context.env.SAM_API_KEY);
-  // Restrict to actionable notice types — excludes Award Notices (a), Justifications (u), etc.
-  if (!params.has('ptype')) params.set('ptype', 'o,k,p,r,s');
 
   const samUrl = `https://api.sam.gov/opportunities/v2/search?${params}`;
 
