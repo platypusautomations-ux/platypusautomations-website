@@ -9,6 +9,12 @@ export async function onRequest(context) {
   const response = await fetch(samUrl);
   const data = await response.json();
 
+  // Attach raw first opportunity so the scanner can log field names in the console.
+  // Remove _debugFirstOpp once the correct field mapping is confirmed.
+  if (data.opportunitiesData?.length) {
+    data._debugFirstOpp = data.opportunitiesData[0];
+  }
+
   return new Response(JSON.stringify(data), {
     headers: {
       'Content-Type': 'application/json',

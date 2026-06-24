@@ -1500,13 +1500,24 @@ async function fetchLive() {
       if (!res.ok) throw new Error('API error ' + res.status);
       const data = await res.json();
 
+      // Log raw first opportunity to confirm correct field names.
+      // Remove once mapping is verified.
+      if (data._debugFirstOpp) {
+        console.log('[SAM DEBUG] First raw opportunity fields:', data._debugFirstOpp);
+      }
+
       if (data.opportunitiesData) {
         for (const opp of data.opportunitiesData) {
           const val = opp.award?.amount || null;
           if (val && val > parseInt(maxVal)) continue;
 
+          // solicitationNumber is the human-readable ID (e.g. W15QKN26QA117).
+          // noticeId is the SAM UUID used in the opportunity page URL.
+          const solNum = opp.solicitationNumber || opp.noticeId || '';
+          const uid    = opp.noticeId || opp.solicitationNumber || '';
+
           results.push({
-            noticeId: opp.noticeId,
+            noticeId: solNum,
             title: opp.title,
             agency: opp.fullParentPathName?.split('.')[0] || opp.organizationHierarchy?.[0]?.name || 'Federal Agency',
             office: opp.fullParentPathName?.split('.').pop() || '',
@@ -1521,7 +1532,7 @@ async function fetchLive() {
             contactName: opp.pointOfContact?.[0]?.fullName || '',
             contactEmail: opp.pointOfContact?.[0]?.email || '',
             description: opp.description || '',
-            samLink: `https://sam.gov/opp/${opp.noticeId}/view`,
+            samLink: `https://sam.gov/opp/${uid}/view`,
           });
         }
       }
