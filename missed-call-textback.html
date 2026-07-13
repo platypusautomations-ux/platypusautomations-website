@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Missed Call Text-Back Automation for Hampton Roads Businesses | Platypus Automations</title>
+  <meta name="description" content="Instant SMS response to missed calls. Answer every inbound call within 60 seconds, automatically. Never lose a lead to voicemail again. Platypus Automations.">
+  <link rel="canonical" href="https://www.platypusautomations.com/missed-call-textback.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Missed Call Text-Back Automation for Hampton Roads Businesses">
+  <meta property="og:description" content="Instant SMS response to missed calls. Answer every inbound call within 60 seconds, automatically. Never lose a lead to voicemail again.">
+  <meta property="og:url" content="https://www.platypusautomations.com/missed-call-textback.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Missed Call Text-Back Automation",
+    "description": "Automated SMS response to missed calls. Responds within 60 seconds to keep leads warm and customers informed.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Platypus Automations",
+      "telephone": "(866) 479-7462",
+      "url": "https://www.platypusautomations.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chesapeake",
+        "addressRegion": "VA",
+        "postalCode": "23323",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "Region",
+      "name": "Hampton Roads, Virginia"
+    },
+    "serviceType": "Missed Call Response Automation"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', system-ui, sans-serif;
+      background: #0A1628;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ── HEADER/NAV ─────────────────────────────── */
+    .site-header {
+      background: #0A1628;
+      border-bottom: 1px solid rgba(0,122,122,0.2);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+    }
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #fff;
+    }
+    .logo span { color: #00a0a0; }
+    .main-nav {
+      display: flex;
+      gap: 28px;
+    }
+    .main-nav a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.3s;
+    }
+    .main-nav a:hover { color: #fff; }
+    .header-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .phone-link {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+    .btn {
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: #E8651A;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+
+    /* ── BREADCRUMB ──────────────────────────────── */
+    .breadcrumb {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .breadcrumb-inner {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.52);
+    }
+
+    /* ── PAGE HERO ───────────────────────────────── */
+    .page-hero {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .page-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .page-hero > .container > p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+    .page-hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+    }
+    .page-hero-meta span::before {
+      content: '✓ ';
+      color: #00a0a0;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* ── CONTENT GRID ────────────────────────────── */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .content-body h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.85rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .content-body h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      color: #fff;
+      line-height: 1.22;
+    }
+    .content-body p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .content-body ul {
+      margin: 20px 0 24px 0;
+    }
+    .content-body li {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .content-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #00a0a0;
+      font-weight: 600;
+    }
+
+    /* ── SIDEBAR BOXES ───────────────────────────── */
+    .symptoms-box, .info-box {
+      background: rgba(0,122,122,0.08);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .symptoms-box h3, .info-box h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .symptom-item {
+      padding: 10px 0;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .symptom-item:last-child { border-bottom: none; }
+    .symptom-item span::before {
+      content: '✓ ';
+      color: #E8651A;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    .info-box p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+    }
+    .cost-table {
+      width: 100%;
+      font-size: 0.85rem;
+      border-collapse: collapse;
+    }
+    .cost-table th, .cost-table td {
+      padding: 8px 0;
+      text-align: left;
+      border-bottom: 1px solid rgba(0,122,122,0.15);
+      color: rgba(255,255,255,0.7);
+    }
+    .cost-table th { font-weight: 600; color: rgba(255,255,255,0.85); }
+
+    /* ── FAQ SECTION ────────────────────────────── */
+    .section--gray {
+      background: rgba(0,122,122,0.04);
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 32px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(0,122,122,0.15);
+      padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      transition: transform 0.3s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { color: #fff; }
+    .faq-answer {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.72;
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+
+    /* ── RELATED SERVICES ────────────────────────── */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .related-card {
+      background: rgba(0,122,122,0.06);
+      border: 1px solid rgba(0,122,122,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+    .related-card:hover {
+      background: rgba(0,122,122,0.12);
+      border-color: rgba(0,122,122,0.35);
+      transform: translateY(-6px);
+    }
+    .related-card h4 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .related-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.6;
+    }
+
+    /* ── QUOTE SECTION ───────────────────────────── */
+    .quote-section {
+      background: linear-gradient(135deg, rgba(0,122,122,0.1), rgba(232,101,26,0.05));
+      padding: 64px 0;
+      border: 1px solid rgba(0,122,122,0.15);
+      border-radius: 16px;
+      margin: 64px 0;
+    }
+    .quote-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .quote-copy h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .quote-copy p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .quote-phone {
+      display: inline-block;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #00a0a0;
+      transition: color 0.3s;
+    }
+    .quote-phone:hover { color: #fff; }
+    .quote-hours {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+    }
+    .quote-form-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #fff;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #E8651A;
+      background: rgba(232,101,26,0.04);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      background: #E8651A;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #050d18;
+      border-top: 1px solid rgba(0,122,122,0.2);
+      padding: 32px 0;
+      margin-top: 64px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-left { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .header-inner { flex-direction: column; gap: 20px; }
+      .main-nav { flex-direction: column; gap: 16px; }
+      .content-grid { grid-template-columns: 1fr; gap: 32px; }
+      .quote-inner { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 48px 0; }
+      .section { padding: 48px 0; }
+      .page-hero h1 { font-size: 1.85rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Platypus <span>Automations</span></a>
+      <nav><ul class="main-nav">
+        <li><a href="missed-call-textback.html">Missed Call Text-Back</a></li>
+        <li><a href="ai-text-screening.html">AI Text Screening</a></li>
+        <li><a href="voice-agent.html">Voice Agent</a></li>
+        <li><a href="google-reviews.html">Google Reviews</a></li>
+        <li><a href="index.html#how">How It Works</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul></nav>
+      <div class="header-cta">
+        <a href="tel:8664797462" class="phone-link">(866) 479-7462</a>
+        <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Home</a><span>›</span><span>Missed Call Text-Back</span>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Missed Call Text-Back Automation for Hampton Roads Businesses</h1>
+    <p>Every missed call costs you a customer. Respond within 60 seconds with an automated text message that keeps the lead warm and shows them you're professional. No calls go unanswered. No leads get lost to voicemail.</p>
+    <div class="page-hero-meta">
+      <span>Instant Response (60 seconds)</span>
+      <span>Personalized Messaging</span>
+      <span>Lead Logging</span>
+      <span>Owner Notification</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="content-body">
+        <h2>The Problem with Missed Calls</h2>
+        <p>A customer calls your business. Your phone rings three times. You're on a job site, in the middle of service, or away from your desk. The call goes to voicemail. The customer hears a generic greeting, hangs up, and calls the next business on Google. You'll never know the job existed.</p>
+        <p>62% of customers who reach voicemail do not leave a message. They move on. In the trades, every missed call is a lost job — sometimes a $5,000 or $10,000 opportunity gone in seconds because you didn't answer fast enough.</p>
+
+        <h3>How Missed Call Text-Back Works</h3>
+        <p>The moment a call goes unanswered, our system immediately sends an SMS to that number. The message is personalized to your business. It arrives within 60 seconds, before the customer has finished deciding whether to call someone else.</p>
+        <p>The text says: "Hi! This is [Your Business]. Sorry we missed you — we're helping another customer right now but we got your number and will call you back ASAP." The lead stays warm. The customer knows they were heard.</p>
+
+        <h3>What Happens Next</h3>
+        <p>Your system logs the inbound call with the customer's number, call time, and our automated response. You get notified instantly (email or text) that someone called. You see the lead in your dashboard. You call them back while you're still top of mind — not tomorrow, not after 5pm, but now. That's the difference between a booked job and a lost customer.</p>
+
+        <h3>Why Speed Matters in the Trades</h3>
+        <p>A customer with an emergency (burst pipe, HVAC down, roof leak) has a narrow window where they're trying to solve the problem today. The first contractor to respond often gets the job. A missed call + delayed callback = a customer who booked your competitor 20 minutes ago. A missed call + 60-second text-back = a customer who sees you're real, responsive, and deserves a second call.</p>
+
+        <h3>Personalization & Brand Voice</h3>
+        <p>We write the text message in your voice, using your business name. It doesn't say "Automated System" or read like a robot. It reads like someone from your office who cares that they missed the call. Small detail, huge impact on perception.</p>
+      </div>
+      <div>
+        <div class="symptoms-box">
+          <h3>⚠ Signs Your Business Needs This</h3>
+          <div class="symptom-item"><span>You get voicemail complaints — customers say they called but you didn't answer</span></div>
+          <div class="symptom-item"><span>Customers tell you later "I called last week" for jobs you never heard about</span></div>
+          <div class="symptom-item"><span>Your peak work hours overlap with when you can't answer the phone</span></div>
+          <div class="symptom-item"><span>You've lost jobs because someone else called back faster</span></div>
+          <div class="symptom-item"><span>You have no system to track inbound calls you missed</span></div>
+          <div class="symptom-item"><span>Your phone goes straight to voicemail after hours</span></div>
+        </div>
+        <div class="info-box">
+          <h3>Lead Data Captured</h3>
+          <p>Every missed call creates a log entry: timestamp, phone number, and a record that our text was sent. You can review these leads anytime. Some will be spam (robocalls). Most won't be. The ones that matter are the second chances.</p>
+        </div>
+        <div class="info-box" style="margin-top:1rem;">
+          <h3>Pricing</h3>
+          <table class="cost-table">
+            <thead><tr><th>Tier</th><th>Monthly</th></tr></thead>
+            <tbody>
+              <tr><td>Tier 1 (High ticket)</td><td>$400/mo</td></tr>
+              <tr><td>Tier 2 (Standard)</td><td>$350/mo</td></tr>
+              <tr><td>Tier 3 (Entry)</td><td>$250/mo</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-top:0.8rem;">Pricing is value-based by trade. Tier placement depends on average job value in your industry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--gray">
+  <div class="container">
+    <div style="max-width:780px;margin:0 auto;">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Missed Call Text-Back FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What if my phone number is already on a "do not call" list?</summary>
+          <div class="faq-answer">Missed call text-back is an inbound response to a call the customer initiated — not an outbound marketing blast. It falls under transactional messaging, not marketing, and is not subject to DNC list restrictions. The customer called you first. Our response is just acknowledging that call.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I customize the message?</summary>
+          <div class="faq-answer">Yes. We write the initial template to match your voice and business name. You can request changes to the message, and we'll implement them. The message stays consistent so customers recognize it as coming from your business.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What if a customer texts back?</summary>
+          <div class="faq-answer">If they reply to the automated message, their text comes to your phone and your system logs it. You can respond directly. The conversation then becomes a normal back-and-forth between you and the customer.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Does this work for calls from robots or spam?</summary>
+          <div class="faq-answer">Yes — the system responds to every inbound call, including robocalls. However, most spam doesn't trigger a response because it's a recorded message or click-to-call ad, not a real person. In your lead log, the spam calls are obvious and you can ignore them. Real customer calls stand out.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I set hours when the auto-text fires?</summary>
+          <div class="faq-answer">Yes. We can configure it to respond only during business hours, only after-hours, or 24/7. Most clients keep it on all the time because missed calls happen anytime — evenings, weekends, while you're on another job.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Does this replace my voicemail?</summary>
+          <div class="faq-answer">No. Voicemail stays as a backup. The text-back fires immediately while voicemail is optional for the caller. Most customers get the text and wait for your call — they don't leave a message. You get both the text notification and the voicemail if they left one.</div>
+        </details>
+      </div>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"What if my phone number is already on a do not call list?","acceptedAnswer":{"@type":"Answer","text":"Missed call text-back is a transactional response to an inbound call the customer initiated, not an outbound marketing message. It is not subject to DNC list restrictions."}},
+          {"@type":"Question","name":"Can I customize the message?","acceptedAnswer":{"@type":"Answer","text":"Yes. We write the initial template to match your voice and business name, and you can request changes anytime."}},
+          {"@type":"Question","name":"What if a customer texts back?","acceptedAnswer":{"@type":"Answer","text":"Their reply comes to your phone and is logged in your system. You can respond directly, and the conversation becomes a normal text exchange."}}
+        ]
+      }
+      </script>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Other Services</span>
+    <h2 class="section-title">Complete Lead Response System</h2>
+    <div class="related-grid">
+      <a href="ai-text-screening.html" class="related-card"><h4>💬 AI Interactive Text Screening</h4><p>Let an AI bot qualify leads via two-way text conversation. Gets job details, flags hot leads, and hands off ready-to-close opportunities.</p></a>
+      <a href="voice-agent.html" class="related-card"><h4>☎️ After-Hours AI Voice Agent</h4><p>Answers calls 24/7. Screens for emergencies. Alerts you only when it's worth waking up for.</p></a>
+      <a href="google-reviews.html" class="related-card"><h4>⭐ Google Reviews Automation</h4><p>Automated review requests after every job. AI-written responses to every review. Your rating climbs while you work.</p></a>
+      <a href="index.html" class="related-card" style="background: transparent; border-style: dashed; border-color: rgba(232,101,26,0.4);"><h4>🔧 Website & Digital Setup</h4><p>Professional website, claimed Google Business Profile, and all systems wired together. Your complete digital foundation.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-inner">
+      <div class="quote-copy">
+        <h2>Start Capturing Every Lead Today</h2>
+        <p>Missed call text-back is the fastest way to show a customer you're professional and responsive. Respond in 60 seconds. Respond every time.</p>
+        <p style="color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:0.4rem;">Call to get started:</p>
+        <a href="tel:8664797462" class="quote-phone">(866) 479-7462</a>
+        <p class="quote-hours">Available 9am–6pm EST, Monday–Friday</p>
+      </div>
+      <div class="quote-form-box">
+        <form action="https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/contact-form" method="POST" style="display:flex;flex-direction:column;gap:0;">
+          <input type="hidden" name="service" value="Missed Call Text-Back">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Smith" required></div>
+          <div class="form-group"><label>Business Name</label><input type="text" name="businessName" placeholder="Smith's Roofing" required></div>
+          <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="(757) 555-1234" required></div>
+          <div class="form-group"><label>Trade Type</label><input type="text" name="tradeType" placeholder="Roofing" required></div>
+          <div class="form-group"><label>Message (optional)</label><textarea name="message" placeholder="Tell us about your business..."></textarea></div>
+          <button type="submit" class="form-submit">Request a Demo →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#services">Services</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
