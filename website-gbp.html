@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Website & Google Business Profile Setup | Platypus Automations</title>
+  <meta name="description" content="Professional website build and Google Business Profile optimization. Your digital foundation that makes your business findable, claimable, and credible.">
+  <link rel="canonical" href="https://www.platypusautomations.com/website-gbp.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Professional Website & Google Business Profile Setup">
+  <meta property="og:description" content="Professional website build and Google Business Profile optimization. Your digital foundation.">
+  <meta property="og:url" content="https://www.platypusautomations.com/website-gbp.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Website & Google Business Profile Setup",
+    "description": "Professional website build and Google Business Profile optimization for local service businesses.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Platypus Automations",
+      "telephone": "(757) 765-1210",
+      "url": "https://www.platypusautomations.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chesapeake",
+        "addressRegion": "VA",
+        "postalCode": "23323",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "Region",
+      "name": "Hampton Roads, Virginia"
+    },
+    "serviceType": "Website Design & Google Business Profile Management"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', system-ui, sans-serif;
+      background: #0A1628;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ── HEADER/NAV ─────────────────────────────── */
+    .site-header {
+      background: #0A1628;
+      border-bottom: 1px solid rgba(0,122,122,0.2);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      line-height: 1;
+      gap: 2px;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+    }
+    .main-nav {
+      display: flex;
+      gap: 28px;
+    }
+    .main-nav a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.3s;
+    }
+    .main-nav a:hover { color: #fff; }
+    .header-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .phone-link {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+    .btn {
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: #E8651A;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+
+    /* ── BREADCRUMB ──────────────────────────────── */
+    .breadcrumb {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .breadcrumb-inner {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.52);
+    }
+
+    /* ── PAGE HERO ───────────────────────────────── */
+    .page-hero {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .page-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .page-hero > .container > p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+    .page-hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+    }
+    .page-hero-meta span::before {
+      content: '✓ ';
+      color: #00a0a0;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* ── CONTENT GRID ────────────────────────────── */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .content-body h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.85rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .content-body h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      color: #fff;
+      line-height: 1.22;
+    }
+    .content-body p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .content-body ul {
+      margin: 20px 0 24px 0;
+    }
+    .content-body li {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .content-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #00a0a0;
+      font-weight: 600;
+    }
+
+    /* ── SIDEBAR BOXES ───────────────────────────── */
+    .symptoms-box, .info-box {
+      background: rgba(0,122,122,0.08);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .symptoms-box h3, .info-box h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .symptom-item {
+      padding: 10px 0;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .symptom-item:last-child { border-bottom: none; }
+    .symptom-item span::before {
+      content: '✓ ';
+      color: #E8651A;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    .info-box p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+    }
+
+    /* ── FAQ SECTION ────────────────────────────── */
+    .section--gray {
+      background: rgba(0,122,122,0.04);
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 32px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(0,122,122,0.15);
+      padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      transition: transform 0.3s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { color: #fff; }
+    .faq-answer {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.72;
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+
+    /* ── RELATED SERVICES ────────────────────────── */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .related-card {
+      background: rgba(0,122,122,0.06);
+      border: 1px solid rgba(0,122,122,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+    .related-card:hover {
+      background: rgba(0,122,122,0.12);
+      border-color: rgba(0,122,122,0.35);
+      transform: translateY(-6px);
+    }
+    .related-card h4 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .related-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.6;
+    }
+
+    /* ── QUOTE SECTION ───────────────────────────── */
+    .quote-section {
+      background: linear-gradient(135deg, rgba(0,122,122,0.1), rgba(232,101,26,0.05));
+      padding: 64px 0;
+      border: 1px solid rgba(0,122,122,0.15);
+      border-radius: 16px;
+      margin: 64px 0;
+    }
+    .quote-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .quote-copy h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .quote-copy p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .quote-phone {
+      display: inline-block;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #00a0a0;
+      transition: color 0.3s;
+    }
+    .quote-phone:hover { color: #fff; }
+    .quote-hours {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+    }
+    .quote-form-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #fff;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #E8651A;
+      background: rgba(232,101,26,0.04);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      background: #E8651A;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #050d18;
+      border-top: 1px solid rgba(0,122,122,0.2);
+      padding: 32px 0;
+      margin-top: 64px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-left { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .header-inner { flex-direction: column; gap: 20px; }
+      .main-nav { flex-direction: column; gap: 16px; }
+      .content-grid { grid-template-columns: 1fr; gap: 32px; }
+      .quote-inner { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 48px 0; }
+      .section { padding: 48px 0; }
+      .page-hero h1 { font-size: 1.85rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="nav-logo">
+        <img src="pa_wordmark_transparent.webp" alt="Platypus Automations" width="600" height="335" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block;height:40px;width:auto">
+        <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:#fff;letter-spacing:-0.5px">Platypus Automations</span>
+      </div>
+      <nav><ul class="main-nav">
+        <li><a href="website-gbp.html">Website & GBP</a></li>
+        <li><a href="missed-call-textback.html">Missed Call Text-Back</a></li>
+        <li><a href="ai-text-screening.html">AI Text Screening</a></li>
+        <li><a href="voice-agent.html">Voice Agent</a></li>
+        <li><a href="google-reviews.html">Google Reviews</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul></nav>
+      <div class="header-cta">
+        <a href="tel:7577651210" class="phone-link">(757) 765-1210</a>
+        <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Home</a><span>›</span><span>Website & GBP Setup</span>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Your Digital Foundation — Website & Google Business Profile</h1>
+    <p>Before any automation system can work, you need to be findable, claimable, and credible. We build the foundation: a professional website and optimized Google Business Profile. Everything else layers on top of this.</p>
+    <div class="page-hero-meta">
+      <span>Professional Website Build</span>
+      <span>Google Business Profile Claimed & Optimized</span>
+      <span>Local SEO Ready</span>
+      <span>Automation-Ready Infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="content-body">
+        <h2>Why Your Foundation Matters First</h2>
+        <p>A customer searches for your service on Google. They find a competitor instead. Why? Because that competitor has a claimed Google Business Profile, a professional website, and shows up in Google Maps. You don't. The job never gets posted to a job board. The customer just calls the first name they found.</p>
+        <p>Your reputation is strong locally — word of mouth works. But word of mouth only reaches people who already know someone who knows you. On Google, you're invisible. And invisible businesses don't get calls, no matter how good they are.</p>
+
+        <h3>What We Build</h3>
+        <p>A professional website (clean design, mobile-ready, fast) and a properly claimed and optimized Google Business Profile. Not a brochure site. Not a template. A foundation that makes you look established, trustworthy, and findable.</p>
+
+        <h3>The Website</h3>
+        <p>Professional design that matches your business. Mobile responsive so customers find you on their phones. Fast loading. Built for conversions — clear call-to-action, phone numbers visible, contact forms that work. No bloat. No flash. Designed for trades businesses and service professionals who value simplicity and results.</p>
+
+        <h3>The Google Business Profile</h3>
+        <p>Claimed in your name. Complete with photos, business hours, service area, contact info. Optimized for local search so when someone searches "roofing near me" or "plumbing Chesapeake," you show up. Google Business Profile is the second most important ranking factor after your actual website. Most trades businesses ignore it. That's why their competitors rank.</p>
+
+        <h3>Why This Comes First</h3>
+        <p>All the automation we offer — missed call text-back, AI lead screening, review automation — only works if you have leads coming in. And leads come from visibility. A website + GBP that rank means calls and form submissions. Then automation takes over: catches every missed call, qualifies every lead, builds your review score. But without the foundation, there's nothing to automate.</p>
+      </div>
+      <div>
+        <div class="symptoms-box">
+          <h3>⚠ Signs You Need This</h3>
+          <div class="symptom-item"><span>You have no website or an outdated one</span></div>
+          <div class="symptom-item"><span>Your Google Business Profile is unclaimed or incomplete</span></div>
+          <div class="symptom-item"><span>Customers can't find you on Google Maps</span></div>
+          <div class="symptom-item"><span>Competitors outrank you despite being newer</span></div>
+          <div class="symptom-item"><span>You get most calls from word-of-mouth, not search</span></div>
+          <div class="symptom-item"><span>Your website is hard to navigate or doesn't work on phones</span></div>
+        </div>
+        <div class="info-box">
+          <h3>What You Get</h3>
+          <p>Professional website live and indexed within days. Google Business Profile fully claimed, optimized, and ready to rank. Local SEO foundation complete. Ready to layer in automation services that turn visibility into conversions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--gray">
+  <div class="container">
+    <div style="max-width:780px;margin:0 auto;">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Website & GBP FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How long does it take to build a website?</summary>
+          <div class="faq-answer">We build clean, professional websites fast — typically live within 1-2 weeks. No lengthy discovery process, no months of back-and-forth. You tell us your business, we build it, it goes live. Google Business Profile optimization happens in parallel.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Do I own the website?</summary>
+          <div class="faq-answer">Yes. You own the domain, you own the content, you own the hosting. We're not locking you in. If you ever want to take it over or move it, you can. We'll set it up so that's easy to do.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Will my website rank on Google?</summary>
+          <div class="faq-answer">Yes — it's built for local SEO. We handle technical optimization (speed, mobile, structure), content optimization (business type, service area), and Google Business Profile optimization so you rank for searches in your area. Most clients see meaningful improvements within 60 days.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I update the website myself?</summary>
+          <div class="faq-answer">Yes. We build it with a simple content management system so you can update text, photos, and business info without coding. Or we can handle updates for you — whatever works for your business.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I already have a website?</summary>
+          <div class="faq-answer">We audit it. If it's solid, we optimize it (SEO, Google Business Profile, add contact forms). If it's outdated or not converting, we recommend rebuilding. Either way, the outcome is the same: you rank on Google and convert searchers into customers.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is this required before I use your other services?</summary>
+          <div class="faq-answer">Not technically — but practically, yes. Without a website and claimed Google Business Profile, you're not generating leads to automate. It's the prerequisite. The other services (missed call text-back, AI screening, reviews) all layer on top of this foundation.</div>
+        </details>
+      </div>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"How long does it take to build a website?","acceptedAnswer":{"@type":"Answer","text":"Typically 1-2 weeks. We build clean websites fast without lengthy back-and-forth."}},
+          {"@type":"Question","name":"Do I own the website?","acceptedAnswer":{"@type":"Answer","text":"Yes. You own the domain, content, and hosting. You're not locked in."}},
+          {"@type":"Question","name":"Will my website rank on Google?","acceptedAnswer":{"@type":"Answer","text":"Yes. It's built for local SEO. Most clients see improvements within 60 days."}}
+        ]
+      }
+      </script>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Next Layer</span>
+    <h2 class="section-title">Once Your Foundation is Solid, Add Automation</h2>
+    <div class="related-grid">
+      <a href="missed-call-textback.html" class="related-card"><h4>📵 Missed Call Text-Back</h4><p>Every missed call gets an instant text response. Keeps leads warm. Gets you callbacks fast.</p></a>
+      <a href="ai-text-screening.html" class="related-card"><h4>💬 AI Text Screening</h4><p>Qualify leads via two-way text. Hot leads come to you pre-screened and ready to close.</p></a>
+      <a href="voice-agent.html" class="related-card"><h4>☎️ After-Hours Voice Agent</h4><p>Answers calls 24/7. Screens emergencies. Alerts you only when it matters.</p></a>
+      <a href="google-reviews.html" class="related-card"><h4>⭐ Google Reviews Automation</h4><p>Automatic review requests after every job. AI responses. Your rating climbs while you work.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-inner">
+      <div class="quote-copy">
+        <h2>Start Building Your Digital Presence Today</h2>
+        <p>Every day you're not on Google is a day a customer calls a competitor instead. Let's get you found, claimed, and credible. Then we automate the rest.</p>
+        <p style="color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:0.4rem;">Ready to build your foundation?</p>
+        <a href="tel:7577651210" class="quote-phone">(757) 765-1210</a>
+        <p class="quote-hours">Available 9am–6pm EST, Monday–Friday</p>
+      </div>
+      <div class="quote-form-box">
+        <form action="https://formspree.io/f/mykrynej" method="POST" style="display:flex;flex-direction:column;gap:0;">
+          <input type="hidden" name="service" value="Website & Google Business Profile">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Smith" required></div>
+          <div class="form-group"><label>Business Name</label><input type="text" name="businessName" placeholder="Smith's Roofing" required></div>
+          <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="(757) 555-1234" required></div>
+          <div class="form-group"><label>Trade Type</label><input type="text" name="tradeType" placeholder="Roofing" required></div>
+          <div class="form-group"><label>Message (optional)</label><textarea name="message" placeholder="Tell us about your business..."></textarea></div>
+          <button type="submit" class="form-submit">Request a Quote →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#services">Services</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
