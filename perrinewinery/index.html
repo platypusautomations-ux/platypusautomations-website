@@ -924,6 +924,19 @@
     document.querySelectorAll('#hero .reveal').forEach((el, i) => {
       setTimeout(() => el.classList.add('in'), 150 + i * 130);
     });
+
+    // Form submission handler
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      try {
+        await fetch(e.target.action, { method: 'POST', body: new URLSearchParams(formData) });
+        alert('Thank you for your inquiry. We\'ll be in touch within 24 hours.');
+        e.target.reset();
+      } catch (err) {
+        alert('There was an error. Please try again.');
+      }
+    });
   </script>
 </body>
 </html>
