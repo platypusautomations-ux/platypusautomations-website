@@ -411,6 +411,49 @@
       .foot-bottom { flex-direction: column; align-items: flex-start; }
     }
 
+    /* === CONTACT FORM === */
+    .contact-center { text-align: center; margin-bottom: 3rem; }
+    .contact-center .sec-body { max-width: 520px; margin: 0 auto; }
+    #contact .sec-title { color: var(--jazz-purple); }
+    .contact-form {
+      max-width: 600px; margin: 0 auto;
+      background: var(--teal-mid); padding: 2rem;
+      border: 1px solid var(--border-gold); border-radius: 6px;
+      display: flex; flex-direction: column; gap: 1.4rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+    .form-group label {
+      font-size: 0.9rem; font-weight: 600; color: var(--cream);
+    }
+    .required { color: var(--coral); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem 0.9rem; border-radius: 4px; border: 1px solid var(--border-gold);
+      background: rgba(244,235,217,0.06); color: var(--cream);
+      font-family: var(--fb); font-size: 0.93rem; transition: border-color 0.2s, background 0.2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(244,235,217,0.4);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none; border-color: var(--gold); background: rgba(244,235,217,0.1);
+    }
+    .form-group select { cursor: pointer; }
+    .form-group textarea { resize: vertical; }
+    .contact-form button { align-self: flex-start; }
+    .form-note {
+      text-align: center; font-size: 0.85rem; opacity: 0.65; margin-top: 1rem;
+    }
+    @media (max-width: 600px) {
+      .contact-form { padding: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 768px) {
       .sec { padding: 3.75rem 0; }
       .hero-crest-ghost { display: none; }
@@ -434,6 +477,7 @@
           <li><a href="#space">The Space</a></li>
           <li><a href="#offerings">What's Here</a></li>
           <li><a href="#visit">Visit</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-right">
           <a href="mailto:holland@perrinewinery.com" class="btn-nav">Email Us</a>
@@ -452,6 +496,7 @@
       <li><a href="#space" class="mob-link">The Space</a></li>
       <li><a href="#offerings" class="mob-link">What's Here</a></li>
       <li><a href="#visit" class="mob-link">Visit</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
       <li><a href="mailto:holland@perrinewinery.com" class="btn-nav">Email Us</a></li>
     </ul>
   </div>
@@ -754,6 +799,55 @@
           ></iframe>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section id="contact" class="sec">
+    <div class="container">
+      <div class="contact-center reveal">
+        <span class="sec-label">Get In Touch</span>
+        <h2 class="sec-title">What Can We Help You With?</h2>
+        <div class="gold-bar gold-bar-c"></div>
+        <p class="sec-body">Whether you're tasting our wines, hosting an event, or exploring what's possible in our space, we'd love to hear from you.</p>
+      </div>
+      <!--
+        Webhook: /webhook/perrine-inquiry (duplicate Workflow 5, wire to Sheets + Gmail + SMS)
+        Dropdown values: tasting, venue, class, wine-order, vendor
+      -->
+      <form id="contact-form" class="contact-form reveal" method="POST" action="/webhook/perrine-inquiry">
+        <div class="form-group">
+          <label for="inquiry-type">What brings you here? <span class="required">*</span></label>
+          <select id="inquiry-type" name="inquiry_type" required>
+            <option value="">Select an option</option>
+            <option value="tasting">Tasting Experience</option>
+            <option value="venue">Venue Rental / Event Space</option>
+            <option value="class">Class Rental</option>
+            <option value="wine-order">Wine Order</option>
+            <option value="vendor">Become a Vendor</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="message">Tell us more (optional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Any details that help us serve you better..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Send Inquiry</button>
+      </form>
+      <p class="form-note reveal">We'll be in touch within 24 hours. Thank you for your interest in Perrine.</p>
     </div>
   </section>
 
