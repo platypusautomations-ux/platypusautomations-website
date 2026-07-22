@@ -92,7 +92,7 @@
       <div class="hero-form" id="estimate">
         <h3>Get Your Free Crawl Space Estimate</h3>
         <p>We respond within 24 hours. No obligation, no pressure.</p>
-        <form action="https://formspree.io/f/mgogewpn" method="POST">
+        <form id="estimate-form" action="https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/suffolk-crawlspace-inquiry" method="POST">
           <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" placeholder="John Smith" required>
@@ -336,7 +336,7 @@
         <p class="quote-hours">Mon–Fri: 7am–6pm &nbsp;|&nbsp; Sat: 8am–2pm</p>
       </div>
       <div class="quote-form-box">
-        <form action="https://formspree.io/f/mgogewpn" method="POST">
+        <form id="quote-form" action="https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/suffolk-crawlspace-inquiry" method="POST">
           <div class="form-group">
             <label for="q-name">Your Name</label>
             <input type="text" id="q-name" name="name" placeholder="John Smith" required>
@@ -394,6 +394,49 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Phone number formatting
+  document.querySelectorAll('input[type="tel"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+      let digits = e.target.value.replace(/\D/g, '');
+      let formatted = '';
+      if (digits.length > 0) {
+        if (digits.length <= 3) {
+          formatted = digits;
+        } else if (digits.length <= 6) {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3)}`;
+        } else {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+        }
+      }
+      e.target.value = formatted;
+    });
+  });
+
+  // Form submission handlers
+  ['estimate-form', 'quote-form'].forEach(formId => {
+    const form = document.getElementById(formId);
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        try {
+          await fetch(e.target.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          alert('Thank you for your inquiry. We\'ll contact you shortly to schedule your free estimate.');
+          e.target.reset();
+        } catch (err) {
+          alert('There was an error. Please try again.');
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>

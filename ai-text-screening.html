@@ -635,7 +635,7 @@
         <p class="quote-hours">Available 9am–6pm EST, Monday–Friday</p>
       </a>
       <div class="quote-form-box">
-        <form action="https://formspree.io/f/mykrynej" method="POST" style="display:flex;flex-direction:column;gap:0;">
+        <form id="contact-form-sku2" action="https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/contact-form" method="POST" style="display:flex;flex-direction:column;gap:0;">
           <input type="hidden" name="service" value="AI Text Screening">
           <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Smith" required></a>
           <div class="form-group"><label>Business Name</label><input type="text" name="businessName" placeholder="Smith's Roofing" required></a>
@@ -663,6 +663,47 @@
     </a>
   </a>
 </footer>
+
+<script>
+  // Phone formatting
+  document.querySelectorAll('input[type="tel"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+      let digits = e.target.value.replace(/\D/g, '');
+      let formatted = '';
+      if (digits.length > 0) {
+        if (digits.length <= 3) {
+          formatted = digits;
+        } else if (digits.length <= 6) {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3)}`;
+        } else {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+        }
+      }
+      e.target.value = formatted;
+    });
+  });
+
+  // Form submission
+  const form = document.getElementById('contact-form-sku2');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      try {
+        await fetch(e.target.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        alert('Thank you! We\'ll be in touch shortly to schedule your demo.');
+        e.target.reset();
+      } catch (err) {
+        alert('There was an error. Please try again.');
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
