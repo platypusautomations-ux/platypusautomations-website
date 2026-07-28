@@ -1,0 +1,8 @@
+# Redirect HTTP to HTTPS
+http://suffolkcrawlspace.com/* https://suffolkcrawlspace.com/:splat 301
+
+# Redirect www to non-www
+https://www.suffolkcrawlspace.com/* https://suffolkcrawlspace.com/:splat 301
+
+# Serve index.html for directory without redirect (200 = rewrite, not redirect)
+/ /index.html 200

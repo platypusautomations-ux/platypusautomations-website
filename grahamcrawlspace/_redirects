@@ -1,0 +1,8 @@
+# Redirect HTTP to HTTPS
+http://grahamcrawlspace.com/* https://grahamcrawlspace.com/:splat 301
+
+# Redirect www to non-www
+https://www.grahamcrawlspace.com/* https://grahamcrawlspace.com/:splat 301
+
+# Serve index.html for directory without redirect (200 = rewrite, not redirect)
+/ /index.html 200
