@@ -956,7 +956,12 @@
                 contactHtml += `<div class="info-row"><span class="info-label">Address:</span><span class="info-value">${escapeHtml(business.address)}</span></div>`;
             }
             if (business.website) {
-                contactHtml += `<div class="info-row"><span class="info-label">Website:</span><span class="info-value"><a href="${escapeHtml(business.website)}" target="_blank" rel="noopener noreferrer">Visit</a></span></div>`;
+                const isVerified = isVerificationValid();
+                if (isVerified) {
+                    contactHtml += `<div class="info-row"><span class="info-label">Website:</span><span class="info-value"><a class="website-link" href="${escapeHtml(business.website)}" target="_blank" rel="noopener noreferrer">Visit</a></span></div>`;
+                } else {
+                    contactHtml += `<div class="info-row"><span class="info-label">Website:</span><span class="info-value"><span class="website-link locked" style="opacity: 0.5; cursor: not-allowed;">[Verify email to view]</span></span></div>`;
+                }
             }
 
             return `
@@ -1065,6 +1070,9 @@
                 });
 
                 if (response.ok) {
+                    // Mark as verified
+                    markAsVerified();
+
                     // Show success message
                     document.getElementById('successMessage').classList.add('show');
                     document.getElementById('leadForm').reset();
@@ -1107,8 +1115,58 @@
             }
         }
 
+        // Email verification functions
+        function isVerificationValid() {
+            const verified = localStorage.getItem('elderly-care-verified');
+            const timestamp = localStorage.getItem('elderly-care-verified-time');
+            if (!verified || !timestamp) return false;
+
+            // Check if verification expired (30 days = 2592000000 milliseconds)
+            const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
+            const verifiedTime = parseInt(timestamp);
+            return (Date.now() - verifiedTime) < thirtyDaysMs;
+        }
+
+        function markAsVerified() {
+            localStorage.setItem('elderly-care-verified', 'true');
+            localStorage.setItem('elderly-care-verified-time', Date.now().toString());
+            updateWebsiteLinksVisibility();
+
+            // Clean token from URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        function checkTokenInUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get('token');
+            if (token) {
+                markAsVerified();
+            }
+        }
+
+        function updateWebsiteLinksVisibility() {
+            const isVerified = isVerificationValid();
+            document.querySelectorAll('.business-card').forEach(card => {
+                const websiteLink = card.querySelector('.website-link');
+                if (websiteLink) {
+                    if (isVerified) {
+                        websiteLink.classList.remove('locked');
+                        websiteLink.style.pointerEvents = 'auto';
+                        websiteLink.style.opacity = '1';
+                    } else {
+                        websiteLink.classList.add('locked');
+                        websiteLink.style.pointerEvents = 'none';
+                        websiteLink.style.opacity = '0.5';
+                    }
+                }
+            });
+        }
+
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', loadBusinesses);
+        document.addEventListener('DOMContentLoaded', function() {
+            checkTokenInUrl();
+            loadBusinesses();
+        });
     </script>
 </body>
 </html>
