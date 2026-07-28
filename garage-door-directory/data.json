@@ -1,0 +1,124 @@
+{
+  "businesses": [
+    {
+      "id": "gd-1",
+      "name": "Precision Garage Door Repair",
+      "phone": "757-800-8452",
+      "address": "752 Cedar Road Suite 105, Chesapeake, VA 23322",
+      "email": "vabeach@precisiondoor.net",
+      "website": null,
+      "area": "Chesapeake",
+      "hours24x7": true,
+      "featured": false,
+      "notes": null
+    },
+    {
+      "id": "gd-2",
+      "name": "Garage Door Enterprises",
+      "phone": "757-482-9350",
+      "address": "113 E Royce Dr, Chesapeake, VA 23322",
+      "email": null,
+      "website": null,
+      "area": "Chesapeake",
+      "hours24x7": true,
+      "featured": false,
+      "notes": null
+    },
+    {
+      "id": "gd-3",
+      "name": "Apple Door Systems",
+      "phone": "757-207-9599",
+      "address": "925 Cavalier Blvd Unit D, Chesapeake, VA 23323",
+      "email": null,
+      "website": null,
+      "area": "Chesapeake",
+      "hours24x7": true,
+      "featured": false,
+      "notes": null
+    },
+    {
+      "id": "gd-4",
+      "name": "A1 Door Company",
+      "phone": "757-241-6007",
+      "address": "809 Professional Pl W Building A Unit 103H, Chesapeake, VA 23320",
+      "email": "customerservice@a1door.com",
+      "website": null,
+      "area": "Chesapeake",
+      "hours24x7": true,
+      "featured": false,
+      "notes": "has a separate emergency number 804-884-1500"
+    },
+    {
+      "id": "gd-5",
+      "name": "OGD Overhead Garage Door",
+      "phone": "757-290-3587",
+      "address": "2211 S Military Hwy Suite 102, Chesapeake, VA 23320",
+      "email": null,
+      "website": null,
+      "area": "Chesapeake",
+      "hours24x7": true,
+      "featured": false,
+      "notes": null
+    },
+    {
+      "id": "gd-6",
+      "name": "Lion Garage DOor Repair & Installation",
+      "phone": "757-453-7999",
+      "address": "2669 Production Rd #106, Virginia Beach, VA 23454",
+      "email": "liongaragedoor@gmail.com",
+      "website": null,
+      "area": "Virginia Beach",
+      "hours24x7": true,
+      "featured": false,
+      "notes": "google's listed phone number 757-785-4432"
+    },
+    {
+      "id": "gd-7",
+      "name": "Empress Garage Door Repair",
+      "phone": "757-300-0234",
+      "address": "301 Bendix Rd, Virginia Beach, VA 23452",
+      "email": null,
+      "website": null,
+      "area": "Virginia Beach",
+      "hours24x7": true,
+      "featured": false,
+      "notes": null
+    },
+    {
+      "id": "gd-8",
+      "name": "Mace Garage Doors",
+      "phone": "757-335-2565",
+      "address": "1701 Kingston Ave, Norfolk, VA 23503",
+      "email": null,
+      "website": null,
+      "area": "Virginia Beach",
+      "hours24x7": false,
+      "featured": false,
+      "notes": "not listed on Google (at all) pops up in local feed for Nextdoor, Yelp, FB and Angie's"
+    },
+    {
+      "id": "gd-9",
+      "name": "HT Garage Door Services",
+      "phone": "757-900-1999",
+      "address": "511 Central Dr #103, Virginia Beach, VA 23454",
+      "email": "htgaragedoorservices@gmail.com",
+      "website": null,
+      "area": "Virginia Beach",
+      "hours24x7": true,
+      "featured": false,
+      "notes": null
+    },
+    {
+      "id": "gd-10",
+      "name": "Four Seasons Garage Doors",
+      "phone": "757-652-3682",
+      "address": null,
+      "email": null,
+      "website": null,
+      "area": "Virginia Beach",
+      "hours24x7": true,
+      "featured": false,
+      "notes": null
+    }
+  ]
+}
