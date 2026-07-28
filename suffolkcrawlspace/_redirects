@@ -4,5 +4,25 @@ http://suffolkcrawlspace.com/* https://suffolkcrawlspace.com/:splat 301
 # Redirect www to non-www
 https://www.suffolkcrawlspace.com/* https://suffolkcrawlspace.com/:splat 301
 
+# Rewrite .html requests to non-.html versions (cleaner URLs, better SEO)
+/about.html /about 301
+/contact.html /contact 301
+/dehumidifier.html /dehumidifier 301
+/drainage.html /drainage 301
+/encapsulation.html /encapsulation 301
+/repair.html /repair 301
+/vapor-barrier.html /vapor-barrier 301
+/waterproofing.html /waterproofing 301
+
+# Serve HTML files for clean URLs without redirect (200 = rewrite, not redirect)
+/about /about.html 200
+/contact /contact.html 200
+/dehumidifier /dehumidifier.html 200
+/drainage /drainage.html 200
+/encapsulation /encapsulation.html 200
+/repair /repair.html 200
+/vapor-barrier /vapor-barrier.html 200
+/waterproofing /waterproofing.html 200
+
 # Serve index.html for directory without redirect (200 = rewrite, not redirect)
 / /index.html 200

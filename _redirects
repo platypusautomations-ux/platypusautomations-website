@@ -4,5 +4,25 @@ http://platypusautomations.com/* https://platypusautomations.com/:splat 301
 # Redirect www to non-www
 https://www.platypusautomations.com/* https://platypusautomations.com/:splat 301
 
+# Rewrite .html requests to non-.html versions (cleaner URLs, better SEO)
+/ai-text-screening.html /ai-text-screening 301
+/google-reviews.html /google-reviews 301
+/missed-call-textback.html /missed-call-textback 301
+/pricing-sheet.html /pricing-sheet 301
+/privacy.html /privacy 301
+/terms.html /terms 301
+/voice-agent.html /voice-agent 301
+/website-gbp.html /website-gbp 301
+
+# Serve HTML files for clean URLs without redirect (200 = rewrite, not redirect)
+/ai-text-screening /ai-text-screening.html 200
+/google-reviews /google-reviews.html 200
+/missed-call-textback /missed-call-textback.html 200
+/pricing-sheet /pricing-sheet.html 200
+/privacy /privacy.html 200
+/terms /terms.html 200
+/voice-agent /voice-agent.html 200
+/website-gbp /website-gbp.html 200
+
 # Serve index.html for directory without redirect (200 = rewrite, not redirect)
 / /index.html 200
