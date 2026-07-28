@@ -1,0 +1,1788 @@
+{
+  "businesses": [
+    {
+      "id": "ec-1",
+      "name": "The Vero at Chesapeake",
+      "phone": "(757) 263-0011",
+      "email": null,
+      "address": "757 Cedar Rd, Chesapeake, VA 23320",
+      "website": "https://www.theverochesapeake.com",
+      "careType": [
+        "Memory Care / Alzheimer’s Support"
+      ],
+      "specialties": [
+        "Memory Care",
+        "24/7 Supervision",
+        "Fall Risk Help"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Great Bridge",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory-Secured Facility"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Residence Director",
+      "certifications": "Memory Care Certified",
+      "highlights": "High-end secure memory care.",
+      "ratings": {
+        "google": 4.6
+      }
+    },
+    {
+      "id": "ec-2",
+      "name": "Chesapeake Place Senior Living",
+      "phone": "(757) 500-5590",
+      "email": "crd.chesapeake@pacificaseniorliving.com",
+      "address": "1508 Volvo Pkwy, Chesapeake, VA 23320",
+      "website": "https://www.chesapeakeplace.com",
+      "careType": [
+        "Assisted Living"
+      ],
+      "specialties": [
+        "Alzheimer’s",
+        "Personal Care",
+        "Activities"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Western Branch",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Elevator",
+        "Memory Wing"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "State Licensed",
+      "highlights": "Blends assisted and memory care.",
+      "ratings": {
+        "google": 4.2,
+        "yelp": 4.0
+      }
+    },
+    {
+      "id": "ec-3",
+      "name": "Harmony at Oakbrooke",
+      "phone": "(757) 315-6771",
+      "email": "info@Harmonyatoakbrooke.com",
+      "address": "301 Clearfield Ave, Chesapeake, VA 23320",
+      "website": "https://www.harmonyseniorservices.com",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Dementia",
+        "24/7 Supervision",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Greenbrier",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "Wheelchair Access",
+        "Memory Wing"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Intake Coordinator",
+      "certifications": "State Licensed",
+      "highlights": "Dementia-focused assisted living.",
+      "ratings": {
+        "google": 4.5
+      }
+    },
+    {
+      "id": "ec-4",
+      "name": "Commonwealth SL at Georgian Manor",
+      "phone": "(757) 231-9001",
+      "email": null,
+      "address": "651 River Walk Pkwy, Chesapeake, VA 23320",
+      "website": "https://www.commonwealthsl.com/commonwealth-senior-living-at-georgian-manor?utm_source=google&utm_medium=organic&utm_campaign=gbp_listing",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Alzheimer’s",
+        "Short-Term Stays"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "VA Benefits",
+        "LTC Insurance"
+      ],
+      "area": "Deep Creek",
+      "languages": [
+        "English",
+        "Tagalog"
+      ],
+      "accessibility": [
+        "Sensory Setup",
+        "Memory Unit"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Admissions Director",
+      "certifications": "VA Partnered",
+      "highlights": "VA-certified memory and respite care.",
+      "ratings": {
+        "google": 4.3
+      }
+    },
+    {
+      "id": "ec-5",
+      "name": "Lav’M Adult Residence",
+      "phone": "(757) 546-2810",
+      "email": "vgc.lavmstaff@gmail.com",
+      "address": "912 S Battlefield Blvd Chesapeake, VA 23322",
+      "website": "https://lavm.com/",
+      "careType": [
+        "In-Home Personal Care"
+      ],
+      "specialties": [
+        "Companionship",
+        "Housekeeping",
+        "ADLs"
+      ],
+      "insuranceAccepted": [
+        "Private Pay"
+      ],
+      "area": "Grassfield",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "Single-Level Home"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Owner-Operator",
+      "certifications": "Background Checked",
+      "highlights": "Small group home-style residence.",
+      "ratings": {
+        "google": 4.0
+      }
+    },
+    {
+      "id": "ec-6",
+      "name": "Atlantic Shores Home Health",
+      "phone": "(757) 716-3000",
+      "email": "asliving@ascanet.com",
+      "address": "1200 Atlantic Shores Drive Virginia Beach, VA 23454",
+      "website": "https://atlanticshoresliving.com/tour/",
+      "careType": [
+        "Skilled Nursing (Home Health)"
+      ],
+      "specialties": [
+        "Chronic Conditions",
+        "Rehab",
+        "Hospice"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "Tricare",
+        "VA",
+        "Private Pay"
+      ],
+      "area": "Princess Anne",
+      "languages": [
+        "English",
+        "Korean"
+      ],
+      "accessibility": [
+        "In-Home Skilled Nursing"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Clinical Director",
+      "certifications": "Medicare Certified",
+      "highlights": "Tricare + VA-aligned home health.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-7",
+      "name": "BrightStar Care of Chesapeake",
+      "phone": "(757) 834-7565",
+      "email": null,
+      "address": "816 Greenbrier Cir #208, Chesapeake, VA 23320",
+      "website": "https://www.brightstarcare.com/locations/chesapeake-virginia-beach/",
+      "careType": [
+        "In-Home Care (Medical + Non-Medical)"
+      ],
+      "specialties": [
+        "RN Oversight",
+        "Companionship",
+        "Post-Surgical"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Western Branch",
+      "languages": [
+        "English",
+        "Tagalog"
+      ],
+      "accessibility": [
+        "In-Home RN Oversight"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Branch Director",
+      "certifications": "Joint Commission Accredited",
+      "highlights": "Trusted national brand.",
+      "ratings": {
+        "google": 4.2
+      }
+    },
+    {
+      "id": "ec-8",
+      "name": "Home Instead – Chesapeake Office",
+      "phone": "(757) 937-7898",
+      "email": null,
+      "address": "1021 Eden Way N Suite 121 Chesapeake, VA 23320",
+      "website": "https://www.homeinstead.com/home-care/usa/va/chesapeake/587",
+      "careType": [
+        "In-Home Care (Non-Medical)"
+      ],
+      "specialties": [
+        "Dementia",
+        "Transportation",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Great Bridge",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Flexible",
+        "24-Hour Support"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Intake Specialist",
+      "certifications": "Franchise Licensed",
+      "highlights": "Known brand in memory care.",
+      "ratings": {
+        "google": 4.5,
+        "yelp": 4.2
+      }
+    },
+    {
+      "id": "ec-9",
+      "name": "Visiting Angels of Chesapeake",
+      "phone": "(757) 406-8315",
+      "email": null,
+      "address": "1226 Progressive Drive, Suite 102, Chesapeake, VA 23320",
+      "website": "https://www.visitingangels.com/chesapeake/home",
+      "careType": [
+        "In-Home Care (Non-Medical)"
+      ],
+      "specialties": [
+        "Dementia",
+        "Hourly or Live-In",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Deep Creek",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "Flexible",
+        "Local Team"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Client Coordinator",
+      "certifications": "Bonded + Insured",
+      "highlights": "Trusted care at home.",
+      "ratings": {
+        "google": 4.3,
+        "yelp": 3.9
+      }
+    },
+    {
+      "id": "ec-10",
+      "name": "Ocean View Home Companion",
+      "phone": "(757) 347-0714",
+      "email": null,
+      "address": "1212 W Ocean View Ave, Norfolk 23503",
+      "website": "https://www.ov-living.com/",
+      "careType": [
+        "In-Home Care (Non‑Medical)"
+      ],
+      "specialties": [
+        "Companionship",
+        "Errands",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Medicaid",
+        "Private Pay / Self‑Pay"
+      ],
+      "area": "Ocean View",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "In-Home Services Available",
+        "Wheelchair Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Marisol Gomez",
+      "certifications": "Background Checked",
+      "highlights": "Flexible bilingual hourly care in Ocean View.",
+      "ratings": {
+        "google": 4.5
+      }
+    },
+    {
+      "id": "ec-11",
+      "name": "Larchmont Assisted Living",
+      "phone": "(844) 216-3283",
+      "email": null,
+      "address": "5504 Monroe Pl Ste A, Norfolk, VA 23508",
+      "website": "https://www.liveatlarchmont.com/larchmont-norfolk-va/",
+      "careType": [
+        "Assisted Living (Help with Daily Tasks)"
+      ],
+      "specialties": [
+        "Alzheimer’s Support",
+        "Supervision"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "Private Pay / Self‑Pay"
+      ],
+      "area": "Larchmont",
+      "languages": [
+        "English",
+        "Tagalog"
+      ],
+      "accessibility": [
+        "Memory Care Unit",
+        "Wheelchair Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Catherine Doyle",
+      "certifications": "State Licensed",
+      "highlights": "Homelike assisted living in Larchmont.",
+      "ratings": {
+        "google": 4.1
+      }
+    },
+    {
+      "id": "ec-12",
+      "name": "Ghent Senior Home Health",
+      "phone": "(757) 625-5363",
+      "email": null,
+      "address": "3900 Llewellyn Ave, Norfolk, VA 23504",
+      "website": null,
+      "careType": [
+        "Skilled Nursing (Home Health)"
+      ],
+      "specialties": [
+        "Chronic Conditions",
+        "Stroke Rehab"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "VA Benefits",
+        "Private Pay"
+      ],
+      "area": "Ghent",
+      "languages": [
+        "English",
+        "Korean"
+      ],
+      "accessibility": [
+        "In-Home Skilled Nursing",
+        "ADA Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Don Park",
+      "certifications": "Medicare Certified",
+      "highlights": "Focused on veteran & chronic care.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-13",
+      "name": "Visiting Angels of Norfolk",
+      "phone": "(757) 525-2525",
+      "email": null,
+      "address": "273 Granby Street, Suite #200, Norfolk, VA 23510",
+      "website": "https://www.visitingangels.com/norfolk/home",
+      "careType": [
+        "In-Home Care (Non‑Medical)"
+      ],
+      "specialties": [
+        "Personal Care",
+        "Companionship"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Ghent",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "In-Home Services",
+        "Background Checked"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Client Coordinator",
+      "certifications": "Bonded + Insured",
+      "highlights": "Local home care with trusted caregiving.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-14",
+      "name": "Kempsville Health and Rehab Center",
+      "phone": "(757) 420-3600",
+      "email": null,
+      "address": "5520 Indian River Road Virginia Beach, VA 23464",
+      "website": "https://www.saberhealth.com/locations/kempsville-health-and-rehab-center?utm_source=google&utm_medium=organic&utm_campaign=google-my-business&utm_term=SHGVA12",
+      "careType": [
+        "Assisted Living (Help with Daily Tasks)"
+      ],
+      "specialties": [
+        "Dementia Support",
+        "Activities"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "Private Pay / Self‑Pay"
+      ],
+      "area": "Kempsville",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Elevator",
+        "Secure Memory Wing"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Facility Manager",
+      "certifications": "State Licensed",
+      "highlights": "Community-oriented assisted living.",
+      "ratings": {
+        "google": 4.3
+      }
+    },
+    {
+      "id": "ec-15",
+      "name": "Bayside Health and Rehabilitation Center",
+      "phone": "(757) 464-4058",
+      "email": null,
+      "address": "1004 Independence Blvd, Virginia Beach, VA 23455",
+      "website": "https://baysidehealthrehab.com/",
+      "careType": [
+        "Hospice (Palliative Care)"
+      ],
+      "specialties": [
+        "Pain Management",
+        "Bereavement Support"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "VA Benefits",
+        "Private Pay"
+      ],
+      "area": "Bayside",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Care Environment",
+        "In-Home Available"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Hospice Director",
+      "certifications": "Medicare Certified",
+      "highlights": "Specialized hospice with VA friendly staff.",
+      "ratings": {
+        "google": 4.5
+      }
+    },
+    {
+      "id": "ec-16",
+      "name": "Willow Creek Gracious Retirement Living",
+      "phone": "(757) 821-6136",
+      "email": null,
+      "address": "516 Great Bridge Boulevard Chesapeake, VA 23320",
+      "website": "https://seniorlivinginstyle.com/willow-creek/",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Dementia Support",
+        "Activities"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Great Bridge",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Wing",
+        "Wheelchair Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Admissions Coordinator",
+      "certifications": "State Licensed",
+      "highlights": "Luxury senior living with memory unit.",
+      "ratings": {
+        "google": 4.7
+      }
+    },
+    {
+      "id": "ec-17",
+      "name": "The Waterford at Virginia Beach",
+      "phone": "(757) 781-0891",
+      "email": "jwarren@sonidaliving.com",
+      "address": "5417 Wesleyan Dr, Virginia Beach, VA 23455",
+      "website": "https://www.sonidaseniorliving.com/community/the-waterford-at-virginia-beach/",
+      "careType": [
+        "Assisted Living; Independent Living"
+      ],
+      "specialties": [
+        "Memory Care; Respite Care; On-site Therapy"
+      ],
+      "insuranceAccepted": [
+        "Private Pay; Self-Pay"
+      ],
+      "area": "Kempsville",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Wheelchair Accessible; 24/7 Staff"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Admissions Coordinator",
+      "certifications": "Licensed Assisted Living Facility",
+      "highlights": "Known for its vibrant social programming and strong family involvement"
+    },
+    {
+      "id": "ec-18",
+      "name": "Tidewater Home Care Inc",
+      "phone": "(757) 275-7010",
+      "email": null,
+      "address": "1130 Tabb St, Norfolk, VA 23504",
+      "website": "https://www.tidewaterhomecare.com",
+      "careType": [
+        "In-Home Care (Non‑Medical)"
+      ],
+      "specialties": [
+        "Companionship",
+        "Errands",
+        "Meal Prep"
+      ],
+      "insuranceAccepted": [
+        "Private Pay / Self‑Pay"
+      ],
+      "area": "Brambleton",
+      "languages": [
+        "English",
+        "Korean"
+      ],
+      "accessibility": [
+        "Flexible Visits",
+        "Home Support"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Agency Coordinator",
+      "certifications": "Bonded & Insured",
+      "highlights": "Personalized care for daily needs.",
+      "ratings": {
+        "google": 4.4,
+        "yelp": 4.2
+      }
+    },
+    {
+      "id": "ec-19",
+      "name": "Home Instead – VB Office",
+      "phone": "(757) 937-7823",
+      "email": null,
+      "address": "230 Kempsville Rd, Virginia Beach, VA 23464",
+      "website": "https://www.homeinstead.com/home-care/usa/va/virginia-beach/481/?utm_source=google&utm_medium=organic&utm_campaign=google_organic_businesslisting_y",
+      "careType": [
+        "In-Home Care (Non‑Medical)"
+      ],
+      "specialties": [
+        "Dementia",
+        "Errands",
+        "Transportation"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Kempsville",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Flexible Visits",
+        "24-Hour Support"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Office Manager",
+      "certifications": "Franchise Licensed",
+      "highlights": "Trusted care with dementia-trained staff.",
+      "ratings": {
+        "google": 4.6
+      }
+    },
+    {
+      "id": "ec-20",
+      "name": "Visiting Angels – VB",
+      "phone": "(757) 970-3111",
+      "email": null,
+      "address": "3386 Holland Rd # 202, Virginia Beach, VA 23452",
+      "website": "https://www.visitingangels.com/princessanne/home",
+      "careType": [
+        "In-Home Care (Non‑Medical)"
+      ],
+      "specialties": [
+        "Companionship",
+        "Personal Care",
+        "Alzheimer’s"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Princess Anne",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "Bonded & Insured"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Client Coordinator",
+      "certifications": "In-Home Services",
+      "highlights": "Local caregiver agency.",
+      "ratings": {
+        "google": 4.2
+      }
+    },
+    {
+      "id": "ec-21",
+      "name": "Gentiva Hospice VB",
+      "phone": "(757) 461-0600",
+      "email": null,
+      "address": "5544 Greenwich Rd #302, Virginia Beach, VA 23462",
+      "website": "https://www.gentivahs.com/",
+      "careType": [
+        "Hospice (Palliative Care)"
+      ],
+      "specialties": [
+        "Pain Management",
+        "Bereavement Support"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "VA Benefits",
+        "Tricare"
+      ],
+      "area": "Kempsville",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "In-Home Support",
+        "Veteran Trained Staff"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Hospice Specialist",
+      "certifications": "Medicare Certified",
+      "highlights": "Veteran-friendly hospice services.",
+      "ratings": {
+        "google": 4.3
+      }
+    },
+    {
+      "id": "ec-22",
+      "name": "Lake Prince Woods",
+      "phone": "(757) 923-5500",
+      "email": null,
+      "address": "100 Anne Goode Way, Suffolk, VA 23434",
+      "website": "https://www.lakeprincewoods.com",
+      "careType": [
+        "Assisted Living + Memory Care + Independent Living + Skilled Nursing"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Independent Living",
+        "Long-Term Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance",
+        "Medicaid Waiver"
+      ],
+      "area": "Harbour View",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Wing",
+        "Pet Friendly",
+        "Wheelchair Accessible"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "State Licensed & Accredited",
+      "highlights": "High resident satisfaction, beautiful campus.",
+      "ratings": {
+        "google": 4.7
+      }
+    },
+    {
+      "id": "ec-23",
+      "name": "Harmony at Harbour View",
+      "phone": "(757) 447-0465",
+      "email": null,
+      "address": "5871 Harbour View Blvd, Suffolk, VA 23435",
+      "website": "https://www.harmonyseniorservices.com/senior-living/va/suffolk/harbour-view-blvd/?utm_source=GBP&utm_medium=organic",
+      "careType": [
+        "Assisted Living + Memory Care + Independent Living"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Personal Care",
+        "Independent Living"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicaid",
+        "LTC Insurance"
+      ],
+      "area": "Harbour View",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Elevator",
+        "Wheelchair Accessible",
+        "Pet Friendly"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Admissions Office",
+      "certifications": "State Licensed",
+      "highlights": "Caring staff and good amenities.",
+      "ratings": {
+        "google": 4.2
+      }
+    },
+    {
+      "id": "ec-24",
+      "name": "Bickford of Suffolk",
+      "phone": "(757) 514-8834",
+      "email": "info@bickfordofsuffolk.com",
+      "address": "6860 Harbour View Blvd, Suffolk, VA 23435",
+      "website": "https://bickfordseniorliving.com/branch/bickford-of-suffolk/",
+      "careType": [
+        "Assisted Living & Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicaid"
+      ],
+      "area": "Harbour View",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Program",
+        "Scratch Kitchen",
+        "Pet Friendly"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "HigherPath Model Director",
+      "certifications": "State Licensed",
+      "highlights": "National model, strong dementia focus.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-25",
+      "name": "Concordia Assisted Living – Nansemond Commons",
+      "phone": "(757) 539-9109",
+      "email": null,
+      "address": "200 W Constance Rd #200, Suffolk, VA 23434",
+      "website": "https://concordiaseniorliving.com/",
+      "careType": [
+        "Assisted Living"
+      ],
+      "specialties": [
+        "Personal Care",
+        "Activities"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicaid"
+      ],
+      "area": "Nansemond Commons",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Secure Entry",
+        "Wheelchair Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Manager",
+      "certifications": "State Licensed",
+      "highlights": "Spacious units, strong family support."
+    },
+    {
+      "id": "ec-26",
+      "name": "Charter Senior Living of Newport News",
+      "phone": "(757) 890-0905",
+      "email": null,
+      "address": "655 Denbigh Blvd, Newport News, VA 23608",
+      "website": "https://www.charternewportnews.com/",
+      "careType": [
+        "Assisted Living & Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicaid"
+      ],
+      "area": "Denbigh",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Wing",
+        "Elevator Access"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Facility Manager",
+      "certifications": "State Licensed",
+      "highlights": "Trusted local assisted living with memory support."
+    },
+    {
+      "id": "ec-27",
+      "name": "Home Instead – Newport News",
+      "phone": "(757) 937-7913",
+      "email": null,
+      "address": "703 Thimble Shoals Blvd C-2, Newport News, VA 23606",
+      "website": "https://www.homeinstead.com/home-care/usa/va/newport-news/448/?utm_source=google&utm_medium=organic&utm_campaign=google_organic_businesslisting_y",
+      "careType": [
+        "In-Home Care (Non‑Medical)"
+      ],
+      "specialties": [
+        "Dementia Care",
+        "Errands",
+        "Transportation"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Denbigh",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Flexible Scheduling",
+        "24‑Hour Support"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Office Manager",
+      "certifications": "Franchise Licensed",
+      "highlights": "Memory‑trained caregiver services.",
+      "ratings": {
+        "google": 4.5
+      }
+    },
+    {
+      "id": "ec-28",
+      "name": "Visiting Angels – Newport News",
+      "phone": "(757) 599‑4145",
+      "email": null,
+      "address": "704 Thimble Shoals Blvd #600‑B, Newport News, VA 23606",
+      "website": "https://www.visitingangels.com/newportnews/home",
+      "careType": [
+        "In-Home Care (Non‑Medical)"
+      ],
+      "specialties": [
+        "Companionship",
+        "Personal Care",
+        "Alzheimer’s"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Kiln Creek",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "Bonded & Insured"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Client Coordinator",
+      "certifications": "In-Home Services",
+      "highlights": "Personalized home care for seniors.",
+      "ratings": {
+        "google": 4.3
+      }
+    },
+    {
+      "id": "ec-29",
+      "name": "Colonial Manor at Williamsburg",
+      "phone": "(757) 450-3712",
+      "email": "ColonialManor@cmrc.hrcoxmail.com",
+      "address": "8679 Pocahontas Trail, Williamsburg, VA 23185",
+      "website": "https://www.colonialmanorva.com",
+      "careType": [
+        "Assisted Living"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Personal Care",
+        "Activities"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Colonial Williamsburg",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Wing",
+        "Wheelchair Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Facility Director",
+      "certifications": "State Licensed",
+      "highlights": "Vibrant senior living adjacent to Kingsmill."
+    },
+    {
+      "id": "ec-30",
+      "name": "BrightStar Care of Williamsburg",
+      "phone": "(757) 608-2413",
+      "email": "williamsburg@brightstarcare.com",
+      "address": "161 A John Jefferson Rd Suite 4, Williamsburg, VA 23185",
+      "website": "https://www.brightstarcare.com/locations/williamsburg/",
+      "careType": [
+        "In-Home Care (Medical + Non‑Medical)"
+      ],
+      "specialties": [
+        "Post-Surgical",
+        "Personal Care",
+        "RN Oversight"
+      ],
+      "insuranceAccepted": [
+        "Medicare",
+        "Private Pay"
+      ],
+      "area": "Visitor's Center",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "In-Home RN Oversight"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Branch Manager",
+      "certifications": "Joint Commission Accredited",
+      "highlights": "Accredited in-home care serving Greater Williamsburg.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-31",
+      "name": "Commonwealth Senior Living at Williamsburg",
+      "phone": "(757) 349-1946",
+      "email": null,
+      "address": "236 Commons Way, Williamsburg, VA 23185",
+      "website": "https://www.commonwealthsl.com/commonwealth-senior-living-at-williamsburg",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Assisted Living",
+        "Short-Term Stay"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Colonial Williamsburg",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Wing",
+        "Historic Campus"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "State Licensed",
+      "highlights": "Elegant licensed facility with strong family reviews.",
+      "ratings": {
+        "google": 4.5
+      }
+    },
+    {
+      "id": "ec-32",
+      "name": "Dominion Village of Williamsburg",
+      "phone": "(757) 525-4683",
+      "email": null,
+      "address": "4132 Longhill Rd, Williamsburg, VA 23188",
+      "website": "https://www.dominionvillagewilliamsburg.com/",
+      "careType": [
+        "Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "24/7 Supervision",
+        "Dementia Programs"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "New Town",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Secured Memory Wing",
+        "Wheelchair Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Program Director",
+      "certifications": "Memory Care Certified",
+      "highlights": "Highly rated memory care community.",
+      "ratings": {
+        "google": 4.9
+      }
+    },
+    {
+      "id": "ec-33",
+      "name": "Spring Arbor of Williamsburg",
+      "phone": "(757) 859-0291",
+      "email": null,
+      "address": "935 Capitol Landing Rd, Williamsburg, VA 23185",
+      "website": "https://www.springarborliving.com/va/williamsburg/spring-arbor-of-williamsburg/",
+      "careType": [
+        "Assisted Living (with Memory Support)"
+      ],
+      "specialties": [
+        "Assisted Living",
+        "Some Memory Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Colonial Williamsburg",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Garden Access",
+        "Smaller Community"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Manager",
+      "certifications": "State Licensed",
+      "highlights": "Well-reviewed senior living with memory support.",
+      "ratings": {
+        "google": 4.6
+      }
+    },
+    {
+      "id": "ec-34",
+      "name": "Verena at the Reserve",
+      "phone": "(757) 349-1210",
+      "email": null,
+      "address": "121 Reserve Way, Williamsburg, VA 23185",
+      "website": "https://www.trueconnectioncommunities.com/senior-living-communities-virginia/verena-at-the-reserve-senior-living/",
+      "careType": [
+        "Independent Living"
+      ],
+      "specialties": [
+        "Independent Living",
+        "Social Life",
+        "Healthcare Access"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicare",
+        "LTC Insurance"
+      ],
+      "area": "Fords Colony",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Garden Views",
+        "Walking Path"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Resident Coordinator",
+      "certifications": "Continuing Care Accredited",
+      "highlights": "Modern independent living with strong online reviews.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-35",
+      "name": "Brookdale Chambrel Williamsburg",
+      "phone": "(757) 220-1839",
+      "email": null,
+      "address": "3800 Treyburn Dr, Williamsburg, VA 23185",
+      "website": "https://www.brookdale.com/en/communities/brookdale-chambrel-williamsburg.html",
+      "careType": [
+        "Independent & Assisted Living"
+      ],
+      "specialties": [
+        "Assisted Living",
+        "Social Programs"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicare"
+      ],
+      "area": "New Town",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Activity Calendar",
+        "Accessible"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "Common Brand",
+      "highlights": "Popular and spacious community with broad amenities.",
+      "ratings": {
+        "google": 4.1
+      }
+    },
+    {
+      "id": "ec-36",
+      "name": "Charter Senior Living of Williamsburg",
+      "phone": "(757) 802-7001",
+      "email": null,
+      "address": "440 McLaws Cir, Williamsburg, VA 23185",
+      "website": "https://www.charterwilliamsburg.com/",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Assisted Living"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "West Williamsburg",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Secure Memory Care Wing"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Facility Director",
+      "certifications": "State Licensed",
+      "highlights": "Resident-focused care in secure memory wing.",
+      "ratings": {
+        "google": 4.3
+      }
+    },
+    {
+      "id": "ec-37",
+      "name": "Patriots Colony at Williamsburg",
+      "phone": "(757) 220-9000",
+      "email": null,
+      "address": "6000 Patriots Colony Dr, Williamsburg, VA 23188",
+      "website": "https://www.riversideonline.com/lifelong-health-and-aging/lifelong-health-and-aging/our-communities/patriots-colony",
+      "careType": [
+        "Continuing Care / Retirement Community"
+      ],
+      "specialties": [
+        "Independent Living",
+        "Assisted Living",
+        "VA Employee Access"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicare",
+        "VA Benefits"
+      ],
+      "area": "Fords Colony",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Health Clinic Onsite",
+        "Garden Campus"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "CARF Accredited",
+      "highlights": "Exclusive for veterans & federal retirees.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-38",
+      "name": "The Hidenwood Assisted Living & Retirement Community",
+      "phone": "(757) 921-8400",
+      "email": null,
+      "address": "50 Wellesley Dr, Newport News, VA 23606",
+      "website": "https://hidenwoodbyrui.com/",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Assisted Living",
+        "Independent Living"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Hidenwood",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Memory Wing",
+        "Garden Campus"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "State Licensed",
+      "highlights": "Highly rated, ~4.9★ from 275+ reviews.",
+      "ratings": {
+        "google": 4.9
+      }
+    },
+    {
+      "id": "ec-39",
+      "name": "Mennowood Retirement Community",
+      "phone": "(757) 249-0355",
+      "email": null,
+      "address": "13030 Warwick Blvd, Newport News, VA 23602",
+      "website": "https://www.mennowood.com",
+      "careType": [
+        "Independent Living + Assisted Living"
+      ],
+      "specialties": [
+        "Independent Living",
+        "Assisted Living",
+        "VA Benefits"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicare",
+        "LTC Insurance"
+      ],
+      "area": "Megowan",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Garden Views",
+        "Health Services"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Executive Director",
+      "certifications": "On-site Clinic",
+      "highlights": "Faith-based, community-oriented living.",
+      "ratings": {
+        "google": 4.5
+      }
+    },
+    {
+      "id": "ec-40",
+      "name": "Charter Senior Living of Newport News",
+      "phone": "(757) 250-7529",
+      "email": null,
+      "address": "655 Denbigh Blvd, Newport News, VA 23608",
+      "website": "https://www.charternewportnews.com/",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Personal Care",
+        "Activities"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Hilton Village",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Secure Memory Wing",
+        "Elevator"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Facility Manager",
+      "certifications": "State Licensed",
+      "highlights": "Strong dementia care; average rating ~4.4★.",
+      "ratings": {
+        "google": 4.4
+      }
+    },
+    {
+      "id": "ec-41",
+      "name": "The Chesapeake (Virginia Baptist Retirement Community)",
+      "phone": "(757) 223-1650",
+      "email": null,
+      "address": "955 Harpersville Rd, Newport News, VA 23601",
+      "website": "https://www.thechesapeake.org",
+      "careType": [
+        "Independent Living + Skilled Nursing"
+      ],
+      "specialties": [
+        "Independent Living",
+        "Skilled Nursing",
+        "Memory Support"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicaid",
+        "Medicare"
+      ],
+      "area": "Warwick/Newport News",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Pet Friendly",
+        "On-site Clinic"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Liaison",
+      "certifications": "CARF Accredited",
+      "highlights": "Mixed reviews (~3.5★); strong reputation in care quality.",
+      "ratings": {
+        "google": 3.5
+      }
+    },
+    {
+      "id": "ec-42",
+      "name": "Commonwealth Senior Living at Hampton",
+      "phone": "(757) 349-7897",
+      "email": null,
+      "address": "1030 Topping Ln, Hampton, VA 23666",
+      "website": "https://www.commonwealthsl.com/commonwealth-senior-living-at-hampton",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Personal Care",
+        "Sweet Memories™ Program"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "VA Benefits",
+        "LTC Insurance"
+      ],
+      "area": "Phoebus",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "accessibility": [
+        "Secure Memory Unit",
+        "Garden Patios"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Manager",
+      "certifications": "State Licensed",
+      "highlights": "Well-regarded Sweet Memories™ memory program, ~4.15★ average.",
+      "ratings": {
+        "google": 4.1
+      }
+    },
+    {
+      "id": "ec-43",
+      "name": "The Chamberlin at Fort Monroe",
+      "phone": "(757) 315-6766",
+      "email": null,
+      "address": "2 Fenwick Rd, Hampton, VA 23651",
+      "website": "https://www.harmonyseniorservices.com/senior-living/va/hampton/fenwick-rd/",
+      "careType": [
+        "Independent Living"
+      ],
+      "specialties": [
+        "Independent Living"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "VA Benefits"
+      ],
+      "area": "Fort Monroe",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Historic Hotel Conversion",
+        "Waterfront View"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Resident Coordinator",
+      "certifications": "Continuing Care Accredited",
+      "highlights": "Luxury independent living at historic Fort Monroe.",
+      "ratings": {
+        "google": 4.5
+      }
+    },
+    {
+      "id": "ec-44",
+      "name": "Seton Manor",
+      "phone": "(757) 827-6512",
+      "email": null,
+      "address": "215 Marcella Rd, Hampton, VA 23666",
+      "website": "https://setonmanor.com/",
+      "careType": [
+        "Independent Living"
+      ],
+      "specialties": [
+        "Independent Living"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "HUD Subsidized"
+      ],
+      "area": "Central Hampton",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Pet Friendly",
+        "Quiet Community"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Manager",
+      "certifications": "State Licensed",
+      "highlights": "Smaller-scale affordable senior apartments; staff very responsive."
+    },
+    {
+      "id": "ec-45",
+      "name": "Commonwealth Senior Living at Churchland House",
+      "phone": "(757) 982-2775",
+      "email": null,
+      "address": "4916 West Norfolk Rd, Portsmouth, VA 23703",
+      "website": "https://www.commonwealthsl.com/commonwealth-senior-living-at-churchland-house",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Assisted Living",
+        "Short‑Term Stay"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicaid",
+        "Medicare Waiver"
+      ],
+      "area": "West Norfolk Rd",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Secure Memory Wing",
+        "Sweet Memories™ Program"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "State Licensed & Accredited",
+      "highlights": "Well-rated community offering assisted living & memory care.",
+      "ratings": {
+        "google": 3.7
+      }
+    },
+    {
+      "id": "ec-46",
+      "name": "Karolwood Gardens Portsmouth",
+      "phone": "(757) 397‑0899",
+      "email": null,
+      "address": "1 Bon Secours Way, Portsmouth, VA 23703",
+      "website": "https://karolwoodgardensportsmouth.com",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Assisted Living",
+        "Social Programs"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance"
+      ],
+      "area": "Churchland",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "24‑hour Nursing",
+        "Activities",
+        "Pet Friendly"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "State Licensed",
+      "highlights": "Warm, nurturing community with full spectrum of care.",
+      "ratings": {
+        "google": 4.1
+      }
+    },
+    {
+      "id": "ec-47",
+      "name": "Mayfair House Senior Living",
+      "phone": "(757) 397‑8300",
+      "email": null,
+      "address": "901 Enterprise Way, Portsmouth, VA 23704",
+      "website": "https://www.mayfairhouseal.com/",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Dementia Support",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicare",
+        "Medicaid Waiver"
+      ],
+      "area": "Pruden",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Secure Dementia Units",
+        "Elevator Access"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Facility Manager",
+      "certifications": "State Licensed",
+      "highlights": "Memory‑focused assisted living in home‑like setting.",
+      "ratings": {
+        "google": 3.9
+      }
+    },
+    {
+      "id": "ec-48",
+      "name": "Commonwealth Senior Living at Churchland House",
+      "phone": "(757) 982-2775",
+      "email": null,
+      "address": "4916 West Norfolk Rd, Portsmouth, VA 23703",
+      "website": "https://www.commonwealthsl.com/commonwealth-senior-living-at-churchland-house",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Assisted Living",
+        "Sweet Memories™ Program"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Medicaid Waiver"
+      ],
+      "area": "West Norfolk Rd",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Secure Memory Wing",
+        "Pet Friendly",
+        "Garden Patio"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Community Director",
+      "certifications": "State Licensed & Accredited",
+      "highlights": "Virginia AA best practice Sweet Memories™ program; well-reviewed & licensed facility."
+    },
+    {
+      "id": "ec-49",
+      "name": "Emily Green Shores Assisted Living",
+      "phone": "(757) 39-3442",
+      "email": "info@egshores.com",
+      "address": "500 Westmoreland Ave, Portsmouth, VA 23707",
+      "website": "https://emilygreenshores.com/",
+      "careType": [
+        "Assisted Living"
+      ],
+      "specialties": [
+        "Assisted Living",
+        "Social Programming",
+        "Personal Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "LTC Insurance",
+        "Medicaid Waiver"
+      ],
+      "area": "Churchland / Deep Creek",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "24-hour Staff",
+        "Social Activities",
+        "Pet Friendly"
+      ],
+      "petFriendly": true,
+      "featured": false,
+      "contactName": "Community Manager",
+      "certifications": "State Licensed",
+      "highlights": "Warm, intimate community with ~39 beds and high family ratings."
+    },
+    {
+      "id": "ec-50",
+      "name": "Karolwood Gardens Portsmouth",
+      "phone": "(757) 686-9100",
+      "email": null,
+      "address": "1 Bon Secours Way, Portsmouth, VA 23703",
+      "website": "https://karolwoodportsmouth.com/",
+      "careType": [
+        "Assisted Living + Memory Care"
+      ],
+      "specialties": [
+        "Memory Care",
+        "Assisted Living",
+        "Respite Care"
+      ],
+      "insuranceAccepted": [
+        "Private Pay",
+        "Private Insurance"
+      ],
+      "area": "Maryview Hospital Area",
+      "languages": [
+        "English"
+      ],
+      "accessibility": [
+        "Skilled Nursing Adjacent",
+        "Secure Wing"
+      ],
+      "petFriendly": false,
+      "featured": false,
+      "contactName": "Facility Manager",
+      "certifications": "State Licensed",
+      "highlights": "Connected to hospital services; memory care available onsite."
+    }
+  ]
+}
