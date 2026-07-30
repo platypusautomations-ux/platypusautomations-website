@@ -242,15 +242,15 @@ function showDiagnosis(businessName) {
   resultContainer.classList.add('active');
 }
 
-// Open Calendly (placeholder)
+// Open Calendly
 function openCalendly() {
-  alert('Calendly integration coming. Contact: platypusautomations@gmail.com');
+  window.open('https://calendly.com/platypusautomations/discovery-call', '_blank', 'noopener,noreferrer');
 }
 
-// Show trial option (placeholder)
+// Show trial option
 function showTrialOption(e) {
   e.preventDefault();
-  alert('Trial signup coming. Email: platypusautomations@gmail.com');
+  window.location.href = 'mailto:platypusautomations@gmail.com?subject=Free%202-Week%20Trial%20Request&body=I%27m%20interested%20in%20starting%20a%202-week%20free%20trial%20of%20Platypus%20Automations.';
 }
 
 // Send early access email (Week 2)
