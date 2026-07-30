@@ -1056,17 +1056,19 @@
             submitBtn.textContent = 'Sending...';
 
             try {
+                const payload = {
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    directory: 'elderly-care'
+                };
+                console.log('Sending payload:', payload);
                 const response = await fetch('https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/elderly-care-lead-capture', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        directory: 'elderly-care'
-                    })
+                    body: JSON.stringify(payload)
                 });
 
                 if (response.ok) {

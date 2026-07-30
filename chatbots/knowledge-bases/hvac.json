@@ -1,0 +1,93 @@
+{
+  "vertical": "hvac",
+  "verticalLabel": "HVAC",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many qualified leads per week do you typically get?",
+      "type": "select",
+      "options": [
+        { "value": "0-2", "label": "0-2 (slow)" },
+        { "value": "3-5", "label": "3-5 (steady)" },
+        { "value": "6-10", "label": "6-10 (busy)" },
+        { "value": "10+", "label": "10+ (overwhelmed)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "On average, how long does it take you to respond to a lead?",
+      "type": "select",
+      "options": [
+        { "value": "under-1hr", "label": "Under 1 hour" },
+        { "value": "1-2hr", "label": "1-2 hours" },
+        { "value": "4-8hr", "label": "4-8 hours" },
+        { "value": "next-day", "label": "Next day or longer" },
+        { "value": "dont-know", "label": "Don't track it" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "What's your current system for capturing and responding to leads?",
+      "type": "select",
+      "options": [
+        { "value": "phone-voicemail", "label": "Phone voicemail" },
+        { "value": "text", "label": "Text messages" },
+        { "value": "website-form", "label": "Website contact form" },
+        { "value": "facebook", "label": "Facebook/social media" },
+        { "value": "google-reviews", "label": "Google reviews" },
+        { "value": "referrals", "label": "Mostly referrals" },
+        { "value": "manual-mix", "label": "Mix of manual methods" },
+        { "value": "no-system", "label": "No system" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest bottleneck right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-leads", "label": "Missing leads (especially after-hours)" },
+        { "value": "slow-response", "label": "Too slow to respond" },
+        { "value": "poor-followup", "label": "Poor follow-up on cold leads" },
+        { "value": "no-qualification", "label": "Can't tell if leads are worth my time" },
+        { "value": "inconsistent", "label": "Inconsistent process" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "What's your annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-100k", "label": "Under $100K" },
+        { "value": "100k-250k", "label": "$100K-$250K" },
+        { "value": "250k-500k", "label": "$250K-$500K" },
+        { "value": "500k-1m", "label": "$500K-$1M" },
+        { "value": "over-1m", "label": "Over $1M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How soon do you want to fix this?",
+      "type": "select",
+      "options": [
+        { "value": "asap", "label": "ASAP (next 2 weeks)" },
+        { "value": "month", "label": "Within a month" },
+        { "value": "quarter", "label": "Within Q4" },
+        { "value": "exploring", "label": "Just exploring options" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgLeadsPerWeek": "5-7",
+    "avgResponseTime": "2-4 hours",
+    "topCompetitorResponseTime": "30 minutes",
+    "conversionRate": "18-22%",
+    "avgJobValue": "$3,500-$8,000"
+  },
+  "diagnosis": "Based on your answers, here's what's happening: You're getting leads, but you're losing 40-60% of them because you're not responding within the first hour. In HVAC, the first contractor to call wins the job 80% of the time. You're leaving $1,500-$3,000 per month on the table."
+}

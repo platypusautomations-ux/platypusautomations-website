@@ -1,0 +1,91 @@
+{
+  "vertical": "plumbing",
+  "verticalLabel": "Plumbing",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many service calls do you get per week?",
+      "type": "select",
+      "options": [
+        { "value": "0-5", "label": "0-5" },
+        { "value": "6-15", "label": "6-15" },
+        { "value": "16-25", "label": "16-25" },
+        { "value": "25+", "label": "25+ (at capacity)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "What percentage of after-hours calls do you miss or can't take?",
+      "type": "select",
+      "options": [
+        { "value": "most", "label": "Most (80%+)" },
+        { "value": "half", "label": "About half" },
+        { "value": "some", "label": "Some (20%)" },
+        { "value": "none", "label": "I answer all of them" },
+        { "value": "no-after-hours", "label": "I don't take after-hours" }
+      ],
+      "fieldName": "missed_after_hours"
+    },
+    {
+      "id": "q5",
+      "text": "How do most of your leads come in?",
+      "type": "select",
+      "options": [
+        { "value": "phone-direct", "label": "Direct phone calls" },
+        { "value": "google-reviews", "label": "Google reviews / maps" },
+        { "value": "referrals", "label": "Referrals from past customers" },
+        { "value": "facebook", "label": "Facebook / social media" },
+        { "value": "website", "label": "Website form" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "lead_source"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest challenge right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-emergency", "label": "Missing emergency calls (water damage, burst pipes)" },
+        { "value": "slow-callback", "label": "Slow to call customers back" },
+        { "value": "qualification", "label": "Can't tell who really needs service vs window shoppers" },
+        { "value": "capacity", "label": "Overwhelmed, not enough hours" },
+        { "value": "no-system", "label": "No real system in place" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-100k", "label": "Under $100K" },
+        { "value": "100k-250k", "label": "$100K-$250K" },
+        { "value": "250k-500k", "label": "$250K-$500K" },
+        { "value": "500k-1m", "label": "$500K-$1M" },
+        { "value": "over-1m", "label": "Over $1M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How urgent is this for you?",
+      "type": "select",
+      "options": [
+        { "value": "urgent", "label": "Very urgent (losing money now)" },
+        { "value": "important", "label": "Important (want to improve)" },
+        { "value": "someday", "label": "Someday when I have time" },
+        { "value": "browsing", "label": "Just curious" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgCallsPerWeek": "8-12",
+    "emergencyCallResponseRate": "60% answer rate industry-wide",
+    "waterDamageAvgCost": "$5,000-$15,000",
+    "conversionRate": "25-30%",
+    "avgServiceValue": "$2,000-$6,000"
+  },
+  "diagnosis": "You're losing emergency calls to voice mail. Every missed emergency call is a customer who calls the next plumber. In water damage situations, the first person to arrive usually gets the job. You're likely leaving $800-$2,000 per month on the table just from missed emergency calls."
+}
