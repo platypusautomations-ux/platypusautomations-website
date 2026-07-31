@@ -174,9 +174,10 @@ function showResults() {
     <div class="question-block active">
       <div class="question-text">Before we show your diagnosis...</div>
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <input type="text" id="businessName" class="email-input" placeholder="Business name" />
+        <input type="text" id="businessName" class="email-input" placeholder="Business name" required />
+        <input type="text" id="auditName" class="email-input" placeholder="Your name" required />
         <input type="email" id="auditEmail" class="email-input" placeholder="Your email" required />
-        <input type="tel" id="auditPhone" class="email-input" placeholder="Your phone (optional)" />
+        <input type="tel" id="auditPhone" class="email-input" placeholder="(123) 456-7890" required />
       </div>
       <div class="button-group" style="margin-top: 20px;">
         <button class="btn btn-primary" onclick="submitAudit()">See My Diagnosis</button>
@@ -185,6 +186,21 @@ function showResults() {
   `;
 
   chatbotContainer.innerHTML = html;
+
+  // Add phone number formatting
+  document.getElementById('auditPhone').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 0) {
+      if (value.length <= 3) {
+        value = '(' + value;
+      } else if (value.length <= 6) {
+        value = '(' + value.substring(0, 3) + ') ' + value.substring(3);
+      } else {
+        value = '(' + value.substring(0, 3) + ') ' + value.substring(3, 6) + '-' + value.substring(6, 10);
+      }
+    }
+    e.target.value = value;
+  });
 }
 
 // Submit audit and show diagnosis
@@ -192,9 +208,10 @@ async function submitAudit() {
   const email = document.getElementById('auditEmail').value;
   const phone = document.getElementById('auditPhone').value;
   const businessName = document.getElementById('businessName').value;
+  const name = document.getElementById('auditName').value;
 
-  if (!email) {
-    alert('Email is required');
+  if (!email || !phone || !businessName || !name) {
+    alert('All fields are required');
     return;
   }
 
@@ -204,6 +221,7 @@ async function submitAudit() {
     email: email,
     phone: phone,
     business_name: businessName,
+    name: name,
     timestamp: new Date().toISOString()
   };
 
