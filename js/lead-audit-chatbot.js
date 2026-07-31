@@ -268,7 +268,7 @@ function openCalendly() {
 // Show trial option
 function showTrialOption(e) {
   e.preventDefault();
-  window.location.href = 'mailto:platypusautomations@gmail.com?subject=Free%202-Week%20Trial%20Request&body=I%27m%20interested%20in%20starting%20a%202-week%20free%20trial%20of%20Platypus%20Automations.';
+  window.location.href = 'mailto:tim@platypusautomations.com?subject=Free%202-Week%20Trial%20Request&body=I%27m%20interested%20in%20starting%20a%202-week%20free%20trial%20of%20Platypus%20Automations.';
 }
 
 // Send early access email (Week 2)
