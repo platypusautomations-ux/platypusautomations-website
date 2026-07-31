@@ -3,28 +3,372 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Lead Flow Audit — Platypus Automations</title>
-  <meta name="description" content="Find out exactly how much revenue you're leaving on the table. Take our 2-minute AI audit.">
+  <title>Free AI Lead Flow Audit — Identify Revenue Gaps | Platypus Automations</title>
+  <meta name="description" content="Find out exactly how much revenue you're leaving on the table. Take our free 2-minute AI audit. Personalized diagnosis for HVAC, plumbing, roofing, and 11+ service verticals.">
+  <link rel="canonical" href="https://www.platypusautomations.com/lead-audit.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free AI Lead Flow Audit — Identify Revenue Gaps">
+  <meta property="og:description" content="Find out exactly how much revenue you're leaving on the table. Take our free 2-minute AI audit. Personalized diagnosis for HVAC, plumbing, roofing, and 11+ service verticals.">
+  <meta property="og:url" content="https://www.platypusautomations.com/lead-audit.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Free AI Lead Flow Audit",
+    "description": "A personalized diagnostic assessment that identifies lead response gaps, revenue leaks, and specific improvements for your service business.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Platypus Automations",
+      "telephone": "(757) 765-1210",
+      "url": "https://www.platypusautomations.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chesapeake",
+        "addressRegion": "VA",
+        "postalCode": "23323",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "Region",
+      "name": "Hampton Roads, Virginia"
+    },
+    "serviceType": "Lead Flow Audit",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free AI-powered lead flow audit"
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Barlow', system-ui, sans-serif;
-      background: linear-gradient(135deg, #0A1628 0%, #07111f 100%);
+      background: #0A1628;
       color: #fff;
-      min-height: 100vh;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ── HEADER/NAV ─────────────────────────────── */
+    .site-header {
+      background: #0A1628;
+      border-bottom: 1px solid rgba(0,122,122,0.2);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      padding: 20px;
+      gap: 48px;
+    }
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #fff;
+    }
+    .logo span { color: #00a0a0; }
+    .main-nav {
+      display: flex;
+      gap: 28px;
+    }
+    .main-nav a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.3s;
+    }
+    .main-nav a:hover { color: #fff; }
+    .header-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .phone-link {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+    .btn {
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: #E8651A;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+
+    /* ── BREADCRUMB ──────────────────────────────── */
+    .breadcrumb {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .breadcrumb-inner {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.52);
     }
 
-    .container {
+    /* ── PAGE HERO ───────────────────────────────── */
+    .page-hero {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .page-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .page-hero > .container > p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+    .page-hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+    }
+    .page-hero-meta span::before {
+      content: '✓ ';
+      color: #00a0a0;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* ── CONTENT GRID ────────────────────────────── */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .content-body h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.85rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .content-body h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      color: #fff;
+      line-height: 1.22;
+    }
+    .content-body p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .content-body ul {
+      margin: 20px 0 24px 0;
+    }
+    .content-body li {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .content-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #00a0a0;
+      font-weight: 600;
+    }
+
+    /* ── SIDEBAR BOXES ───────────────────────────── */
+    .info-box {
+      background: rgba(0,122,122,0.08);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .info-box h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .info-box p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+    }
+
+    /* ── FAQ SECTION ────────────────────────────── */
+    .section--gray {
+      background: rgba(0,122,122,0.04);
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 32px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(0,122,122,0.15);
+      padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      transition: transform 0.3s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { color: #fff; }
+    .faq-answer {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.72;
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+
+    /* ── RELATED SERVICES ────────────────────────── */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .related-card {
+      background: rgba(0,122,122,0.06);
+      border: 1px solid rgba(0,122,122,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+    .related-card:hover {
+      background: rgba(0,122,122,0.12);
+      border-color: rgba(0,122,122,0.35);
+      transform: translateY(-6px);
+    }
+    .related-card h4 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .related-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.6;
+    }
+    .related-card a {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #00a0a0;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .related-card a:hover { color: #fff; }
+
+    /* ── CHATBOT SECTION ────────────────────────── */
+    .section--audit {
+      padding: 64px 0;
+    }
+    .audit-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .audit-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .audit-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
       max-width: 600px;
-      width: 100%;
+      margin: 0 auto;
     }
 
     .chatbot-card {
+      max-width: 700px;
+      margin: 0 auto;
       background: rgba(10, 22, 40, 0.8);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(0, 122, 122, 0.3);
@@ -38,9 +382,9 @@
       text-align: center;
     }
 
-    .header h1 {
+    .header h3 {
       font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 400;
       font-style: italic;
       line-height: 1.2;
@@ -49,198 +393,555 @@
     }
 
     .header p {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .question-block {
-      margin-bottom: 28px;
-      display: none;
-    }
-
-    .question-block.active {
-      display: block;
-      animation: fadeIn 0.3s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .question-text {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 16px;
-      color: #fff;
-    }
-
-    .option-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .option-btn {
-      padding: 12px 16px;
-      background: rgba(0, 122, 122, 0.1);
-      border: 1px solid rgba(0, 122, 122, 0.4);
-      border-radius: 8px;
-      color: #fff;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: left;
-    }
-
-    .option-btn:hover {
-      background: rgba(0, 122, 122, 0.3);
-      border-color: rgba(0, 160, 160, 0.8);
-    }
-
-    .option-btn.selected {
-      background: rgba(0, 160, 160, 0.5);
-      border-color: #00a0a0;
-      box-shadow: 0 0 12px rgba(0, 160, 160, 0.3);
-    }
-
-    .email-input {
-      width: 100%;
-      padding: 12px 16px;
-      background: rgba(0, 122, 122, 0.1);
-      border: 1px solid rgba(0, 122, 122, 0.4);
-      border-radius: 8px;
-      color: #fff;
-      font-size: 14px;
-      transition: all 0.2s ease;
-    }
-
-    .email-input::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    .email-input:focus {
-      outline: none;
-      background: rgba(0, 122, 122, 0.2);
-      border-color: rgba(0, 160, 160, 0.8);
-    }
-
-    .button-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 28px;
-    }
-
-    .btn {
-      flex: 1;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-primary {
-      background: #00a0a0;
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: #00c5c5;
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 2px;
-      margin-bottom: 32px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #00a0a0 0%, #E8651A 100%);
-      transition: width 0.3s ease;
-    }
-
-    .result-block {
-      display: none;
-    }
-
-    .result-block.active {
-      display: block;
-      animation: fadeIn 0.4s ease-in;
-    }
-
-    .diagnosis {
-      background: rgba(0, 160, 160, 0.15);
-      border-left: 4px solid #00a0a0;
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-      font-size: 15px;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.65);
       line-height: 1.6;
     }
 
-    .cta-section {
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 122, 122, 0.2);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #fff;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: #E8651A;
+      background: rgba(232, 101, 26, 0.04);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: #E8651A;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 12px;
+    }
+
+    .form-submit:hover {
+      background: #ff7a2e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232, 101, 26, 0.4);
+    }
+
+    .diagnosis-box {
+      margin-top: 32px;
+      padding: 20px;
+      background: rgba(0, 122, 122, 0.12);
+      border: 1px solid rgba(0, 122, 122, 0.25);
+      border-radius: 8px;
+      display: none;
+    }
+
+    .diagnosis-box.show {
+      display: block;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .diagnosis-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .diagnosis-text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+    }
+
+    .calendly-cta {
+      margin-top: 24px;
+      padding: 16px;
+      background: rgba(232, 101, 26, 0.1);
+      border: 1px solid rgba(232, 101, 26, 0.3);
+      border-radius: 8px;
       text-align: center;
     }
 
-    .cta-section h3 {
-      font-size: 16px;
+    .calendly-cta p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 12px;
+    }
+
+    .calendly-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: #E8651A;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .calendly-btn:hover {
+      background: #ff7a2e;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #050d18;
+      border-top: 1px solid rgba(0,122,122,0.15);
+      padding: 40px 0;
+      margin-top: 80px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+    .footer-col h4 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 400;
       margin-bottom: 16px;
       color: #fff;
     }
-
-    .loading {
+    .footer-col a {
+      display: block;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: #00a0a0; }
+    .footer-bottom {
+      border-top: 1px solid rgba(0,122,122,0.1);
+      padding-top: 24px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
       text-align: center;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .content-grid, .quote-inner, .footer-inner { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .header-inner { flex-direction: column; gap: 20px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="chatbot-card">
-      <div class="header">
-        <h1>Your Free Lead Flow Audit</h1>
-        <p>2 minutes to see exactly how much revenue you're leaving on the table</p>
-      </div>
-
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
-      </div>
-
-      <div id="chatbotContainer">
-        <!-- Questions will be inserted here by JavaScript -->
-      </div>
-
-      <div id="resultContainer" class="result-block">
-        <div class="diagnosis" id="diagnosisText"></div>
-        <div class="cta-section">
-          <h3>Next Step: Schedule Your Consultation</h3>
-          <button class="btn btn-primary" onclick="openCalendly()">Book 15-Min Consultation</button>
-          <p style="font-size: 13px; margin-top: 12px; color: rgba(255, 255, 255, 0.5);">
-            Or <a href="#" onclick="showTrialOption(event)" style="text-decoration: underline; color: #00a0a0;">start a free 2-week trial</a>
-          </p>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">Platypus <span>∿</span></div>
+        <nav class="main-nav">
+          <a href="/">Home</a>
+          <a href="/#services">Services</a>
+          <a href="/lead-audit.html">Lead Audit</a>
+        </nav>
+        <div class="header-cta">
+          <a href="tel:+17577652707" class="phone-link">(757) 765-1210</a>
+          <button class="btn btn-primary" onclick="window.location.href='/#contact'">Get Started</button>
         </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <a href="/">Home</a> <span>/</span> <span>Lead Audit</span>
       </div>
     </div>
   </div>
 
-  <script src="js/lead-audit-chatbot.js"></script>
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Find Out Exactly How Much Revenue You're Leaving on the Table</h1>
+      <p>Our AI-powered lead flow audit identifies the specific gaps costing you money. Get a personalized diagnosis in 2 minutes.</p>
+      <div class="page-hero-meta">
+        <span>Free Assessment</span>
+        <span>Personalized Diagnosis</span>
+        <span>2-Minute Audit</span>
+        <span>14 Service Verticals</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="section">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-body">
+          <h2>What Is the Lead Audit?</h2>
+          <p>The Lead Audit is a free AI-powered diagnostic tool that evaluates your lead response process, identifies where you're losing revenue, and shows you exactly what's costing you money every month.</p>
+
+          <h3>How It Works</h3>
+          <p>Answer 6 simple questions about your business:</p>
+          <ul>
+            <li>Lead volume and frequency</li>
+            <li>Response time to customer inquiries</li>
+            <li>Current lead capture methods</li>
+            <li>Your biggest operational bottleneck</li>
+            <li>Annual revenue range</li>
+            <li>Timeline for improvement</li>
+          </ul>
+          <p>Our AI analyzes your answers against industry benchmarks and delivers a personalized diagnosis showing:</p>
+          <ul>
+            <li>How much revenue you're likely losing monthly</li>
+            <li>Where your response gaps are vs. competitors</li>
+            <li>Which customers you're missing</li>
+            <li>What a fix would generate in new revenue</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="info-box">
+            <h3>Industry Benchmarks</h3>
+            <p>Your audit compares your business against real industry standards for your trade. See exactly how you stack up against the competition and what fast responders are doing differently.</p>
+          </div>
+          <div class="info-box">
+            <h3>Vertical-Specific</h3>
+            <p>We have specialized knowledge bases for 14 service verticals: HVAC, Plumbing, Roofing, Electrical, Tree Service, and more. Each one uses industry-specific questions and benchmarks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-body">
+          <h2>Why Take the Audit?</h2>
+          <h3>Know Your True Leaks</h3>
+          <p>Most business owners don't know how many leads they're losing or where. This audit quantifies it. You'll see exactly what's costing you money each month.</p>
+
+          <h3>Benchmark Against Competitors</h3>
+          <p>Our industry data shows you how fast the best contractors in your space respond to leads. If you're slower, that's where you're bleeding revenue. If you're fast, you'll see your competitive advantage.</p>
+
+          <h3>Get Specific Recommendations</h3>
+          <p>The diagnosis doesn't just tell you what's broken. It shows you what fixing it would generate in new revenue, so you can decide if improvement is worth the investment.</p>
+
+          <h3>No Pressure, No Commitment</h3>
+          <p>This is a free assessment. No credit card, no sales call attached (unless you want one). Take it, get your diagnosis, and make decisions on your timeline.</p>
+        </div>
+
+        <div>
+          <div class="info-box">
+            <h3>What You'll Learn</h3>
+            <p>After the audit you'll know:</p>
+            <ul style="margin-top: 12px;">
+              <li style="margin-bottom: 8px; padding-left: 0;">• Estimated monthly revenue leakage</li>
+              <li style="margin-bottom: 8px; padding-left: 0;">• Your response time vs. industry standard</li>
+              <li style="margin-bottom: 8px; padding-left: 0;">• Which customer types you're missing</li>
+              <li style="margin-bottom: 8px; padding-left: 0;">• Revenue upside of a fix</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <p class="section-label">Frequently Asked Questions</p>
+      <h2 class="section-title">Common Questions About the Lead Audit</h2>
+
+      <details class="faq-item">
+        <summary>How long does the audit take?</summary>
+        <div class="faq-answer">About 2 minutes. The audit is 6 simple multiple-choice questions, followed by an instant personalized diagnosis.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the audit really free?</summary>
+        <div class="faq-answer">Yes, completely free. No credit card, no email spam list, no sales pressure. We give you the diagnosis. If you want to talk about solutions, we'll offer, but it's 100% optional.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if my industry isn't on the list?</summary>
+        <div class="faq-answer">We have 14 service verticals: HVAC, Plumbing, Roofing, Electrical, Painting, Tree Service, Junk Removal, Foundation Repair, Paving, Concrete, Hardscapes, Crawlspace Services, Septic Services, and Land Clearing/Grading. If your trade is on that list, we have industry-specific questions and benchmarks. If not, you can still take a general version.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How accurate are the benchmarks?</summary>
+        <div class="faq-answer">Our benchmarks come from published industry data, real client results, and aggregate performance trends across service verticals. They're directional, not absolutes. The goal is to show you where you stand relative to the field, not to be perfect down to the dollar.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens after the audit?</summary>
+        <div class="faq-answer">You get a diagnosis immediately. If it resonates and you want to explore solutions, you can book a discovery call with our team. No obligation. Most owners use the diagnosis to make their own decisions.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Will you sell my data?</summary>
+        <div class="faq-answer">No. We use your answers to generate your personalized diagnosis and optionally send you a summary email if you request it. That's it. We don't share or sell contact info.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Next Steps</p>
+      <h2 class="section-title">Services That Fix Lead Response Gaps</h2>
+
+      <div class="related-grid">
+        <div class="related-card">
+          <h4>Missed Call Text-Back</h4>
+          <p>Automatically text customers within 60 seconds of a missed call. Keep leads warm and show you're responsive.</p>
+          <a href="/missed-call-textback.html">Learn more →</a>
+        </div>
+        <div class="related-card">
+          <h4>AI Text Screening</h4>
+          <p>Instant AI conversation with leads. Qualify, screen urgency, and capture job details before you ever call back.</p>
+          <a href="/ai-text-screening.html">Learn more →</a>
+        </div>
+        <div class="related-card">
+          <h4>After-Hours AI Voice Agent</h4>
+          <p>Answer calls 24/7 even while you sleep. Screen emergencies and alert you only for jobs worth your time.</p>
+          <a href="/voice-agent.html">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT / AUDIT FORM -->
+  <section class="section--audit">
+    <div class="container">
+      <div class="audit-header">
+        <h2>Take the Free Audit</h2>
+        <p>Answer 6 questions and get your personalized diagnosis instantly. No email required, no sales call attached.</p>
+      </div>
+
+      <div class="chatbot-card">
+        <div class="header">
+          <h3>Lead Flow Audit</h3>
+          <p>2 minutes to identify your revenue gaps</p>
+        </div>
+
+        <form id="auditForm">
+          <div class="form-group">
+            <label for="vertical">What's your trade?</label>
+            <select id="vertical" name="vertical" required>
+              <option value="">-- Select your industry --</option>
+              <option value="hvac">HVAC</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="roofing">Roofing</option>
+              <option value="electrical">Electrical</option>
+              <option value="painting">Painting</option>
+              <option value="junk_removal">Junk Removal</option>
+              <option value="tree_service">Tree Service</option>
+              <option value="foundation_repair">Foundation Repair</option>
+              <option value="paving">Paving</option>
+              <option value="concrete">Concrete</option>
+              <option value="hardscapes">Hardscapes</option>
+              <option value="crawlspace">Crawlspace Services</option>
+              <option value="septic_services">Septic Services</option>
+              <option value="land_clearing">Land Clearing & Grading</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="businessName">Business Name</label>
+            <input type="text" id="businessName" name="businessName" placeholder="Your business" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(###) ###-####" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email (optional, for diagnosis summary)</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+
+          <button type="submit" class="form-submit">Get Your Diagnosis →</button>
+        </form>
+
+        <div id="diagnosisBox" class="diagnosis-box">
+          <div class="diagnosis-title">Your Lead Flow Diagnosis</div>
+          <div id="diagnosisText" class="diagnosis-text"></div>
+          <div class="calendly-cta">
+            <p>Want to explore solutions? Schedule a quick call with our team.</p>
+            <button class="calendly-btn" onclick="window.open('https://calendly.com/platypusautomations/discovery-call', '_blank')">Schedule Discovery Call →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="/missed-call-textback.html">Missed Call Text-Back</a>
+          <a href="/ai-text-screening.html">AI Text Screening</a>
+          <a href="/voice-agent.html">After-Hours AI Voice</a>
+          <a href="/google-reviews.html">Google Reviews</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/">Home</a>
+          <a href="/lead-audit.html">Lead Audit</a>
+          <a href="tel:+17577652707">Call Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+17577652707">(757) 765-1210</a>
+          <a href="mailto:platypusautomations@gmail.com">platypusautomations@gmail.com</a>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-top: 12px;">Chesapeake, VA</p>
+        </div>
+        <div class="footer-col">
+          <h4>Veteran-Owned</h4>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55);">Service-Disabled Veteran-Owned Small Business</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Platypus Automations LLC. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Load knowledge bases
+    let knowledgeBases = {};
+    const verticals = ['hvac', 'plumbing', 'roofing', 'junk_removal', 'electrical', 'painting', 'foundation_repair', 'paving', 'concrete', 'hardscapes', 'crawlspace', 'tree_service', 'septic_services', 'land_clearing'];
+
+    async function loadKnowledgeBases() {
+      for (const vertical of verticals) {
+        try {
+          const filename = vertical === 'junk_removal' ? 'junk-removal.json' :
+                          vertical === 'foundation_repair' ? 'foundation-repair.json' :
+                          vertical === 'land_clearing' ? 'land-clearing.json' :
+                          vertical === 'tree_service' ? 'tree-service.json' :
+                          vertical === 'septic_services' ? 'septic-services.json' :
+                          `${vertical}.json`;
+
+          const response = await fetch(`/chatbots/knowledge-bases/${filename}`);
+          if (response.ok) {
+            knowledgeBases[vertical] = await response.json();
+          }
+        } catch (error) {
+          console.log(`Could not load KB for ${vertical}`);
+        }
+      }
+    }
+
+    // Phone formatting
+    document.getElementById('phone').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 0) {
+        if (value.length <= 3) {
+          value = value;
+        } else if (value.length <= 6) {
+          value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+        } else {
+          value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+        }
+      }
+      e.target.value = value;
+    });
+
+    // Form submission
+    document.getElementById('auditForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const vertical = document.getElementById('vertical').value;
+      const name = document.getElementById('name').value;
+      const businessName = document.getElementById('businessName').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+
+      // Prepare data for webhook
+      const formData = {
+        vertical: vertical,
+        name: name,
+        businessName: businessName,
+        phone: phone,
+        email: email
+      };
+
+      // Get diagnosis from KB if available
+      let diagnosis = 'Thank you for completing the audit. Schedule a call to discuss your specific situation.';
+      if (knowledgeBases[vertical]) {
+        diagnosis = knowledgeBases[vertical].diagnosis;
+      }
+
+      // Show diagnosis
+      document.getElementById('diagnosisText').textContent = diagnosis;
+      document.getElementById('diagnosisBox').classList.add('show');
+
+      // Send to webhook
+      try {
+        const webhookUrl = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-submit';
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+      } catch (error) {
+        console.log('Webhook submission error (non-critical):', error);
+      }
+
+      // Scroll to diagnosis
+      document.getElementById('diagnosisBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Load KBs on page load
+    loadKnowledgeBases();
+  </script>
 </body>
 </html>
