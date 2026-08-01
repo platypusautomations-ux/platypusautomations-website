@@ -169,21 +169,64 @@
     #chatInterface { display: none; }
     #chatInterface.show { display: block; }
 
-    .chat-messages {
-      max-height: 400px;
+    /* The conversation surface. Inset and darker than the card so it reads as
+       a place where a conversation accumulates, even while nearly empty. */
+    .chat-window {
+      background: rgba(4, 12, 24, 0.55);
+      border: 1px solid rgba(0, 122, 122, 0.22);
+      border-radius: 12px;
+      padding: 18px 16px;
+      min-height: 360px;
+      max-height: 440px;
       overflow-y: auto;
+      margin-bottom: 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      padding: 4px 4px 4px 4px;
-      margin-bottom: 18px;
+      gap: 14px;
     }
-    .chat-messages::-webkit-scrollbar { width: 6px; }
-    .chat-messages::-webkit-scrollbar-thumb { background: rgba(0,122,122,0.4); border-radius: 3px; }
+    .chat-window::-webkit-scrollbar { width: 6px; }
+    .chat-window::-webkit-scrollbar-thumb { background: rgba(0,122,122,0.4); border-radius: 3px; }
+
+    .chat-messages { display: flex; flex-direction: column; gap: 14px; }
+
+    .sender-name {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-left: 42px;
+    }
+
+    .msg-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      animation: msgIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .msg-row.is-user { flex-direction: row-reverse; }
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .avatar {
+      flex: 0 0 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,160,160,0.12);
+      border: 1px solid rgba(0,160,160,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .avatar img { width: 19px; height: auto; display: block; }
+    .avatar-spacer { flex: 0 0 32px; }
 
     .msg {
-      max-width: 82%;
-      padding: 12px 16px;
+      max-width: 78%;
+      padding: 11px 15px;
       border-radius: 14px;
       font-size: 0.9rem;
       line-height: 1.55;
@@ -191,38 +234,52 @@
       word-wrap: break-word;
     }
     .msg-ai {
-      align-self: flex-start;
       background: rgba(0, 122, 122, 0.18);
       border: 1px solid rgba(0, 122, 122, 0.32);
       border-bottom-left-radius: 4px;
       color: #fff;
     }
     .msg-user {
-      align-self: flex-end;
       background: rgba(232, 101, 26, 0.2);
       border: 1px solid rgba(232, 101, 26, 0.4);
       border-bottom-right-radius: 4px;
       color: #fff;
     }
-    .msg-typing {
-      align-self: flex-start;
+
+    .typing-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 14px 16px;
       background: rgba(0, 122, 122, 0.12);
       border: 1px solid rgba(0, 122, 122, 0.22);
-      border-bottom-left-radius: 4px;
-      padding: 12px 16px;
       border-radius: 14px;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
+      border-bottom-left-radius: 4px;
+    }
+    .typing-dots span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      animation: blink 1.3s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.18s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes blink {
+      0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+      30%           { opacity: 1;    transform: translateY(-3px); }
     }
 
-    .option-row {
+    /* Quick replies hang under the message they answer, indented past the
+       avatar so they read as part of the conversation, not as form controls. */
+    .quick-replies {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 18px;
+      margin-left: 42px;
     }
+    .quick-replies:empty { display: none; }
     .option-btn {
-      padding: 10px 16px;
+      padding: 9px 15px;
       border-radius: 999px;
       border: 1px solid rgba(0, 160, 160, 0.45);
       background: rgba(0, 160, 160, 0.08);
@@ -231,42 +288,76 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .option-btn:hover:not(:disabled) { background: rgba(0, 160, 160, 0.28); border-color: #00a0a0; }
-    .option-btn:disabled { opacity: 0.35; cursor: default; }
+    .option-btn:hover:not(:disabled) {
+      background: rgba(0, 160, 160, 0.28);
+      border-color: #00a0a0;
+      transform: translateY(-1px);
+    }
+    .option-btn:focus-visible { outline: 2px solid #00a0a0; outline-offset: 2px; }
+    .option-btn:disabled { opacity: 0.3; cursor: default; }
 
-    .followup-row { display: none; gap: 10px; margin-top: 4px; }
-    .followup-row.show { display: flex; }
-    .followup-row input {
+    /* Always visible. A chat without a compose box does not read as a chat,
+       even when it is not your turn to type. */
+    .compose { display: flex; gap: 10px; align-items: center; }
+    .compose input {
       flex: 1;
-      padding: 12px 14px;
+      padding: 12px 16px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(0,122,122,0.25);
-      border-radius: 8px;
+      border-radius: 999px;
       font-family: inherit;
       font-size: 0.9rem;
       color: #fff;
     }
-    .followup-row input:focus { outline: none; border-color: #00a0a0; }
-    .followup-row button {
-      padding: 12px 20px;
+    .compose input:focus { outline: none; border-color: #00a0a0; }
+    .compose input::placeholder { color: rgba(255,255,255,0.3); }
+    .compose input:disabled { opacity: 0.55; cursor: not-allowed; }
+    .compose button {
+      padding: 11px 22px;
       background: #00a0a0;
       color: #fff;
-      border-radius: 8px;
+      border-radius: 999px;
       font-weight: 500;
       font-size: 0.88rem;
       white-space: nowrap;
       transition: all 0.2s;
     }
-    .followup-row button:hover:not(:disabled) { background: #00c0c0; }
-    .followup-row button:disabled { opacity: 0.4; cursor: default; }
+    .compose button:hover:not(:disabled) { background: #00c0c0; }
+    .compose button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .presence {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 10px;
+    }
+    .presence-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #35d07f;
+      animation: pulse 2.4s infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(53,208,127,0.5); }
+      70%  { box-shadow: 0 0 0 7px rgba(53,208,127,0); }
+      100% { box-shadow: 0 0 0 0 rgba(53,208,127,0); }
+    }
+
     .followup-meta {
       display: none;
       font-size: 0.78rem;
       color: rgba(255,255,255,0.4);
-      margin-top: 8px;
+      margin-top: 10px;
       text-align: center;
     }
     .followup-meta.show { display: block; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .msg-row, .typing-dots span, .presence-dot { animation: none !important; }
+    }
 
     .diagnosis-box {
       margin-top: 8px;
@@ -408,8 +499,9 @@
     <div class="container">
       <div class="chatbot-card">
         <div class="header">
-          <h3>Lead Flow Audit — Chatbot</h3>
-          <p>2 minutes, conversational, no email spam</p>
+          <h3>Lead Flow Audit</h3>
+          <p>Six questions, answered conversationally. About two minutes.</p>
+          <div class="presence"><span class="presence-dot"></span> Assistant is online</div>
         </div>
 
         <div id="sessionCounter" class="session-counter"></div>
@@ -469,8 +561,17 @@
 
         <!-- CHAT INTERFACE -->
         <div id="chatInterface">
-          <div id="chatMessages" class="chat-messages"></div>
-          <div id="optionRow" class="option-row"></div>
+          <div id="chatWindow" class="chat-window">
+            <div id="chatMessages" class="chat-messages"></div>
+            <div id="optionRow" class="quick-replies"></div>
+          </div>
+
+          <div class="compose">
+            <input type="text" id="followupInput" placeholder="Tap an option above" disabled aria-label="Message">
+            <button id="followupSend" disabled>Send</button>
+          </div>
+          <div id="followupMeta" class="followup-meta"></div>
+
           <div id="errorBanner" class="error-banner"></div>
 
           <div id="diagnosisBox" class="diagnosis-box">
@@ -481,12 +582,6 @@
               <button class="calendly-btn" onclick="window.open('https://calendly.com/platypusautomations/discovery-call', '_blank')">Schedule Discovery Call →</button>
             </div>
           </div>
-
-          <div id="followupRow" class="followup-row">
-            <input type="text" id="followupInput" placeholder="Ask a follow-up question...">
-            <button id="followupSend">Send</button>
-          </div>
-          <div id="followupMeta" class="followup-meta"></div>
 
           <div id="closedBlock" style="display:none;">
             <div class="new-session-link"><a href="#" id="newSessionLink">Start a new session →</a></div>
@@ -561,12 +656,12 @@
     var gateForm = document.getElementById('gateForm');
     var gateSubmit = document.getElementById('gateSubmit');
     var chatInterface = document.getElementById('chatInterface');
+    var chatWindow = document.getElementById('chatWindow');
     var chatMessages = document.getElementById('chatMessages');
     var optionRow = document.getElementById('optionRow');
     var errorBanner = document.getElementById('errorBanner');
     var diagnosisBox = document.getElementById('diagnosisBox');
     var diagnosisText = document.getElementById('diagnosisText');
-    var followupRow = document.getElementById('followupRow');
     var followupInput = document.getElementById('followupInput');
     var followupSend = document.getElementById('followupSend');
     var followupMeta = document.getElementById('followupMeta');
@@ -636,31 +731,102 @@
     }
 
     // ── UI: messages ────────────────────────────────
+    function scrollChat() {
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function avatarEl() {
+      var a = document.createElement('div');
+      a.className = 'avatar';
+      var img = document.createElement('img');
+      img.src = '/pa_monogram.png';
+      img.alt = '';
+      a.appendChild(img);
+      return a;
+    }
+
+    function spacerEl() {
+      var s = document.createElement('div');
+      s.className = 'avatar-spacer';
+      return s;
+    }
+
+    // One avatar per run of consecutive assistant messages, the way any chat
+    // client does it. Repeating it on every bubble reads as a list, not a
+    // conversation.
+    function lastRowIsAssistant() {
+      var rows = chatMessages.querySelectorAll('.msg-row');
+      if (!rows.length) return false;
+      return !rows[rows.length - 1].classList.contains('is-user');
+    }
+
+    function leadingEl() {
+      return lastRowIsAssistant() ? spacerEl() : avatarEl();
+    }
+
     function addMessage(session, role, content, opts) {
       opts = opts || {};
+      var isUser = role === 'user';
+
+      var row = document.createElement('div');
+      row.className = 'msg-row' + (isUser ? ' is-user' : '');
+      if (!isUser) row.appendChild(leadingEl());
+
       var bubble = document.createElement('div');
-      bubble.className = 'msg ' + (role === 'user' ? 'msg-user' : 'msg-ai');
+      bubble.className = 'msg ' + (isUser ? 'msg-user' : 'msg-ai');
       bubble.innerHTML = escapeHtml(content).replace(/\n/g, '<br>');
-      chatMessages.appendChild(bubble);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      row.appendChild(bubble);
+
+      chatMessages.appendChild(row);
+      scrollChat();
+
       if (!opts.skipHistory) {
-        session.conversationHistory.push({ role: role === 'user' ? 'user' : 'assistant', content: content });
+        session.conversationHistory.push({ role: isUser ? 'user' : 'assistant', content: content });
       }
       return bubble;
     }
 
     function showTyping() {
-      var el = document.createElement('div');
-      el.className = 'msg-typing';
-      el.id = 'typingIndicator';
-      el.textContent = '...';
-      chatMessages.appendChild(el);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      if (document.getElementById('typingIndicator')) return;
+      var row = document.createElement('div');
+      row.className = 'msg-row';
+      row.id = 'typingIndicator';
+      row.appendChild(leadingEl());
+      var dots = document.createElement('div');
+      dots.className = 'typing-dots';
+      dots.innerHTML = '<span></span><span></span><span></span>';
+      dots.setAttribute('aria-label', 'Assistant is typing');
+      row.appendChild(dots);
+      chatMessages.appendChild(row);
+      scrollChat();
     }
 
     function removeTyping() {
       var el = document.getElementById('typingIndicator');
       if (el) el.remove();
+    }
+
+    // Show the typing indicator for a beat, then speak. Delay scales with
+    // message length so longer replies feel typed rather than pasted.
+    function aiSay(session, text, done) {
+      showTyping();
+      var delay = Math.min(1400, Math.max(500, String(text).length * 14));
+      setTimeout(function () {
+        removeTyping();
+        addMessage(session, 'assistant', text);
+        saveSession(session);
+        if (done) done();
+      }, delay);
+    }
+
+    // The compose bar stays visible the whole time. It only accepts input once
+    // the diagnosis is done, so during questions it says why it is inert.
+    function setCompose(state, placeholder) {
+      var on = state === 'on';
+      followupInput.disabled = !on;
+      followupSend.disabled = !on;
+      followupInput.placeholder = placeholder || (on ? 'Ask a follow-up question...' : 'Tap an option above');
+      if (!on) followupInput.value = '';
     }
 
     function clearOptions() {
@@ -769,6 +935,22 @@
       return currentKB.questions[session.questionIndex] || null;
     }
 
+    // Opens with a greeting, a pause, then the first question, so the first
+    // thing on screen is someone talking rather than a form.
+    function startConversation(session) {
+      var label = document.createElement('div');
+      label.className = 'sender-name';
+      label.textContent = 'Platypus Assistant';
+      chatMessages.appendChild(label);
+
+      var trade = (currentKB && currentKB.verticalLabel) ? currentKB.verticalLabel.toLowerCase() : 'your trade';
+      aiSay(session, 'Hey ' + session.name + ', thanks for taking a couple of minutes.', function () {
+        aiSay(session, 'I work with ' + trade + ' businesses around Hampton Roads. Six quick questions and I can tell you where your lead flow is leaking.', function () {
+          askNextQuestion(session);
+        });
+      });
+    }
+
     function askNextQuestion(session, opts) {
       opts = opts || {};
       var q = currentQuestion(session);
@@ -776,23 +958,28 @@
         showDiagnosis(session);
         return;
       }
-      if (!opts.resume) {
-        addMessage(session, 'assistant', q.text);
-        saveSession(session);
+      if (opts.resume) {
+        renderOptions(session, q);
+        return;
       }
-      renderOptions(session, q);
+      aiSay(session, q.text, function () {
+        renderOptions(session, q);
+      });
     }
 
     function renderOptions(session, question) {
       clearOptions();
       hideError();
+      setCompose('off');
       (question.options || []).forEach(function (opt) {
         var btn = document.createElement('button');
+        btn.type = 'button';
         btn.className = 'option-btn';
         btn.textContent = opt.label;
         btn.onclick = function () { selectOption(session, question, opt); };
         optionRow.appendChild(btn);
       });
+      scrollChat();
     }
 
     function disableOptions() {
@@ -801,7 +988,7 @@
     }
 
     function selectOption(session, question, opt) {
-      disableOptions();
+      clearOptions();
       hideError();
       addMessage(session, 'user', opt.label);
       saveSession(session);
@@ -877,11 +1064,9 @@
       saveSession(session);
       var remaining = MAX_FOLLOWUPS - (session.followupCount || 0);
       if (remaining > 0) {
-        followupRow.classList.add('show');
         followupMeta.classList.add('show');
         followupMeta.textContent = remaining + ' follow-up question' + (remaining === 1 ? '' : 's') + ' remaining';
-        followupInput.disabled = false;
-        followupSend.disabled = false;
+        setCompose('on');
       } else {
         closeChat(session);
       }
@@ -893,10 +1078,8 @@
       if ((session.followupCount || 0) >= MAX_FOLLOWUPS) return;
 
       hideError();
-      followupInput.disabled = true;
-      followupSend.disabled = true;
+      setCompose('off', 'Thinking...');
       addMessage(session, 'user', text);
-      followupInput.value = '';
       saveSession(session);
       showTyping();
 
@@ -913,8 +1096,7 @@
           } else {
             var remaining = MAX_FOLLOWUPS - session.followupCount;
             followupMeta.textContent = remaining + ' follow-up question' + (remaining === 1 ? '' : 's') + ' remaining';
-            followupInput.disabled = false;
-            followupSend.disabled = false;
+            setCompose('on');
             followupInput.focus();
           }
         })
@@ -925,8 +1107,8 @@
             followupInput.value = text;
             sendFollowup(session);
           });
-          followupInput.disabled = false;
-          followupSend.disabled = false;
+          setCompose('on');
+          followupInput.value = text;
         });
     }
 
@@ -935,7 +1117,7 @@
       saveSession(session);
       addMessage(session, 'assistant', 'That covers the essentials. If you want specifics for your business, book the discovery call above.');
       saveSession(session);
-      followupRow.classList.remove('show');
+      setCompose('off', 'Conversation ended');
       followupMeta.classList.remove('show');
       closedBlock.style.display = 'block';
     }
@@ -997,7 +1179,7 @@
           var session = initSession(fields);
           gateForm.style.display = 'none';
           chatInterface.classList.add('show');
-          askNextQuestion(session);
+          startConversation(session);
         })
         .catch(function (err) {
           console.log('KB load error:', err);
@@ -1034,6 +1216,11 @@
           gateForm.style.display = 'none';
           chatInterface.classList.add('show');
           updateSessionCounter(session);
+
+          var label = document.createElement('div');
+          label.className = 'sender-name';
+          label.textContent = 'Platypus Assistant';
+          chatMessages.appendChild(label);
 
           // replay stored conversation
           (session.conversationHistory || []).forEach(function (m) {
