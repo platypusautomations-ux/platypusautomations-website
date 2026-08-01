@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Flow Audit Chatbot — Talk to Our AI | Platypus Automations</title>
+  <meta name="description" content="Chat with our AI about your lead flow. Answer 6 quick questions, get a personalized diagnosis, and ask follow-up questions. Free, 2 minutes.">
+  <link rel="canonical" href="https://www.platypusautomations.com/lead-audit-chatbot.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lead Flow Audit Chatbot — Talk to Our AI">
+  <meta property="og:description" content="Chat with our AI about your lead flow. Answer 6 quick questions, get a personalized diagnosis, and ask follow-up questions.">
+  <meta property="og:url" content="https://www.platypusautomations.com/lead-audit-chatbot.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', system-ui, sans-serif;
+      background: #0A1628;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ── HEADER/NAV ─────────────────────────────── */
+    .site-header {
+      background: #0A1628;
+      border-bottom: 1px solid rgba(0,122,122,0.2);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+    }
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #fff;
+    }
+    .logo span { color: #00a0a0; }
+    .main-nav { display: flex; gap: 28px; }
+    .main-nav a { font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: color 0.3s; }
+    .main-nav a:hover { color: #fff; }
+    .header-cta { display: flex; gap: 16px; align-items: center; }
+    .phone-link { font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.85); }
+    .btn { padding: 10px 24px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; }
+    .btn-primary { background: #E8651A; color: #fff; }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+
+    /* ── BREADCRUMB ──────────────────────────────── */
+    .breadcrumb { padding: 16px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .breadcrumb-inner { display: flex; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.52); }
+
+    /* ── PAGE HERO ───────────────────────────────── */
+    .page-hero { padding: 56px 0 40px; border-bottom: 1px solid rgba(0,122,122,0.1); text-align: center; }
+    .page-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .page-hero p {
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ── CHATBOT SECTION ────────────────────────── */
+    .section--audit { padding: 56px 0 80px; }
+    .chatbot-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(10, 22, 40, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 122, 122, 0.3);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    .header { margin-bottom: 28px; text-align: center; }
+    .header h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 24px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .header p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    .session-counter {
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 16px;
+      display: none;
+    }
+    .session-counter.show { display: block; }
+
+    /* ── FORM GATE ───────────────────────────────── */
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 8px; color: rgba(255,255,255,0.8); }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #fff;
+      transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: #E8651A;
+      background: rgba(232,101,26,0.04);
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.35); }
+    .form-group select option { background: #0A1628; color: #fff; }
+    .field-error {
+      display: none;
+      font-size: 0.78rem;
+      color: #ff8a5c;
+      margin-top: 6px;
+    }
+    .field-error.show { display: block; }
+    .form-group.has-error input,
+    .form-group.has-error select { border-color: #ff8a5c; }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: #E8651A;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+    .form-submit:disabled { opacity: 0.5; cursor: default; transform: none; box-shadow: none; }
+
+    /* ── CHAT UI ─────────────────────────────────── */
+    #chatInterface { display: none; }
+    #chatInterface.show { display: block; }
+
+    .chat-messages {
+      max-height: 400px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 4px 4px 4px 4px;
+      margin-bottom: 18px;
+    }
+    .chat-messages::-webkit-scrollbar { width: 6px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(0,122,122,0.4); border-radius: 3px; }
+
+    .msg {
+      max-width: 82%;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .msg-ai {
+      align-self: flex-start;
+      background: rgba(0, 122, 122, 0.18);
+      border: 1px solid rgba(0, 122, 122, 0.32);
+      border-bottom-left-radius: 4px;
+      color: #fff;
+    }
+    .msg-user {
+      align-self: flex-end;
+      background: rgba(232, 101, 26, 0.2);
+      border: 1px solid rgba(232, 101, 26, 0.4);
+      border-bottom-right-radius: 4px;
+      color: #fff;
+    }
+    .msg-typing {
+      align-self: flex-start;
+      background: rgba(0, 122, 122, 0.12);
+      border: 1px solid rgba(0, 122, 122, 0.22);
+      border-bottom-left-radius: 4px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .option-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .option-btn {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 160, 160, 0.45);
+      background: rgba(0, 160, 160, 0.08);
+      color: #fff;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .option-btn:hover:not(:disabled) { background: rgba(0, 160, 160, 0.28); border-color: #00a0a0; }
+    .option-btn:disabled { opacity: 0.35; cursor: default; }
+
+    .followup-row { display: none; gap: 10px; margin-top: 4px; }
+    .followup-row.show { display: flex; }
+    .followup-row input {
+      flex: 1;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,122,122,0.25);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+    .followup-row input:focus { outline: none; border-color: #00a0a0; }
+    .followup-row button {
+      padding: 12px 20px;
+      background: #00a0a0;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.88rem;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .followup-row button:hover:not(:disabled) { background: #00c0c0; }
+    .followup-row button:disabled { opacity: 0.4; cursor: default; }
+    .followup-meta {
+      display: none;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+      text-align: center;
+    }
+    .followup-meta.show { display: block; }
+
+    .diagnosis-box {
+      margin-top: 8px;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: rgba(0, 122, 122, 0.12);
+      border: 1px solid rgba(0, 122, 122, 0.25);
+      border-radius: 8px;
+      display: none;
+      animation: slideUp 0.4s ease;
+    }
+    .diagnosis-box.show { display: block; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .diagnosis-title { font-weight: 600; font-size: 1rem; color: #fff; margin-bottom: 12px; }
+    .diagnosis-text { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.7; white-space: pre-wrap; }
+
+    .calendly-cta {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(232, 101, 26, 0.1);
+      border: 1px solid rgba(232, 101, 26, 0.3);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .calendly-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+    .calendly-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: #E8651A;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .calendly-btn:hover { background: #ff7a2e; transform: translateY(-2px); }
+
+    .error-banner {
+      margin-top: 8px;
+      margin-bottom: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 90, 60, 0.1);
+      border: 1px solid rgba(255, 90, 60, 0.35);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      display: none;
+    }
+    .error-banner.show { display: block; }
+    .error-banner .retry-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #fff;
+      cursor: pointer;
+    }
+    .error-banner .retry-btn:hover { background: rgba(255,255,255,0.18); }
+
+    .cross-link {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,122,122,0.15);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .cross-link a { color: #00a0a0; font-weight: 500; }
+    .cross-link a:hover { color: #fff; }
+
+    .new-session-link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.88rem;
+    }
+    .new-session-link a { color: #00a0a0; font-weight: 500; }
+    .new-session-link a:hover { color: #fff; }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer { background: #050d18; border-top: 1px solid rgba(0,122,122,0.15); padding: 40px 0; margin-top: 40px; }
+    .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 32px; }
+    .footer-col h4 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1rem; font-weight: 400; margin-bottom: 16px; color: #fff; }
+    .footer-col a { display: block; font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-bottom: 10px; transition: color 0.3s; }
+    .footer-col a:hover { color: #00a0a0; }
+    .footer-bottom { border-top: 1px solid rgba(0,122,122,0.1); padding-top: 24px; font-size: 0.85rem; color: rgba(255,255,255,0.45); text-align: center; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .page-hero h1 { font-size: 1.7rem; }
+      .header-inner { flex-direction: column; gap: 20px; }
+      .chatbot-card { padding: 24px; }
+      .msg { max-width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">Platypus <span>∿</span></div>
+        <nav class="main-nav">
+          <a href="/">Home</a>
+          <a href="/#services">Services</a>
+          <a href="/lead-audit.html">Lead Audit</a>
+        </nav>
+        <div class="header-cta">
+          <a href="tel:+17577652707" class="phone-link">(757) 765-1210</a>
+          <button class="btn btn-primary" onclick="window.location.href='/#contact'">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <a href="/">Home</a> <span>/</span> <a href="/lead-audit.html">Lead Audit</a> <span>/</span> <span>Chatbot</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Let's Chat About Your Lead Flow</h1>
+      <p>Answer a few quick questions and our AI will walk you through it conversationally. Get a personalized diagnosis, then ask follow-up questions if you've got them.</p>
+    </div>
+  </section>
+
+  <!-- CHATBOT -->
+  <section class="section--audit">
+    <div class="container">
+      <div class="chatbot-card">
+        <div class="header">
+          <h3>Lead Flow Audit — Chatbot</h3>
+          <p>2 minutes, conversational, no email spam</p>
+        </div>
+
+        <div id="sessionCounter" class="session-counter"></div>
+
+        <!-- FORM GATE -->
+        <form id="gateForm" novalidate>
+          <div class="form-group" id="fg-vertical">
+            <label for="vertical">What's your trade?</label>
+            <select id="vertical" name="vertical">
+              <option value="">-- Select your industry --</option>
+              <option value="hvac">HVAC</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="roofing">Roofing</option>
+              <option value="electrical">Electrical</option>
+              <option value="painting">Painting</option>
+              <option value="junk_removal">Junk Removal</option>
+              <option value="tree_service">Tree Service</option>
+              <option value="foundation_repair">Foundation Repair</option>
+              <option value="paving">Paving</option>
+              <option value="concrete">Concrete</option>
+              <option value="hardscapes">Hardscapes</option>
+              <option value="crawlspace">Crawlspace Services</option>
+              <option value="septic_services">Septic Services</option>
+              <option value="land_clearing">Land Clearing & Grading</option>
+            </select>
+            <div class="field-error">Please select your trade.</div>
+          </div>
+
+          <div class="form-group" id="fg-name">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name">
+            <div class="field-error">Please enter your name.</div>
+          </div>
+
+          <div class="form-group" id="fg-businessName">
+            <label for="businessName">Business Name</label>
+            <input type="text" id="businessName" name="businessName" placeholder="Your business">
+            <div class="field-error">Please enter your business name.</div>
+          </div>
+
+          <div class="form-group" id="fg-phone">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(###) ###-####">
+            <div class="field-error">Please enter a valid 10-digit phone number.</div>
+          </div>
+
+          <div class="form-group" id="fg-email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+            <div class="field-error">Please enter a valid email address.</div>
+          </div>
+
+          <div id="gateError" class="error-banner"></div>
+
+          <button type="submit" class="form-submit" id="gateSubmit">Start Chatbot →</button>
+        </form>
+
+        <!-- CHAT INTERFACE -->
+        <div id="chatInterface">
+          <div id="chatMessages" class="chat-messages"></div>
+          <div id="optionRow" class="option-row"></div>
+          <div id="errorBanner" class="error-banner"></div>
+
+          <div id="diagnosisBox" class="diagnosis-box">
+            <div class="diagnosis-title">Your Lead Flow Diagnosis</div>
+            <div id="diagnosisText" class="diagnosis-text"></div>
+            <div class="calendly-cta">
+              <p>Want to explore solutions? Schedule a quick call with our team.</p>
+              <button class="calendly-btn" onclick="window.open('https://calendly.com/platypusautomations/discovery-call', '_blank')">Schedule Discovery Call →</button>
+            </div>
+          </div>
+
+          <div id="followupRow" class="followup-row">
+            <input type="text" id="followupInput" placeholder="Ask a follow-up question...">
+            <button id="followupSend">Send</button>
+          </div>
+          <div id="followupMeta" class="followup-meta"></div>
+
+          <div id="closedBlock" style="display:none;">
+            <div class="new-session-link"><a href="#" id="newSessionLink">Start a new session →</a></div>
+          </div>
+
+          <div class="cross-link">
+            Prefer a quick form? <a href="/lead-audit.html">Use our questionnaire →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="/missed-call-textback.html">Missed Call Text-Back</a>
+          <a href="/ai-text-screening.html">AI Text Screening</a>
+          <a href="/voice-agent.html">After-Hours AI Voice</a>
+          <a href="/google-reviews.html">Google Reviews</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/">Home</a>
+          <a href="/lead-audit.html">Lead Audit</a>
+          <a href="tel:+17577652707">Call Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+17577652707">(757) 765-1210</a>
+          <a href="mailto:platypusautomations@gmail.com">platypusautomations@gmail.com</a>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-top: 12px;">Chesapeake, VA</p>
+        </div>
+        <div class="footer-col">
+          <h4>Veteran-Owned</h4>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55);">Service-Disabled Veteran-Owned Small Business</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Platypus Automations LLC. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ── CONFIG ──────────────────────────────────────
+    var ASK_URL = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-chatbot-ask';
+    var SUBMIT_URL = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-submit';
+    var STORAGE_KEY = 'leadAuditChatbot';
+    var SESSION_TIMEOUT_MS = 4 * 60 * 60 * 1000; // 4 hours
+    var TOTAL_QUESTIONS = 6;
+    var MAX_FOLLOWUPS = 4;
+
+    var KB_FILENAME_MAP = {
+      junk_removal: 'junk-removal.json',
+      foundation_repair: 'foundation-repair.json',
+      land_clearing: 'land-clearing.json',
+      tree_service: 'tree-service.json',
+      septic_services: 'septic-services.json'
+    };
+
+    var currentKB = null; // loaded knowledge base for the active vertical
+
+    // ── DOM refs ────────────────────────────────────
+    var gateForm = document.getElementById('gateForm');
+    var gateSubmit = document.getElementById('gateSubmit');
+    var chatInterface = document.getElementById('chatInterface');
+    var chatMessages = document.getElementById('chatMessages');
+    var optionRow = document.getElementById('optionRow');
+    var errorBanner = document.getElementById('errorBanner');
+    var diagnosisBox = document.getElementById('diagnosisBox');
+    var diagnosisText = document.getElementById('diagnosisText');
+    var followupRow = document.getElementById('followupRow');
+    var followupInput = document.getElementById('followupInput');
+    var followupSend = document.getElementById('followupSend');
+    var followupMeta = document.getElementById('followupMeta');
+    var closedBlock = document.getElementById('closedBlock');
+    var newSessionLink = document.getElementById('newSessionLink');
+    var sessionCounterEl = document.getElementById('sessionCounter');
+    var gateError = document.getElementById('gateError');
+
+    // ── UTIL ────────────────────────────────────────
+    function escapeHtml(text) {
+      var div = document.createElement('div');
+      div.textContent = String(text == null ? '' : text);
+      return div.innerHTML;
+    }
+
+    function generateSessionId() {
+      return 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+    }
+
+    function kbFilename(vertical) {
+      return KB_FILENAME_MAP[vertical] || (vertical + '.json');
+    }
+
+    // ── SESSION STATE (localStorage) ───────────────
+    function getSession() {
+      var raw;
+      try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+      if (!raw) return null;
+      var session;
+      try { session = JSON.parse(raw); } catch (e) { return null; }
+      if (!session || !session.timestamp) return null;
+      if (Date.now() - session.timestamp > SESSION_TIMEOUT_MS) {
+        clearSession();
+        return null;
+      }
+      return session;
+    }
+
+    function saveSession(session) {
+      session.timestamp = Date.now();
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(session)); } catch (e) { /* storage unavailable, non-fatal */ }
+    }
+
+    function clearSession() {
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    }
+
+    function initSession(fields) {
+      var session = {
+        sessionId: generateSessionId(),
+        vertical: fields.vertical,
+        name: fields.name,
+        email: fields.email,
+        phone: fields.phone,
+        businessName: fields.businessName,
+        questionIndex: 0,
+        responses: {},
+        conversationHistory: [],
+        timestamp: Date.now(),
+        sessionCount: 1,
+        followupCount: 0,
+        state: 'question', // question | diagnosis | followup | closed
+        diagnosis: ''
+      };
+      saveSession(session);
+      return session;
+    }
+
+    // ── UI: messages ────────────────────────────────
+    function addMessage(session, role, content, opts) {
+      opts = opts || {};
+      var bubble = document.createElement('div');
+      bubble.className = 'msg ' + (role === 'user' ? 'msg-user' : 'msg-ai');
+      bubble.innerHTML = escapeHtml(content).replace(/\n/g, '<br>');
+      chatMessages.appendChild(bubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      if (!opts.skipHistory) {
+        session.conversationHistory.push({ role: role === 'user' ? 'user' : 'assistant', content: content });
+      }
+      return bubble;
+    }
+
+    function showTyping() {
+      var el = document.createElement('div');
+      el.className = 'msg-typing';
+      el.id = 'typingIndicator';
+      el.textContent = '...';
+      chatMessages.appendChild(el);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTyping() {
+      var el = document.getElementById('typingIndicator');
+      if (el) el.remove();
+    }
+
+    function clearOptions() {
+      optionRow.innerHTML = '';
+    }
+
+    function showError(message, retryFn) {
+      errorBanner.innerHTML = escapeHtml(message);
+      if (retryFn) {
+        var btn = document.createElement('span');
+        btn.className = 'retry-btn';
+        btn.textContent = 'Retry';
+        btn.onclick = function () {
+          hideError();
+          retryFn();
+        };
+        errorBanner.appendChild(btn);
+      }
+      errorBanner.classList.add('show');
+    }
+
+    function hideError() {
+      errorBanner.classList.remove('show');
+      errorBanner.innerHTML = '';
+    }
+
+    function updateSessionCounter(session) {
+      if (session.sessionCount && session.sessionCount > 1) {
+        sessionCounterEl.textContent = 'Session ' + session.sessionCount + ' of 5 today';
+        sessionCounterEl.classList.add('show');
+      }
+    }
+
+    // ── KB LOADING ──────────────────────────────────
+    function loadKB(vertical) {
+      return fetch('/chatbots/knowledge-bases/' + kbFilename(vertical))
+        .then(function (res) {
+          if (!res.ok) throw new Error('KB load failed: ' + res.status);
+          return res.json();
+        });
+    }
+
+    // ── WEBHOOK CALLS ───────────────────────────────
+    function askWebhook(session, questionId, userResponse, mode) {
+      return fetch(ASK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId: session.sessionId,
+          vertical: session.vertical,
+          question_id: questionId || null,
+          user_response: userResponse == null ? null : userResponse,
+          mode: mode,
+          conversationHistory: session.conversationHistory
+        })
+      }).then(function (res) {
+        var headerCount = res.headers.get('X-Session-Count');
+        if (headerCount) {
+          var n = parseInt(headerCount, 10);
+          if (!isNaN(n)) {
+            session.sessionCount = n;
+            updateSessionCounter(session);
+          }
+        }
+        if (!res.ok) {
+          var err = new Error('Webhook responded with ' + res.status);
+          err.status = res.status;
+          throw err;
+        }
+        return res.json().catch(function () {
+          // JSON parse failure -> graceful fallback
+          return {};
+        });
+      });
+    }
+
+    function submitAudit(session) {
+      fetch(SUBMIT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          vertical: session.vertical,
+          name: session.name,
+          email: session.email,
+          phone: session.phone,
+          businessName: session.businessName,
+          responses: session.responses,
+          diagnosis: session.diagnosis,
+          source: 'chatbot'
+        })
+      }).catch(function (err) {
+        console.log('Audit submission error (non-critical):', err);
+      });
+    }
+
+    // ── QUESTION FLOW ───────────────────────────────
+    function currentQuestion(session) {
+      if (!currentKB || !currentKB.questions) return null;
+      return currentKB.questions[session.questionIndex] || null;
+    }
+
+    function askNextQuestion(session, opts) {
+      opts = opts || {};
+      var q = currentQuestion(session);
+      if (!q) {
+        showDiagnosis(session);
+        return;
+      }
+      if (!opts.resume) {
+        addMessage(session, 'assistant', q.text);
+        saveSession(session);
+      }
+      renderOptions(session, q);
+    }
+
+    function renderOptions(session, question) {
+      clearOptions();
+      hideError();
+      (question.options || []).forEach(function (opt) {
+        var btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt.label;
+        btn.onclick = function () { selectOption(session, question, opt); };
+        optionRow.appendChild(btn);
+      });
+    }
+
+    function disableOptions() {
+      var btns = optionRow.querySelectorAll('.option-btn');
+      btns.forEach(function (b) { b.disabled = true; });
+    }
+
+    function selectOption(session, question, opt) {
+      disableOptions();
+      hideError();
+      addMessage(session, 'user', opt.label);
+      saveSession(session);
+      showTyping();
+
+      askWebhook(session, question.id, opt.value, 'diagnostic')
+        .then(function (data) {
+          removeTyping();
+          var msgText = (data && data.message) ? data.message : ('Got it, ' + opt.label + '.');
+          addMessage(session, 'assistant', msgText);
+          session.responses[question.fieldName] = opt.value;
+          session.questionIndex++;
+          clearOptions();
+          saveSession(session);
+
+          if (session.questionIndex < TOTAL_QUESTIONS) {
+            session.state = 'question';
+            saveSession(session);
+            setTimeout(function () { askNextQuestion(session); }, 350);
+          } else {
+            showDiagnosis(session);
+          }
+        })
+        .catch(function (err) {
+          removeTyping();
+          console.log('askWebhook error:', err);
+          showError('We had trouble reaching our assistant. Please try again.', function () {
+            selectOption(session, question, opt);
+          });
+          // re-enable so the user can retry the same option
+          renderOptions(session, question);
+        });
+    }
+
+    // ── DIAGNOSIS ────────────────────────────────────
+    function showDiagnosis(session) {
+      session.state = 'diagnosis';
+      clearOptions();
+      saveSession(session);
+      showTyping();
+
+      askWebhook(session, null, null, 'diagnosis')
+        .then(function (data) {
+          removeTyping();
+          var text = (data && data.message) ? data.message : (currentKB && currentKB.diagnosis ? currentKB.diagnosis : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.');
+          renderDiagnosis(session, text);
+        })
+        .catch(function (err) {
+          removeTyping();
+          console.log('diagnosis webhook error, falling back to KB text:', err);
+          var text = currentKB && currentKB.diagnosis ? currentKB.diagnosis : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.';
+          renderDiagnosis(session, text);
+        });
+    }
+
+    function renderDiagnosis(session, text) {
+      var personalized = session.businessName + ', here\'s what we found:\n\n' + text;
+      addMessage(session, 'assistant', personalized);
+      diagnosisText.textContent = personalized;
+      diagnosisBox.classList.add('show');
+      session.diagnosis = personalized;
+      saveSession(session);
+
+      submitAudit(session);
+      enableFollowupMode(session);
+
+      diagnosisBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ── FOLLOW-UP MODE ──────────────────────────────
+    function enableFollowupMode(session) {
+      session.state = 'followup';
+      saveSession(session);
+      var remaining = MAX_FOLLOWUPS - (session.followupCount || 0);
+      if (remaining > 0) {
+        followupRow.classList.add('show');
+        followupMeta.classList.add('show');
+        followupMeta.textContent = remaining + ' follow-up question' + (remaining === 1 ? '' : 's') + ' remaining';
+        followupInput.disabled = false;
+        followupSend.disabled = false;
+      } else {
+        closeChat(session);
+      }
+    }
+
+    function sendFollowup(session) {
+      var text = followupInput.value.trim();
+      if (!text) return;
+      if ((session.followupCount || 0) >= MAX_FOLLOWUPS) return;
+
+      hideError();
+      followupInput.disabled = true;
+      followupSend.disabled = true;
+      addMessage(session, 'user', text);
+      followupInput.value = '';
+      saveSession(session);
+      showTyping();
+
+      askWebhook(session, null, text, 'followup')
+        .then(function (data) {
+          removeTyping();
+          var msgText = (data && data.message) ? data.message : 'Good question. Book a discovery call and we can go through the specifics for your business.';
+          addMessage(session, 'assistant', msgText);
+          session.followupCount = (session.followupCount || 0) + 1;
+          saveSession(session);
+
+          if (session.followupCount >= MAX_FOLLOWUPS) {
+            closeChat(session);
+          } else {
+            var remaining = MAX_FOLLOWUPS - session.followupCount;
+            followupMeta.textContent = remaining + ' follow-up question' + (remaining === 1 ? '' : 's') + ' remaining';
+            followupInput.disabled = false;
+            followupSend.disabled = false;
+            followupInput.focus();
+          }
+        })
+        .catch(function (err) {
+          removeTyping();
+          console.log('followup webhook error:', err);
+          showError('We had trouble reaching our assistant. Please try again.', function () {
+            followupInput.value = text;
+            sendFollowup(session);
+          });
+          followupInput.disabled = false;
+          followupSend.disabled = false;
+        });
+    }
+
+    function closeChat(session) {
+      session.state = 'closed';
+      saveSession(session);
+      addMessage(session, 'assistant', 'That covers the essentials. If you want specifics for your business, book the discovery call above.');
+      saveSession(session);
+      followupRow.classList.remove('show');
+      followupMeta.classList.remove('show');
+      closedBlock.style.display = 'block';
+    }
+
+    // ── FORM GATE ────────────────────────────────────
+    var phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function (e) {
+      var value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (value.length > 6) {
+        value = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6, 10);
+      } else if (value.length > 3) {
+        value = '(' + value.slice(0, 3) + ') ' + value.slice(3);
+      }
+      e.target.value = value;
+    });
+
+    function setFieldError(fieldId, hasError) {
+      var group = document.getElementById('fg-' + fieldId);
+      if (!group) return;
+      group.classList.toggle('has-error', hasError);
+      var err = group.querySelector('.field-error');
+      if (err) err.classList.toggle('show', hasError);
+    }
+
+    function validateGateForm() {
+      var vertical = document.getElementById('vertical').value.trim();
+      var name = document.getElementById('name').value.trim();
+      var businessName = document.getElementById('businessName').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var email = document.getElementById('email').value.trim();
+
+      var phoneDigits = phone.replace(/\D/g, '');
+      var emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      var valid = true;
+      if (!vertical) { setFieldError('vertical', true); valid = false; } else { setFieldError('vertical', false); }
+      if (!name) { setFieldError('name', true); valid = false; } else { setFieldError('name', false); }
+      if (!businessName) { setFieldError('businessName', true); valid = false; } else { setFieldError('businessName', false); }
+      if (phoneDigits.length !== 10) { setFieldError('phone', true); valid = false; } else { setFieldError('phone', false); }
+      if (!emailValid) { setFieldError('email', true); valid = false; } else { setFieldError('email', false); }
+
+      return valid ? { vertical: vertical, name: name, businessName: businessName, phone: phone, email: email } : null;
+    }
+
+    gateForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fields = validateGateForm();
+      if (!fields) return;
+
+      gateSubmit.disabled = true;
+      gateSubmit.textContent = 'Loading...';
+
+      gateError.classList.remove('show');
+      gateError.innerHTML = '';
+
+      loadKB(fields.vertical)
+        .then(function (kb) {
+          currentKB = kb;
+          var session = initSession(fields);
+          gateForm.style.display = 'none';
+          chatInterface.classList.add('show');
+          askNextQuestion(session);
+        })
+        .catch(function (err) {
+          console.log('KB load error:', err);
+          gateSubmit.disabled = false;
+          gateSubmit.textContent = 'Start Chatbot →';
+          gateError.textContent = 'We could not load the audit questions for that trade. Please try again in a moment.';
+          gateError.classList.add('show');
+        });
+    });
+
+    followupSend.addEventListener('click', function () {
+      var session = getSession();
+      if (session) sendFollowup(session);
+    });
+    followupInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        var session = getSession();
+        if (session) sendFollowup(session);
+      }
+    });
+
+    newSessionLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      clearSession();
+      window.location.reload();
+    });
+
+    // ── RESUME ON PAGE LOAD ─────────────────────────
+    function resumeSession(session) {
+      loadKB(session.vertical)
+        .then(function (kb) {
+          currentKB = kb;
+          gateForm.style.display = 'none';
+          chatInterface.classList.add('show');
+          updateSessionCounter(session);
+
+          // replay stored conversation
+          (session.conversationHistory || []).forEach(function (m) {
+            addMessage(session, m.role === 'user' ? 'user' : 'assistant', m.content, { skipHistory: true });
+          });
+
+          if (session.state === 'question') {
+            askNextQuestion(session, { resume: true });
+          } else if (session.state === 'diagnosis' || session.state === 'followup') {
+            if (session.diagnosis) {
+              diagnosisText.textContent = session.diagnosis;
+              diagnosisBox.classList.add('show');
+            }
+            enableFollowupMode(session);
+          } else if (session.state === 'closed') {
+            if (session.diagnosis) {
+              diagnosisText.textContent = session.diagnosis;
+              diagnosisBox.classList.add('show');
+            }
+            closedBlock.style.display = 'block';
+          }
+        })
+        .catch(function (err) {
+          console.log('KB load error on resume:', err);
+          showError('We could not resume your session. Please start again.');
+          errorBanner.classList.add('show');
+          clearSession();
+        });
+    }
+
+    var existingSession = getSession();
+    if (existingSession) {
+      resumeSession(existingSession);
+    }
+  })();
+  </script>
+</body>
+</html>
