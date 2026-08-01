@@ -539,7 +539,7 @@
     'use strict';
 
     // ── CONFIG ──────────────────────────────────────
-    var ASK_URL = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-chatbot-ask';
+    var ASK_URL = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-chatbot-ask-v2';
     var SUBMIT_URL = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-submit';
     var STORAGE_KEY = 'leadAuditChatbot';
     var SESSION_TIMEOUT_MS = 4 * 60 * 60 * 1000; // 4 hours
@@ -737,16 +737,23 @@
     }
 
     function submitAudit(session) {
+      // Shape must match what the lead-audit-submit workflow reads:
+      // payload.answers.q2_vertical, payload.answers.<fieldName>, payload.business_name.
+      // session.responses is already keyed by the KB's canonical fieldName.
+      var answers = { q2_vertical: session.vertical };
+      Object.keys(session.responses || {}).forEach(function (key) {
+        answers[key] = session.responses[key];
+      });
+
       fetch(SUBMIT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          vertical: session.vertical,
           name: session.name,
           email: session.email,
           phone: session.phone,
-          businessName: session.businessName,
-          responses: session.responses,
+          business_name: session.businessName,
+          answers: answers,
           diagnosis: session.diagnosis,
           source: 'chatbot'
         })
