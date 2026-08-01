@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free AI Lead Flow Audit — Identify Revenue Gaps | Platypus Automations</title>
+  <title>Free AI Lead Flow Audit, Identify Revenue Gaps | Platypus Automations</title>
   <meta name="description" content="Find out exactly how much revenue you're leaving on the table. Take our free 2-minute AI audit. Personalized diagnosis for HVAC, plumbing, roofing, and 11+ service verticals.">
   <link rel="canonical" href="https://www.platypusautomations.com/lead-audit.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Free AI Lead Flow Audit — Identify Revenue Gaps">
+  <meta property="og:title" content="Free AI Lead Flow Audit, Identify Revenue Gaps">
   <meta property="og:description" content="Find out exactly how much revenue you're leaving on the table. Take our free 2-minute AI audit. Personalized diagnosis for HVAC, plumbing, roofing, and 11+ service verticals.">
   <meta property="og:url" content="https://www.platypusautomations.com/lead-audit.html">
   <script type="application/ld+json">
@@ -451,6 +451,110 @@
       box-shadow: 0 8px 24px rgba(232, 101, 26, 0.4);
     }
 
+    .field-error {
+      display: none;
+      font-size: 0.78rem;
+      color: #ff8a5c;
+      margin-top: 6px;
+    }
+    .field-error.show { display: block; }
+    .form-group.has-error input,
+    .form-group.has-error select { border-color: #ff8a5c; }
+
+    .form-submit:disabled { opacity: 0.5; cursor: default; transform: none; box-shadow: none; }
+
+    .error-banner {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 90, 60, 0.1);
+      border: 1px solid rgba(255, 90, 60, 0.35);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      display: none;
+    }
+    .error-banner.show { display: block; }
+
+    /* ── PANES ───────────────────────────────────── */
+    .pane { display: none; }
+    .pane.show { display: block; animation: slideUp 0.3s ease; }
+
+    /* ── QUESTION PANE ───────────────────────────── */
+    .q-progress {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 10px;
+    }
+    .q-progress-track {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .q-progress-fill {
+      height: 100%;
+      background: #00a0a0;
+      border-radius: 999px;
+      width: 0;
+      transition: width 0.35s ease;
+    }
+    .q-text {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      font-weight: 400;
+      line-height: 1.28;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 160, 160, 0.35);
+      background: rgba(0, 160, 160, 0.06);
+      color: rgba(255,255,255,0.88);
+      font-size: 0.95rem;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .option-btn:hover {
+      background: rgba(0, 160, 160, 0.2);
+      border-color: #00a0a0;
+      color: #fff;
+      transform: translateX(4px);
+    }
+    .q-back {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .q-back:hover { color: #00a0a0; }
+
+    /* ── GATE PANE ───────────────────────────────── */
+    .gate-intro {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(0,122,122,0.15);
+    }
+
     .diagnosis-box {
       margin-top: 32px;
       padding: 20px;
@@ -487,6 +591,7 @@
       font-size: 0.95rem;
       color: rgba(255, 255, 255, 0.75);
       line-height: 1.7;
+      white-space: pre-wrap;
     }
 
     .calendly-cta {
@@ -668,6 +773,9 @@
 
           <h3>No Pressure, No Commitment</h3>
           <p>This is a free assessment. No credit card, no sales call attached (unless you want one). Take it, get your diagnosis, and make decisions on your timeline.</p>
+
+          <h3>Two Ways to Take It</h3>
+          <p>Same six questions, same diagnosis, your choice of format. The questionnaire is a fast click-through with no typing. The <a href="/lead-audit-chatbot.html" style="color:#00a0a0;font-weight:500;">AI chatbot</a> walks you through it conversationally and lets you ask follow-up questions at the end.</p>
         </div>
 
         <div>
@@ -694,12 +802,12 @@
 
       <details class="faq-item">
         <summary>How long does the audit take?</summary>
-        <div class="faq-answer">About 2 minutes. The audit is 6 simple multiple-choice questions, followed by an instant personalized diagnosis.</div>
+        <div class="faq-answer">About 2 minutes. Six multiple-choice questions, then your contact details, then an instant personalized diagnosis.</div>
       </details>
 
       <details class="faq-item">
         <summary>Is the audit really free?</summary>
-        <div class="faq-answer">Yes, completely free. No credit card, no email spam list, no sales pressure. We give you the diagnosis. If you want to talk about solutions, we'll offer, but it's 100% optional.</div>
+        <div class="faq-answer">Yes, completely free. No credit card, no sales pressure. We ask for your name, business, phone, and email at the end so we can send you the diagnosis. We give you the diagnosis either way. If you want to talk about solutions, we'll offer, but it's entirely optional.</div>
       </details>
 
       <details class="faq-item">
@@ -719,7 +827,7 @@
 
       <details class="faq-item">
         <summary>Will you sell my data?</summary>
-        <div class="faq-answer">No. We use your answers to generate your personalized diagnosis and optionally send you a summary email if you request it. That's it. We don't share or sell contact info.</div>
+        <div class="faq-answer">No. We use your answers to generate your personalized diagnosis and to send you a copy. That's it. We don't share or sell contact info.</div>
       </details>
     </div>
   </section>
@@ -755,7 +863,7 @@
     <div class="container">
       <div class="audit-header">
         <h2>Take the Free Audit</h2>
-        <p>Answer 6 questions and get your personalized diagnosis instantly. No email required, no sales call attached.</p>
+        <p>Answer 6 questions and get your personalized diagnosis instantly. We'll ask for your contact details at the end so we can send you a copy. No sales call attached.</p>
       </div>
 
       <div class="chatbot-card">
@@ -764,50 +872,85 @@
           <p>2 minutes to identify your revenue gaps</p>
         </div>
 
-        <form id="auditForm">
-          <div class="form-group">
-            <label for="vertical">What's your trade?</label>
-            <select id="vertical" name="vertical" required>
-              <option value="">-- Select your industry --</option>
-              <option value="hvac">HVAC</option>
-              <option value="plumbing">Plumbing</option>
-              <option value="roofing">Roofing</option>
-              <option value="electrical">Electrical</option>
-              <option value="painting">Painting</option>
-              <option value="junk_removal">Junk Removal</option>
-              <option value="tree_service">Tree Service</option>
-              <option value="foundation_repair">Foundation Repair</option>
-              <option value="paving">Paving</option>
-              <option value="concrete">Concrete</option>
-              <option value="hardscapes">Hardscapes</option>
-              <option value="crawlspace">Crawlspace Services</option>
-              <option value="septic_services">Septic Services</option>
-              <option value="land_clearing">Land Clearing & Grading</option>
-            </select>
-          </div>
+        <!-- PANE 1: TRADE -->
+        <div id="paneTrade" class="pane show">
+          <form id="tradeForm" novalidate>
+            <div class="form-group" id="fg-vertical">
+              <label for="vertical">What's your trade?</label>
+              <select id="vertical" name="vertical">
+                <option value="">-- Select your industry --</option>
+                <option value="hvac">HVAC</option>
+                <option value="plumbing">Plumbing</option>
+                <option value="roofing">Roofing</option>
+                <option value="electrical">Electrical</option>
+                <option value="painting">Painting</option>
+                <option value="junk_removal">Junk Removal</option>
+                <option value="tree_service">Tree Service</option>
+                <option value="foundation_repair">Foundation Repair</option>
+                <option value="paving">Paving</option>
+                <option value="concrete">Concrete</option>
+                <option value="hardscapes">Hardscapes</option>
+                <option value="crawlspace">Crawlspace Services</option>
+                <option value="septic_services">Septic Services</option>
+                <option value="land_clearing">Land Clearing & Grading</option>
+              </select>
+              <div class="field-error">Please select your trade.</div>
+            </div>
 
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-          </div>
+            <div id="tradeError" class="error-banner"></div>
 
-          <div class="form-group">
-            <label for="businessName">Business Name</label>
-            <input type="text" id="businessName" name="businessName" placeholder="Your business" required>
-          </div>
+            <button type="submit" class="form-submit" id="tradeSubmit">Start the Audit →</button>
+          </form>
+        </div>
 
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="(###) ###-####" required>
+        <!-- PANE 2: QUESTIONS -->
+        <div id="paneQuestions" class="pane">
+          <div class="q-progress">
+            <span id="qCounter"></span>
+            <span id="qTrade"></span>
           </div>
+          <div class="q-progress-track"><div id="qFill" class="q-progress-fill"></div></div>
 
-          <div class="form-group">
-            <label for="email">Email (optional, for diagnosis summary)</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com">
-          </div>
+          <div id="qText" class="q-text"></div>
+          <div id="qOptions" class="q-options"></div>
 
-          <button type="submit" class="form-submit">Get Your Diagnosis →</button>
-        </form>
+          <span id="qBack" class="q-back">← Back</span>
+        </div>
+
+        <!-- PANE 3: GATE -->
+        <div id="paneGate" class="pane">
+          <p class="gate-intro">That's all six. Tell us where to send your diagnosis and we'll pull it up now.</p>
+
+          <form id="gateForm" novalidate>
+            <div class="form-group" id="fg-businessName">
+              <label for="businessName">Business Name</label>
+              <input type="text" id="businessName" name="businessName" placeholder="Your business">
+              <div class="field-error">Please enter your business name.</div>
+            </div>
+
+            <div class="form-group" id="fg-name">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name">
+              <div class="field-error">Please enter your name.</div>
+            </div>
+
+            <div class="form-group" id="fg-phone">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(###) ###-####">
+              <div class="field-error">Please enter a valid 10-digit phone number.</div>
+            </div>
+
+            <div class="form-group" id="fg-email">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com">
+              <div class="field-error">Please enter a valid email address.</div>
+            </div>
+
+            <button type="submit" class="form-submit" id="gateSubmit">Get Your Diagnosis →</button>
+          </form>
+
+          <span id="gateBack" class="q-back">← Back to questions</span>
+        </div>
 
         <div class="cross-link" style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(0,122,122,0.1); font-size: 0.9rem;">
           <span>Prefer to chat?</span> <a href="/lead-audit-chatbot.html" style="color: #00a0a0; font-weight: 500;">Try our AI chatbot →</a>
@@ -860,92 +1003,286 @@
   </footer>
 
   <script>
-    // Load knowledge bases
-    let knowledgeBases = {};
-    const verticals = ['hvac', 'plumbing', 'roofing', 'junk_removal', 'electrical', 'painting', 'foundation_repair', 'paving', 'concrete', 'hardscapes', 'crawlspace', 'tree_service', 'septic_services', 'land_clearing'];
+  (function () {
+    'use strict';
 
-    async function loadKnowledgeBases() {
-      for (const vertical of verticals) {
-        try {
-          const filename = vertical === 'junk_removal' ? 'junk-removal.json' :
-                          vertical === 'foundation_repair' ? 'foundation-repair.json' :
-                          vertical === 'land_clearing' ? 'land-clearing.json' :
-                          vertical === 'tree_service' ? 'tree-service.json' :
-                          vertical === 'septic_services' ? 'septic-services.json' :
-                          `${vertical}.json`;
+    // ── CONFIG ──────────────────────────────────────
+    var SUBMIT_URL = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-submit';
 
-          const response = await fetch(`/chatbots/knowledge-bases/${filename}`);
-          if (response.ok) {
-            knowledgeBases[vertical] = await response.json();
+    // Select values are underscored. KB filenames are hyphenated for these five.
+    // Hyphenation stays confined to the filename lookup: the value sent as
+    // answers.q2_vertical is always the underscored form, matching the chatbot.
+    var KB_FILENAME_MAP = {
+      junk_removal: 'junk-removal.json',
+      foundation_repair: 'foundation-repair.json',
+      land_clearing: 'land-clearing.json',
+      tree_service: 'tree-service.json',
+      septic_services: 'septic-services.json'
+    };
+
+    function kbFilename(vertical) {
+      return KB_FILENAME_MAP[vertical] || (vertical + '.json');
+    }
+
+    // ── STATE ───────────────────────────────────────
+    // One object for the life of the page. No localStorage: a six-click form
+    // has no API round trip per turn, so there is nothing to resume.
+    var state = {
+      vertical: '',
+      kb: null,
+      index: 0,
+      responses: {},   // keyed by the KB's canonical fieldName
+      name: '',
+      email: '',
+      phone: '',
+      businessName: '',
+      diagnosis: ''
+    };
+
+    // ── DOM refs ────────────────────────────────────
+    var paneTrade = document.getElementById('paneTrade');
+    var paneQuestions = document.getElementById('paneQuestions');
+    var paneGate = document.getElementById('paneGate');
+
+    var tradeForm = document.getElementById('tradeForm');
+    var tradeSubmit = document.getElementById('tradeSubmit');
+    var tradeError = document.getElementById('tradeError');
+    var verticalSelect = document.getElementById('vertical');
+
+    var qCounter = document.getElementById('qCounter');
+    var qTrade = document.getElementById('qTrade');
+    var qFill = document.getElementById('qFill');
+    var qText = document.getElementById('qText');
+    var qOptions = document.getElementById('qOptions');
+    var qBack = document.getElementById('qBack');
+
+    var gateForm = document.getElementById('gateForm');
+    var gateSubmit = document.getElementById('gateSubmit');
+    var gateBack = document.getElementById('gateBack');
+
+    var diagnosisBox = document.getElementById('diagnosisBox');
+    var diagnosisText = document.getElementById('diagnosisText');
+
+    // ── PANES ───────────────────────────────────────
+    function showPane(pane) {
+      [paneTrade, paneQuestions, paneGate].forEach(function (p) {
+        p.classList.toggle('show', p === pane);
+      });
+    }
+
+    // ── KB LOADING ──────────────────────────────────
+    function loadKB(vertical) {
+      return fetch('/chatbots/knowledge-bases/' + kbFilename(vertical))
+        .then(function (res) {
+          if (!res.ok) throw new Error('KB load failed: ' + res.status);
+          return res.json();
+        })
+        .then(function (kb) {
+          if (!kb || !kb.questions || !kb.questions.length) {
+            throw new Error('KB has no questions');
           }
-        } catch (error) {
-          console.log(`Could not load KB for ${vertical}`);
-        }
+          return kb;
+        });
+    }
+
+    // ── QUESTION FLOW ───────────────────────────────
+    function totalQuestions() {
+      return state.kb && state.kb.questions ? state.kb.questions.length : 0;
+    }
+
+    function renderQuestion() {
+      var total = totalQuestions();
+      var q = state.kb.questions[state.index];
+      if (!q) { showGate(); return; }
+
+      qCounter.textContent = 'Question ' + (state.index + 1) + ' of ' + total;
+      qTrade.textContent = state.kb.verticalLabel || '';
+      qFill.style.width = ((state.index) / total * 100) + '%';
+      qText.textContent = q.text;
+
+      qOptions.innerHTML = '';
+      (q.options || []).forEach(function (opt) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-btn';
+        btn.textContent = opt.label;
+        btn.addEventListener('click', function () { selectOption(q, opt); });
+        qOptions.appendChild(btn);
+      });
+
+      qBack.textContent = state.index === 0 ? '← Change trade' : '← Back';
+    }
+
+    function selectOption(question, opt) {
+      // Key by the KB's canonical fieldName. This is what makes plumbing's
+      // missed_after_hours / lead_source come through with no special-casing.
+      state.responses[question.fieldName] = opt.value;
+      state.index++;
+      if (state.index < totalQuestions()) {
+        renderQuestion();
+      } else {
+        showGate();
       }
     }
 
-    // Phone formatting
-    document.getElementById('phone').addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 0) {
-        if (value.length <= 3) {
-          value = value;
-        } else if (value.length <= 6) {
-          value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-        } else {
-          value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
-        }
+    function goBackFromQuestion() {
+      if (state.index === 0) {
+        showPane(paneTrade);
+        return;
+      }
+      state.index--;
+      // Drop the answer being revisited so it is always re-recorded.
+      var q = state.kb.questions[state.index];
+      if (q) delete state.responses[q.fieldName];
+      renderQuestion();
+    }
+
+    // ── GATE ────────────────────────────────────────
+    function showGate() {
+      qFill.style.width = '100%';
+      showPane(paneGate);
+    }
+
+    function setFieldError(fieldId, hasError) {
+      var group = document.getElementById('fg-' + fieldId);
+      if (!group) return;
+      group.classList.toggle('has-error', hasError);
+      var err = group.querySelector('.field-error');
+      if (err) err.classList.toggle('show', hasError);
+    }
+
+    function validateGate() {
+      var name = document.getElementById('name').value.trim();
+      var businessName = document.getElementById('businessName').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var email = document.getElementById('email').value.trim();
+
+      var phoneDigits = phone.replace(/\D/g, '');
+      // Checked here rather than leaning on type="email", which browsers
+      // enforce inconsistently. The submit workflow's guard requires email.
+      var emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      var valid = true;
+      if (!businessName) { setFieldError('businessName', true); valid = false; } else { setFieldError('businessName', false); }
+      if (!name) { setFieldError('name', true); valid = false; } else { setFieldError('name', false); }
+      if (phoneDigits.length !== 10) { setFieldError('phone', true); valid = false; } else { setFieldError('phone', false); }
+      if (!emailValid) { setFieldError('email', true); valid = false; } else { setFieldError('email', false); }
+
+      return valid ? { name: name, businessName: businessName, phone: phone, email: email } : null;
+    }
+
+    // ── SUBMIT ──────────────────────────────────────
+    function submitAudit() {
+      // Shape must match what the lead-audit-submit workflow reads:
+      // payload.answers.q2_vertical, payload.answers.<fieldName>, payload.business_name.
+      // Anything sent as top-level vertical / responses / businessName is dropped.
+      var answers = { q2_vertical: state.vertical };
+      Object.keys(state.responses).forEach(function (key) {
+        answers[key] = state.responses[key];
+      });
+
+      return fetch(SUBMIT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: state.name,
+          email: state.email,
+          phone: state.phone,
+          business_name: state.businessName,
+          answers: answers,
+          diagnosis: state.diagnosis,
+          source: 'questionnaire'
+        })
+      }).catch(function (err) {
+        console.log('Audit submission error (non-critical):', err);
+      });
+    }
+
+    function renderDiagnosis() {
+      var text = (state.kb && state.kb.diagnosis)
+        ? state.kb.diagnosis
+        : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.';
+      state.diagnosis = state.businessName + ', here\'s what we found:\n\n' + text;
+
+      diagnosisText.textContent = state.diagnosis;
+      diagnosisBox.classList.add('show');
+      diagnosisBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ── PHONE FORMATTING ────────────────────────────
+    document.getElementById('phone').addEventListener('input', function (e) {
+      var value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (value.length > 6) {
+        value = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6, 10);
+      } else if (value.length > 3) {
+        value = '(' + value.slice(0, 3) + ') ' + value.slice(3);
       }
       e.target.value = value;
     });
 
-    // Form submission
-    document.getElementById('auditForm').addEventListener('submit', async function(e) {
+    // ── HANDLERS ────────────────────────────────────
+    tradeForm.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const vertical = document.getElementById('vertical').value;
-      const name = document.getElementById('name').value;
-      const businessName = document.getElementById('businessName').value;
-      const phone = document.getElementById('phone').value;
-      const email = document.getElementById('email').value;
+      var vertical = verticalSelect.value.trim();
+      if (!vertical) { setFieldError('vertical', true); return; }
+      setFieldError('vertical', false);
 
-      // Prepare data for webhook
-      const formData = {
-        vertical: vertical,
-        name: name,
-        businessName: businessName,
-        phone: phone,
-        email: email
-      };
+      tradeSubmit.disabled = true;
+      tradeSubmit.textContent = 'Loading...';
+      tradeError.classList.remove('show');
 
-      // Get diagnosis from KB if available
-      let diagnosis = 'Thank you for completing the audit. Schedule a call to discuss your specific situation.';
-      if (knowledgeBases[vertical]) {
-        diagnosis = knowledgeBases[vertical].diagnosis;
-      }
-
-      // Show diagnosis
-      document.getElementById('diagnosisText').textContent = diagnosis;
-      document.getElementById('diagnosisBox').classList.add('show');
-
-      // Send to webhook
-      try {
-        const webhookUrl = 'https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-submit';
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+      loadKB(vertical)
+        .then(function (kb) {
+          // Hold on this pane until the questions are in hand, so the gate is
+          // never reached with an empty questionnaire.
+          state.vertical = vertical;
+          state.kb = kb;
+          state.index = 0;
+          state.responses = {};
+          tradeSubmit.disabled = false;
+          tradeSubmit.textContent = 'Start the Audit →';
+          showPane(paneQuestions);
+          renderQuestion();
+        })
+        .catch(function (err) {
+          console.log('KB load error:', err);
+          tradeSubmit.disabled = false;
+          tradeSubmit.textContent = 'Start the Audit →';
+          tradeError.textContent = 'We could not load the audit questions for that trade. Please try again in a moment.';
+          tradeError.classList.add('show');
         });
-      } catch (error) {
-        console.log('Webhook submission error (non-critical):', error);
-      }
-
-      // Scroll to diagnosis
-      document.getElementById('diagnosisBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
-    // Load KBs on page load
-    loadKnowledgeBases();
+    qBack.addEventListener('click', goBackFromQuestion);
+
+    gateBack.addEventListener('click', function () {
+      state.index = totalQuestions() - 1;
+      var q = state.kb.questions[state.index];
+      if (q) delete state.responses[q.fieldName];
+      showPane(paneQuestions);
+      renderQuestion();
+    });
+
+    gateForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fields = validateGate();
+      if (!fields) return;
+
+      state.name = fields.name;
+      state.businessName = fields.businessName;
+      state.phone = fields.phone;
+      state.email = fields.email;
+
+      gateSubmit.disabled = true;
+      gateSubmit.textContent = 'Pulling up your diagnosis...';
+
+      renderDiagnosis();
+      submitAudit();
+
+      paneGate.classList.remove('show');
+    });
+  })();
   </script>
 </body>
 </html>
