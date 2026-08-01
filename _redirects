@@ -4,25 +4,13 @@ http://* https://:splat 301
 # Non-www to www (canonical is www)
 https://platypusautomations.com/* https://www.platypusautomations.com/:splat 301
 
-# Redirect .html to clean URLs (removes .html extension)
-/ai-text-screening.html /ai-text-screening 301
-/google-reviews.html /google-reviews 301
-/missed-call-textback.html /missed-call-textback 301
-/pricing-sheet.html /pricing-sheet 301
-/privacy.html /privacy 301
-/terms.html /terms 301
-/voice-agent.html /voice-agent 301
-/website-gbp.html /website-gbp 301
-
-# Rewrite clean URLs to .html files (serve without extra redirect)
-/ai-text-screening /ai-text-screening.html 200
-/google-reviews /google-reviews.html 200
-/missed-call-textback /missed-call-textback.html 200
-/pricing-sheet /pricing-sheet.html 200
-/privacy /privacy.html 200
-/terms /terms.html 200
-/voice-agent /voice-agent.html 200
-/website-gbp /website-gbp.html 200
+# Clean URLs are handled natively by Cloudflare Pages: it serves /voice-agent
+# from voice-agent.html and 308-redirects the .html form to the clean one with
+# no configuration. The explicit rules that used to live here (.html -> clean
+# 301, then clean -> .html 200) fought that native behavior and produced an
+# infinite redirect loop, taking down all four service pages plus privacy,
+# terms, and website-gbp from July 27 to August 1, 2026. Do not re-add them.
+# Verify with: curl -sI -L https://www.platypusautomations.com/voice-agent
 
 # Serve index.html for root without redirect
 / /index.html 200
