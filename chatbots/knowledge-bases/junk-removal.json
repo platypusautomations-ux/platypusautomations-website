@@ -1,0 +1,92 @@
+{
+  "vertical": "junk_removal",
+  "verticalLabel": "Junk Removal",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many junk removal jobs do you get per week?",
+      "type": "select",
+      "options": [
+        { "value": "1-5", "label": "1-5" },
+        { "value": "6-15", "label": "6-15" },
+        { "value": "16-30", "label": "16-30" },
+        { "value": "30+", "label": "30+ (at capacity)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "How fast can you typically book a job after a customer calls?",
+      "type": "select",
+      "options": [
+        { "value": "same-day", "label": "Same day" },
+        { "value": "next-day", "label": "Next day" },
+        { "value": "2-3days", "label": "2-3 days" },
+        { "value": "4-7days", "label": "4-7 days" },
+        { "value": "one-week", "label": "A week or more" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "Where do most of your leads come from?",
+      "type": "select",
+      "options": [
+        { "value": "google-maps", "label": "Google Maps / local search" },
+        { "value": "referrals", "label": "Referrals and word-of-mouth" },
+        { "value": "facebook", "label": "Facebook and social media" },
+        { "value": "direct-calls", "label": "Direct phone calls" },
+        { "value": "property-managers", "label": "Property managers and contractors" },
+        { "value": "craigslist", "label": "Craigslist and classifieds" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest bottleneck right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-calls", "label": "Missing customer calls" },
+        { "value": "slow-scheduling", "label": "Slow to schedule appointments" },
+        { "value": "no-follow-up", "label": "Poor follow-up on leads" },
+        { "value": "crew-capacity", "label": "Overwhelmed, not enough trucks/crews" },
+        { "value": "no-system", "label": "No real system in place" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-100k", "label": "Under $100K" },
+        { "value": "100k-300k", "label": "$100K-$300K" },
+        { "value": "300k-500k", "label": "$300K-$500K" },
+        { "value": "500k-1m", "label": "$500K-$1M" },
+        { "value": "over-1m", "label": "Over $1M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How soon do you want to fix this?",
+      "type": "select",
+      "options": [
+        { "value": "asap", "label": "ASAP (losing jobs now)" },
+        { "value": "soon", "label": "Within 2 weeks" },
+        { "value": "month", "label": "Within a month" },
+        { "value": "exploring", "label": "Just exploring options" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgJobValue": "$400-$1,500",
+    "avgJobsPerWeek": "10-20",
+    "responseTimeOpportunityCost": "$300-$600 per missed call",
+    "bookingConversionRate": "35-45%",
+    "peak Season": "March-May, September-October"
+  },
+  "diagnosis": "You're losing high-volume, quick-turnaround jobs because you're slow to respond or book. Junk removal customers expect next-day service. Every unanswered call is $400-$800 left on the table. If you're missing just 5 calls a week, that's $10,000-$20,000 a month gone to competitors who answer faster."
+}

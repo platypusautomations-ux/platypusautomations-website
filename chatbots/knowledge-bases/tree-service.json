@@ -1,0 +1,92 @@
+{
+  "vertical": "tree_service",
+  "verticalLabel": "Tree Service",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many tree service jobs do you typically get per week?",
+      "type": "select",
+      "options": [
+        { "value": "1-5", "label": "1-5" },
+        { "value": "6-15", "label": "6-15" },
+        { "value": "16-30", "label": "16-30" },
+        { "value": "30+", "label": "30+ (constantly booked)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "When a storm hits, how fast can you mobilize a crew?",
+      "type": "select",
+      "options": [
+        { "value": "same-day", "label": "Same day" },
+        { "value": "1-2days", "label": "1-2 business days" },
+        { "value": "3-5days", "label": "3-5 business days" },
+        { "value": "week-plus", "label": "A week or more" },
+        { "value": "dont-storm", "label": "Don't handle storm work" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "Where do most of your leads come from?",
+      "type": "select",
+      "options": [
+        { "value": "referrals", "label": "Referrals and word-of-mouth" },
+        { "value": "google-maps", "label": "Google Maps / local search" },
+        { "value": "facebook", "label": "Facebook and social media" },
+        { "value": "direct-calls", "label": "Direct phone calls" },
+        { "value": "contractors", "label": "Contractor and insurance referrals" },
+        { "value": "storm-damage", "label": "Storm damage calls" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest bottleneck right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-storm", "label": "Missing storm damage calls" },
+        { "value": "slow-response", "label": "Too slow to respond to leads" },
+        { "value": "crew-dispatch", "label": "Crew scheduling and dispatch inefficient" },
+        { "value": "off-season", "label": "Dead during off-season (summer slowdown)" },
+        { "value": "no-system", "label": "No system in place" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-150k", "label": "Under $150K" },
+        { "value": "150k-400k", "label": "$150K-$400K" },
+        { "value": "400k-800k", "label": "$400K-$800K" },
+        { "value": "800k-1m5", "label": "$800K-$1.5M" },
+        { "value": "over-1m5", "label": "Over $1.5M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How urgent is this for you?",
+      "type": "select",
+      "options": [
+        { "value": "urgent", "label": "Very urgent (losing calls now)" },
+        { "value": "soon", "label": "Within 2 weeks (storm season approaching)" },
+        { "value": "month", "label": "Within a month" },
+        { "value": "exploring", "label": "Just exploring options" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgJobValue": "$800-$4,000",
+    "stormSeasonJobsPerWeek": "20-50",
+    "offSeasonJobsPerWeek": "3-8",
+    "stormResponseConversionRate": "65-80%",
+    "costPerMissedStormCall": "$1,200-$3,000"
+  },
+  "diagnosis": "Tree service is boom or bust. When a hurricane or major storm hits, you get swamped. If you're slow to respond, customers call the next crew. Storm season generates 60-80% of annual revenue. If you're missing 20-30% of storm calls due to poor response, that's $30,000-$100,000+ in lost revenue during peak season."
+}

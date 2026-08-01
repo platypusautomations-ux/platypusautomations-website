@@ -1,0 +1,92 @@
+{
+  "vertical": "land_clearing",
+  "verticalLabel": "Land Clearing & Grading",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many land clearing or grading projects do you get per quarter?",
+      "type": "select",
+      "options": [
+        { "value": "1-3", "label": "1-3" },
+        { "value": "4-8", "label": "4-8" },
+        { "value": "9-15", "label": "9-15" },
+        { "value": "15+", "label": "15+ (constantly booked)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "How long does it take to respond to a land clearing inquiry?",
+      "type": "select",
+      "options": [
+        { "value": "same-day", "label": "Same day" },
+        { "value": "1-3days", "label": "1-3 business days" },
+        { "value": "4-7days", "label": "4-7 business days" },
+        { "value": "week-plus", "label": "Over a week" },
+        { "value": "dont-track", "label": "Don't track it" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "Where do most of your leads come from?",
+      "type": "select",
+      "options": [
+        { "value": "builders", "label": "Builder and contractor referrals" },
+        { "value": "google-maps", "label": "Google Maps / local search" },
+        { "value": "past-customers", "label": "Past customers and word-of-mouth" },
+        { "value": "facebook", "label": "Facebook and social media" },
+        { "value": "direct-calls", "label": "Direct phone calls" },
+        { "value": "real-estate", "label": "Real estate developer leads" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest bottleneck right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-leads", "label": "Missing leads (slow to respond)" },
+        { "value": "no-follow-up", "label": "Poor follow-up on inquiries" },
+        { "value": "equipment-utilization", "label": "Equipment underutilized (gaps between jobs)" },
+        { "value": "crew-scheduling", "label": "Crew and equipment scheduling inefficient" },
+        { "value": "seasonal", "label": "Seasonal work, off-season downtime" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-200k", "label": "Under $200K" },
+        { "value": "200k-500k", "label": "$200K-$500K" },
+        { "value": "500k-1m", "label": "$500K-$1M" },
+        { "value": "1m-2m", "label": "$1M-$2M" },
+        { "value": "over-2m", "label": "Over $2M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How soon do you want to improve this?",
+      "type": "select",
+      "options": [
+        { "value": "asap", "label": "ASAP (losing projects now)" },
+        { "value": "soon", "label": "Within 2-4 weeks" },
+        { "value": "month", "label": "Within a month" },
+        { "value": "exploring", "label": "Just exploring options" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgProjectValue": "$8,000-$50,000",
+    "avgProjectsPerQuarter": "8-12",
+    "projectToInquiryConversion": "25-40%",
+    "responseTimeImpact": "Fast response = 35-50% higher conversion",
+    "averageLeadResponseTime": "2-4 business days"
+  },
+  "diagnosis": "Land clearing is project-based and equipment-heavy. Big projects mean high values but slower sales cycles. If you're slow to respond to inquiries, customers get quotes from competitors and move on. Every missed lead is $8,000-$30,000 in potential revenue. If you're losing 20% of leads due to slow response, that's $30,000-$150,000 in lost annual revenue."
+}

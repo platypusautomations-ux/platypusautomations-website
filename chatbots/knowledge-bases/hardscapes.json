@@ -1,0 +1,92 @@
+{
+  "vertical": "hardscapes",
+  "verticalLabel": "Hardscapes",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many hardscape design consultations do you do per month?",
+      "type": "select",
+      "options": [
+        { "value": "1-3", "label": "1-3" },
+        { "value": "4-8", "label": "4-8" },
+        { "value": "9-15", "label": "9-15" },
+        { "value": "15+", "label": "15+ (very active)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "How long does it take from initial inquiry to first consultation?",
+      "type": "select",
+      "options": [
+        { "value": "3-5days", "label": "3-5 business days" },
+        { "value": "1-2weeks", "label": "1-2 weeks" },
+        { "value": "2-4weeks", "label": "2-4 weeks" },
+        { "value": "month", "label": "Over a month" },
+        { "value": "dont-track", "label": "Don't track it" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "Where do most of your leads come from?",
+      "type": "select",
+      "options": [
+        { "value": "referrals", "label": "Referrals from past customers" },
+        { "value": "google-maps", "label": "Google Maps / local search" },
+        { "value": "instagram", "label": "Instagram and social media" },
+        { "value": "website", "label": "Your website / portfolio" },
+        { "value": "facebook", "label": "Facebook and Nextdoor" },
+        { "value": "designer", "label": "Landscape designer referrals" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest bottleneck right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-leads", "label": "Missing leads (slow consultation booking)" },
+        { "value": "no-follow-up", "label": "Poor follow-up on inquiries" },
+        { "value": "designer-capacity", "label": "Not enough design/consultation time" },
+        { "value": "crew-backlog", "label": "Construction crew backlog (too booked)" },
+        { "value": "seasonal-dips", "label": "Seasonal gaps (winter slowdown)" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-200k", "label": "Under $200K" },
+        { "value": "200k-500k", "label": "$200K-$500K" },
+        { "value": "500k-1m", "label": "$500K-$1M" },
+        { "value": "1m-2m", "label": "$1M-$2M" },
+        { "value": "over-2m", "label": "Over $2M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How urgent is this for you?",
+      "type": "select",
+      "options": [
+        { "value": "urgent", "label": "Very urgent (losing consultations)" },
+        { "value": "important", "label": "Important (want to improve)" },
+        { "value": "someday", "label": "Someday when I have time" },
+        { "value": "exploring", "label": "Just curious" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgProjectValue": "$5,000-$30,000",
+    "consultationToJobConversion": "50-70%",
+    "avgConsultationsPerMonth": "8-16",
+    "averageBookingTime": "5-7 business days",
+    "topCompetitorBookingTime": "2-3 business days"
+  },
+  "diagnosis": "Hardscape customers are comparing designers and designs. If you take 2+ weeks to schedule a consultation, they've already picked another designer. Every missed consultation is $2,500-$15,000 in lost revenue. Portfolio-driven visual businesses like hardscapes win on responsiveness and design quality. Speed to consultation directly impacts your close rate."
+}

@@ -1,0 +1,92 @@
+{
+  "vertical": "paving",
+  "verticalLabel": "Paving",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many paving projects do you typically get per season?",
+      "type": "select",
+      "options": [
+        { "value": "1-5", "label": "1-5" },
+        { "value": "6-15", "label": "6-15" },
+        { "value": "16-30", "label": "16-30" },
+        { "value": "30+", "label": "30+ (very busy)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "How long does it take to respond to a paving inquiry?",
+      "type": "select",
+      "options": [
+        { "value": "same-day", "label": "Same day" },
+        { "value": "1-2days", "label": "1-2 business days" },
+        { "value": "3-5days", "label": "3-5 business days" },
+        { "value": "week", "label": "A week or more" },
+        { "value": "dont-track", "label": "Don't track it" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "Where do most of your leads come from?",
+      "type": "select",
+      "options": [
+        { "value": "referrals", "label": "Contractor and property manager referrals" },
+        { "value": "google-maps", "label": "Google Maps / local search" },
+        { "value": "facebook", "label": "Facebook and social media" },
+        { "value": "website", "label": "Your website" },
+        { "value": "direct-calls", "label": "Direct phone calls" },
+        { "value": "nextdoor", "label": "Nextdoor app" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest bottleneck right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-season", "label": "Missing projects during peak season" },
+        { "value": "slow-response", "label": "Too slow to respond to leads" },
+        { "value": "no-follow-up", "label": "Poor follow-up on cold inquiries" },
+        { "value": "crew-capacity", "label": "Not enough crews or equipment" },
+        { "value": "winter-slowdown", "label": "Dead during off-season (winter)" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-150k", "label": "Under $150K" },
+        { "value": "150k-350k", "label": "$150K-$350K" },
+        { "value": "350k-750k", "label": "$350K-$750K" },
+        { "value": "750k-1m5", "label": "$750K-$1.5M" },
+        { "value": "over-1m5", "label": "Over $1.5M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How soon do you want to improve this?",
+      "type": "select",
+      "options": [
+        { "value": "asap", "label": "ASAP (losing season)" },
+        { "value": "soon", "label": "Next 2-4 weeks (before season ramps)" },
+        { "value": "month", "label": "Within a month" },
+        { "value": "exploring", "label": "Just exploring options" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgProjectValue": "$5,000-$25,000",
+    "peakSeason": "March-May, September-October",
+    "projectsPerSeason": "10-25",
+    "responseTimeConversionLift": "Fast response = 35-50% higher booking rate",
+    "averageLeadResponseTime": "24-72 hours"
+  },
+  "diagnosis": "Paving is seasonal. When spring hits, you get flooded with inquiries. Every day you delay responding, another contractor gets that job. Paving customers are price-shopping, so whoever responds fastest often wins. If you're losing 20-30% of leads due to slow response during peak season, that's $50,000-$150,000 in lost revenue for a 6-month window."
+}

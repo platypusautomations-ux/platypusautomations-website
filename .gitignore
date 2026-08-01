@@ -15,8 +15,7 @@
 !suffolkcrawlspace/*.html
 !elderly-care-directory/data.json
 !garage-door-directory/data.json
-!chatbots/knowledge-bases/hvac.json
-!chatbots/knowledge-bases/plumbing.json
+!chatbots/knowledge-bases/*.json
 
 # qualitySC — full-res source assets (commit only img/web/)
 qualitySC/img/fromRichard/

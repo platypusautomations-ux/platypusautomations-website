@@ -1,0 +1,92 @@
+{
+  "vertical": "electrical",
+  "verticalLabel": "Electrical",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many service calls per week do you typically handle?",
+      "type": "select",
+      "options": [
+        { "value": "1-5", "label": "1-5" },
+        { "value": "6-15", "label": "6-15" },
+        { "value": "16-25", "label": "16-25" },
+        { "value": "25+", "label": "25+ (at capacity)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "What percentage of after-hours emergency calls do you miss?",
+      "type": "select",
+      "options": [
+        { "value": "most", "label": "Most (70%+)" },
+        { "value": "half", "label": "About half" },
+        { "value": "some", "label": "Some (20%)" },
+        { "value": "few", "label": "Very few" },
+        { "value": "no-emergency", "label": "Don't take emergency calls" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "How do most of your leads come in?",
+      "type": "select",
+      "options": [
+        { "value": "direct-phone", "label": "Direct phone calls" },
+        { "value": "google-maps", "label": "Google Maps / local search" },
+        { "value": "referrals", "label": "Referrals and word-of-mouth" },
+        { "value": "contractors", "label": "Contractor referrals" },
+        { "value": "facebook", "label": "Facebook and social media" },
+        { "value": "website", "label": "Website form" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest challenge right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-emergency", "label": "Missing emergency calls (power outages, safety hazards)" },
+        { "value": "slow-response", "label": "Too slow to respond to leads" },
+        { "value": "poor-follow-up", "label": "Poor follow-up on service request leads" },
+        { "value": "crew-dispatch", "label": "Crew scheduling and dispatch inefficient" },
+        { "value": "no-system", "label": "No system in place" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-150k", "label": "Under $150K" },
+        { "value": "150k-350k", "label": "$150K-$350K" },
+        { "value": "350k-600k", "label": "$350K-$600K" },
+        { "value": "600k-1m", "label": "$600K-$1M" },
+        { "value": "over-1m", "label": "Over $1M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How urgent is this for you?",
+      "type": "select",
+      "options": [
+        { "value": "urgent", "label": "Very urgent (losing money now)" },
+        { "value": "important", "label": "Important (want to improve)" },
+        { "value": "someday", "label": "Someday when I have time" },
+        { "value": "exploring", "label": "Just curious" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgServiceCallValue": "$250-$800",
+    "emergencyCallResponseRate": "45% industry average",
+    "costPerMissedEmergency": "$500-$2,000",
+    "avgCallsPerWeek": "12-18",
+    "conversionRate": "28-35%"
+  },
+  "diagnosis": "You're missing emergency calls that could pay $1,000-$3,000 each. Power outages and safety hazards don't wait. Every missed emergency call is a customer calling another electrician. If you're missing 3-5 emergency calls a month, that's $3,000-$15,000 in lost revenue just from after-hours emergencies."
+}

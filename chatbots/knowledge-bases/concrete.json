@@ -1,0 +1,92 @@
+{
+  "vertical": "concrete",
+  "verticalLabel": "Concrete",
+  "questions": [
+    {
+      "id": "q3",
+      "text": "How many concrete projects do you typically book per month?",
+      "type": "select",
+      "options": [
+        { "value": "1-3", "label": "1-3" },
+        { "value": "4-8", "label": "4-8" },
+        { "value": "9-15", "label": "9-15" },
+        { "value": "15+", "label": "15+ (booked solid)" }
+      ],
+      "fieldName": "lead_volume"
+    },
+    {
+      "id": "q4",
+      "text": "How fast can you typically respond to a concrete inquiry?",
+      "type": "select",
+      "options": [
+        { "value": "same-day", "label": "Same day" },
+        { "value": "1-2days", "label": "1-2 business days" },
+        { "value": "3-5days", "label": "3-5 business days" },
+        { "value": "week", "label": "A week or more" },
+        { "value": "dont-track", "label": "Don't track it" }
+      ],
+      "fieldName": "response_time"
+    },
+    {
+      "id": "q5",
+      "text": "Where do most of your leads come from?",
+      "type": "select",
+      "options": [
+        { "value": "referrals", "label": "Contractor and builder referrals" },
+        { "value": "google-maps", "label": "Google Maps / local search" },
+        { "value": "facebook", "label": "Facebook and social media" },
+        { "value": "website", "label": "Your website" },
+        { "value": "direct-calls", "label": "Direct phone calls" },
+        { "value": "homeowners", "label": "Direct homeowner calls" },
+        { "value": "mixed", "label": "Mix of several" }
+      ],
+      "fieldName": "current_system"
+    },
+    {
+      "id": "q6",
+      "text": "What's your biggest challenge right now?",
+      "type": "select",
+      "options": [
+        { "value": "missing-leads", "label": "Missing leads (slow to respond)" },
+        { "value": "no-follow-up", "label": "Poor follow-up on inquiries" },
+        { "value": "crew-capacity", "label": "Overwhelmed, not enough crews" },
+        { "value": "weather-dependent", "label": "Weather and scheduling issues" },
+        { "value": "inconsistent", "label": "Inconsistent lead flow" }
+      ],
+      "fieldName": "bottleneck"
+    },
+    {
+      "id": "q7",
+      "text": "Annual revenue range?",
+      "type": "select",
+      "options": [
+        { "value": "under-100k", "label": "Under $100K" },
+        { "value": "100k-300k", "label": "$100K-$300K" },
+        { "value": "300k-600k", "label": "$300K-$600K" },
+        { "value": "600k-1m", "label": "$600K-$1M" },
+        { "value": "over-1m", "label": "Over $1M" }
+      ],
+      "fieldName": "revenue_range"
+    },
+    {
+      "id": "q8",
+      "text": "How soon do you want to improve this?",
+      "type": "select",
+      "options": [
+        { "value": "asap", "label": "ASAP (losing jobs now)" },
+        { "value": "soon", "label": "Within 2 weeks" },
+        { "value": "month", "label": "Within a month" },
+        { "value": "exploring", "label": "Just exploring options" }
+      ],
+      "fieldName": "urgency"
+    }
+  ],
+  "benchmarks": {
+    "avgProjectValue": "$1,500-$8,000",
+    "avgProjectsPerMonth": "5-12",
+    "responseTimeImpact": "Fast response = 40-50% higher conversion",
+    "peakSeason": "March-October",
+    "conversionRate": "25-35%"
+  },
+  "diagnosis": "Concrete is price-sensitive and time-sensitive. Customers get multiple quotes fast. If you're slow to respond, they're already talking to your competitors. Every day of delay costs you 15-20% of that lead. If you're missing 10 leads per month due to slow response, that's $15,000-$80,000 in lost revenue annually."
+}
