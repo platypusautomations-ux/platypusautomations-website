@@ -719,6 +719,7 @@
         businessName: fields.businessName,
         questionIndex: 0,
         responses: {},
+        responseLabels: {},
         conversationHistory: [],
         timestamp: Date.now(),
         sessionCount: 1,
@@ -870,6 +871,16 @@
     }
 
     // ── WEBHOOK CALLS ───────────────────────────────
+    // The relay substitutes this literal string when Claude returns empty
+    // content. It is a failure signal, not a message worth showing or storing.
+    function usableMessage(data) {
+      var m = data && data.message;
+      if (!m) return null;
+      m = String(m).trim();
+      if (!m || m === 'No response') return null;
+      return m;
+    }
+
     function askWebhook(session, questionId, userResponse, mode) {
       return fetch(ASK_URL, {
         method: 'POST',
@@ -921,6 +932,8 @@
           phone: session.phone,
           business_name: session.businessName,
           answers: answers,
+          answer_labels: session.responseLabels || {},
+          vertical_label: (currentKB && currentKB.verticalLabel) || '',
           diagnosis: session.diagnosis,
           source: 'chatbot'
         })
@@ -997,9 +1010,11 @@
       askWebhook(session, question.id, opt.value, 'diagnostic')
         .then(function (data) {
           removeTyping();
-          var msgText = (data && data.message) ? data.message : ('Got it, ' + opt.label + '.');
+          var msgText = usableMessage(data) || ('Got it, ' + opt.label + '.');
           addMessage(session, 'assistant', msgText);
           session.responses[question.fieldName] = opt.value;
+          if (!session.responseLabels) session.responseLabels = {};
+          session.responseLabels[question.fieldName] = opt.label;
           session.questionIndex++;
           clearOptions();
           saveSession(session);
@@ -1033,7 +1048,7 @@
       askWebhook(session, null, null, 'diagnosis')
         .then(function (data) {
           removeTyping();
-          var text = (data && data.message) ? data.message : (currentKB && currentKB.diagnosis ? currentKB.diagnosis : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.');
+          var text = usableMessage(data) || (currentKB && currentKB.diagnosis ? currentKB.diagnosis : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.');
           renderDiagnosis(session, text);
         })
         .catch(function (err) {
@@ -1086,7 +1101,7 @@
       askWebhook(session, null, text, 'followup')
         .then(function (data) {
           removeTyping();
-          var msgText = (data && data.message) ? data.message : 'Good question. Book a discovery call and we can go through the specifics for your business.';
+          var msgText = usableMessage(data) || 'Good question. Book a discovery call and we can go through the specifics for your business.';
           addMessage(session, 'assistant', msgText);
           session.followupCount = (session.followupCount || 0) + 1;
           saveSession(session);

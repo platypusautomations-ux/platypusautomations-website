@@ -1032,7 +1032,8 @@
       vertical: '',
       kb: null,
       index: 0,
-      responses: {},   // keyed by the KB's canonical fieldName
+      responses: {},        // keyed by the KB's canonical fieldName
+      responseLabels: {},   // human labels for the same keys, for the email
       name: '',
       email: '',
       phone: '',
@@ -1118,6 +1119,7 @@
       // Key by the KB's canonical fieldName. This is what makes plumbing's
       // missed_after_hours / lead_source come through with no special-casing.
       state.responses[question.fieldName] = opt.value;
+      state.responseLabels[question.fieldName] = opt.label;
       state.index++;
       if (state.index < totalQuestions()) {
         renderQuestion();
@@ -1134,7 +1136,7 @@
       state.index--;
       // Drop the answer being revisited so it is always re-recorded.
       var q = state.kb.questions[state.index];
-      if (q) delete state.responses[q.fieldName];
+      if (q) { delete state.responses[q.fieldName]; delete state.responseLabels[q.fieldName]; }
       renderQuestion();
     }
 
@@ -1191,6 +1193,8 @@
           phone: state.phone,
           business_name: state.businessName,
           answers: answers,
+          answer_labels: state.responseLabels,
+          vertical_label: (state.kb && state.kb.verticalLabel) || '',
           diagnosis: state.diagnosis,
           source: 'questionnaire'
         })
@@ -1260,7 +1264,7 @@
     gateBack.addEventListener('click', function () {
       state.index = totalQuestions() - 1;
       var q = state.kb.questions[state.index];
-      if (q) delete state.responses[q.fieldName];
+      if (q) { delete state.responses[q.fieldName]; delete state.responseLabels[q.fieldName]; }
       showPane(paneQuestions);
       renderQuestion();
     });
