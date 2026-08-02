@@ -914,6 +914,30 @@
       });
     }
 
+    // Fired the moment the gate is passed, before a single question is asked.
+    // The gate collects full contact details up front, so without this anyone
+    // who abandons mid-conversation leaves no trace at all, even though they
+    // already handed over their name, business, phone, and email.
+    function submitPartial(session) {
+      fetch(SUBMIT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: session.name,
+          email: session.email,
+          phone: session.phone,
+          business_name: session.businessName,
+          answers: { q2_vertical: session.vertical },
+          answer_labels: {},
+          vertical_label: (currentKB && currentKB.verticalLabel) || '',
+          diagnosis: '',
+          source: 'chatbot-started'
+        })
+      }).catch(function (err) {
+        console.log('Partial submission error (non-critical):', err);
+      });
+    }
+
     function submitAudit(session) {
       // Shape must match what the lead-audit-submit workflow reads:
       // payload.answers.q2_vertical, payload.answers.<fieldName>, payload.business_name.
@@ -1192,6 +1216,7 @@
         .then(function (kb) {
           currentKB = kb;
           var session = initSession(fields);
+          submitPartial(session);
           gateForm.style.display = 'none';
           chatInterface.classList.add('show');
           startConversation(session);
