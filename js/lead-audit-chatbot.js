@@ -227,7 +227,7 @@ async function submitAudit() {
 
   // Submit to n8n webhook
   try {
-    const response = await fetch('https://brooklynn-mistaken-deliriously.ngrok-free.dev/webhook/lead-audit-submit', {
+    const response = await fetch('https://automations.platypusautomations.com/webhook/lead-audit-submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
