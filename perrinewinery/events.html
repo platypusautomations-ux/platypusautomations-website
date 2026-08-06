@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Vendor Market | Perrine Winery, Portsmouth VA</title>
+  <meta name="description" content="See what's happening at Perrine Winery in Portsmouth, VA. Tastings, live music, and a rotating vendor market on the property.">
+  <link rel="canonical" href="https://platypusautomations.com/perrinewinery/events.html">
+
+  <meta property="og:title" content="Events & Vendor Market | Perrine Winery">
+  <meta property="og:description" content="Tastings, live music, and a rotating vendor market at Perrine Winery in Portsmouth, VA.">
+  <meta property="og:image" content="https://platypusautomations.com/perrinewinery/img/deck.webp">
+  <meta property="og:url" content="https://platypusautomations.com/perrinewinery/events.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230E4D52'/><text x='16' y='22' text-anchor='middle' font-size='18' fill='%23C9A227'>P</text></svg>">
+
+  <style>
+    @font-face {
+      font-family: 'Monoton';
+      src: url('fonts/monoton-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Bungee';
+      src: url('fonts/bungee-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Nunito Sans';
+      src: url('fonts/nunito-sans-400-latin.woff2') format('woff2');
+      font-weight: 400 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Black Ops One';
+      src: url('fonts/black-ops-one-latin.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+  </style>
+
+  <style>
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* === VARIABLES === */
+    :root {
+      --teal-deep:   #0A3A3F;
+      --teal-mid:    #0E4D52;
+      --gold:        #C9A227;
+      --gold-light:  #DDB83A;
+      --cream:       #F4EBD9;
+      --coral:       #E0567A;
+      --muted:       rgba(244,235,217,0.58);
+      --jazz-teal:    #2BC4C9;
+      --jazz-purple:  #7B3FA0;
+      --jazz-magenta: #D6336C;
+      --jazz-green:   #B8D43A;
+      --border-gold: rgba(201,162,39,0.22);
+      --border-cream: rgba(244,235,217,0.12);
+      --fh-mono:  'Monoton', cursive;
+      --fh-bung:  'Bungee', sans-serif;
+      --fh-bell:  'Black Ops One', cursive;
+      --fb:       'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 74px; }
+    body {
+      font-family: var(--fb);
+      background: var(--teal-deep);
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .grain-layer {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 8000; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 300px 300px;
+    }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* === NAV (matches index.html) === */
+    #main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: 72px; display: flex; align-items: center;
+      background: rgba(10,58,63,0.97);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--border-gold);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-logo { height: 50px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--cream); opacity: 0.7; transition: opacity 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.current { opacity: 1; color: var(--jazz-teal); }
+    .btn-nav {
+      display: inline-block; padding: 0.5rem 1.25rem;
+      background: var(--gold); color: var(--teal-deep);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s, transform 0.15s; white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .nav-burger span { display: block; width: 22px; height: 2px; background: var(--cream); transition: all 0.28s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 899;
+      background: rgba(10,58,63,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      padding: 1.5rem 1.5rem 2rem; border-top: 1px solid var(--border-gold);
+    }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+    .nav-mobile a { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.85; }
+    .nav-mobile .btn-nav { display: block; text-align: center; margin-top: 0.75rem; }
+
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .nav-right .btn-nav { display: none; }
+    }
+    @media (min-width: 821px) { .nav-mobile { display: none !important; } }
+
+    /* === PAGE HERO === */
+    .page-hero {
+      position: relative; min-height: 46vh; min-height: 46svh;
+      display: flex; align-items: flex-end; overflow: hidden; padding-top: 72px;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: url('img/deck.webp') center/cover no-repeat;
+    }
+    .page-hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,58,63,0.55) 0%, rgba(10,58,63,0.9) 100%);
+    }
+    .page-hero-content { position: relative; z-index: 2; padding: 3rem 1.5rem 3.5rem; max-width: 700px; }
+    .back-link {
+      display: inline-block; margin-bottom: 1rem; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); opacity: 0.85;
+    }
+    .back-link:hover { opacity: 1; }
+    .page-eyebrow {
+      display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem;
+    }
+    .page-title {
+      font-family: var(--fh-bell); font-size: clamp(2.1rem, 6vw, 3.6rem);
+      line-height: 1.15; color: var(--cream); transform: rotate(-1.5deg); display: inline-block;
+    }
+    .page-sub { margin-top: 1.1rem; font-size: 1rem; opacity: 0.84; max-width: 480px; line-height: 1.6; }
+
+    /* === SECTION SHARED (matches index.html) === */
+    .sec { padding: 5.5rem 0; }
+    .sec-label {
+      display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
+    }
+    .sec-title {
+      font-family: var(--fh-bell);
+      font-size: clamp(1.85rem, 4.5vw, 3rem);
+      line-height: 1.1; margin-bottom: 1.4rem;
+      display: inline-block; transform: rotate(-2deg); transform-origin: center center;
+      color: var(--jazz-teal);
+    }
+    .gold-bar { width: 44px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1.2rem 0; }
+    .gold-bar-c { margin-left: auto; margin-right: auto; }
+    .btn-primary {
+      display: inline-block; padding: 0.85rem 2.2rem;
+      background: var(--gold); color: var(--teal-deep);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 16px rgba(201,162,39,0.3);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* === CALENDAR === */
+    .cal-intro { text-align: center; margin-bottom: 2.25rem; }
+    .cal-note { font-size: 0.86rem; opacity: 0.6; font-style: italic; max-width: 480px; margin: 0.85rem auto 0; line-height: 1.5; }
+    .cal-card {
+      max-width: 560px; margin: 0 auto; background: var(--teal-mid);
+      border: 1px solid var(--border-gold); border-radius: 8px; padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
+    .cal-month { font-family: var(--fh-bung); font-size: 0.95rem; letter-spacing: 0.05em; color: var(--gold); }
+    .cal-nav-btn {
+      background: rgba(244,235,217,0.06); border: 1px solid var(--border-gold); color: var(--cream);
+      width: 34px; height: 34px; border-radius: 4px; font-size: 1.1rem; cursor: pointer; line-height: 1;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .cal-nav-btn:hover { background: rgba(244,235,217,0.12); border-color: var(--gold); }
+    .cal-weekdays {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cream); opacity: 0.5; text-align: center; margin-bottom: 0.5rem;
+    }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .cal-day {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      border-radius: 4px; font-size: 0.82rem; color: var(--cream); opacity: 0.5; position: relative;
+    }
+    .cal-day.blank { visibility: hidden; }
+    .cal-day.today { border: 1px solid var(--border-gold); opacity: 0.9; }
+    .cal-day.has-event {
+      opacity: 1; cursor: pointer; background: rgba(201,162,39,0.1);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cal-day.has-event:hover { background: rgba(201,162,39,0.22); transform: translateY(-1px); }
+    .cal-day.has-event::after {
+      content: ''; position: absolute; bottom: 5px; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--jazz-teal);
+    }
+    .cal-day.active { background: var(--gold); color: var(--teal-deep); opacity: 1; font-weight: 700; }
+    .cal-day.active::after { background: var(--teal-deep); }
+
+    .cal-detail {
+      max-width: 560px; margin: 1.25rem auto 0; background: rgba(244,235,217,0.04);
+      border: 1px solid var(--border-gold); border-radius: 8px; padding: 1.25rem 1.5rem;
+      min-height: 74px; display: flex; align-items: center;
+    }
+    .cal-detail-empty { font-size: 0.85rem; opacity: 0.5; margin: 0 auto; text-align: center; }
+    .cal-event-title { font-family: var(--fh-bung); font-size: 0.95rem; color: var(--gold); margin-bottom: 0.35rem; }
+    .cal-event-meta { font-size: 0.78rem; opacity: 0.6; margin-bottom: 0.45rem; }
+    .cal-event-desc { font-size: 0.88rem; opacity: 0.85; line-height: 1.55; }
+
+    .cal-cta { text-align: center; margin-top: 2.5rem; }
+    .cal-cta p { font-size: 0.9rem; opacity: 0.7; margin-bottom: 1rem; }
+
+    @media (max-width: 480px) {
+      .cal-card { padding: 1.1rem 0.85rem; }
+      .cal-day { font-size: 0.72rem; }
+      .sec { padding: 3.75rem 0; }
+    }
+
+    /* === FOOTER (matches index.html) === */
+    footer { background: #071B1F; padding: 3rem 0 2rem; border-top: 1px solid var(--border-gold); }
+    .foot-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .foot-logo { height: 60px; width: auto; }
+    .foot-right { display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-end; }
+    .foot-loc { font-size: 0.83rem; opacity: 0.65; }
+    .foot-email { font-size: 0.83rem; color: var(--gold); }
+    .foot-email:hover { opacity: 0.75; }
+    .foot-hours { font-size: 0.77rem; opacity: 0.65; font-style: italic; }
+    .foot-bottom { border-top: 1px solid var(--border-cream); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+    .foot-copy { font-size: 0.78rem; opacity: 0.5; }
+    .foot-built { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.24); }
+    .foot-built a { color: rgba(255,255,255,0.24); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .foot-built a:hover { color: rgba(255,255,255,0.55); }
+    @media (max-width: 480px) {
+      .foot-top { flex-direction: column; align-items: flex-start; }
+      .foot-right { align-items: flex-start; }
+      .foot-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain-layer" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" aria-label="Perrine Winery home">
+          <img src="img/logo.png" alt="Perrine Winery" class="nav-logo" onerror="this.style.display='none'">
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html#story">Our Story</a></li>
+          <li><a href="index.html#wines">The Wines</a></li>
+          <li><a href="index.html#space">The Space</a></li>
+          <li><a href="events.html" class="current">Events</a></li>
+          <li><a href="index.html#visit">Visit</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="mailto:holland@perrinewinery.com" class="btn-nav">Email Us</a>
+          <button class="nav-burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="index.html#story" class="mob-link">Our Story</a></li>
+      <li><a href="index.html#wines" class="mob-link">The Wines</a></li>
+      <li><a href="index.html#space" class="mob-link">The Space</a></li>
+      <li><a href="events.html" class="mob-link current">Events</a></li>
+      <li><a href="index.html#visit" class="mob-link">Visit</a></li>
+      <li><a href="index.html#contact" class="mob-link">Contact</a></li>
+      <li><a href="mailto:holland@perrinewinery.com" class="btn-nav">Email Us</a></li>
+    </ul>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-label="Events at Perrine Winery">
+    <div class="page-hero-bg" role="presentation"></div>
+    <div class="page-hero-content">
+      <a href="index.html" class="back-link reveal">&larr; Back to Perrine Winery</a>
+      <span class="page-eyebrow reveal">On the Property</span>
+      <h1 class="page-title reveal">Events &amp; Vendor Market</h1>
+      <p class="page-sub reveal">Tastings, live music, and a rotating market of local vendors. Here's what's on.</p>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="sec" id="calendar">
+    <div class="container">
+      <div class="cal-intro reveal">
+        <span class="sec-label">Calendar</span>
+        <h2 class="sec-title">What's Happening</h2>
+        <div class="gold-bar gold-bar-c"></div>
+        <p class="cal-note">Preview calendar, sample dates shown for now. The live schedule goes up here once events are confirmed.</p>
+      </div>
+
+      <div class="cal-card reveal">
+        <div class="cal-head">
+          <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">&lsaquo;</button>
+          <span class="cal-month" id="cal-month-label"></span>
+          <button class="cal-nav-btn" id="cal-next" aria-label="Next month">&rsaquo;</button>
+        </div>
+        <div class="cal-weekdays" aria-hidden="true">
+          <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+
+      <div class="cal-detail reveal" id="cal-detail">
+        <p class="cal-detail-empty">Tap a highlighted date to see what's on.</p>
+      </div>
+
+      <div class="cal-cta reveal">
+        <p>Interested in a vendor spot on the property?</p>
+        <a href="index.html#contact" class="btn-primary">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="foot-top">
+        <img src="img/logo.png" alt="Perrine Winery" class="foot-logo" onerror="this.style.display='none'" loading="lazy">
+        <div class="foot-right">
+          <span class="foot-loc">620 High Street, Olde Towne Portsmouth, VA 23704</span>
+          <a href="mailto:holland@perrinewinery.com" class="foot-email">holland@perrinewinery.com</a>
+          <span class="foot-hours">Hours coming soon</span>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p class="foot-copy">Perrine Winery &nbsp;&middot;&nbsp; Portsmouth, VA &nbsp;&middot;&nbsp; &copy; 2026</p>
+        <div class="foot-built">
+          SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" rel="noopener noreferrer">PLATYPUS AUTOMATIONS</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger / mobile menu
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('nav-mobile');
+    burger.addEventListener('click', () => {
+      const open = burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(open));
+      mobileNav.classList.toggle('open', open);
+    });
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+      });
+    });
+
+    // Scroll reveal
+    const revEls = document.querySelectorAll('.reveal');
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    revEls.forEach(el => ro.observe(el));
+    document.querySelectorAll('.page-hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 150 + i * 130);
+    });
+
+    // === CALENDAR ===
+    // Sample/placeholder events only, keyed by day-of-month so the preview
+    // shows something no matter which month is open. Not real scheduled dates.
+    const sampleEvents = {
+      8:  { title: 'Local Makers Market', time: 'Sat · 11am – 4pm', desc: 'A rotating lineup of local vendors and artisans on the property. Sample listing, real schedule coming soon.' },
+      15: { title: 'Wine & Paint Night', time: 'Sat · 6pm – 8:30pm', desc: 'Guided painting session with a Perrine pour in hand. Sample listing, real schedule coming soon.' },
+      22: { title: 'Fall Vendor Expo', time: 'Sat · 10am – 5pm', desc: 'Featured vendors from across the property, live music, and tastings. Sample listing, real schedule coming soon.' },
+      27: { title: 'Live Music Weekend', time: 'Thu · 7pm – 10pm', desc: 'Local musicians on the deck. Sample listing, real schedule coming soon.' }
+    };
+
+    let calDate = new Date();
+    calDate.setDate(1);
+
+    const monthLabel = document.getElementById('cal-month-label');
+    const grid = document.getElementById('cal-grid');
+    const detail = document.getElementById('cal-detail');
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    function renderCalendar() {
+      const year = calDate.getFullYear();
+      const month = calDate.getMonth();
+      monthLabel.textContent = `${monthNames[month]} ${year}`;
+      grid.innerHTML = '';
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const today = new Date();
+      const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+
+      for (let i = 0; i < firstDay; i++) {
+        const blank = document.createElement('div');
+        blank.className = 'cal-day blank';
+        grid.appendChild(blank);
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-day';
+        cell.textContent = String(d);
+        if (isCurrentMonth && d === today.getDate()) cell.classList.add('today');
+        if (sampleEvents[d]) {
+          cell.classList.add('has-event');
+          cell.setAttribute('tabindex', '0');
+          cell.setAttribute('role', 'button');
+          cell.setAttribute('aria-label', `${monthNames[month]} ${d}, ${sampleEvents[d].title}`);
+          cell.addEventListener('click', () => showEvent(d, cell));
+          cell.addEventListener('keypress', (e) => { if (e.key === 'Enter') showEvent(d, cell); });
+        }
+        grid.appendChild(cell);
+      }
+    }
+
+    function showEvent(day, cell) {
+      document.querySelectorAll('.cal-day.active').forEach(el => el.classList.remove('active'));
+      cell.classList.add('active');
+      const ev = sampleEvents[day];
+      detail.innerHTML = `
+        <div>
+          <p class="cal-event-title">${ev.title}</p>
+          <p class="cal-event-meta">${ev.time}</p>
+          <p class="cal-event-desc">${ev.desc}</p>
+        </div>`;
+    }
+
+    document.getElementById('cal-prev').addEventListener('click', () => {
+      calDate.setMonth(calDate.getMonth() - 1);
+      renderCalendar();
+    });
+    document.getElementById('cal-next').addEventListener('click', () => {
+      calDate.setMonth(calDate.getMonth() + 1);
+      renderCalendar();
+    });
+
+    renderCalendar();
+  </script>
+</body>
+</html>
