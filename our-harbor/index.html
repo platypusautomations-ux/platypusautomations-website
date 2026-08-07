@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Harbor | Community for Teens</title>
+<meta name="description" content="Our Harbor is a community outreach non-profit for teens. Echo is our teen program: friend groups, mentoring, tutoring, and events. One act. Endless impact.">
+<link rel="canonical" href="https://platypusautomations.com/our-harbor/">
+
+<meta property="og:title" content="Our Harbor | Community for Teens">
+<meta property="og:description" content="A non-profit community outreach program for teens. Friend groups, mentoring, tutoring, and events. One act. Endless impact.">
+<meta property="og:url" content="https://platypusautomations.com/our-harbor/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "Our Harbor",
+  "description": "A community outreach non-profit for teens, offering mentoring, tutoring, friend groups, and events. Echo is the teen program of Our Harbor.",
+  "url": "https://platypusautomations.com/our-harbor/",
+  "slogan": "One act. Endless impact."
+}
+</script>
+
+<style>
+  @font-face {
+    font-family: 'Barlow';
+    src: url('../fonts/Barlow-400-normal.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Barlow';
+    src: url('../fonts/Barlow-500-normal.woff2') format('woff2');
+    font-weight: 500; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Barlow';
+    src: url('../fonts/Barlow-600-normal.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Instrument Serif';
+    src: url('../fonts/Instrument_Serif-400-italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Instrument Serif';
+    src: url('../fonts/Instrument_Serif-400-normal.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+
+  :root {
+    --oh-navy: #0b2545;
+    --oh-navy-2: #123a63;
+    --oh-navy-3: #0e2f52;
+    --oh-gold: #d4a24c;
+    --oh-gold-light: #e8c383;
+    --oh-cream: #f7f3ea;
+    --oh-text: #16283c;
+    --oh-text-soft: #4a5b70;
+
+    --echo-bg: #0c0c0c;
+    --echo-bg-2: #161616;
+    --echo-lime: #b6ff3c;
+    --echo-white: #f2f2f2;
+    --echo-gray: #9a9a9a;
+
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--oh-text);
+    background: var(--oh-cream);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  section { scroll-margin-top: 64px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(11,37,69,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,162,76,0.25);
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif); font-style: italic; font-size: 24px;
+    color: var(--oh-cream); letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex; gap: 28px; align-items: center;
+  }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: rgba(247,243,234,0.75);
+    transition: color 0.2s; padding: 10px 4px; display: inline-block;
+  }
+  .nav-links a:hover { color: var(--oh-gold-light); }
+  .nav-donate {
+    background: var(--oh-gold); color: var(--oh-navy) !important;
+    padding: 9px 18px; border-radius: 999px; font-weight: 600 !important;
+  }
+  .nav-toggle { display: none; }
+  @media (max-width: 720px) {
+    .nav-links a:not(.nav-donate) { display: none; }
+    .nav-logo { font-size: 21px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, var(--oh-navy) 0%, var(--oh-navy-2) 55%, var(--oh-navy-3) 100%);
+    color: var(--oh-cream);
+    padding: 80px 0 60px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; opacity: 0.5;
+    background-image: radial-gradient(circle at 20% 20%, rgba(212,162,76,0.15), transparent 45%),
+                       radial-gradient(circle at 85% 75%, rgba(212,162,76,0.12), transparent 40%);
+  }
+  .hero-inner { position: relative; text-align: center; }
+  .hero-eyebrow {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--oh-gold-light); margin-bottom: 18px; font-weight: 600;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(48px, 9vw, 92px); line-height: 1.02; letter-spacing: 0.01em;
+  }
+  .hero-tagline {
+    font-size: clamp(16px, 2.4vw, 20px); font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--oh-gold-light); margin-top: 18px;
+  }
+  .hero-blurb {
+    max-width: 560px; margin: 22px auto 0; font-size: 17px; line-height: 1.6;
+    color: rgba(247,243,234,0.82);
+  }
+  .wave-divider { display: block; width: 100%; line-height: 0; }
+  .wave-divider svg { width: 100%; height: auto; display: block; }
+
+  /* ---------- LANDING TABS ---------- */
+  .tabs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    max-width: 640px; margin: 44px auto 0; position: relative;
+  }
+  @media (min-width: 640px) {
+    .tabs { grid-template-columns: repeat(4, 1fr); max-width: 900px; }
+  }
+  .tab-card {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; padding: 30px 14px; border-radius: 16px;
+    background: rgba(247,243,234,0.06);
+    border: 1px solid rgba(212,162,76,0.35);
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    min-height: 132px;
+  }
+  .tab-card:hover {
+    background: rgba(212,162,76,0.14); border-color: var(--oh-gold);
+    transform: translateY(-3px);
+  }
+  .tab-card svg { width: 30px; height: 30px; stroke: var(--oh-gold-light); }
+  .tab-card span {
+    font-size: 15px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--oh-cream);
+  }
+
+  /* ---------- GENERIC OH SECTION ---------- */
+  .oh-section { background: var(--oh-cream); padding: 80px 0; }
+  .oh-section.alt { background: #efe8d8; }
+  .section-label {
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #8a6317; font-weight: 700; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(32px, 5vw, 48px); color: var(--oh-navy); margin-bottom: 20px;
+  }
+  .section-copy { font-size: 17px; line-height: 1.7; color: var(--oh-text-soft); max-width: 640px; }
+
+  .placeholder-note {
+    display: inline-block; margin-top: 14px; padding: 8px 14px;
+    border: 1px dashed #b98a2f; border-radius: 8px;
+    font-size: 13px; color: #6b4a10; background: rgba(212,162,76,0.08);
+  }
+
+  /* Programs grid */
+  .programs-grid {
+    display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 34px;
+  }
+  @media (min-width: 640px) { .programs-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 960px) { .programs-grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .program-card {
+    background: #fff; border-radius: 14px; padding: 22px;
+    border: 1px solid rgba(11,37,69,0.08);
+    box-shadow: 0 2px 10px rgba(11,37,69,0.04);
+  }
+  .program-card h3 {
+    font-size: 16px; color: var(--oh-navy); margin-bottom: 6px; font-weight: 600;
+  }
+  .program-card p { font-size: 14px; color: var(--oh-text-soft); line-height: 1.55; }
+
+  /* Trust / stat bar */
+  .trust-bar {
+    background: var(--oh-navy); color: var(--oh-cream); padding: 26px 0;
+    text-align: center; font-size: 15px; letter-spacing: 0.03em;
+  }
+  .trust-bar strong { color: var(--oh-gold-light); }
+
+  /* ---------- ECHO (TEENS) SECTION ---------- */
+  .echo-section {
+    background: var(--echo-bg); color: var(--echo-white); padding: 90px 0 70px;
+    position: relative; overflow: hidden;
+  }
+  .echo-section::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 15% 10%, rgba(182,255,60,0.08), transparent 40%),
+                       radial-gradient(circle at 90% 80%, rgba(182,255,60,0.06), transparent 45%);
+  }
+  .echo-inner { position: relative; text-align: center; }
+  .echo-eyebrow {
+    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--echo-lime); font-weight: 700; margin-bottom: 14px;
+  }
+  .echo-title {
+    font-family: var(--sans); font-weight: 600; font-style: italic;
+    font-size: clamp(52px, 11vw, 110px); letter-spacing: -0.01em; line-height: 0.95;
+    text-transform: uppercase;
+  }
+  .echo-tagline {
+    margin-top: 14px; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--echo-gray);
+  }
+  .echo-tagline b { color: var(--echo-lime); }
+  .echo-sub { color: rgba(242,242,242,0.5); font-size: 13px; margin-top: 6px; }
+
+  .echo-icons {
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 26px;
+    max-width: 720px; margin: 50px auto 0;
+  }
+  @media (min-width: 720px) { .echo-icons { grid-template-columns: repeat(5,1fr); } }
+  .echo-icon { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .echo-icon svg { width: 30px; height: 30px; stroke: var(--echo-lime); }
+  .echo-icon span { font-size: 12px; line-height: 1.4; color: var(--echo-gray); }
+  .echo-icon b { color: var(--echo-white); display: block; font-weight: 600; }
+
+  .whats-happening { margin-top: 70px; text-align: left; }
+  .wh-header { text-align: center; margin-bottom: 30px; }
+  .wh-header h2 {
+    font-family: var(--sans); font-weight: 600; text-transform: uppercase;
+    font-size: clamp(24px, 4vw, 32px); letter-spacing: 0.02em;
+  }
+  .wh-header p { color: var(--echo-gray); font-size: 14px; margin-top: 8px; }
+
+  #events-list {
+    display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 780px; margin: 0 auto;
+  }
+  @media (min-width: 700px) { #events-list { grid-template-columns: 1fr 1fr; } }
+  .event-card {
+    background: var(--echo-bg-2); border: 1px solid rgba(182,255,60,0.18);
+    border-radius: 14px; padding: 20px; position: relative;
+  }
+  .event-sample-tag {
+    position: absolute; top: 14px; right: 14px; font-size: 10px; letter-spacing: 0.08em;
+    color: var(--echo-bg); background: var(--echo-lime); padding: 3px 8px; border-radius: 999px;
+    font-weight: 700;
+  }
+  .event-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; padding-right: 60px; }
+  .event-meta { font-size: 13px; color: var(--echo-lime); margin-bottom: 8px; letter-spacing: 0.03em; }
+  .event-blurb { font-size: 14px; color: var(--echo-gray); line-height: 1.5; margin-bottom: 12px; }
+  .event-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .event-tags span {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+    border: 1px solid rgba(242,242,242,0.2); color: var(--echo-gray);
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .events-empty { color: var(--echo-gray); text-align: center; padding: 30px 0; }
+
+  .echo-cta {
+    text-align: center; margin-top: 60px; padding-top: 50px;
+    border-top: 1px solid rgba(242,242,242,0.1);
+  }
+  .echo-cta h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+  .echo-cta p { color: var(--echo-gray); font-size: 14px; margin-bottom: 20px; }
+  .btn-lime {
+    display: inline-block; background: var(--echo-lime); color: var(--echo-bg);
+    font-weight: 700; padding: 13px 30px; border-radius: 999px; font-size: 14px;
+    letter-spacing: 0.03em; text-transform: uppercase; border: none; cursor: pointer;
+  }
+
+  /* ---------- FORM (inert preview) ---------- */
+  .preview-form {
+    max-width: 480px; margin: 26px auto 0; text-align: left;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 24px;
+  }
+  .oh-section .preview-form {
+    background: #fff; border: 1px solid rgba(11,37,69,0.1);
+  }
+  .preview-form label {
+    display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 6px; opacity: 0.7;
+  }
+  .preview-form input, .preview-form textarea {
+    width: 100%; padding: 11px 13px; margin-bottom: 14px; border-radius: 8px;
+    border: 1px solid rgba(128,128,128,0.3); font-family: var(--sans); font-size: 14px;
+    background: transparent; color: inherit;
+  }
+  .form-note { font-size: 12px; color: var(--echo-gray); margin-top: 10px; text-align: center; }
+  .oh-section .form-note { color: var(--oh-text-soft); }
+
+  /* ---------- SPONSORS ---------- */
+  .donate-box {
+    background: linear-gradient(135deg, var(--oh-navy), var(--oh-navy-2));
+    color: var(--oh-cream); border-radius: 20px; padding: 40px; margin-top: 34px;
+    text-align: center;
+  }
+  .donate-box .status-pill {
+    display: inline-block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    background: rgba(212,162,76,0.18); color: var(--oh-gold-light);
+    border: 1px solid rgba(212,162,76,0.4); padding: 6px 14px; border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .btn-gold {
+    display: inline-block; background: var(--oh-gold); color: var(--oh-navy);
+    font-weight: 700; padding: 13px 30px; border-radius: 999px; font-size: 14px;
+    letter-spacing: 0.03em; text-transform: uppercase; margin-top: 18px;
+    border: none; cursor: pointer;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--oh-navy); color: rgba(247,243,234,0.7); padding: 50px 0 26px; }
+  .footer-grid { display: flex; flex-wrap: wrap; gap: 34px; justify-content: space-between; margin-bottom: 30px; }
+  .footer-brand { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--oh-cream); }
+  .footer-echo-note { font-size: 12px; color: var(--echo-lime); margin-top: 6px; letter-spacing: 0.04em; }
+  .footer-col h4 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--oh-gold-light); margin-bottom: 10px;
+  }
+  .footer-col a, .footer-col span { display: block; font-size: 14px; margin-bottom: 6px; color: rgba(247,243,234,0.65); }
+  .footer-bottom {
+    border-top: 1px solid rgba(247,243,234,0.12); padding-top: 20px;
+    font-size: 12px; color: rgba(247,243,234,0.62); text-align: center;
+  }
+  .footer-built { margin-top: 8px; font-size: 11px; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
+  .footer-built a { color: rgba(255,255,255,0.28); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+  .footer-built a:hover { color: rgba(255,255,255,0.7); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">Our Harbor</a>
+    <div class="nav-links">
+      <a href="#teens">Teens</a>
+      <a href="#parents">Parents</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#about">About Us</a>
+      <a href="#sponsors" class="nav-donate">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">A Community Outreach Program For Teens</div>
+    <h1>Our Harbor</h1>
+    <div class="hero-tagline">One Act. Endless Impact.</div>
+    <p class="hero-blurb">Friend groups, mentoring, tutoring, and real events for teens who need a place to belong. Echo is our program built by teens' side, for teens.</p>
+
+    <div class="tabs">
+      <a class="tab-card" href="#teens">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.2L21 9l-5 4.4L17.4 20 12 16.6 6.6 20 8 13.4 3 9l6.4-.8z"/></svg>
+        <span>Teens</span>
+      </a>
+      <a class="tab-card" href="#parents">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.7C.8 8.4 2.7 5 6 5c2 0 3.3 1 4 2 0.7-1 2-2 4-2 3.3 0 5.2 3.4 3.5 7.3C19 16.65 12 21 12 21z"/></svg>
+        <span>Parents</span>
+      </a>
+      <a class="tab-card" href="#sponsors">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M8.5 9.5c0-1.4 1.5-2.5 3.5-2.5s3.5 1 3.5 2.2c0 3-7 1.6-7 4.6 0 1.3 1.6 2.2 3.5 2.2s3.5-1 3.5-2.4"/></svg>
+        <span>Sponsors</span>
+      </a>
+      <a class="tab-card" href="#about">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a13 13 0 000 18M12 3a13 13 0 010 18M3 12h18"/></svg>
+        <span>About Us</span>
+      </a>
+    </div>
+  </div>
+</header>
+<div class="wave-divider" style="background:var(--oh-navy-3)">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#f7f3ea"/></svg>
+</div>
+
+<!-- ===================== TEENS / ECHO ===================== -->
+<section class="echo-section" id="teens">
+  <div class="wrap echo-inner">
+    <div class="echo-eyebrow">A Program of Our Harbor</div>
+    <h2 class="echo-title">Echo</h2>
+    <div class="echo-tagline"><b>One Act.</b> Endless Impact.</div>
+    <div class="echo-sub">This is your space. Made for you, not just about you.</div>
+
+    <div class="echo-icons">
+      <div class="echo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l4 3 5-7 5 7 4-3-2 11H5z"/></svg>
+        <span><b>You matter.</b>You belong.</span>
+      </div>
+      <div class="echo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2l2-6 3 14 2-10 2 6h5"/></svg>
+        <span><b>Your voice.</b>Your impact.</span>
+      </div>
+      <div class="echo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a13 13 0 000 18M12 3a13 13 0 010 18M3 12h18"/></svg>
+        <span><b>Our community.</b>Our world.</span>
+      </div>
+      <div class="echo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.7C.8 8.4 2.7 5 6 5c2 0 3.3 1 4 2 0.7-1 2-2 4-2 3.3 0 5.2 3.4 3.5 7.3C19 16.65 12 21 12 21z"/></svg>
+        <span><b>Love in action.</b>Every day.</span>
+      </div>
+      <div class="echo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M2.5 19c.5-3 2.7-5 5.5-5s5 2 5.5 5M11.5 19c.5-3 2.7-5 5.5-5s5 2 5.5 5"/></svg>
+        <span><b>We rise together.</b>We echo.</span>
+      </div>
+    </div>
+
+    <div class="whats-happening">
+      <div class="wh-header">
+        <h2>What's Happening</h2>
+        <p>Everything below updates as Our Harbor adds it, check back often.</p>
+      </div>
+      <div id="events-list"><p class="events-empty">Loading&hellip;</p></div>
+    </div>
+
+    <div class="echo-cta">
+      <h3>Want in?</h3>
+      <p>Fill this out and Our Harbor will reach out. This form is a preview for now, use the contact info below until it's fully wired up.</p>
+      <form class="preview-form" onsubmit="return false;">
+        <label>First Name</label>
+        <input type="text" placeholder="Your name">
+        <label>Phone or Email</label>
+        <input type="text" placeholder="Best way to reach you">
+        <label>What are you interested in?</label>
+        <textarea rows="3" placeholder="Basketball nights, tutoring, Deaf Friends, mentoring..."></textarea>
+        <button type="button" class="btn-lime" style="width:100%;">Send</button>
+      </form>
+      <p class="form-note">Preview form, not live yet. Real contact info goes here once Our Harbor has a dedicated phone/email.</p>
+    </div>
+  </div>
+</section>
+<div class="wave-divider" style="background:var(--echo-bg)">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,-10 900,70 1200,30 L1200,60 L0,60 Z" fill="#f7f3ea"/></svg>
+</div>
+
+<!-- ===================== PARENTS ===================== -->
+<section class="oh-section" id="parents">
+  <div class="wrap">
+    <div class="section-label">For Parents & Guardians</div>
+    <h2 class="section-title">A place you can trust with the people you love most</h2>
+    <p class="section-copy">Our Harbor is built around mentoring, tutoring, and community, not just activities to fill time. Every program exists to help a teen feel seen, supported, and pointed toward something good. Echo is the teen-facing side of Our Harbor: the same organization, a space that speaks their language.</p>
+    <span class="placeholder-note">Placeholder: add specifics here once set, drop-off/pick-up process, supervision, permission slips, how to sign your teen up.</span>
+
+    <div class="programs-grid">
+      <div class="program-card"><h3>Deaf Friends</h3><p>Library-based meetups building real friend groups for deaf teens.</p></div>
+      <div class="program-card"><h3>Mentoring & Self-Esteem</h3><p>For teens and foster kids, focused on character and confidence.</p></div>
+      <div class="program-card"><h3>Tutoring</h3><p>Free help for low-income students and kids with dyslexia.</p></div>
+      <div class="program-card"><h3>Mental Health Support</h3><p>Real conversations about mental health, friendships, and character.</p></div>
+      <div class="program-card"><h3>Bible Study</h3><p>Faith-based community for teens who want it.</p></div>
+      <div class="program-card"><h3>Excursions</h3><p>Beach days, amusement parks, and fishing trips for underprivileged and foster teens.</p></div>
+      <div class="program-card"><h3>Advocacy</h3><p>Working with lawmakers on fairer Driver's Ed access for lower-income teens.</p></div>
+      <div class="program-card"><h3>Environmental & Animals</h3><p>Hands-on projects around environmental issues and animal care.</p></div>
+      <div class="program-card"><h3>Social Events</h3><p>Basketball nights, food, music, just a place to come through.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  Serving teens through <strong>Our Harbor</strong> &middot; 501(c)(3) status <strong>pending</strong>
+</div>
+
+<!-- ===================== SPONSORS ===================== -->
+<section class="oh-section alt" id="sponsors">
+  <div class="wrap" style="text-align:center;">
+    <div class="section-label">For Sponsors & Donors</div>
+    <h2 class="section-title">Small chump change. Major changes in a teen's life.</h2>
+    <p class="section-copy" style="margin:0 auto;">Every dollar goes toward the programs above: mentoring, tutoring, events, and excursions for teens who need them most.</p>
+
+    <div class="donate-box">
+      <span class="status-pill">501(c)(3) Approval Pending</span>
+      <p style="max-width:420px;margin:0 auto;line-height:1.6;">Our Harbor's non-profit paperwork is filed and awaiting approval. Donations aren't being processed yet, check back soon or reach out directly to get involved early.</p>
+      <button type="button" class="btn-gold">Donate (Coming Soon)</button>
+      <p class="form-note" style="color:rgba(247,243,234,0.55);">Platform still being decided, built to feel simple and trustworthy for donors of every age.</p>
+    </div>
+    <span class="placeholder-note">Placeholder: sponsorship tiers/amounts go here once Becky decides on them. Not inventing dollar figures.</span>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="oh-section" id="about">
+  <div class="wrap">
+    <div class="section-label">About Us</div>
+    <h2 class="section-title">Why Our Harbor exists</h2>
+    <p class="section-copy">Our Harbor is a community outreach non-profit built for teens, started by Becky. It brings together mentoring, tutoring, faith, advocacy, and just plain fun, all under one roof, so teens have a real place to land. Echo is the name of the teen program itself: the part of Our Harbor built to feel like it belongs to them.</p>
+    <span class="placeholder-note">Placeholder: add Becky's founder story/photo, city or service area, and official contact info here.</span>
+
+    <div class="programs-grid" style="margin-top:40px;">
+      <div class="program-card"><h3>Our Mission</h3><p>Give teens, especially foster kids and low-income kids, mentorship, community, and real opportunities.</p></div>
+      <div class="program-card"><h3>Echo</h3><p>The teen-facing program of Our Harbor. Its own name, its own identity, still part of the same mission.</p></div>
+      <div class="program-card"><h3>Get Involved</h3><p>Volunteer, mentor, sponsor, or just show up Friday night. There's a place for everyone.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Our Harbor</div>
+        <div class="footer-echo-note">ECHO &middot; a program of Our Harbor</div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#teens">Teens</a>
+        <a href="#parents">Parents</a>
+        <a href="#sponsors">Sponsors</a>
+        <a href="#about">About Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <span>Phone/email pending, add once set up</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Our Harbor. All rights reserved.
+      <div class="footer-built">
+        SITE BUILT BY <a href="https://platypusautomations.com" target="_blank">PLATYPUS AUTOMATIONS</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str == null ? '' : String(str);
+    return d.innerHTML;
+  }
+
+  async function loadEvents() {
+    const container = document.getElementById('events-list');
+    try {
+      const res = await fetch('./events.json', { cache: 'no-store' });
+      const data = await res.json();
+      if (!data.events || !data.events.length) {
+        container.innerHTML = '<p class="events-empty">Nothing scheduled yet, check back soon.</p>';
+        return;
+      }
+      container.innerHTML = data.events.map(function (ev) {
+        var tags = (ev.tags || []).map(function (t) {
+          return '<span>' + escapeHtml(t) + '</span>';
+        }).join('');
+        return '' +
+          '<div class="event-card">' +
+            (ev.sample ? '<span class="event-sample-tag">Sample</span>' : '') +
+            '<h3>' + escapeHtml(ev.title) + '</h3>' +
+            '<p class="event-meta">' + escapeHtml(ev.day) + ' &middot; ' + escapeHtml(ev.time) + '</p>' +
+            '<p class="event-blurb">' + escapeHtml(ev.blurb) + '</p>' +
+            '<div class="event-tags">' + tags + '</div>' +
+          '</div>';
+      }).join('');
+    } catch (e) {
+      container.innerHTML = '<p class="events-empty">Couldn\'t load events right now.</p>';
+    }
+  }
+  loadEvents();
+</script>
+
+</body>
+</html>

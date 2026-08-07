@@ -19,6 +19,8 @@
 !elderly-care-directory/data.json
 !garage-door-directory/data.json
 !chatbots/knowledge-bases/*.json
+!our-harbor/*.html
+!our-harbor/*.json
 
 # qualitySC — full-res source assets (commit only img/web/)
 qualitySC/img/fromRichard/

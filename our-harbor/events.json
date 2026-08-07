@@ -1,0 +1,32 @@
+{
+  "note": "SAMPLE DATA - replace with real events before this site goes live to the public. This file is fetched by index.html to build the What's Happening list. Swap this static file for a published Google Sheet CSV feed once Becky wants to self-edit without a code change.",
+  "events": [
+    {
+      "id": "sample-1",
+      "title": "Friday Night: Come Through",
+      "day": "Friday",
+      "time": "7:00 PM",
+      "tags": ["Food", "Music", "Basketball"],
+      "blurb": "Open gym, food, music. No sign-up needed, just show up.",
+      "sample": true
+    },
+    {
+      "id": "sample-2",
+      "title": "Deaf Friends Meetup",
+      "day": "TBD",
+      "time": "TBD",
+      "tags": ["Library", "New Friends"],
+      "blurb": "Building friend groups for deaf teens at the library.",
+      "sample": true
+    },
+    {
+      "id": "sample-3",
+      "title": "Tutoring Hours",
+      "day": "TBD",
+      "time": "TBD",
+      "tags": ["Homework Help", "Dyslexia-Friendly"],
+      "blurb": "Free tutoring, low-income and dyslexic students welcome.",
+      "sample": true
+    }
+  ]
+}
