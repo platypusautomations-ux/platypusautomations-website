@@ -11,6 +11,7 @@
 <meta property="og:description" content="A non-profit community outreach program for teens. Friend groups, mentoring, tutoring, and events. One act. Endless impact.">
 <meta property="og:url" content="https://platypusautomations.com/our-harbor/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://platypusautomations.com/our-harbor/img/hero-brand.webp">
 <meta name="twitter:card" content="summary_large_image">
 
 <script type="application/ld+json">
@@ -152,6 +153,14 @@
   .wave-divider { display: block; width: 100%; line-height: 0; }
   .wave-divider svg { width: 100%; height: auto; display: block; }
 
+  /* ---------- HERO ART ---------- */
+  .hero-art {
+    max-width: 460px; margin: 38px auto 0;
+    background: var(--oh-cream); border-radius: 20px; padding: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+  .hero-art img { border-radius: 10px; width: 100%; }
+
   /* ---------- LANDING TABS ---------- */
   .tabs {
     display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
@@ -213,6 +222,12 @@
   }
   .program-card p { font-size: 14px; color: var(--oh-text-soft); line-height: 1.55; }
 
+  .about-art {
+    max-width: 420px; margin: 30px 0 0; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 12px 30px rgba(11,37,69,0.12);
+  }
+  .about-art img { width: 100%; display: block; }
+
   /* Trust / stat bar */
   .trust-bar {
     background: var(--oh-navy); color: var(--oh-cream); padding: 26px 0;
@@ -257,6 +272,16 @@
   .echo-icon span { font-size: 12px; line-height: 1.4; color: var(--echo-gray); }
   .echo-icon b { color: var(--echo-white); display: block; font-weight: 600; }
 
+  .echo-gear {
+    max-width: 640px; margin: 56px auto 0; border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(182,255,60,0.18);
+  }
+  .echo-gear img { width: 100%; display: block; }
+  .echo-gear-caption {
+    background: var(--echo-bg-2); font-size: 12px; color: var(--echo-gray);
+    text-align: center; padding: 10px; letter-spacing: 0.03em;
+  }
+
   .whats-happening { margin-top: 70px; text-align: left; }
   .wh-header { text-align: center; margin-bottom: 30px; }
   .wh-header h2 {
@@ -293,6 +318,10 @@
     text-align: center; margin-top: 60px; padding-top: 50px;
     border-top: 1px solid rgba(242,242,242,0.1);
   }
+  .echo-crew-art {
+    max-width: 260px; margin: 0 auto 26px; border-radius: 16px; overflow: hidden;
+  }
+  .echo-crew-art img { width: 100%; display: block; }
   .echo-cta h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
   .echo-cta p { color: var(--echo-gray); font-size: 14px; margin-bottom: 20px; }
   .btn-lime {
@@ -382,6 +411,10 @@
     <div class="hero-tagline">One Act. Endless Impact.</div>
     <p class="hero-blurb">Friend groups, mentoring, tutoring, and real events for teens who need a place to belong. Echo is our program built by teens' side, for teens.</p>
 
+    <div class="hero-art">
+      <img src="img/hero-brand.webp" alt="Our Harbor brand illustration, One Act Endless Impact" loading="eager">
+    </div>
+
     <div class="tabs">
       <a class="tab-card" href="#teens">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.2L21 9l-5 4.4L17.4 20 12 16.6 6.6 20 8 13.4 3 9l6.4-.8z"/></svg>
@@ -437,6 +470,11 @@
       </div>
     </div>
 
+    <div class="echo-gear">
+      <img src="img/teens-gear.webp" alt="Echo hoodie design, One Act Endless Impact" loading="lazy">
+      <p class="echo-gear-caption">Echo merch concept, still in the works.</p>
+    </div>
+
     <div class="whats-happening">
       <div class="wh-header">
         <h2>What's Happening</h2>
@@ -446,6 +484,7 @@
     </div>
 
     <div class="echo-cta">
+      <div class="echo-crew-art"><img src="img/teens-crew.webp" alt="Group of teens laughing together on a dock" loading="lazy"></div>
       <h3>Want in?</h3>
       <p>Fill this out and Our Harbor will reach out. This form is a preview for now, use the contact info below until it's fully wired up.</p>
       <form class="preview-form" onsubmit="return false;">
@@ -515,6 +554,10 @@
     <h2 class="section-title">Why Our Harbor exists</h2>
     <p class="section-copy">Our Harbor is a community outreach non-profit built for teens, started by Becky. It brings together mentoring, tutoring, faith, advocacy, and just plain fun, all under one roof, so teens have a real place to land. Echo is the name of the teen program itself: the part of Our Harbor built to feel like it belongs to them.</p>
     <span class="placeholder-note">Placeholder: add Becky's founder story/photo, city or service area, and official contact info here.</span>
+
+    <div class="about-art">
+      <img src="img/about-crew.webp" alt="Teens laughing together on a dock with a dog" loading="lazy">
+    </div>
 
     <div class="programs-grid" style="margin-top:40px;">
       <div class="program-card"><h3>Our Mission</h3><p>Give teens, especially foster kids and low-income kids, mentorship, community, and real opportunities.</p></div>

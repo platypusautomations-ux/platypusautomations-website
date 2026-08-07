@@ -22,6 +22,11 @@
 !our-harbor/*.html
 !our-harbor/*.json
 
+# our-harbor — raw AI-generated source mockups (commit only the optimized webp crops)
+our-harbor/img/brandlogo.png
+our-harbor/img/echo.png
+our-harbor/img/teenlogo.png
+
 # qualitySC — full-res source assets (commit only img/web/)
 qualitySC/img/fromRichard/
 qualitySC/img/dronevideonoaudio.mp4
