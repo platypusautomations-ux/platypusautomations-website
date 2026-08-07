@@ -112,6 +112,14 @@
       color: #fff;
     }
     .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5,13,24,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 28px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,0.75); transition: color 0.3s; }
+    .mobile-nav a:hover { color: #E8651A; }
+    .mobile-nav .m-cta { margin-top: 8px; background: #E8651A; color: #fff; padding: 12px 32px; border-radius: 999px; font-size: 1rem; font-weight: 500; }
+    .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.2rem; cursor: pointer; line-height: 1; }
 
     /* ── BREADCRUMB ──────────────────────────────── */
     .breadcrumb {
@@ -465,8 +473,8 @@
     /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 768px) {
       .container { padding: 0 24px; }
-      .header-inner { flex-direction: column; gap: 20px; }
-      .main-nav { flex-direction: column; gap: 16px; }
+      .main-nav, .header-cta { display: none; }
+      .hamburger { display: flex; }
       .content-grid { grid-template-columns: 1fr; gap: 32px; }
       .quote-inner { grid-template-columns: 1fr; }
       .related-grid { grid-template-columns: 1fr; }
@@ -493,23 +501,38 @@
         <li><a href="ai-text-screening.html">AI Text Screening</a></li>
         <li><a href="voice-agent.html">Voice Agent</a></li>
         <li><a href="ai-knowledge-base-training.html">AI Knowledge Base Training</a></li>
-        <li><a href="index.html
         <li><a href="index.html#contact">Contact</a></li>
       </ul></nav>
       <div class="header-cta">
         <a href="tel:7577172707" class="phone-link">(757) 717-2707</a>
         <a href="index.html#contact" class="btn btn-primary">Get Started</a>
       </div>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+  <a href="website-gbp.html" onclick="closeMobileNav()">Website & GBP</a>
+  <a href="google-reviews.html" onclick="closeMobileNav()">Google Reviews</a>
+  <a href="missed-call-textback.html" onclick="closeMobileNav()">Missed Call Text-Back</a>
+  <a href="ai-text-screening.html" onclick="closeMobileNav()">AI Text Screening</a>
+  <a href="voice-agent.html" onclick="closeMobileNav()">Voice Agent</a>
+  <a href="ai-knowledge-base-training.html" onclick="closeMobileNav()">AI Knowledge Base Training</a>
+  <a href="index.html#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="tel:7577172707" onclick="closeMobileNav()">(757) 717-2707</a>
+  <a href="index.html#contact" class="m-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
 
 <nav class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
       <a href="index.html">Home</a><span>›</span><span>AI Text Screening</span>
-    </a>
-  </a>
+    </div>
+  </div>
 </nav>
 
 <section class="page-hero">
@@ -666,6 +689,19 @@
 </footer>
 
 <script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('mobileClose').addEventListener('click', closeMobileNav);
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+  });
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
   // Phone formatting
   document.querySelectorAll('input[type="tel"]').forEach(input => {
     input.addEventListener('input', (e) => {
