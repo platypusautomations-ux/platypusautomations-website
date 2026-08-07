@@ -260,6 +260,20 @@ nav {
   display: flex;
   align-items: center;
 }
+.mobile-nav .m-cta-teal {
+  margin-bottom: 8px;
+  background: rgba(0,160,160,0.12);
+  border: 1.5px solid var(--teal-bright);
+  color: var(--teal-bright) !important;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 1.05rem; font-weight: 500;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  transition: all var(--trans-fast);
+}
+.mobile-nav .m-cta-teal:hover { background: var(--teal-bright); color: #fff !important; }
 .mobile-close {
   position: absolute;
   top: 20px; right: 24px;
@@ -644,6 +658,7 @@ footer {
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
   <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+  <a href="/lead-audit.html" class="m-cta-teal" onclick="closeMobileNav()">Free Lead Audit</a>
   <a href="/" onclick="closeMobileNav()">Home</a>
   <a href="/#services" onclick="closeMobileNav()">Services</a>
   <a href="/website-gbp.html" onclick="closeMobileNav()">Website & GBP</a>

@@ -67,6 +67,8 @@
     .mobile-nav a { font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,0.75); transition: color 0.3s; }
     .mobile-nav a:hover { color: #E8651A; }
     .mobile-nav .m-cta { margin-top: 8px; background: #E8651A; color: #fff; padding: 12px 32px; border-radius: 999px; font-size: 1rem; font-weight: 500; }
+    .mobile-nav .m-cta-teal { margin-bottom: 8px; background: rgba(0,160,160,0.12); border: 1.5px solid #00a0a0; color: #00a0a0 !important; padding: 10px 28px; border-radius: 999px; font-size: 1.05rem; font-weight: 500; transition: all 0.3s; }
+    .mobile-nav .m-cta-teal:hover { background: #00a0a0; color: #fff !important; }
     .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.2rem; cursor: pointer; line-height: 1; }
     .breadcrumb { padding: 16px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
     .breadcrumb-inner { display: flex; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.52); }
@@ -179,6 +181,7 @@
 
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
   <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+  <a href="lead-audit.html" class="m-cta-teal" onclick="closeMobileNav()">Free Lead Audit</a>
   <a href="website-gbp.html" onclick="closeMobileNav()">Website & GBP</a>
   <a href="google-reviews.html" onclick="closeMobileNav()">Google Reviews</a>
   <a href="missed-call-textback.html" onclick="closeMobileNav()">Missed Call Text-Back</a>
