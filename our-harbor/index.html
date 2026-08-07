@@ -114,9 +114,40 @@
     background: var(--oh-gold); color: var(--oh-navy) !important;
     padding: 9px 18px; border-radius: 999px; font-weight: 600 !important;
   }
-  .nav-toggle { display: none; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 6px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--oh-cream); border-radius: 2px;
+  }
+
+  .mobile-nav {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(11,37,69,0.98); backdrop-filter: blur(20px);
+    flex-direction: column; justify-content: center; align-items: center; gap: 30px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    font-size: 22px; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: rgba(247,243,234,0.85);
+  }
+  .mobile-nav a:hover { color: var(--oh-gold-light); }
+  .mobile-nav .m-donate {
+    margin-top: 10px; background: var(--oh-gold); color: var(--oh-navy);
+    padding: 12px 32px; border-radius: 999px; font-weight: 700;
+  }
+  .mobile-close {
+    position: absolute; top: 20px; right: 24px;
+    background: none; border: none; color: rgba(247,243,234,0.6);
+    font-size: 34px; cursor: pointer; line-height: 1;
+  }
+
   @media (max-width: 720px) {
-    .nav-links a:not(.nav-donate) { display: none; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
     .nav-logo { font-size: 21px; }
   }
 
@@ -381,9 +412,22 @@
   .footer-built { margin-top: 8px; font-size: 11px; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
   .footer-built a { color: rgba(255,255,255,0.28); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
   .footer-built a:hover { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 720px) {
+    .footer-grid { flex-direction: column; align-items: center; text-align: center; gap: 30px; margin-bottom: 26px; }
+  }
 </style>
 </head>
 <body>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+  <a href="#teens" onclick="closeMobileNav()">Teens</a>
+  <a href="#parents" onclick="closeMobileNav()">Parents</a>
+  <a href="#sponsors" onclick="closeMobileNav()">Sponsors</a>
+  <a href="#about" onclick="closeMobileNav()">About Us</a>
+  <a href="#sponsors" class="m-donate" onclick="closeMobileNav()">Donate</a>
+</div>
 
 <nav>
   <div class="nav-inner">
@@ -395,6 +439,9 @@
       <a href="#about">About Us</a>
       <a href="#sponsors" class="nav-donate">Donate</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -619,6 +666,12 @@
     }
   }
   loadEvents();
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  function closeMobileNav() { mobileNav.classList.remove('open'); }
+  hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', closeMobileNav);
 </script>
 
 </body>
