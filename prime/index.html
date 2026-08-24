@@ -225,12 +225,13 @@ ul { list-style: none; }
 }
 .cred-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
   text-align: left;
 }
+@media (max-width: 760px) { .cred-grid { grid-template-columns: 1fr 1fr; max-width: 760px; } }
 @media (max-width: 580px) { .cred-grid { grid-template-columns: 1fr; } }
 
 .cred-card {
@@ -397,6 +398,16 @@ ul { list-style: none; }
   mix-blend-mode: screen;
   opacity: 0.6;
 }
+.footer-cert-badge {
+  display: block;
+  width: 150px;
+  height: auto;
+  margin: 24px auto 0;
+  border-radius: 4px;
+  opacity: 0.92;
+  transition: opacity var(--trans-fast);
+}
+.footer-cert-badge:hover { opacity: 1; }
 
 /* ── FOOTER ── */
 footer {
@@ -452,6 +463,15 @@ footer {
         <div class="cred-label">Business Designation</div>
         <div class="cred-value">SDVOSB</div>
         <div class="cred-sub">Service-Disabled Veteran-Owned Small Business</div>
+      </div>
+
+      <div class="cred-card liquid-glass fade-up">
+        <div class="cred-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="5"/><path d="M8.5 13L6.5 21l5.5-3 5.5 3-2-8"/></svg>
+        </div>
+        <div class="cred-label">SBSD SWaM Certification</div>
+        <div class="cred-value">Active</div>
+        <div class="cred-sub">Small, SDV-Owned &middot; Cert <code>#845633</code></div>
       </div>
 
     </div>
@@ -599,6 +619,9 @@ footer {
     <a href="mailto:tim@platypusautomations.com">tim@platypusautomations.com</a>
     &nbsp;&middot;&nbsp; Hampton Roads, Virginia
   </div>
+  <a href="https://www.sbsd.virginia.gov/directory/" target="_blank" rel="noopener">
+    <img src="swam-badge.jpg" alt="Virginia SWaM Certified — Small, Service-Disabled Veteran-Owned" class="footer-cert-badge">
+  </a>
 </footer>
 
 <script>
