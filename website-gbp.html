@@ -462,6 +462,8 @@
     .footer-links { display: flex; gap: 20px; }
     .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.3s; }
     .footer-links a:hover { color: #fff; }
+    .footer-cert-badge { display: block; height: 36px; width: auto; border-radius: 4px; opacity: 0.95; transition: opacity 0.3s; }
+    .footer-cert-badge:hover { opacity: 1; }
 
     /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 768px) {
@@ -671,16 +673,17 @@
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA<br><a href="tel:7577172707" style="color:#00a0a0;text-decoration:none;">(757) 717-2707</a> &nbsp;·&nbsp; <a href="tel:7577651210" style="color:rgba(255,255,255,0.45);text-decoration:none;">(757) 765-1210</a></a>
+      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA<br><a href="tel:7577172707" style="color:#00a0a0;text-decoration:none;">(757) 717-2707</a> &nbsp;·&nbsp; <a href="tel:7577651210" style="color:rgba(255,255,255,0.45);text-decoration:none;">(757) 765-1210</a></div>
+      <a href="https://www.sbsd.virginia.gov/directory/" target="_blank" rel="noopener"><img src="swam-badge.jpg" alt="Virginia SWaM Certified — Small, Service-Disabled Veteran-Owned" class="footer-cert-badge"></a>
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="index.html#contact">Contact</a>
         <a href="index.html#services">Services</a>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
-      </a>
-    </a>
-  </a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>

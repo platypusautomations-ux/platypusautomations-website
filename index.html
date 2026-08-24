@@ -1223,6 +1223,8 @@ footer {
 .footer-left { display: flex; align-items: center; gap: 48px; }
 .footer-left img { height: 86px; object-fit: contain; mix-blend-mode: screen; }
 .footer-loc { font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.32); }
+.footer-left img.footer-cert-badge { height: 46px; mix-blend-mode: normal; border-radius: 4px; opacity: 0.95; transition: opacity var(--trans-fast); }
+.footer-left img.footer-cert-badge:hover { opacity: 1; }
 .footer-links { display: flex; gap: 24px; align-items: center; }
 .footer-links a { font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.38); transition: color var(--trans-fast); }
 .footer-links a:hover { color: var(--orange); }
@@ -1821,6 +1823,9 @@ footer {
     <img src="pa_wordmark_transparent.webp" alt="Platypus Automations" width="600" height="335" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block;mix-blend-mode:screen">
     <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,0.7);letter-spacing:-0.3px">Platypus Automations</span>
     <span class="footer-loc">Chesapeake, VA · Serving Hampton Roads</span>
+    <a href="https://www.sbsd.virginia.gov/directory/" target="_blank" rel="noopener">
+      <img src="swam-badge.jpg" alt="Virginia SWaM Certified — Small, Service-Disabled Veteran-Owned" class="footer-cert-badge">
+    </a>
   </div>
   <div class="footer-links">
     <a href="#hero">Home</a>
