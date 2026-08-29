@@ -799,7 +799,7 @@
           <p>This is a free assessment. No credit card, no sales call attached (unless you want one). Take it, get your diagnosis, and make decisions on your timeline.</p>
 
           <h3>Two Ways to Take It</h3>
-          <p>Same six questions, same diagnosis, your choice of format. The questionnaire is a fast click-through with no typing. The <a href="/lead-audit-chatbot.html" style="color:#00a0a0;font-weight:500;">AI chatbot</a> walks you through it conversationally and lets you ask follow-up questions at the end.</p>
+          <p>Same ten questions, same diagnosis, your choice of format. The questionnaire is a fast click-through with no typing. The <a href="/lead-audit-chatbot.html" style="color:#00a0a0;font-weight:500;">AI chatbot</a> walks you through it conversationally and lets you ask follow-up questions at the end.</p>
         </div>
 
         <div>
@@ -826,7 +826,7 @@
 
       <details class="faq-item">
         <summary>How long does the audit take?</summary>
-        <div class="faq-answer">About 2 minutes. Six multiple-choice questions, then your contact details, then an instant personalized diagnosis.</div>
+        <div class="faq-answer">About 2 minutes. Ten multiple-choice questions, then your contact details, then an instant personalized diagnosis.</div>
       </details>
 
       <details class="faq-item">
@@ -943,7 +943,7 @@
 
         <!-- PANE 3: GATE -->
         <div id="paneGate" class="pane">
-          <p class="gate-intro">That's all six. Tell us where to send your diagnosis and we'll pull it up now.</p>
+          <p class="gate-intro">That's all ten. Tell us where to send your diagnosis and we'll pull it up now.</p>
 
           <form id="gateForm" novalidate>
             <div class="form-group" id="fg-businessName">
@@ -1042,6 +1042,7 @@
     }
   </script>
 
+  <script src="/js/audit-scoring.js"></script>
   <script>
   (function () {
     'use strict';
@@ -1065,7 +1066,7 @@
     }
 
     // ── STATE ───────────────────────────────────────
-    // One object for the life of the page. No localStorage: a six-click form
+    // One object for the life of the page. No localStorage: a ten-click form
     // has no API round trip per turn, so there is nothing to resume.
     var state = {
       vertical: '',
@@ -1077,7 +1078,8 @@
       email: '',
       phone: '',
       businessName: '',
-      diagnosis: ''
+      diagnosis: '',
+      scored: null
     };
 
     // ── DOM refs ────────────────────────────────────
@@ -1119,21 +1121,23 @@
           return res.json();
         })
         .then(function (kb) {
-          if (!kb || !kb.questions || !kb.questions.length) {
+          var flat = kb ? AuditScoring.flattenQuestions(kb) : [];
+          if (!flat.length) {
             throw new Error('KB has no questions');
           }
+          kb._flatQuestions = flat;
           return kb;
         });
     }
 
     // ── QUESTION FLOW ───────────────────────────────
     function totalQuestions() {
-      return state.kb && state.kb.questions ? state.kb.questions.length : 0;
+      return state.kb && state.kb._flatQuestions ? state.kb._flatQuestions.length : 0;
     }
 
     function renderQuestion() {
       var total = totalQuestions();
-      var q = state.kb.questions[state.index];
+      var q = state.kb._flatQuestions[state.index];
       if (!q) { showGate(); return; }
 
       qCounter.textContent = 'Question ' + (state.index + 1) + ' of ' + total;
@@ -1174,7 +1178,7 @@
       }
       state.index--;
       // Drop the answer being revisited so it is always re-recorded.
-      var q = state.kb.questions[state.index];
+      var q = state.kb._flatQuestions[state.index];
       if (q) { delete state.responses[q.fieldName]; delete state.responseLabels[q.fieldName]; }
       renderQuestion();
     }
@@ -1235,6 +1239,7 @@
           answer_labels: state.responseLabels,
           vertical_label: (state.kb && state.kb.verticalLabel) || '',
           diagnosis: state.diagnosis,
+          scored: state.scored,
           source: 'questionnaire'
         })
       }).catch(function (err) {
@@ -1243,10 +1248,15 @@
     }
 
     function renderDiagnosis() {
-      var text = (state.kb && state.kb.diagnosis)
-        ? state.kb.diagnosis
-        : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.';
-      state.diagnosis = state.businessName + ', here\'s what we found:\n\n' + text;
+      var body;
+      if (state.kb && state.kb.categories) {
+        state.scored = AuditScoring.scoreAudit(state.kb, state.responses);
+        body = AuditScoring.composeScorecardText(state.kb, state.scored);
+      } else {
+        state.scored = null;
+        body = 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.';
+      }
+      state.diagnosis = state.businessName + ', here\'s what we found:\n\n' + body;
 
       diagnosisText.textContent = state.diagnosis;
       diagnosisBox.classList.add('show');
@@ -1302,7 +1312,7 @@
 
     gateBack.addEventListener('click', function () {
       state.index = totalQuestions() - 1;
-      var q = state.kb.questions[state.index];
+      var q = state.kb._flatQuestions[state.index];
       if (q) { delete state.responses[q.fieldName]; delete state.responseLabels[q.fieldName]; }
       showPane(paneQuestions);
       renderQuestion();
