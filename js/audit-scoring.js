@@ -34,6 +34,14 @@
   };
 
   function flattenQuestions(kb) {
+    if (!kb.categories && kb.questions) {
+      return kb.questions.map(function (q) {
+        var withCategory = {};
+        Object.keys(q).forEach(function (k) { withCategory[k] = q[k]; });
+        withCategory._category = null;
+        return withCategory;
+      });
+    }
     var list = [];
     CATEGORY_ORDER.forEach(function (cat) {
       var category = kb.categories && kb.categories[cat];

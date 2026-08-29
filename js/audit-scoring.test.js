@@ -48,6 +48,27 @@ var kbFixture = {
   assert.strictEqual(flat[9].fieldName, 'after_hours_share');
 }
 
+// ── flattenQuestions: legacy KB fallback (no categories) ──
+// Legacy KBs (13 of 14 verticals, e.g. plumbing.json) still use the old
+// flat `questions[]` shape with no `categories` key. flattenQuestions must
+// fall back to reading kb.questions directly instead of silently returning [].
+{
+  var legacyKbFixture = {
+    questions: [
+      { id: 'q1', fieldName: 'lead_volume' },
+      { id: 'q2', fieldName: 'response_time' },
+      { id: 'q3', fieldName: 'current_system' }
+    ]
+  };
+  var legacyFlat = flattenQuestions(legacyKbFixture);
+  assert.strictEqual(legacyFlat.length, 3, 'flattenQuestions should return all legacy questions when kb.categories is absent');
+  assert.strictEqual(legacyFlat[0]._category, null, 'legacy questions should carry _category: null');
+  assert.strictEqual(legacyFlat[1]._category, null);
+  assert.strictEqual(legacyFlat[2]._category, null);
+  assert.strictEqual(legacyFlat[0].fieldName, 'lead_volume');
+  assert.strictEqual(legacyFlat[2].fieldName, 'current_system');
+}
+
 // ── scoreCategory: lead_response ───────────────────
 {
   var solid = scoreCategory(['lead_volume', 'response_time', 'current_system', 'bottleneck'], {
