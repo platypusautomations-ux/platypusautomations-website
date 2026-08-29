@@ -33,3 +33,6 @@ qualitySC/img/dronevideonoaudio.mp4
 qualitySC/img/stock/
 qualitySC/img/*.webp
 qualitySC/img/generator*.webp
+
+# Git worktrees for subagent-driven-development plan execution
+.worktrees/
