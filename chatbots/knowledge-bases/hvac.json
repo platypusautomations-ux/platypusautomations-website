@@ -1,93 +1,165 @@
 {
   "vertical": "hvac",
   "verticalLabel": "HVAC",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many qualified leads per week do you typically get?",
-      "type": "select",
-      "options": [
-        { "value": "0-2", "label": "0-2 (slow)" },
-        { "value": "3-5", "label": "3-5 (steady)" },
-        { "value": "6-10", "label": "6-10 (busy)" },
-        { "value": "10+", "label": "10+ (overwhelmed)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many qualified leads per week do you typically get?",
+          "type": "select",
+          "options": [
+            { "value": "0-2", "label": "0-2 (slow)" },
+            { "value": "3-5", "label": "3-5 (steady)" },
+            { "value": "6-10", "label": "6-10 (busy)" },
+            { "value": "10+", "label": "10+ (overwhelmed)" }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "On average, how long does it take you to respond to a lead?",
+          "type": "select",
+          "options": [
+            { "value": "under-1hr", "label": "Under 1 hour" },
+            { "value": "1-2hr", "label": "1-2 hours" },
+            { "value": "4-8hr", "label": "4-8 hours" },
+            { "value": "next-day", "label": "Next day or longer" },
+            { "value": "dont-know", "label": "Don't track it" }
+          ],
+          "fieldName": "response_time"
+        },
+        {
+          "id": "q5",
+          "text": "What's your current system for capturing and responding to leads?",
+          "type": "select",
+          "options": [
+            { "value": "phone-voicemail", "label": "Phone voicemail" },
+            { "value": "text", "label": "Text messages" },
+            { "value": "website-form", "label": "Website contact form" },
+            { "value": "facebook", "label": "Facebook/social media" },
+            { "value": "google-reviews", "label": "Google reviews" },
+            { "value": "referrals", "label": "Mostly referrals" },
+            { "value": "manual-mix", "label": "Mix of manual methods" },
+            { "value": "no-system", "label": "No system" }
+          ],
+          "fieldName": "current_system"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest bottleneck right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-leads", "label": "Missing leads (especially after-hours)" },
+            { "value": "slow-response", "label": "Too slow to respond" },
+            { "value": "poor-followup", "label": "Poor follow-up on cold leads" },
+            { "value": "no-qualification", "label": "Can't tell if leads are worth my time" },
+            { "value": "inconsistent", "label": "Inconsistent process" }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "What's your annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-100k", "label": "Under $100K" },
+            { "value": "100k-250k", "label": "$100K-$250K" },
+            { "value": "250k-500k", "label": "$250K-$500K" },
+            { "value": "500k-1m", "label": "$500K-$1M" },
+            { "value": "over-1m", "label": "Over $1M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How soon do you want to fix this?",
+          "type": "select",
+          "options": [
+            { "value": "asap", "label": "ASAP (next 2 weeks)" },
+            { "value": "month", "label": "Within a month" },
+            { "value": "quarter", "label": "Within Q4" },
+            { "value": "exploring", "label": "Just exploring options" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already picking up leads quickly enough that most Hampton Roads HVAC customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and over 20x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 20x+ difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "On average, how long does it take you to respond to a lead?",
-      "type": "select",
-      "options": [
-        { "value": "under-1hr", "label": "Under 1 hour" },
-        { "value": "1-2hr", "label": "1-2 hours" },
-        { "value": "4-8hr", "label": "4-8 hours" },
-        { "value": "next-day", "label": "Next day or longer" },
-        { "value": "dont-know", "label": "Don't track it" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10" },
+            { "value": "11-25", "label": "11-25" },
+            { "value": "26-50", "label": "26-50" },
+            { "value": "51-100", "label": "51-100" },
+            { "value": "100+", "label": "100+" }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask" },
+            { "value": "verbal", "label": "Ask verbally in person" },
+            { "value": "card", "label": "Hand out a card" },
+            { "value": "occasional-text-email", "label": "Occasional text or email" },
+            { "value": "automatic-system", "label": "Automatic system" }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "response_time"
+      "benchmarks": {
+        "medianReviewCount": "33 (median across Hampton Roads HVAC businesses tracked)",
+        "topCompetitorReviewCount": "770 (A/C Masters, Hampton Roads market)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads HVAC market. That's real proof for anyone comparing you to the next contractor in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established HVAC competitor like A/C Masters carries 770 Google reviews, and the median for a solid local shop we've tracked sits around 33. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local HVAC competitors like A/C Masters have built up 770 Google reviews, and even a solidly-performing shop in this market typically sits around 33, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your techs."
+      }
     },
-    {
-      "id": "q5",
-      "text": "What's your current system for capturing and responding to leads?",
-      "type": "select",
-      "options": [
-        { "value": "phone-voicemail", "label": "Phone voicemail" },
-        { "value": "text", "label": "Text messages" },
-        { "value": "website-form", "label": "Website contact form" },
-        { "value": "facebook", "label": "Facebook/social media" },
-        { "value": "google-reviews", "label": "Google reviews" },
-        { "value": "referrals", "label": "Mostly referrals" },
-        { "value": "manual-mix", "label": "Mix of manual methods" },
-        { "value": "no-system", "label": "No system" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered" },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell" },
+            { "value": "answer-personally", "label": "I try to answer personally" },
+            { "value": "has-system", "label": "We have some kind of after-hours system" }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)" },
+            { "value": "10-25", "label": "Some (10-25%)" },
+            { "value": "25-50", "label": "A lot (25-50%)" },
+            { "value": "over-50", "label": "Most (50%+)" }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "current_system"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest bottleneck right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-leads", "label": "Missing leads (especially after-hours)" },
-        { "value": "slow-response", "label": "Too slow to respond" },
-        { "value": "poor-followup", "label": "Poor follow-up on cold leads" },
-        { "value": "no-qualification", "label": "Can't tell if leads are worth my time" },
-        { "value": "inconsistent", "label": "Inconsistent process" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "What's your annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-100k", "label": "Under $100K" },
-        { "value": "100k-250k", "label": "$100K-$250K" },
-        { "value": "250k-500k", "label": "$250K-$500K" },
-        { "value": "500k-1m", "label": "$500K-$1M" },
-        { "value": "over-1m", "label": "Over $1M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How soon do you want to fix this?",
-      "type": "select",
-      "options": [
-        { "value": "asap", "label": "ASAP (next 2 weeks)" },
-        { "value": "month", "label": "Within a month" },
-        { "value": "quarter", "label": "Within Q4" },
-        { "value": "exploring", "label": "Just exploring options" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours coverage handled. Whoever calls after 5pm or on a weekend isn't just hitting voicemail, and that matters in HVAC where a no-heat or no-AC call doesn't wait for business hours.",
+        "gap": "After-hours is a soft spot. HVAC emergencies (no heat, no AC, a system that dies on a Friday night) don't wait for Monday morning, and whoever picks up first usually gets the job. If your current setup depends on someone remembering to check a phone after hours, you're leaving some of those calls on the table. The After-Hours Voice Agent picks up every time, screens for what's actually urgent, and only wakes you up when it's worth it.",
+        "biggest_gap": "This is your biggest gap. HVAC emergencies happen on nights and weekends as often as they happen during business hours, and right now those calls are going nowhere useful. Every one of them is a shot at a job going to whichever HVAC company actually answers. The After-Hours Voice Agent answers every time, screens for real emergencies, and only interrupts you when it's actually worth it, so after-hours calls turn into booked jobs instead of missed opportunities."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgLeadsPerWeek": "5-7",
-    "avgResponseTime": "2-4 hours",
-    "topCompetitorResponseTime": "30 minutes",
-    "conversionRate": "18-22%",
-    "avgJobValue": "$3,500-$8,000"
-  },
-  "diagnosis": "Based on your answers, here's what's happening: You're getting leads, but you're losing 40-60% of them because you're not responding within the first hour. In HVAC, the first contractor to call wins the job 80% of the time. You're leaving $1,500-$3,000 per month on the table."
+  }
 }
