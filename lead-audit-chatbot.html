@@ -524,7 +524,7 @@
       <div class="chatbot-card">
         <div class="header">
           <h3>Lead Flow Audit</h3>
-          <p>Six questions, answered conversationally. About two minutes.</p>
+          <p>Ten questions, answered conversationally. About two minutes.</p>
           <div class="presence"><span class="presence-dot"></span> Assistant is online</div>
         </div>
 
@@ -669,6 +669,7 @@
     }
   </script>
 
+  <script src="/js/audit-scoring.js"></script>
   <script>
   (function () {
     'use strict';
@@ -678,7 +679,7 @@
     var SUBMIT_URL = 'https://automations.platypusautomations.com/webhook/lead-audit-submit';
     var STORAGE_KEY = 'leadAuditChatbot';
     var SESSION_TIMEOUT_MS = 4 * 60 * 60 * 1000; // 4 hours
-    var TOTAL_QUESTIONS = 6;
+    var TOTAL_QUESTIONS = 0; // set once the KB loads; see flattenQuestions() calls below
     var MAX_FOLLOWUPS = 4;
 
     var KB_FILENAME_MAP = {
@@ -920,7 +921,7 @@
       return m;
     }
 
-    function askWebhook(session, questionId, userResponse, mode) {
+    function askWebhook(session, questionId, userResponse, mode, scored) {
       return fetch(ASK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -930,6 +931,7 @@
           question_id: questionId || null,
           user_response: userResponse == null ? null : userResponse,
           mode: mode,
+          scored: scored || null,
           conversationHistory: session.conversationHistory
         })
       }).then(function (res) {
@@ -998,6 +1000,7 @@
           answer_labels: session.responseLabels || {},
           vertical_label: (currentKB && currentKB.verticalLabel) || '',
           diagnosis: session.diagnosis,
+          scored: session.scored,
           source: 'chatbot'
         })
       }).catch(function (err) {
@@ -1007,8 +1010,8 @@
 
     // ── QUESTION FLOW ───────────────────────────────
     function currentQuestion(session) {
-      if (!currentKB || !currentKB.questions) return null;
-      return currentKB.questions[session.questionIndex] || null;
+      if (!currentKB || !currentKB._flatQuestions) return null;
+      return currentKB._flatQuestions[session.questionIndex] || null;
     }
 
     // Opens with a greeting, a pause, then the first question, so the first
@@ -1021,7 +1024,7 @@
 
       var trade = (currentKB && currentKB.verticalLabel) ? currentKB.verticalLabel.toLowerCase() : 'your trade';
       aiSay(session, 'Hey ' + session.name + ', thanks for taking a couple of minutes.', function () {
-        aiSay(session, 'I work with ' + trade + ' businesses around Hampton Roads. Six quick questions and I can tell you where your lead flow is leaking.', function () {
+        aiSay(session, 'I work with ' + trade + ' businesses around Hampton Roads. ' + TOTAL_QUESTIONS + ' quick questions and I can tell you where your lead flow is leaking.', function () {
           askNextQuestion(session);
         });
       });
@@ -1104,21 +1107,27 @@
     // ── DIAGNOSIS ────────────────────────────────────
     function showDiagnosis(session) {
       session.state = 'diagnosis';
+      session.scored = (currentKB && currentKB.categories)
+        ? AuditScoring.scoreAudit(currentKB, session.responses)
+        : null;
       clearOptions();
       saveSession(session);
       showTyping();
 
-      askWebhook(session, null, null, 'diagnosis')
+      var fallbackText = session.scored
+        ? AuditScoring.composeScorecardText(currentKB, session.scored)
+        : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.';
+
+      askWebhook(session, null, null, 'diagnosis', session.scored)
         .then(function (data) {
           removeTyping();
-          var text = usableMessage(data) || (currentKB && currentKB.diagnosis ? currentKB.diagnosis : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.');
+          var text = usableMessage(data) || fallbackText;
           renderDiagnosis(session, text);
         })
         .catch(function (err) {
           removeTyping();
-          console.log('diagnosis webhook error, falling back to KB text:', err);
-          var text = currentKB && currentKB.diagnosis ? currentKB.diagnosis : 'Thanks for completing the audit. Schedule a discovery call to go over the specifics.';
-          renderDiagnosis(session, text);
+          console.log('diagnosis webhook error, falling back to computed scorecard:', err);
+          renderDiagnosis(session, fallbackText);
         });
     }
 
@@ -1254,6 +1263,8 @@
       loadKB(fields.vertical)
         .then(function (kb) {
           currentKB = kb;
+          currentKB._flatQuestions = AuditScoring.flattenQuestions(currentKB);
+          TOTAL_QUESTIONS = currentKB._flatQuestions.length;
           var session = initSession(fields);
           submitPartial(session);
           gateForm.style.display = 'none';
@@ -1292,6 +1303,8 @@
       loadKB(session.vertical)
         .then(function (kb) {
           currentKB = kb;
+          currentKB._flatQuestions = AuditScoring.flattenQuestions(currentKB);
+          TOTAL_QUESTIONS = currentKB._flatQuestions.length;
           gateForm.style.display = 'none';
           chatInterface.classList.add('show');
           updateSessionCounter(session);
