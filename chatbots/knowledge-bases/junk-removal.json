@@ -1,92 +1,164 @@
 {
-  "vertical": "junk_removal",
+  "vertical": "junk-removal",
   "verticalLabel": "Junk Removal",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many junk removal jobs do you get per week?",
-      "type": "select",
-      "options": [
-        { "value": "1-5", "label": "1-5" },
-        { "value": "6-15", "label": "6-15" },
-        { "value": "16-30", "label": "16-30" },
-        { "value": "30+", "label": "30+ (at capacity)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many junk removal jobs do you get per week?",
+          "type": "select",
+          "options": [
+            { "value": "1-5", "label": "1-5", "weight": 0 },
+            { "value": "6-15", "label": "6-15", "weight": 1 },
+            { "value": "16-30", "label": "16-30", "weight": 2 },
+            { "value": "30+", "label": "30+ (at capacity)", "weight": 3 }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "How fast can you typically book a job after a customer calls?",
+          "type": "select",
+          "options": [
+            { "value": "same-day", "label": "Same day", "weight": 0 },
+            { "value": "next-day", "label": "Next day", "weight": 1 },
+            { "value": "2-3days", "label": "2-3 days", "weight": 2 },
+            { "value": "4-7days", "label": "4-7 days", "weight": 3 },
+            { "value": "one-week", "label": "A week or more", "weight": 3 }
+          ],
+          "fieldName": "response_time"
+        },
+        {
+          "id": "q5",
+          "text": "Where do most of your leads come from?",
+          "type": "select",
+          "options": [
+            { "value": "google-maps", "label": "Google Maps / local search", "weight": 2 },
+            { "value": "referrals", "label": "Referrals and word-of-mouth", "weight": 1 },
+            { "value": "facebook", "label": "Facebook and social media", "weight": 2 },
+            { "value": "direct-calls", "label": "Direct phone calls", "weight": 3 },
+            { "value": "property-managers", "label": "Property managers and contractors", "weight": 1 },
+            { "value": "craigslist", "label": "Craigslist and classifieds", "weight": 3 },
+            { "value": "mixed", "label": "Mix of several", "weight": 2 }
+          ],
+          "fieldName": "current_system"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest bottleneck right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-calls", "label": "Missing customer calls", "weight": 3 },
+            { "value": "slow-scheduling", "label": "Slow to schedule appointments", "weight": 2 },
+            { "value": "no-follow-up", "label": "Poor follow-up on leads", "weight": 2 },
+            { "value": "crew-capacity", "label": "Overwhelmed, not enough trucks/crews", "weight": 1 },
+            { "value": "no-system", "label": "No real system in place", "weight": 3 }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "Annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-100k", "label": "Under $100K" },
+            { "value": "100k-300k", "label": "$100K-$300K" },
+            { "value": "300k-500k", "label": "$300K-$500K" },
+            { "value": "500k-1m", "label": "$500K-$1M" },
+            { "value": "over-1m", "label": "Over $1M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How soon do you want to fix this?",
+          "type": "select",
+          "options": [
+            { "value": "asap", "label": "ASAP (losing jobs now)" },
+            { "value": "soon", "label": "Within 2 weeks" },
+            { "value": "month", "label": "Within a month" },
+            { "value": "exploring", "label": "Just exploring options" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already responding to inquiries quickly enough that most Hampton Roads junk removal customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and 21x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 21x difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "How fast can you typically book a job after a customer calls?",
-      "type": "select",
-      "options": [
-        { "value": "same-day", "label": "Same day" },
-        { "value": "next-day", "label": "Next day" },
-        { "value": "2-3days", "label": "2-3 days" },
-        { "value": "4-7days", "label": "4-7 days" },
-        { "value": "one-week", "label": "A week or more" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "response_time"
+      "benchmarks": {
+        "medianReviewCount": "3 (median across Hampton Roads junk removal businesses tracked)",
+        "topCompetitorReviewCount": "53 (DTB Hauling & Services, Chesapeake, live-confirmed)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads junk removal market. That's real proof for anyone comparing you to the next junk removal company in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established junk removal competitor like DTB Hauling & Services carries 53 Google reviews, and the median for a solid local shop we've tracked sits around 3. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local junk removal competitors like DTB Hauling & Services have built up 53 Google reviews, and even a solidly-performing shop in this market typically sits around 3, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your crew."
+      }
     },
-    {
-      "id": "q5",
-      "text": "Where do most of your leads come from?",
-      "type": "select",
-      "options": [
-        { "value": "google-maps", "label": "Google Maps / local search" },
-        { "value": "referrals", "label": "Referrals and word-of-mouth" },
-        { "value": "facebook", "label": "Facebook and social media" },
-        { "value": "direct-calls", "label": "Direct phone calls" },
-        { "value": "property-managers", "label": "Property managers and contractors" },
-        { "value": "craigslist", "label": "Craigslist and classifieds" },
-        { "value": "mixed", "label": "Mix of several" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "current_system"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest bottleneck right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-calls", "label": "Missing customer calls" },
-        { "value": "slow-scheduling", "label": "Slow to schedule appointments" },
-        { "value": "no-follow-up", "label": "Poor follow-up on leads" },
-        { "value": "crew-capacity", "label": "Overwhelmed, not enough trucks/crews" },
-        { "value": "no-system", "label": "No real system in place" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "Annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-100k", "label": "Under $100K" },
-        { "value": "100k-300k", "label": "$100K-$300K" },
-        { "value": "300k-500k", "label": "$300K-$500K" },
-        { "value": "500k-1m", "label": "$500K-$1M" },
-        { "value": "over-1m", "label": "Over $1M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How soon do you want to fix this?",
-      "type": "select",
-      "options": [
-        { "value": "asap", "label": "ASAP (losing jobs now)" },
-        { "value": "soon", "label": "Within 2 weeks" },
-        { "value": "month", "label": "Within a month" },
-        { "value": "exploring", "label": "Just exploring options" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours covered. Whoever texts you at 8pm wanting a same-day or next-day pickup gets an answer, not silence, and that's exactly when a lot of junk removal requests come in.",
+        "gap": "After-hours is a soft spot. A lot of junk removal requests come in at night, someone finally clears out a garage or a rental and wants it gone fast. If your setup depends on someone remembering to check a phone off the clock, you're losing some of those to whoever answers first and can book the next slot. The After-Hours Voice Agent picks up every call, day or night, so you're not starting the conversation a day behind.",
+        "biggest_gap": "This is your biggest gap. Junk removal requests don't stop coming in at 5pm, people want it gone fast and they're texting whoever answers first, usually evenings and weekends. Right now those messages are sitting unanswered until you get back to them, and by then some of them have already booked with someone else. The After-Hours Voice Agent answers every time, so an after-hours inquiry turns into a booked pickup instead of a cold trail."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgJobValue": "$400-$1,500",
-    "avgJobsPerWeek": "10-20",
-    "responseTimeOpportunityCost": "$300-$600 per missed call",
-    "bookingConversionRate": "35-45%",
-    "peak Season": "March-May, September-October"
-  },
-  "diagnosis": "You're losing high-volume, quick-turnaround jobs because you're slow to respond or book. Junk removal customers expect next-day service. Every unanswered call is $400-$800 left on the table. If you're missing just 5 calls a week, that's $10,000-$20,000 a month gone to competitors who answer faster."
+  }
 }
