@@ -1,92 +1,164 @@
 {
   "vertical": "crawlspace",
   "verticalLabel": "Crawlspace",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many crawlspace inspections do you typically do per month?",
-      "type": "select",
-      "options": [
-        { "value": "1-5", "label": "1-5" },
-        { "value": "6-15", "label": "6-15" },
-        { "value": "16-25", "label": "16-25" },
-        { "value": "25+", "label": "25+ (very busy)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many crawlspace inspections do you typically do per month?",
+          "type": "select",
+          "options": [
+            { "value": "1-5", "label": "1-5", "weight": 0 },
+            { "value": "6-15", "label": "6-15", "weight": 1 },
+            { "value": "16-25", "label": "16-25", "weight": 2 },
+            { "value": "25+", "label": "25+ (very busy)", "weight": 3 }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "What percentage of emergency moisture/water calls do you miss?",
+          "type": "select",
+          "options": [
+            { "value": "most", "label": "Most (70%+)", "weight": 3 },
+            { "value": "half", "label": "About half", "weight": 2 },
+            { "value": "some", "label": "Some (20%)", "weight": 1 },
+            { "value": "few", "label": "Very few", "weight": 0 },
+            { "value": "dont-take", "label": "Don't take emergency calls", "weight": 3 }
+          ],
+          "fieldName": "response_time"
+        },
+        {
+          "id": "q5",
+          "text": "How do most of your leads come in?",
+          "type": "select",
+          "options": [
+            { "value": "direct-phone", "label": "Direct phone calls", "weight": 3 },
+            { "value": "google-maps", "label": "Google Maps / local search", "weight": 2 },
+            { "value": "referrals", "label": "Realtor and home inspector referrals", "weight": 1 },
+            { "value": "contractors", "label": "Foundation and HVAC contractor referrals", "weight": 1 },
+            { "value": "facebook", "label": "Facebook and social media", "weight": 2 },
+            { "value": "website", "label": "Your website", "weight": 0 },
+            { "value": "mixed", "label": "Mix of several", "weight": 2 }
+          ],
+          "fieldName": "current_system"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest challenge right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-emergency", "label": "Missing emergency moisture/water calls", "weight": 3 },
+            { "value": "slow-inspection", "label": "Too slow to schedule inspections", "weight": 2 },
+            { "value": "poor-follow-up", "label": "Poor follow-up on inquiry leads", "weight": 2 },
+            { "value": "crew-capacity", "label": "Overwhelmed, not enough crews", "weight": 1 },
+            { "value": "no-system", "label": "No system in place", "weight": 3 }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "Annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-150k", "label": "Under $150K" },
+            { "value": "150k-350k", "label": "$150K-$350K" },
+            { "value": "350k-600k", "label": "$350K-$600K" },
+            { "value": "600k-1m", "label": "$600K-$1M" },
+            { "value": "over-1m", "label": "Over $1M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How urgent is this for you?",
+          "type": "select",
+          "options": [
+            { "value": "urgent", "label": "Very urgent (losing emergency calls)" },
+            { "value": "important", "label": "Important (want to improve)" },
+            { "value": "someday", "label": "Someday when I have time" },
+            { "value": "exploring", "label": "Just curious" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already responding to inquiries quickly enough that most Hampton Roads crawlspace repair customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and 21x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 21x difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "What percentage of emergency moisture/water calls do you miss?",
-      "type": "select",
-      "options": [
-        { "value": "most", "label": "Most (70%+)" },
-        { "value": "half", "label": "About half" },
-        { "value": "some", "label": "Some (20%)" },
-        { "value": "few", "label": "Very few" },
-        { "value": "dont-take", "label": "Don't take emergency calls" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "response_time"
+      "benchmarks": {
+        "medianReviewCount": "32 (median across Hampton Roads crawlspace businesses tracked)",
+        "topCompetitorReviewCount": "1,500+ (BAY Crawl Space, Hampton Roads regional market leader)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads crawlspace market. That's real proof for anyone comparing you to the next crawlspace company in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established crawlspace competitor like BAY Crawl Space carries 1,500+ Google reviews, and the median for a solid local shop we've tracked sits around 32. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local crawlspace competitors like BAY Crawl Space have built up 1,500+ Google reviews, and even a solidly-performing shop in this market typically sits around 32, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your crew."
+      }
     },
-    {
-      "id": "q5",
-      "text": "How do most of your leads come in?",
-      "type": "select",
-      "options": [
-        { "value": "direct-phone", "label": "Direct phone calls" },
-        { "value": "google-maps", "label": "Google Maps / local search" },
-        { "value": "referrals", "label": "Realtor and home inspector referrals" },
-        { "value": "contractors", "label": "Foundation and HVAC contractor referrals" },
-        { "value": "facebook", "label": "Facebook and social media" },
-        { "value": "website", "label": "Your website" },
-        { "value": "mixed", "label": "Mix of several" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "current_system"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest challenge right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-emergency", "label": "Missing emergency moisture/water calls" },
-        { "value": "slow-inspection", "label": "Too slow to schedule inspections" },
-        { "value": "poor-follow-up", "label": "Poor follow-up on inquiry leads" },
-        { "value": "crew-capacity", "label": "Overwhelmed, not enough crews" },
-        { "value": "no-system", "label": "No system in place" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "Annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-150k", "label": "Under $150K" },
-        { "value": "150k-350k", "label": "$150K-$350K" },
-        { "value": "350k-600k", "label": "$350K-$600K" },
-        { "value": "600k-1m", "label": "$600K-$1M" },
-        { "value": "over-1m", "label": "Over $1M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How urgent is this for you?",
-      "type": "select",
-      "options": [
-        { "value": "urgent", "label": "Very urgent (losing emergency calls)" },
-        { "value": "important", "label": "Important (want to improve)" },
-        { "value": "someday", "label": "Someday when I have time" },
-        { "value": "exploring", "label": "Just curious" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours coverage handled. Whoever calls after 5pm or on a weekend isn't just hitting voicemail, and that matters in crawlspace work where a flooded crawlspace after a hard rain doesn't wait for business hours.",
+        "gap": "After-hours is a soft spot. Crawlspace emergencies like a flooded crawlspace after a hard rain don't wait for Monday morning, and whoever picks up first usually gets the job. If your current setup depends on someone remembering to check a phone after hours, you're leaving some of those calls on the table. The After-Hours Voice Agent picks up every time, screens for what's actually urgent, and only wakes you up when it's worth it.",
+        "biggest_gap": "This is your biggest gap. Crawlspace emergencies happen on nights and weekends as often as they happen during business hours, and right now those calls are going nowhere useful. Every one of them is a shot at a job going to whichever crawlspace company actually answers. The After-Hours Voice Agent answers every time, screens for real emergencies, and only interrupts you when it's actually worth it, so after-hours calls turn into booked jobs instead of missed opportunities."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgInspectionValue": "$200-$600",
-    "jobValue": "$2,000-$8,000",
-    "emergencyCallResponseRate": "50% industry average",
-    "waterDamageEmergencyValue": "$3,000-$15,000",
-    "avgInspectionsPerMonth": "12-20"
-  },
-  "diagnosis": "Crawlspace emergencies (water intrusion, mold, structural damage) are time-critical. Moisture spreads fast. Every missed emergency call is a customer calling another contractor. Every emergency that turns into mold or structural damage is $3,000-$15,000 you could have captured. If you're missing 3-5 emergency calls per month, that's $9,000-$75,000 in potential revenue gone."
+  }
 }
