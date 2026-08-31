@@ -1,92 +1,164 @@
 {
-  "vertical": "tree_service",
+  "vertical": "tree-service",
   "verticalLabel": "Tree Service",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many tree service jobs do you typically get per week?",
-      "type": "select",
-      "options": [
-        { "value": "1-5", "label": "1-5" },
-        { "value": "6-15", "label": "6-15" },
-        { "value": "16-30", "label": "16-30" },
-        { "value": "30+", "label": "30+ (constantly booked)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many tree service jobs do you typically get per week?",
+          "type": "select",
+          "options": [
+            { "value": "1-5", "label": "1-5", "weight": 0 },
+            { "value": "6-15", "label": "6-15", "weight": 1 },
+            { "value": "16-30", "label": "16-30", "weight": 2 },
+            { "value": "30+", "label": "30+ (constantly booked)", "weight": 3 }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "When a storm hits, how fast can you mobilize a crew?",
+          "type": "select",
+          "options": [
+            { "value": "same-day", "label": "Same day", "weight": 0 },
+            { "value": "1-2days", "label": "1-2 business days", "weight": 1 },
+            { "value": "3-5days", "label": "3-5 business days", "weight": 2 },
+            { "value": "week-plus", "label": "A week or more", "weight": 3 },
+            { "value": "dont-storm", "label": "Don't handle storm work", "weight": 3 }
+          ],
+          "fieldName": "response_time"
+        },
+        {
+          "id": "q5",
+          "text": "Where do most of your leads come from?",
+          "type": "select",
+          "options": [
+            { "value": "referrals", "label": "Referrals and word-of-mouth", "weight": 1 },
+            { "value": "google-maps", "label": "Google Maps / local search", "weight": 2 },
+            { "value": "facebook", "label": "Facebook and social media", "weight": 2 },
+            { "value": "direct-calls", "label": "Direct phone calls", "weight": 3 },
+            { "value": "contractors", "label": "Contractor and insurance referrals", "weight": 1 },
+            { "value": "storm-damage", "label": "Storm damage calls", "weight": 3 },
+            { "value": "mixed", "label": "Mix of several", "weight": 2 }
+          ],
+          "fieldName": "current_system"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest bottleneck right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-storm", "label": "Missing storm damage calls", "weight": 3 },
+            { "value": "slow-response", "label": "Too slow to respond to leads", "weight": 3 },
+            { "value": "crew-dispatch", "label": "Crew scheduling and dispatch inefficient", "weight": 1 },
+            { "value": "off-season", "label": "Dead during off-season (summer slowdown)", "weight": 1 },
+            { "value": "no-system", "label": "No system in place", "weight": 3 }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "Annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-150k", "label": "Under $150K" },
+            { "value": "150k-400k", "label": "$150K-$400K" },
+            { "value": "400k-800k", "label": "$400K-$800K" },
+            { "value": "800k-1m5", "label": "$800K-$1.5M" },
+            { "value": "over-1m5", "label": "Over $1.5M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How urgent is this for you?",
+          "type": "select",
+          "options": [
+            { "value": "urgent", "label": "Very urgent (losing calls now)" },
+            { "value": "soon", "label": "Within 2 weeks (storm season approaching)" },
+            { "value": "month", "label": "Within a month" },
+            { "value": "exploring", "label": "Just exploring options" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already responding to inquiries quickly enough that most Hampton Roads tree service customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and 21x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 21x difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "When a storm hits, how fast can you mobilize a crew?",
-      "type": "select",
-      "options": [
-        { "value": "same-day", "label": "Same day" },
-        { "value": "1-2days", "label": "1-2 business days" },
-        { "value": "3-5days", "label": "3-5 business days" },
-        { "value": "week-plus", "label": "A week or more" },
-        { "value": "dont-storm", "label": "Don't handle storm work" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "response_time"
+      "benchmarks": {
+        "medianReviewCount": "17 (median across Hampton Roads tree service businesses tracked)",
+        "topCompetitorReviewCount": "200+ (A Top to Bottom, Hampton Roads market leader)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads tree service market. That's real proof for anyone comparing you to the next tree service in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established tree service competitor like A Top to Bottom carries 200+ Google reviews, and the median for a solid local shop we've tracked sits around 17. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local tree service competitors like A Top to Bottom have built up 200+ Google reviews, and even a solidly-performing shop in this market typically sits around 17, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your crew."
+      }
     },
-    {
-      "id": "q5",
-      "text": "Where do most of your leads come from?",
-      "type": "select",
-      "options": [
-        { "value": "referrals", "label": "Referrals and word-of-mouth" },
-        { "value": "google-maps", "label": "Google Maps / local search" },
-        { "value": "facebook", "label": "Facebook and social media" },
-        { "value": "direct-calls", "label": "Direct phone calls" },
-        { "value": "contractors", "label": "Contractor and insurance referrals" },
-        { "value": "storm-damage", "label": "Storm damage calls" },
-        { "value": "mixed", "label": "Mix of several" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "current_system"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest bottleneck right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-storm", "label": "Missing storm damage calls" },
-        { "value": "slow-response", "label": "Too slow to respond to leads" },
-        { "value": "crew-dispatch", "label": "Crew scheduling and dispatch inefficient" },
-        { "value": "off-season", "label": "Dead during off-season (summer slowdown)" },
-        { "value": "no-system", "label": "No system in place" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "Annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-150k", "label": "Under $150K" },
-        { "value": "150k-400k", "label": "$150K-$400K" },
-        { "value": "400k-800k", "label": "$400K-$800K" },
-        { "value": "800k-1m5", "label": "$800K-$1.5M" },
-        { "value": "over-1m5", "label": "Over $1.5M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How urgent is this for you?",
-      "type": "select",
-      "options": [
-        { "value": "urgent", "label": "Very urgent (losing calls now)" },
-        { "value": "soon", "label": "Within 2 weeks (storm season approaching)" },
-        { "value": "month", "label": "Within a month" },
-        { "value": "exploring", "label": "Just exploring options" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours coverage handled. Whoever calls after 5pm or on a weekend isn't just hitting voicemail, and that matters in tree work where a tree down on the house, the car, or the power line after a storm doesn't wait for business hours.",
+        "gap": "After-hours is a soft spot. Tree emergencies like a tree down on the house, the car, or the power line after a storm don't wait for Monday morning, and whoever picks up first usually gets the job. If your current setup depends on someone remembering to check a phone after hours, you're leaving some of those calls on the table. The After-Hours Voice Agent picks up every time, screens for what's actually urgent, and only wakes you up when it's worth it.",
+        "biggest_gap": "This is your biggest gap. Tree emergencies happen on nights and weekends as often as they happen during business hours, and right now those calls are going nowhere useful. Every one of them is a shot at a job going to whichever tree service actually answers. The After-Hours Voice Agent answers every time, screens for real emergencies, and only interrupts you when it's actually worth it, so after-hours calls turn into booked jobs instead of missed opportunities."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgJobValue": "$800-$4,000",
-    "stormSeasonJobsPerWeek": "20-50",
-    "offSeasonJobsPerWeek": "3-8",
-    "stormResponseConversionRate": "65-80%",
-    "costPerMissedStormCall": "$1,200-$3,000"
-  },
-  "diagnosis": "Tree service is boom or bust. When a hurricane or major storm hits, you get swamped. If you're slow to respond, customers call the next crew. Storm season generates 60-80% of annual revenue. If you're missing 20-30% of storm calls due to poor response, that's $30,000-$100,000+ in lost revenue during peak season."
+  }
 }
