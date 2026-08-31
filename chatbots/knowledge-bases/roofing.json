@@ -1,92 +1,164 @@
 {
   "vertical": "roofing",
   "verticalLabel": "Roofing",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many roofing projects do you typically get per quarter?",
-      "type": "select",
-      "options": [
-        { "value": "1-3", "label": "1-3 (slow)" },
-        { "value": "4-8", "label": "4-8 (steady)" },
-        { "value": "9-15", "label": "9-15 (busy)" },
-        { "value": "15+", "label": "15+ (booked solid)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many roofing projects do you typically get per quarter?",
+          "type": "select",
+          "options": [
+            { "value": "1-3", "label": "1-3 (slow)", "weight": 0 },
+            { "value": "4-8", "label": "4-8 (steady)", "weight": 1 },
+            { "value": "9-15", "label": "9-15 (busy)", "weight": 2 },
+            { "value": "15+", "label": "15+ (booked solid)", "weight": 3 }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "When a storm hits, how fast can you respond to emergency calls?",
+          "type": "select",
+          "options": [
+            { "value": "same-day", "label": "Same day", "weight": 0 },
+            { "value": "1-2days", "label": "1-2 business days", "weight": 1 },
+            { "value": "3-5days", "label": "3-5 business days", "weight": 2 },
+            { "value": "week-plus", "label": "A week or more", "weight": 3 },
+            { "value": "dont-take", "label": "Don't take emergency calls", "weight": 3 }
+          ],
+          "fieldName": "response_time"
+        },
+        {
+          "id": "q5",
+          "text": "Where do most of your leads come from?",
+          "type": "select",
+          "options": [
+            { "value": "referrals", "label": "Referrals and word-of-mouth", "weight": 1 },
+            { "value": "insurance-claims", "label": "Insurance adjuster referrals", "weight": 1 },
+            { "value": "google-maps", "label": "Google Maps / local search", "weight": 2 },
+            { "value": "direct-calls", "label": "Direct phone calls", "weight": 3 },
+            { "value": "facebook", "label": "Facebook and social media", "weight": 2 },
+            { "value": "contractors", "label": "Contractor referrals", "weight": 1 },
+            { "value": "mixed", "label": "Mix of several", "weight": 2 }
+          ],
+          "fieldName": "current_system"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest challenge right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-storm", "label": "Missing storm damage calls", "weight": 3 },
+            { "value": "slow-inspection", "label": "Slow to get inspections scheduled", "weight": 2 },
+            { "value": "claims-process", "label": "Insurance claim process is cumbersome", "weight": 1 },
+            { "value": "no-follow-up", "label": "Poor follow-up on inquiry leads", "weight": 2 },
+            { "value": "crew-capacity", "label": "Not enough crew to handle demand", "weight": 1 }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "Annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-250k", "label": "Under $250K" },
+            { "value": "250k-500k", "label": "$250K-$500K" },
+            { "value": "500k-1m", "label": "$500K-$1M" },
+            { "value": "1m-2m", "label": "$1M-$2M" },
+            { "value": "over-2m", "label": "Over $2M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How urgent is this for you?",
+          "type": "select",
+          "options": [
+            { "value": "asap", "label": "ASAP (losing calls now)" },
+            { "value": "soon", "label": "Next 2-4 weeks" },
+            { "value": "month", "label": "Within a month" },
+            { "value": "exploring", "label": "Just exploring options" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already responding to inquiries quickly enough that most Hampton Roads roofing customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and 21x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 21x difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "When a storm hits, how fast can you respond to emergency calls?",
-      "type": "select",
-      "options": [
-        { "value": "same-day", "label": "Same day" },
-        { "value": "1-2days", "label": "1-2 business days" },
-        { "value": "3-5days", "label": "3-5 business days" },
-        { "value": "week-plus", "label": "A week or more" },
-        { "value": "dont-take", "label": "Don't take emergency calls" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "response_time"
+      "benchmarks": {
+        "medianReviewCount": "28 (median across Hampton Roads roofing businesses tracked)",
+        "topCompetitorReviewCount": "197 (Premier Roofing & Siding, Chesapeake)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads roofing market. That's real proof for anyone comparing you to the next roofing company in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established roofing competitor like Premier Roofing & Siding carries 197 Google reviews, and the median for a solid local shop we've tracked sits around 28. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local roofing competitors like Premier Roofing & Siding have built up 197 Google reviews, and even a solidly-performing shop in this market typically sits around 28, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your crew."
+      }
     },
-    {
-      "id": "q5",
-      "text": "Where do most of your leads come from?",
-      "type": "select",
-      "options": [
-        { "value": "referrals", "label": "Referrals and word-of-mouth" },
-        { "value": "insurance-claims", "label": "Insurance adjuster referrals" },
-        { "value": "google-maps", "label": "Google Maps / local search" },
-        { "value": "direct-calls", "label": "Direct phone calls" },
-        { "value": "facebook", "label": "Facebook and social media" },
-        { "value": "contractors", "label": "Contractor referrals" },
-        { "value": "mixed", "label": "Mix of several" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "current_system"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest challenge right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-storm", "label": "Missing storm damage calls" },
-        { "value": "slow-inspection", "label": "Slow to get inspections scheduled" },
-        { "value": "claims-process", "label": "Insurance claim process is cumbersome" },
-        { "value": "no-follow-up", "label": "Poor follow-up on inquiry leads" },
-        { "value": "crew-capacity", "label": "Not enough crew to handle demand" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "Annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-250k", "label": "Under $250K" },
-        { "value": "250k-500k", "label": "$250K-$500K" },
-        { "value": "500k-1m", "label": "$500K-$1M" },
-        { "value": "1m-2m", "label": "$1M-$2M" },
-        { "value": "over-2m", "label": "Over $2M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How urgent is this for you?",
-      "type": "select",
-      "options": [
-        { "value": "asap", "label": "ASAP (losing calls now)" },
-        { "value": "soon", "label": "Next 2-4 weeks" },
-        { "value": "month", "label": "Within a month" },
-        { "value": "exploring", "label": "Just exploring options" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours coverage handled. Whoever calls after 5pm or on a weekend isn't just hitting voicemail, and that matters in roofing where a storm-damaged roof leaking into the ceiling doesn't wait for business hours.",
+        "gap": "After-hours is a soft spot. Roofing emergencies like a storm-damaged roof leaking into the ceiling don't wait for Monday morning, and whoever picks up first usually gets the job. If your current setup depends on someone remembering to check a phone after hours, you're leaving some of those calls on the table. The After-Hours Voice Agent picks up every time, screens for what's actually urgent, and only wakes you up when it's worth it.",
+        "biggest_gap": "This is your biggest gap. Roofing emergencies happen on nights and weekends as often as they happen during business hours, and right now those calls are going nowhere useful. Every one of them is a shot at a job going to whichever roofing company actually answers. The After-Hours Voice Agent answers every time, screens for real emergencies, and only interrupts you when it's actually worth it, so after-hours calls turn into booked jobs instead of missed opportunities."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgProjectValue": "$8,000-$25,000",
-    "stormResponseLeadsPerYear": "15-40",
-    "stormResponseConversionRate": "60-75%",
-    "avgLeadResponseTime": "4-8 hours",
-    "topCompetitorResponseTime": "2 hours"
-  },
-  "diagnosis": "Storm damage is time-sensitive. For every hour you delay, customers call the next roofer. You're likely losing 20-30% of storm damage leads because you can't respond fast enough. In roofing, the first person to inspect often gets the job. That's $3,000-$8,000 per missed storm lead."
+  }
 }

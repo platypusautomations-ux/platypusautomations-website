@@ -1,91 +1,163 @@
 {
   "vertical": "plumbing",
   "verticalLabel": "Plumbing",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many service calls do you get per week?",
-      "type": "select",
-      "options": [
-        { "value": "0-5", "label": "0-5" },
-        { "value": "6-15", "label": "6-15" },
-        { "value": "16-25", "label": "16-25" },
-        { "value": "25+", "label": "25+ (at capacity)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many service calls do you get per week?",
+          "type": "select",
+          "options": [
+            { "value": "0-5", "label": "0-5", "weight": 0 },
+            { "value": "6-15", "label": "6-15", "weight": 1 },
+            { "value": "16-25", "label": "16-25", "weight": 2 },
+            { "value": "25+", "label": "25+ (at capacity)", "weight": 3 }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "What percentage of after-hours calls do you miss or can't take?",
+          "type": "select",
+          "options": [
+            { "value": "most", "label": "Most (80%+)", "weight": 3 },
+            { "value": "half", "label": "About half", "weight": 2 },
+            { "value": "some", "label": "Some (20%)", "weight": 1 },
+            { "value": "none", "label": "I answer all of them", "weight": 0 },
+            { "value": "no-after-hours", "label": "I don't take after-hours", "weight": 3 }
+          ],
+          "fieldName": "missed_after_hours"
+        },
+        {
+          "id": "q5",
+          "text": "How do most of your leads come in?",
+          "type": "select",
+          "options": [
+            { "value": "phone-direct", "label": "Direct phone calls", "weight": 3 },
+            { "value": "google-reviews", "label": "Google reviews / maps", "weight": 2 },
+            { "value": "referrals", "label": "Referrals from past customers", "weight": 1 },
+            { "value": "facebook", "label": "Facebook / social media", "weight": 2 },
+            { "value": "website", "label": "Website form", "weight": 0 },
+            { "value": "mixed", "label": "Mix of several", "weight": 2 }
+          ],
+          "fieldName": "lead_source"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest challenge right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-emergency", "label": "Missing emergency calls (water damage, burst pipes)", "weight": 3 },
+            { "value": "slow-callback", "label": "Slow to call customers back", "weight": 3 },
+            { "value": "qualification", "label": "Can't tell who really needs service vs window shoppers", "weight": 1 },
+            { "value": "capacity", "label": "Overwhelmed, not enough hours", "weight": 1 },
+            { "value": "no-system", "label": "No real system in place", "weight": 3 }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "Annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-100k", "label": "Under $100K" },
+            { "value": "100k-250k", "label": "$100K-$250K" },
+            { "value": "250k-500k", "label": "$250K-$500K" },
+            { "value": "500k-1m", "label": "$500K-$1M" },
+            { "value": "over-1m", "label": "Over $1M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How urgent is this for you?",
+          "type": "select",
+          "options": [
+            { "value": "urgent", "label": "Very urgent (losing money now)" },
+            { "value": "important", "label": "Important (want to improve)" },
+            { "value": "someday", "label": "Someday when I have time" },
+            { "value": "browsing", "label": "Just curious" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already responding to inquiries quickly enough that most Hampton Roads plumbing customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and 21x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 21x difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "What percentage of after-hours calls do you miss or can't take?",
-      "type": "select",
-      "options": [
-        { "value": "most", "label": "Most (80%+)" },
-        { "value": "half", "label": "About half" },
-        { "value": "some", "label": "Some (20%)" },
-        { "value": "none", "label": "I answer all of them" },
-        { "value": "no-after-hours", "label": "I don't take after-hours" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "missed_after_hours"
+      "benchmarks": {
+        "medianReviewCount": "15 (median across Hampton Roads plumbing businesses tracked)",
+        "topCompetitorReviewCount": "2,400+ (Atomic Plumbing, Hampton Roads market leader)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads plumbing market. That's real proof for anyone comparing you to the next plumber in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established plumbing competitor like Atomic Plumbing carries 2,400+ Google reviews, and the median for a solid local shop we've tracked sits around 15. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local plumbing competitors like Atomic Plumbing have built up 2,400+ Google reviews, and even a solidly-performing shop in this market typically sits around 15, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your techs."
+      }
     },
-    {
-      "id": "q5",
-      "text": "How do most of your leads come in?",
-      "type": "select",
-      "options": [
-        { "value": "phone-direct", "label": "Direct phone calls" },
-        { "value": "google-reviews", "label": "Google reviews / maps" },
-        { "value": "referrals", "label": "Referrals from past customers" },
-        { "value": "facebook", "label": "Facebook / social media" },
-        { "value": "website", "label": "Website form" },
-        { "value": "mixed", "label": "Mix of several" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "lead_source"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest challenge right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-emergency", "label": "Missing emergency calls (water damage, burst pipes)" },
-        { "value": "slow-callback", "label": "Slow to call customers back" },
-        { "value": "qualification", "label": "Can't tell who really needs service vs window shoppers" },
-        { "value": "capacity", "label": "Overwhelmed, not enough hours" },
-        { "value": "no-system", "label": "No real system in place" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "Annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-100k", "label": "Under $100K" },
-        { "value": "100k-250k", "label": "$100K-$250K" },
-        { "value": "250k-500k", "label": "$250K-$500K" },
-        { "value": "500k-1m", "label": "$500K-$1M" },
-        { "value": "over-1m", "label": "Over $1M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How urgent is this for you?",
-      "type": "select",
-      "options": [
-        { "value": "urgent", "label": "Very urgent (losing money now)" },
-        { "value": "important", "label": "Important (want to improve)" },
-        { "value": "someday", "label": "Someday when I have time" },
-        { "value": "browsing", "label": "Just curious" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours coverage handled. Whoever calls after 5pm or on a weekend isn't just hitting voicemail, and that matters in plumbing where a burst pipe or a water heater that quits at midnight doesn't wait for business hours.",
+        "gap": "After-hours is a soft spot. Plumbing emergencies like a burst pipe or a water heater that quits at midnight don't wait for Monday morning, and whoever picks up first usually gets the job. If your current setup depends on someone remembering to check a phone after hours, you're leaving some of those calls on the table. The After-Hours Voice Agent picks up every time, screens for what's actually urgent, and only wakes you up when it's worth it.",
+        "biggest_gap": "This is your biggest gap. Plumbing emergencies happen on nights and weekends as often as they happen during business hours, and right now those calls are going nowhere useful. Every one of them is a shot at a job going to whichever plumber actually answers. The After-Hours Voice Agent answers every time, screens for real emergencies, and only interrupts you when it's actually worth it, so after-hours calls turn into booked jobs instead of missed opportunities."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgCallsPerWeek": "8-12",
-    "emergencyCallResponseRate": "60% answer rate industry-wide",
-    "waterDamageAvgCost": "$5,000-$15,000",
-    "conversionRate": "25-30%",
-    "avgServiceValue": "$2,000-$6,000"
-  },
-  "diagnosis": "You're losing emergency calls to voice mail. Every missed emergency call is a customer who calls the next plumber. In water damage situations, the first person to arrive usually gets the job. You're likely leaving $800-$2,000 per month on the table just from missed emergency calls."
+  }
 }
