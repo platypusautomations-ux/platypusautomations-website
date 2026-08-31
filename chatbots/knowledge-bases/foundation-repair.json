@@ -1,92 +1,164 @@
 {
-  "vertical": "foundation_repair",
+  "vertical": "foundation-repair",
   "verticalLabel": "Foundation Repair",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many foundation inspections/estimates do you do per quarter?",
-      "type": "select",
-      "options": [
-        { "value": "1-3", "label": "1-3" },
-        { "value": "4-8", "label": "4-8" },
-        { "value": "9-15", "label": "9-15" },
-        { "value": "15+", "label": "15+ (very active)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many foundation inspections/estimates do you do per quarter?",
+          "type": "select",
+          "options": [
+            { "value": "1-3", "label": "1-3", "weight": 0 },
+            { "value": "4-8", "label": "4-8", "weight": 1 },
+            { "value": "9-15", "label": "9-15", "weight": 2 },
+            { "value": "15+", "label": "15+ (very active)", "weight": 3 }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "How long does it take to schedule an inspection after a customer inquires?",
+          "type": "select",
+          "options": [
+            { "value": "3-5days", "label": "3-5 business days", "weight": 0 },
+            { "value": "1-2weeks", "label": "1-2 weeks", "weight": 1 },
+            { "value": "2-4weeks", "label": "2-4 weeks", "weight": 2 },
+            { "value": "4weeks+", "label": "Over a month", "weight": 3 },
+            { "value": "dont-track", "label": "Don't track it", "weight": 3 }
+          ],
+          "fieldName": "response_time"
+        },
+        {
+          "id": "q5",
+          "text": "Where do most of your leads come from?",
+          "type": "select",
+          "options": [
+            { "value": "referrals", "label": "Contractor / inspector referrals", "weight": 1 },
+            { "value": "google-maps", "label": "Google Maps / local search", "weight": 2 },
+            { "value": "website", "label": "Your website", "weight": 0 },
+            { "value": "word-mouth", "label": "Word-of-mouth", "weight": 1 },
+            { "value": "facebook", "label": "Facebook and social media", "weight": 2 },
+            { "value": "homeowners", "label": "Direct homeowner calls", "weight": 3 },
+            { "value": "mixed", "label": "Mix of several", "weight": 2 }
+          ],
+          "fieldName": "current_system"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest challenge right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-leads", "label": "Missing leads (slow response)", "weight": 3 },
+            { "value": "no-follow-up", "label": "Poor follow-up on inquiries", "weight": 2 },
+            { "value": "inspection-backlog", "label": "Too many inspection requests, can't keep up", "weight": 1 },
+            { "value": "financing-questions", "label": "Can't answer customer financing questions", "weight": 1 },
+            { "value": "no-system", "label": "No real system in place", "weight": 3 }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "Annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-150k", "label": "Under $150K" },
+            { "value": "150k-350k", "label": "$150K-$350K" },
+            { "value": "350k-750k", "label": "$350K-$750K" },
+            { "value": "750k-1m5", "label": "$750K-$1.5M" },
+            { "value": "over-1m5", "label": "Over $1.5M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How urgent is this for you?",
+          "type": "select",
+          "options": [
+            { "value": "urgent", "label": "Very urgent (losing inspections)" },
+            { "value": "important", "label": "Important (want to improve)" },
+            { "value": "someday", "label": "Someday when I have time" },
+            { "value": "exploring", "label": "Just curious" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already responding to inquiries quickly enough that most Hampton Roads foundation repair customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and 21x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 21x difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "How long does it take to schedule an inspection after a customer inquires?",
-      "type": "select",
-      "options": [
-        { "value": "3-5days", "label": "3-5 business days" },
-        { "value": "1-2weeks", "label": "1-2 weeks" },
-        { "value": "2-4weeks", "label": "2-4 weeks" },
-        { "value": "4weeks+", "label": "Over a month" },
-        { "value": "dont-track", "label": "Don't track it" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "response_time"
+      "benchmarks": {
+        "medianReviewCount": "15 (median across Hampton Roads foundation repair businesses tracked)",
+        "topCompetitorReviewCount": "1,500+ (BAY Crawl Space, Hampton Roads regional market leader)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads foundation repair market. That's real proof for anyone comparing you to the next foundation repair company in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established foundation and crawlspace competitor like BAY Crawl Space carries 1,500+ Google reviews, and the median for a solid local shop we've tracked sits around 15. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local foundation and crawlspace competitors like BAY Crawl Space have built up 1,500+ Google reviews, and even a solidly-performing shop in this market typically sits around 15, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your crew."
+      }
     },
-    {
-      "id": "q5",
-      "text": "Where do most of your leads come from?",
-      "type": "select",
-      "options": [
-        { "value": "referrals", "label": "Contractor / inspector referrals" },
-        { "value": "google-maps", "label": "Google Maps / local search" },
-        { "value": "website", "label": "Your website" },
-        { "value": "word-mouth", "label": "Word-of-mouth" },
-        { "value": "facebook", "label": "Facebook and social media" },
-        { "value": "homeowners", "label": "Direct homeowner calls" },
-        { "value": "mixed", "label": "Mix of several" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "current_system"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest challenge right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-leads", "label": "Missing leads (slow response)" },
-        { "value": "no-follow-up", "label": "Poor follow-up on inquiries" },
-        { "value": "inspection-backlog", "label": "Too many inspection requests, can't keep up" },
-        { "value": "financing-questions", "label": "Can't answer customer financing questions" },
-        { "value": "no-system", "label": "No real system in place" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "Annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-150k", "label": "Under $150K" },
-        { "value": "150k-350k", "label": "$150K-$350K" },
-        { "value": "350k-750k", "label": "$350K-$750K" },
-        { "value": "750k-1m5", "label": "$750K-$1.5M" },
-        { "value": "over-1m5", "label": "Over $1.5M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How urgent is this for you?",
-      "type": "select",
-      "options": [
-        { "value": "urgent", "label": "Very urgent (losing inspections)" },
-        { "value": "important", "label": "Important (want to improve)" },
-        { "value": "someday", "label": "Someday when I have time" },
-        { "value": "exploring", "label": "Just curious" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours covered. Whoever looks you up at 8pm or on a Saturday gets an answer, not silence, and that's exactly when a lot of foundation repair research happens, right after someone notices a crack or a sticking door.",
+        "gap": "After-hours is a soft spot. A lot of foundation repair inquiries start the evening someone finally notices a crack, a sticking door, or a sloping floor and starts searching. If your setup depends on someone remembering to check a phone off the clock, you're losing some of those to whoever answers first. The After-Hours Voice Agent picks up every call, day or night, so you're not starting the conversation a day behind.",
+        "biggest_gap": "This is your biggest gap. Foundation repair leads don't stop coming in at 5pm, homeowners search the moment they notice something's wrong, usually evenings and weekends. Right now those messages are sitting unanswered until you get back to them, and by then some of them have already booked an inspection with someone else. The After-Hours Voice Agent answers every time, so an after-hours inquiry turns into a booked inspection instead of a cold trail."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgProjectValue": "$8,000-$30,000",
-    "avgInspectionsPerQuarter": "8-15",
-    "inspectionToJobConversion": "35-50%",
-    "avgInspectionBookingTime": "5-10 business days",
-    "topCompetitorBookingTime": "2-3 business days"
-  },
-  "diagnosis": "Foundation repair is a trust play. Customers need confidence and a fast inspection. If you take 3+ weeks to inspect, they call another contractor. Every missed inspection is $3,000-$15,000 in potential jobs. You're competing on trust and speed. If you're scheduling inspections more than 2 weeks out, you're losing deals to competitors who move faster."
+  }
 }

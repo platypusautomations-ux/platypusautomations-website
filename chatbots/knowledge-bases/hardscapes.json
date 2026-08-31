@@ -1,92 +1,164 @@
 {
   "vertical": "hardscapes",
   "verticalLabel": "Hardscapes",
-  "questions": [
-    {
-      "id": "q3",
-      "text": "How many hardscape design consultations do you do per month?",
-      "type": "select",
-      "options": [
-        { "value": "1-3", "label": "1-3" },
-        { "value": "4-8", "label": "4-8" },
-        { "value": "9-15", "label": "9-15" },
-        { "value": "15+", "label": "15+ (very active)" }
+  "categories": {
+    "lead_response": {
+      "questions": [
+        {
+          "id": "q3",
+          "text": "How many hardscape design consultations do you do per month?",
+          "type": "select",
+          "options": [
+            { "value": "1-3", "label": "1-3", "weight": 0 },
+            { "value": "4-8", "label": "4-8", "weight": 1 },
+            { "value": "9-15", "label": "9-15", "weight": 2 },
+            { "value": "15+", "label": "15+ (very active)", "weight": 3 }
+          ],
+          "fieldName": "lead_volume"
+        },
+        {
+          "id": "q4",
+          "text": "How long does it take from initial inquiry to first consultation?",
+          "type": "select",
+          "options": [
+            { "value": "3-5days", "label": "3-5 business days", "weight": 0 },
+            { "value": "1-2weeks", "label": "1-2 weeks", "weight": 1 },
+            { "value": "2-4weeks", "label": "2-4 weeks", "weight": 2 },
+            { "value": "month", "label": "Over a month", "weight": 3 },
+            { "value": "dont-track", "label": "Don't track it", "weight": 3 }
+          ],
+          "fieldName": "response_time"
+        },
+        {
+          "id": "q5",
+          "text": "Where do most of your leads come from?",
+          "type": "select",
+          "options": [
+            { "value": "referrals", "label": "Referrals from past customers", "weight": 1 },
+            { "value": "google-maps", "label": "Google Maps / local search", "weight": 2 },
+            { "value": "instagram", "label": "Instagram and social media", "weight": 2 },
+            { "value": "website", "label": "Your website / portfolio", "weight": 0 },
+            { "value": "facebook", "label": "Facebook and Nextdoor", "weight": 2 },
+            { "value": "designer", "label": "Landscape designer referrals", "weight": 1 },
+            { "value": "mixed", "label": "Mix of several", "weight": 2 }
+          ],
+          "fieldName": "current_system"
+        },
+        {
+          "id": "q6",
+          "text": "What's your biggest bottleneck right now?",
+          "type": "select",
+          "options": [
+            { "value": "missing-leads", "label": "Missing leads (slow consultation booking)", "weight": 3 },
+            { "value": "no-follow-up", "label": "Poor follow-up on inquiries", "weight": 2 },
+            { "value": "designer-capacity", "label": "Not enough design/consultation time", "weight": 1 },
+            { "value": "crew-backlog", "label": "Construction crew backlog (too booked)", "weight": 1 },
+            { "value": "seasonal-dips", "label": "Seasonal gaps (winter slowdown)", "weight": 1 }
+          ],
+          "fieldName": "bottleneck"
+        },
+        {
+          "id": "q7",
+          "text": "Annual revenue range?",
+          "type": "select",
+          "options": [
+            { "value": "under-200k", "label": "Under $200K" },
+            { "value": "200k-500k", "label": "$200K-$500K" },
+            { "value": "500k-1m", "label": "$500K-$1M" },
+            { "value": "1m-2m", "label": "$1M-$2M" },
+            { "value": "over-2m", "label": "Over $2M" }
+          ],
+          "fieldName": "revenue_range"
+        },
+        {
+          "id": "q8",
+          "text": "How urgent is this for you?",
+          "type": "select",
+          "options": [
+            { "value": "urgent", "label": "Very urgent (losing consultations)" },
+            { "value": "important", "label": "Important (want to improve)" },
+            { "value": "someday", "label": "Someday when I have time" },
+            { "value": "exploring", "label": "Just curious" }
+          ],
+          "fieldName": "urgency"
+        }
       ],
-      "fieldName": "lead_volume"
+      "benchmarks": {
+        "fastResponseAdvantage": "Leads contacted within 5 minutes are up to 100x more likely to connect and 21x more likely to qualify than leads contacted after 30 minutes (Oldroyd, MIT / Harvard Business Review, 2011)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your lead response is in good shape. You're already responding to inquiries quickly enough that most Hampton Roads hardscape customers won't get poached by a faster competitor. Keep it that way as call volume grows. The moment response time slips is the moment this becomes your biggest gap instead.",
+        "gap": "You've got a real response-time problem. Research from MIT and Harvard Business Review found that leads contacted within 5 minutes are up to 100x more likely to actually connect, and 21x more likely to turn into a qualified job, than leads contacted after 30 minutes. Every extra hour you wait is another chance for the homeowner to book with whoever called back first. AI Text Screening answers the second a lead comes in, so you're never the slow one.",
+        "biggest_gap": "This is where you're losing the most ground. The gap between calling a lead back in the first 5 minutes and calling back 30+ minutes later isn't small. Research out of MIT and Harvard Business Review found up to a 100x difference in whether you ever connect at all, and a 21x difference in whether it turns into a qualified job. Missed Call Text-Back and AI Text Screening exist specifically to close this gap. Every lead gets an instant reply the moment they call or text, with zero manual work on your end."
+      }
     },
-    {
-      "id": "q4",
-      "text": "How long does it take from initial inquiry to first consultation?",
-      "type": "select",
-      "options": [
-        { "value": "3-5days", "label": "3-5 business days" },
-        { "value": "1-2weeks", "label": "1-2 weeks" },
-        { "value": "2-4weeks", "label": "2-4 weeks" },
-        { "value": "month", "label": "Over a month" },
-        { "value": "dont-track", "label": "Don't track it" }
+    "reviews": {
+      "questions": [
+        {
+          "text": "About how many Google reviews do you have?",
+          "type": "select",
+          "options": [
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
+          ],
+          "fieldName": "review_count"
+        },
+        {
+          "text": "How do you currently ask happy customers for reviews?",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
+          ],
+          "fieldName": "review_ask_process"
+        }
       ],
-      "fieldName": "response_time"
+      "benchmarks": {
+        "medianReviewCount": "6 (median across Hampton Roads hardscape businesses tracked)",
+        "topCompetitorReviewCount": "~146 (Virginia Beach Hardscapes, Hampton Roads market leader)"
+      },
+      "diagnosisTiers": {
+        "solid": "Your review count is solid for the Hampton Roads hardscape market. That's real proof for anyone comparing you to the next hardscape company in the search results. No action needed here. Just keep the reviews coming in as you grow.",
+        "gap": "You're behind where you should be on reviews. In this market, an established hardscape competitor like Virginia Beach Hardscapes carries around 146 Google reviews, and the median for a solid local shop we've tracked sits around 6. If you're closer to that median than the leader, that's real ground you're giving up in search results. A consistent review-ask process, not an occasional one, is what closes that gap. Google Reviews Automation handles the ask automatically after every job.",
+        "biggest_gap": "This is your biggest gap, and it's the easiest one to fix. Local hardscape competitors like Virginia Beach Hardscapes have built up around 146 Google reviews, and even a solidly-performing shop in this market typically sits around 6, based on Hampton Roads businesses we've tracked. Every job you finish without asking for a review is a missed chance to close that distance. Google Reviews Automation asks every satisfied customer automatically, no extra step for you or your crew."
+      }
     },
-    {
-      "id": "q5",
-      "text": "Where do most of your leads come from?",
-      "type": "select",
-      "options": [
-        { "value": "referrals", "label": "Referrals from past customers" },
-        { "value": "google-maps", "label": "Google Maps / local search" },
-        { "value": "instagram", "label": "Instagram and social media" },
-        { "value": "website", "label": "Your website / portfolio" },
-        { "value": "facebook", "label": "Facebook and Nextdoor" },
-        { "value": "designer", "label": "Landscape designer referrals" },
-        { "value": "mixed", "label": "Mix of several" }
+    "after_hours": {
+      "questions": [
+        {
+          "text": "What happens when someone calls or texts after hours?",
+          "type": "select",
+          "options": [
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
+          ],
+          "fieldName": "after_hours_handling"
+        },
+        {
+          "text": "About what share of your leads come in after hours or on weekends?",
+          "type": "select",
+          "options": [
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
+          ],
+          "fieldName": "after_hours_share"
+        }
       ],
-      "fieldName": "current_system"
-    },
-    {
-      "id": "q6",
-      "text": "What's your biggest bottleneck right now?",
-      "type": "select",
-      "options": [
-        { "value": "missing-leads", "label": "Missing leads (slow consultation booking)" },
-        { "value": "no-follow-up", "label": "Poor follow-up on inquiries" },
-        { "value": "designer-capacity", "label": "Not enough design/consultation time" },
-        { "value": "crew-backlog", "label": "Construction crew backlog (too booked)" },
-        { "value": "seasonal-dips", "label": "Seasonal gaps (winter slowdown)" }
-      ],
-      "fieldName": "bottleneck"
-    },
-    {
-      "id": "q7",
-      "text": "Annual revenue range?",
-      "type": "select",
-      "options": [
-        { "value": "under-200k", "label": "Under $200K" },
-        { "value": "200k-500k", "label": "$200K-$500K" },
-        { "value": "500k-1m", "label": "$500K-$1M" },
-        { "value": "1m-2m", "label": "$1M-$2M" },
-        { "value": "over-2m", "label": "Over $2M" }
-      ],
-      "fieldName": "revenue_range"
-    },
-    {
-      "id": "q8",
-      "text": "How urgent is this for you?",
-      "type": "select",
-      "options": [
-        { "value": "urgent", "label": "Very urgent (losing consultations)" },
-        { "value": "important", "label": "Important (want to improve)" },
-        { "value": "someday", "label": "Someday when I have time" },
-        { "value": "exploring", "label": "Just curious" }
-      ],
-      "fieldName": "urgency"
+      "diagnosisTiers": {
+        "solid": "You've got after-hours covered. Whoever looks you up at 8pm or on a Saturday gets an answer, not silence, and that's exactly when a lot of hardscape project research happens.",
+        "gap": "After-hours is a soft spot. A lot of hardscape shopping happens at night and on weekends, after work, when people finally sit down to plan the patio or the paver walkway. If your setup depends on someone remembering to check a phone off the clock, you're losing some of those to whoever answers first. The After-Hours Voice Agent picks up every call, day or night, so you're not starting the conversation a day behind.",
+        "biggest_gap": "This is your biggest gap. Hardscape leads don't stop coming in at 5pm, homeowners plan these projects on their own schedule, usually evenings and weekends. Right now those messages are sitting unanswered until you get back to them, and by then some of them have already booked a consultation with someone else. The After-Hours Voice Agent answers every time, so an after-hours inquiry turns into a booked consultation instead of a cold trail."
+      }
     }
-  ],
-  "benchmarks": {
-    "avgProjectValue": "$5,000-$30,000",
-    "consultationToJobConversion": "50-70%",
-    "avgConsultationsPerMonth": "8-16",
-    "averageBookingTime": "5-7 business days",
-    "topCompetitorBookingTime": "2-3 business days"
-  },
-  "diagnosis": "Hardscape customers are comparing designers and designs. If you take 2+ weeks to schedule a consultation, they've already picked another designer. Every missed consultation is $2,500-$15,000 in lost revenue. Portfolio-driven visual businesses like hardscapes win on responsiveness and design quality. Speed to consultation directly impacts your close rate."
+  }
 }
