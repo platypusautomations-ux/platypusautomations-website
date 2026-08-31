@@ -9,10 +9,10 @@
           "text": "How many qualified leads per week do you typically get?",
           "type": "select",
           "options": [
-            { "value": "0-2", "label": "0-2 (slow)" },
-            { "value": "3-5", "label": "3-5 (steady)" },
-            { "value": "6-10", "label": "6-10 (busy)" },
-            { "value": "10+", "label": "10+ (overwhelmed)" }
+            { "value": "0-2", "label": "0-2 (slow)", "weight": 0 },
+            { "value": "3-5", "label": "3-5 (steady)", "weight": 1 },
+            { "value": "6-10", "label": "6-10 (busy)", "weight": 2 },
+            { "value": "10+", "label": "10+ (overwhelmed)", "weight": 3 }
           ],
           "fieldName": "lead_volume"
         },
@@ -21,11 +21,11 @@
           "text": "On average, how long does it take you to respond to a lead?",
           "type": "select",
           "options": [
-            { "value": "under-1hr", "label": "Under 1 hour" },
-            { "value": "1-2hr", "label": "1-2 hours" },
-            { "value": "4-8hr", "label": "4-8 hours" },
-            { "value": "next-day", "label": "Next day or longer" },
-            { "value": "dont-know", "label": "Don't track it" }
+            { "value": "under-1hr", "label": "Under 1 hour", "weight": 0 },
+            { "value": "1-2hr", "label": "1-2 hours", "weight": 1 },
+            { "value": "4-8hr", "label": "4-8 hours", "weight": 2 },
+            { "value": "next-day", "label": "Next day or longer", "weight": 3 },
+            { "value": "dont-know", "label": "Don't track it", "weight": 3 }
           ],
           "fieldName": "response_time"
         },
@@ -34,14 +34,14 @@
           "text": "What's your current system for capturing and responding to leads?",
           "type": "select",
           "options": [
-            { "value": "phone-voicemail", "label": "Phone voicemail" },
-            { "value": "text", "label": "Text messages" },
-            { "value": "website-form", "label": "Website contact form" },
-            { "value": "facebook", "label": "Facebook/social media" },
-            { "value": "google-reviews", "label": "Google reviews" },
-            { "value": "referrals", "label": "Mostly referrals" },
-            { "value": "manual-mix", "label": "Mix of manual methods" },
-            { "value": "no-system", "label": "No system" }
+            { "value": "phone-voicemail", "label": "Phone voicemail", "weight": 3 },
+            { "value": "text", "label": "Text messages", "weight": 0 },
+            { "value": "website-form", "label": "Website contact form", "weight": 0 },
+            { "value": "facebook", "label": "Facebook/social media", "weight": 2 },
+            { "value": "google-reviews", "label": "Google reviews", "weight": 2 },
+            { "value": "referrals", "label": "Mostly referrals", "weight": 1 },
+            { "value": "manual-mix", "label": "Mix of manual methods", "weight": 2 },
+            { "value": "no-system", "label": "No system", "weight": 3 }
           ],
           "fieldName": "current_system"
         },
@@ -50,11 +50,11 @@
           "text": "What's your biggest bottleneck right now?",
           "type": "select",
           "options": [
-            { "value": "missing-leads", "label": "Missing leads (especially after-hours)" },
-            { "value": "slow-response", "label": "Too slow to respond" },
-            { "value": "poor-followup", "label": "Poor follow-up on cold leads" },
-            { "value": "no-qualification", "label": "Can't tell if leads are worth my time" },
-            { "value": "inconsistent", "label": "Inconsistent process" }
+            { "value": "missing-leads", "label": "Missing leads (especially after-hours)", "weight": 3 },
+            { "value": "slow-response", "label": "Too slow to respond", "weight": 3 },
+            { "value": "poor-followup", "label": "Poor follow-up on cold leads", "weight": 2 },
+            { "value": "no-qualification", "label": "Can't tell if leads are worth my time", "weight": 1 },
+            { "value": "inconsistent", "label": "Inconsistent process", "weight": 2 }
           ],
           "fieldName": "bottleneck"
         },
@@ -99,11 +99,11 @@
           "text": "About how many Google reviews do you have?",
           "type": "select",
           "options": [
-            { "value": "0-10", "label": "0-10" },
-            { "value": "11-25", "label": "11-25" },
-            { "value": "26-50", "label": "26-50" },
-            { "value": "51-100", "label": "51-100" },
-            { "value": "100+", "label": "100+" }
+            { "value": "0-10", "label": "0-10", "weight": 3 },
+            { "value": "11-25", "label": "11-25", "weight": 2 },
+            { "value": "26-50", "label": "26-50", "weight": 1 },
+            { "value": "51-100", "label": "51-100", "weight": 0 },
+            { "value": "100+", "label": "100+", "weight": 0 }
           ],
           "fieldName": "review_count"
         },
@@ -111,11 +111,11 @@
           "text": "How do you currently ask happy customers for reviews?",
           "type": "select",
           "options": [
-            { "value": "none", "label": "We don't ask" },
-            { "value": "verbal", "label": "Ask verbally in person" },
-            { "value": "card", "label": "Hand out a card" },
-            { "value": "occasional-text-email", "label": "Occasional text or email" },
-            { "value": "automatic-system", "label": "Automatic system" }
+            { "value": "none", "label": "We don't ask", "weight": 3 },
+            { "value": "verbal", "label": "Ask verbally in person", "weight": 2 },
+            { "value": "card", "label": "Hand out a card", "weight": 2 },
+            { "value": "occasional-text-email", "label": "Occasional text or email", "weight": 1 },
+            { "value": "automatic-system", "label": "Automatic system", "weight": 0 }
           ],
           "fieldName": "review_ask_process"
         }
@@ -136,10 +136,10 @@
           "text": "What happens when someone calls or texts after hours?",
           "type": "select",
           "options": [
-            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered" },
-            { "value": "forwards-to-cell", "label": "Forwards to my cell" },
-            { "value": "answer-personally", "label": "I try to answer personally" },
-            { "value": "has-system", "label": "We have some kind of after-hours system" }
+            { "value": "voicemail-unanswered", "label": "Goes to voicemail, often unanswered", "weight": 3 },
+            { "value": "forwards-to-cell", "label": "Forwards to my cell", "weight": 2 },
+            { "value": "answer-personally", "label": "I try to answer personally", "weight": 1 },
+            { "value": "has-system", "label": "We have some kind of after-hours system", "weight": 0 }
           ],
           "fieldName": "after_hours_handling"
         },
@@ -147,10 +147,10 @@
           "text": "About what share of your leads come in after hours or on weekends?",
           "type": "select",
           "options": [
-            { "value": "under-10", "label": "Hardly any (under 10%)" },
-            { "value": "10-25", "label": "Some (10-25%)" },
-            { "value": "25-50", "label": "A lot (25-50%)" },
-            { "value": "over-50", "label": "Most (50%+)" }
+            { "value": "under-10", "label": "Hardly any (under 10%)", "weight": 0 },
+            { "value": "10-25", "label": "Some (10-25%)", "weight": 1 },
+            { "value": "25-50", "label": "A lot (25-50%)", "weight": 2 },
+            { "value": "over-50", "label": "Most (50%+)", "weight": 3 }
           ],
           "fieldName": "after_hours_share"
         }

@@ -2,33 +2,55 @@ const assert = require('node:assert');
 const { flattenQuestions, scoreCategory, scoreAudit, composeScorecardText } = require('./audit-scoring.js');
 
 // ── fixtures ────────────────────────────────────────
+// Weights now live on each option, not in a shared global table. Trimmed to
+// the option values these tests actually exercise (max-weight coverage is
+// preserved per field so percentage math still matches Plan A's original
+// assertions), plus unweighted revenue_range/urgency options to prove they
+// stay excluded from scoring.
 var kbFixture = {
   categories: {
     lead_response: {
-      // Includes revenue_range and urgency, matching the real KB shape
-      // (all 6 original questions), specifically to catch scoreAudit
-      // treating them as scored fields when they must stay qualification-only.
       questions: [
-        { fieldName: 'lead_volume' },
-        { fieldName: 'response_time' },
-        { fieldName: 'current_system' },
-        { fieldName: 'bottleneck' },
-        { fieldName: 'revenue_range' },
-        { fieldName: 'urgency' }
+        { fieldName: 'lead_volume', options: [
+          { value: '0-2', weight: 0 }, { value: '3-5', weight: 1 }, { value: '6-10', weight: 2 }, { value: '10+', weight: 3 }
+        ]},
+        { fieldName: 'response_time', options: [
+          { value: 'under-1hr', weight: 0 }, { value: '1-2hr', weight: 1 }, { value: '4-8hr', weight: 2 }, { value: 'next-day', weight: 3 }, { value: 'dont-know', weight: 3 }
+        ]},
+        { fieldName: 'current_system', options: [
+          { value: 'website-form', weight: 0 }, { value: 'referrals', weight: 1 }, { value: 'facebook', weight: 2 }, { value: 'no-system', weight: 3 }
+        ]},
+        { fieldName: 'bottleneck', options: [
+          { value: 'no-qualification', weight: 1 }, { value: 'poor-followup', weight: 2 }, { value: 'missing-leads', weight: 3 }
+        ]},
+        { fieldName: 'revenue_range', options: [
+          { value: 'under-100k' }, { value: 'over-1m' }
+        ]},
+        { fieldName: 'urgency', options: [
+          { value: 'exploring' }, { value: 'asap' }
+        ]}
       ],
       diagnosisTiers: { solid: 'LR solid text', gap: 'LR gap text', biggest_gap: 'LR biggest_gap text' }
     },
     reviews: {
       questions: [
-        { fieldName: 'review_count' },
-        { fieldName: 'review_ask_process' }
+        { fieldName: 'review_count', options: [
+          { value: '0-10', weight: 3 }, { value: '11-25', weight: 2 }, { value: '26-50', weight: 1 }, { value: '51-100', weight: 0 }, { value: '100+', weight: 0 }
+        ]},
+        { fieldName: 'review_ask_process', options: [
+          { value: 'none', weight: 3 }, { value: 'verbal', weight: 2 }, { value: 'occasional-text-email', weight: 1 }, { value: 'automatic-system', weight: 0 }
+        ]}
       ],
       diagnosisTiers: { solid: 'RV solid text', gap: 'RV gap text', biggest_gap: 'RV biggest_gap text' }
     },
     after_hours: {
       questions: [
-        { fieldName: 'after_hours_handling' },
-        { fieldName: 'after_hours_share' }
+        { fieldName: 'after_hours_handling', options: [
+          { value: 'voicemail-unanswered', weight: 3 }, { value: 'forwards-to-cell', weight: 2 }, { value: 'answer-personally', weight: 1 }, { value: 'has-system', weight: 0 }
+        ]},
+        { fieldName: 'after_hours_share', options: [
+          { value: 'under-10', weight: 0 }, { value: '10-25', weight: 1 }, { value: '25-50', weight: 2 }, { value: 'over-50', weight: 3 }
+        ]}
       ],
       diagnosisTiers: { solid: 'AH solid text', gap: 'AH gap text', biggest_gap: 'AH biggest_gap text' }
     }
@@ -49,9 +71,11 @@ var kbFixture = {
 }
 
 // ── flattenQuestions: legacy KB fallback (no categories) ──
-// Legacy KBs (13 of 14 verticals, e.g. plumbing.json) still use the old
-// flat `questions[]` shape with no `categories` key. flattenQuestions must
-// fall back to reading kb.questions directly instead of silently returning [].
+// Verticals not yet migrated to the categories schema still use the old flat
+// questions[] shape (this plan migrates one vertical at a time with a commit
+// after each, so both shapes must work simultaneously mid-rollout).
+// flattenQuestions must fall back to reading kb.questions directly instead
+// of silently returning [].
 {
   var legacyKbFixture = {
     questions: [
@@ -69,21 +93,23 @@ var kbFixture = {
   assert.strictEqual(legacyFlat[2].fieldName, 'current_system');
 }
 
-// ── scoreCategory: lead_response ───────────────────
+// ── scoreCategory: lead_response (now takes question objects, not fieldNames) ──
 {
-  var solid = scoreCategory(['lead_volume', 'response_time', 'current_system', 'bottleneck'], {
+  var lrQuestions = kbFixture.categories.lead_response.questions;
+
+  var solid = scoreCategory(lrQuestions, {
     lead_volume: '0-2', response_time: 'under-1hr', current_system: 'website-form', bottleneck: 'no-qualification'
   });
   assert.strictEqual(solid.pct, 8, 'best-case lead_response answers should score 8%');
   assert.strictEqual(solid.tier, 'solid');
 
-  var gap = scoreCategory(['lead_volume', 'response_time', 'current_system', 'bottleneck'], {
+  var gap = scoreCategory(lrQuestions, {
     lead_volume: '3-5', response_time: '4-8hr', current_system: 'referrals', bottleneck: 'no-qualification'
   });
   assert.strictEqual(gap.pct, 42, 'mid-case lead_response answers should score 42%');
   assert.strictEqual(gap.tier, 'gap');
 
-  var worst = scoreCategory(['lead_volume', 'response_time', 'current_system', 'bottleneck'], {
+  var worst = scoreCategory(lrQuestions, {
     lead_volume: '10+', response_time: 'next-day', current_system: 'no-system', bottleneck: 'missing-leads'
   });
   assert.strictEqual(worst.pct, 100, 'worst-case lead_response answers should score 100%');
@@ -92,38 +118,40 @@ var kbFixture = {
 
 // ── scoreCategory: reviews ──────────────────────────
 {
-  var solid = scoreCategory(['review_count', 'review_ask_process'], { review_count: '100+', review_ask_process: 'automatic-system' });
+  var rvQuestions = kbFixture.categories.reviews.questions;
+
+  var solid = scoreCategory(rvQuestions, { review_count: '100+', review_ask_process: 'automatic-system' });
   assert.strictEqual(solid.pct, 0);
   assert.strictEqual(solid.tier, 'solid');
 
-  var gap = scoreCategory(['review_count', 'review_ask_process'], { review_count: '26-50', review_ask_process: 'verbal' });
+  var gap = scoreCategory(rvQuestions, { review_count: '26-50', review_ask_process: 'verbal' });
   assert.strictEqual(gap.pct, 50);
   assert.strictEqual(gap.tier, 'gap');
 
-  var worst = scoreCategory(['review_count', 'review_ask_process'], { review_count: '0-10', review_ask_process: 'none' });
+  var worst = scoreCategory(rvQuestions, { review_count: '0-10', review_ask_process: 'none' });
   assert.strictEqual(worst.pct, 100);
   assert.strictEqual(worst.tier, 'biggest_gap');
 }
 
 // ── scoreCategory: after_hours ──────────────────────
 {
-  var solid = scoreCategory(['after_hours_handling', 'after_hours_share'], { after_hours_handling: 'has-system', after_hours_share: 'under-10' });
+  var ahQuestions = kbFixture.categories.after_hours.questions;
+
+  var solid = scoreCategory(ahQuestions, { after_hours_handling: 'has-system', after_hours_share: 'under-10' });
   assert.strictEqual(solid.pct, 0);
   assert.strictEqual(solid.tier, 'solid');
 
-  var gap = scoreCategory(['after_hours_handling', 'after_hours_share'], { after_hours_handling: 'forwards-to-cell', after_hours_share: '10-25' });
+  var gap = scoreCategory(ahQuestions, { after_hours_handling: 'forwards-to-cell', after_hours_share: '10-25' });
   assert.strictEqual(gap.pct, 50);
   assert.strictEqual(gap.tier, 'gap');
 
-  var worst = scoreCategory(['after_hours_handling', 'after_hours_share'], { after_hours_handling: 'voicemail-unanswered', after_hours_share: 'over-50' });
+  var worst = scoreCategory(ahQuestions, { after_hours_handling: 'voicemail-unanswered', after_hours_share: 'over-50' });
   assert.strictEqual(worst.pct, 100);
   assert.strictEqual(worst.tier, 'biggest_gap');
 }
 
 // ── scoreAudit: tie-break order ─────────────────────
 {
-  // lead_response and after_hours both worst-case, reviews best-case:
-  // lead_response should win the tie (first in TIE_BREAK order).
   var answers1 = {
     lead_volume: '10+', response_time: 'next-day', current_system: 'no-system', bottleneck: 'missing-leads',
     review_count: '100+', review_ask_process: 'automatic-system',
@@ -135,8 +163,6 @@ var kbFixture = {
   assert.strictEqual(scored1.reviews.tier, 'solid');
   assert.strictEqual(scored1.biggestGap, 'lead_response', 'lead_response should win a tie over after_hours');
 
-  // lead_response best-case, after_hours and reviews both worst-case:
-  // after_hours should win the tie (second in TIE_BREAK order, ahead of reviews).
   var answers2 = {
     lead_volume: '0-2', response_time: 'under-1hr', current_system: 'website-form', bottleneck: 'no-qualification',
     review_count: '0-10', review_ask_process: 'none',
@@ -150,9 +176,8 @@ var kbFixture = {
 }
 
 // ── scoreAudit: revenue_range and urgency must not affect scoring ──
-// kbFixture's lead_response category carries all 6 real questions
-// (including revenue_range and urgency, which have no FIELD_WEIGHTS entry).
-// scoreAudit must silently exclude them rather than throwing or scoring them.
+// Their options in the fixture carry no `weight` at all -- proves exclusion
+// is now driven by the KB's own data, not a hardcoded field-name list.
 {
   var base = {
     lead_volume: '0-2', response_time: 'under-1hr', current_system: 'website-form', bottleneck: 'no-qualification',
