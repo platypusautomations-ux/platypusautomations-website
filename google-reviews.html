@@ -151,6 +151,7 @@
       .section-title { font-size: 1.5rem; }
     }
   </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -332,7 +333,8 @@
           <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="(757) 555-1234" required></a>
           <div class="form-group"><label>Trade Type</label><input type="text" name="tradeType" placeholder="Roofing" required></a>
           <div class="form-group"><label>Current Google Reviews (optional)</label><input type="text" name="message" placeholder="How many reviews do you have today?"></a>
-          <button type="submit" class="form-submit">See Your Ranking Potential →</button>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkXAZLbbvS_0dS5" data-callback="enableFormSubmit"></div>
+          <button type="submit" class="form-submit" disabled>See Your Ranking Potential →</button>
         </form>
       </a>
     </a>
@@ -388,6 +390,10 @@
   });
 
   // Form submission
+  function enableFormSubmit() {
+    document.querySelector('.form-submit').disabled = false;
+  }
+
   const form = document.getElementById('contact-form-sku4');
   if (form) {
     form.addEventListener('submit', async (e) => {

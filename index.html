@@ -1356,6 +1356,7 @@ footer {
 }
 
 </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -1806,7 +1807,8 @@ footer {
           <label class="f-label" for="fmsg">Tell Us About Your Business</label>
           <textarea class="f-area" id="fmsg" name="message" placeholder="What does your online presence look like today? What's your biggest challenge right now?"></textarea>
         </div>
-        <button type="submit" class="f-submit" id="fsubmit">Send Message →</button>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkXAZLbbvS_0dS5" data-callback="enableFormSubmit"></div>
+        <button type="submit" class="f-submit" id="fsubmit" disabled>Send Message →</button>
       </form>
       <div class="form-success" id="formSuccess">
         <span class="success-check">✓</span>
@@ -2094,6 +2096,9 @@ new IntersectionObserver(entries => {
 }, { threshold: 0.4 }).observe(document.getElementById('gbpStars'));
 
 /* ── CONTACT FORM ─────────────────────────────────── */
+function enableFormSubmit() {
+  document.getElementById('fsubmit').disabled = false;
+}
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('fsubmit');
@@ -2105,7 +2110,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
     businessName: document.getElementById('fbiz').value,
     phone: document.getElementById('fphone').value,
     tradeType: document.getElementById('ftrade').value,
-    message: document.getElementById('fmsg').value
+    message: document.getElementById('fmsg').value,
+    'cf-turnstile-response': typeof turnstile !== 'undefined' ? turnstile.getResponse() : ''
   };
 
   try {

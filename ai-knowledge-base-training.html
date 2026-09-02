@@ -148,6 +148,7 @@
       .section-title { font-size: 1.5rem; }
     }
   </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -322,7 +323,8 @@
           <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="(757) 555-1234" required></div>
           <div class="form-group"><label>Trade Type</label><input type="text" name="tradeType" placeholder="Roofing" required></div>
           <div class="form-group"><label>Currently Running Google Ads? (optional)</label><input type="text" name="message" placeholder="Yes, no, or not sure"></div>
-          <button type="submit" class="form-submit">See My AI Readiness →</button>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkXAZLbbvS_0dS5" data-callback="enableFormSubmit"></div>
+          <button type="submit" class="form-submit" disabled>See My AI Readiness →</button>
         </form>
       </div>
     </div>
@@ -378,6 +380,10 @@
   });
 
   // Form submission
+  function enableFormSubmit() {
+    document.querySelector('.form-submit').disabled = false;
+  }
+
   const form = document.getElementById('contact-form-sku7');
   if (form) {
     form.addEventListener('submit', async (e) => {
