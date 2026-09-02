@@ -138,6 +138,7 @@
       color: var(--text-light);
     }
   </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -256,7 +257,7 @@
       <div id="estimate-form" class="contact-form-card">
         <h2 style="margin-bottom:0.25rem;">Request a Free Estimate</h2>
         <p style="color:var(--text-light);font-size:0.92rem;margin-bottom:1.5rem;">We'll respond within one business day to schedule your inspection.</p>
-        <form action="https://formspree.io/f/mgogewpn" method="POST">
+        <form id="quote-form" action="https://automations.platypusautomations.com/webhook/suffolk-crawlspace-inquiry" method="POST">
           <input type="hidden" name="service" value="General Contact / Free Estimate Request">
           <div class="form-group">
             <label>Your Name *</label>
@@ -291,7 +292,8 @@
             <label>Describe what you've noticed (optional)</label>
             <textarea name="message" rows="4" placeholder="Musty smell, soft floors, standing water, visible mold, high energy bills..."></textarea>
           </div>
-          <button type="submit" class="form-submit">Request Free Inspection →</button>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkUnjIJHVmuhWSj" data-callback="enableFormSubmit"></div>
+          <button type="submit" class="form-submit" disabled>Request Free Inspection →</button>
           <p class="form-note">Response within one business day. No spam, no pressure.</p>
         </form>
       </div>
@@ -333,5 +335,26 @@
   </div>
 </footer>
 
+<script>
+  function enableFormSubmit() {
+    document.querySelector('.form-submit').disabled = false;
+  }
+  document.getElementById('quote-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    try {
+      await fetch(e.target.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      alert('Thank you for your inquiry. We\'ll contact you shortly to schedule your free estimate.');
+      e.target.reset();
+    } catch (err) {
+      alert('There was an error. Please try again.');
+    }
+  });
+</script>
 </body>
 </html>

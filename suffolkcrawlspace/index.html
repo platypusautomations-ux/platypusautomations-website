@@ -46,6 +46,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -126,7 +127,8 @@
             <label for="message">Describe the problem (optional)</label>
             <textarea id="message" name="message" placeholder="Musty smell, high humidity, sagging floors..."></textarea>
           </div>
-          <button type="submit" class="form-submit">Send My Estimate Request →</button>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkUnjIJHVmuhWSj" data-callback="enableFormSubmit"></div>
+          <button type="submit" class="form-submit" disabled>Send My Estimate Request →</button>
           <p class="form-note">🔒 Your information is private. We never share or sell it.</p>
         </form>
       </div>
@@ -361,7 +363,8 @@
             <label for="q-problem">Describe the issue</label>
             <textarea id="q-problem" name="message" placeholder="Musty smell, moisture, sagging floor..."></textarea>
           </div>
-          <button type="submit" class="form-submit">Request Free Estimate →</button>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkUnjIJHVmuhWSj" data-callback="enableFormSubmit"></div>
+          <button type="submit" class="form-submit" disabled>Request Free Estimate →</button>
           <p class="form-note">Typically respond within a few hours during business hours.</p>
         </form>
       </div>
@@ -421,6 +424,11 @@
       e.target.value = formatted;
     });
   });
+
+  // Turnstile: enable submit buttons once a challenge succeeds
+  function enableFormSubmit() {
+    document.querySelectorAll('.form-submit').forEach(btn => btn.disabled = false);
+  }
 
   // Form submission handlers
   ['estimate-form', 'quote-form'].forEach(formId => {
