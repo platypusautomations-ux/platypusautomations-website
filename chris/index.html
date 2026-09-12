@@ -33,6 +33,70 @@
     "openingHours": "Mo-Su 06:00-21:00"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you offer free estimates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Call (571) 337-0803 to schedule a free on-site estimate for a retaining wall, driveway, patio, or lawn care project."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do you serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chris Landscaping LLC is based in Stafford, VA and serves homes and businesses throughout Northern Virginia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What services does Chris Landscaping offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Retaining walls, driveways and paver installation, patio building, sod installation, lawn care, tree service and pruning, fences and decks, and mulching and tuck pointing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you build retaining walls?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Chris Landscaping builds block and stone retaining walls that hold grade, control drainage, and finish clean around foundations, driveways, and yards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you install paver patios and driveways?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Chris Landscaping installs paver and asphalt driveways and paver patios, built with proper base work so they hold up for years."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are your hours?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chris Landscaping LLC is open Monday through Sunday, 6:00am to 9:00pm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long has Chris Landscaping been in business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chris Landscaping LLC has been providing landscaping and hardscape services throughout Northern Virginia for more than 20 years."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -642,9 +706,55 @@
     .area-note a:hover { color: var(--moss); }
 
     /* ==============================
+       FAQ
+    ============================== */
+    .faq-section { padding: 6rem 0; background: var(--paper); }
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      background: var(--paper2);
+      border-left: 3px solid var(--brick);
+      margin-bottom: 0.7rem;
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--fh);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::marker { content: ''; }
+    .faq-item summary:focus-visible { outline: 2px solid var(--brick); outline-offset: -2px; }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--brick);
+      transition: transform 0.2s;
+    }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-item p {
+      padding: 0 1.5rem 1.3rem;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    /* ==============================
        CTA / GET AN ESTIMATE
     ============================== */
-    .quote-section { padding: 6rem 0; background: var(--paper); }
+    .quote-section { padding: 6rem 0; background: var(--paper2); }
     .quote-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -661,7 +771,7 @@
     .hours-block p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
 
     .quote-form {
-      background: var(--paper2);
+      background: var(--paper);
       border: 1px solid var(--line-strong);
       clip-path: polygon(0 0, 100% 0, 100% calc(100% - 26px), calc(100% - 26px) 100%, 0 100%);
       padding: 2.25rem 2rem;
@@ -673,7 +783,7 @@
     .form-label { font-size: 0.7rem; font-weight: 700; color: var(--ink-soft); }
     .form-input, .form-textarea {
       width: 100%;
-      background: var(--paper);
+      background: var(--paper2);
       border: 1px solid var(--line-strong);
       border-radius: 2px;
       padding: 0.72rem 0.95rem;
@@ -815,6 +925,7 @@
       <a href="#gallery" class="skip-link">Gallery</a>
       <a href="#about" class="skip-link">About</a>
       <a href="#service-area" class="skip-link">Service Area</a>
+      <a href="#faq" class="skip-link">FAQ</a>
       <a href="#free-quote" class="skip-link">Free Estimate</a>
     </div>
   </div>
@@ -1063,6 +1174,47 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="tick-rule"></div>
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="section-sub">Common questions about hardscaping and landscaping work in Stafford, VA.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Do you offer free estimates?<span class="faq-icon" aria-hidden="true">+</span></summary>
+          <p>Yes. Call <a href="tel:5713370803" style="color:var(--brick);font-weight:600;">(571) 337-0803</a> to schedule a free on-site estimate for a retaining wall, driveway, patio, or lawn care project.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What areas do you serve?<span class="faq-icon" aria-hidden="true">+</span></summary>
+          <p>Chris Landscaping LLC is based in Stafford, VA and serves homes and businesses throughout Northern Virginia.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What services does Chris Landscaping offer?<span class="faq-icon" aria-hidden="true">+</span></summary>
+          <p>Retaining walls, driveways and paver installation, patio building, sod installation, lawn care, tree service and pruning, fences and decks, and mulching and tuck pointing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you build retaining walls?<span class="faq-icon" aria-hidden="true">+</span></summary>
+          <p>Yes. Chris Landscaping builds block and stone retaining walls that hold grade, control drainage, and finish clean around foundations, driveways, and yards.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you install paver patios and driveways?<span class="faq-icon" aria-hidden="true">+</span></summary>
+          <p>Yes. Chris Landscaping installs paver and asphalt driveways and paver patios, built with proper base work so they hold up for years.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What are your hours?<span class="faq-icon" aria-hidden="true">+</span></summary>
+          <p>Chris Landscaping LLC is open Monday through Sunday, 6:00am to 9:00pm.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How long has Chris Landscaping been in business?<span class="faq-icon" aria-hidden="true">+</span></summary>
+          <p>Chris Landscaping LLC has been providing landscaping and hardscape services throughout Northern Virginia for more than 20 years.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- FREE ESTIMATE -->
   <section class="quote-section" id="free-quote">
     <div class="container">
@@ -1175,7 +1327,7 @@
 
     // Skip-link active state
     const skipLinks = document.querySelectorAll('.skip-link');
-    const trackedIds = ['services', 'gallery', 'about', 'service-area', 'free-quote'];
+    const trackedIds = ['services', 'gallery', 'about', 'service-area', 'faq', 'free-quote'];
     const trackedSections = trackedIds.map(id => document.getElementById(id));
     function updateActive() {
       const offset = 100;
