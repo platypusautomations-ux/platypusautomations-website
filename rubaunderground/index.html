@@ -24,6 +24,54 @@
   "url": "https://platypusautomations.com/rubaunderground/"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you offer free estimates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Call 918-530-6677 for a free estimate on your excavation or underground utility project."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What services does Ruba Underground offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Excavation and trenching, underground utility installation, site grading and prep, and dirt hauling and trucking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Ruba Underground licensed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ruba Underground is DOT certified, DOT# 4352493."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you handle both residential and commercial excavation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ruba Underground's work covers both residential utility trenching and larger commercial site excavation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide dirt hauling separately from excavation work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ruba Underground runs its own dump truck fleet for hauling spoil, fill dirt, and material, whether or not it's tied to an excavation job."
+      }
+    }
+  ]
+}
+</script>
 
 <style>
   :root {
@@ -213,6 +261,49 @@
     padding: 24px;
   }
 
+  /* FAQ */
+  .faq-list { max-width: 760px; margin: 0 auto; }
+  .faq-item {
+    background: var(--card-bg);
+    border-left: 3px solid var(--sage);
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 18px 22px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--white);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::marker { content: ''; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--sage); outline-offset: -2px; }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--sage-light);
+    transition: transform 0.2s;
+  }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-item p {
+    padding: 0 22px 20px;
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
   /* CTA SECTION */
   .cta-section {
     text-align: center;
@@ -342,6 +433,33 @@
   <div class="section-label">Service Area</div>
   <h2 class="section-title">Where We Work</h2>
   <div class="area-note">Call 918-530-6677 to check availability for your project location.</div>
+</section>
+
+<section id="faq">
+  <div class="section-label">FAQ</div>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Do you offer free estimates?<span class="faq-icon" aria-hidden="true">+</span></summary>
+      <p>Yes. Call <a href="tel:9185306677" style="color:var(--sage-light);font-weight:600;">918-530-6677</a> for a free estimate on your excavation or underground utility project.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What services does Ruba Underground offer?<span class="faq-icon" aria-hidden="true">+</span></summary>
+      <p>Excavation and trenching, underground utility installation, site grading and prep, and dirt hauling and trucking.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is Ruba Underground licensed?<span class="faq-icon" aria-hidden="true">+</span></summary>
+      <p>Yes. Ruba Underground is DOT certified, DOT# 4352493.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you handle both residential and commercial excavation?<span class="faq-icon" aria-hidden="true">+</span></summary>
+      <p>Yes. Ruba Underground's work covers both residential utility trenching and larger commercial site excavation.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you provide dirt hauling separately from excavation work?<span class="faq-icon" aria-hidden="true">+</span></summary>
+      <p>Yes. Ruba Underground runs its own dump truck fleet for hauling spoil, fill dirt, and material, whether or not it's tied to an excavation job.</p>
+    </details>
+  </div>
 </section>
 
 <section class="cta-section" id="contact">
