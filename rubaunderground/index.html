@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Underground Utility Contractor | Ruba Underground</title>
+<meta name="description" content="Ruba Underground handles excavation, trenching, and underground utility work. DOT certified. Call 918-530-6677 for a free estimate.">
+<link rel="canonical" href="https://platypusautomations.com/rubaunderground/">
+
+<meta property="og:title" content="Underground Utility Contractor | Ruba Underground">
+<meta property="og:description" content="Excavation, trenching, and underground utility work. DOT certified. Call 918-530-6677 for a free estimate.">
+<meta property="og:image" content="https://platypusautomations.com/rubaunderground/img/dump-truck-cab-branding.jpg">
+<meta property="og:url" content="https://platypusautomations.com/rubaunderground/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Contractor",
+  "name": "Ruba Underground",
+  "telephone": "918-530-6677",
+  "description": "Underground utility contractor providing excavation, trenching, and underground line work.",
+  "url": "https://platypusautomations.com/rubaunderground/"
+}
+</script>
+
+<style>
+  :root {
+    --bg-dark: #14181a;
+    --bg-darker: #0c0f10;
+    --sage: #8fa48c;
+    --sage-light: #a8bda5;
+    --white: #f4f5f3;
+    --gray: #b8bdb9;
+    --card-bg: #1c2123;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+    background: var(--bg-dark);
+    color: var(--white);
+    line-height: 1.6;
+    padding-bottom: 64px;
+  }
+  h1, h2, h3 { font-family: 'Segoe UI', Roboto, sans-serif; font-weight: 800; letter-spacing: -0.01em; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(12,15,16,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(143,164,140,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 24px;
+  }
+  nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  nav .brand img { height: 42px; width: auto; border-radius: 4px; }
+  nav .brand-text { font-weight: 700; font-size: 1.05rem; color: var(--white); }
+  nav .nav-right { display: flex; align-items: center; gap: 14px; }
+  nav .nav-phone { font-weight: 600; font-size: 0.95rem; color: var(--sage-light); }
+  nav .nav-cta {
+    background: var(--sage);
+    color: var(--bg-darker);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 18px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  @media (max-width: 480px) {
+    nav .nav-phone { display: none; }
+    nav .brand-text { display: none; }
+    nav .nav-cta { font-size: 0.78rem; padding: 9px 14px; }
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    margin-top: 62px;
+    min-height: 88vh;
+    display: flex;
+    align-items: flex-end;
+    background: url('img/dump-truck-cab-branding.jpg') center 30%/cover no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(12,15,16,0.55) 0%, rgba(12,15,16,0.35) 40%, rgba(12,15,16,0.92) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 48px 24px 56px;
+    max-width: 760px;
+  }
+  .hero-content h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  .hero-content h1 span { color: var(--sage-light); }
+  .hero-content p {
+    font-size: 1.05rem;
+    color: var(--gray);
+    max-width: 540px;
+    margin-bottom: 26px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--sage);
+    color: var(--bg-darker);
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 16px 28px;
+    border-radius: 6px;
+  }
+
+  section { padding: 64px 24px; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    color: var(--sage-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    margin-bottom: 32px;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(143,164,140,0.15);
+    border-radius: 8px;
+    padding: 26px 22px;
+  }
+  .service-card h3 {
+    font-size: 1.1rem;
+    color: var(--sage-light);
+    margin-bottom: 10px;
+  }
+  .service-card p { color: var(--gray); font-size: 0.95rem; }
+
+  /* GALLERY */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* ABOUT */
+  .about-box {
+    background: var(--card-bg);
+    border-left: 3px solid var(--sage);
+    border-radius: 6px;
+    padding: 32px 28px;
+  }
+  .about-box p { color: var(--gray); font-size: 1.02rem; margin-bottom: 14px; }
+  .about-box p:last-child { margin-bottom: 0; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--bg-darker);
+    border-top: 1px solid rgba(143,164,140,0.15);
+    border-bottom: 1px solid rgba(143,164,140,0.15);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .trust-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+  }
+  .trust-item { font-weight: 700; color: var(--sage-light); font-size: 0.95rem; }
+
+  /* SERVICE AREA */
+  .area-note {
+    color: var(--gray);
+    font-size: 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+  }
+  .cta-section h2 { margin-bottom: 12px; }
+  .cta-section p { color: var(--gray); margin-bottom: 26px; }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .cta-buttons a {
+    padding: 16px 30px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 1.05rem;
+  }
+  .cta-call { background: var(--sage); color: var(--bg-darker); }
+  .cta-outline { border: 1px solid var(--sage); color: var(--sage-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg-darker);
+    padding: 40px 24px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(143,164,140,0.15);
+  }
+  footer .footer-name { font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  footer .footer-info { color: var(--gray); font-size: 0.9rem; margin-bottom: 4px; }
+  footer .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 18px; }
+
+  /* STICKY MOBILE CALL BAR */
+  .sticky-call {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: var(--sage);
+    color: var(--bg-darker);
+    text-align: center;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 16px;
+  }
+  @media (max-width: 600px) {
+    .sticky-call { display: block; }
+    body { padding-bottom: 64px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <img src="img/ruba-logo.jpg" alt="Ruba Underground logo">
+    <span class="brand-text">RUBA UNDERGROUND</span>
+  </div>
+  <div class="nav-right">
+    <a href="tel:9185306677" class="nav-phone">918-530-6677</a>
+    <a href="tel:9185306677" class="nav-cta">Call for a Free Estimate</a>
+  </div>
+</nav>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-content">
+    <h1>Underground Utility Work Done <span>Right the First Time</span></h1>
+    <p>Ruba Underground handles excavation, trenching, and underground utility installation with the equipment and crew to get it done clean and on schedule.</p>
+    <a href="tel:9185306677" class="hero-cta">📞 Call 918-530-6677</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Excavation and Underground Utility Contractor</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Excavation & Trenching</h3>
+      <p>Precise trenching for utility lines, drainage, and site work, cut clean and backfilled right.</p>
+    </div>
+    <div class="service-card">
+      <h3>Underground Utility Installation</h3>
+      <p>Running conduit and utility lines below grade, from residential hookups to larger site runs.</p>
+    </div>
+    <div class="service-card">
+      <h3>Site Grading & Prep</h3>
+      <p>Grading and prepping ground for construction, foundations, and drainage before the next phase starts.</p>
+    </div>
+    <div class="service-card">
+      <h3>Dirt Hauling & Trucking</h3>
+      <p>Full dump truck fleet for hauling spoil, fill dirt, and material on and off the job site.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-label">Our Work</div>
+  <h2 class="section-title">Recent Excavation and Utility Jobs</h2>
+  <div class="gallery-grid">
+    <img src="img/excavator-hillside-trenching.jpg" alt="Excavator trenching on hillside for underground utility work" loading="lazy">
+    <img src="img/trench-utility-line-shed.jpg" alt="Underground utility line trench next to building" loading="lazy">
+    <img src="img/deep-trench-commercial-site.jpg" alt="Deep excavation trench at commercial construction site" loading="lazy">
+    <img src="img/dump-truck-kubota-loading.jpg" alt="Dump truck being loaded by skid steer on excavation site" loading="lazy">
+    <img src="img/peterbilt-dump-truck-unloading.jpg" alt="Dump truck unloading fill dirt on job site" loading="lazy">
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">Ruba Underground</h2>
+  <div class="about-box">
+    <p>Ruba Underground is an excavation and underground utility contractor running a full fleet of dump trucks, excavators, and skid steers to get trenching, utility line work, and grading done right.</p>
+    <p>DOT certified (DOT# 4352493). Call for a free estimate on your next job.</p>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">DOT CERTIFIED &middot; #4352493</div>
+    <div class="trust-item">FULL EQUIPMENT FLEET</div>
+    <div class="trust-item">FREE ESTIMATES</div>
+  </div>
+</div>
+
+<section id="area">
+  <div class="section-label">Service Area</div>
+  <h2 class="section-title">Where We Work</h2>
+  <div class="area-note">Call 918-530-6677 to check availability for your project location.</div>
+</section>
+
+<section class="cta-section" id="contact">
+  <h2 class="section-title" style="margin-bottom:8px;">Ready to Get Started?</h2>
+  <p>Call now for a free estimate on your excavation or underground utility project.</p>
+  <div class="cta-buttons">
+    <a href="tel:9185306677" class="cta-call">📞 Call 918-530-6677</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Ruba Underground</div>
+  <div class="footer-info">918-530-6677</div>
+  <div class="footer-info">DOT# 4352493</div>
+  <div class="footer-copy">&copy; 2026 Ruba Underground. All rights reserved.</div>
+  <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
+    SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
+  </div>
+</footer>
+
+<a href="tel:9185306677" class="sticky-call">📞 Call 918-530-6677</a>
+
+</body>
+</html>
