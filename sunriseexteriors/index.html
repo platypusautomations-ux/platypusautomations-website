@@ -559,7 +559,9 @@
 
   function goTo(i) {
     index = (i + imgs.length) % imgs.length;
-    imgs[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    var target = imgs[index];
+    var offset = target.offsetLeft - (scroller.clientWidth - target.offsetWidth) / 2;
+    scroller.scrollTo({ left: offset, behavior: 'smooth' });
     dots.forEach(function(d, di) { d.classList.toggle('active', di === index); });
   }
 
