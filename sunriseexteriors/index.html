@@ -149,13 +149,25 @@
     min-height: 88vh;
     display: flex;
     align-items: flex-end;
-    background: url('img/hero-farmhouse-siding.jpg') center 55%/cover no-repeat;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
   }
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(13,12,9,0.55) 0%, rgba(13,12,9,0.35) 40%, rgba(13,12,9,0.94) 100%);
+    background: linear-gradient(180deg, rgba(13,12,9,0.5) 0%, rgba(13,12,9,0.3) 40%, rgba(13,12,9,0.94) 100%);
+  }
+  @media (max-width: 600px) {
+    .hero { min-height: 64vh; }
+    .hero-img { object-position: center 30%; }
   }
   .hero-content {
     position: relative;
@@ -227,17 +239,40 @@
   .service-card p { color: var(--gray); font-size: 0.95rem; }
 
   /* GALLERY */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  .gallery-scroll {
+    display: flex;
     gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .gallery-grid img {
-    width: 100%;
-    height: 260px;
+  .gallery-scroll::-webkit-scrollbar { display: none; }
+  .gallery-scroll img {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+    height: 280px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
   }
+  @media (min-width: 700px) {
+    .gallery-scroll img { flex: 0 0 340px; height: 300px; }
+  }
+  .gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+  }
+  .gallery-dots span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(201,162,39,0.25);
+    transition: background 0.3s;
+  }
+  .gallery-dots span.active { background: var(--gold); }
 
   /* ABOUT */
   .about-box {
@@ -385,6 +420,7 @@
 </nav>
 
 <section class="hero" style="padding:0;">
+  <img src="img/patio-porch-siding.jpg" alt="Sunrise Exteriors LLC siding and porch project in Harlan IN" class="hero-img">
   <div class="hero-content">
     <div class="hero-tag">"Quality Work You Can Count On"</div>
     <h1>Siding, Windows &amp; Doors Done Right in <span>Harlan, IN</span></h1>
@@ -423,7 +459,7 @@
 <section id="gallery">
   <div class="section-label">Our Work</div>
   <h2 class="section-title">Recent Siding and Exterior Jobs</h2>
-  <div class="gallery-grid">
+  <div class="gallery-scroll" id="galleryScroll">
     <img src="img/hero-farmhouse-siding.jpg" alt="Vinyl siding installation on two-story farmhouse in Harlan IN" loading="lazy">
     <img src="img/farmhouse-corner-porch.jpg" alt="New construction siding and porch columns on farmhouse" loading="lazy">
     <img src="img/window-install-craftsman.jpg" alt="New window installation on craftsman style home" loading="lazy">
@@ -431,6 +467,7 @@
     <img src="img/siding-install-newconstruction.jpg" alt="Siding installation in progress on new construction home" loading="lazy">
     <img src="img/detached-garage-siding.jpg" alt="Siding installation on detached garage" loading="lazy">
   </div>
+  <div class="gallery-dots" id="galleryDots"></div>
 </section>
 
 <section id="about">
@@ -504,6 +541,41 @@
 </footer>
 
 <a href="tel:2603127233" class="sticky-call">📞 Call (260) 312-7233</a>
+
+<script>
+(function() {
+  var scroller = document.getElementById('galleryScroll');
+  var dotsWrap = document.getElementById('galleryDots');
+  var imgs = scroller.querySelectorAll('img');
+  imgs.forEach(function(_, i) {
+    var dot = document.createElement('span');
+    if (i === 0) dot.className = 'active';
+    dotsWrap.appendChild(dot);
+  });
+  var dots = dotsWrap.querySelectorAll('span');
+  var index = 0;
+  var paused = false;
+  var resumeTimer;
+
+  function goTo(i) {
+    index = (i + imgs.length) % imgs.length;
+    imgs[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    dots.forEach(function(d, di) { d.classList.toggle('active', di === index); });
+  }
+
+  var auto = setInterval(function() {
+    if (!paused) goTo(index + 1);
+  }, 3500);
+
+  function pauseThenResume() {
+    paused = true;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function() { paused = false; }, 6000);
+  }
+  scroller.addEventListener('touchstart', pauseThenResume, { passive: true });
+  scroller.addEventListener('wheel', pauseThenResume, { passive: true });
+})();
+</script>
 
 </body>
 </html>
