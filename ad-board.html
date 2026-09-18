@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Ad Boards for Hampton Roads Businesses | Platypus Automations</title>
+  <meta name="description" content="A free custom ad board for your business, with a dry-erase specials panel you control. Six local advertiser spots. Now lining up our first Chesapeake-area locations.">
+  <link rel="canonical" href="https://www.platypusautomations.com/ad-board.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Ad Boards for Hampton Roads Businesses">
+  <meta property="og:description" content="A free custom ad board with a dry-erase specials panel you control, plus six local advertiser spots. Now lining up our first locations.">
+  <meta property="og:url" content="https://www.platypusautomations.com/ad-board.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Ad Board Program",
+    "description": "Free custom sandwich board with a dry-erase specials panel for host businesses, carrying six paid ad spots for local trades and service businesses.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Platypus Automations",
+      "telephone": "(757) 717-2707",
+      "url": "https://www.platypusautomations.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chesapeake",
+        "addressRegion": "VA",
+        "postalCode": "23323",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "Region",
+      "name": "Hampton Roads, Virginia"
+    },
+    "serviceType": "Local Advertising"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', system-ui, sans-serif; background: #0A1628; color: #fff; font-size: 16px; line-height: 1.6; font-weight: 300; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+    .site-header { background: #0A1628; border-bottom: 1px solid rgba(0,122,122,0.2); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+    .logo { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.35rem; font-weight: 400; color: #fff; }
+    .logo span { color: #00a0a0; }
+    .main-nav { display: flex; gap: 28px; }
+    .main-nav a { font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: color 0.3s; }
+    .main-nav a:hover { color: #fff; }
+    .header-cta { display: flex; gap: 16px; align-items: center; }
+    .phone-link { font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.85); }
+    .btn { padding: 10px 24px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; }
+    .btn-primary { background: #E8651A; color: #fff; }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5,13,24,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 28px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,0.75); transition: color 0.3s; }
+    .mobile-nav a:hover { color: #E8651A; }
+    .mobile-nav .m-cta { margin-top: 8px; background: #E8651A; color: #fff; padding: 12px 32px; border-radius: 999px; font-size: 1rem; font-weight: 500; }
+    .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.2rem; cursor: pointer; line-height: 1; }
+    .breadcrumb { padding: 16px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .breadcrumb-inner { display: flex; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.52); }
+    .page-hero { padding: 64px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .page-hero h1 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; line-height: 1.12; margin-bottom: 24px; color: #fff; }
+    .page-hero > .container > p { font-size: 1.05rem; color: rgba(255,255,255,0.68); line-height: 1.7; max-width: 720px; margin-bottom: 32px; }
+    .page-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.55); }
+    .page-hero-meta span::before { content: '✓ '; color: #00a0a0; font-weight: 600; margin-right: 6px; }
+    .status-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,101,26,0.1); border: 1px solid rgba(232,101,26,0.35); border-radius: 999px; padding: 6px 16px; font-size: 0.8rem; font-weight: 500; color: #ff9a54; margin-bottom: 20px; }
+    .status-pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #E8651A; }
+    .section { padding: 64px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .section:last-of-type { border-bottom: none; }
+    .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start; }
+    .content-body h2 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.85rem; font-weight: 400; margin-bottom: 20px; color: #fff; line-height: 1.18; }
+    .content-body h3 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.35rem; font-weight: 400; margin-top: 28px; margin-bottom: 14px; color: #fff; line-height: 1.22; }
+    .content-body p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 18px; }
+    .content-body ul { margin: 20px 0 24px 0; }
+    .content-body li { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.65; margin-bottom: 12px; padding-left: 24px; position: relative; }
+    .content-body li::before { content: '→'; position: absolute; left: 0; color: #00a0a0; font-weight: 600; }
+    .info-box { background: rgba(0,122,122,0.08); border: 1px solid rgba(0,122,122,0.2); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+    .info-box h3 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.1rem; font-weight: 400; margin-bottom: 16px; color: #fff; }
+    .info-box p { font-size: 0.9rem; color: rgba(255,255,255,0.62); line-height: 1.65; margin-bottom: 12px; }
+    .info-box p:last-child { margin-bottom: 0; }
+    .section--gray { background: rgba(0,122,122,0.04); }
+    .section-label { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    .section-title { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 2rem; font-weight: 400; margin-bottom: 32px; color: #fff; line-height: 1.18; }
+    .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .audience-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(0,122,122,0.2); border-radius: 12px; padding: 28px; }
+    .audience-card h3 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.3rem; font-weight: 400; margin-bottom: 16px; color: #fff; }
+    .audience-card li { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 12px; padding-left: 22px; position: relative; }
+    .audience-card li::before { content: '✓'; position: absolute; left: 0; color: #00a0a0; font-weight: 600; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid rgba(0,122,122,0.15); padding: 20px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.82); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::after { content: '+'; font-size: 1.3rem; font-weight: 300; transition: transform 0.3s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { color: #fff; }
+    .faq-answer { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.72; margin-top: 16px; padding-top: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .related-card { background: rgba(0,122,122,0.06); border: 1px solid rgba(0,122,122,0.15); border-radius: 12px; padding: 28px; transition: all 0.3s; }
+    .related-card:hover { background: rgba(0,122,122,0.12); border-color: rgba(0,122,122,0.35); transform: translateY(-6px); }
+    .related-card h4 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.15rem; font-weight: 400; margin-bottom: 12px; color: #fff; }
+    .related-card p { font-size: 0.9rem; color: rgba(255,255,255,0.62); line-height: 1.6; }
+    .quote-section { background: linear-gradient(135deg, rgba(0,122,122,0.1), rgba(232,101,26,0.05)); padding: 64px 0; border: 1px solid rgba(0,122,122,0.15); border-radius: 16px; margin: 64px 0; }
+    .quote-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .quote-copy h2 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.8rem; font-weight: 400; margin-bottom: 16px; color: #fff; }
+    .quote-copy p { font-size: 0.95rem; color: rgba(255,255,255,0.68); line-height: 1.7; margin-bottom: 16px; }
+    .quote-phone { display: inline-block; font-size: 1.4rem; font-weight: 500; color: #00a0a0; transition: color 0.3s; }
+    .quote-phone:hover { color: #fff; }
+    .quote-hours { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 8px; }
+    .quote-form-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(0,122,122,0.2); border-radius: 12px; padding: 32px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 14px; font-family: inherit; font-size: 0.9rem; color: #fff; transition: border-color 0.3s; }
+    .form-group select { appearance: none; -webkit-appearance: none; }
+    .form-group select option { background: #0A1628; color: #fff; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #E8651A; background: rgba(232,101,26,0.04); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit { width: 100%; padding: 12px; border-radius: 8px; background: #E8651A; color: #fff; font-weight: 600; transition: all 0.3s; margin-top: 8px; }
+    .form-submit:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+    footer { background: #050d18; border-top: 1px solid rgba(0,122,122,0.2); padding: 32px 0; margin-top: 64px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .footer-left { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-cert-badge { display: block; height: 36px; width: auto; border-radius: 4px; opacity: 0.95; transition: opacity 0.3s; }
+    .footer-cert-badge:hover { opacity: 1; }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .main-nav, .header-cta { display: none; }
+      .hamburger { display: flex; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
+      .header-inner { justify-content: center; position: relative; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
+      .content-grid { grid-template-columns: 1fr; gap: 32px; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .quote-inner { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 48px 0; }
+      .section { padding: 48px 0; }
+      .page-hero h1 { font-size: 1.85rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="nav-logo">
+      <img src="pa_wordmark_transparent.webp" alt="Platypus Automations" width="600" height="335" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block;height:63px;width:auto">
+      <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:#fff;letter-spacing:-0.5px">Platypus Automations</span>
+      </a>
+      <nav><ul class="main-nav">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="ad-board.html">Ad Board</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul></nav>
+      <div class="header-cta">
+        <a href="tel:7577172707" class="phone-link">(757) 717-2707</a>
+        <a href="#ad-board-form" class="btn btn-primary">Get on the List</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="index.html#services" onclick="closeMobileNav()">Services</a>
+  <a href="ad-board.html" onclick="closeMobileNav()">Ad Board</a>
+  <a href="index.html#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="tel:7577172707" onclick="closeMobileNav()">(757) 717-2707</a>
+  <a href="#ad-board-form" class="m-cta" onclick="closeMobileNav()">Get on the List</a>
+</div>
+
+<nav class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Home</a><span>›</span><span>Ad Board</span>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="status-pill">Now lining up our first Chesapeake-area locations</div>
+    <h1>A Free Custom Ad Board, With a Specials Panel You Control</h1>
+    <p>Platypus Automations is placing free custom sandwich boards in local restaurants and shops around Chesapeake. The top writes and erases so you post your own daily specials. The bottom carries six ad spots for local trades and service businesses. No cost to host it, no catch.</p>
+    <div class="page-hero-meta">
+      <span>Free For the Host</span>
+      <span>Dry-Erase Specials Panel</span>
+      <span>6 Local Advertiser Spots</span>
+      <span>No Franchises, No Corporate Sign-Off</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="content-body">
+        <h2>How It Works</h2>
+        <p>We design, build, and deliver a custom 24"x36" board to your business at no cost. The top portion is a dry-erase panel, blank until you write on it, for your own daily or weekly specials. The bottom carries six printed ad tiles from local trades and professional businesses (real estate, plumbing, roofing, insurance, HVAC, junk removal, and similar) plus a small Platypus Automations footer.</p>
+        <p>It sits on a stand by your counter or entrance, wherever it gets the most eyes from people already walking through your door.</p>
+
+        <h3>Why It's Free</h3>
+        <p>The board pays for itself through the six advertiser spots, not through anything you pay. You get a piece of custom signage that's actually useful, not a static ad you're stuck looking at.</p>
+
+        <h3>You Help Pick the Advertisers</h3>
+        <p>Before your board goes up, we'll ask who you'd actually want to see featured on it, businesses you already use and trust. It's your board in your business, and we want the six names on it to be ones you're glad are there.</p>
+
+        <h3>No Long-Term Trap</h3>
+        <p>If it's not earning its space, take it down. We'd rather you keep a board you actually use than hold you to one you don't.</p>
+      </div>
+      <div>
+        <div class="info-box">
+          <h3>Where We Are Today</h3>
+          <p>The board design is finalized and in production sourcing. We're currently identifying our first host location in the Chesapeake area and reaching out to founding advertisers.</p>
+          <p>If you're a host or an advertiser interested in being first, tell us below and we'll reach out directly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--gray">
+  <div class="container">
+    <span class="section-label">Two Ways In</span>
+    <h2 class="section-title">Host a Board or Advertise on One</h2>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>For Host Businesses</h3>
+        <ul>
+          <li>Free custom board, built and delivered, no cost to you</li>
+          <li>A dry-erase panel for your own specials, updated whenever you want</li>
+          <li>You help choose which local businesses appear on it</li>
+          <li>No franchise or corporate approval needed if you're independently owned</li>
+          <li>Take it down any time it's not working for you</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <h3>For Advertisers</h3>
+        <ul>
+          <li>A physical ad tile in a real, high-traffic local business</li>
+          <li>Seen by the same customers day after day, not scrolled past</li>
+          <li>A limited number of spots per board, six total</li>
+          <li>Founding advertiser spots available on our first boards</li>
+          <li>Pricing discussed directly, based on the specific location</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="max-width:780px;margin:0 auto;">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Ad Board FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What does hosting a board actually cost me?</summary>
+          <div class="faq-answer">Nothing. The board, the stand, and the design are provided at no cost to you. There's no revenue share and no fee for hosting.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I control what's on my board?</summary>
+          <div class="faq-answer">The top dry-erase panel is entirely yours to write on. For the six ad spots, we'll ask you who you'd want to see featured before your board is finalized.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I'm part of a franchise?</summary>
+          <div class="faq-answer">We're focused on independently owned businesses for now, since a franchise location typically needs corporate sign-off on any outside signage.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How much does an advertiser spot cost?</summary>
+          <div class="faq-answer">It depends on the specific host location and its foot traffic. We'll walk through pricing on a call once we know which board you're interested in.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How many boards exist right now?</summary>
+          <div class="faq-answer">None are placed yet. We're finishing design and sourcing on the first board and lining up our first host location and founding advertisers now.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is this connected to Platypus Automations' other services?</summary>
+          <div class="faq-answer">Yes. Platypus Automations builds automation systems for local service businesses, missed-call response, review automation, and more. The ad board is a separate offer from the same company, aimed at building trust with local businesses in a different way.</div>
+        </details>
+      </div>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"What does hosting a board actually cost me?","acceptedAnswer":{"@type":"Answer","text":"Nothing. The board, the stand, and the design are provided at no cost to you. There's no revenue share and no fee for hosting."}},
+          {"@type":"Question","name":"Can I control what's on my board?","acceptedAnswer":{"@type":"Answer","text":"The top dry-erase panel is entirely yours to write on. For the six ad spots, we'll ask you who you'd want to see featured before your board is finalized."}},
+          {"@type":"Question","name":"How many boards exist right now?","acceptedAnswer":{"@type":"Answer","text":"None are placed yet. We're finishing design and sourcing on the first board and lining up our first host location and founding advertisers now."}}
+        ]
+      }
+      </script>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Full Ecosystem</span>
+    <h2 class="section-title">The Board Is a Door Into the Rest of What We Do</h2>
+    <div class="related-grid">
+      <a href="google-reviews.html" class="related-card"><h4>⭐ Google Reviews</h4><p>Once you're on our radar through the board, we can help your Google presence too.</p></a>
+      <a href="missed-call-textback.html" class="related-card"><h4>📵 Missed Call Text-Back</h4><p>Never lose a lead to a missed call again, free two-week trial.</p></a>
+      <a href="index.html" class="related-card" style="background: transparent; border-style: dashed; border-color: rgba(232,101,26,0.4);"><h4>🔧 Full Digital Foundation</h4><p>Website, Google profile, calls, reviews, and screening. Complete system.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section" id="ad-board-form">
+  <div class="container">
+    <div class="quote-inner">
+      <div class="quote-copy">
+        <h2>Interested as a Host or an Advertiser?</h2>
+        <p>Tell us which one you are and a bit about your business. We'll reach out directly to talk through next steps.</p>
+        <p style="color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:0.4rem;">Or reach us directly:</p>
+        <a href="tel:7577172707" class="quote-phone">(757) 717-2707</a>
+        <p class="quote-hours">Available 9am–6pm EST, Monday–Friday</p>
+      </div>
+      <div class="quote-form-box">
+        <form id="contact-form-adboard" action="https://automations.platypusautomations.com/webhook/contact-form" method="POST" style="display:flex;flex-direction:column;gap:0;">
+          <input type="hidden" name="service" value="Ad Board Program">
+          <div class="form-group">
+            <label>I'm Interested As</label>
+            <select name="role" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="Host Business">Host Business (I want a free board)</option>
+              <option value="Advertiser">Advertiser (I want an ad spot)</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Smith" required></div>
+          <div class="form-group"><label>Business Name</label><input type="text" name="businessName" placeholder="Smith's Pizza / Smith's Roofing" required></div>
+          <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="(757) 555-1234" required></div>
+          <div class="form-group"><label>Business Type</label><input type="text" name="tradeType" placeholder="Restaurant, Roofing, HVAC, etc." required></div>
+          <div class="form-group"><label>Anything else we should know (optional)</label><textarea name="message" placeholder="Location, foot traffic, which trade you'd want on the board, etc."></textarea></div>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkXAZLbbvS_0dS5" data-callback="enableFormSubmit"></div>
+          <button type="submit" class="form-submit" disabled>Get on the List →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA<br><a href="tel:7577172707" style="color:#00a0a0;text-decoration:none;">(757) 717-2707</a> &nbsp;·&nbsp; <a href="tel:7577651210" style="color:rgba(255,255,255,0.45);text-decoration:none;">(757) 765-1210</a></div>
+      <a href="https://www.sbsd.virginia.gov/directory/" target="_blank" rel="noopener"><img src="swam-badge.jpg" alt="Virginia SWaM Certified — Small, Service-Disabled Veteran-Owned" class="footer-cert-badge"></a>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#services">Services</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('mobileClose').addEventListener('click', closeMobileNav);
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+  });
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  // Phone formatting
+  document.querySelectorAll('input[type="tel"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+      let digits = e.target.value.replace(/\D/g, '');
+      let formatted = '';
+      if (digits.length > 0) {
+        if (digits.length <= 3) {
+          formatted = digits;
+        } else if (digits.length <= 6) {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3)}`;
+        } else {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+        }
+      }
+      e.target.value = formatted;
+    });
+  });
+
+  // Form submission
+  function enableFormSubmit() {
+    document.querySelector('.form-submit').disabled = false;
+  }
+
+  const form = document.getElementById('contact-form-adboard');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      if (data.role || data.service) {
+        const prefix = [data.service, data.role].filter(Boolean).join(' — ');
+        data.message = `[${prefix}] ${data.message || ''}`.trim();
+      }
+      try {
+        await fetch(e.target.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        alert('Thank you! We\'ll be in touch shortly.');
+        e.target.reset();
+      } catch (err) {
+        alert('There was an error. Please try again.');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

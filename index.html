@@ -300,6 +300,18 @@ nav.scrolled {
 }
 .nav-pill a:hover { color: #fff; background: rgba(255,255,255,0.08); }
 
+.nav-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+  transition: color var(--trans-fast);
+}
+.nav-phone:hover { color: var(--orange); }
+
 .nav-cta {
   background: var(--orange);
   color: #fff;
@@ -1342,6 +1354,8 @@ footer {
 
 @media (max-width: 640px) {
   nav { padding: 12px 20px; }
+  .nav-phone-text { display: none; }
+  .nav-phone { font-size: 1.1rem; }
   .hero-content { padding: 100px 24px 120px; }
   #problem, #services, #stats, #who, #how, #contact { padding: 72px 20px; }
   .stats-card { padding: 28px 16px; border-radius: 20px; }
@@ -1367,6 +1381,7 @@ footer {
 <!-- MOBILE NAV OVERLAY -->
 <div class="mobile-nav" id="mobileNav">
   <button class="mobile-close" id="mobileClose" aria-label="Close">×</button>
+  <a href="tel:7577172707" onclick="closeMobileNav()">📞 (757) 717-2707</a>
   <a href="/lead-audit.html" class="m-cta-teal" onclick="closeMobileNav()">Free Lead Audit</a>
   <a href="#hero" onclick="closeMobileNav()">Home</a>
   <a href="#services" onclick="closeMobileNav()">Services</a>
@@ -1386,6 +1401,7 @@ footer {
     <img src="pa_wordmark_transparent.webp" alt="Platypus Automations" width="600" height="335" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block">
     <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:#fff;letter-spacing:-0.5px">Platypus Automations</span>
   </div>
+  <a href="tel:7577172707" class="nav-phone" aria-label="Call Platypus Automations">📞 <span class="nav-phone-text">(757) 717-2707</span></a>
   <div class="nav-pill liquid-glass">
     <a href="#hero">Home</a>
     <a href="#services">Services</a>
@@ -1832,6 +1848,7 @@ footer {
   <div class="footer-links">
     <a href="#hero">Home</a>
     <a href="#services">Services</a>
+    <a href="/ad-board.html">Ad Board</a>
     <a href="/roadmap">Roadmap</a>
     <a href="#contact">Contact</a>
     <a href="/privacy">Privacy</a>
