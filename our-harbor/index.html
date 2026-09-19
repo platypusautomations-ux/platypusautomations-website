@@ -409,9 +409,10 @@
     border-top: 1px solid rgba(247,243,234,0.12); padding-top: 20px;
     font-size: 12px; color: rgba(247,243,234,0.62); text-align: center;
   }
-  .footer-built { margin-top: 8px; font-size: 11px; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
-  .footer-built a { color: rgba(255,255,255,0.28); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
-  .footer-built a:hover { color: rgba(255,255,255,0.7); }
+  .footer-built { margin-top: 12px; font-size: 11px; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+  .footer-built a { display: inline-block; opacity: 0.75; transition: opacity 0.2s; }
+  .footer-built a:hover { opacity: 1; }
+  .footer-built img { height: 22px; width: auto; display: block; }
 
   @media (max-width: 720px) {
     .footer-grid { flex-direction: column; align-items: center; text-align: center; gap: 30px; margin-bottom: 26px; }
@@ -626,7 +627,8 @@
     <div class="footer-bottom">
       &copy; 2026 Our Harbor. All rights reserved.
       <div class="footer-built">
-        SITE BUILT BY <a href="https://platypusautomations.com" target="_blank">PLATYPUS AUTOMATIONS</a>
+        SITE BUILT BY<br>
+        <a href="https://platypusautomations.com" target="_blank" aria-label="Platypus Automations"><img src="img/pa_wordmark_white.png" alt="Platypus Automations"></a>
       </div>
     </div>
   </div>
