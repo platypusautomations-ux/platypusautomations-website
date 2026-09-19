@@ -1,3 +1,6 @@
+# our-harbor renamed to storm-rising (Becky's nonprofit rebrand, Sept 2026)
+/our-harbor/* /storm-rising/:splat 301
+
 # HTTP to HTTPS redirect (all requests)
 http://* https://:splat 301
 
