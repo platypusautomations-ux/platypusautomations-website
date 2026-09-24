@@ -190,21 +190,48 @@
   .service-card h3{font-size:19px; margin-bottom:8px; color:var(--green);}
   .service-card p{color:var(--ink-soft); font-size:14.5px;}
 
-  /* GALLERY */
-  .gallery-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px;
+  /* SHARED CAROUSEL CONTROLS (photo + video) */
+  .carousel-nav-btn{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; border-radius:50%;
+    background:rgba(0,0,0,0.5); color:#fff; border:none;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; cursor:pointer; z-index:2;
   }
-  .gallery-grid figure{
-    margin:0; overflow:hidden; border-radius:10px; background:#000;
-    aspect-ratio:4/3;
+  .carousel-nav-btn.prev{left:10px;}
+  .carousel-nav-btn.next{right:10px;}
+  .carousel-dots{
+    display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-top:16px;
   }
-  .gallery-grid img{width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;}
-  .gallery-grid figure:hover img{transform:scale(1.05);}
+  .carousel-dot{
+    width:9px; height:9px; border-radius:50%;
+    background:rgba(0,0,0,0.2); border:none; cursor:pointer; padding:0;
+  }
+  .carousel-dot.active{background:var(--brown);}
+
+  /* GALLERY (large photo carousel) */
+  .photo-carousel{
+    max-width:640px; margin:0 auto; position:relative;
+  }
+  .photo-stage{
+    border-radius:12px; overflow:hidden; background:#12180f;
+    aspect-ratio:4/5; position:relative;
+  }
+  .photo-stage img{
+    width:100%; height:100%; object-fit:contain;
+    display:none;
+  }
+  .photo-stage img.active{display:block;}
+  .photo-caption{
+    text-align:center; color:var(--ink-soft); font-size:14px; margin-top:12px;
+  }
 
   /* VIDEO SHOWCASE (carousel, one clip at a time) */
   .video-section{background:var(--green-dark);}
   .video-section .section-head h2, .video-section .section-head p{color:#fff;}
   .video-section .section-head p{color:rgba(255,255,255,0.75);}
+  .video-carousel .carousel-dot{background:rgba(255,255,255,0.35);}
+  .video-carousel .carousel-dot.active{background:var(--brown-light);}
   .video-carousel{
     max-width:420px; margin:0 auto; position:relative;
   }
@@ -217,23 +244,6 @@
     display:none;
   }
   .video-stage video.active{display:block;}
-  .video-nav-btn{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:40px; height:40px; border-radius:50%;
-    background:rgba(0,0,0,0.5); color:#fff; border:none;
-    display:flex; align-items:center; justify-content:center;
-    font-size:18px; cursor:pointer; z-index:2;
-  }
-  .video-nav-btn.prev{left:10px;}
-  .video-nav-btn.next{right:10px;}
-  .video-dots{
-    display:flex; justify-content:center; gap:8px; margin-top:16px;
-  }
-  .video-dot{
-    width:9px; height:9px; border-radius:50%;
-    background:rgba(255,255,255,0.35); border:none; cursor:pointer; padding:0;
-  }
-  .video-dot.active{background:var(--brown-light);}
 
   /* ABOUT */
   .about-wrap{
@@ -382,16 +392,32 @@
       <h2>Real Jobs, Real Work in Oklahoma City</h2>
       <p>Every photo below is an actual Pro Team Landscaping project.</p>
     </div>
-    <div class="gallery-grid">
-      <figure><img src="img-web/gallery-front-yard.webp" alt="Completed front yard landscaping in Oklahoma City" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-planting-bed.webp" alt="Stone-edged planting bed installation Oklahoma City landscaping" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-brick-masonry.webp" alt="Brick masonry column construction Oklahoma City" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-fence-lattice.webp" alt="Wood fence and lattice carpentry Oklahoma City" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-fence-line.webp" alt="Finished wood fence line Oklahoma City hardscape" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-mulched-bed.webp" alt="Mulched landscaping bed with curved path Oklahoma City" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-hardscape-materials.webp" alt="Brick and hardscape materials on job site Oklahoma City" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-pool-deck.webp" alt="Pool deck and brick edging installation Oklahoma City" loading="lazy"></figure>
-      <figure><img src="img-web/gallery-hardscape-prep.webp" alt="Backyard hardscape prep work Oklahoma City" loading="lazy"></figure>
+    <div class="photo-carousel">
+      <div class="photo-stage">
+        <img class="active" src="img-web/gallery-front-yard.webp" alt="Completed front yard landscaping in Oklahoma City" data-caption="Completed front yard landscaping">
+        <img src="img-web/gallery-planting-bed.webp" alt="Stone-edged planting bed installation Oklahoma City landscaping" data-caption="Stone-edged planting bed installation" loading="lazy">
+        <img src="img-web/gallery-brick-masonry.webp" alt="Brick masonry column construction Oklahoma City" data-caption="Brick masonry column construction" loading="lazy">
+        <img src="img-web/gallery-fence-lattice.webp" alt="Wood fence and lattice carpentry Oklahoma City" data-caption="Wood fence and lattice carpentry" loading="lazy">
+        <img src="img-web/gallery-fence-line.webp" alt="Finished wood fence line Oklahoma City hardscape" data-caption="Finished wood fence line" loading="lazy">
+        <img src="img-web/gallery-mulched-bed.webp" alt="Mulched landscaping bed with curved path Oklahoma City" data-caption="Mulched bed with curved path" loading="lazy">
+        <img src="img-web/gallery-hardscape-materials.webp" alt="Brick and hardscape materials on job site Oklahoma City" data-caption="Hardscape job site" loading="lazy">
+        <img src="img-web/gallery-pool-deck.webp" alt="Pool deck and brick edging installation Oklahoma City" data-caption="Pool deck and brick edging" loading="lazy">
+        <img src="img-web/gallery-hardscape-prep.webp" alt="Backyard hardscape prep work Oklahoma City" data-caption="Backyard hardscape prep" loading="lazy">
+        <button class="carousel-nav-btn prev" aria-label="Previous photo">&#8249;</button>
+        <button class="carousel-nav-btn next" aria-label="Next photo">&#8250;</button>
+      </div>
+      <p class="photo-caption">Completed front yard landscaping</p>
+      <div class="carousel-dots">
+        <button class="carousel-dot active" data-index="0" aria-label="Photo 1"></button>
+        <button class="carousel-dot" data-index="1" aria-label="Photo 2"></button>
+        <button class="carousel-dot" data-index="2" aria-label="Photo 3"></button>
+        <button class="carousel-dot" data-index="3" aria-label="Photo 4"></button>
+        <button class="carousel-dot" data-index="4" aria-label="Photo 5"></button>
+        <button class="carousel-dot" data-index="5" aria-label="Photo 6"></button>
+        <button class="carousel-dot" data-index="6" aria-label="Photo 7"></button>
+        <button class="carousel-dot" data-index="7" aria-label="Photo 8"></button>
+        <button class="carousel-dot" data-index="8" aria-label="Photo 9"></button>
+      </div>
     </div>
   </div>
 </section>
@@ -404,20 +430,20 @@
     </div>
     <div class="video-carousel">
       <div class="video-stage">
-        <video class="active" muted loop playsinline preload="auto" poster="img-web/gallery-hardscape-prep.webp" data-src="vid-web/clip-hardscape-prep.mp4"></video>
-        <video muted loop playsinline preload="none" poster="img-web/gallery-fence-lattice.webp" data-src="vid-web/clip-fence-lattice.mp4"></video>
-        <video muted loop playsinline preload="none" poster="img-web/gallery-fence-line.webp" data-src="vid-web/clip-finished-fence.mp4"></video>
-        <video muted loop playsinline preload="none" poster="img-web/gallery-mulched-bed.webp" data-src="vid-web/clip-mulched-bed.mp4"></video>
-        <video muted loop playsinline preload="none" poster="img-web/gallery-brick-masonry.webp" data-src="vid-web/clip-brick-masonry.mp4"></video>
-        <button class="video-nav-btn prev" aria-label="Previous clip">&#8249;</button>
-        <button class="video-nav-btn next" aria-label="Next clip">&#8250;</button>
+        <video class="active" muted playsinline preload="auto" poster="img-web/gallery-hardscape-prep.webp" data-src="vid-web/clip-hardscape-prep.mp4"></video>
+        <video muted playsinline preload="none" poster="img-web/gallery-fence-lattice.webp" data-src="vid-web/clip-fence-lattice.mp4"></video>
+        <video muted playsinline preload="none" poster="img-web/gallery-fence-line.webp" data-src="vid-web/clip-finished-fence.mp4"></video>
+        <video muted playsinline preload="none" poster="img-web/gallery-mulched-bed.webp" data-src="vid-web/clip-mulched-bed.mp4"></video>
+        <video muted playsinline preload="none" poster="img-web/gallery-brick-masonry.webp" data-src="vid-web/clip-brick-masonry.mp4"></video>
+        <button class="carousel-nav-btn prev" aria-label="Previous clip">&#8249;</button>
+        <button class="carousel-nav-btn next" aria-label="Next clip">&#8250;</button>
       </div>
-      <div class="video-dots">
-        <button class="video-dot active" data-index="0" aria-label="Clip 1"></button>
-        <button class="video-dot" data-index="1" aria-label="Clip 2"></button>
-        <button class="video-dot" data-index="2" aria-label="Clip 3"></button>
-        <button class="video-dot" data-index="3" aria-label="Clip 4"></button>
-        <button class="video-dot" data-index="4" aria-label="Clip 5"></button>
+      <div class="carousel-dots">
+        <button class="carousel-dot active" data-index="0" aria-label="Clip 1"></button>
+        <button class="carousel-dot" data-index="1" aria-label="Clip 2"></button>
+        <button class="carousel-dot" data-index="2" aria-label="Clip 3"></button>
+        <button class="carousel-dot" data-index="3" aria-label="Clip 4"></button>
+        <button class="carousel-dot" data-index="4" aria-label="Clip 5"></button>
       </div>
     </div>
   </div>
@@ -508,46 +534,64 @@
 <button class="back-to-top" aria-label="Back to top">&uarr;</button>
 
 <script>
-  // Video carousel: one clip loaded and playing at a time
-  const stage = document.querySelector('.video-stage');
-  const clips = Array.from(stage.querySelectorAll('video'));
-  const dots = Array.from(document.querySelectorAll('.video-dot'));
+  // ===== Video carousel: auto-advances to the next clip when each one ends, while in view =====
+  const videoStage = document.querySelector('.video-stage');
+  const clips = Array.from(videoStage.querySelectorAll('video'));
+  const videoDots = Array.from(document.querySelectorAll('.video-carousel .carousel-dot'));
   let activeClip = 0;
-  let carouselStarted = false;
+  let videoInView = false;
 
   function showClip(index){
     clips[activeClip].pause();
     clips[activeClip].classList.remove('active');
-    dots[activeClip].classList.remove('active');
+    videoDots[activeClip].classList.remove('active');
     activeClip = (index + clips.length) % clips.length;
     const v = clips[activeClip];
     v.classList.add('active');
-    dots[activeClip].classList.add('active');
+    videoDots[activeClip].classList.add('active');
     if (!v.src) { v.src = v.dataset.src; }
     v.currentTime = 0;
-    v.play().catch(()=>{});
+    if (videoInView) { v.play().catch(()=>{}); }
   }
 
-  document.querySelector('.video-nav-btn.prev').addEventListener('click', () => showClip(activeClip - 1));
-  document.querySelector('.video-nav-btn.next').addEventListener('click', () => showClip(activeClip + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => showClip(i)));
+  clips.forEach(v => v.addEventListener('ended', () => showClip(activeClip + 1)));
+  document.querySelector('.video-carousel .carousel-nav-btn.prev').addEventListener('click', () => showClip(activeClip - 1));
+  document.querySelector('.video-carousel .carousel-nav-btn.next').addEventListener('click', () => showClip(activeClip + 1));
+  videoDots.forEach((dot, i) => dot.addEventListener('click', () => showClip(i)));
 
-  // Only start loading/playing once the carousel scrolls into view
-  const carouselObserver = new IntersectionObserver((entries) => {
+  const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !carouselStarted) {
-        carouselStarted = true;
-        const v = clips[activeClip];
-        v.src = v.dataset.src;
+      videoInView = entry.isIntersecting;
+      const v = clips[activeClip];
+      if (videoInView) {
+        if (!v.src) { v.src = v.dataset.src; }
         v.play().catch(()=>{});
-      } else if (!entry.isIntersecting && carouselStarted) {
-        clips[activeClip].pause();
-      } else if (entry.isIntersecting && carouselStarted) {
-        clips[activeClip].play().catch(()=>{});
+      } else {
+        v.pause();
       }
     });
   }, { threshold: 0.25 });
-  carouselObserver.observe(stage);
+  videoObserver.observe(videoStage);
+
+  // ===== Photo carousel: manual prev/next + dots, larger single-image view =====
+  const photoStage = document.querySelector('.photo-stage');
+  const photos = Array.from(photoStage.querySelectorAll('img'));
+  const photoDots = Array.from(document.querySelectorAll('.photo-carousel .carousel-dot'));
+  const photoCaption = document.querySelector('.photo-caption');
+  let activePhoto = 0;
+
+  function showPhoto(index){
+    photos[activePhoto].classList.remove('active');
+    photoDots[activePhoto].classList.remove('active');
+    activePhoto = (index + photos.length) % photos.length;
+    photos[activePhoto].classList.add('active');
+    photoDots[activePhoto].classList.add('active');
+    photoCaption.textContent = photos[activePhoto].dataset.caption;
+  }
+
+  document.querySelector('.photo-carousel .carousel-nav-btn.prev').addEventListener('click', () => showPhoto(activePhoto - 1));
+  document.querySelector('.photo-carousel .carousel-nav-btn.next').addEventListener('click', () => showPhoto(activePhoto + 1));
+  photoDots.forEach((dot, i) => dot.addEventListener('click', () => showPhoto(i)));
 
   // Back to top button
   const btt = document.querySelector('.back-to-top');
