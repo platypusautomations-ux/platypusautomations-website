@@ -1,0 +1,11 @@
+# Redirect HTTP to HTTPS
+http://proteamlandscaping.com/* https://proteamlandscaping.com/:splat 301
+
+# Redirect www to non-www
+https://www.proteamlandscaping.com/* https://proteamlandscaping.com/:splat 301
+
+# Clean URLs are handled natively by Cloudflare Pages, no explicit rules needed.
+# Never add manual .html <-> clean-URL rewrite pairs here, they fight Cloudflare's
+# native handling and produce an infinite redirect loop (see infrastructure.md).
+
+/ /index.html 200

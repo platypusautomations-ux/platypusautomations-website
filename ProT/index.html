@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Landscaping &amp; Hardscape in Oklahoma City, OK | Pro Team Landscaping</title>
 <meta name="description" content="Landscaping, masonry, decking, and hardscape contractor serving Oklahoma City, OK and within 70 miles of the metro. Call Pro Team Landscaping today.">
-<link rel="canonical" href="https://platypusautomations.com/ProT/">
+<link rel="canonical" href="https://proteamlandscaping.com/">
 
 <meta property="og:title" content="Landscaping & Hardscape in Oklahoma City, OK | Pro Team Landscaping">
 <meta property="og:description" content="Landscaping, masonry, decking, and hardscape contractor serving Oklahoma City, OK and within 70 miles of the metro. Call Pro Team Landscaping today.">
-<meta property="og:image" content="https://platypusautomations.com/ProT/img-web/hero-landscaping-install.webp">
-<meta property="og:url" content="https://platypusautomations.com/ProT/">
+<meta property="og:image" content="https://proteamlandscaping.com/img-web/hero-landscaping-install.webp">
+<meta property="og:url" content="https://proteamlandscaping.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -24,9 +24,9 @@
   "telephone": "+14058575233",
   "email": "luisfelipe45672@gmail.com",
   "areaServed": "Oklahoma City, OK and within a 70-mile radius",
-  "url": "https://platypusautomations.com/ProT/",
+  "url": "https://proteamlandscaping.com/",
   "description": "Landscaping, brick and masonry, decking, fencing, concrete, and sprinkler installation serving Oklahoma City, OK and within a 70-mile radius.",
-  "image": "https://platypusautomations.com/ProT/img-web/hero-landscaping-install.webp"
+  "image": "https://proteamlandscaping.com/img-web/hero-landscaping-install.webp"
 }
 </script>
 
@@ -308,7 +308,6 @@
     background:#fff; border-radius:12px; padding:28px; color:var(--ink);
   }
   .lead-form h3{color:var(--green-dark); margin-bottom:6px;}
-  .lead-form .form-note{font-size:13px; color:var(--ink-soft); margin-bottom:16px;}
   .lead-form label{display:block; font-size:13px; font-weight:700; margin-bottom:5px; margin-top:12px;}
   .lead-form input, .lead-form textarea{
     width:100%; padding:11px 12px; border:1px solid var(--border); border-radius:6px; font-size:15px;
@@ -316,6 +315,10 @@
   }
   .lead-form textarea{min-height:90px; resize:vertical;}
   .lead-form .btn{width:100%; margin-top:18px; text-align:center;}
+  .lead-form .btn:disabled{opacity:0.6; cursor:default;}
+  .form-status{margin-top:12px; font-size:14px; text-align:center;}
+  .form-status.success{color:var(--green);}
+  .form-status.error{color:var(--brown);}
 
   /* FOOTER */
   footer{background:#101a12; color:rgba(255,255,255,0.7); padding:36px 0 24px; text-align:center; font-size:14px;}
@@ -520,17 +523,28 @@
       </div>
       <div class="lead-form">
         <h3>Request a Quote</h3>
-        <div class="form-note">This form is a preview. To reach Pro Team Landscaping directly, call or email above.</div>
-        <form onsubmit="return false;">
+        <!--
+          GO-LIVE STEP (only thing left to do here): create a free Web3Forms
+          access key at https://web3forms.com using luisfelipe45672@gmail.com
+          (leads should land in HIS inbox, this is a website-only plan, not a
+          Platypus-managed lead line). Paste the key into the hidden input
+          below, replacing REPLACE_WITH_WEB3FORMS_ACCESS_KEY. That's it, no
+          other code changes needed, the submit/thank-you logic is already wired.
+        -->
+        <form id="lead-form">
+          <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New lead from proteamlandscaping.com">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name">
+          <input type="text" id="name" name="name" placeholder="Your name" required>
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@email.com">
+          <input type="email" id="email" name="email" placeholder="you@email.com" required>
           <label for="phone">Phone</label>
           <input type="tel" id="phone" name="phone" placeholder="(405) 555-0123">
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell us about your project"></textarea>
-          <button type="button" class="btn">Send Message</button>
+          <button type="submit" class="btn">Send Message</button>
+          <div class="form-status" id="lead-form-status"></div>
         </form>
       </div>
     </div>
@@ -636,6 +650,39 @@
   const btt = document.querySelector('.back-to-top');
   window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 600));
   btt.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // Lead form: submits to Web3Forms (see HTML comment above the form for the one setup step)
+  const leadForm = document.getElementById('lead-form');
+  const leadStatus = document.getElementById('lead-form-status');
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = leadForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    leadStatus.textContent = '';
+    leadStatus.className = 'form-status';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(leadForm)))
+      });
+      const data = await res.json();
+      if (data.success) {
+        leadForm.reset();
+        leadForm.querySelectorAll('input, textarea, button').forEach(el => el.style.display = 'none');
+        leadStatus.className = 'form-status success';
+        leadStatus.textContent = "Thanks, that's in. Pro Team Landscaping will be in touch soon.";
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      leadStatus.className = 'form-status error';
+      leadStatus.textContent = "Something didn't go through. Call or email above instead.";
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+  });
 </script>
 
 </body>
