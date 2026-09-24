@@ -201,18 +201,39 @@
   .gallery-grid img{width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;}
   .gallery-grid figure:hover img{transform:scale(1.05);}
 
-  /* VIDEO SHOWCASE */
+  /* VIDEO SHOWCASE (carousel, one clip at a time) */
   .video-section{background:var(--green-dark);}
   .video-section .section-head h2, .video-section .section-head p{color:#fff;}
   .video-section .section-head p{color:rgba(255,255,255,0.75);}
-  .video-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;
+  .video-carousel{
+    max-width:420px; margin:0 auto; position:relative;
   }
-  .video-card{
-    border-radius:10px; overflow:hidden; background:#000; aspect-ratio:9/16; position:relative;
+  .video-stage{
+    border-radius:10px; overflow:hidden; background:#000;
+    aspect-ratio:9/16; position:relative;
   }
-  .video-card.wide{aspect-ratio:16/9;}
-  .video-card video{width:100%; height:100%; object-fit:cover;}
+  .video-stage video{
+    width:100%; height:100%; object-fit:cover;
+    display:none;
+  }
+  .video-stage video.active{display:block;}
+  .video-nav-btn{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:40px; height:40px; border-radius:50%;
+    background:rgba(0,0,0,0.5); color:#fff; border:none;
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; cursor:pointer; z-index:2;
+  }
+  .video-nav-btn.prev{left:10px;}
+  .video-nav-btn.next{right:10px;}
+  .video-dots{
+    display:flex; justify-content:center; gap:8px; margin-top:16px;
+  }
+  .video-dot{
+    width:9px; height:9px; border-radius:50%;
+    background:rgba(255,255,255,0.35); border:none; cursor:pointer; padding:0;
+  }
+  .video-dot.active{background:var(--brown-light);}
 
   /* ABOUT */
   .about-wrap{
@@ -381,24 +402,22 @@
       <h2>See the Work in Motion</h2>
       <p>Short clips straight from Pro Team Landscaping job sites.</p>
     </div>
-    <div class="video-grid">
-      <div class="video-card wide">
-        <video muted loop playsinline preload="none" poster="img-web/gallery-hardscape-prep.webp" data-src="vid-web/clip-hardscape-prep.mp4"></video>
-      </div>
-      <div class="video-card">
-        <video muted loop playsinline preload="none" poster="img-web/gallery-planting-bed.webp" data-src="vid-web/clip-planting-bed.mp4"></video>
-      </div>
-      <div class="video-card">
+    <div class="video-carousel">
+      <div class="video-stage">
+        <video class="active" muted loop playsinline preload="auto" poster="img-web/gallery-hardscape-prep.webp" data-src="vid-web/clip-hardscape-prep.mp4"></video>
         <video muted loop playsinline preload="none" poster="img-web/gallery-fence-lattice.webp" data-src="vid-web/clip-fence-lattice.mp4"></video>
-      </div>
-      <div class="video-card">
         <video muted loop playsinline preload="none" poster="img-web/gallery-fence-line.webp" data-src="vid-web/clip-finished-fence.mp4"></video>
-      </div>
-      <div class="video-card">
         <video muted loop playsinline preload="none" poster="img-web/gallery-mulched-bed.webp" data-src="vid-web/clip-mulched-bed.mp4"></video>
-      </div>
-      <div class="video-card wide">
         <video muted loop playsinline preload="none" poster="img-web/gallery-brick-masonry.webp" data-src="vid-web/clip-brick-masonry.mp4"></video>
+        <button class="video-nav-btn prev" aria-label="Previous clip">&#8249;</button>
+        <button class="video-nav-btn next" aria-label="Next clip">&#8250;</button>
+      </div>
+      <div class="video-dots">
+        <button class="video-dot active" data-index="0" aria-label="Clip 1"></button>
+        <button class="video-dot" data-index="1" aria-label="Clip 2"></button>
+        <button class="video-dot" data-index="2" aria-label="Clip 3"></button>
+        <button class="video-dot" data-index="3" aria-label="Clip 4"></button>
+        <button class="video-dot" data-index="4" aria-label="Clip 5"></button>
       </div>
     </div>
   </div>
@@ -489,19 +508,46 @@
 <button class="back-to-top" aria-label="Back to top">&uarr;</button>
 
 <script>
-  // Lazy-load + autoplay video clips only once they scroll into view
-  const videoObserver = new IntersectionObserver((entries) => {
+  // Video carousel: one clip loaded and playing at a time
+  const stage = document.querySelector('.video-stage');
+  const clips = Array.from(stage.querySelectorAll('video'));
+  const dots = Array.from(document.querySelectorAll('.video-dot'));
+  let activeClip = 0;
+  let carouselStarted = false;
+
+  function showClip(index){
+    clips[activeClip].pause();
+    clips[activeClip].classList.remove('active');
+    dots[activeClip].classList.remove('active');
+    activeClip = (index + clips.length) % clips.length;
+    const v = clips[activeClip];
+    v.classList.add('active');
+    dots[activeClip].classList.add('active');
+    if (!v.src) { v.src = v.dataset.src; }
+    v.currentTime = 0;
+    v.play().catch(()=>{});
+  }
+
+  document.querySelector('.video-nav-btn.prev').addEventListener('click', () => showClip(activeClip - 1));
+  document.querySelector('.video-nav-btn.next').addEventListener('click', () => showClip(activeClip + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => showClip(i)));
+
+  // Only start loading/playing once the carousel scrolls into view
+  const carouselObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const v = entry.target;
-      if (entry.isIntersecting) {
-        if (!v.src) { v.src = v.dataset.src; }
+      if (entry.isIntersecting && !carouselStarted) {
+        carouselStarted = true;
+        const v = clips[activeClip];
+        v.src = v.dataset.src;
         v.play().catch(()=>{});
-      } else {
-        v.pause();
+      } else if (!entry.isIntersecting && carouselStarted) {
+        clips[activeClip].pause();
+      } else if (entry.isIntersecting && carouselStarted) {
+        clips[activeClip].play().catch(()=>{});
       }
     });
   }, { threshold: 0.25 });
-  document.querySelectorAll('.video-card video').forEach(v => videoObserver.observe(v));
+  carouselObserver.observe(stage);
 
   // Back to top button
   const btt = document.querySelector('.back-to-top');
