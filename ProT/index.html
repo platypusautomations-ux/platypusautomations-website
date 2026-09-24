@@ -573,12 +573,13 @@
   }, { threshold: 0.25 });
   videoObserver.observe(videoStage);
 
-  // ===== Photo carousel: manual prev/next + dots, larger single-image view =====
+  // ===== Photo carousel: auto-advances every 3s while in view, plus manual prev/next + dots =====
   const photoStage = document.querySelector('.photo-stage');
   const photos = Array.from(photoStage.querySelectorAll('img'));
   const photoDots = Array.from(document.querySelectorAll('.photo-carousel .carousel-dot'));
   const photoCaption = document.querySelector('.photo-caption');
   let activePhoto = 0;
+  let photoTimer = null;
 
   function showPhoto(index){
     photos[activePhoto].classList.remove('active');
@@ -589,9 +590,30 @@
     photoCaption.textContent = photos[activePhoto].dataset.caption;
   }
 
-  document.querySelector('.photo-carousel .carousel-nav-btn.prev').addEventListener('click', () => showPhoto(activePhoto - 1));
-  document.querySelector('.photo-carousel .carousel-nav-btn.next').addEventListener('click', () => showPhoto(activePhoto + 1));
-  photoDots.forEach((dot, i) => dot.addEventListener('click', () => showPhoto(i)));
+  function startPhotoAutoplay(){
+    if (photoTimer) return;
+    photoTimer = setInterval(() => showPhoto(activePhoto + 1), 3000);
+  }
+  function stopPhotoAutoplay(){
+    clearInterval(photoTimer);
+    photoTimer = null;
+  }
+  function userNavPhoto(index){
+    stopPhotoAutoplay();
+    showPhoto(index);
+    startPhotoAutoplay();
+  }
+
+  document.querySelector('.photo-carousel .carousel-nav-btn.prev').addEventListener('click', () => userNavPhoto(activePhoto - 1));
+  document.querySelector('.photo-carousel .carousel-nav-btn.next').addEventListener('click', () => userNavPhoto(activePhoto + 1));
+  photoDots.forEach((dot, i) => dot.addEventListener('click', () => userNavPhoto(i)));
+
+  const photoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { startPhotoAutoplay(); } else { stopPhotoAutoplay(); }
+    });
+  }, { threshold: 0.25 });
+  photoObserver.observe(photoStage);
 
   // Back to top button
   const btt = document.querySelector('.back-to-top');
