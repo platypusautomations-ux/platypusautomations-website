@@ -141,14 +141,18 @@ h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:16px;}
 .service-card p{font-size:14px;color:var(--text);opacity:0.8;}
 
 /* BEFORE/AFTER PAIRS */
-.ba-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:36px;}
-.ba-pair h3{font-size:17px;margin-bottom:12px;color:var(--sky);}
-.ba-images{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.ba-images figure{border-radius:8px;overflow:hidden;position:relative;background:var(--navy-2);}
-.ba-images img{width:100%;height:200px;object-fit:cover;}
+.ba-grid{display:flex;flex-direction:column;gap:56px;}
+.ba-pair h3{font-size:20px;margin-bottom:16px;color:var(--sky);}
+.ba-images{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.ba-images figure{border-radius:10px;overflow:hidden;position:relative;background:var(--navy-2);}
+.ba-images img{width:100%;height:460px;object-fit:cover;display:block;}
 .ba-images figcaption{
-  position:absolute;top:8px;left:8px;background:rgba(15,23,32,0.8);color:var(--amber);
-  font-size:11px;font-weight:700;letter-spacing:0.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase;
+  position:absolute;top:14px;left:14px;background:rgba(15,23,32,0.85);color:var(--amber);
+  font-size:12.5px;font-weight:700;letter-spacing:0.1em;padding:5px 13px;border-radius:4px;text-transform:uppercase;
+}
+@media (max-width:700px){
+  .ba-images{grid-template-columns:1fr;gap:10px;}
+  .ba-images img{height:340px;}
 }
 
 /* TRUST BAR */
