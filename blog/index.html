@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Platypus Automations</title>
+  <meta name="description" content="Real build notes, lessons, and behind-the-scenes updates from Platypus Automations — AI-powered lead response and follow-up systems for service businesses.">
+  <link rel="canonical" href="https://www.platypusautomations.com/blog/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Platypus Automations Blog">
+  <meta property="og:description" content="Real build notes, lessons, and behind-the-scenes updates from Platypus Automations.">
+  <meta property="og:url" content="https://www.platypusautomations.com/blog/index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', system-ui, sans-serif; background: #0A1628; color: #fff; font-size: 16px; line-height: 1.6; font-weight: 300; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    .site-header { background: #0A1628; border-bottom: 1px solid rgba(0,122,122,0.2); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+    .nav-logo { display: flex; flex-direction: column; text-decoration: none; line-height: 1; gap: 2px; }
+    .nav-logo img { height: 63px; width: auto; }
+    .main-nav { display: flex; gap: 28px; }
+    .main-nav a { font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: color 0.3s; }
+    .main-nav a:hover { color: #fff; }
+    .header-cta { display: flex; gap: 16px; align-items: center; }
+    .phone-link { font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.85); }
+    .btn { padding: 10px 24px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; }
+    .btn-primary { background: #E8651A; color: #fff; }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5,13,24,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 28px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,0.75); transition: color 0.3s; }
+    .mobile-nav a:hover { color: #E8651A; }
+    .mobile-nav .m-cta { margin-top: 8px; background: #E8651A; color: #fff; padding: 12px 32px; border-radius: 999px; font-size: 1rem; font-weight: 500; }
+    .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.2rem; cursor: pointer; line-height: 1; }
+
+    .breadcrumb { padding: 16px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .breadcrumb-inner { display: flex; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.52); }
+
+    .page-hero { padding: 64px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .page-hero h1 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; line-height: 1.12; margin-bottom: 16px; color: #fff; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.68); line-height: 1.7; max-width: 640px; }
+
+    .section { padding: 56px 0; }
+    .post-list { display: flex; flex-direction: column; gap: 20px; max-width: 780px; }
+    .post-card { display: block; background: rgba(0,122,122,0.06); border: 1px solid rgba(0,122,122,0.15); border-radius: 12px; padding: 32px; transition: all 0.3s; }
+    .post-card:hover { background: rgba(0,122,122,0.12); border-color: rgba(0,122,122,0.35); transform: translateY(-4px); }
+    .post-card .post-label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #00a0a0; margin-bottom: 12px; display: block; }
+    .post-card h2 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.4rem; font-weight: 400; margin-bottom: 12px; color: #fff; line-height: 1.25; }
+    .post-card p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+    .post-card .read-more { display: inline-block; margin-top: 16px; font-size: 0.88rem; font-weight: 500; color: #00a0a0; }
+
+    footer { background: #050d18; border-top: 1px solid rgba(0,122,122,0.2); padding: 32px 0; margin-top: 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .footer-left { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-cert-badge { display: block; height: 36px; width: auto; border-radius: 4px; opacity: 0.95; transition: opacity 0.3s; }
+    .footer-cert-badge:hover { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .main-nav, .header-cta { display: none; }
+      .hamburger { display: flex; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
+      .header-inner { justify-content: center; position: relative; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
+      .page-hero { padding: 48px 0; }
+      .page-hero h1 { font-size: 1.85rem; }
+      .section { padding: 40px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/index.html" class="nav-logo">
+        <img src="/pa_wordmark_transparent.webp" alt="Platypus Automations" width="600" height="335" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block;height:63px;width:auto">
+        <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:#fff;letter-spacing:-0.5px">Platypus Automations</span>
+      </a>
+      <nav><ul class="main-nav">
+        <li><a href="/website-gbp.html">Website & GBP</a></li>
+        <li><a href="/google-reviews.html">Google Reviews</a></li>
+        <li><a href="/missed-call-textback.html">Missed Call Text-Back</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
+      </ul></nav>
+      <div class="header-cta">
+        <a href="tel:7577172707" class="phone-link">(757) 717-2707</a>
+        <a href="/index.html#contact" class="btn btn-primary">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+  <a href="/website-gbp.html" onclick="closeMobileNav()">Website & GBP</a>
+  <a href="/google-reviews.html" onclick="closeMobileNav()">Google Reviews</a>
+  <a href="/missed-call-textback.html" onclick="closeMobileNav()">Missed Call Text-Back</a>
+  <a href="/blog/index.html" onclick="closeMobileNav()">Blog</a>
+  <a href="/index.html#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="tel:7577172707" onclick="closeMobileNav()">(757) 717-2707</a>
+  <a href="/index.html#contact" class="m-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
+
+<nav class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="/index.html">Home</a><span>›</span><span>Blog</span>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>From the Field</h1>
+    <p>Real build notes, real client wins, and the lessons that came out of them. No filler weeks, just what actually happened.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="post-list">
+      <a href="/blog/first-recurring-client-facebook-ads.html" class="post-card">
+        <span class="post-label">Behind the Business</span>
+        <h2>How We Landed Our First Recurring Client by Watching Who Pays for Ads</h2>
+        <p>Five months of cold outreach, mostly Facebook DMs, before the first recurring client signed. The pattern that got there is repeatable, and it doesn't care where the business is.</p>
+        <span class="read-more">Read the post →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA<br><a href="tel:7577172707" style="color:#00a0a0;text-decoration:none;">(757) 717-2707</a> &nbsp;·&nbsp; <a href="tel:7577651210" style="color:rgba(255,255,255,0.45);text-decoration:none;">(757) 765-1210</a></div>
+      <a href="https://www.sbsd.virginia.gov/directory/" target="_blank" rel="noopener"><img src="/swam-badge.jpg" alt="Virginia SWaM Certified — Small, Service-Disabled Veteran-Owned" class="footer-cert-badge"></a>
+      <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/index.html#contact">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('mobileClose').addEventListener('click', closeMobileNav);
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+  });
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+</script>
+
+</body>
+</html>

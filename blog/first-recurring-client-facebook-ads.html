@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Recurring Client: A Lesson in Watching Facebook Ads</title>
+  <meta name="description" content="How a simple signal, tradesmen who pay for Facebook ads but have no real website, led to Platypus Automations' first recurring client.">
+  <link rel="canonical" href="https://www.platypusautomations.com/blog/first-recurring-client-facebook-ads.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How We Landed Our First Recurring Client by Watching Who Pays for Ads">
+  <meta property="og:description" content="How a simple signal, tradesmen who pay for Facebook ads but have no real website, led to Platypus Automations' first recurring client.">
+  <meta property="og:url" content="https://www.platypusautomations.com/blog/first-recurring-client-facebook-ads.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How We Landed Our First Recurring Client by Watching Who Pays for Ads",
+    "description": "How a simple signal, tradesmen who pay for Facebook ads but have no real website, led to Platypus Automations' first recurring client.",
+    "author": {
+      "@type": "Organization",
+      "name": "Platypus Automations"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Platypus Automations",
+      "url": "https://www.platypusautomations.com"
+    },
+    "mainEntityOfPage": "https://www.platypusautomations.com/blog/first-recurring-client-facebook-ads.html"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', system-ui, sans-serif;
+      background: #0A1628;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ── HEADER/NAV ─────────────────────────────── */
+    .site-header {
+      background: #0A1628;
+      border-bottom: 1px solid rgba(0,122,122,0.2);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      line-height: 1;
+      gap: 2px;
+    }
+    .nav-logo img { height: 63px; width: auto; }
+    .main-nav { display: flex; gap: 28px; }
+    .main-nav a { font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: color 0.3s; }
+    .main-nav a:hover { color: #fff; }
+    .header-cta { display: flex; gap: 16px; align-items: center; }
+    .phone-link { font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.85); }
+    .btn { padding: 10px 24px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; }
+    .btn-primary { background: #E8651A; color: #fff; }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5,13,24,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 28px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,0.75); transition: color 0.3s; }
+    .mobile-nav a:hover { color: #E8651A; }
+    .mobile-nav .m-cta { margin-top: 8px; background: #E8651A; color: #fff; padding: 12px 32px; border-radius: 999px; font-size: 1rem; font-weight: 500; }
+    .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.2rem; cursor: pointer; line-height: 1; }
+
+    /* ── BREADCRUMB ──────────────────────────────── */
+    .breadcrumb { padding: 16px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .breadcrumb-inner { display: flex; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.52); }
+
+    /* ── ARTICLE HERO ───────────────────────────────── */
+    .page-hero { padding: 64px 0 40px; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .article-meta-top { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #00a0a0; margin-bottom: 16px; }
+    .page-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #fff;
+      max-width: 820px;
+    }
+    .page-hero > .container > p.dek {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    /* ── ARTICLE BODY ────────────────────────────── */
+    .section { padding: 56px 0; border-bottom: 1px solid rgba(0,122,122,0.1); }
+    .section:last-of-type { border-bottom: none; }
+    .article-body { max-width: 720px; margin: 0 auto; }
+    .article-body h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.65rem;
+      font-weight: 400;
+      margin-top: 40px;
+      margin-bottom: 18px;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body p { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.75; margin-bottom: 18px; }
+    .article-body ul { margin: 8px 0 24px 0; }
+    .article-body li {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      margin-bottom: 10px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .article-body li::before { content: '→'; position: absolute; left: 0; color: #00a0a0; font-weight: 600; }
+    .article-body a.inline-link { color: #00a0a0; border-bottom: 1px solid rgba(0,160,160,0.4); transition: color 0.2s, border-color 0.2s; }
+    .article-body a.inline-link:hover { color: #fff; border-color: #fff; }
+    .article-body blockquote {
+      border-left: 3px solid #00a0a0;
+      padding: 4px 0 4px 20px;
+      margin: 24px 0;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+    }
+
+    /* ── RELATED SERVICES ────────────────────────── */
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .related-card { background: rgba(0,122,122,0.06); border: 1px solid rgba(0,122,122,0.15); border-radius: 12px; padding: 28px; transition: all 0.3s; }
+    .related-card:hover { background: rgba(0,122,122,0.12); border-color: rgba(0,122,122,0.35); transform: translateY(-6px); }
+    .related-card h4 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.15rem; font-weight: 400; margin-bottom: 12px; color: #fff; }
+    .related-card p { font-size: 0.9rem; color: rgba(255,255,255,0.62); line-height: 1.6; }
+    .section-label { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    .section-title { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.85rem; font-weight: 400; margin-bottom: 28px; color: #fff; line-height: 1.18; }
+
+    /* ── QUOTE / CTA SECTION ───────────────────────────── */
+    .quote-section { background: linear-gradient(135deg, rgba(0,122,122,0.1), rgba(232,101,26,0.05)); padding: 56px 0; border: 1px solid rgba(0,122,122,0.15); border-radius: 16px; margin: 64px auto; max-width: 720px; }
+    .quote-section .container { padding: 0 40px; text-align: center; }
+    .quote-section h2 { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.6rem; font-weight: 400; margin-bottom: 14px; color: #fff; }
+    .quote-section p { font-size: 0.95rem; color: rgba(255,255,255,0.68); line-height: 1.7; margin-bottom: 20px; }
+    .quote-phone { display: inline-block; font-size: 1.3rem; font-weight: 500; color: #00a0a0; transition: color 0.3s; margin-bottom: 6px; }
+    .quote-phone:hover { color: #fff; }
+    .quote-hours { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer { background: #050d18; border-top: 1px solid rgba(0,122,122,0.2); padding: 32px 0; margin-top: 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .footer-left { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-cert-badge { display: block; height: 36px; width: auto; border-radius: 4px; opacity: 0.95; transition: opacity 0.3s; }
+    .footer-cert-badge:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .main-nav, .header-cta { display: none; }
+      .hamburger { display: flex; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
+      .header-inner { justify-content: center; position: relative; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 48px 0 32px; }
+      .section { padding: 40px 0; }
+      .page-hero h1 { font-size: 1.7rem; }
+      .section-title { font-size: 1.4rem; }
+      .quote-section { margin: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/index.html" class="nav-logo">
+        <img src="/pa_wordmark_transparent.webp" alt="Platypus Automations" width="600" height="335" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block;height:63px;width:auto">
+        <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:#fff;letter-spacing:-0.5px">Platypus Automations</span>
+      </a>
+      <nav><ul class="main-nav">
+        <li><a href="/website-gbp.html">Website & GBP</a></li>
+        <li><a href="/google-reviews.html">Google Reviews</a></li>
+        <li><a href="/missed-call-textback.html">Missed Call Text-Back</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
+      </ul></nav>
+      <div class="header-cta">
+        <a href="tel:7577172707" class="phone-link">(757) 717-2707</a>
+        <a href="/index.html#contact" class="btn btn-primary">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+  <a href="/website-gbp.html" onclick="closeMobileNav()">Website & GBP</a>
+  <a href="/google-reviews.html" onclick="closeMobileNav()">Google Reviews</a>
+  <a href="/missed-call-textback.html" onclick="closeMobileNav()">Missed Call Text-Back</a>
+  <a href="/blog/index.html" onclick="closeMobileNav()">Blog</a>
+  <a href="/index.html#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="tel:7577172707" onclick="closeMobileNav()">(757) 717-2707</a>
+  <a href="/index.html#contact" class="m-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
+
+<nav class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="/index.html">Home</a><span>›</span><a href="/blog/index.html">Blog</a><span>›</span><span>First Recurring Client</span>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="article-meta-top">Behind the Business</div>
+    <h1>How We Landed Our First Recurring Client by Watching Who Pays for Ads</h1>
+    <p class="dek">Five months of cold outreach, mostly Facebook DMs, before the first recurring client signed. The pattern that got there is repeatable, and it doesn't care where the business is.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="article-body">
+      <p>Not the first paying client, that was a one-time Google Business Profile setup back in June. This one was different: a monthly hosting client, the first real recurring revenue the business has had. And it wasn't local. It was a landscaper based in Oklahoma City.</p>
+      <p>The lead came from a pattern worth writing down, because it's repeatable, and it doesn't care where the business is.</p>
+
+      <h2>Watching Who Pays for Ads, Not Just Who Has a Gap</h2>
+      <p>Most prospecting starts with a gap: no website, no Google reviews, a broken link somewhere. That's still true here. But the sourcing method that found this client started one step earlier, with Facebook ads.</p>
+      <p>Tradesmen and service businesses running ads nationwide show up in the feed constantly. Clicking through to their business profile takes ten seconds. Some have a real website and a real <a href="/website-gbp.html" class="inline-link">Google Business Profile</a> behind that ad. A lot don't.</p>
+      <p>That gap, spending money to drive people to a page that barely exists, is the same story told two different ways. It says two things at once:</p>
+      <ul>
+        <li>They understand that spending money on digital marketing can convert into real business.</li>
+        <li>They haven't closed the loop between the click and something that actually holds a prospect's attention.</li>
+      </ul>
+      <p>That combination matters more than either fact alone. A business with no website and no ad spend might just not care about digital presence yet. A business paying for ads with nothing solid behind them already believes the investment is worth making, they just haven't finished the job.</p>
+
+      <h2>What Happened With This One</h2>
+      <p>This one started with scrolling Facebook and seeing the ad, for a landscaper in Oklahoma City, well outside the usual local search radius. A click through to the business page turned up no Google Business Profile and no website, and a cold DM went out the same day, the same way it goes out to every other tradesman on the list:</p>
+      <blockquote>"Couldn't find a Google Business Profile or website... send your logo file and a few photos of work you're proud of, and we'll have something put together for you to look at within 48 hours. If you like what you see, we move forward. If not, no harm done."</blockquote>
+      <p>He said yes. Seven photos and ten short video clips came over in Messenger the same day. A sample site went up from that material within hours, real photos, real logo work, nothing stock.</p>
+      <p>It wasn't a clean first draft. The video grid autoplayed all six clips at once and looked chaotic, so it became a one-at-a-time carousel instead. The photo gallery went from a packed 9-up grid to a large single-photo carousel once it was clear this business's work looks better big. Two lower-resolution gallery photos got cut entirely once they were sitting at a larger size. None of that is glamorous, it's just what happens when a build gets real feedback instead of sitting untouched.</p>
+      <p>He picked a monthly plan over an outright buyout, and asked a fair question: could he pay monthly and still end up owning the site outright someday? That's now a standing answer, not a one-off: twelve consecutive months under contract earns full ownership, no extra payment owed at that point since a year of payments already covers the standalone buyout price. Every client gets those real numbers on a call, we don't post pricing publicly since it depends on scope.</p>
+
+      <h2>Why Oklahoma City Matters as Much as the Close Itself</h2>
+      <p>Platypus is based in Chesapeake, Virginia. This client is over a thousand miles away, and the entire relationship, from the first DM to a live, invoiced, paying site, happened without either side leaving a phone. That's not a fluke of this one deal, it's the actual shape of the business: local roots, work handled anywhere.</p>
+
+      <h2>Why This Particular Close Matters More Than the First One</h2>
+      <p>A one-time setup fee is real money, but it ends the day the invoice clears. A recurring client is a different kind of proof: it means the pitch, the build process, and the price all held up well enough that someone chose to keep paying instead of walking away with a finished asset and a clean break.</p>
+      <p>Five months of cold DMs is a long stretch to keep sending messages that mostly get read and never answered. What changed wasn't the pitch, it was where the attention went. Watching who's already paying to be seen, and checking whether what they're paying for actually holds up once someone clicks, turned out to be a sharper filter than reviews or star ratings alone.</p>
+
+      <h2>What This Means If You're Running Ads Right Now</h2>
+      <p>If you're a service business paying for ads and someone clicks through to a page that doesn't say much, that's not a small thing. You're already paying to earn the click. The only question left is whether the page on the other end is doing its share of the work once they land on it. And it doesn't matter where you're running that ad from, this isn't a Hampton Roads-only conversation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Related</span>
+    <h2 class="section-title">Where This Client Started</h2>
+    <div class="related-grid">
+      <a href="/website-gbp.html" class="related-card"><h4>🌐 Website & GBP</h4><p>The foundation this client's site was built on, professional website plus a properly claimed Google Business Profile.</p></a>
+      <a href="/google-reviews.html" class="related-card"><h4>⭐ Google Reviews</h4><p>What comes next once the site is live and leads start coming in.</p></a>
+      <a href="/index.html" class="related-card"><h4>🏠 Platypus Automations</h4><p>Back to the homepage for the full services lineup.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-bottom:none;">
+  <div class="quote-section">
+    <div class="container">
+      <h2>Paying for Ads With No Site to Back It Up?</h2>
+      <p>If a click on your ad lands somewhere thin, that's a solvable problem, not a permanent one.</p>
+      <a href="tel:7577172707" class="quote-phone">(757) 717-2707</a>
+      <p class="quote-hours">Available 9am–6pm EST, Monday–Friday</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA<br><a href="tel:7577172707" style="color:#00a0a0;text-decoration:none;">(757) 717-2707</a> &nbsp;·&nbsp; <a href="tel:7577651210" style="color:rgba(255,255,255,0.45);text-decoration:none;">(757) 765-1210</a></div>
+      <a href="https://www.sbsd.virginia.gov/directory/" target="_blank" rel="noopener"><img src="/swam-badge.jpg" alt="Virginia SWaM Certified — Small, Service-Disabled Veteran-Owned" class="footer-cert-badge"></a>
+      <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/index.html#contact">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('mobileClose').addEventListener('click', closeMobileNav);
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+  });
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+</script>
+
+</body>
+</html>
