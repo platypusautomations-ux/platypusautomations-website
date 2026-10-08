@@ -336,43 +336,50 @@
       const slides = Array.from(track.children);
       const prevBtn = document.querySelector('.carousel-btn.prev');
       const nextBtn = document.querySelector('.carousel-btn.next');
+      const GAP = 18;
 
       slides.forEach((_, i) => {
         const dot = document.createElement('span');
         if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }));
+        dot.addEventListener('click', () => goTo(i));
         dotsWrap.appendChild(dot);
       });
       const dots = Array.from(dotsWrap.children);
 
-      function scrollByAmount(dir) {
-        const slide = slides[0];
-        const gap = 18;
-        const amount = (slide.getBoundingClientRect().width + gap) * dir;
-        track.scrollBy({ left: amount, behavior: 'smooth' });
+      function slideStep() {
+        return slides[0].getBoundingClientRect().width + GAP;
       }
-      prevBtn.addEventListener('click', () => scrollByAmount(-1));
-      nextBtn.addEventListener('click', () => scrollByAmount(1));
+      function currentIndex() {
+        return Math.round(track.scrollLeft / slideStep());
+      }
+      function goTo(index) {
+        const clamped = Math.max(0, Math.min(index, slides.length - 1));
+        track.scrollTo({ left: clamped * slideStep(), behavior: 'smooth' });
+      }
+      function setActiveDot(idx) {
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[idx]) dots[idx].classList.add('active');
+      }
 
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const idx = slides.indexOf(entry.target);
-            dots.forEach(d => d.classList.remove('active'));
-            if (dots[idx]) dots[idx].classList.add('active');
-          }
+      prevBtn.addEventListener('click', () => goTo(currentIndex() - 1));
+      nextBtn.addEventListener('click', () => goTo(currentIndex() + 1));
+
+      let scrollRaf = null;
+      track.addEventListener('scroll', () => {
+        if (scrollRaf) return;
+        scrollRaf = requestAnimationFrame(() => {
+          setActiveDot(currentIndex());
+          scrollRaf = null;
         });
-      }, { root: track, threshold: 0.6 });
-      slides.forEach(s => io.observe(s));
+      }, { passive: true });
 
       // Autoplay: only while the carousel is on screen, pauses on user interaction.
       const AUTOPLAY_MS = 2500;
       let autoplayTimer = null;
 
       function advance() {
-        const activeIdx = dots.findIndex(d => d.classList.contains('active'));
-        const nextIdx = (activeIdx + 1) % slides.length;
-        slides[nextIdx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        const next = currentIndex() + 1;
+        goTo(next >= slides.length ? 0 : next);
       }
       function startAutoplay() {
         if (autoplayTimer) return;
@@ -394,7 +401,8 @@
       [track, prevBtn, nextBtn].forEach(el => {
         el.addEventListener('mouseenter', stopAutoplay);
         el.addEventListener('mouseleave', () => {
-          if (track.getBoundingClientRect().top < window.innerHeight && track.getBoundingClientRect().bottom > 0) startAutoplay();
+          const r = track.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) startAutoplay();
         });
         el.addEventListener('touchstart', stopAutoplay, { passive: true });
       });
