@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://platypusautomations.com/medranos/">
   <meta property="og:title" content="Concrete Contractor in Phoenix, AZ | Medrano's Concrete LLC">
   <meta property="og:description" content="Decorative and structural concrete serving Phoenix, AZ and the Valley. Stamped patios, concrete steps, slabs. Call (623) 399-2006 for a free estimate.">
-  <meta property="og:image" content="https://platypusautomations.com/medranos/img/hero-checkerboard.webp">
+  <meta property="og:image" content="https://platypusautomations.com/medranos/img/hero-framed-slab.webp">
   <meta property="og:url" content="https://platypusautomations.com/medranos/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -58,7 +58,7 @@
     ]
   }
   </script>
-  <link rel="preload" as="image" href="img/hero-checkerboard.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/hero-framed-slab.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -124,8 +124,8 @@
     /* HERO */
     .hero {
       position: relative; margin-top: 76px; min-height: 86vh; display: flex; align-items: flex-end;
-      background-image: linear-gradient(180deg, rgba(20,20,19,0.35) 0%, rgba(20,20,19,0.55) 55%, rgba(14,14,13,0.92) 100%), url('img/hero-checkerboard.webp');
-      background-size: cover; background-position: center 38%;
+      background-image: linear-gradient(180deg, rgba(20,20,19,0.35) 0%, rgba(20,20,19,0.55) 55%, rgba(14,14,13,0.92) 100%), url('img/hero-framed-slab.webp');
+      background-size: cover; background-position: center 25%;
     }
     .hero-inner { padding: 48px 24px 56px; max-width: 1140px; margin: 0 auto; width: 100%; }
     .hero h1 { font-size: 2.6rem; line-height: 1.15; max-width: 760px; }
@@ -312,6 +312,7 @@
         <button class="carousel-btn prev" aria-label="Previous photo">&#8249;</button>
         <div class="carousel-track" id="galleryTrack">
           <div class="carousel-slide"><img src="img/gallery-01-framed-slab.webp" alt="Large concrete slab poured for a new-build home in Phoenix AZ" loading="lazy"></div>
+          <div class="carousel-slide"><img src="img/gallery-09-checkerboard.webp" alt="Decorative scalloped-pattern stamped concrete driveway in Phoenix AZ" loading="lazy"></div>
           <div class="carousel-slide"><img src="img/gallery-02-desert-pour.webp" alt="Fresh concrete slab poured at a desert home site in Phoenix AZ" loading="lazy"></div>
           <div class="carousel-slide"><img src="img/gallery-03-scored-driveway.webp" alt="Scored concrete driveway poured in Phoenix AZ" loading="lazy"></div>
           <div class="carousel-slide"><img src="img/gallery-04-commercial-swirl.webp" alt="Large swirl-finish commercial concrete slab in Phoenix AZ" loading="lazy"></div>
@@ -363,6 +364,40 @@
         });
       }, { root: track, threshold: 0.6 });
       slides.forEach(s => io.observe(s));
+
+      // Autoplay: only while the carousel is on screen, pauses on user interaction.
+      const AUTOPLAY_MS = 2500;
+      let autoplayTimer = null;
+
+      function advance() {
+        const activeIdx = dots.findIndex(d => d.classList.contains('active'));
+        const nextIdx = (activeIdx + 1) % slides.length;
+        slides[nextIdx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+      function startAutoplay() {
+        if (autoplayTimer) return;
+        autoplayTimer = setInterval(advance, AUTOPLAY_MS);
+      }
+      function stopAutoplay() {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+
+      const visibilityIO = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) startAutoplay();
+          else stopAutoplay();
+        });
+      }, { threshold: 0.4 });
+      visibilityIO.observe(track);
+
+      [track, prevBtn, nextBtn].forEach(el => {
+        el.addEventListener('mouseenter', stopAutoplay);
+        el.addEventListener('mouseleave', () => {
+          if (track.getBoundingClientRect().top < window.innerHeight && track.getBoundingClientRect().bottom > 0) startAutoplay();
+        });
+        el.addEventListener('touchstart', stopAutoplay, { passive: true });
+      });
     })();
   </script>
 
