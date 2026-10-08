@@ -471,18 +471,22 @@
         </div>
       </div>
       <div class="form-box">
-        <form>
+        <form id="estimateForm">
+          <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_GOES_HERE">
+          <input type="hidden" name="subject" value="New estimate request — Medrano's Concrete website">
+          <input type="hidden" name="from_name" value="Medrano's Concrete Website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Your name">
+          <input type="text" id="name" name="name" placeholder="Your name" required>
           <label for="phone">Phone</label>
-          <input type="tel" id="phone" placeholder="(623) 000-0000">
+          <input type="tel" id="phone" name="phone" placeholder="(623) 000-0000" required>
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="you@email.com">
+          <input type="email" id="email" name="email" placeholder="you@email.com" required>
           <label for="message">Project Details</label>
-          <textarea id="message" rows="4" placeholder="Tell us about your concrete project"></textarea>
-          <button type="button" class="btn" style="width:100%; justify-content:center;">Request Free Estimate</button>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your concrete project"></textarea>
+          <button type="submit" class="btn" style="width:100%; justify-content:center;">Request Free Estimate</button>
         </form>
-        <p class="form-note">This form is a preview. For now, please call or text (623) 399-2006 directly.</p>
+        <p class="form-note" id="formStatus">Submissions go directly to Medrano's Concrete.</p>
       </div>
     </div>
   </section>
@@ -502,6 +506,42 @@
   <div class="mobile-call-bar">
     <a href="tel:+16233992006">Call Now: (623) 399-2006</a>
   </div>
+
+  <script>
+    (function () {
+      const form = document.getElementById('estimateForm');
+      const status = document.getElementById('formStatus');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        status.textContent = 'Submissions go directly to Medrano\'s Concrete.';
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        })
+          .then(r => r.json())
+          .then(data => {
+            if (data.success) {
+              form.hidden = true;
+              status.textContent = 'Thanks — your request was sent. Medrano\'s Concrete will reach out shortly.';
+            } else {
+              btn.disabled = false;
+              btn.textContent = 'Request Free Estimate';
+              status.textContent = 'Something went wrong. Please call or text (623) 399-2006 directly.';
+            }
+          })
+          .catch(() => {
+            btn.disabled = false;
+            btn.textContent = 'Request Free Estimate';
+            status.textContent = 'Something went wrong. Please call or text (623) 399-2006 directly.';
+          });
+      });
+    })();
+  </script>
 
 </body>
 </html>
