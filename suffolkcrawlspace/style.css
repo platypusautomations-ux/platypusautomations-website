@@ -235,3 +235,8 @@ a { text-decoration: none; color: inherit; }
   .hero { padding: 3.5rem 0 3rem; }
   .page-hero { padding: 2.5rem 0 2rem; }
 }
+
+/* mobile: the sticky header phone is the single call control, no duplicate hero call button */
+@media (max-width: 600px) {
+  .hero-actions .btn-primary[href^="tel"] { display: none; }
+}
