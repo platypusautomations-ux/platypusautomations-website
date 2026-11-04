@@ -131,6 +131,20 @@ footer a{color:var(--yl2)}
 .langtoggle button[aria-pressed="true"]{background:var(--yl);color:#10200f}
 @media(max-width:759px){nav .wrap{justify-content:space-between !important}.langtoggle{margin-right:0}.brand .ade{font-size:28px}.brand .lc{font-size:13px}}
 /* ES-TOGGLE END */
+/* WALL-CAROUSEL START */
+.wallcarousel{position:relative}
+.wallcarousel .track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:10px}
+.wallcarousel .track::-webkit-scrollbar{display:none}
+.wallcarousel .slide{flex:0 0 100%;scroll-snap-align:start;margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.wallcarousel .slide img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.wallcarousel figcaption{padding:10px 14px;font-size:14px;color:var(--mute)}
+.wc-ctrl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px}
+.wc-ctrl button{font:inherit;font-size:22px;font-weight:900;width:52px;height:52px;border-radius:50%;border:2px solid var(--yl);background:transparent;color:var(--yl);cursor:pointer}
+.wc-ctrl button:hover{background:var(--yl);color:#10200f}
+.wc-ctrl button:disabled{opacity:.35;cursor:default;background:transparent;color:var(--yl)}
+.wc-count{font-weight:800;min-width:64px;text-align:center;color:var(--mute)}
+@media(min-width:760px){.wallcarousel .slide{flex-basis:calc(50% - 6px)}}
+/* WALL-CAROUSEL END */
 </style>
 </head>
 <body>
@@ -164,6 +178,32 @@ footer a{color:var(--yl2)}
 </div></section>
 
 <div class="band"><p class="wrap" data-es="Comercial y residencial. Cotizaciones gratis.">Commercial and Residential. Free Estimates.</p></div>
+
+<!-- WALL-CAROUSEL START -->
+<section id="walls"><div class="wrap">
+ <h2 data-es="Muros de contención de bloque en Oklahoma">Block Retaining Walls in Oklahoma</h2>
+ <p class="sub" data-es="Muros reales construidos por ADE Lawncare LLC. Deslice o use las flechas para ver más.">Real walls built by ADE Lawncare LLC. Swipe or use the arrows to see more.</p>
+ <div class="wallcarousel" aria-roledescription="carousel" aria-label="Retaining wall photos">
+  <div class="track" tabindex="0">
+   <figure class="slide"><img src="img/wall-planted-corner.webp" data-es-alt="Muro de contención de bloque alrededor de una cama de plantas nueva en una casa en Oklahoma" alt="Block retaining wall around a new planting bed at a home in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muro de contención alrededor de una cama de plantas nueva">Retaining wall around a new planting bed</figcaption></figure>
+   <figure class="slide"><img src="img/wall-planted-side.webp" data-es-alt="Muro de contención de bloque que sostiene una cama elevada junto a un patio techado en Oklahoma" alt="Block retaining wall holding a raised planting bed beside a covered patio in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muro de cama elevada junto al patio">Raised bed wall beside the patio</figcaption></figure>
+   <figure class="slide"><img src="img/wall-terraced-backyard.webp" data-es-alt="Muros de contención de bloque escalonados detrás de una casa en Oklahoma" alt="Terraced block retaining walls behind a home in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muros escalonados detrás de la casa">Terraced walls behind the house</figcaption></figure>
+   <figure class="slide"><img src="img/wall-backyard-long.webp" data-es-alt="Muro de contención de bloque largo a lo ancho de un patio trasero en Oklahoma" alt="Long block retaining wall across a backyard in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muro de contención largo en el patio trasero">Long backyard retaining wall</figcaption></figure>
+   <figure class="slide"><img src="img/wall-driveway.webp" data-es-alt="Muro de contención de bloque gris junto a una entrada de autos y una cerca de hierro en Oklahoma" alt="Gray block retaining wall along a driveway next to an iron fence in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muro junto a la entrada de autos">Wall along the driveway</figcaption></figure>
+   <figure class="slide"><img src="img/wall-curved.webp" data-es-alt="Muro de contención curvo de bloque gris en un terreno de construcción nueva en Oklahoma" alt="Curved gray block retaining wall on a new construction lot in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muro curvo en una construcción nueva">Curved wall on a new build</figcaption></figure>
+   <figure class="slide"><img src="img/wall-side-yard.webp" data-es-alt="Muro de contención curvo de bloque en un costado de una casa nueva en Oklahoma" alt="Curved block retaining wall along a side yard next to a new home in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muro lateral en una casa nueva">Side yard wall at a new home</figcaption></figure>
+   <figure class="slide"><img src="img/wall-long-gray.webp" data-es-alt="Muro de contención largo de bloque gris que sostiene una pendiente en Oklahoma" alt="Long gray block retaining wall holding back a slope in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Muro que sostiene una pendiente">Wall holding back a slope</figcaption></figure>
+   <figure class="slide"><img src="img/wall-stepped-end.webp" data-es-alt="Extremo escalonado de un muro de contención de bloque gris en un terreno despejado en Oklahoma" alt="Stepped end of a gray block retaining wall on a cleared lot in Oklahoma" width="1000" height="750" loading="lazy"><figcaption data-es="Extremo escalonado del muro">Stepped wall end</figcaption></figure>
+  </div>
+  <div class="wc-ctrl">
+   <button type="button" class="wc-prev" aria-label="Previous photo">&larr;</button>
+   <span class="wc-count" aria-live="polite">1 / 9</span>
+   <button type="button" class="wc-next" aria-label="Next photo">&rarr;</button>
+  </div>
+ </div>
+ <div class="cta-row"><a class="btn" href="tel:+14054550383" data-es="Llame al (405) 455-0383">Call (405) 455-0383</a></div>
+</div></section>
+<!-- WALL-CAROUSEL END -->
 
 <section id="lights"><div class="wrap">
  <h2 data-es="Instalación de luces de Navidad en Oklahoma">Christmas Light Installation in Oklahoma</h2>
@@ -267,4 +307,20 @@ footer a{color:var(--yl2)}
 })();
 </script>
 <!-- ES-TOGGLE END -->
+<!-- WALL-CAROUSEL START -->
+<script>
+(function(){
+ var c=document.querySelector('.wallcarousel');if(!c)return;
+ var t=c.querySelector('.track'),sl=t.querySelectorAll('.slide'),pv=c.querySelector('.wc-prev'),nx=c.querySelector('.wc-next'),ct=c.querySelector('.wc-count');
+ function step(){return sl[0].getBoundingClientRect().width+12;}
+ function perView(){return Math.max(1,Math.round(t.clientWidth/step()));}
+ function upd(){var i=Math.round(t.scrollLeft/step()),last=sl.length-perView();ct.textContent=(Math.min(i,last)+1)+' / '+(last+1);pv.disabled=i<=0;nx.disabled=i>=last;}
+ pv.addEventListener('click',function(){t.scrollBy({left:-step()});});
+ nx.addEventListener('click',function(){t.scrollBy({left:step()});});
+ t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();nx.click();}if(e.key==='ArrowLeft'){e.preventDefault();pv.click();}});
+ t.addEventListener('scroll',function(){window.requestAnimationFrame(upd);},{passive:true});
+ window.addEventListener('resize',upd);upd();
+})();
+</script>
+<!-- WALL-CAROUSEL END -->
 </body></html>
