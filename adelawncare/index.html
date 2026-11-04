@@ -125,119 +125,146 @@ footer a{color:var(--yl2)}
  .cta-grid{grid-template-columns:1fr 1fr}
  .callbar{display:none} body{padding-bottom:0}
 }
+/* ES-TOGGLE START (Spanish/English add-on, remove this block to revert) */
+.langtoggle{margin-left:auto;margin-right:16px;display:inline-flex;border:2px solid var(--yl);border-radius:999px;overflow:hidden;flex-shrink:0}
+.langtoggle button{font:inherit;font-weight:900;font-size:14px;letter-spacing:.08em;background:transparent;color:var(--yl);border:0;padding:10px 16px;min-height:44px;min-width:56px;cursor:pointer}
+.langtoggle button[aria-pressed="true"]{background:var(--yl);color:#10200f}
+@media(max-width:759px){nav .wrap{justify-content:space-between !important}.langtoggle{margin-right:0}.brand .ade{font-size:28px}.brand .lc{font-size:13px}}
+/* ES-TOGGLE END */
 </style>
 </head>
 <body>
 <nav><div class="wrap">
  <a class="brand" href="#top" aria-label="ADE Lawncare LLC"><span class="ade">ADE</span><span class="lc">Lawncare LLC</span></a>
- <div class="nav-r"><a class="nav-phone" href="tel:+14054550383">(405) 455-0383</a><a class="btn" href="tel:+14054550383">Free Estimate</a></div>
+ <!-- ES-TOGGLE START --><div class="langtoggle" role="group" aria-label="Language / Idioma"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div><!-- ES-TOGGLE END -->
+ <div class="nav-r"><a class="nav-phone" href="tel:+14054550383">(405) 455-0383</a><a class="btn" href="tel:+14054550383" data-es="Cotización gratis">Free Estimate</a></div>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
  <div>
   <div class="eyebrow">ADE Lawncare LLC</div>
-  <h1>Landscaping, Fences and Block Walls in <em>Oklahoma</em></h1>
-  <p class="lead">Commercial and residential. Beds, trees, sprinklers, fences, walls, and Christmas lights. Free estimates.</p>
-  <div class="cta-row"><a class="btn" href="tel:+14054550383">Call (405) 455-0383</a><a class="btn alt" href="sms:+14054550383">Text Us</a></div>
+  <h1 data-es="Paisajismo, cercas y muros de bloque en <em>Oklahoma</em>">Landscaping, Fences and Block Walls in <em>Oklahoma</em></h1>
+  <p class="lead" data-es="Comercial y residencial. Jardines, árboles, riego, cercas, muros y luces de Navidad. Cotizaciones gratis.">Commercial and residential. Beds, trees, sprinklers, fences, walls, and Christmas lights. Free estimates.</p>
+  <div class="cta-row"><a class="btn" href="tel:+14054550383" data-es="Llame al (405) 455-0383">Call (405) 455-0383</a><a class="btn alt" href="sms:+14054550383" data-es="Envíenos un texto">Text Us</a></div>
  </div>
- <img src="img/hero.webp" alt="Landscape bed with Japanese maple, evergreens and shrubs at a building entrance in Oklahoma" width="1100" height="825" fetchpriority="high">
+ <img src="img/hero.webp" data-es-alt="Cama de jardín con arce japonés, árboles perennes y arbustos en la entrada de un edificio en Oklahoma" alt="Landscape bed with Japanese maple, evergreens and shrubs at a building entrance in Oklahoma" width="1100" height="825" fetchpriority="high">
 </div></header>
 
 <section id="services" class="alt-bg"><div class="wrap">
- <h2>Landscaping and Yard Services in Oklahoma</h2>
- <p class="sub">Tell us what the yard needs. We give you a free estimate.</p>
+ <h2 data-es="Servicios de paisajismo y jardín en Oklahoma">Landscaping and Yard Services in Oklahoma</h2>
+ <p class="sub" data-es="Díganos qué necesita su jardín. Le damos una cotización gratis.">Tell us what the yard needs. We give you a free estimate.</p>
  <div class="cards">
-  <div class="card"><h3>Flower Beds and Edging</h3><p>New beds, mulch, and clean edging.</p></div>
-  <div class="card"><h3>Concrete Block Walls</h3><p>Concrete block walls built to your plan.</p></div>
-  <div class="card"><h3>Fences</h3><p>Wood fence installation.</p></div>
-  <div class="card"><h3>Tree Trimming</h3><p>Trim trees back and clean up after.</p></div>
-  <div class="card"><h3>Mowing and Cleanup</h3><p>Regular mowing and yard cleanup.</p></div>
-  <div class="card"><h3>Sprinklers and Drainage</h3><p>Sprinkler lines and drainage work.</p></div>
+  <div class="card"><h3 data-es="Camas de flores y bordes">Flower Beds and Edging</h3><p data-es="Camas nuevas, mulch y bordes limpios.">New beds, mulch, and clean edging.</p></div>
+  <div class="card"><h3 data-es="Muros de bloque de concreto">Concrete Block Walls</h3><p data-es="Muros de bloque de concreto construidos según su plano.">Concrete block walls built to your plan.</p></div>
+  <div class="card"><h3 data-es="Cercas">Fences</h3><p data-es="Instalación de cercas de madera.">Wood fence installation.</p></div>
+  <div class="card"><h3 data-es="Poda de árboles">Tree Trimming</h3><p data-es="Podamos los árboles y limpiamos después.">Trim trees back and clean up after.</p></div>
+  <div class="card"><h3 data-es="Corte de césped y limpieza">Mowing and Cleanup</h3><p data-es="Corte de césped regular y limpieza del jardín.">Regular mowing and yard cleanup.</p></div>
+  <div class="card"><h3 data-es="Riego y drenaje">Sprinklers and Drainage</h3><p data-es="Líneas de riego y trabajo de drenaje.">Sprinkler lines and drainage work.</p></div>
  </div>
 </div></section>
 
-<div class="band"><p class="wrap">Commercial and Residential. Free Estimates.</p></div>
+<div class="band"><p class="wrap" data-es="Comercial y residencial. Cotizaciones gratis.">Commercial and Residential. Free Estimates.</p></div>
 
 <section id="lights"><div class="wrap">
- <h2>Christmas Light Installation in Oklahoma</h2>
- <p class="sub">Trees, hedges, and rooflines, put up for you. Call to get on the schedule.</p>
+ <h2 data-es="Instalación de luces de Navidad en Oklahoma">Christmas Light Installation in Oklahoma</h2>
+ <p class="sub" data-es="Árboles, setos y techos, instalados por nosotros. Llame para agendar.">Trees, hedges, and rooflines, put up for you. Call to get on the schedule.</p>
  <div class="lights">
-  <img src="img/holiday-lights-house.webp" alt="Christmas lights on a roofline, wrapped trees and lit hedges at a home in Oklahoma" width="1200" height="675" loading="lazy">
-  <img src="img/holiday-lights-tree.webp" alt="Tree trunk wrapped in green Christmas lights with red lights on the hedges in Oklahoma" width="1200" height="675" loading="lazy">
+  <img src="img/holiday-lights-house.webp" data-es-alt="Luces de Navidad en el techo, árboles envueltos y setos iluminados en una casa en Oklahoma" alt="Christmas lights on a roofline, wrapped trees and lit hedges at a home in Oklahoma" width="1200" height="675" loading="lazy">
+  <img src="img/holiday-lights-tree.webp" data-es-alt="Tronco de árbol envuelto en luces verdes de Navidad con luces rojas en los setos en Oklahoma" alt="Tree trunk wrapped in green Christmas lights with red lights on the hedges in Oklahoma" width="1200" height="675" loading="lazy">
  </div>
- <div class="cta-row"><a class="btn" href="tel:+14054550383">Call (405) 455-0383</a></div>
+ <div class="cta-row"><a class="btn" href="tel:+14054550383" data-es="Llame al (405) 455-0383">Call (405) 455-0383</a></div>
 </div></section>
 
 <section id="work" class="alt-bg"><div class="wrap">
- <h2>Landscaping Work in Oklahoma</h2>
- <p class="sub">Real jobs by ADE Lawncare LLC.</p>
+ <h2 data-es="Trabajos de paisajismo en Oklahoma">Landscaping Work in Oklahoma</h2>
+ <p class="sub" data-es="Trabajos reales de ADE Lawncare LLC.">Real jobs by ADE Lawncare LLC.</p>
  <div class="gallery">
-  <figure><img src="img/bed-curb-edging.webp" alt="Landscape bed with curved curb edging, blue spruce and Japanese maple in Oklahoma" width="900" height="1200" loading="lazy"><figcaption>Planting bed with curb edging</figcaption></figure>
-  <figure><img src="img/evergreen-row.webp" alt="Row of staked evergreen trees planted along a property line in Oklahoma" width="900" height="675" loading="lazy"><figcaption>Row of evergreens planted and staked</figcaption></figure>
-  <figure><img src="img/flower-bed-walkway.webp" alt="Fall flower bed with marigolds and begonias along a walkway in Oklahoma" width="800" height="1422" loading="lazy"><figcaption>Flower bed along a walkway</figcaption></figure>
-  <figure><img src="img/pansy-bed.webp" alt="Mulched flower bed with pansies planted in Oklahoma" width="800" height="1422" loading="lazy"><figcaption>Pansies in fresh mulch</figcaption></figure>
-  <figure><img src="img/mulch-bed-edging.webp" alt="Fresh mulch bed with stone edging along a brick home in Oklahoma" width="800" height="1422" loading="lazy"><figcaption>Mulch bed with stone edging</figcaption></figure>
-  <figure><img src="img/crape-myrtle-bed.webp" alt="New landscape bed with steel edging and plants along a brick wall in Oklahoma" width="900" height="506" loading="lazy"><figcaption>New bed with steel edging</figcaption></figure>
-  <figure><img src="img/entry-bed.webp" alt="Landscape bed with shrubs and perennials at a building entrance in Oklahoma" width="900" height="675" loading="lazy"><figcaption>Entry bed with shrubs and perennials</figcaption></figure>
-  <figure><img src="img/commercial-bed.webp" alt="Commercial landscape bed with shrubs next to a stamped concrete walkway in Oklahoma" width="900" height="987" loading="lazy"><figcaption>Shrub beds at a commercial building</figcaption></figure>
-  <figure><img src="img/flagstone-path.webp" alt="Flagstone stepping path with stone edging beside a brick home in Oklahoma" width="700" height="1245" loading="lazy"><figcaption>Flagstone path</figcaption></figure>
-  <figure><img src="img/cedar-fence.webp" alt="New cedar privacy fence installed in Oklahoma" width="600" height="1575" loading="lazy"><figcaption>Cedar privacy fence</figcaption></figure>
-  <figure><img src="img/deck.webp" alt="New pressure treated wood deck with railing in Oklahoma" width="900" height="675" loading="lazy"><figcaption>New wood deck with railing</figcaption></figure>
-  <figure><img src="img/sprinkler-trench.webp" alt="Trench with PVC sprinkler line and valve work in Oklahoma" width="800" height="1422" loading="lazy"><figcaption>Sprinkler line in the trench</figcaption></figure>
-  <figure><img src="img/drain-trench.webp" alt="Drainage trench with corrugated pipe along a fence in Oklahoma" width="700" height="933" loading="lazy"><figcaption>Drainage pipe and trench</figcaption></figure>
-  <figure><img src="img/tree-removal.webp" alt="Large tree cut up after removal in an Oklahoma yard" width="800" height="1067" loading="lazy"><figcaption>Tree taken down and cut up</figcaption></figure>
+  <figure><img src="img/bed-curb-edging.webp" data-es-alt="Cama de jardín con borde curvo, pino azul y arce japonés en Oklahoma" alt="Landscape bed with curved curb edging, blue spruce and Japanese maple in Oklahoma" width="900" height="1200" loading="lazy"><figcaption data-es="Cama de plantas con borde">Planting bed with curb edging</figcaption></figure>
+  <figure><img src="img/evergreen-row.webp" data-es-alt="Hilera de árboles perennes con estacas plantados a lo largo de un lindero en Oklahoma" alt="Row of staked evergreen trees planted along a property line in Oklahoma" width="900" height="675" loading="lazy"><figcaption data-es="Hilera de árboles perennes plantados y apoyados con estacas">Row of evergreens planted and staked</figcaption></figure>
+  <figure><img src="img/flower-bed-walkway.webp" data-es-alt="Cama de flores de otoño con cempasúchil y begonias junto a un camino en Oklahoma" alt="Fall flower bed with marigolds and begonias along a walkway in Oklahoma" width="800" height="1422" loading="lazy"><figcaption data-es="Cama de flores junto a un camino">Flower bed along a walkway</figcaption></figure>
+  <figure><img src="img/pansy-bed.webp" data-es-alt="Cama de flores con mulch y pensamientos plantados en Oklahoma" alt="Mulched flower bed with pansies planted in Oklahoma" width="800" height="1422" loading="lazy"><figcaption data-es="Pensamientos en mulch nuevo">Pansies in fresh mulch</figcaption></figure>
+  <figure><img src="img/mulch-bed-edging.webp" data-es-alt="Cama con mulch nuevo y borde de piedra junto a una casa de ladrillo en Oklahoma" alt="Fresh mulch bed with stone edging along a brick home in Oklahoma" width="800" height="1422" loading="lazy"><figcaption data-es="Cama con mulch y borde de piedra">Mulch bed with stone edging</figcaption></figure>
+  <figure><img src="img/crape-myrtle-bed.webp" data-es-alt="Cama nueva con borde de acero y plantas junto a un muro de ladrillo en Oklahoma" alt="New landscape bed with steel edging and plants along a brick wall in Oklahoma" width="900" height="506" loading="lazy"><figcaption data-es="Cama nueva con borde de acero">New bed with steel edging</figcaption></figure>
+  <figure><img src="img/entry-bed.webp" data-es-alt="Cama de jardín con arbustos y plantas perennes en la entrada de un edificio en Oklahoma" alt="Landscape bed with shrubs and perennials at a building entrance in Oklahoma" width="900" height="675" loading="lazy"><figcaption data-es="Cama de entrada con arbustos y plantas perennes">Entry bed with shrubs and perennials</figcaption></figure>
+  <figure><img src="img/commercial-bed.webp" data-es-alt="Cama de jardín comercial con arbustos junto a un camino de concreto estampado en Oklahoma" alt="Commercial landscape bed with shrubs next to a stamped concrete walkway in Oklahoma" width="900" height="987" loading="lazy"><figcaption data-es="Camas de arbustos en un edificio comercial">Shrub beds at a commercial building</figcaption></figure>
+  <figure><img src="img/flagstone-path.webp" data-es-alt="Camino de piedra laja con borde de piedra junto a una casa de ladrillo en Oklahoma" alt="Flagstone stepping path with stone edging beside a brick home in Oklahoma" width="700" height="1245" loading="lazy"><figcaption data-es="Camino de piedra laja">Flagstone path</figcaption></figure>
+  <figure><img src="img/cedar-fence.webp" data-es-alt="Cerca de privacidad de cedro nueva instalada en Oklahoma" alt="New cedar privacy fence installed in Oklahoma" width="600" height="1575" loading="lazy"><figcaption data-es="Cerca de privacidad de cedro">Cedar privacy fence</figcaption></figure>
+  <figure><img src="img/deck.webp" data-es-alt="Terraza nueva de madera tratada con barandal en Oklahoma" alt="New pressure treated wood deck with railing in Oklahoma" width="900" height="675" loading="lazy"><figcaption data-es="Terraza de madera nueva con barandal">New wood deck with railing</figcaption></figure>
+  <figure><img src="img/sprinkler-trench.webp" data-es-alt="Zanja con línea de riego de PVC y trabajo de válvulas en Oklahoma" alt="Trench with PVC sprinkler line and valve work in Oklahoma" width="800" height="1422" loading="lazy"><figcaption data-es="Línea de riego en la zanja">Sprinkler line in the trench</figcaption></figure>
+  <figure><img src="img/drain-trench.webp" data-es-alt="Zanja de drenaje con tubo corrugado junto a una cerca en Oklahoma" alt="Drainage trench with corrugated pipe along a fence in Oklahoma" width="700" height="933" loading="lazy"><figcaption data-es="Tubo de drenaje y zanja">Drainage pipe and trench</figcaption></figure>
+  <figure><img src="img/tree-removal.webp" data-es-alt="Árbol grande cortado después de derribarlo en un jardín de Oklahoma" alt="Large tree cut up after removal in an Oklahoma yard" width="800" height="1067" loading="lazy"><figcaption data-es="Árbol derribado y cortado">Tree taken down and cut up</figcaption></figure>
  </div>
 </div></section>
 
 <section id="about"><div class="wrap about-grid">
  <div>
-  <h2>About ADE Lawncare LLC</h2>
-  <p class="sub" style="margin-bottom:0">ADE Lawncare LLC is run by Alex Escalera in Oklahoma. Alex does landscaping, fences, tree trimming, sprinkler and drainage work, concrete block walls, and Christmas lights, for homes and businesses. Free estimates.</p>
+  <h2 data-es="Sobre ADE Lawncare LLC">About ADE Lawncare LLC</h2>
+  <p class="sub" style="margin-bottom:0" data-es="ADE Lawncare LLC es dirigida por Alex Escalera en Oklahoma. Alex hace paisajismo, cercas, poda de árboles, trabajos de riego y drenaje, muros de bloque de concreto y luces de Navidad, para hogares y negocios. Cotizaciones gratis.">ADE Lawncare LLC is run by Alex Escalera in Oklahoma. Alex does landscaping, fences, tree trimming, sprinkler and drainage work, concrete block walls, and Christmas lights, for homes and businesses. Free estimates.</p>
  </div>
- <img src="img/card.png" alt="ADE Lawncare LLC business card, commercial and residential, free estimates, (405) 455-0383" width="856" height="500" loading="lazy">
+ <img src="img/card.png" data-es-alt="Tarjeta de ADE Lawncare LLC, comercial y residencial, cotizaciones gratis, (405) 455-0383" alt="ADE Lawncare LLC business card, commercial and residential, free estimates, (405) 455-0383" width="856" height="500" loading="lazy">
 </div></section>
 
 <section class="alt-bg" id="area"><div class="wrap">
- <h2>Landscaper Serving Oklahoma</h2>
- <p class="sub" style="margin-bottom:18px">Call and ask if your address is in range.</p>
+ <h2 data-es="Paisajista en Oklahoma">Landscaper Serving Oklahoma</h2>
+ <p class="sub" style="margin-bottom:18px" data-es="Llame y pregunte si su dirección está dentro de nuestra zona.">Call and ask if your address is in range.</p>
  <div class="areas"><span>Oklahoma</span></div>
 </div></section>
 
 <section id="faq"><div class="wrap">
- <h2>Common Questions</h2>
- <p class="sub">Quick answers before you call.</p>
-<details><summary>What services does ADE Lawncare LLC offer?</summary><p>Flower beds and edging, concrete block walls, fences, tree trimming, mowing and cleanup, sprinkler and drainage work, and Christmas light installation.</p></details>
-<details><summary>Do you offer free estimates?</summary><p>Yes. Call (405) 455-0383 for a free estimate.</p></details>
-<details><summary>Do you work on homes and businesses?</summary><p>Yes. ADE Lawncare LLC does commercial and residential work.</p></details>
-<details><summary>Do you install Christmas lights?</summary><p>Yes. ADE Lawncare LLC installs Christmas lights. Call (405) 455-0383 to set it up.</p></details>
-<details><summary>Where do you work?</summary><p>ADE Lawncare LLC works in Oklahoma. Call (405) 455-0383 and ask if your address is in range.</p></details>
+ <h2 data-es="Preguntas frecuentes">Common Questions</h2>
+ <p class="sub" data-es="Respuestas rápidas antes de llamar.">Quick answers before you call.</p>
+<details><summary data-es="¿Qué servicios ofrece ADE Lawncare LLC?">What services does ADE Lawncare LLC offer?</summary><p data-es="Camas de flores y bordes, muros de bloque de concreto, cercas, poda de árboles, corte de césped y limpieza, trabajos de riego y drenaje, e instalación de luces de Navidad.">Flower beds and edging, concrete block walls, fences, tree trimming, mowing and cleanup, sprinkler and drainage work, and Christmas light installation.</p></details>
+<details><summary data-es="¿Ofrecen cotizaciones gratis?">Do you offer free estimates?</summary><p data-es="Sí. Llame al (405) 455-0383 para una cotización gratis.">Yes. Call (405) 455-0383 for a free estimate.</p></details>
+<details><summary data-es="¿Trabajan en casas y negocios?">Do you work on homes and businesses?</summary><p data-es="Sí. ADE Lawncare LLC hace trabajo comercial y residencial.">Yes. ADE Lawncare LLC does commercial and residential work.</p></details>
+<details><summary data-es="¿Instalan luces de Navidad?">Do you install Christmas lights?</summary><p data-es="Sí. ADE Lawncare LLC instala luces de Navidad. Llame al (405) 455-0383 para agendar.">Yes. ADE Lawncare LLC installs Christmas lights. Call (405) 455-0383 to set it up.</p></details>
+<details><summary data-es="¿Dónde trabajan?">Where do you work?</summary><p data-es="ADE Lawncare LLC trabaja en Oklahoma. Llame al (405) 455-0383 y pregunte si su dirección está dentro de la zona.">ADE Lawncare LLC works in Oklahoma. Call (405) 455-0383 and ask if your address is in range.</p></details>
 </div></section>
 
 <section class="cta alt-bg" id="contact"><div class="wrap cta-grid">
  <div class="contact">
-  <h2>Ready for a free estimate?</h2>
-  <p class="sub">Call or email and tell us about the job.</p>
+  <h2 data-es="¿Listo para una cotización gratis?">Ready for a free estimate?</h2>
+  <p class="sub" data-es="Llame o envíe un correo y cuéntenos sobre el trabajo.">Call or email and tell us about the job.</p>
   <a href="tel:+14054550383">(405) 455-0383</a>
   <a class="mail" href="mailto:escaleraalex254@gmail.com">escaleraalex254@gmail.com</a>
   <span>Oklahoma</span>
  </div>
  <form onsubmit="return false">
-  <input type="text" placeholder="Name" aria-label="Name">
-  <input type="email" placeholder="Email" aria-label="Email">
-  <input type="tel" placeholder="Phone" aria-label="Phone">
-  <textarea placeholder="Tell us about your project" aria-label="Message"></textarea>
-  <button type="button" class="btn">Send Message</button>
-  <p class="note">This form is a preview. To reach ADE Lawncare LLC now, call (405) 455-0383.</p>
+  <input type="text" data-es-ph="Nombre" placeholder="Name" aria-label="Name">
+  <input type="email" data-es-ph="Correo electrónico" placeholder="Email" aria-label="Email">
+  <input type="tel" data-es-ph="Teléfono" placeholder="Phone" aria-label="Phone">
+  <textarea data-es-ph="Cuéntenos sobre su proyecto" placeholder="Tell us about your project" aria-label="Message"></textarea>
+  <button type="button" class="btn" data-es="Enviar mensaje">Send Message</button>
+  <p class="note" data-es="Este formulario es una vista previa. Para comunicarse con ADE Lawncare LLC ahora, llame al (405) 455-0383.">This form is a preview. To reach ADE Lawncare LLC now, call (405) 455-0383.</p>
  </form>
 </div></section>
 
 <footer><div class="wrap">
  <p><strong style="color:var(--ink)">ADE Lawncare LLC</strong><br>Oklahoma &middot; <a href="tel:+14054550383">(405) 455-0383</a><br><a href="mailto:escaleraalex254@gmail.com">escaleraalex254@gmail.com</a></p>
- <p style="margin-top:8px">&copy; 2026 ADE Lawncare LLC. All rights reserved.</p>
+ <p style="margin-top:8px" data-es="&amp;copy; 2026 ADE Lawncare LLC. Todos los derechos reservados.">&copy; 2026 ADE Lawncare LLC. All rights reserved.</p>
  <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
   SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
  </div>
 </div></footer>
 
-<div class="callbar"><a href="tel:+14054550383">Call</a><a href="sms:+14054550383">Text</a></div>
+<div class="callbar"><a href="tel:+14054550383" data-es="Llamar">Call</a><a href="sms:+14054550383" data-es="Texto">Text</a></div>
+<!-- ES-TOGGLE START -->
+<script>
+(function(){
+ var KEY='ade-lang', TITLE_ES='Paisajismo y muros de bloque en Oklahoma | ADE Lawncare LLC', TITLE_EN=document.title;
+ function setLang(lang){
+  var es=lang==='es';
+  document.querySelectorAll('[data-es]').forEach(function(el){if(el.dataset.en===undefined)el.dataset.en=el.innerHTML;el.innerHTML=es?el.dataset.es:el.dataset.en;});
+  document.querySelectorAll('[data-es-alt]').forEach(function(el){if(el.dataset.enAlt===undefined)el.dataset.enAlt=el.alt;el.alt=es?el.dataset.esAlt:el.dataset.enAlt;});
+  document.querySelectorAll('[data-es-ph]').forEach(function(el){if(el.dataset.enPh===undefined)el.dataset.enPh=el.placeholder;el.placeholder=es?el.dataset.esPh:el.dataset.enPh;});
+  document.documentElement.lang=es?'es':'en';
+  document.title=es?TITLE_ES:TITLE_EN;
+  document.querySelectorAll('.langtoggle button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');});
+  try{localStorage.setItem(KEY,lang);}catch(e){}
+ }
+ document.querySelectorAll('.langtoggle button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+ var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
+ if(saved==='es')setLang('es');
+})();
+</script>
+<!-- ES-TOGGLE END -->
 </body></html>
