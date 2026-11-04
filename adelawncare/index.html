@@ -33,7 +33,7 @@
  "@context": "https://schema.org",
  "@type": "FAQPage",
  "mainEntity": [
-  {"@type": "Question", "name": "What services does ADE Lawncare LLC offer?", "acceptedAnswer": {"@type": "Answer", "text": "Flower beds and edging, concrete block walls, fences, tree trimming, mowing and cleanup, sprinkler and drainage work, and Christmas light installation."}},
+  {"@type": "Question", "name": "What services does ADE Lawncare LLC offer?", "acceptedAnswer": {"@type": "Answer", "text": "Flower beds and edging, concrete block walls, concrete driveways, fences, tree trimming, mowing and cleanup, sprinkler and drainage work, and Christmas light installation."}},
   {"@type": "Question", "name": "Do you offer free estimates?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Call (405) 455-0383 for a free estimate."}},
   {"@type": "Question", "name": "Do you work on homes and businesses?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ADE Lawncare LLC does commercial and residential work."}},
   {"@type": "Question", "name": "Do you install Christmas lights?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ADE Lawncare LLC installs Christmas lights. Call (405) 455-0383 to set it up."}},
@@ -145,6 +145,13 @@ footer a{color:var(--yl2)}
 .wc-count{font-weight:800;min-width:64px;text-align:center;color:var(--mute)}
 @media(min-width:760px){.wallcarousel .slide{flex-basis:calc(50% - 6px)}}
 /* WALL-CAROUSEL END */
+/* DRIVEWAYS START */
+.drives{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.drives figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.drives img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.drives figcaption{padding:8px 12px;font-size:13px;color:var(--mute)}
+@media(min-width:760px){.drives{max-width:760px}}
+/* DRIVEWAYS END */
 </style>
 </head>
 <body>
@@ -169,7 +176,7 @@ footer a{color:var(--yl2)}
  <p class="sub" data-es="Díganos qué necesita su jardín. Le damos una cotización gratis.">Tell us what the yard needs. We give you a free estimate.</p>
  <div class="cards">
   <div class="card"><h3 data-es="Camas de flores y bordes">Flower Beds and Edging</h3><p data-es="Camas nuevas, mulch y bordes limpios.">New beds, mulch, and clean edging.</p></div>
-  <div class="card"><h3 data-es="Muros de bloque de concreto">Concrete Block Walls</h3><p data-es="Muros de bloque de concreto construidos según su plano.">Concrete block walls built to your plan.</p></div>
+  <div class="card"><h3 data-es="Muros y entradas de concreto">Concrete Walls and Driveways</h3><p data-es="Muros de contención de bloque y entradas de autos de concreto.">Block retaining walls and concrete driveways.</p></div>
   <div class="card"><h3 data-es="Cercas">Fences</h3><p data-es="Instalación de cercas de madera.">Wood fence installation.</p></div>
   <div class="card"><h3 data-es="Poda de árboles">Tree Trimming</h3><p data-es="Podamos los árboles y limpiamos después.">Trim trees back and clean up after.</p></div>
   <div class="card"><h3 data-es="Corte de césped y limpieza">Mowing and Cleanup</h3><p data-es="Corte de césped regular y limpieza del jardín.">Regular mowing and yard cleanup.</p></div>
@@ -204,6 +211,17 @@ footer a{color:var(--yl2)}
  <div class="cta-row"><a class="btn" href="tel:+14054550383" data-es="Llame al (405) 455-0383">Call (405) 455-0383</a></div>
 </div></section>
 <!-- WALL-CAROUSEL END -->
+
+<!-- DRIVEWAYS START -->
+<section id="driveways" class="alt-bg"><div class="wrap">
+ <h2 data-es="Entradas de autos de concreto en Oklahoma">Concrete Driveways in Oklahoma</h2>
+ <p class="sub" data-es="Entradas de autos nuevas, coladas y terminadas por ADE Lawncare LLC.">New driveways, poured and finished by ADE Lawncare LLC.</p>
+ <div class="drives">
+  <figure><img src="img/driveway-new.webp" data-es-alt="Entrada de autos de concreto nueva frente a una casa de ladrillo en Oklahoma" alt="New concrete driveway in front of a brick home in Oklahoma" width="750" height="1000" loading="lazy"><figcaption data-es="Entrada de autos nueva, recién terminada">New driveway, just finished</figcaption></figure>
+  <figure><img src="img/driveway-pour.webp" data-es-alt="Concreto fresco colado para una entrada de autos en Oklahoma" alt="Fresh concrete poured for a driveway in Oklahoma" width="750" height="1000" loading="lazy"><figcaption data-es="Concreto fresco para una entrada de autos">Fresh driveway pour</figcaption></figure>
+ </div>
+</div></section>
+<!-- DRIVEWAYS END -->
 
 <section id="lights"><div class="wrap">
  <h2 data-es="Instalación de luces de Navidad en Oklahoma">Christmas Light Installation in Oklahoma</h2>
@@ -253,7 +271,7 @@ footer a{color:var(--yl2)}
 <section id="faq"><div class="wrap">
  <h2 data-es="Preguntas frecuentes">Common Questions</h2>
  <p class="sub" data-es="Respuestas rápidas antes de llamar.">Quick answers before you call.</p>
-<details><summary data-es="¿Qué servicios ofrece ADE Lawncare LLC?">What services does ADE Lawncare LLC offer?</summary><p data-es="Camas de flores y bordes, muros de bloque de concreto, cercas, poda de árboles, corte de césped y limpieza, trabajos de riego y drenaje, e instalación de luces de Navidad.">Flower beds and edging, concrete block walls, fences, tree trimming, mowing and cleanup, sprinkler and drainage work, and Christmas light installation.</p></details>
+<details><summary data-es="¿Qué servicios ofrece ADE Lawncare LLC?">What services does ADE Lawncare LLC offer?</summary><p data-es="Camas de flores y bordes, muros de bloque de concreto, entradas de autos de concreto, cercas, poda de árboles, corte de césped y limpieza, trabajos de riego y drenaje, e instalación de luces de Navidad.">Flower beds and edging, concrete block walls, concrete driveways, fences, tree trimming, mowing and cleanup, sprinkler and drainage work, and Christmas light installation.</p></details>
 <details><summary data-es="¿Ofrecen cotizaciones gratis?">Do you offer free estimates?</summary><p data-es="Sí. Llame al (405) 455-0383 para una cotización gratis.">Yes. Call (405) 455-0383 for a free estimate.</p></details>
 <details><summary data-es="¿Trabajan en casas y negocios?">Do you work on homes and businesses?</summary><p data-es="Sí. ADE Lawncare LLC hace trabajo comercial y residencial.">Yes. ADE Lawncare LLC does commercial and residential work.</p></details>
 <details><summary data-es="¿Instalan luces de Navidad?">Do you install Christmas lights?</summary><p data-es="Sí. ADE Lawncare LLC instala luces de Navidad. Llame al (405) 455-0383 para agendar.">Yes. ADE Lawncare LLC installs Christmas lights. Call (405) 455-0383 to set it up.</p></details>
