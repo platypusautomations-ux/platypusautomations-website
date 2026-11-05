@@ -1319,6 +1319,19 @@ footer {
 }
 
 /* ── RESPONSIVE ────────────────────────────────────── */
+/* desktop nav: compact the pill below 1700px, hand off to the hamburger below 1366px so no link hides under the CTA */
+@media (max-width: 1700px) {
+  nav { padding: 16px 28px; }
+  .nav-pill a { padding: 7px 10px; font-size: 0.8rem; }
+}
+@media (max-width: 1439px) {
+  .nav-phone-text { display: none; }
+  .nav-phone { font-size: 1.1rem; }
+}
+@media (max-width: 1365px) {
+  .nav-pill, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
 @media (max-width: 1024px) {
   nav { padding: 14px 32px; }
   .nav-pill, .nav-cta { display: none; }
@@ -1408,6 +1421,7 @@ footer {
     <a href="#hero">Home</a>
     <a href="#services">Services</a>
     <a href="/website-gbp">Website & GBP</a>
+    <a href="/bilingual-website">Bilingual Sites</a>
     <a href="/google-reviews">Google Reviews</a>
     <a href="/missed-call-textback">Missed Call Text-Back</a>
     <a href="/ai-text-screening">AI Text Screening</a>
