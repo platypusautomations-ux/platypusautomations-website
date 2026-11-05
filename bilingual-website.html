@@ -482,6 +482,25 @@
       .section-title { font-size: 1.5rem; }
     }
     /* ── BILINGUAL PAGE ─────────────────────────────── */
+    .lang-toggle { margin-left: auto; display: inline-flex; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 3px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; }
+    .lang-toggle span { padding: 5px 11px; border-radius: 999px; color: rgba(255,255,255,0.6); transition: background 0.2s, color 0.2s; }
+    .lang-toggle span.on { background: #00a0a0; color: #fff; }
+    .lang-toggle:focus-visible { outline: 2px solid #00a0a0; outline-offset: 2px; }
+    .site-header .nav-logo { flex-shrink: 0; }
+    .phone-link { white-space: nowrap; }
+    .lang-toggle { flex-shrink: 0; }
+    @media (min-width: 1101px) {
+      .header-inner { gap: 20px; }
+      .main-nav { gap: 16px; }
+      .main-nav a { font-size: 0.82rem; }
+    }
+    /* below 1100px the full nav no longer fits beside the ES/EN button: use the hamburger layout */
+    @media (max-width: 1100px) {
+      .main-nav, .header-cta { display: none; }
+      .header-inner { justify-content: center; position: relative; }
+      .hamburger { display: flex; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+      .lang-toggle { position: absolute; left: 0; top: 50%; transform: translateY(-50%); margin: 0; }
+    }
     .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
     .option-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
     .option-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.6rem; font-weight: 400; line-height: 1.2; }
@@ -501,6 +520,8 @@
     .quote-email { display: inline-block; margin-top: 6px; color: #00a0a0; font-weight: 500; }
     @media (max-width: 768px) {
       .option-grid { grid-template-columns: 1fr; }
+      .lang-toggle { position: absolute; left: 0; top: 50%; transform: translateY(-50%); margin: 0; font-size: 0.72rem; }
+      .lang-toggle span { padding: 4px 8px; }
       .option-card { padding: 22px; }
       .page-hero, .page-hero p { text-align: center; }
       .page-hero-meta { justify-content: center; }
@@ -532,6 +553,7 @@
         <a href="tel:7577172707" class="phone-link">(757) 717-2707</a>
         <a href="/#contact" class="btn btn-primary">Get Started</a>
       </div>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Ver en español / View in English"><span data-l="es">ES</span><span data-l="en" class="on">EN</span></button>
       <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
@@ -758,14 +780,98 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
-        alert('Thank you! We\'ll be in touch shortly.');
+        alert(paLang==='es'?PA_X.ok_es:PA_X.ok_en);
         e.target.reset();
       } catch (err) {
-        alert('There was an error. Please try again.');
+        alert(paLang==='es'?PA_X.err_es:PA_X.err_en);
       }
     });
   }
 </script>
 
+<script>
+  // ES/EN toggle: swaps every tagged block between English and Spanish, remembers the choice.
+  const PA_ES = {
+"Website &amp; GBP": "Sitio web y Perfil de Google",
+"Google Reviews": "Reseñas de Google",
+"Missed Call Text-Back": "Texto por llamada perdida",
+"AI Text Screening": "Filtro de mensajes con IA",
+"Voice Agent": "Agente de voz",
+"AI Knowledge Base Training": "Entrenamiento de IA con su información",
+"Contact": "Contacto",
+"Get Started": "Empezar",
+"Free Lead Audit": "Auditoría gratis de clientes potenciales",
+"Bilingual Sites": "Sitios bilingües",
+"Home": "Inicio",
+"Services": "Servicios",
+"Privacy": "Privacidad",
+"Terms": "Términos",
+"Bilingual Website Add-Ons": "Complementos para sitios web bilingües",
+"Two ways to put your site in Spanish. Pick the one that fits how your customers find you.": "Dos maneras de poner su sitio web en español. Elija la que mejor se adapte a cómo lo encuentran sus clientes.",
+"Add-on for any website client": "Complemento para cualquier cliente de sitio web",
+"Full Spanish version": "Versión completa en español",
+"We set it up and keep it updated": "Nosotros lo instalamos y lo mantenemos al día",
+"Who It's For": "Para quién es",
+"Owners who speak Spanish, or whose customers do.": "Dueños que hablan español, o cuyos clientes lo hablan.",
+"If you or your customers read Spanish first, your site should too.": "Si usted o sus clientes leen primero en español, su sitio web también debería estar en español.",
+"Option 1": "Opción 1",
+"ES/EN Toggle": "Botón de idioma ES/EN",
+"One page. Every section in English and Spanish. A language button in the menu switches between them, and the site remembers the choice on the next visit.": "Una sola página. Cada sección en inglés y en español. Un botón de idioma en el menú cambia entre los dos, y el sitio recuerda la elección en la próxima visita.",
+"Spanish-speaking customers who already have your link": "Clientes que hablan español y ya tienen su enlace",
+"An owner who wants to read their own site in Spanish": "Un dueño que quiere leer su propio sitio en español",
+"The button: <code>ES / EN</code> (Español / English)": "El botón: <code>ES / EN</code> (Español / English)",
+"<strong>What it does not do:</strong> it does not help you show up in Spanish Google searches. Search engines see one page. For Spanish search, you need the /es/ page.": "<strong>Lo que no hace:</strong> no le ayuda a aparecer en las búsquedas de Google en español. Los buscadores ven una sola página. Para las búsquedas en español, necesita la página /es/.",
+"Option 2": "Opción 2",
+"Spanish Page at Its Own Address (/es/)": "Página en español con su propia dirección (/es/)",
+"A full Spanish page at yoursite.com/es/. It has its own title, description, headings, FAQ and language tag, and it is paired with your English page so Google knows which one to show each searcher.": "Una página completa en español en susitio.com/es/. Tiene su propio título, descripción, encabezados, preguntas frecuentes y etiqueta de idioma, y está vinculada con su página en inglés para que Google sepa cuál mostrarle a cada persona que busca.",
+"Built for people who search in Spanish": "Hecha para las personas que buscan en español",
+"A Spanish link you can send and share on its own": "Un enlace en español que puede enviar y compartir por separado",
+"<strong>The honest part:</strong> this makes your page eligible to rank in Spanish searches. No guarantee of rankings or customers.": "<strong>La verdad:</strong> esto hace que su página sea elegible para aparecer en las búsquedas en español. No garantizamos posiciones ni clientes.",
+"Which One": "Cuál elegir",
+"Which one do I need?": "¿Cuál necesito?",
+"Customers already have your link and some read Spanish: <strong>the toggle.</strong>": "Sus clientes ya tienen su enlace y algunos leen español: <strong>el botón de idioma.</strong>",
+"You want people searching in Spanish to find you: <strong>the /es/ page.</strong>": "Quiere que lo encuentren las personas que buscan en español: <strong>la página /es/.</strong>",
+"Not sure: <strong>call or text and we'll sort it out.</strong>": "¿No está seguro? <strong>Llámenos o mándenos un texto y lo resolvemos.</strong>",
+"Common Questions": "Preguntas frecuentes",
+"Bilingual Website FAQ": "Preguntas sobre sitios web bilingües",
+"Will the toggle help me show up in Spanish searches?": "¿El botón de idioma me ayuda a aparecer en las búsquedas en español?",
+"No. It's for people who already have your link. For Spanish search, you need the /es/ page.": "No. Es para las personas que ya tienen su enlace. Para las búsquedas en español, necesita la página /es/.",
+"Will the /es/ page bring me Spanish-speaking customers?": "¿La página /es/ me va a traer clientes que hablan español?",
+"It makes your page eligible to show up in Spanish searches. Rankings depend on Google and your competition. We don't guarantee rankings or customers.": "Hace que su página sea elegible para aparecer en las búsquedas en español. Las posiciones dependen de Google y de su competencia. No garantizamos posiciones ni clientes.",
+"Can I add this to my site?": "¿Puedo agregar esto a mi sitio?",
+"Yes. Both are add-ons for any Platypus website client.": "Sí. Los dos son complementos para cualquier cliente de sitio web de Platypus.",
+"What happens when I need a change?": "¿Qué pasa cuando necesito un cambio?",
+"Send it to us. We update the English and the Spanish together. Occasional edits are handled the same way as the rest of your site.": "Mándenoslo. Actualizamos el inglés y el español al mismo tiempo. Los cambios ocasionales se manejan igual que en el resto de su sitio.",
+"Who checks the Spanish?": "¿Quién revisa el español?",
+"We write the Spanish version and send it to you to read before it goes live. If nobody on your side reads Spanish, we can arrange a paid proofread first.": "Nosotros escribimos la versión en español y se la mandamos para que la lea antes de publicarla. Si nadie de su lado lee español, podemos coordinar primero una revisión pagada.",
+"Put your site in both languages.": "Ponga su sitio web en los dos idiomas.",
+"Call or text and tell us who your customers are. We'll tell you which option fits.": "Llámenos o mándenos un texto y díganos quiénes son sus clientes. Le diremos qué opción le conviene.",
+"Available 9am–6pm EST, Monday–Friday": "Disponible de 9am a 6pm EST, de lunes a viernes",
+"Your Name": "Su nombre",
+"Business Name": "Nombre del negocio",
+"Phone": "Teléfono",
+"Trade Type": "Tipo de oficio",
+"Message (optional)": "Mensaje (opcional)",
+"Request a Quote →": "Pedir una cotización →"
+};
+  const PA_X = {"title_en": "Bilingual Website Add-Ons: Spanish and English | Platypus Automations", "title_es": "Complementos para sitios web bilingües: español e inglés | Platypus Automations", "msg_ph_en": "Who are your customers? Toggle, /es/ page, or not sure?", "msg_ph_es": "¿Quiénes son sus clientes? ¿Botón de idioma, página /es/, o no está seguro?", "ok_en": "Thank you! We'll be in touch shortly.", "ok_es": "¡Gracias! Nos comunicaremos con usted pronto.", "err_en": "There was an error. Please try again.", "err_es": "Hubo un error. Por favor, intente de nuevo."};
+  let paLang = 'en';
+  const paEls = [...document.body.querySelectorAll('*')].filter(el => el.children.length < 3 && PA_ES[el.innerHTML.trim()] !== undefined);
+  paEls.forEach(el => { el.dataset.en = el.innerHTML.trim(); });
+  function paSetLang(lang) {
+    paLang = lang;
+    paEls.forEach(el => { el.innerHTML = lang === 'es' ? PA_ES[el.dataset.en] : el.dataset.en; });
+    document.documentElement.lang = lang;
+    document.title = lang === 'es' ? PA_X.title_es : PA_X.title_en;
+    const ta = document.querySelector('textarea[name="message"]');
+    if (ta) ta.placeholder = lang === 'es' ? PA_X.msg_ph_es : PA_X.msg_ph_en;
+    document.querySelectorAll('#langToggle span').forEach(sp => sp.classList.toggle('on', sp.dataset.l === lang));
+    try { localStorage.setItem('pa-lang', lang); } catch (e) {}
+  }
+  document.getElementById('langToggle').addEventListener('click', () => paSetLang(paLang === 'es' ? 'en' : 'es'));
+  let paSaved = null;
+  try { paSaved = localStorage.getItem('pa-lang'); } catch (e) {}
+  if (paSaved === 'es') paSetLang('es');
+</script>
 </body>
 </html>
