@@ -486,6 +486,16 @@
     .lang-toggle span { padding: 5px 11px; border-radius: 999px; color: rgba(255,255,255,0.6); transition: background 0.2s, color 0.2s; }
     .lang-toggle span.on { background: #00a0a0; color: #fff; }
     .lang-toggle:focus-visible { outline: 2px solid #00a0a0; outline-offset: 2px; }
+    .lang-toggle { position: relative; }
+    .lang-toggle .try-tip { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); white-space: nowrap; background: #E8742A; color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0; box-shadow: 0 6px 18px rgba(0,0,0,0.35); animation: tipBounce 1.6s ease-in-out infinite; pointer-events: none; z-index: 5; }
+    .lang-toggle .try-tip::before { content: ""; position: absolute; top: -6px; left: 50%; margin-left: -6px; border: 6px solid transparent; border-top: 0; border-bottom-color: #E8742A; }
+    .lang-toggle.tried .try-tip { display: none; }
+    .lang-toggle:not(.tried) { animation: togGlow 1.6s ease-in-out infinite; }
+    @keyframes tipBounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 5px); } }
+    @keyframes togGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(232,116,42,0.55); } 50% { box-shadow: 0 0 0 7px rgba(232,116,42,0); } }
+    @media (prefers-reduced-motion: reduce) { .lang-toggle .try-tip, .lang-toggle:not(.tried) { animation: none; } }
+    .try-btn { align-self: flex-start; background: #E8742A; color: #fff; font-weight: 600; font-size: 0.95rem; padding: 12px 20px; border-radius: 999px; transition: transform 0.2s, background 0.2s; }
+    .try-btn:hover { background: #f0843c; transform: translateY(-1px); }
     .site-header .nav-logo { flex-shrink: 0; }
     .phone-link { white-space: nowrap; }
     .lang-toggle { flex-shrink: 0; }
@@ -527,6 +537,7 @@
       .page-hero-meta { justify-content: center; }
       .page-hero > .container > p { margin-left: auto; margin-right: auto; }
       .which-list, .quote-copy { text-align: center; }
+      .try-btn { align-self: stretch; }
     }
   </style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -553,7 +564,7 @@
         <a href="tel:7577172707" class="phone-link">(757) 717-2707</a>
         <a href="/#contact" class="btn btn-primary">Get Started</a>
       </div>
-      <button class="lang-toggle" id="langToggle" type="button" aria-label="Ver en español / View in English"><span data-l="es">ES</span><span data-l="en" class="on">EN</span></button>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Ver en español / View in English"><span data-l="es">ES</span><span data-l="en" class="on">EN</span><span class="try-tip" aria-hidden="true">Try it here!</span></button>
       <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
@@ -614,6 +625,7 @@
           <li>An owner who wants to read their own site in Spanish</li>
         </ul>
         <p class="es-sample">The button: <code>ES / EN</code> (Español / English)</p>
+        <button type="button" class="try-btn" id="tryBtn">Try it here! See this page in Spanish</button>
         <div class="option-note"><strong>What it does not do:</strong> it does not help you show up in Spanish Google searches. Search engines see one page. For Spanish search, you need the /es/ page.</div>
       </div>
 
@@ -802,6 +814,8 @@
 "Get Started": "Empezar",
 "Free Lead Audit": "Auditoría gratis de clientes potenciales",
 "Bilingual Sites": "Sitios bilingües",
+"Try it here!": "¡Pruébelo aquí!",
+"Try it here! See this page in Spanish": "¡Pruébelo! Vea esta página en inglés",
 "Home": "Inicio",
 "Services": "Servicios",
 "Privacy": "Privacidad",
@@ -868,7 +882,11 @@
     document.querySelectorAll('#langToggle span').forEach(sp => sp.classList.toggle('on', sp.dataset.l === lang));
     try { localStorage.setItem('pa-lang', lang); } catch (e) {}
   }
-  document.getElementById('langToggle').addEventListener('click', () => paSetLang(paLang === 'es' ? 'en' : 'es'));
+  const paTog = document.getElementById('langToggle');
+  function paTried() { paTog.classList.add('tried'); try { localStorage.setItem('pa-lang-tried', '1'); } catch (e) {} }
+  try { if (localStorage.getItem('pa-lang-tried') === '1') paTog.classList.add('tried'); } catch (e) {}
+  paTog.addEventListener('click', () => { paSetLang(paLang === 'es' ? 'en' : 'es'); paTried(); });
+  document.getElementById('tryBtn').addEventListener('click', () => { paSetLang(paLang === 'es' ? 'en' : 'es'); paTried(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   let paSaved = null;
   try { paSaved = localStorage.getItem('pa-lang'); } catch (e) {}
   if (paSaved === 'es') paSetLang('es');
