@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilingual Website Add-Ons: Spanish and English | Platypus Automations</title>
+  <meta name="description" content="Two add-ons for any Platypus website: an ES/EN toggle, or a full Spanish page at its own /es/ address that is eligible to rank in Spanish searches.">
+  <link rel="canonical" href="https://www.platypusautomations.com/bilingual-website">
+  <link rel="icon" type="image/png" sizes="32x32" href="pa_monogram_32.png">
+  <link rel="apple-touch-icon" href="pa_monogram_180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bilingual Website Add-Ons: Spanish and English">
+  <meta property="og:description" content="An ES/EN toggle, or a full Spanish page at its own /es/ address. Add-ons for any Platypus website.">
+  <meta property="og:url" content="https://www.platypusautomations.com/bilingual-website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Bilingual Website Add-Ons",
+    "description": "Two Spanish and English add-ons for Platypus website clients: an ES/EN toggle on one page, or a full Spanish page at its own /es/ address.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Platypus Automations",
+      "telephone": "(757) 717-2707",
+      "email": "tim@platypusautomations.com",
+      "url": "https://www.platypusautomations.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chesapeake",
+        "addressRegion": "VA",
+        "postalCode": "23323",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": { "@type": "Country", "name": "United States" },
+    "serviceType": "Bilingual Website Setup"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', system-ui, sans-serif;
+      background: #0A1628;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ── HEADER/NAV ─────────────────────────────── */
+    .site-header {
+      background: #0A1628;
+      border-bottom: 1px solid rgba(0,122,122,0.2);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      line-height: 1;
+      gap: 2px;
+    }
+    .nav-logo img {
+      height: 63px;
+      width: auto;
+    }
+    .main-nav {
+      display: flex;
+      gap: 28px;
+    }
+    .main-nav a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.3s;
+    }
+    .main-nav a:hover { color: #fff; }
+    .header-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .phone-link {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+    .btn {
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: #E8651A;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5,13,24,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 28px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,0.75); transition: color 0.3s; }
+    .mobile-nav a:hover { color: #E8651A; }
+    .mobile-nav .m-cta { margin-top: 8px; background: #E8651A; color: #fff; padding: 12px 32px; border-radius: 999px; font-size: 1rem; font-weight: 500; }
+    .mobile-nav .m-cta-teal { margin-bottom: 8px; background: rgba(0,160,160,0.12); border: 1.5px solid #00a0a0; color: #00a0a0 !important; padding: 10px 28px; border-radius: 999px; font-size: 1.05rem; font-weight: 500; transition: all 0.3s; }
+    .mobile-nav .m-cta-teal:hover { background: #00a0a0; color: #fff !important; }
+    .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.2rem; cursor: pointer; line-height: 1; }
+
+    /* ── BREADCRUMB ──────────────────────────────── */
+    .breadcrumb {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .breadcrumb-inner {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.52);
+    }
+
+    /* ── PAGE HERO ───────────────────────────────── */
+    .page-hero {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .page-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .page-hero > .container > p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+    .page-hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+    }
+    .page-hero-meta span::before {
+      content: '✓ ';
+      color: #00a0a0;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* ── CONTENT GRID ────────────────────────────── */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .content-body h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.85rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .content-body h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      color: #fff;
+      line-height: 1.22;
+    }
+    .content-body p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .content-body ul {
+      margin: 20px 0 24px 0;
+    }
+    .content-body li {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .content-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #00a0a0;
+      font-weight: 600;
+    }
+
+    /* ── SIDEBAR BOXES ───────────────────────────── */
+    .symptoms-box, .info-box {
+      background: rgba(0,122,122,0.08);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .symptoms-box h3, .info-box h3 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .symptom-item {
+      padding: 10px 0;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(0,122,122,0.1);
+    }
+    .symptom-item:last-child { border-bottom: none; }
+    .symptom-item span::before {
+      content: '✓ ';
+      color: #E8651A;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    .info-box p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+    }
+
+    /* ── FAQ SECTION ────────────────────────────── */
+    .section--gray {
+      background: rgba(0,122,122,0.04);
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 32px;
+      color: #fff;
+      line-height: 1.18;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(0,122,122,0.15);
+      padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      transition: transform 0.3s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { color: #fff; }
+    .faq-answer {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.72;
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+
+    /* ── RELATED SERVICES ────────────────────────── */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .related-card {
+      background: rgba(0,122,122,0.06);
+      border: 1px solid rgba(0,122,122,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+    .related-card:hover {
+      background: rgba(0,122,122,0.12);
+      border-color: rgba(0,122,122,0.35);
+      transform: translateY(-6px);
+    }
+    .related-card h4 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .related-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.6;
+    }
+
+    /* ── QUOTE SECTION ───────────────────────────── */
+    .quote-section {
+      background: linear-gradient(135deg, rgba(0,122,122,0.1), rgba(232,101,26,0.05));
+      padding: 64px 0;
+      border: 1px solid rgba(0,122,122,0.15);
+      border-radius: 16px;
+      margin: 64px 0;
+    }
+    .quote-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .quote-copy h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .quote-copy p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .quote-phone {
+      display: inline-block;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #00a0a0;
+      transition: color 0.3s;
+    }
+    .quote-phone:hover { color: #fff; }
+    .quote-hours {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+    }
+    .quote-form-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,122,122,0.2);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #fff;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #E8651A;
+      background: rgba(232,101,26,0.04);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      background: #E8651A;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,101,26,0.4); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #050d18;
+      border-top: 1px solid rgba(0,122,122,0.2);
+      padding: 32px 0;
+      margin-top: 64px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-left { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-cert-badge { display: block; height: 36px; width: auto; border-radius: 4px; opacity: 0.95; transition: opacity 0.3s; }
+    .footer-cert-badge:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .main-nav, .header-cta { display: none; }
+      .hamburger { display: flex; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
+      .header-inner { justify-content: center; position: relative; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
+      .content-grid { grid-template-columns: 1fr; gap: 32px; }
+      .quote-inner { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 48px 0; }
+      .section { padding: 48px 0; }
+      .page-hero h1 { font-size: 1.85rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+    /* ── BILINGUAL PAGE ─────────────────────────────── */
+    .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+    .option-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+    .option-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.6rem; font-weight: 400; line-height: 1.2; }
+    .option-card p { color: rgba(255,255,255,0.78); }
+    .option-card ul li { padding: 6px 0 6px 22px; position: relative; color: rgba(255,255,255,0.85); }
+    .option-card ul li::before { content: "\2713"; position: absolute; left: 0; color: #00a0a0; font-weight: 600; }
+    .option-note { border-left: 3px solid #E8742A; padding: 10px 14px; background: rgba(232,116,42,0.08); border-radius: 0 8px 8px 0; font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .option-note strong { color: #fff; font-weight: 600; }
+    .es-sample { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+    .es-sample code { background: rgba(0,160,160,0.18); color: #fff; padding: 2px 8px; border-radius: 6px; font-family: inherit; font-weight: 600; }
+    .intro { max-width: 720px; margin: 0 auto; text-align: center; }
+    .intro p { color: rgba(255,255,255,0.78); margin-top: 12px; }
+    .which-list { max-width: 720px; margin: 24px auto 0; }
+    .which-list li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); }
+    .which-list li:last-child { border-bottom: none; }
+    .which-list strong { color: #fff; font-weight: 600; }
+    .quote-email { display: inline-block; margin-top: 6px; color: #00a0a0; font-weight: 500; }
+    @media (max-width: 768px) {
+      .option-grid { grid-template-columns: 1fr; }
+      .option-card { padding: 22px; }
+      .page-hero, .page-hero p { text-align: center; }
+      .page-hero-meta { justify-content: center; }
+      .page-hero > .container > p { margin-left: auto; margin-right: auto; }
+      .which-list, .quote-copy { text-align: center; }
+    }
+  </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="nav-logo">
+        <img src="pa_wordmark_transparent.webp" alt="Platypus Automations" width="600" height="335" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:block;height:63px;width:auto">
+        <span style="display:none;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:#fff;letter-spacing:-0.5px">Platypus Automations</span>
+      </a>
+      <nav><ul class="main-nav">
+        <li><a href="website-gbp">Website & GBP</a></li>
+        <li><a href="google-reviews">Google Reviews</a></li>
+        <li><a href="missed-call-textback">Missed Call Text-Back</a></li>
+        <li><a href="ai-text-screening">AI Text Screening</a></li>
+        <li><a href="voice-agent">Voice Agent</a></li>
+        <li><a href="ai-knowledge-base-training">AI Knowledge Base Training</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul></nav>
+      <div class="header-cta">
+        <a href="tel:7577172707" class="phone-link">(757) 717-2707</a>
+        <a href="/#contact" class="btn btn-primary">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+  <a href="lead-audit" class="m-cta-teal" onclick="closeMobileNav()">Free Lead Audit</a>
+  <a href="website-gbp" onclick="closeMobileNav()">Website & GBP</a>
+  <a href="bilingual-website" onclick="closeMobileNav()">Bilingual Sites</a>
+  <a href="google-reviews" onclick="closeMobileNav()">Google Reviews</a>
+  <a href="missed-call-textback" onclick="closeMobileNav()">Missed Call Text-Back</a>
+  <a href="ai-text-screening" onclick="closeMobileNav()">AI Text Screening</a>
+  <a href="voice-agent" onclick="closeMobileNav()">Voice Agent</a>
+  <a href="ai-knowledge-base-training" onclick="closeMobileNav()">AI Knowledge Base Training</a>
+  <a href="/#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="tel:7577172707" onclick="closeMobileNav()">(757) 717-2707</a>
+  <a href="/#contact" class="m-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
+
+<nav class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a><span>›</span><span>Bilingual Website Add-Ons</span>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Bilingual Website Add-Ons</h1>
+    <p>Two ways to put your site in Spanish. Pick the one that fits how your customers find you.</p>
+    <div class="page-hero-meta">
+      <span>Add-on for any website client</span>
+      <span>Full Spanish version</span>
+      <span>We set it up and keep it updated</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="intro">
+      <span class="section-label">Who It's For</span>
+      <h2 class="section-title">Owners who speak Spanish, or whose customers do.</h2>
+      <p>If you or your customers read Spanish first, your site should too.</p>
+    </div>
+
+    <div class="option-grid">
+      <div class="option-card">
+        <span class="section-label">Option 1</span>
+        <h3>ES/EN Toggle</h3>
+        <p>One page. Every section in English and Spanish. A language button in the menu switches between them, and the site remembers the choice on the next visit.</p>
+        <ul>
+          <li>Spanish-speaking customers who already have your link</li>
+          <li>An owner who wants to read their own site in Spanish</li>
+        </ul>
+        <p class="es-sample">The button: <code>ES / EN</code> (Español / English)</p>
+        <div class="option-note"><strong>What it does not do:</strong> it does not help you show up in Spanish Google searches. Search engines see one page. For Spanish search, you need the /es/ page.</div>
+      </div>
+
+      <div class="option-card">
+        <span class="section-label">Option 2</span>
+        <h3>Spanish Page at Its Own Address (/es/)</h3>
+        <p>A full Spanish page at yoursite.com/es/. It has its own title, description, headings, FAQ and language tag, and it is paired with your English page so Google knows which one to show each searcher.</p>
+        <ul>
+          <li>Built for people who search in Spanish</li>
+          <li>A Spanish link you can send and share on its own</li>
+        </ul>
+        <div class="option-note"><strong>The honest part:</strong> this makes your page eligible to rank in Spanish searches. No guarantee of rankings or customers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="intro">
+      <span class="section-label">Which One</span>
+      <h2 class="section-title">Which one do I need?</h2>
+    </div>
+    <ul class="which-list">
+      <li>Customers already have your link and some read Spanish: <strong>the toggle.</strong></li>
+      <li>You want people searching in Spanish to find you: <strong>the /es/ page.</strong></li>
+      <li>Not sure: <strong>call or text and we'll sort it out.</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--gray">
+  <div class="container">
+    <div style="max-width:780px;margin:0 auto;">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Bilingual Website FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Will the toggle help me show up in Spanish searches?</summary>
+          <div class="faq-answer">No. It's for people who already have your link. For Spanish search, you need the /es/ page.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Will the /es/ page bring me Spanish-speaking customers?</summary>
+          <div class="faq-answer">It makes your page eligible to show up in Spanish searches. Rankings depend on Google and your competition. We don't guarantee rankings or customers.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I add this to my site?</summary>
+          <div class="faq-answer">Yes. Both are add-ons for any Platypus website client.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What happens when I need a change?</summary>
+          <div class="faq-answer">Send it to us. We update the English and the Spanish together. Occasional edits are handled the same way as the rest of your site.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Who checks the Spanish?</summary>
+          <div class="faq-answer">We write the Spanish version and send it to you to read before it goes live. If nobody on your side reads Spanish, we can arrange a paid proofread first.</div>
+        </details>
+      </div>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"Will the toggle help me show up in Spanish searches?","acceptedAnswer":{"@type":"Answer","text":"No. It's for people who already have your link. For Spanish search, you need the /es/ page."}},
+          {"@type":"Question","name":"Will the /es/ page bring me Spanish-speaking customers?","acceptedAnswer":{"@type":"Answer","text":"It makes your page eligible to show up in Spanish searches. Rankings depend on Google and your competition. We don't guarantee rankings or customers."}},
+          {"@type":"Question","name":"Can I add this to my site?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both are add-ons for any Platypus website client."}},
+          {"@type":"Question","name":"What happens when I need a change?","acceptedAnswer":{"@type":"Answer","text":"Send it to us. We update the English and the Spanish together. Occasional edits are handled the same way as the rest of your site."}},
+          {"@type":"Question","name":"Who checks the Spanish?","acceptedAnswer":{"@type":"Answer","text":"We write the Spanish version and send it to you to read before it goes live. If nobody on your side reads Spanish, we can arrange a paid proofread first."}}
+        ]
+      }
+      </script>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-inner">
+      <div class="quote-copy">
+        <h2>Put your site in both languages.</h2>
+        <p>Call or text and tell us who your customers are. We'll tell you which option fits.</p>
+        <a href="tel:7577172707" class="quote-phone">(757) 717-2707</a>
+        <a href="mailto:tim@platypusautomations.com" class="quote-email">tim@platypusautomations.com</a>
+        <p class="quote-hours">Available 9am–6pm EST, Monday–Friday</p>
+      </div>
+      <div class="quote-form-box">
+        <form id="contact-form-bilingual" action="https://automations.platypusautomations.com/webhook/contact-form" method="POST" style="display:flex;flex-direction:column;gap:0;">
+          <input type="hidden" name="service" value="Bilingual Website Add-On">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Smith" required></div>
+          <div class="form-group"><label>Business Name</label><input type="text" name="businessName" placeholder="Smith's Roofing" required></div>
+          <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="(555) 555-1234" required></div>
+          <div class="form-group"><label>Trade Type</label><input type="text" name="tradeType" placeholder="Roofing" required></div>
+          <div class="form-group"><label>Message (optional)</label><textarea name="message" placeholder="Who are your customers? Toggle, /es/ page, or not sure?"></textarea></div>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkXAZLbbvS_0dS5" data-callback="enableFormSubmit"></div>
+          <button type="submit" class="form-submit" disabled>Request a Quote →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 Platypus Automations LLC · Chesapeake, VA<br><span style="color:#00a0a0;">(757) 717-2707</span> &nbsp;·&nbsp; <a href="mailto:tim@platypusautomations.com" style="color:rgba(255,255,255,0.45);text-decoration:none;">tim@platypusautomations.com</a></div>
+      <a href="https://www.sbsd.virginia.gov/directory/" target="_blank" rel="noopener"><img src="swam-badge.jpg" alt="Virginia SWaM Certified, Small, Service-Disabled Veteran-Owned" class="footer-cert-badge"></a>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#contact">Contact</a>
+        <a href="/#services">Services</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('mobileClose').addEventListener('click', closeMobileNav);
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+  });
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  // Phone formatting
+  document.querySelectorAll('input[type="tel"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+      let digits = e.target.value.replace(/\D/g, '');
+      let formatted = '';
+      if (digits.length > 0) {
+        if (digits.length <= 3) {
+          formatted = digits;
+        } else if (digits.length <= 6) {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3)}`;
+        } else {
+          formatted = `(${digits.slice(0, 3)})${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+        }
+      }
+      e.target.value = formatted;
+    });
+  });
+
+  // Form submission
+  function enableFormSubmit() {
+    document.querySelector('.form-submit').disabled = false;
+  }
+
+  const form = document.getElementById('contact-form-bilingual');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      try {
+        await fetch(e.target.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        alert('Thank you! We\'ll be in touch shortly.');
+        e.target.reset();
+      } catch (err) {
+        alert('There was an error. Please try again.');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
