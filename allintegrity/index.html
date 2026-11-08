@@ -15,7 +15,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#04060d">
 <link rel="icon" href="img/icon.png">
-<link rel="preload" as="image" href="img/bridge-after-640.webp" imagesrcset="img/bridge-after-640.webp 640w, img/bridge-after.webp 900w" imagesizes="(max-width: 860px) 100vw, 45vw" fetchpriority="high">
+<link rel="preload" as="image" href="img/logo.webp" imagesrcset="img/logo.webp 600w, img/logo-900.webp 900w" imagesizes="(max-width: 860px) 280px, 460px" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
@@ -113,26 +113,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgb
 .hero p { font-size: clamp(1.03rem, 2.2vw, 1.18rem); color: rgba(255,255,255,.86); max-width: 540px; margin-bottom: 1.75rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; }
 
-/* Hero photo */
-.hero-photo { position: relative; display: grid; gap: 6px; }
-.hero-photo figure { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--line); }
-.hero-photo img { width: 100%; aspect-ratio: 900/433; object-fit: cover; }
-.hero-photo figcaption { margin-top: .4rem; font-size: .88rem; color: var(--muted); }
-.tag { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,.78); color: #fff; font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; padding: .22rem .65rem; border-radius: 4px; }
-.tag.after { background: var(--blue); }
-
-/* Work */
-.ba-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 2.25rem; align-items: start; }
-.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-.ba-item { position: relative; overflow: hidden; border-radius: 6px; background: var(--bg-3); }
-.ba-item img { width: 100%; object-fit: cover; }
-.tall img { aspect-ratio: 1/2; }
-.wide img { aspect-ratio: 1/1; }
-.ba-cap { margin-top: .6rem; color: var(--muted); font-size: .95rem; }
-.ba-cap b { color: var(--text); }
-.gal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 2rem; }
-.gal img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; }
-.gal-cap { margin-top: .6rem; color: var(--muted); font-size: .95rem; }
+.hero-logo { justify-self: center; position: relative; }
+.hero-logo::before { content: ''; position: absolute; inset: 15% 10% 30%; background: rgba(47,98,255,.35); filter: blur(70px); border-radius: 50%; }
+.hero-logo img { position: relative; width: min(460px, 100%); }
 
 /* Services */
 .services { background: var(--bg-2); }
@@ -151,7 +134,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgb
 
 /* About */
 .about-inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
-.about-logo { width: min(420px, 100%); margin: 0 auto 1.5rem; }
 .about p { color: var(--muted); margin-bottom: 1rem; max-width: 560px; }
 .values { display: grid; gap: .8rem; }
 .value { background: var(--bg-2); border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0; padding: 1.1rem 1.3rem; }
@@ -201,8 +183,8 @@ footer a.f-link { color: var(--blue-lt); font-weight: 600; display: inline-block
   .nav-phone, .nav-cta { display: none; }
   .hero { min-height: auto; padding: 5.5rem 0 3rem; }
   .hero-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-  .ba-list { grid-template-columns: 1fr; }
-  .gal { grid-template-columns: 1fr 1fr; }
+  .hero-logo { order: -1; }
+  .hero-logo img { width: 230px; }
   .hero-actions .btn { width: 100%; }
   .grid { grid-template-columns: 1fr; }
   .about-inner, .cta-inner { grid-template-columns: 1fr; gap: 1.75rem; }
@@ -238,13 +220,11 @@ footer a.f-link { color: var(--blue-lt); font-weight: 600; display: inline-block
       <p>Rotten wood, worn-out stairs, clogged gutters, or a project you've been putting off? All Integrity Remodel &amp; Repair fixes it and builds it, all over Cherokee County.</p>
       <div class="hero-actions">
         <a class="btn" href="tel:+18286443846">Call 828-644-3846</a>
-        <a class="btn btn-ghost" href="#work">See the Work</a>
+        <a class="btn btn-ghost" href="#services">See Services</a>
       </div>
     </div>
-    <div class="hero-photo">
-      <figure><img src="img/bridge-before-640.webp" srcset="img/bridge-before-640.webp 640w, img/bridge-before.webp 900w" sizes="(max-width: 860px) 100vw, 45vw" alt="Horse bridge sagging toward the creek before repair near Murphy NC" width="900" height="433"><span class="tag">Before</span></figure>
-      <figure><img src="img/bridge-after-640.webp" srcset="img/bridge-after-640.webp 640w, img/bridge-after.webp 900w" sizes="(max-width: 860px) 100vw, 45vw" alt="Same horse bridge jacked up, set on concrete pilings, with a new ramp, near Murphy NC" width="900" height="433" fetchpriority="high"><span class="tag after">After</span></figure>
-      <p class="figcap" style="font-size:.88rem;color:rgba(244,246,251,.72)">Horse bridge about to slide into the creek: jacked up, set on concrete pilings, new ramp, fresh stain.</p>
+    <div class="hero-logo">
+      <img src="img/logo.webp" srcset="img/logo.webp 600w, img/logo-900.webp 900w" sizes="(max-width: 860px) 280px, 460px" alt="All Integrity Remodel and Repair LLC logo, Murphy NC" width="600" height="422" fetchpriority="high">
     </div>
   </div>
 </header>
@@ -266,44 +246,6 @@ footer a.f-link { color: var(--blue-lt); font-weight: 600; display: inline-block
   </div>
 </section>
 
-<section id="work">
-  <div class="container">
-    <p class="eyebrow">Before and After</p>
-    <h2>Remodeling and Repair Work in Murphy, NC</h2>
-    <p class="lead">Real All Integrity jobs from their Facebook page.</p>
-    <div class="ba-list">
-      <div class="reveal">
-        <div class="ba tall">
-          <div class="ba-item"><img src="img/stairs-before.webp" alt="Bare wood stairs before staining in Murphy NC" loading="lazy" width="520" height="1000"><span class="tag">Before</span></div>
-          <div class="ba-item"><img src="img/stairs-after.webp" alt="Same stairs stained a rich brown by All Integrity in Murphy NC" loading="lazy" width="520" height="1000"><span class="tag after">After</span></div>
-        </div>
-        <p class="ba-cap"><b>Stairs.</b> Bare treads stained and finished.</p>
-      </div>
-      <div class="reveal">
-        <div class="ba tall">
-          <div class="ba-item"><img src="img/door-before.webp" alt="Front door taped off before painting in Murphy NC" loading="lazy" width="530" height="1070"><span class="tag">Before</span></div>
-          <div class="ba-item"><img src="img/door-after.webp" alt="Same front door painted black with white trim in Murphy NC" loading="lazy" width="530" height="1070"><span class="tag after">After</span></div>
-        </div>
-        <p class="ba-cap"><b>Front door.</b> A little paint and TLC.</p>
-      </div>
-      <div class="reveal">
-        <div class="ba wide">
-          <div class="ba-item"><img src="img/patio-before.webp" alt="Uneven brick patio steps before repair in Cherokee County NC" loading="lazy" width="588" height="484"><span class="tag">Before</span></div>
-          <div class="ba-item"><img src="img/patio-tile.webp" alt="Same patio steps patched, leveled and tiled in Cherokee County NC" loading="lazy" width="360" height="312"><span class="tag after">After</span></div>
-        </div>
-        <p class="ba-cap"><b>Brick patio.</b> Patched, leveled and tiled, with a deck built on each side.</p>
-      </div>
-    </div>
-    <div class="gal">
-      <img class="reveal" src="img/patio-deck.webp" alt="New freestanding deck beside a brick home in Cherokee County NC" loading="lazy" width="360" height="312">
-      <img class="reveal" src="img/gutter-before.webp" alt="Gutter full of leaves and debris before cleaning in Murphy NC" loading="lazy" width="472" height="468">
-      <img class="reveal" src="img/gutter-after.webp" alt="New gutter leaf guard installed on a metal roof in Murphy NC" loading="lazy" width="474" height="468">
-      <img class="reveal" src="img/gutter-after2.webp" alt="Gutter with leaf guard along a metal roof in Murphy NC" loading="lazy" width="474" height="468">
-    </div>
-    <p class="gal-cap">A new deck on that patio job, and gutter cleaning and leaf guard work.</p>
-  </div>
-</section>
-
 <div class="band"><div class="container"><p>Free Estimates &middot; Fully Licensed &amp; Insured &middot; Cherokee County, NC</p></div></div>
 
 <section class="about" id="about">
@@ -312,11 +254,10 @@ footer a.f-link { color: var(--blue-lt); font-weight: 600; display: inline-block
       <p class="eyebrow">About</p>
       <h2>Integrity Is in the Name</h2>
       <p>All Integrity Remodel &amp; Repair LLC is located in Murphy, North Carolina, serving all of Cherokee County and the surrounding tri-state area.</p>
-      <p>From a sagging bridge to a front door that needs paint, the goal is the same: the homeowner is happy, and so are we. If you have a home project you've been wanting done, call or text.</p>
+      <p>Big project or small fix, the goal is the same: the homeowner is happy, and so are we. If you have a home project you've been wanting done, call or text.</p>
       <a class="btn" href="tel:+18286443846">Call 828-644-3846</a>
     </div>
     <div class="reveal">
-      <img class="about-logo" src="img/logo.webp" srcset="img/logo.webp 600w, img/logo-900.webp 900w" sizes="420px" alt="All Integrity Remodel and Repair LLC logo" width="600" height="422" loading="lazy">
       <div class="values">
         <div class="value"><h3>Free Estimates</h3><p>On any home repair or remodel project.</p></div>
         <div class="value"><h3>Licensed and Insured</h3><p>Fully licensed and insured.</p></div>
