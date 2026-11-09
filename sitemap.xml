@@ -52,6 +52,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.platypusautomations.com/blog/spanish-english-website-toggle</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.platypusautomations.com/bilingual-website</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
