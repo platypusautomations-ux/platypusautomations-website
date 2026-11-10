@@ -160,85 +160,107 @@ footer.site .footer-built a{padding:0;min-height:0}
 .extras b{display:block;font-size:28px;font-weight:900;font-style:italic;color:var(--ora)}
 .extras span{color:var(--mute)}
 @media(min-width:760px){.extras{grid-template-columns:repeat(4,1fr)}}
+.langtoggle{display:inline-flex;border:2px solid var(--or);border-radius:999px;overflow:hidden;flex-shrink:0}
+.langtoggle button{font:inherit;font-weight:800;font-size:14px;letter-spacing:.08em;background:transparent;color:var(--or);border:0;padding:10px 14px;min-height:44px;min-width:52px;cursor:pointer}
+.langtoggle button[aria-pressed="true"]{background:var(--or);color:#fff}
+@media(max-width:759px){nav .wrap{justify-content:space-between}}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
- <a class="brand" href="#top">Ibarra Concrete<small>Indianapolis, IN</small></a>
- <div class="nav-r"><a class="nav-phone" href="tel:+13176297454">(317) 629-7454</a><a class="btn" href="tel:+13176297454">Call or Text</a></div>
+ <a class="brand" href="#top">Ibarra Concrete<small data-es="Indianápolis, IN">Indianapolis, IN</small></a>
+ <div class="nav-r"><a class="nav-phone" href="tel:+13176297454">(317) 629-7454</a><a class="btn" href="tel:+13176297454" data-es="Llamar o enviar texto">Call or Text</a></div>
+ <div class="langtoggle" role="group" aria-label="Language / Idioma"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
  <div>
-  <div class="eyebrow">Driveways &middot; Sidewalks &middot; Printed Patios</div>
-  <h1>Concrete Driveways and Patios in <em>Indianapolis, IN</em></h1>
-  <p class="lead">All kinds of concrete. Driveways, sidewalks, printed patios and more. Call or text for a free estimate.</p>
-  <div class="proof"><b>Free</b> estimates</div>
-  <div class="cta-row"><a class="btn" href="tel:+13176297454">Call (317) 629-7454</a></div>
+  <div class="eyebrow" data-es="Entradas de autos &middot; Banquetas &middot; Patios estampados">Driveways &middot; Sidewalks &middot; Printed Patios</div>
+  <h1 data-es="Concreto, entradas de autos y patios en <em>Indianápolis, IN</em>">Concrete Driveways and Patios in <em>Indianapolis, IN</em></h1>
+  <p class="lead" data-es="Todo tipo de concreto. Entradas de autos, banquetas, patios estampados y más. Llame o envíe un texto para una cotización gratis.">All kinds of concrete. Driveways, sidewalks, printed patios and more. Call or text for a free estimate.</p>
+  <div class="proof" data-es="<b>Cotizaciones</b> gratis"><b>Free</b> estimates</div>
+  <div class="cta-row"><a class="btn" href="tel:+13176297454" data-es="Llame al (317) 629-7454">Call (317) 629-7454</a></div>
  </div>
  <img src="img/logo.webp" alt="Ibarra Concrete logo" width="900" height="422" fetchpriority="high">
 </div></header>
 
-<div class="band"><p class="wrap">Free estimates &middot; Call or text</p></div>
+<div class="band"><p class="wrap" data-es="Cotización gratis &middot; Llame o envíe un texto">Free estimates &middot; Call or text</p></div>
 
 <section id="services"><div class="wrap">
- <h2>Our Services</h2>
- <p class="sub">Call or text and tell us about the job.</p>
+ <h2 data-es="Nuestros servicios">Our Services</h2>
+ <p class="sub" data-es="Llame o envíe un texto y cuéntenos del trabajo.">Call or text and tell us about the job.</p>
  <div class="cards">
-  <div class="card"><h3>Driveways</h3><p>Concrete driveways, including chess sweep finishes.</p></div>
-  <div class="card"><h3>Sidewalks</h3><p>Concrete sidewalks and walkways.</p></div>
-  <div class="card"><h3>Printed Patios</h3><p>Printed concrete patios.</p></div>
-  <div class="card"><h3>Printed Steps</h3><p>Printed steps, like oxford slate texture finished with color.</p></div>
-  <div class="card"><h3>All Kinds of Concrete</h3><p>If it is concrete, ask. Call or text for a free estimate.</p></div>
+  <div class="card"><h3 data-es="Entradas de autos">Driveways</h3><p data-es="Entradas de autos de concreto, incluyendo acabados chess sweep.">Concrete driveways, including chess sweep finishes.</p></div>
+  <div class="card"><h3 data-es="Banquetas">Sidewalks</h3><p data-es="Banquetas y caminos de concreto.">Concrete sidewalks and walkways.</p></div>
+  <div class="card"><h3 data-es="Patios estampados">Printed Patios</h3><p data-es="Patios de concreto estampado.">Printed concrete patios.</p></div>
+  <div class="card"><h3 data-es="Escalones estampados">Printed Steps</h3><p data-es="Escalones estampados, con texturas como oxford slate terminados con color.">Printed steps, like oxford slate texture finished with color.</p></div>
+  <div class="card"><h3 data-es="Todo tipo de concreto">All Kinds of Concrete</h3><p data-es="Si es concreto, pregunte. Llame o envíe un texto para una cotización gratis.">If it is concrete, ask. Call or text for a free estimate.</p></div>
  </div>
 </div></section>
 
 <section id="about" class="alt-bg"><div class="wrap">
- <h2>About Ibarra Concrete</h2>
- <p class="sub" style="margin-bottom:0">Ibarra Concrete is based in Indianapolis, IN. We have all kinds of concrete: driveways, sidewalks, printed patios and more. Call or text for a free estimate.</p>
+ <h2 data-es="Sobre Ibarra Concrete">About Ibarra Concrete</h2>
+ <p class="sub" style="margin-bottom:0" data-es="Ibarra Concrete tiene su base en Indianápolis, IN. Hacemos todo tipo de concreto: entradas de autos, banquetas, patios estampados y más. Llame o envíe un texto para una cotización gratis.">Ibarra Concrete is based in Indianapolis, IN. We have all kinds of concrete: driveways, sidewalks, printed patios and more. Call or text for a free estimate.</p>
 </div></section>
 
 <section id="area"><div class="wrap">
- <h2>Serving Indianapolis, IN</h2>
- <p class="sub" style="margin-bottom:18px">Based in Indianapolis, IN. Call or text to ask about your address.</p>
- <div class="areas"><span>Indianapolis, IN</span></div>
+ <h2 data-es="Servicio en Indianápolis, IN">Serving Indianapolis, IN</h2>
+ <p class="sub" style="margin-bottom:18px" data-es="Con base en Indianápolis, IN. Llame o envíe un texto para preguntar por su dirección.">Based in Indianapolis, IN. Call or text to ask about your address.</p>
+ <div class="areas"><span data-es="Indianápolis, IN">Indianapolis, IN</span></div>
 </div></section>
 
 <section id="faq" class="alt-bg"><div class="wrap">
- <h2>Common Questions</h2>
- <p class="sub">Quick answers before you call.</p>
-<details><summary>What does Ibarra Concrete do?</summary><p>All kinds of concrete: driveways, sidewalks, printed patios, printed steps and more.</p></details>
-<details><summary>Do you offer free estimates?</summary><p>Yes. Call or text (317) 629-7454 for a free estimate.</p></details>
-<details><summary>Do you do printed concrete?</summary><p>Yes. Printed patios and printed steps with textures like oxford slate, finished with color.</p></details>
-<details><summary>Do you pour driveways and sidewalks?</summary><p>Yes. Driveways, including chess sweep finishes, and sidewalks are part of the work.</p></details>
-<details><summary>Where are you based?</summary><p>Ibarra Concrete is based in Indianapolis, IN. Call or text to ask whether we cover your address.</p></details>
+ <h2 data-es="Preguntas comunes">Common Questions</h2>
+ <p class="sub" data-es="Respuestas rápidas antes de llamar.">Quick answers before you call.</p>
+<details><summary data-es="¿Qué hace Ibarra Concrete?">What does Ibarra Concrete do?</summary><p data-es="Todo tipo de concreto: entradas de autos, banquetas, patios estampados, escalones estampados y más.">All kinds of concrete: driveways, sidewalks, printed patios, printed steps and more.</p></details>
+<details><summary data-es="¿Ofrecen cotizaciones gratis?">Do you offer free estimates?</summary><p data-es="Sí. Llame o envíe un texto al (317) 629-7454 para una cotización gratis.">Yes. Call or text (317) 629-7454 for a free estimate.</p></details>
+<details><summary data-es="¿Hacen concreto estampado?">Do you do printed concrete?</summary><p data-es="Sí. Patios y escalones estampados con texturas como oxford slate, terminados con color.">Yes. Printed patios and printed steps with textures like oxford slate, finished with color.</p></details>
+<details><summary data-es="¿Hacen entradas de autos y banquetas?">Do you pour driveways and sidewalks?</summary><p data-es="Sí. Las entradas de autos, incluyendo acabados chess sweep, y las banquetas son parte del trabajo.">Yes. Driveways, including chess sweep finishes, and sidewalks are part of the work.</p></details>
+<details><summary data-es="¿Dónde tienen su base?">Where are you based?</summary><p data-es="Ibarra Concrete tiene su base en Indianápolis, IN. Llame o envíe un texto para preguntar si cubrimos su dirección.">Ibarra Concrete is based in Indianapolis, IN. Call or text to ask whether we cover your address.</p></details>
 </div></section>
 
 <section id="contact"><div class="wrap cta-grid">
  <div class="contact">
-  <h2>Need concrete work done?</h2>
-  <p class="sub">Call or text for a quote.</p>
+  <h2 data-es="¿Necesita trabajo de concreto?">Need concrete work done?</h2>
+  <p class="sub" data-es="Llame o envíe un texto para una cotización.">Call or text for a quote.</p>
   <a class="tel" href="tel:+13176297454">(317) 629-7454</a>
   <a class="mail" href="mailto:ibarraconcrete11@gmail.com">ibarraconcrete11@gmail.com</a>
-  <span>Indianapolis, IN</span>
+  <span data-es="Indianápolis, IN">Indianapolis, IN</span>
  </div>
  <form onsubmit="return false">
-  <input type="text" placeholder="Name" aria-label="Name">
-  <input type="email" placeholder="Email" aria-label="Email">
-  <input type="tel" placeholder="Phone" aria-label="Phone">
-  <textarea placeholder="Tell us about the job" aria-label="Message"></textarea>
-  <button type="button" class="btn">Send Message</button>
-  <p class="note">This form is a preview. To reach Ibarra Concrete now, call or text (317) 629-7454.</p>
+  <input type="text" placeholder="Name" data-es-ph="Nombre" aria-label="Name">
+  <input type="email" placeholder="Email" data-es-ph="Correo electrónico" aria-label="Email">
+  <input type="tel" placeholder="Phone" data-es-ph="Teléfono" aria-label="Phone">
+  <textarea placeholder="Tell us about the job" data-es-ph="Cuéntenos del trabajo" aria-label="Message"></textarea>
+  <button type="button" class="btn" data-es="Enviar mensaje">Send Message</button>
+  <p class="note" data-es="Este formulario es una vista previa. Para comunicarse con Ibarra Concrete ahora, llame o envíe un texto al (317) 629-7454.">This form is a preview. To reach Ibarra Concrete now, call or text (317) 629-7454.</p>
  </form>
 </div></section>
 
 <footer class="site"><div class="wrap">
- <p><strong style="color:#fff">Ibarra Concrete</strong><br>Concrete<br>Indianapolis, IN<br><a href="tel:+13176297454">(317) 629-7454</a><br><a href="mailto:ibarraconcrete11@gmail.com">ibarraconcrete11@gmail.com</a></p>
- <p>&copy; 2026 Ibarra Concrete. All rights reserved.</p>
+ <p><strong style="color:#fff">Ibarra Concrete</strong><br><span data-es="Concreto">Concrete</span><br><span data-es="Indianápolis, IN">Indianapolis, IN</span><br><a href="tel:+13176297454">(317) 629-7454</a><br><a href="mailto:ibarraconcrete11@gmail.com">ibarraconcrete11@gmail.com</a></p>
+ <p data-es="&copy; 2026 Ibarra Concrete. Todos los derechos reservados.">&copy; 2026 Ibarra Concrete. All rights reserved.</p>
  <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
   SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
  </div>
 </div></footer>
 
-<div class="callbar"><a href="tel:+13176297454">Call</a><a href="sms:+13176297454">Text</a></div>
+<div class="callbar"><a href="tel:+13176297454" data-es="Llamar">Call</a><a href="sms:+13176297454" data-es="Texto">Text</a></div>
+<script>
+(function(){
+ var KEY='ibarra-lang', TITLE_ES="Concreto, entradas de autos y patios en Indianápolis, IN | Ibarra Concrete", TITLE_EN=document.title;
+ function setLang(lang){
+  var es=lang==='es';
+  document.querySelectorAll('[data-es]').forEach(function(el){if(el.dataset.en===undefined)el.dataset.en=el.innerHTML;el.innerHTML=es?el.dataset.es:el.dataset.en;});
+  document.querySelectorAll('[data-es-ph]').forEach(function(el){if(el.dataset.enPh===undefined)el.dataset.enPh=el.placeholder;el.placeholder=es?el.dataset.esPh:el.dataset.enPh;});
+  document.documentElement.lang=es?'es':'en';
+  document.title=es?TITLE_ES:TITLE_EN;
+  document.querySelectorAll('.langtoggle button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');});
+  try{localStorage.setItem(KEY,lang);}catch(e){}
+ }
+ document.querySelectorAll('.langtoggle button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+ var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
+ if(saved==='es')setLang('es');
+})();
+</script>
 </body></html>
