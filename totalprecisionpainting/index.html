@@ -119,83 +119,105 @@ footer a{color:var(--gr2)}
  .cta-grid{grid-template-columns:1fr 1fr}
  .callbar{display:none} body{padding-bottom:0}
 }
+.langtoggle{display:inline-flex;border:2px solid var(--gr);border-radius:999px;overflow:hidden;flex-shrink:0}
+.langtoggle button{font:inherit;font-weight:800;font-size:14px;letter-spacing:.08em;background:transparent;color:var(--gr);border:0;padding:10px 14px;min-height:44px;min-width:52px;cursor:pointer}
+.langtoggle button[aria-pressed="true"]{background:var(--gr);color:#001018}
+@media(max-width:759px){nav .wrap{position:relative}.langtoggle{position:absolute;right:16px;top:50%;transform:translateY(-50%)}.langtoggle button{min-width:44px;padding:10px 10px}}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
  <a class="brand" href="#top"><img src="img/mark.webp" alt="Total Precision Painting logo mark" width="64" height="42"><span>Total<br><b>Precision</b><br>Painting</span></a>
- <div class="nav-r"><a class="nav-phone" href="tel:+19152226701">(915) 222-6701</a><a class="btn" href="tel:+19152226701">Free Estimate</a></div>
+ <div class="nav-r"><a class="nav-phone" href="tel:+19152226701">(915) 222-6701</a><a class="btn" href="tel:+19152226701" data-es="Cotización gratis">Free Estimate</a></div>
+ <div class="langtoggle" role="group" aria-label="Language / Idioma"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
  <div>
-  <div class="eyebrow">27+ Years of Experience</div>
-  <h1>Commercial and Residential Painting in <em>El Paso, TX</em></h1>
-  <p class="lead">Interior, exterior, and pressure washing for homes and businesses. Free estimates.</p>
-  <div class="cta-row"><a class="btn" href="tel:+19152226701">Call (915) 222-6701</a><a class="btn alt" href="sms:+19152226701">Text Us</a></div>
+  <div class="eyebrow" data-es="27+ años de experiencia">27+ Years of Experience</div>
+  <h1 data-es="Pintura comercial y residencial en &lt;em&gt;El Paso, TX&lt;/em&gt;">Commercial and Residential Painting in <em>El Paso, TX</em></h1>
+  <p class="lead" data-es="Interior, exterior y lavado a presión para casas y negocios. Cotizaciones gratis.">Interior, exterior, and pressure washing for homes and businesses. Free estimates.</p>
+  <div class="cta-row"><a class="btn" href="tel:+19152226701" data-es="Llame al (915) 222-6701">Call (915) 222-6701</a><a class="btn alt" href="sms:+19152226701" data-es="Envíenos un texto">Text Us</a></div>
  </div>
  <img src="img/logo.webp" alt="Total Precision Painting logo, commercial and residential painting in El Paso TX" width="674" height="503" fetchpriority="high">
 </div></header>
 
 <section id="services" class="alt-bg"><div class="wrap">
- <h2>Painting Services in El Paso, TX</h2>
- <p class="sub">Tell us what needs paint or a wash. We give you a free estimate.</p>
+ <h2 data-es="Servicios de pintura en El Paso, TX">Painting Services in El Paso, TX</h2>
+ <p class="sub" data-es="Cuéntenos qué necesita pintura o lavado. Le damos una cotización gratis.">Tell us what needs paint or a wash. We give you a free estimate.</p>
  <div class="cards">
-  <div class="card"><h3>Residential Painting</h3><p>Interior and exterior paint for your home.</p></div>
-  <div class="card"><h3>Commercial Painting</h3><p>Paint for offices, shops, and other businesses.</p></div>
-  <div class="card"><h3>Interior and Exterior</h3><p>Inside walls and outside surfaces, done right.</p></div>
-  <div class="card"><h3>Pressure Washing</h3><p>Clean off the dirt and buildup before you paint or just to refresh.</p></div>
+  <div class="card"><h3 data-es="Pintura residencial">Residential Painting</h3><p data-es="Pintura interior y exterior para su casa.">Interior and exterior paint for your home.</p></div>
+  <div class="card"><h3 data-es="Pintura comercial">Commercial Painting</h3><p data-es="Pintura para oficinas, tiendas y otros negocios.">Paint for offices, shops, and other businesses.</p></div>
+  <div class="card"><h3 data-es="Interior y exterior">Interior and Exterior</h3><p data-es="Paredes interiores y superficies exteriores, bien hechas.">Inside walls and outside surfaces, done right.</p></div>
+  <div class="card"><h3 data-es="Lavado a presión">Pressure Washing</h3><p data-es="Quite la tierra y la suciedad antes de pintar o solo para renovar.">Clean off the dirt and buildup before you paint or just to refresh.</p></div>
  </div>
 </div></section>
 
-<div class="band"><p class="wrap">27+ Years of Experience. Commercial and Residential.</p></div>
+<div class="band"><p class="wrap" data-es="27+ años de experiencia. Comercial y residencial.">27+ Years of Experience. Commercial and Residential.</p></div>
 
 <section><div class="wrap">
- <h2>About Total Precision Painting</h2>
- <p class="sub" style="margin-bottom:0">Total Precision Painting is a painting company based in El Paso, TX. They have over 27 years of experience and do both commercial and residential work. Free estimates.</p>
+ <h2 data-es="Sobre Total Precision Painting">About Total Precision Painting</h2>
+ <p class="sub" style="margin-bottom:0" data-es="Total Precision Painting es una compañía de pintura con base en El Paso, TX. Tienen más de 27 años de experiencia y hacen trabajo comercial y residencial. Cotizaciones gratis.">Total Precision Painting is a painting company based in El Paso, TX. They have over 27 years of experience and do both commercial and residential work. Free estimates.</p>
 </div></section>
 
 <section class="alt-bg" id="area"><div class="wrap">
- <h2>Painters Serving El Paso, TX</h2>
- <p class="sub" style="margin-bottom:18px">Commercial and residential painting based in El Paso, Texas.</p>
+ <h2 data-es="Pintores que sirven a El Paso, TX">Painters Serving El Paso, TX</h2>
+ <p class="sub" style="margin-bottom:18px" data-es="Pintura comercial y residencial con base en El Paso, Texas.">Commercial and residential painting based in El Paso, Texas.</p>
  <div class="areas"><span>El Paso, TX</span></div>
 </div></section>
 
 <section id="faq"><div class="wrap">
- <h2>Common Questions</h2>
- <p class="sub">Quick answers before you call.</p>
-<details><summary>What services does Total Precision Painting offer?</summary><p>Residential painting, commercial painting, interior painting, exterior painting, and pressure washing.</p></details>
-<details><summary>Do you offer free estimates?</summary><p>Yes. Call (915) 222-6701 for a free estimate.</p></details>
-<details><summary>Do you paint homes and businesses?</summary><p>Yes. Total Precision Painting does both commercial and residential work.</p></details>
-<details><summary>How much experience do you have?</summary><p>Total Precision Painting has over 27 years of experience.</p></details>
-<details><summary>Where are you located?</summary><p>Total Precision Painting is based in El Paso, TX.</p></details>
+ <h2 data-es="Preguntas comunes">Common Questions</h2>
+ <p class="sub" data-es="Respuestas rápidas antes de llamar.">Quick answers before you call.</p>
+<details><summary data-es="¿Qué servicios ofrece Total Precision Painting?">What services does Total Precision Painting offer?</summary><p data-es="Pintura residencial, pintura comercial, pintura interior, pintura exterior y lavado a presión.">Residential painting, commercial painting, interior painting, exterior painting, and pressure washing.</p></details>
+<details><summary data-es="¿Ofrecen cotizaciones gratis?">Do you offer free estimates?</summary><p data-es="Sí. Llame al (915) 222-6701 para una cotización gratis.">Yes. Call (915) 222-6701 for a free estimate.</p></details>
+<details><summary data-es="¿Pintan casas y negocios?">Do you paint homes and businesses?</summary><p data-es="Sí. Total Precision Painting hace trabajo comercial y residencial.">Yes. Total Precision Painting does both commercial and residential work.</p></details>
+<details><summary data-es="¿Cuánta experiencia tienen?">How much experience do you have?</summary><p data-es="Total Precision Painting tiene más de 27 años de experiencia.">Total Precision Painting has over 27 years of experience.</p></details>
+<details><summary data-es="¿Dónde están ubicados?">Where are you located?</summary><p data-es="Total Precision Painting tiene su base en El Paso, TX.">Total Precision Painting is based in El Paso, TX.</p></details>
 </div></section>
 
 <section class="cta" id="contact"><div class="wrap cta-grid">
  <div class="contact">
-  <h2>Ready for a free estimate?</h2>
-  <p class="sub">Call or email and tell us about the job.</p>
+  <h2 data-es="¿Listo para una cotización gratis?">Ready for a free estimate?</h2>
+  <p class="sub" data-es="Llame o envíe un correo y cuéntenos del trabajo.">Call or email and tell us about the job.</p>
   <a href="tel:+19152226701">(915) 222-6701</a>
   <a class="mail" href="mailto:gabrielrubio741@gmail.com">gabrielrubio741@gmail.com</a>
   <span>El Paso, TX</span>
  </div>
  <form onsubmit="return false">
-  <input type="text" placeholder="Name" aria-label="Name">
-  <input type="email" placeholder="Email" aria-label="Email">
-  <input type="tel" placeholder="Phone" aria-label="Phone">
-  <textarea placeholder="Tell us about your project" aria-label="Message"></textarea>
-  <button type="button" class="btn">Send Message</button>
-  <p class="note">This form is a preview. To reach Total Precision Painting now, call (915) 222-6701.</p>
+  <input type="text" data-es-ph="Nombre" placeholder="Name" aria-label="Name">
+  <input type="email" data-es-ph="Correo electrónico" placeholder="Email" aria-label="Email">
+  <input type="tel" data-es-ph="Teléfono" placeholder="Phone" aria-label="Phone">
+  <textarea data-es-ph="Cuéntenos de su proyecto" placeholder="Tell us about your project" aria-label="Message"></textarea>
+  <button type="button" class="btn" data-es="Enviar mensaje">Send Message</button>
+  <p class="note" data-es="Este formulario es una vista previa. Para comunicarse con Total Precision Painting ahora, llame al (915) 222-6701.">This form is a preview. To reach Total Precision Painting now, call (915) 222-6701.</p>
  </form>
 </div></section>
 
 <footer><div class="wrap">
  <p><strong style="color:var(--ink)">Total Precision Painting</strong><br>El Paso, TX &middot; <a href="tel:+19152226701">(915) 222-6701</a><br><a href="mailto:gabrielrubio741@gmail.com">gabrielrubio741@gmail.com</a></p>
- <p style="margin-top:8px">&copy; 2026 Total Precision Painting. All rights reserved.</p>
+ <p style="margin-top:8px" data-es="&amp;copy; 2026 Total Precision Painting. Todos los derechos reservados.">&copy; 2026 Total Precision Painting. All rights reserved.</p>
  <div class="footer-built" style="margin-top:8px; font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.28);">
   SITE BUILT BY <a href="https://platypusautomations.com" target="_blank" style="color:rgba(255,255,255,0.28); text-decoration:underline; text-underline-offset:3px; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">PLATYPUS AUTOMATIONS</a>
  </div>
 </div></footer>
 
-<div class="callbar"><a href="tel:+19152226701">Call</a><a href="sms:+19152226701">Text</a></div>
+<div class="callbar"><a href="tel:+19152226701" data-es="Llamar">Call</a><a href="sms:+19152226701" data-es="Texto">Text</a></div>
+<script>
+(function(){
+ var KEY='tpp-lang', TITLE_ES="Pintura en El Paso, TX | Total Precision Painting", TITLE_EN=document.title;
+ function setLang(lang){
+  var es=lang==='es';
+  document.querySelectorAll('[data-es]').forEach(function(el){if(el.dataset.en===undefined)el.dataset.en=el.innerHTML;el.innerHTML=es?el.dataset.es:el.dataset.en;});
+  document.querySelectorAll('[data-es-ph]').forEach(function(el){if(el.dataset.enPh===undefined)el.dataset.enPh=el.placeholder;el.placeholder=es?el.dataset.esPh:el.dataset.enPh;});
+  document.documentElement.lang=es?'es':'en';
+  document.title=es?TITLE_ES:TITLE_EN;
+  document.querySelectorAll('.langtoggle button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');});
+  try{localStorage.setItem(KEY,lang);}catch(e){}
+ }
+ document.querySelectorAll('.langtoggle button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+ var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
+ if(saved==='es')setLang('es');
+})();
+</script>
 </body></html>
