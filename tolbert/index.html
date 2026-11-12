@@ -139,9 +139,17 @@ h2::after{content:"";display:block;width:56px;height:4px;background:var(--amber)
 .band{background:var(--wood);color:#fff;text-align:center;padding:24px 0}
 .band p{padding:0 20px;font-size:clamp(15px,3.3vw,21px);font-weight:900;letter-spacing:.1em;text-transform:uppercase}
 .band b{color:#ffd48a}
-.gallery{column-count:2;column-gap:10px}
-.gallery figure{break-inside:avoid;margin:0 0 10px;overflow:hidden;border-radius:8px;background:var(--ink)}
-.gallery img{width:100%;height:auto;display:block}
+.proj{margin:0 0 34px}
+.proj h3{font-size:clamp(19px,4.5vw,24px);margin:0 0 2px}
+.proj .pd{color:var(--mute);margin:0 0 12px}
+.car{position:relative}
+.track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;border-radius:8px}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 auto;scroll-snap-align:start;margin:0;border-radius:8px;overflow:hidden;background:var(--ink)}
+.slide img{height:300px;width:auto;display:block}
+.cb{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(31,26,23,.72);color:#fff;font-size:28px;line-height:1;cursor:pointer}
+.cb.prev{left:8px}.cb.next{right:8px}
+@media(min-width:760px){.slide img{height:420px}}
 .revs{display:grid;gap:16px}
 .rev{background:#fff;border:1px solid var(--line);border-left:5px solid var(--amber);border-radius:8px;padding:24px}
 .rev p{color:var(--ink)}
@@ -180,7 +188,6 @@ footer.site a{color:#fff}
 }
 @media(min-width:760px){
  .cards{grid-template-columns:repeat(3,1fr)}
- .gallery{column-count:3}
  .revs{grid-template-columns:repeat(3,1fr)}
  .about-grid{grid-template-columns:1.3fr .7fr}
  .cta-grid{grid-template-columns:1fr 1fr}
@@ -219,43 +226,55 @@ footer.site a{color:#fff}
 <section id="gallery" class="alt-bg"><div class="wrap">
  <h2>Log Homes Built in Central Virginia</h2>
  <p class="sub">A look at finished Tolbert projects and builds in progress.</p>
- <div class="gallery">
-  <figure><img src="img/n02.webp" alt="Log home with a covered front porch and log railings on a wooded lot" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/n06.webp" alt="Kitchen with green cabinets, granite counters and a vaulted pine ceiling in a log home" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n08.webp" alt="Covered log deck with railings and a timber truss" loading="lazy" width="720" height="960"></figure>
-  <figure><img src="img/n15.webp" alt="Timber frame pavilion with log posts on stone piers" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/n14.webp" alt="Timber pavilion with stone piers and a flagpole" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/n13.webp" alt="Cedar post on a stone pier at a timber pavilion" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n04.webp" alt="Bathroom with a dark tile walk-in shower and a vessel sink in a log home" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n10.webp" alt="Tiled bathroom with a walk-in shower and pine ceiling in a log home" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n07.webp" alt="Double vanity bathroom with pine walls in a log home" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n03.webp" alt="Walk-in pantry with built-in pine shelving in a log home" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n05.webp" alt="Sliding glass door looking out to a covered log deck" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n09.webp" alt="View from inside a log home through a sliding door to the covered deck" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n12.webp" alt="Log stair railing with deck windows in a log home" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n11.webp" alt="Finished loft room with a pine ceiling and dormer window" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/n01.webp" alt="Pine ceiling with a timber beam and a framed loft opening in a log home" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/m01.webp" alt="Open kitchen with teal cabinets and an island under vaulted pine ceiling and dark timber beams in a log home" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/m02.webp" alt="Great room seen from the loft with timber trusses, stone fireplace and tall windows" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/m03.webp" alt="Log home exterior with a covered deck and stone foundation in the Virginia mountains" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/m04.webp" alt="Timber trusses over the great room with a stone fireplace and large windows" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/m05.webp" alt="Log staircase and loft under exposed timber trusses with steel connector plates" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/m06.webp" alt="Timber truss ceiling above the great room windows and double doors" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/m07.webp" alt="Log stairs with round log railing leading to the great room" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/m08.webp" alt="Tolbert Contracting truck in front of a log home with a wraparound deck" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/m09.webp" alt="Covered porch with log railing and front door on a stained log home" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/m10.webp" alt="Kitchen and great room seen from the loft with dark beams and pendant lights" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/m11.webp" alt="Log staircase and loft railing with kitchen beyond" loading="lazy" width="900" height="1200"></figure>
-  <figure><img src="img/m12.webp" alt="Log home with wraparound porch and detached garage, Tolbert Contracting truck in front" loading="lazy" width="900" height="675"></figure>
-  <figure><img src="img/g1.webp" alt="Log home with green metal roof and stone walkout basement in Central Virginia" loading="lazy" width="800" height="500"></figure>
-  <figure><img src="img/g2.webp" alt="Stone and log home with attached three-car garage in Orange County VA" loading="lazy" width="800" height="500"></figure>
-  <figure><img src="img/g3.webp" alt="Great room with vaulted pine ceiling and arched windows in a log home" loading="lazy" width="800" height="500"></figure>
-  <figure><img src="img/g4.webp" alt="Log staircase inside a Virginia log home" loading="lazy" width="800" height="500"></figure>
-  <figure><img src="img/g5.webp" alt="Log walls going up on a block foundation during construction" loading="lazy" width="800" height="500"></figure>
-  <figure><img src="img/g6.webp" alt="Cedar pavilion with stone pillars and outdoor fireplace" loading="lazy" width="800" height="500"></figure>
-  <figure><img src="img/g7.webp" alt="Wood stove on a timber hearth in a log home" loading="lazy" width="800" height="500"></figure>
-  <figure><img src="img/g8.webp" alt="Bathroom with log wall, granite counter, and tile tub in a log home" loading="lazy" width="800" height="500"></figure>
- </div>
+ <div class="carousels">
+ <div class="proj"><h3>Mountain Log Home</h3><p class="pd">Timber trusses, a stone fireplace and a wraparound deck on a mountain build.</p>
+  <div class="car" aria-roledescription="carousel" aria-label="Mountain Log Home photos"><div class="track" tabindex="0">
+   <figure class="slide"><img src="img/m03.webp" alt="Log home exterior with a covered deck and stone foundation in the Virginia mountains" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/m08.webp" alt="Tolbert Contracting truck in front of a log home with a wraparound deck" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/m12.webp" alt="Log home with wraparound porch and detached garage, Tolbert Contracting truck in front" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/m09.webp" alt="Covered porch with log railing and front door on a stained log home" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/m01.webp" alt="Open kitchen with teal cabinets and an island under vaulted pine ceiling and dark timber beams in a log home" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/m04.webp" alt="Timber trusses over the great room with a stone fireplace and large windows" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/m02.webp" alt="Great room seen from the loft with timber trusses, stone fireplace and tall windows" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/m06.webp" alt="Timber truss ceiling above the great room windows and double doors" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/m05.webp" alt="Log staircase and loft under exposed timber trusses with steel connector plates" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/m07.webp" alt="Log stairs with round log railing leading to the great room" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/m10.webp" alt="Kitchen and great room seen from the loft with dark beams and pendant lights" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/m11.webp" alt="Log staircase and loft railing with kitchen beyond" loading="lazy" width="900" height="1200"></figure>
+  </div><button class="cb prev" type="button" aria-label="Previous photo">&#8249;</button><button class="cb next" type="button" aria-label="Next photo">&#8250;</button></div></div>
+ <div class="proj"><h3>Log Home with Covered Deck</h3><p class="pd">A stained log home with a covered front porch, pine interiors and a covered rear deck.</p>
+  <div class="car" aria-roledescription="carousel" aria-label="Log Home with Covered Deck photos"><div class="track" tabindex="0">
+   <figure class="slide"><img src="img/n02.webp" alt="Log home with a covered front porch and log railings on a wooded lot" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/n06.webp" alt="Kitchen with green cabinets, granite counters and a vaulted pine ceiling in a log home" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n03.webp" alt="Walk-in pantry with built-in pine shelving in a log home" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n04.webp" alt="Bathroom with a dark tile walk-in shower and a vessel sink in a log home" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n10.webp" alt="Tiled bathroom with a walk-in shower and pine ceiling in a log home" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n07.webp" alt="Double vanity bathroom with pine walls in a log home" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n05.webp" alt="Sliding glass door looking out to a covered log deck" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n09.webp" alt="View from inside a log home through a sliding door to the covered deck" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n08.webp" alt="Covered log deck with railings and a timber truss" loading="lazy" width="720" height="960"></figure>
+   <figure class="slide"><img src="img/n12.webp" alt="Log stair railing with deck windows in a log home" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n11.webp" alt="Finished loft room with a pine ceiling and dormer window" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/n01.webp" alt="Pine ceiling with a timber beam and a framed loft opening in a log home" loading="lazy" width="900" height="1200"></figure>
+  </div><button class="cb prev" type="button" aria-label="Previous photo">&#8249;</button><button class="cb next" type="button" aria-label="Next photo">&#8250;</button></div></div>
+ <div class="proj"><h3>Timber Frame Pavilions</h3><p class="pd">Cedar and timber pavilions on stone piers.</p>
+  <div class="car" aria-roledescription="carousel" aria-label="Timber Frame Pavilions photos"><div class="track" tabindex="0">
+   <figure class="slide"><img src="img/n15.webp" alt="Timber frame pavilion with log posts on stone piers" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/n14.webp" alt="Timber pavilion with stone piers and a flagpole" loading="lazy" width="900" height="675"></figure>
+   <figure class="slide"><img src="img/n13.webp" alt="Cedar post on a stone pier at a timber pavilion" loading="lazy" width="900" height="1200"></figure>
+   <figure class="slide"><img src="img/g6.webp" alt="Cedar pavilion with stone pillars and outdoor fireplace" loading="lazy" width="800" height="500"></figure>
+  </div><button class="cb prev" type="button" aria-label="Previous photo">&#8249;</button><button class="cb next" type="button" aria-label="Next photo">&#8250;</button></div></div>
+ <div class="proj"><h3>More Tolbert Builds</h3><p class="pd">Earlier finished homes and a build in progress.</p>
+  <div class="car" aria-roledescription="carousel" aria-label="More Tolbert Builds photos"><div class="track" tabindex="0">
+   <figure class="slide"><img src="img/g1.webp" alt="Log home with green metal roof and stone walkout basement in Central Virginia" loading="lazy" width="800" height="500"></figure>
+   <figure class="slide"><img src="img/g2.webp" alt="Stone and log home with attached three-car garage in Orange County VA" loading="lazy" width="800" height="500"></figure>
+   <figure class="slide"><img src="img/g3.webp" alt="Great room with vaulted pine ceiling and arched windows in a log home" loading="lazy" width="800" height="500"></figure>
+   <figure class="slide"><img src="img/g4.webp" alt="Log staircase inside a Virginia log home" loading="lazy" width="800" height="500"></figure>
+   <figure class="slide"><img src="img/g7.webp" alt="Wood stove on a timber hearth in a log home" loading="lazy" width="800" height="500"></figure>
+   <figure class="slide"><img src="img/g8.webp" alt="Bathroom with log wall, granite counter, and tile tub in a log home" loading="lazy" width="800" height="500"></figure>
+   <figure class="slide"><img src="img/g5.webp" alt="Log walls going up on a block foundation during construction" loading="lazy" width="800" height="500"></figure>
+  </div><button class="cb prev" type="button" aria-label="Previous photo">&#8249;</button><button class="cb next" type="button" aria-label="Next photo">&#8250;</button></div></div>
+</div>
 </div></section>
 
 <section id="reviews"><div class="wrap">
@@ -321,4 +340,22 @@ footer.site a{color:#fff}
 </div></footer>
 
 <div class="callbar"><a href="tel:+15406041385">Call 540-604-1385</a></div>
+<script>
+(function(){
+var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.car').forEach(function(c,n){
+ var t=c.querySelector('.track'),paused=false;
+ function step(d){var s=t.querySelectorAll('.slide'),w=s[0].offsetWidth+10;
+  if(d>0&&t.scrollLeft+t.clientWidth>=t.scrollWidth-4){t.scrollTo({left:0,behavior:'smooth'});return}
+  if(d<0&&t.scrollLeft<=4){t.scrollTo({left:t.scrollWidth,behavior:'smooth'});return}
+  t.scrollBy({left:d*w,behavior:'smooth'})}
+ c.querySelector('.next').onclick=function(){step(1)};
+ c.querySelector('.prev').onclick=function(){step(-1)};
+ ['mouseenter','touchstart','focusin'].forEach(function(e){c.addEventListener(e,function(){paused=true},{passive:true})});
+ ['mouseleave','focusout'].forEach(function(e){c.addEventListener(e,function(){paused=false})});
+ c.addEventListener('touchend',function(){setTimeout(function(){paused=false},4000)},{passive:true});
+ if(!rm)setTimeout(function(){setInterval(function(){if(!paused&&!document.hidden)step(1)},3500)},n*700);
+});
+})();
+</script>
 </body></html>
