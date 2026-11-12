@@ -139,9 +139,9 @@ h2::after{content:"";display:block;width:56px;height:4px;background:var(--amber)
 .band{background:var(--wood);color:#fff;text-align:center;padding:24px 0}
 .band p{padding:0 20px;font-size:clamp(15px,3.3vw,21px);font-weight:900;letter-spacing:.1em;text-transform:uppercase}
 .band b{color:#ffd48a}
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.gallery figure{aspect-ratio:4/3;overflow:hidden;border-radius:8px;background:var(--ink)}
-.gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery{column-count:2;column-gap:10px}
+.gallery figure{break-inside:avoid;margin:0 0 10px;overflow:hidden;border-radius:8px;background:var(--ink)}
+.gallery img{width:100%;height:auto;display:block}
 .revs{display:grid;gap:16px}
 .rev{background:#fff;border:1px solid var(--line);border-left:5px solid var(--amber);border-radius:8px;padding:24px}
 .rev p{color:var(--ink)}
@@ -180,7 +180,7 @@ footer.site a{color:#fff}
 }
 @media(min-width:760px){
  .cards{grid-template-columns:repeat(3,1fr)}
- .gallery{grid-template-columns:repeat(4,1fr)}
+ .gallery{column-count:3}
  .revs{grid-template-columns:repeat(3,1fr)}
  .about-grid{grid-template-columns:1.3fr .7fr}
  .cta-grid{grid-template-columns:1fr 1fr}
@@ -220,6 +220,21 @@ footer.site a{color:#fff}
  <h2>Log Homes Built in Central Virginia</h2>
  <p class="sub">A look at finished Tolbert projects and builds in progress.</p>
  <div class="gallery">
+  <figure><img src="img/n02.webp" alt="Log home with a covered front porch and log railings on a wooded lot" loading="lazy" width="900" height="675"></figure>
+  <figure><img src="img/n06.webp" alt="Kitchen with green cabinets, granite counters and a vaulted pine ceiling in a log home" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n08.webp" alt="Covered log deck with railings and a timber truss" loading="lazy" width="720" height="960"></figure>
+  <figure><img src="img/n15.webp" alt="Timber frame pavilion with log posts on stone piers" loading="lazy" width="900" height="675"></figure>
+  <figure><img src="img/n14.webp" alt="Timber pavilion with stone piers and a flagpole" loading="lazy" width="900" height="675"></figure>
+  <figure><img src="img/n13.webp" alt="Cedar post on a stone pier at a timber pavilion" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n04.webp" alt="Bathroom with a dark tile walk-in shower and a vessel sink in a log home" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n10.webp" alt="Tiled bathroom with a walk-in shower and pine ceiling in a log home" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n07.webp" alt="Double vanity bathroom with pine walls in a log home" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n03.webp" alt="Walk-in pantry with built-in pine shelving in a log home" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n05.webp" alt="Sliding glass door looking out to a covered log deck" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n09.webp" alt="View from inside a log home through a sliding door to the covered deck" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n12.webp" alt="Log stair railing with deck windows in a log home" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n11.webp" alt="Finished loft room with a pine ceiling and dormer window" loading="lazy" width="900" height="1200"></figure>
+  <figure><img src="img/n01.webp" alt="Pine ceiling with a timber beam and a framed loft opening in a log home" loading="lazy" width="900" height="1200"></figure>
   <figure><img src="img/g1.webp" alt="Log home with green metal roof and stone walkout basement in Central Virginia" loading="lazy" width="800" height="500"></figure>
   <figure><img src="img/g2.webp" alt="Stone and log home with attached three-car garage in Orange County VA" loading="lazy" width="800" height="500"></figure>
   <figure><img src="img/g3.webp" alt="Great room with vaulted pine ceiling and arched windows in a log home" loading="lazy" width="800" height="500"></figure>
