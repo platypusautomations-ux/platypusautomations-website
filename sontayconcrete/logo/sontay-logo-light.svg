@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+
+<g transform="translate(255,8) scale(1.2)">
+ <defs><clipPath id="drum"><path d="M-150,-28 L-118,-68 L70,-70 Q152,-62 152,0 Q152,62 70,70 L-118,68 L-150,28 Z"/></clipPath></defs>
+ <path d="M40,190 L190,190 L170,150 L70,150 Z" fill="#0E2A5A"/>
+ <rect x="30" y="196" width="500" height="22" rx="4" fill="#0E2A5A"/>
+ <path d="M360,206 L360,96 Q360,86 370,86 L458,86 Q468,86 474,95 L516,160 Q524,172 524,186 L524,206 Z" fill="#D62828"/>
+ <path d="M378,102 L452,102 L490,158 L378,158 Z" fill="#BFD6FF"/>
+ <rect x="360" y="176" width="164" height="6" fill="#9E1B1B"/>
+ <rect x="514" y="186" width="30" height="26" rx="4" fill="#0E2A5A"/>
+ <g transform="translate(205,112) rotate(13)">
+  <path d="M-150,-28 L-118,-68 L70,-70 Q152,-62 152,0 Q152,62 70,70 L-118,68 L-150,28 Z" fill="#E9EEF6"/>
+  <g stroke="#9AA5B5" stroke-width="5" clip-path="url(#drum)"><path d="M-62,-72 L-62,72"/><path d="M4,-72 L4,72"/><path d="M70,-72 L70,72"/></g>
+  <path d="M-150,-28 L-118,-68 L70,-70 Q152,-62 152,0 Q152,62 70,70 L-118,68 L-150,28 Z" fill="none" stroke="#0E2A5A" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M-150,-28 L-150,28" stroke="#0E2A5A" stroke-width="14" stroke-linecap="round"/>
+ </g>
+ <circle cx="100" cy="226" r="34" fill="#101828"/><circle cx="100" cy="226" r="13" fill="#8FA3BF"/>
+ <circle cx="184" cy="226" r="34" fill="#101828"/><circle cx="184" cy="226" r="13" fill="#8FA3BF"/>
+ <circle cx="450" cy="226" r="34" fill="#101828"/><circle cx="450" cy="226" r="13" fill="#8FA3BF"/>
+</g>
+<g font-family="Lato" font-weight="900" text-anchor="middle">
+ <text x="600" y="520" font-size="190" textLength="800" lengthAdjust="spacing" fill="#0E2A5A">SONTAY</text>
+ <rect x="200" y="556" width="800" height="10" fill="#D62828"/>
+ <text x="600" y="690" font-size="120" textLength="800" lengthAdjust="spacing" fill="#D62828">CONCRETE</text>
+</g>
+</svg>
